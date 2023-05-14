@@ -46,62 +46,64 @@ fetch("/Beers.json")
 
 document.querySelector("#clearList").addEventListener("click", () => {
   beers = [];
-  bindBeerItems(document.querySelector("#myList"), beers)
-});
-
-document.querySelector("#addBeer").addEventListener("click", function onSubmit() {
-  const name = document.querySelector("#name");
-  const ibu = document.querySelector("#ibu");
-  const abv = document.querySelector("#abv");
-
-  let allValid = true;
-
-  if (!name.value) {
-    name.valueState = "Error";
-    name.innerHTML = `<div slot="valueStateMessage">Please add a name for this beer.</div>`;
-    allValid = false;
-  } else {
-    name.valueState = "None";
-  }
-  if (!abv.value) {
-    abv.valueState = "Error";
-    abv.innerHTML = `<div slot="valueStateMessage">Please add a numeric value for the Alcohol By Volume of this beer.</div>`;
-    allValid = false;
-  } else {
-    abv.valueState = "None";
-  }
-  if (!ibu.value) {
-    ibu.valueState = "Error";
-    ibu.innerHTML = `<div slot="valueStateMessage">Please add a numeric value for the International Bitterness Unit of this beer.</div>`;
-    allValid = false;
-  } else {
-    ibu.valueState = "None";
-  }
-
-  if (!allValid) {
-    return;
-  }
-
-  beers = [
-    {
-      name: name.value,
-      ibu: ibu.value,
-      abv: abv.value,
-    },
-    ...beers,
-  ];
   bindBeerItems(document.querySelector("#myList"), beers);
-
-  name.value = "";
-  ibu.value = "";
-  abv.value = "";
-
-  const strip = document.querySelector("#success-strip");
-  strip.classList.remove("exercise-hidden");
-
-  const popover = document.querySelector("#popoverForm");
-  popover.ariaHidden = popover.ariaHidden === "true" ? "false" : "true";
 });
+
+document
+  .querySelector("#addBeer")
+  .addEventListener("click", function onSubmit() {
+    const name = document.querySelector("#name");
+    const ibu = document.querySelector("#ibu");
+    const abv = document.querySelector("#abv");
+
+    let allValid = true;
+
+    if (!name.value) {
+      name.valueState = "Error";
+      name.innerHTML = `<div slot="valueStateMessage">Please add a name for this beer.</div>`;
+      allValid = false;
+    } else {
+      name.valueState = "None";
+    }
+    if (!abv.value) {
+      abv.valueState = "Error";
+      abv.innerHTML = `<div slot="valueStateMessage">Please add a numeric value for the Alcohol By Volume of this beer.</div>`;
+      allValid = false;
+    } else {
+      abv.valueState = "None";
+    }
+    if (!ibu.value) {
+      ibu.valueState = "Error";
+      ibu.innerHTML = `<div slot="valueStateMessage">Please add a numeric value for the International Bitterness Unit of this beer.</div>`;
+      allValid = false;
+    } else {
+      ibu.valueState = "None";
+    }
+
+    if (!allValid) {
+      return;
+    }
+
+    beers = [
+      {
+        name: name.value,
+        ibu: ibu.value,
+        abv: abv.value,
+      },
+      ...beers,
+    ];
+    bindBeerItems(document.querySelector("#myList"), beers);
+
+    name.value = "";
+    ibu.value = "";
+    abv.value = "";
+
+    const strip = document.querySelector("#success-strip");
+    strip.classList.remove("exercise-hidden");
+
+    const popover = document.querySelector("#popoverForm");
+    popover.ariaHidden = popover.ariaHidden === "true" ? "false" : "true";
+  });
 
 document.querySelector("#addButton").addEventListener("click", () => {
   const popover = document.querySelector("#popoverForm");
