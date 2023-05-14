@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="icon"
+      href="https://sap.github.io/ui5-webcomponents/assets/images/favicon.ico"
+      type="image/x-icon"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      SAP UI Frameworks for Enterprise Developers: A Practical Guide
+    </title>
+  </head>
+
+  <body>
+    <ui5-shellbar
+      id="shellbar"
+      primary-title="SAP UI Frameworks for Enterprise Developers: A Practical Guide"
+      secondary-title="Fundamental Library Styles"
+      notifications-count="60"
+      show-notifications
+      show-product-switch
+    >
+      <ui5-avatar slot="profile" initials="MV"></ui5-avatar>
+      <img
+        slot="logo"
+        src="https://sapui5.hana.ondemand.com/resources/sap/ui/documentation/sdk/images/logo_ui5.png"
+      />
+    </ui5-shellbar>
+    <main class="fd-page">
+      <header>
+        <div class="fd-bar fd-bar--page fd-bar--header">
+          <div class="fd-bar__left">
+            <div class="fd-bar__element">
+              <button
+                class="fd-button fd-button--transparent"
+                aria-label="Go back"
+              >
+                <i class="sap-icon--navigation-left-arrow"></i>
+              </button>
+            </div>
+            <div class="fd-bar__element">All Beers</div>
+          </div>
+          <div class="fd-bar__right">
+            <div class="fd-bar__element">
+              <div class="fd-popover">
+                <div class="fd-popover__control">
+                  <button
+                    id="addButton"
+                    aria-controls="popoverForm"
+                    class="fd-button fd-button--transparent"
+                    aria-label="Add Beer"
+                  >
+                    <i class="sap-icon--add"></i>
+                  </button>
+                </div>
+                <div
+                  class="fd-popover__body fd-popover__body--right fd-popover__body--arrow-x-end"
+                  aria-hidden="true"
+                  id="popoverForm"
+                >
+                  <div class="fd-popover__wrapper">
+                    <ui5-input
+                      id="name"
+                      required
+                      placeholder="Name"
+                      show-clear-icon
+                    ></ui5-input>
+                    <ui5-input
+                      id="abv"
+                      required
+                      placeholder="ABV"
+                      type="Number"
+                    ></ui5-input>
+                    <ui5-input
+                      id="ibu"
+                      required
+                      placeholder="IBU"
+                      type="Number"
+                    ></ui5-input>
+                    <ui5-button id="addBeer" design="Emphasized"
+                      >Add Beer</ui5-button
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="fd-page__content flex-auto" role="region">
+        <div>
+          <ui5-list id="myList" no-data-text="No Beers Here :( "> </ui5-list>
+        </div>
+      </div>
+      <footer>
+        <div class="fd-bar fd-bar--page fd-bar--footer">
+          <div class="fd-bar__right">
+            <div class="fd-bar__element">
+              <button id="clearList" class="fd-button fd-button--transparent">
+                Clear list
+              </button>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </main>
+    <div
+      id="success-strip"
+      class="exercise-hidden exercise-float-bottom fd-message-strip fd-message-strip--success fd-message-strip--dismissible"
+      role="alert"
+    >
+      <p class="fd-message-strip__text">
+        The new beer has been added successfully to the list.
+      </p>
+      <button
+        id="closeButton"
+        class="fd-button fd-button--transparent fd-button--compact fd-message-strip__close"
+        aria-controls="success-strip"
+        aria-label="Close"
+      >
+        <i class="sap-icon--decline"></i>
+      </button>
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>

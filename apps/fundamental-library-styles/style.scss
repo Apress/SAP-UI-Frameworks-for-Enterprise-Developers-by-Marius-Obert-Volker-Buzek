@@ -1,0 +1,83 @@
+@import "../../node_modules/@fundamental-styles/common-css/dist/sass/_common-mixins.scss"; //workaround import because of mono repo
+
+html,
+body,
+#root {
+  height: 100%;
+  @include sap-set-margin-all;
+  @include sap-flex(column);
+}
+
+.fd-page {
+  @include sap-flex-child(auto);
+
+  & .fd-page__content {
+    @include sap-flex-child(auto);
+  }
+}
+
+.fd-popover__wrapper {
+  @include sap-flex(column);
+  @include sap-margin(tiny);
+
+  & ui5-button {
+    // @include sap-margin(small);
+    @include sap-set-margin-top(1em);
+  }
+}
+
+.fd-message-strip {
+  &.exercise-float-bottom {
+    @include sap-set-top-right-bottom-left(inherit, 1em, 1em, 1em);
+    @include sap-elevation(2, fixed);
+  }
+
+  &.exercise-hidden {
+    opacity: 0;
+    visibility: hidden;
+    z-index: -1;
+  }
+}
+
+
+@font-face {
+  font-family: "72";
+  src: url("@sap-theming/theming-base-content/content/Base/baseLib/baseTheme/fonts/72-Regular-full.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "72";
+  src: url("@sap-theming/theming-base-content/content/Base/baseLib/baseTheme/fonts/72-Bold-full.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "72";
+  src: url("@sap-theming/theming-base-content/content/Base/baseLib/baseTheme/fonts/72-Light-full.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SAP-icons";
+  src: url("@sap-theming/theming-base-content/content/Base/baseLib/baseTheme/fonts/SAP-icons.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "BusinessSuiteInAppSymbols";
+  src: url("@sap-theming/theming-base-content/content/Base/baseLib/baseTheme/fonts/BusinessSuiteInAppSymbols.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SAP-icons-TNT";
+  src: url("@sap-theming/theming-base-content/content/Base/baseLib/baseTheme/fonts/SAP-icons-TNT.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}

@@ -1,0 +1,24 @@
+{
+  "name": "fundamental-library-styles",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && curl https://raw.githubusercontent.com/apress/SAP-UI-Frameworks-for-Enterprise-Developers-by-Marius-Obert-Volker-Buzek/main/apps/fiori-elements/webapp/localService/data/Beers.json > dist/Beers.json",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "sass": "^1.62.1",
+    "vite": "^4.2.0"
+  },
+  "dependencies": {
+    "@fundamental-styles/common-css": "^0.28.3",
+    "@sap-theming/theming-base-content": "^11.4.0",
+    "@ui5/webcomponents": "^1.13.1",
+    "@ui5/webcomponents-fiori": "^1.13.1",
+    "@ui5/webcomponents-icons": "^1.13.1",
+    "@ui5/webcomponents-icons-business-suite": "^1.13.1",
+    "fundamental-styles": "^0.28.3"
+  }
+}
