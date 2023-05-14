@@ -1,0 +1,16 @@
+.DS_Store
+node_modules/
+.idea/
+.mta/
+*.mtar
+package-lock.json
+mta_archives/
+deployer/resources/
+Makefile*
+mta-*
+landingpage/*/**
+
+dist
+dist-*
+**/public/*.woff
+apps/openui5/approuter/webapp

@@ -1,0 +1,12 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Chrome for UI5 app",
+      "url": "http://localhost:8080",
+      "webRoot": "${workspaceFolder}/apps/openui5/uimodule/webapp"
+    }
+  ]
+}

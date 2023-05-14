@@ -1,0 +1,26 @@
+{
+  "name": "sap-ui-frameworks-for-enterprise-developers",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "npm run test --workspaces",
+    "build-all": "npm run build --workspaces",
+    "prettier": "prettier . --write"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IObert/book-samples.git"
+  },
+  "workspaces": [
+    "apps/*"
+  ],
+  "author": "IObert & VoBu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/IObert/book-samples/issues"
+  },
+  "homepage": "https://github.com/IObert/book-samples#readme",
+  "devDependencies": {
+    "prettier": "^2.8.4"
+  }
+}
