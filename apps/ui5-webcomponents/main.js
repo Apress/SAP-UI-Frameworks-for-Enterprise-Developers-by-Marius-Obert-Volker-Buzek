@@ -23,58 +23,63 @@ let beers = [];
 fetch("/Beers.json")
   .then((response) => {
     if (response.status === 200) {
-      return response.json()
+      return response.json();
     } else {
-      throw new Error(response.statusText)
+      throw new Error(response.statusText);
     }
   })
   .then((data) => {
-    beers = data
-    bindBeerItems(document.querySelector("#myList"), beers)
+    beers = data;
+    bindBeerItems(document.querySelector("#myList"), beers);
   })
-  .catch((err) => console.error(err))
+  .catch((err) => console.error(err));
 
-document.querySelector("#addBeer").addEventListener("click", function onSubmit() {
-  const name = document.querySelector("#name");
-  const ibu = document.querySelector("#ibu");
-  const abv = document.querySelector("#abv");
+document
+  .querySelector("#addBeer")
+  .addEventListener("click", function onSubmit() {
+    const name = document.querySelector("#name");
+    const ibu = document.querySelector("#ibu");
+    const abv = document.querySelector("#abv");
 
-  let allValid = true;
+    let allValid = true;
 
-  if (!name.value) {
-    name.valueState = "Error";
-    name.innerHTML = `<div slot="valueStateMessage">Please add a name for this beer.</div>`;
-    allValid = false;
-  } else {
-    name.valueState = "None";
-  }
-  if (!abv.value) {
-    abv.valueState = "Error";
-    abv.innerHTML = `<div slot="valueStateMessage">Please add a numeric value for the Alcohol By Volume of this beer.</div>`;
-    allValid = false;
-  } else {
-    abv.valueState = "None";
-  }
-  if (!ibu.value) {
-    ibu.valueState = "Error";
-    ibu.innerHTML = `<div slot="valueStateMessage">Please add a numeric value for the International Bitterness Unit of this beer.</div>`;
-    allValid = false;
-  } else {
-    ibu.valueState = "None";
-  }
+    if (!name.value) {
+      name.valueState = "Error";
+      name.innerHTML = `<div slot="valueStateMessage">Please add a name for this beer.</div>`;
+      allValid = false;
+    } else {
+      name.valueState = "None";
+    }
+    if (!abv.value) {
+      abv.valueState = "Error";
+      abv.innerHTML = `<div slot="valueStateMessage">Please add a numeric value for the Alcohol By Volume of this beer.</div>`;
+      allValid = false;
+    } else {
+      abv.valueState = "None";
+    }
+    if (!ibu.value) {
+      ibu.valueState = "Error";
+      ibu.innerHTML = `<div slot="valueStateMessage">Please add a numeric value for the International Bitterness Unit of this beer.</div>`;
+      allValid = false;
+    } else {
+      ibu.valueState = "None";
+    }
 
-  if (!allValid) {
-    return;
-  }
+    if (!allValid) {
+      return;
+    }
 
-  beers = [{
-    name: name.value,
-    ibu: ibu.value,
-    abv: abv.value
-  }, ...beers];
-  bindBeerItems(document.querySelector("#myList"), beers);
+    beers = [
+      {
+        name: name.value,
+        ibu: ibu.value,
+        abv: abv.value,
+      },
+      ...beers,
+    ];
+    bindBeerItems(document.querySelector("#myList"), beers);
 
-  name.value = "";
-  ibu.value = "";
-  abv.value = "";
-});
+    name.value = "";
+    ibu.value = "";
+    abv.value = "";
+  });
