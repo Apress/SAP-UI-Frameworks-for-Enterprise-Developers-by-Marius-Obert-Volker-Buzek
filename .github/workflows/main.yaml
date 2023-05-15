@@ -1,4 +1,4 @@
-name: Build and push to GitHub Pages
+name: Build-and-Push-to-GitHub-Pages
 
 on:
   push:
@@ -18,6 +18,6 @@ jobs:
           node-version: 18
       - run: npm ci
       - run: npm run build-all
-      - name: script
-        run: dist-to-gh-pages.sh
+      - name: Execute dist-to-gh-pages.sh
+        run: ./dist-to-gh-pages.sh
         shell: bash
