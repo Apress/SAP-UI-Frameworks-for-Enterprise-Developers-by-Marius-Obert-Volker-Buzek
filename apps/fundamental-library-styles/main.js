@@ -30,7 +30,7 @@ import { bindBeerItems } from "./databinding";
 
 let beers = [];
 
-fetch("/Beers.json")
+fetch("Beers.json")
   .then((response) => {
     if (response.status === 200) {
       return response.json();

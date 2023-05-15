@@ -8,7 +8,7 @@ mta_archives/
 deployer/resources/
 Makefile*
 mta-*
-landingpage/*/**
+docs/*/**
 
 dist
 dist-*
