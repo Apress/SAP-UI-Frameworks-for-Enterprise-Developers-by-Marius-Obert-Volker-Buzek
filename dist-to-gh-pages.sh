@@ -1,6 +1,5 @@
 #!/bin/sh
 
-# git commit -am "Save uncommited changes (WIP)"
 git branch --delete --force gh-pages
 git checkout --orphan gh-pages
 # rm -rf docs/openui5/*
@@ -15,4 +14,4 @@ cp -r apps/ui5-webcomponents/dist/* docs/ui5-webcomponents
 cp -r apps/fundamental-library-styles/dist/* docs/fundamental-library-styles
 git add -f docs*
 git commit -m "Rebuild GitHub pages"
-#git filter-branch -f --prune-empty --subdirectory-filter dist && git push -f origin gh-pages && git checkout -
+git filter-branch -f --prune-empty --subdirectory-filter docs && git push -f origin gh-pages && git checkout -
