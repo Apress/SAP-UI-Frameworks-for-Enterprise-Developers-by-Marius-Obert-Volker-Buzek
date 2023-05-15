@@ -3,7 +3,6 @@ node_modules/
 .idea/
 .mta/
 *.mtar
-package-lock.json
 mta_archives/
 deployer/resources/
 Makefile*
