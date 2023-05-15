@@ -10,6 +10,5 @@ mta-*
 docs/*/**
 
 dist
-dist-*
 **/public/*.woff
 apps/openui5/approuter/webapp
