@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build && curl https://raw.githubusercontent.com/apress/SAP-UI-Frameworks-for-Enterprise-Developers-by-Marius-Obert-Volker-Buzek/main/apps/fiori-elements/webapp/localService/data/Beers.json > dist/Beers.json",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "echo 1"
   },
   "devDependencies": {
     "vite": "^4.2.0"
