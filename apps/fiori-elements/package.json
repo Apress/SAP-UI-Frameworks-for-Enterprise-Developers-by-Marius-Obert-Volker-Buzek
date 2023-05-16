@@ -9,28 +9,42 @@
     "sapui5"
   ],
   "main": "webapp/index.html",
-  "dependencies": {},
   "devDependencies": {
-    "@ui5/cli": "^2.14.1",
-    "@sap/ux-ui5-tooling": "1",
+    "@sap-ux/ui5-middleware-fe-mockserver": "2",
     "@sap/ux-specification": "UI5-1.112",
-    "@sap-ux/ui5-middleware-fe-mockserver": "2"
+    "@sap/ux-ui5-tooling": "1",
+    "@ui5/cli": "^2.14.1",
+    "@wdio/cli": "^7",
+    "@wdio/local-runner": "^7",
+    "@wdio/mocha-framework": "^7",
+    "@wdio/spec-reporter": "^7",
+    "chromedriver": "latest",
+    "karma": "^6.4.2",
+    "karma-chrome-launcher": "^3.2.0",
+    "karma-ui5": "^3",
+    "ui5-task-zipper": "^0.8.2",
+    "wdio-chromedriver-service": "^7",
+    "wdio-ui5-service": "latest"
   },
   "scripts": {
     "start": "echo \\\"This application was generated with a local metadata file and does not reference a live server. Please add the required server configuration or start this application with mock data using the target: npm run start-mock\\\"",
     "start-local": "fiori run --config ./ui5-local.yaml --open \"test/flpSandbox.html?sap-ui-xx-viewCache=false#comapressbeershop-tile\"",
-    "build": "ui5 build --config=ui5.yaml --clean-dest --dest dist",
+    "build:sc": "ui5 build self-contained -a --config=ui5-deploy.yaml --clean-dest --dest dist-sc",
+    "build:wz": "ui5 build --config=ui5-deploy.yaml --clean-dest --dest dist-wz",
     "deploy": "fiori verify",
     "deploy-config": "fiori add deploy-config",
     "start-noflp": "echo \\\"This application was generated with a local metadata file and does not reference a live server. Please add the required server configuration or start this application with mock data using the target: npm run start-mock\\\"",
     "start-mock": "fiori run --config ./ui5-mock.yaml --open \"test/flpSandbox.html?sap-ui-xx-viewCache=false#comapressbeershop-tile\"",
     "int-test": "fiori run --config ./ui5-mock.yaml --open \"test/integration/opaTests.qunit.html\"",
-    "start-variants-management": "echo \\\"This application was generated with a local metadata file and does not reference a live server. Please add the required server configuration or start this application with mock data using the target: npm run start-mock\\\""
+    "ci-test": "karma start karma-ci.conf.js",
+    "start-variants-management": "echo \\\"This application was generated with a local metadata file and does not reference a live server. Please add the required server configuration or start this application with mock data using the target: npm run start-mock\\\"",
+    "wdi5": "wdio run ./wdio.conf.js --headless"
   },
   "ui5": {
     "dependencies": [
       "@sap/ux-ui5-tooling",
-      "@sap-ux/ui5-middleware-fe-mockserver"
+      "@sap-ux/ui5-middleware-fe-mockserver",
+      "ui5-task-zipper"
     ]
   },
   "sapux": true,
