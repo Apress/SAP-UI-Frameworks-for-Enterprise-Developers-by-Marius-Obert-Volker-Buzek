@@ -16,8 +16,9 @@ jobs:
       - uses: fregante/setup-git-user@v2
       - uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 16
       - run: npm ci
+      - run: npm run test
       - run: npm run build-all
       - name: Execute dist-to-gh-pages.sh
         run: ./dist-to-gh-pages.sh
