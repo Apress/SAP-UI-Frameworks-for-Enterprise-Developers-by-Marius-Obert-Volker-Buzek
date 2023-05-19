@@ -29,8 +29,8 @@
   "scripts": {
     "start": "echo \\\"This application was generated with a local metadata file and does not reference a live server. Please add the required server configuration or start this application with mock data using the target: npm run start-mock\\\"",
     "start-local": "fiori run --config ./ui5-local.yaml --open \"test/flpSandbox.html?sap-ui-xx-viewCache=false#comapressbeershop-tile\"",
-    "build:sc": "ui5 build self-contained -a --config=ui5-deploy.yaml --clean-dest --dest dist-sc",
-    "build:wz": "ui5 build --config=ui5-deploy.yaml --clean-dest --dest dist-wz",
+    "build:sc": "ui5 build self-contained -a --config=ui5-deploy-sc.yaml --clean-dest --dest dist-sc",
+    "build:wz": "ui5 build --config=ui5-deploy-wz.yaml --clean-dest --dest dist-wz",
     "build": "npm run build:sc",
     "deploy": "fiori verify",
     "deploy-config": "fiori add deploy-config",
