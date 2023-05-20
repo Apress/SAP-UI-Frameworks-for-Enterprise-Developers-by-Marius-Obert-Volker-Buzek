@@ -8,7 +8,6 @@ sap.ui.define(["com/apress/openui5/controller/BaseController", "sap/ui/model/jso
             },
 
             handleSavePress: function (event) {
-                debugger
                 const button = event.getSource();
                 if (this.triggerValidation(true)) {
                     button.setBusy(true)
@@ -25,7 +24,7 @@ sap.ui.define(["com/apress/openui5/controller/BaseController", "sap/ui/model/jso
             },
 
             onValidationSuccess: function (oEvent) {
-                oEvent.getSource().setValueState(sap.ui.core.ValueState.None);
+                oEvent.getSource().setValueState(ValueState.None);
             },
 
             triggerValidation: function (updateValueState) {

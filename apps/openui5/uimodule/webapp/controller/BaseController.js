@@ -12,7 +12,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
             },
 
             fnOpenSwitch: function (oEvent) {
-                var oButton = oEvent.getParameter("button");
+                const oButton = oEvent.getParameter("button");
 
                 if (!this._pPopover) {
                     this._pPopover = Fragment.load({
