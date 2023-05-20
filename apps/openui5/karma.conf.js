@@ -7,12 +7,12 @@ module.exports = function (config) {
             type: "application",
             configPath: "uimodule/ui5.yaml",
             paths: {
-                webapp: "uimodule/webapp"
-            }
+                webapp: "uimodule/webapp",
+            },
         },
         browsers: ["Chrome"],
         browserConsoleLogOptions: {
-            level: "error"
-        }
+            level: "error",
+        },
     });
 };

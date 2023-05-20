@@ -1,11 +1,10 @@
-sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap/ui/core/UIComponent", "com/apress/openui5/model/formatter", "sap/ui/Device",
-    "sap/ui/core/Fragment", "sap/m/Button"],
+sap.ui.define(
+    ["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap/ui/core/UIComponent", "com/apress/openui5/model/formatter", "sap/ui/Device", "sap/ui/core/Fragment", "sap/m/Button"],
     function (Controller, History, UIComponent, formatter, Device, Fragment, Button) {
         "use strict";
 
         return Controller.extend("com.apress.openui5.controller.BaseController", {
             formatter: formatter,
-
 
             fnPageSwitch: function (oEvent) {
                 this.navTo(oEvent.getParameter("itemPressed").getTargetSrc());
@@ -18,14 +17,16 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
                     this._pPopover = Fragment.load({
                         id: this.getView().getId(),
                         name: "com.apress.openui5.view.PageSwitchPopover",
-                        controller: this
-                    }).then(function (oPopover) {
-                        this.getView().addDependent(oPopover);
-                        if (Device.system.phone) {
-                            oPopover.setEndButton(new Button({ text: "{i18n>close}", type: "Emphasized", press: this.fnCloseSwitch.bind(this) }));
-                        }
-                        return oPopover;
-                    }.bind(this));
+                        controller: this,
+                    }).then(
+                        function (oPopover) {
+                            this.getView().addDependent(oPopover);
+                            if (Device.system.phone) {
+                                oPopover.setEndButton(new Button({ text: "{i18n>close}", type: "Emphasized", press: this.fnCloseSwitch.bind(this) }));
+                            }
+                            return oPopover;
+                        }.bind(this)
+                    );
                 }
 
                 this._pPopover.then(function (oPopover) {
@@ -37,7 +38,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
                     oPopover.close();
                 });
             },
-
 
             /**
              * Convenience method for getting the view model by name in every controller of the application.
@@ -94,4 +94,5 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap
                 }
             },
         });
-    });
+    }
+);

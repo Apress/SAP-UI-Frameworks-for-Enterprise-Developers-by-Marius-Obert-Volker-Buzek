@@ -1,15 +1,15 @@
 describe("v4 test lib", async () => {
-  let FioriElementsFacade
-  
+  let FioriElementsFacade;
+
   before(async () => {
     FioriElementsFacade = await browser.fe.initialize({
       onTheBeersList: require("./pages/BeersList"),
       onTheBeersObjectPage: require("./pages/BeersObjectPage"),
       onTheShell: {
-        Shell: {}
-      }
-    })
-  })
+        Shell: {},
+      },
+    });
+  });
 
   it("should navigate to the object page", async () => {
     await FioriElementsFacade.execute((Given, When, Then) => {
@@ -17,8 +17,8 @@ describe("v4 test lib", async () => {
       // Given.onTheBeersList.onFilterBar().iExecuteSearch()
       // because our app is configured to auto-load all beers on app start!
       // so we can directly do:
-      When.onTheBeersList.onTable().iPressRow(0)
-      Then.onTheBeersObjectPage.iSeeThisPage()
-    })
-  })
-})
+      When.onTheBeersList.onTable().iPressRow(0);
+      Then.onTheBeersObjectPage.iSeeThisPage();
+    });
+  });
+});

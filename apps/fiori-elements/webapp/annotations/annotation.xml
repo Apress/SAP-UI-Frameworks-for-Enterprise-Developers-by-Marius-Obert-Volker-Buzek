@@ -1,12 +1,17 @@
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
-    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
-        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    <edmx:Reference
+    Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml"
+  >
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI" />
     </edmx:Reference>
     <edmx:Reference Uri="/here/goes/your/serviceurl/$metadata">
-        <edmx:Include Namespace="BeershopService"/>
+        <edmx:Include Namespace="BeershopService" />
     </edmx:Reference>
     <edmx:DataServices>
-        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
+        <Schema
+      xmlns="http://docs.oasis-open.org/odata/ns/edm"
+      Namespace="local"
+    >
             <Annotations Target="BeershopService.Beers">
                 <Annotation Term="UI.SelectionFields">
                     <Collection>
@@ -18,18 +23,21 @@
                 <Annotation Term="UI.LineItem">
                     <Collection>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="brewery/name"/>
-                            <PropertyValue Property="Label" String="Brewery"/>
+                            <PropertyValue
+                Property="Value"
+                Path="brewery/name"
+              />
+                            <PropertyValue Property="Label" String="Brewery" />
                         </Record>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="name"/>
-                            <PropertyValue Property="Label" String="Beer"/>
+                            <PropertyValue Property="Value" Path="name" />
+                            <PropertyValue Property="Label" String="Beer" />
                         </Record>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="abv"/>
+                            <PropertyValue Property="Value" Path="abv" />
                         </Record>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="ibu"/>
+                            <PropertyValue Property="Value" Path="ibu" />
                         </Record>
                     </Collection>
                 </Annotation>
@@ -37,17 +45,23 @@
                     <Record>
                         <PropertyValue Property="Title">
                             <Record Type="UI.DataField">
-                                <PropertyValue Property="Value" Path="name"/>
+                                <PropertyValue Property="Value" Path="name" />
                             </Record>
                         </PropertyValue>
-                        <PropertyValue Property="TypeName" String=""/>
-                        <PropertyValue Property="TypeNamePlural" String=""/>
+                        <PropertyValue Property="TypeName" String="" />
+                        <PropertyValue Property="TypeNamePlural" String="" />
                         <PropertyValue Property="Description">
                             <Record Type="UI.DataField">
-                                <PropertyValue Property="Value" Path="brewery/name"/>
+                                <PropertyValue
+                  Property="Value"
+                  Path="brewery/name"
+                />
                             </Record>
                         </PropertyValue>
-                        <PropertyValue Property="ImageUrl" Path="brewery/logo"/>
+                        <PropertyValue
+              Property="ImageUrl"
+              Path="brewery/logo"
+            />
                     </Record>
                 </Annotation>
             </Annotations>

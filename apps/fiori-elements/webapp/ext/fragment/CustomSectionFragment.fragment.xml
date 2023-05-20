@@ -1,3 +1,11 @@
-<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:macros="sap.fe.macros">
-	<Button core:require="{ handler: 'com/apress/beershop/ext/fragment/CustomSectionFragment'}" text="CustomSectionFragment" press="handler.onPress" />
+<core:FragmentDefinition
+  xmlns:core="sap.ui.core"
+  xmlns="sap.m"
+  xmlns:macros="sap.fe.macros"
+>
+	<Button
+    core:require="{ handler: 'com/apress/beershop/ext/fragment/CustomSectionFragment'}"
+    text="CustomSectionFragment"
+    press="handler.onPress"
+  />
 </core:FragmentDefinition>

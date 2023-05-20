@@ -1,7 +1,4 @@
-sap.ui.require([
-    "sap/ui/test/Opa5",
-    "sap/ui/test/actions/Press"
-], function (Opa5, Press) {
+sap.ui.require(["sap/ui/test/Opa5", "sap/ui/test/actions/Press"], function (Opa5, Press) {
     "use strict";
 
     Opa5.createPageObjects({
@@ -14,9 +11,9 @@ sap.ui.require([
                     return this.waitFor({
                         controlType: "sap.m.Button",
                         actions: new Press(),
-                        errorMessage: "App does not have a button"
+                        errorMessage: "App does not have a button",
                     });
-                }
+                },
             },
 
             assertions: {
@@ -25,17 +22,15 @@ sap.ui.require([
                     return this.waitFor({
                         controlType: "sap.m.Title",
                         properties: {
-                            text: "Title of com.apress.openui5"
+                            text: "Title of com.apress.openui5",
                         },
-                        success: function() {
+                        success: function () {
                             Opa5.assert.ok(true, "The page shows the correct title");
                         },
-                        errorMessage: "App does not show the expected title com.apress.openui5"
+                        errorMessage: "App does not show the expected title com.apress.openui5",
                     });
-                }
-            }
-
-        }
+                },
+            },
+        },
     });
-
 });

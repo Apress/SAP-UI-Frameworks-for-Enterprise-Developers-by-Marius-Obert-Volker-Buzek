@@ -1,9 +1,12 @@
-<mvc:View controllerName="com.apress.openui5.controller.BeerAdd" displayBlock="true"
-  xmlns:core="sap.ui.core"
-  xmlns="sap.m"
-  xmlns:f="sap.ui.layout.form"
-  xmlns:l="sap.ui.layout"
-  xmlns:mvc="sap.ui.core.mvc">
+<mvc:View
+    controllerName="com.apress.openui5.controller.BeerAdd"
+    displayBlock="true"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
+    xmlns:mvc="sap.ui.core.mvc"
+>
   <core:Fragment fragmentName="com.apress.openui5.view.Header" type="XML" />
   <Page class="reducedHeight">
     <customHeader>
@@ -26,7 +29,21 @@
             <core:Title text="{i18n>General}" />
           </f:title>
           <f:layout>
-            <f:ResponsiveGridLayout labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false" />
+            <f:ResponsiveGridLayout
+                            labelSpanXL="3"
+                            labelSpanL="3"
+                            labelSpanM="3"
+                            labelSpanS="12"
+                            adjustLabelSpan="false"
+                            emptySpanXL="4"
+                            emptySpanL="4"
+                            emptySpanM="4"
+                            emptySpanS="0"
+                            columnsXL="1"
+                            columnsL="1"
+                            columnsM="1"
+                            singleContainerFullSize="false"
+                        />
           </f:layout>
           <f:formContainers>
             <f:FormContainer>
@@ -64,4 +81,3 @@
     </content>
   </Page>
 </mvc:View>
-
