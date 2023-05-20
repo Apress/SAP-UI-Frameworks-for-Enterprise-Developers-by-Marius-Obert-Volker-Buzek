@@ -1,6 +1,6 @@
 sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap/ui/core/UIComponent", "com/apress/openui5/model/formatter", "sap/ui/Device",
-    "sap/ui/core/Fragment", "sap/m/Button", "sap/m/MessageToast"],
-    function (Controller, History, UIComponent, formatter, Device, Fragment, Button, MessageToast) {
+    "sap/ui/core/Fragment", "sap/m/Button"],
+    function (Controller, History, UIComponent, formatter, Device, Fragment, Button) {
         "use strict";
 
         return Controller.extend("com.apress.openui5.controller.BaseController", {
