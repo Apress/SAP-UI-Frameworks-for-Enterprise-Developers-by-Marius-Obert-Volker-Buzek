@@ -1,0 +1,60 @@
+.sapCepAddButton {
+  border: none;
+  background: transparent;
+  outline: none;
+  border-radius: 100%;
+  padding: 0.1875rem 0;
+  color: @sapUiButtonIconColor;
+  max-height: 2.25rem;
+  max-width: 2.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    .sapCepAddButtonInner {
+      background: @sapUiButtonNeutralHoverBackground;
+      outline-color: @sapUiButtonNeutralHoverBorderColor;
+    }
+
+    .sapCepAddButtonIcon {
+      color: @sapUiButtonNeutralHoverTextColor;
+    }
+  }
+
+  &:focus {
+    .sapCepAddButtonInner {
+      background: @sapUiButtonNeutralActiveBackground;
+      outline: 0.125rem solid @sapUiButtonNeutralActiveBorderColor;
+    }
+
+    .sapCepAddButtonIcon {
+      color: @sapUiButtonNeutralActiveTextColor;
+    }
+  }
+
+  .sapCepAddButtonInner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: @sapUiButtonNeutralBackground;
+    border-radius: 100%;
+    border: 1px solid @sapUiButtonNeutralBorderColor;
+    width: 1.625rem;
+    height: 1.625rem;
+    cursor: pointer;
+  }
+
+  .sapCepAddButtonIcon {
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    vertical-align: baseline;
+    line-height: 1.5rem;
+    position: relative;
+    font-size: 1rem;
+    max-height: 1.5rem;
+    width: 1rem;
+    color: @sapUiButtonNeutralTextColor;
+  }
+}

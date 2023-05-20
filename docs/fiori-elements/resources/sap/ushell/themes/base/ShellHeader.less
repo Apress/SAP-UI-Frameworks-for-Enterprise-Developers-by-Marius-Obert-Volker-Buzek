@@ -1,0 +1,392 @@
+/* ================================================== */
+/* CSS for control "sap.ushell.ui.ShellHeader" (base) */
+/* ================================================== */
+
+& { /* define local scope for "@item-height" */
+  @item-height: 2.25rem; /* all items in the header have the same height: 36px */
+
+  .sapUshellShellHeader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    overflow: hidden;
+    z-index: 3;
+    opacity: 1;
+    padding: 0 1.75rem; /* 28px + 4px of the headbegin/headend === 32px according to the specification */
+    height: @item-height + 0.5rem;
+    line-height: @item-height;
+    box-sizing: border-box;
+    /* better font rendering in Mac OS: */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .sapUshellHeaderPlaceHolder {
+    height: 2.75rem;
+  }
+
+  /* --- Top level containers: Begin, Center, End, Search --- */
+
+  .sapUshellShellHeadBegin {
+    padding: 0.25rem;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    display: flex;
+    flex-shrink: 1;
+  }
+
+  /* If the CoPilot icon is shown in the center, limit the width of the begin area */
+  .sapUshellShellHeadBegin.sapUshellHeadWithCenter {
+    flex-basis: ~"calc(50% - 1.5rem)";
+  }
+
+  .sapUshellShellHeadCenter {
+    overflow: hidden;
+    flex-basis: 3rem;
+    display: flex;
+    justify-content: center;
+    flex-shrink: 0;
+    flex-grow: 0;
+    margin-right: 5rem;
+  }
+
+  .sapUshellShellHeadEnd {
+    padding: 0.25rem;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    max-width: 29.5rem;
+    white-space: nowrap;
+    z-index: 1;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .sapUshellShellHeadSearchContainer {
+    box-sizing: border-box;
+    display: block;
+    flex-shrink: 10;
+    text-align: right;
+    overflow: hidden;
+    flex-grow: 1;
+    padding: 0.25rem 0;
+  }
+
+  .sapUshellShellSearch {
+    display: inline-block;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: left;
+    overflow: hidden;
+    transition: max-width 0.2s linear;
+    z-index: 3;
+    &:empty {
+      display: none;
+    }
+  }
+
+  .sapUshellShellHead.sapUshellContainerDocked {
+    &.sapUshellHead-Narrow-Right .sapUshellShellHeader {
+      right: @_sap_ushell_CoPilot_DockingWidth;
+    }
+
+    &.sapUshellHead-Narrow-Left .sapUshellShellHeader {
+      left: @_sap_ushell_CoPilot_DockingWidth;
+    }
+  }
+
+  .sapUshellShellSearchHidden {
+    display: none;
+  }
+
+  .sapUshellShellHeader.sapUshellShellShowSearchOverlay::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: @sapUiBlockLayerBackground;
+    opacity: 0.4;
+    z-index: 2;
+  }
+
+  .sapUshellShellBlocked {
+    background: @sapUiBlockLayerBackground;
+    opacity: 0.6;
+    z-index: 3;
+  }
+
+  .sapUshellMenuBarBlocked {
+    background: @sapUiBlockLayerBackground;
+    opacity: 0.6;
+    z-index: 4;
+  }
+
+  /* --- Title and Subtitle --- */
+
+  .sapUshellHeadTitle {
+    display: flex;
+    overflow: hidden;
+    font-weight: inherit;
+    margin-left: 0rem;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+    flex-shrink: 1;
+  }
+
+  .sapUshellShellHeadTitle {
+    height: 100%;
+    box-sizing: border-box;
+    border-radius: 0.25rem;
+    padding: 0;
+    flex-shrink: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    .sapUiMedia-Std-Phone {
+      @media (orientation: portrait) {
+        display: none;
+      }
+    }
+  }
+
+  h1.sapUshellHeadTitle {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  h2.sapUshellHeadTitle {
+    display: inline;
+    overflow: auto;
+  }
+
+  .sapUshellShellHeadSubtitle {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    flex-basis: 3rem; /* min-width: 3rem; */
+    flex-grow: 1;
+    margin-left: 0.5rem; /* space between title and subtitle */
+
+    .sapUiMedia-Std-Phone {
+      @media (orientation: portrait) {
+        display: none;
+      }
+    }
+  }
+
+  /* --- Logo (Home Button) --- */
+
+  .sapUshellShellIco {
+    height: 100%;
+    display: inline-block;
+    vertical-align: top;
+    padding: 0 0.25rem; /* 4px for the focus outline */
+    border-radius: 0.25rem;
+  }
+
+  .sapUshellShellIco:focus {
+    outline-width: 1px;
+    outline-style: dotted;
+  }
+
+  .sapUshellShellHeadBegin .sapUshellShellIco.sapUshellLean:hover {
+    background: transparent; /* Lean Logo is not hoverable */
+  }
+
+  #shell-header-icon {
+    max-height: @item-height;
+    max-width: 6rem;
+    vertical-align: middle;
+  }
+
+  /* --- Head items (buttons) --- */
+
+  .sapUshellShellHeadItm {
+    position: relative;
+    cursor: pointer;
+    -webkit-touch-callout: default;
+  }
+
+  .sapUshellShellHeadItm:not(:first-child),
+  #userActionsMenuHeaderButton:not(:first-child),
+  #shell-header-logo:not(:first-child),
+  #shellAppTitle:not(:first-child) {
+    margin-left: 0.5rem; /* global specification v.4.2 */
+  }
+
+  .sapUshellShellHeadItmDisabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+
+  .sapUshellShellHeadItm > span > img {
+    width: 100%;
+    height: 100%;
+    border-width: 0;
+    border-radius: 50%;
+  }
+
+  .sapUshellShellHidden {
+    &.sapUshellShellIco,
+    &.sapUshellShellSearch {
+      display: none;
+    }
+  }
+
+  .sapUshellShellHeadItmCntnt {
+    display: inline-block;
+    text-align: center;
+    box-sizing: border-box;
+    border-radius: 0.25rem;
+    width: @item-height;
+    height: @item-height;
+    font-size: 1rem;
+    vertical-align: top;
+  }
+
+  .sapUshellShellHeadAction:focus {
+    outline: none;
+  }
+
+  .sapUshellShellHeadItm:focus {
+    outline-width: 1px;
+    outline-style: dotted;
+  }
+} /* end of local scope */
+
+html[dir=ltr] .sapUiSizeCompact .sapUshellPopupContainer .sapMSLI {
+  padding-left: 0px;
+}
+
+html[dir=rtl] .sapUiSizeCompact .sapUshellPopupContainer .sapMSLI {
+  padding-right: 0px;
+}
+
+.sapUshellPopoverList {
+  padding: 0.5rem; /* add padding to keep rounded corners on popover */
+}
+
+.sapUshellPopupContainer {
+  background: @sapUiGroupContentBackground;
+  border: none;
+  box-shadow: @sapUiShadowLevel2;
+  border-radius: 0.25rem;
+
+  .sapUiVltCell { /* Me Area Actions as Popover */
+    padding: 0 0.25rem;
+    margin: 0.25rem 0;
+  }
+}
+
+.sapUshellAppTitleText {
+  display: inline-block;
+  flex-shrink: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sapUshellShellHeadAction {
+  height: 2.25rem;
+  flex-shrink: 0;
+  cursor: pointer;
+  padding: 0;
+  box-sizing: border-box;
+  text-align: center;
+  font-weight: normal;
+  font-size: 1rem;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.sapUshellAppTitleText + .sapUshellShellHeadAction {
+  margin-left: 0.5rem;
+}
+
+.sapUshellShellHeadItmCounter:after {
+  font-family: @sapUiFontFamily;
+  font-size: 0.625rem;
+  content: attr(data-counter-content);
+  position: absolute;
+  right: 0;
+  border-radius: 0.5rem;
+  height: 1rem;
+  line-height: 1rem;
+  /* helps to to stop the badge being squashed */
+  padding: 0 0.3125rem;
+  background-color: @sapUiContentBadgeBackground;
+  border-color: @sapUiContentBadgeBackground;
+  border: 0.0625rem solid @sapUiContentBadgeBackground;
+  color: @sapUiContentBadgeTextColor;
+}
+
+// For the subtitle that can be added to the header via API next to the ShellAppTitle
+.sapUshellShellHeadSubtitle > .sapUshellHeadTitle {
+  font-size: 0.75rem;
+}
+
+.sapUshellHeadTitle.sapUshellHeadTitleWithSmallerFontSize {
+  font-size: 0.8rem;
+}
+
+/* for size factors, the OpenUI5 phone, tablet, and desktop form factors are used;
+   see "sap.ui.Device.initRangeSet" for the breakpoint definitions. */
+
+.sapUiMedia-StdExt-LargeDesktop {
+  .sapUshellShellHeader {
+    padding: 0 2.75rem; /* 2.75 + 0.25 of the headbegin/headend === 48px according to the specification */
+  }
+
+  .sapUshellShellHeadBegin,
+  .sapUshellShellHeadEnd {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: ~'calc(50% - 17.5rem)'; /* 35/2, the width of the search container is 35rem */
+  }
+
+  .sapUshellShellHeadEnd {
+    max-width: none;
+  }
+
+  .sapUshellShellHeadSearchContainer {
+    justify-content: center;
+    flex-grow: 0;
+    flex-basis: 35rem;
+  }
+}
+
+.sapUiMedia-Std-Tablet {
+  .sapUshellShellHeader {
+    .sapUshellShellHeadTitle {
+      flex-shrink: 1;
+    }
+  }
+}
+
+.sapUiMedia-Std-Phone {
+  .sapUshellShellHeader {
+    padding: 0 0.75rem; /* 12px + 4px of the headbegin/headend === 16px according to the specification */
+
+    .sapUshellShellHeadTitle {
+      flex-shrink: 1;
+    }
+
+    .sapUshellShellHeadSearchContainer {
+      flex-shrink: 1;
+    }
+
+    .sapUshellShellHeadCenter {
+      margin-right: 0;
+    }
+  }
+}

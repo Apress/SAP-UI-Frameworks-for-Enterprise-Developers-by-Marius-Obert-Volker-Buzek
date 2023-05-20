@@ -1,0 +1,39 @@
+<core:FragmentDefinition xmlns="sap.m"
+  xmlns:core="sap.ui.core">
+  <CustomListItem>
+    <VBox class="sapUiSmallMarginBegin sapUiSmallMarginBottom">
+      <HBox class="sapUiMediumMarginEnd sapUiSmallMarginTop">
+        <Avatar src="{data>icon}" fallbackIcon="{category>list/item/icon/src}" displaySize="{= ${category>list/item/icon/size} || 'S'}" class="sapUiCEPCatListAvatarTitle" backgroundColor="{= ${data>iconBackgroundColor} || ${category>list/item/icon/backgroundColor}}" initials="{data>initials}" displayShape="{= ${category>list/item/icon/shape} || 'Square'}">
+          <customData>
+            <core:CustomData key="people-status" value="{= ${data>status} + ''}" writeToDom="true" />
+          </customData>
+        </Avatar>
+        <VBox class="sapUiSmallMarginBegin sapUiSmallMarginBottom">
+          <ObjectIdentifier title="{data>title}" text="{data>description}" titleActive="{= !!${data>_navigation} || !!${data>url}}" titlePress=".itemNavigate" />
+        </VBox>
+      </HBox>
+      <VBox>
+        <HBox visible="{= !!${data>mail}}">
+          <Label text="{cati18n>CATEGORIES.People.LblEmail}" class="sapUiCEPCatListFieldLabel" width="4.1rem"/>
+          <Link text="{data>mail}" class="sapUiCEPCatListFieldText" href="mailto:{data>mail}"/>
+        </HBox>
+        <HBox visible="{= !!${data>mobile}}">
+          <Label text="{cati18n>CATEGORIES.People.LblMobileNr}" class="sapUiCEPCatListFieldLabel" width="4.1rem"/>
+          <Link text="{data>mobile}" class="sapUiCEPCatListFieldText" href="tel:{data>mobile}"/>
+        </HBox>
+        <HBox visible="{= !!${data>work}}">
+          <Label text="{cati18n>CATEGORIES.People.LblWorkNr}" class="sapUiCEPCatListFieldLabel" width="4.1rem"/>
+          <Link text="{data>work}" class="sapUiCEPCatListFieldText" href="tel:{data>work}"/>
+        </HBox>
+        <HBox visible="{= !!${data>manager}}">
+          <Label text="{cati18n>CATEGORIES.People.LblManager}" class="sapUiCEPCatListFieldLabel" width="4.1rem"/>
+          <Text text="{data>manager}" class="sapUiCEPCatListFieldText"/>
+        </HBox>
+        <HBox visible="{= !!${data>location}}">
+          <Label text="{cati18n>CATEGORIES.People.LblLocation}" class="sapUiCEPCatListFieldLabel" width="4.1rem"/>
+          <Text text="{data>location}" class="sapUiCEPCatListFieldText"/>
+        </HBox>
+      </VBox>
+    </VBox>
+  </CustomListItem>
+</core:FragmentDefinition>

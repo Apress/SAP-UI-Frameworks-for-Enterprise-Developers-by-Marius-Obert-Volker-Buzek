@@ -1,0 +1,215 @@
+<mvc:View
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns:unittest="http://schemas.sap.com/sapui5/preprocessorextension/sap.fe.unittesting/1"
+	xmlns:customdata="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	xmlns:uxap="sap.uxap"
+	xmlns="sap.m"
+	xmlns:control="sap.fe.core.controls"
+	xmlns:fragments="sap.fe.templates.ObjectPage.view.fragments"
+	xmlns:fe="sap.fe.templates.controls"
+	xmlns:dt="sap.ui.dt"
+	xmlns:fl="sap.ui.fl"
+	xmlns:macro="sap.fe.macros"
+	xmlns:fclMacro="sap.fe.macros.fcl"
+	xmlns:internalMacro="sap.fe.macros.internal"
+	controllerName="sap.fe.templates.ObjectPage.ObjectPageController"
+	template:require="{
+				MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+				OP: 'sap/fe/templates/ObjectPage/ObjectPageTemplating',
+				CONTACT: 'sap/fe/macros/contact/ContactHelper',
+				UI: 'sap/fe/core/templating/UIFormatters',
+				COMMON: 'sap/fe/macros/CommonHelper',
+				COMMONFORMATTERS: 'sap/fe/core/templating/CommonFormatters'
+			}"
+>
+	<template:with path="entitySet>./" var="entityType">
+		<template:with path="entityType>@com.sap.vocabularies.UI.v1.HeaderInfo" var="headerInfo">
+			<!-- OPLayout binding contains explicit $select for SAP__Messages or the path from @Common.Messages until model provides an alternative.
+		This is to enable side effects to request messages. -->
+			<uxap:ObjectPageLayout
+				id="fe::ObjectPage"
+				flexEnabled="true"
+				unittest:id="objectPageLayoutTest"
+				customdata:showRelatedApps="{viewData>/showRelatedApps}"
+				customdata:ObjectPageTitle="{headerInfo>TypeName}"
+				customdata:ObjectPageSubtitle="{= COMMONFORMATTERS.getBindingWithText(${headerInfo>Title/Value@@UI.getDataModelObjectPath}) }"
+				showHeaderContent="{converterContext>header/showContent}"
+				showFooter="true"
+				busy="{ui>/busy}"
+				busyIndicatorDelay="0"
+				showAnchorBar="{converterContext>showAnchorBar}"
+				upperCaseAnchorBar="false"
+				useIconTabBar="{converterContext>useIconTabBar}"
+				toggleHeaderOnTitleClick="{converterContext>showAnchorBar}"
+				headerContentPinnable="{converterContext>showAnchorBar}"
+				enableLazyLoading="true"
+				navigate=".handlers.onNavigateChange"
+			>
+				<uxap:dependents>
+					<control:CommandExecution execute="_executeTabShortCut" command="NextTab" />
+					<control:CommandExecution execute="_executeTabShortCut" command="PreviousTab" />
+					<control:CommandExecution
+						execute="._editDocument(${$view>/getBindingContext})"
+						enabled="{= OP.getEditCommandExecutionEnabled(${converterContext>header/actions}) }"
+						visible="{= OP.getEditCommandExecutionVisible(${converterContext>header/actions}) }"
+						command="Edit"
+					/>
+					<control:CommandExecution
+						execute=".editFlow.toggleDraftActive(${$view>/getBindingContext})"
+						visible="{= OP.getSwitchToActiveVisibility(${entitySet>@}) }"
+						command="SwitchToActiveObject"
+					/>
+					<control:CommandExecution
+						execute=".editFlow.toggleDraftActive(${$view>/getBindingContext})"
+						visible="{= OP.getSwitchToDraftVisibility(${entitySet>@}) }"
+						command="SwitchToDraftObject"
+					/>
+					<control:CommandExecution
+						execute="{= ${entitySet>@@OP.getPressExpressionForDelete}}"
+						visible="{= OP.getDeleteCommandExecutionVisible(${converterContext>header/actions}) }"
+						enabled="{= OP.getDeleteCommandExecutionEnabled(${converterContext>header/actions}) }"
+						command="DeleteObject"
+					/>
+					<control:CommandExecution
+						execute="._saveDocument(${$view>/getBindingContext})"
+						visible="{ui>/isEditable}"
+						command="Save"
+					/>
+					<control:CommandExecution execute="._validateDocument" visible="{ui>/isEditable}" command="Validate" />
+					<control:CommandExecution
+						execute="._cancelDocument(${$view>/getBindingContext},{cancelButton:'fe::FooterBar::StandardAction::Cancel'})"
+						visible="{ui>/isEditable}"
+						command="Cancel"
+					/>
+					<control:CommandExecution execute="{converterContext>primaryAction}" command="FE_PrimaryAction" />
+					<template:repeat list="{converterContext>headerCommandActions}" var="headerAction">
+						<template:with path="headerAction>annotationPath" var="dataField">
+							<template:with path="dataField>Action" helper="COMMON.getActionContext" var="actionContext">
+								<template:with path="dataField>Action" helper="COMMON.getPathToBoundActionOverload" var="isBound">
+									<template:if
+										test="{= ${headerAction>type} === 'ForAction' ? ((${isBound>$IsBound} !== true || ${actionContext>@Org.OData.Core.V1.OperationAvailable} !== false) &amp;&amp; ${dataField>Determining} !== true) : true }"
+									>
+										<internalMacro:ActionCommand
+											action="{headerAction>}"
+											onExecuteAction="{= OP.getPressExpressionForEdit(${dataField>}, ${entitySet>@sapui.name}, ${headerAction>}) }"
+											onExecuteIBN="{headerAction>press}"
+											onExecuteManifest="{= COMMON.buildActionWrapper(${headerAction>})}"
+											isIBNEnabled="{headerAction>enabled}"
+											isActionEnabled="{headerAction>enabled}"
+										/>
+									</template:if>
+								</template:with>
+							</template:with>
+						</template:with>
+					</template:repeat>
+					<template:repeat list="{converterContext>footerCommandActions}" var="footerAction">
+						<template:with path="footerAction>annotationPath" var="dataField">
+							<template:with path="dataField>Action" helper="COMMON.getActionContext" var="actionContext">
+								<template:with path="dataField>Action" helper="COMMON.getPathToBoundActionOverload" var="isBound">
+									<template:if
+										test="{= ${footerAction>type} === 'ForAction' ? ((${isBound>$IsBound} !== true || ${actionContext>@Org.OData.Core.V1.OperationAvailable} !== false) &amp;&amp; ${dataField>Determining} === true) : true }"
+									>
+										<internalMacro:ActionCommand
+											action="{footerAction>}"
+											onExecuteAction="{= OP.getPressExpressionForFooterAnnotationAction(${dataField>@@UI.getDataModelObjectPath}, ${entitySet>@sapui.name}, ${footerAction>}) }"
+											onExecuteIBN="{footerAction>press}"
+											onExecuteManifest="{= COMMON.buildActionWrapper(${footerAction>})}"
+											isIBNEnabled="{footerAction>enabled}"
+											isActionEnabled="{footerAction>enabled}"
+										/>
+									</template:if>
+								</template:with>
+							</template:with>
+						</template:with>
+					</template:repeat>
+				</uxap:dependents>
+				<template:if test="{converterContext>header/visible}">
+					<template:with path="converterContext>header" var="header">
+						<uxap:headerTitle>
+							<uxap:ObjectPageDynamicHeaderTitle primaryArea="Begin" areaShrinkRatio="1:0:1.6">
+								<core:Fragment fragmentName="sap.fe.templates.ObjectPage.view.fragments.Heading" type="XML" />
+								<uxap:expandedContent>
+									<core:Fragment fragmentName="sap.fe.templates.ObjectPage.view.fragments.HeadingContent" type="XML" />
+								</uxap:expandedContent>
+								<uxap:snappedContent>
+									<core:Fragment fragmentName="sap.fe.templates.ObjectPage.view.fragments.HeadingContent" type="XML" />
+								</uxap:snappedContent>
+								<uxap:content>
+									<template:if test="{entitySet>@com.sap.vocabularies.Common.v1.DraftRoot}">
+										<macro:DraftIndicator
+											draftIndicatorType="IconOnly"
+											class="sapUiTinyMarginBegin sapMTB sapMTBNewFlex"
+											entitySet="{entitySet>}"
+										/>
+									</template:if>
+									<SituationsIndicator xmlns="sap.fe.macros.internal.situations" entitySet="{entitySet>}" />
+								</uxap:content>
+								<uxap:navigationActions>
+									<template:if test="{= ${viewData>/viewLevel} > 1}">
+										<macro:Paginator id="fe::Paginator" />
+									</template:if>
+									<!-- Flexible column layout menu-->
+									<template:if test="{= ${viewData>/fclEnabled} }">
+										<fclMacro:FlexibleColumnLayoutActions />
+									</template:if>
+								</uxap:navigationActions>
+								<uxap:actions>
+									<core:Fragment fragmentName="sap.fe.templates.ObjectPage.view.fragments.Actions" type="XML" />
+								</uxap:actions>
+								<uxap:breadcrumbs>
+									<Breadcrumbs
+										unittest:id="BreadcrumbsTest"
+										visible="{= OP.getVisibleExpressionForBreadcrumbs(${viewData>/}) }"
+										modelContextChange="._setBreadcrumbLinks(${$source>/})"
+										id="fe::Breadcrumbs"
+									/>
+								</uxap:breadcrumbs>
+							</uxap:ObjectPageDynamicHeaderTitle>
+						</uxap:headerTitle>
+						<template:if test="{header>hasContent}">
+							<uxap:headerContent>
+								<template:if test="{= COMMON.isDesktop() }">
+									<template:then>
+										<FlexBox
+											id="fe::HeaderContentContainer"
+											unittest:id="FlexBoxTest"
+											dt:designtime="sap/fe/templates/ObjectPage/designtime/FlexBox.designtime"
+											wrap="Wrap"
+											fitContainer="false"
+											alignItems="Stretch"
+										>
+											<core:Fragment
+												fragmentName="sap.fe.templates.ObjectPage.view.fragments.HeaderContent"
+												type="XML"
+											/>
+										</FlexBox>
+									</template:then>
+									<template:else>
+										<HeaderContainer
+											id="fe::HeaderContentContainer"
+											showDividers="false"
+											fl:flexibility="sap/fe/templates/ObjectPage/flexibility/ScrollableHeaderContainer.flexibility"
+										>
+											<core:Fragment
+												fragmentName="sap.fe.templates.ObjectPage.view.fragments.HeaderContent"
+												type="XML"
+											/>
+										</HeaderContainer>
+									</template:else>
+								</template:if>
+							</uxap:headerContent>
+						</template:if>
+					</template:with>
+				</template:if>
+				<uxap:sections>
+					<core:Fragment fragmentName="sap.fe.templates.ObjectPage.view.fragments.Section" type="XML" />
+				</uxap:sections>
+				<uxap:footer>
+					<fragments:FooterContent id="fe::FooterBar" actions="{converterContext>/footerActions}" />
+				</uxap:footer>
+			</uxap:ObjectPageLayout>
+		</template:with>
+	</template:with>
+</mvc:View>

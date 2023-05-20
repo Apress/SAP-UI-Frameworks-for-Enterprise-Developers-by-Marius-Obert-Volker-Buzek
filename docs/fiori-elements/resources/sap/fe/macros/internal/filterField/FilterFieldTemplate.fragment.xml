@@ -1,0 +1,19 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:internalMacro="sap.fe.macros.internal"
+	template:require="{
+		COMMON_HELPER: 'sap/fe/macros/CommonHelper'
+	}"
+>
+	<internalMacro:FilterField
+		idPrefix="{this>idPrefix}"
+		vhIdPrefix="{this>vhIdPrefix}"
+		property="{property>}"
+		contextPath="{contextPath>}"
+		useSemanticDateRange="{this>useSemanticDateRange}"
+		settings="{= COMMON_HELPER.stringifyCustomData(${this>settings}) }"
+		visualFilter="{visualFilter>}"
+	/>
+</core:FragmentDefinition>

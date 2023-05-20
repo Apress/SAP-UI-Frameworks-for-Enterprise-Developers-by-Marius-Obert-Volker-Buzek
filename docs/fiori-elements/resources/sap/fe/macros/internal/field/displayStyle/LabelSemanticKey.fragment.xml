@@ -1,0 +1,39 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns:unittest="http://schemas.sap.com/sapui5/preprocessorextension/sap.fe.unittesting/1"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:controls="sap.fe.macros.controls"
+	xmlns:macro="sap.fe.macros"
+	template:require="{
+							FIELD: 'sap/fe/macros/field/FieldHelper',
+							MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+							UI: 'sap/fe/core/templating/UIFormatters'
+						 }"
+>
+	<template:if test="{= ${this>hasQuickView}}">
+		<template:then>
+			<Link
+				text="{this>text}"
+				wrapping="true"
+				core:require="{FieldRuntime: 'sap/fe/macros/field/FieldRuntime'}"
+				press="FieldRuntime.pressLink"
+				ariaLabelledBy="{this>ariaLabelledBy}"
+				emptyIndicatorMode="{this>emptyIndicatorMode}"
+			>
+				<dependents>
+					<macro:QuickView dataField="{dataField>}" semanticObject="{this>semanticObject}" contextPath="{entitySet>}" />
+				</dependents>
+			</Link>
+		</template:then>
+		<template:else>
+			<Label
+				id="{this>noWrapperId}"
+				unittest:id="MacroDataFieldLabel"
+				visible="{this>displayVisible}"
+				text="{this>identifierTitle}"
+				design="Bold"
+			/>
+		</template:else>
+	</template:if>
+</core:FragmentDefinition>

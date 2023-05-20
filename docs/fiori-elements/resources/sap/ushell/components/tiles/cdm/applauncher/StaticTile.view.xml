@@ -1,0 +1,29 @@
+<mvc:View
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    controllerName="sap.ushell.components.tiles.cdm.applauncher.StaticTile"
+    height="100%"
+    width="100%">
+    <GenericTile
+        additionalTooltip="{/properties/contentProviderLabel}"
+        systemInfo="{= ${/properties/showContentProviderOnViz} ? ${/properties/contentProviderLabel}:''}"
+        frameType="{/properties/frameType}"
+        header="{/properties/title}"
+        mode="{/properties/mode}"
+        scope="{/properties/scope}"
+        sizeBehavior="{/properties/sizeBehavior}"
+        subheader="{/properties/subtitle}"
+        url="{
+            path: '/properties/targetURL',
+            formatter: '._getLeanUrl'
+        }"
+        wrappingType="{/properties/wrappingType}"
+        press=".onPress">
+        <dependents>
+            <TileContent id="standardTileContent" footer="{/properties/info}" />
+            <TileContent id="imageTileContent" footer="{/properties/info}">
+                <ImageContent src="{/properties/icon}" />
+            </TileContent>
+        </dependents>
+    </GenericTile>
+</mvc:View>

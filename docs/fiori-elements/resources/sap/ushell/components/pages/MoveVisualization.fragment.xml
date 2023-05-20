@@ -1,0 +1,14 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <SelectDialog
+        items="{}"
+        search="_onMoveTileSearch"
+        title="{i18n>PageRuntime.Dialog.Title.MoveVisualization}"
+        confirm="_confirmSelect"
+        cancel="_onMoveTileDialogClose"
+        contentWidth="400px"
+        contentHeight="auto">
+        <StandardListItem title="{title}" />
+    </SelectDialog>
+</core:FragmentDefinition>

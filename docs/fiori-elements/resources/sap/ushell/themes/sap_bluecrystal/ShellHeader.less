@@ -1,0 +1,64 @@
+/* ======================================================== */
+/* CSS for sap.ui.unfied.ShellHeader.control (bluecrystal)  */
+/* ======================================================== */
+/* General Header Title Color */
+//[Tags "Color"]
+//[Description "Color of title in header"]
+@_sap_ushell_ShellHeader_TitleColor: @sapUiLightText;
+
+.sapUshellShellHeadAction:before {
+    border-right: 1px solid darken(@sapUiHeaderBG,10);
+}
+
+.sapUiMedia-Std-Desktop .sapUshellShellHeadItm:not(.sapUshellShellHeadItmDisabled):hover > span,
+.sapUiMedia-Std-Desktop .sapUshellShellHeadAction:not(.sapUshellShellHeadItmDisabled):hover > * {
+	background-color: @sapUiBtnBGStandardHover;
+}
+
+.sapUiMedia-Std-Desktop .sapUshellShellHeadItm:not(.sapUshellShellHeadItmDisabled).sapUshellShellHeadItmSel:hover > span{
+	background-color: darken(@sapUiHighlight, 5%);
+}
+
+.sapUshellShellHeadItm > span {
+  font-weight: normal;
+  font-size: @_sap_ushell_ShellHeader_BarHeight / 2;
+  }
+.sapUshellShellHeadItm > span,
+.sapUshellShellHeadAction {
+	-webkit-font-smoothing: antialiased;
+	color: @sapUiLightText;
+}
+
+.sapUshellShellHeadItm.sapUshellShellHeadItmSel:not(.sapUshellShellHeadItmDisabled):active > span,
+.sapUshellShellHeadItm.sapUshellShellHeadItmSel:not(.sapUshellShellHeadItmDisabled):active:hover > span {
+  background-color: @sapUiHighlight;
+  }
+
+.sapUshellShellHeadItm:not(.sapUshellShellHeadItmDisabled):active > span,
+.sapUshellShellHeadItm.sapUshellShellHeadItmSel:not(.sapUshellShellHeadItmDisabled) > span,
+.sapUshellShellHeadItm:active:not(.sapUshellShellHeadItmDisabled):hover > span,
+.sapUiMedia-Std-Desktop .sapUshellShellHeadItm:not(.sapUshellShellHeadItmDisabled):active:hover > span,
+.sapUiMedia-Std-Desktop .sapUshellShellHeadItm:not(.sapUshellShellHeadItmDisabled):hover > span,
+.sapUiMedia-Std-Desktop .sapUshellShellHeadAction:not(.sapUshellShellHeadItmDisabled):hover > *,
+.sapUiMedia-Std-Desktop .sapUshellShellHeadAction:hover:active:not(.sapUshellShellHeadItmDisabled) > *,
+.sapUshellShellHeadAction:active > * {
+	color: @sapUiTextInverted;
+    background-color: @sapUiHighlight;
+}
+
+
+.sapUshellShellHeadItmSel:not(.sapUshellShellHeadItmDisabled)  > span {
+    outline: 0.0625rem dotted #ffffff;
+    outline-offset: -0.0625rem;
+}
+
+.sapUshellShellHeadAction {
+  font-weight: normal;
+  font-size: @_sap_ushell_ShellHeader_BarHeight / 2;
+}
+
+.sapUshellHeadTitle {
+  font-weight: bolder;
+  font-size: 1.125rem;
+  color: @_sap_ushell_ShellHeader_TitleColor;
+}

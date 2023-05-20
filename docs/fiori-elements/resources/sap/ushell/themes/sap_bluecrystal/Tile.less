@@ -1,0 +1,139 @@
+/* ================================================================ */
+/* CSS for control "sap.ushell.ui.launchpad.Tile" (sap_bluecrystal) */
+/* ================================================================ */
+
+@_sap_ushell_Tile_TextColor: @sapUiHeaderText;
+
+@sap_ushell_Tile_ShadowDimensions: 0 0 @_sap_ushell_Tile_ShadowWidth;
+@sap_ushell_Tile_ShadowColor: fade(@sapUiShadowTint, 10);
+
+@_sap_ushell_Tile_FooterBorder: @sapUiDarkBorder;
+@_sap_ushell_Tile_FooterIconColor: @sapUiLightText;
+
+.sapUshellTile {
+  background: @sapUiLightestBG;
+  -moz-box-shadow: @sap_ushell_Tile_ShadowDimensions @sap_ushell_Tile_ShadowColor;
+  -webkit-box-shadow: @sap_ushell_Tile_ShadowDimensions @sap_ushell_Tile_ShadowColor;
+  box-shadow: @sap_ushell_Tile_ShadowDimensions @sap_ushell_Tile_ShadowColor;
+  border: none;
+  color: @_sap_ushell_Tile_TextColor;
+
+  &.showTileActionsIcon .sapUshellTileActionsIconClass.sapUiIcon,
+  .sapUshellTileActionsIconClass.sapUiIcon {
+    color: @sapUiBrand;
+    background-color: rgba(0, 0, 0, 0);
+  }
+
+  &.sapUshellFeedTileBG {
+    background-color: transparent;
+  }
+
+  footer {
+    text-align: @_sap_ushell_Tile_FooterTextAlignment;
+
+    & > * {
+      background: @_sap_ushell_Tile_FooterBorder;
+
+      .sapUiIcon {
+        line-height: @_sap_ushell_Tile_FooterLineHeight;
+        font-size: 1rem;
+        color: @_sap_ushell_Tile_FooterIconColor;
+        position: @_sap_ushell_Tile_FooterPosition;
+        top: @_sap_ushell_Tile_FooterPositionTop;
+      }
+
+      .sapMBtnInner {
+        height: 2rem;
+        border: none;
+        -moz-box-shadow: inset 0 2px 0.19rem 0 rgba(0, 0, 0, 0.1);
+        -webkit-box-shadow: inset 0 2px 0.19rem 0 rgba(0, 0, 0, 0.1);
+        box-shadow: inset 0 2px 0.19rem 0 rgba(0, 0, 0, 0.1);
+      }
+
+      &:first-child {
+        border-bottom-left-radius: @_sap_ushell_Tile_FooterCornerRadius;
+      }
+
+      &:last-child {
+        border-bottom-right-radius: @_sap_ushell_Tile_FooterCornerRadius;
+      }
+    }
+  }
+}
+
+.sapUshellTileActionDivCenter {
+  background: @sapUiLightestBG;
+}
+
+.sapUiMedia-Std-Tablet .sapUshellTileInner,
+.sapUiMedia-Std-Phone .sapUshellTileInner {
+  a.sapUshellTileInner:visited {
+    color: @sapUiDarkText;
+  }
+}
+
+.sapUshellTileDeleteIconOuterClass {
+  color: @sapUiLightestBorder;
+  background: @sapUiButtonEmphasizedBG;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+}
+
+.sapUshellTileDeleteIconInnerClass {
+  color: @sapUiLightestBorder;
+}
+
+.sapUshellTileDeleteClickArea:hover {
+  background: darken(@sapUiButtonEmphasizedBG, 5%);
+}
+
+.sapUshellTileDeleteClickArea:active {
+  background: darken(@sapUiButtonEmphasizedBG, 10%);
+}
+
+.sapUshellTileActionsIconClass.sapUiIcon {
+  color: @sapUiLightText;
+  background: @sapUiLightestBG;
+}
+
+#catalogTilesPage .sapUshellTile:focus {
+  position: relative;
+  top: 0.125rem;
+  left: 0.125rem;
+}
+
+.sapUshellTileActionIconDivBottom {
+  background: @sapUiLightestBG;
+}
+
+.sapUshellTile:hover .sapUshellTileActionIconDivBottom {
+  color: @sapUiBrand;
+}
+
+.sapUshellTile:focus::after {
+  border: 1px dotted @sapUiFocus;
+}
+
+.sapUshellTile .sapUshellTileBase {
+  border: 1px solid @sapUiLightestBG;
+  background: @sapUiLightestBG;
+}
+
+.sapUshellTile .sapUshellTileBase:hover {
+  box-shadow: 0 0 0 2px @sapUiLightestBG;
+}
+
+.sapUshellTileFooterInfoNegative {
+  color: @sapUiNegativeElement;
+}
+
+.sapUshellTileFooterInfoNeutral {
+  color: @sapUiNeutralElement
+}
+
+.sapUshellTileFooterInfoPositive {
+  color: @sapUiPositiveElement
+}
+
+.sapUshellTileFooterInfoCritical {
+  color: @sapUiCriticalElement;
+}

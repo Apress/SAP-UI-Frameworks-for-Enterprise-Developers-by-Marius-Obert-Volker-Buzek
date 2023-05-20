@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<library xmlns="http://www.sap.com/sap.ui.library.xsd">
+	<name>sap.ui.vbm</name>
+	<vendor>SAP SE</vendor>
+	<copyright>SAP UI development toolkit for HTML5 (SAPUI5) (c) Copyright 2009-2012 SAP AG. All rights reserved</copyright>
+	<version>1.113.0</version>
+
+	<documentation>SAP UI library: sap.ui.vbm</documentation>
+
+	<dependencies>
+		<dependency>
+			<libraryName>sap.ui.core</libraryName>
+		</dependency>
+		<dependency>
+			<libraryName>sap.ui.commons</libraryName>
+			<lazy>true</lazy>
+		</dependency>
+		<dependency>
+			<libraryName>sap.ui.unified</libraryName>
+			<lazy>true</lazy>
+		</dependency>
+	</dependencies>
+
+	<appData>
+		<!-- package name for selenium -->
+		<selenium xmlns="http://www.sap.com/ui5/buildext/selenium"
+			package="com.sap.ui5.selenium.vbm"
+		/>
+		<!-- excludes for the JSDoc -->
+		<jsdoc xmlns="http://www.sap.com/ui5/buildext/jsdoc">
+			<exclude name="sap.ui.vbm.js." />
+			<exclude name="sap.ui.vbm.lib." />
+		</jsdoc>
+		<!-- excludes for the JSCoverage -->
+		<jscoverage xmlns="http://www.sap.com/ui5/buildext/jscoverage">
+			<exclude name="sap.ui.vbm.js." />
+			<exclude name="sap.ui.vbm.lib." />
+		</jscoverage>
+
+		<packaging xmlns="http://www.sap.com/ui5/buildext/packaging" version="2.0" >
+			<all-in-one>
+				<exclude name="sap/ui/vbm/adapter3d/thirdparty/" />
+			</all-in-one>
+		</packaging>
+
+		<documentation xmlns="http://www.sap.com/ui5/buildext/documentation"
+			indexUrl="../../../../test-resources/sap/ui/vbm/demokit/docuindex.json"
+			resolve="lib"
+		/>
+		<ownership xmlns="http://www.sap.com/ui5/buildext/ownership">
+			<component>CA-GTF-VBZ</component><!-- default component for library, embedded text as a shortcut for <name>text</name> -->
+		</ownership>
+	</appData>
+</library>

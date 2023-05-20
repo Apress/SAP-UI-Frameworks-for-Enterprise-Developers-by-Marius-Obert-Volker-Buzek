@@ -1,0 +1,670 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference
+    Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Aggregation.V1.xml"
+  >
+        <edmx:Include
+      Alias="Aggregation"
+      Namespace="Org.OData.Aggregation.V1"
+    />
+    </edmx:Reference>
+    <edmx:Reference
+    Uri="https://sap.github.io/odata-vocabularies/vocabularies/Analytics.xml"
+  >
+        <edmx:Include
+      Alias="Analytics"
+      Namespace="com.sap.vocabularies.Analytics.v1"
+    />
+    </edmx:Reference>
+    <edmx:Reference
+    Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Capabilities.V1.xml"
+  >
+        <edmx:Include
+      Alias="Capabilities"
+      Namespace="Org.OData.Capabilities.V1"
+    />
+    </edmx:Reference>
+    <edmx:Reference
+    Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml"
+  >
+        <edmx:Include
+      Alias="Common"
+      Namespace="com.sap.vocabularies.Common.v1"
+    />
+    </edmx:Reference>
+    <edmx:Reference
+    Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml"
+  >
+        <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1" />
+    </edmx:Reference>
+    <edmx:Reference
+    Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml"
+  >
+        <edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1" />
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema
+      Namespace="BeershopService"
+      xmlns="http://docs.oasis-open.org/odata/ns/edm"
+    >
+            <EntityContainer Name="EntityContainer">
+                <EntitySet Name="Beers" EntityType="BeershopService.Beers">
+                    <NavigationPropertyBinding
+            Path="brewery"
+            Target="Breweries"
+          />
+                </EntitySet>
+                <EntitySet
+          Name="Breweries"
+          EntityType="BeershopService.Breweries"
+        >
+                    <NavigationPropertyBinding Path="beers" Target="Beers" />
+                </EntitySet>
+                <EntitySet
+          Name="BreweryAnalytics"
+          EntityType="BeershopService.BreweryAnalytics"
+        />
+                <EntitySet
+          Name="TypeChecks"
+          EntityType="BeershopService.TypeChecks"
+        />
+                <EntitySet
+          Name="UserScopes"
+          EntityType="BeershopService.UserScopes"
+        />
+            </EntityContainer>
+            <EntityType Name="Beers">
+                <Key>
+                    <PropertyRef Name="ID" />
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false" />
+                <Property Name="name" Type="Edm.String" MaxLength="100" />
+                <Property
+          Name="abv"
+          Type="Edm.Decimal"
+          Scale="1"
+          Precision="3"
+        />
+                <Property
+          Name="ibu"
+          Type="Edm.Decimal"
+          Scale="1"
+          Precision="3"
+        />
+                <NavigationProperty
+          Name="brewery"
+          Type="BeershopService.Breweries"
+          Partner="beers"
+        >
+                    <ReferentialConstraint
+            Property="brewery_ID"
+            ReferencedProperty="ID"
+          />
+                </NavigationProperty>
+                <Property Name="brewery_ID" Type="Edm.Guid" />
+            </EntityType>
+            <EntityType Name="Breweries">
+                <Key>
+                    <PropertyRef Name="ID" />
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false" />
+                <Property Name="name" Type="Edm.String" MaxLength="150" />
+                <Property Name="logo" Type="Edm.String" MaxLength="150" />
+                <NavigationProperty
+          Name="beers"
+          Type="Collection(BeershopService.Beers)"
+          Partner="brewery"
+        />
+            </EntityType>
+            <EntityType Name="BreweryAnalytics">
+                <Property Name="ID" Type="Edm.Guid" />
+                <Property
+          Name="breweryname"
+          Type="Edm.String"
+          MaxLength="150"
+        />
+                <Property Name="beername" Type="Edm.String" MaxLength="100" />
+                <Property Name="lines" Type="Edm.Int32" />
+            </EntityType>
+            <EntityType Name="TypeChecks">
+                <Key>
+                    <PropertyRef Name="ID" />
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false" />
+                <Property Name="type_Boolean" Type="Edm.Boolean" />
+                <Property Name="type_Int32" Type="Edm.Int32" />
+                <Property Name="type_Int64" Type="Edm.Int64" />
+                <Property
+          Name="type_Decimal"
+          Type="Edm.Decimal"
+          Scale="1"
+          Precision="2"
+        />
+                <Property Name="type_Double" Type="Edm.Double" />
+                <Property Name="type_Date" Type="Edm.Date" />
+                <Property Name="type_Time" Type="Edm.TimeOfDay" />
+                <Property Name="type_DateTime" Type="Edm.DateTimeOffset" />
+                <Property
+          Name="type_Timestamp"
+          Type="Edm.DateTimeOffset"
+          Precision="7"
+        />
+                <Property Name="type_String" Type="Edm.String" />
+                <Property
+          Name="type_Binary"
+          Type="Edm.Binary"
+          MaxLength="100"
+        />
+                <Property Name="type_LargeBinary" Type="Edm.Binary" />
+                <Property Name="type_LargeString" Type="Edm.String" />
+                <Property Name="kyma_1" Type="Edm.Int32" />
+            </EntityType>
+            <EntityType Name="UserScopes">
+                <Key>
+                    <PropertyRef Name="username" />
+                </Key>
+                <Property Name="username" Type="Edm.String" Nullable="false" />
+                <Property Name="is_admin" Type="Edm.Boolean" />
+            </EntityType>
+            <Annotations Target="BeershopService.Beers">
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ID" />
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="name" />
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="abv" />
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ibu" />
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Details" />
+                            <PropertyValue Property="ID" String="Details" />
+                            <PropertyValue
+                Property="Target"
+                AnnotationPath="@UI.FieldGroup#Details"
+              />
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="Details">
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue
+                    Property="Value"
+                    Path="name"
+                  />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue
+                    Property="Value"
+                    Path="brewery/name"
+                  />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue
+                    Property="Value"
+                    Path="abv"
+                  />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue
+                    Property="Value"
+                    Path="ibu"
+                  />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="BeershopService.EntityContainer/Beers">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false" />
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false" />
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false" />
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="BeershopService.Beers/ID">
+                <Annotation Term="Common.Label" String="Beer ID" />
+            </Annotations>
+            <Annotations Target="BeershopService.Beers/name">
+                <Annotation Term="Common.Label" String="Beer Name" />
+            </Annotations>
+            <Annotations Target="BeershopService.Beers/abv">
+                <Annotation Term="Common.Label" String="Alcohol By Volume" />
+            </Annotations>
+            <Annotations Target="BeershopService.Beers/ibu">
+                <Annotation
+          Term="Common.Label"
+          String="International Bitterness Unit"
+        />
+            </Annotations>
+            <Annotations Target="BeershopService.Breweries">
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>name</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="name" />
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Details" />
+                            <PropertyValue Property="ID" String="Details" />
+                            <PropertyValue
+                Property="Target"
+                AnnotationPath="@UI.FieldGroup#Details"
+              />
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Beers" />
+                            <PropertyValue Property="ID" String="Beers" />
+                            <PropertyValue
+                Property="Target"
+                AnnotationPath="beers/@UI.LineItem"
+              />
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="Details">
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue
+                    Property="Value"
+                    Path="name"
+                  />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="BeershopService.EntityContainer/Breweries">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false" />
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false" />
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false" />
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="BeershopService.Breweries/ID">
+                <Annotation Term="Core.Computed" Bool="true" />
+            </Annotations>
+            <Annotations Target="BeershopService.Breweries/name">
+                <Annotation Term="Common.Label" String="Brewery Name" />
+            </Annotations>
+            <Annotations Target="BeershopService.BreweryAnalytics">
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record Type="Aggregation.ApplySupportedType">
+                        <PropertyValue
+              Property="PropertyRestrictions"
+              Bool="true"
+            />
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>name</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="name" />
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.HeaderInfo">
+                    <Record Type="UI.HeaderInfoType">
+                        <PropertyValue Property="TypeName" String="Brewery" />
+                        <PropertyValue
+              Property="TypeNamePlural"
+              String="Breweries"
+            />
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="name" />
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="Description">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="name" />
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Details" />
+                            <PropertyValue Property="ID" String="Details" />
+                            <PropertyValue
+                Property="Target"
+                AnnotationPath="@UI.FieldGroup#Details"
+              />
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Beers" />
+                            <PropertyValue Property="ID" String="Beers" />
+                            <PropertyValue
+                Property="Target"
+                AnnotationPath="beers/@UI.LineItem"
+              />
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="Details">
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue
+                    Property="Value"
+                    Path="name"
+                  />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations
+        Target="BeershopService.EntityContainer/BreweryAnalytics"
+      >
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record Type="Aggregation.ApplySupportedType">
+                        <PropertyValue
+              Property="PropertyRestrictions"
+              Bool="true"
+            />
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false" />
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false" />
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false" />
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="BeershopService.BreweryAnalytics/ID">
+                <Annotation Term="Core.Computed" Bool="true" />
+            </Annotations>
+            <Annotations Target="BeershopService.BreweryAnalytics/breweryname">
+                <Annotation Term="Analytics.Dimension" Bool="true" />
+                <Annotation Term="Common.Label" String="Brewery Name" />
+            </Annotations>
+            <Annotations Target="BeershopService.BreweryAnalytics/beername">
+                <Annotation Term="Analytics.Dimension" Bool="true" />
+                <Annotation Term="Common.Label" String="Beer Name" />
+            </Annotations>
+            <Annotations Target="BeershopService.BreweryAnalytics/lines">
+                <Annotation Term="Analytics.Measure" Bool="true" />
+                <Annotation Term="Core.Computed" Bool="true" />
+            </Annotations>
+            <Annotations Target="BeershopService.TypeChecks">
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>type_String</PropertyPath>
+                        <PropertyPath>type_Date</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ID" />
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue
+                Property="Value"
+                Path="type_Boolean"
+              />
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="type_Int32" />
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="type_Date" />
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.HeaderInfo">
+                    <Record Type="UI.HeaderInfoType">
+                        <PropertyValue Property="TypeName" String="TypeCheck" />
+                        <PropertyValue
+              Property="TypeNamePlural"
+              String="TypeChecks"
+            />
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataField">
+                                <PropertyValue
+                  Property="Value"
+                  Path="type_String"
+                />
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="Description">
+                            <Record Type="UI.DataField">
+                                <PropertyValue
+                  Property="Value"
+                  Path="type_String"
+                />
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Details" />
+                            <PropertyValue Property="ID" String="Details" />
+                            <PropertyValue
+                Property="Target"
+                AnnotationPath="@UI.FieldGroup#Details"
+              />
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="Details">
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="ID" />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue
+                    Property="Value"
+                    Path="type_Boolean"
+                  />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue
+                    Property="Value"
+                    Path="type_Int32"
+                  />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue
+                    Property="Value"
+                    Path="type_Int64"
+                  />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue
+                    Property="Value"
+                    Path="type_Decimal"
+                  />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue
+                    Property="Value"
+                    Path="type_Double"
+                  />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue
+                    Property="Value"
+                    Path="type_Date"
+                  />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue
+                    Property="Value"
+                    Path="type_Time"
+                  />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue
+                    Property="Value"
+                    Path="type_DateTime"
+                  />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue
+                    Property="Value"
+                    Path="type_Timestamp"
+                  />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue
+                    Property="Value"
+                    Path="type_String"
+                  />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue
+                    Property="Value"
+                    Path="type_LargeString"
+                  />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="BeershopService.EntityContainer/TypeChecks">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false" />
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false" />
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false" />
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="BeershopService.TypeChecks/ID">
+                <Annotation Term="Core.Computed" Bool="true" />
+            </Annotations>
+            <Annotations Target="BeershopService.TypeChecks/type_Boolean">
+                <Annotation Term="Common.Label" String="type_Boolean" />
+            </Annotations>
+            <Annotations Target="BeershopService.TypeChecks/type_Int32">
+                <Annotation Term="Common.Label" String="type_Int32" />
+            </Annotations>
+            <Annotations Target="BeershopService.TypeChecks/type_Int64">
+                <Annotation Term="Common.Label" String="type_Int64" />
+            </Annotations>
+            <Annotations Target="BeershopService.TypeChecks/type_Decimal">
+                <Annotation Term="Common.Label" String="type_Decimal" />
+            </Annotations>
+            <Annotations Target="BeershopService.TypeChecks/type_Double">
+                <Annotation Term="Common.Label" String="type_Double" />
+            </Annotations>
+            <Annotations Target="BeershopService.TypeChecks/type_Date">
+                <Annotation Term="Common.Label" String="type_Date" />
+            </Annotations>
+            <Annotations Target="BeershopService.TypeChecks/type_Time">
+                <Annotation Term="Common.Label" String="type_Time" />
+            </Annotations>
+            <Annotations Target="BeershopService.TypeChecks/type_DateTime">
+                <Annotation Term="Common.Label" String="type_DateTime" />
+            </Annotations>
+            <Annotations Target="BeershopService.TypeChecks/type_Timestamp">
+                <Annotation Term="Common.Label" String="type_Timestamp" />
+            </Annotations>
+            <Annotations Target="BeershopService.TypeChecks/type_String">
+                <Annotation Term="Common.Label" String="type_String" />
+            </Annotations>
+            <Annotations Target="BeershopService.TypeChecks/type_Binary">
+                <Annotation Term="Common.Label" String="type_Binary" />
+            </Annotations>
+            <Annotations Target="BeershopService.TypeChecks/type_LargeBinary">
+                <Annotation Term="Common.Label" String="type_LargeBinary" />
+            </Annotations>
+            <Annotations Target="BeershopService.TypeChecks/type_LargeString">
+                <Annotation Term="Common.Label" String="type_LargeString" />
+            </Annotations>
+            <Annotations Target="BeershopService.EntityContainer/UserScopes">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false" />
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false" />
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false" />
+                    </Record>
+                </Annotation>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

@@ -1,0 +1,1 @@
+describe("v4 test lib",async()=>{let e;before(async()=>{e=await browser.fe.initialize({onTheBeersList:require("./pages/BeersList"),onTheBeersObjectPage:require("./pages/BeersObjectPage"),onTheShell:{Shell:{}}})});it("should navigate to the object page",async()=>{await e.execute((e,s,a)=>{s.onTheBeersList.onTable().iPressRow(0);a.onTheBeersObjectPage.iSeeThisPage()})})});

@@ -1,0 +1,39 @@
+<mvc:View
+      width="100%"
+      xmlns="sap.m"
+      xmlns:lf="sap.ui.layout.form"
+      xmlns:mvc="sap.ui.core.mvc">
+
+    <lf:SimpleForm>
+        <lf:content>
+            <Label id="anchorBarLabel"
+                class="sapUshellFlpSettingsLabel"
+                text="{i18n>AnchorBarLabel}"/>
+            <VBox>
+                <items>
+                    <RadioButtonGroup id="anchorBarDisplayMode" selectedIndex="{/displayMode}"
+                        ariaLabelledBy="anchorBarLabel"
+                        ariaDescribedBy="anchorBarDescription">
+                        <buttons>
+                            <RadioButton id="anchorBarScrollModeRBtn"
+                                text="{i18n>anchorBarScrollMode}"/>
+                            <RadioButton id="anchorBarTabModeRBtn"
+                                text="{i18n>anchorBarTabMode}"/>
+                        </buttons>
+                    </RadioButtonGroup>
+                    <VBox class ="sapUshellFlpSettingsDescriptionBorder">
+                        <items>
+                            <Text id="anchorBarDescription"
+                                class="sapUshellFlpSettingsDescription"
+                                text="{i18n>homePageGroupDisplayDescriptionText}"/>
+                            <Text
+                                class="sapUshellFlpSettingsDescription"
+                                text="{i18n>homePageGroupDisplayDescriptionText_secondParagraph}"
+                                visible="{/personalisationEnabled}"/>
+                        </items>
+                    </VBox>
+                </items>
+            </VBox>
+        </lf:content>
+    </lf:SimpleForm>
+</mvc:View>

@@ -1,0 +1,32 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    core:require="{
+        coreLibrary: 'sap/ui/core/library'
+    }">
+    <Page
+        class="sapUsheUserSettingDetaildPage"
+        showHeader="false">
+        <content>
+            <ObjectHeader
+                title="{entryInfo>/title}"
+                titleLevel="{= coreLibrary.TitleLevel.H3}"
+                visible="{entryInfo>/showHeader}"
+                backgroundDesign="Solid"
+                class="sapUshellUserSettingDetailHeader"/>
+            <IconTabBar
+                expandable="false"
+                items="{entryInfo>/tabs}"
+                visible="{= ${entryInfo>/tabs}.length > 1}"
+                select=".onTabSelected">
+                <items>
+                    <IconTabFilter text="{entryInfo>groupingTabTitle}">
+                        <customData>
+                            <core:CustomData key="help-id" value="{entryInfo>groupingTabHelpId}" writeToDom="{= !!${entryInfo>groupingTabHelpId}}" />
+                        </customData>
+                    </IconTabFilter>
+                </items>
+            </IconTabBar>
+        </content>
+    </Page>
+</core:FragmentDefinition>

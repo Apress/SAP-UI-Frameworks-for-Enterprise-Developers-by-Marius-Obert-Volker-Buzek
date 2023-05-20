@@ -1,0 +1,62 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns="sap.suite.ui.microchart"
+	xmlns:core="sap.ui.core"
+	xmlns:m="sap.m"
+	xmlns:oDataV4MicroChart="sap.fe.macros.microchart"
+	template:require="{
+		ID: 'sap/fe/core/helpers/StableIdHelper',
+        MICROCHART: 'sap/fe/macros/microchart/MicroChartHelper',
+        COMMON: 'sap/fe/macros/CommonHelper'
+
+	}"
+>
+	<oDataV4MicroChart:microChartTitle>
+		<template:if test="{= ${this>navigationType} === 'External'}">
+			<template:then>
+				<core:InvisibleText
+					text="{sap.fe.i18n>M_MICROCHART_TITLE_FRAGMENT_HEADER_MICROCHART_LINK_ARIA}"
+					id="{= ID.generate([${this>id}, ${metaPath>@sapui.name}, 'AriaText']) }"
+				/>
+				<m:Title
+					level="H3"
+					visible="{= COMMON.getHeaderDataPointLinkVisibility(ID.generate(['fe', 'MicroChartLink',  ${contextPath>@sapui.name}, ${metaPath>@sapui.name}]), true) }"
+				>
+					<m:content>
+						<m:Link
+							id="{= ID.generate(['fe', 'MicroChartLink', ${contextPath>@sapui.name}, ${metaPath>@sapui.name}]) }"
+							text="{= ${this>title} || ${metaPath>Title}}"
+							press="{this>onTitlePressed}"
+							ariaDescribedBy="{= ID.generate([${this>id}, ${metaPath>@sapui.name}, 'AriaText']) }"
+						/>
+					</m:content>
+				</m:Title>
+				<m:Title
+					id="{= ID.generate(['fe', ${contextPath>@sapui.name}, ${metaPath>@sapui.name}, 'microChartTitle']) }"
+					level="H3"
+					text="{= ${this>title} || ${metaPath>Title}}"
+					class="sapUiTinyMarginBottom"
+					visible="{= COMMON.getHeaderDataPointLinkVisibility(ID.generate(['fe',  'MicroChartLink',  ${contextPath>@sapui.name}, ${metaPath>@sapui.name}]), false) }"
+				/>
+			</template:then>
+			<template:elseif test="{= ${this>navigationType} === 'InPage'}">
+				<core:InvisibleText
+					text="{sap.fe.i18n>T_COMMON_HEADERDP_TITLE_LINK_INPAGE_ARIA}"
+					id="{= ID.generate([${this>id}, ${metaPath>@sapui.name}, 'AriaText']) }"
+				/>
+				<m:Title level="H3">
+					<m:content>
+						<m:Link
+							text="{= ${this>title} || ${metaPath>Title}}"
+							press="{this>onTitlePressed}"
+							ariaDescribedBy="{= ID.generate([${this>id}, ${metaPath>@sapui.name}, 'AriaText']) }"
+						/>
+					</m:content>
+				</m:Title>
+			</template:elseif>
+			<template:else>
+				<m:Title level="H3" text="{= ${this>title} || ${metaPath>Title}}" />
+			</template:else>
+		</template:if>
+	</oDataV4MicroChart:microChartTitle>
+</core:FragmentDefinition>

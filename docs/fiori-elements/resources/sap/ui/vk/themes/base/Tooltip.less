@@ -1,0 +1,26 @@
+.sapVizKitViewport .sapUiVizKitTooltip {
+	position: absolute;
+	color: #fff;
+	border-style: solid;
+	border-width: 2px;
+	background-color: rgba(128, 128, 128, 0.5);
+	cursor: default;
+	padding: 5px 10px 5px 10px;
+	border-radius: 20px;
+	text-shadow: 1px 1px 2px #000000;
+	display: none;
+}
+
+.sapVizKitViewport .sapUiVizKitTooltipAnimation {
+	animation-duration: 0.5s;
+	animation-name: expand
+}
+
+@keyframes expand {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+};

@@ -1,0 +1,29 @@
+{
+    "_version": "1.21.0",
+    "sap.app": {
+        "id": "sap.ushell.renderers.fiori2.search.searchComponent",
+        "applicationVersion": {
+            "version": "1.113.0"
+        },
+        "type": "component"
+    },
+    "sap.ui5": {
+        "technology": "UI5",
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        },
+        "dependencies": {
+            "minUI5Version": "1.72",
+            "libs": {
+                "sap.m": {},
+                "sap.esh.search.ui": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        }
+    }
+}

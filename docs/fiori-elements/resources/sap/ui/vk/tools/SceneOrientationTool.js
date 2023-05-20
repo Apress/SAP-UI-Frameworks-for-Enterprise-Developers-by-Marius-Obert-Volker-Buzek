@@ -1,0 +1,7 @@
+/*!
+ * SAP UI development toolkit for HTML5 (SAPUI5)
+
+        (c) Copyright 2009-2015 SAP SE. All rights reserved
+    
+ */
+sap.ui.define(["./Tool","./SceneOrientationToolGizmo"],function(t,e){"use strict";var i=t.extend("sap.ui.vk.tools.SceneOrientationTool",{metadata:{library:"sap.ui.vk",properties:{enablePredefinedViews:{type:"boolean",defaultValue:true},enableInitialView:{type:"boolean",defaultValue:true}}},constructor:function(e,o){if(i._instance){return i._instance}t.apply(this,arguments);this._viewport=null;this._menu=null;i._instance=this}});i.prototype.init=function(){if(t.prototype.init){t.prototype.init.call(this)}this.setFootprint(["sap.ui.vk.threejs.Viewport"]);this.setAggregation("gizmo",new e)};i.prototype.setActive=function(e,i,o){t.prototype.setActive.call(this,e,i,o);this.getGizmo()._viewport=this._viewport;return this};i.prototype.setView=function(t,e){this.getGizmo().setView(t,e);return this};i.prototype.setEnableInitialView=function(t){this.setProperty("enableInitialView",t);this.getGizmo().setEnableInitialView(t)};i.prototype.queueCommand=function(t){if(this.isViewportType("sap.ui.vk.dvl.Viewport")){if(this._dvlRendererId){this._dvl.Renderer._queueCommand(t,this._dvlRendererId)}}else if(this.isViewportType("sap.ui.vk.threejs.Viewport")){t()}return this};i.prototype.destroy=function(){t.prototype.destroy.call(this);this._viewport=null;delete i._instance};return i});

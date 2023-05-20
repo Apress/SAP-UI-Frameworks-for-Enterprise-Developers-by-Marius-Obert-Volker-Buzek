@@ -1,0 +1,2 @@
+// Copyright (c) 2009-2023 SAP SE, All Rights Reserved
+sap.ui.define(["./common.debug.mode","./common.load.script"],function(o,e){"use strict";var r={};r.load=function(r){var i;if(typeof r!=="object"){throw new Error("Mandatory preload bundle configuration is not provided")}if(o.isDebug()){sap.ui.require(["sap/ui/core/Core"],function(o){o.boot()})}if(r.enabled===false){throw new Error("Disabling the custom preload bundles is not yet supported")}i=r&&r.coreResources||[];i.forEach(function(o){e.loadScript(sap.ui.require.toUrl(o))})};return r});

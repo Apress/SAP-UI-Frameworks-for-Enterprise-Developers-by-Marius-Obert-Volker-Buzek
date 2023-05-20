@@ -1,0 +1,83 @@
+.sapUiRTE {
+	display: inline-block;
+	min-height: 200px;
+}
+
+.sapUiRTE.sapUiRTEWithCustomToolbar {
+	--_sap_ui_richtexteditor__toolbar_height: 2.75rem;
+}
+
+.sapUiRTE:not(.sapUiRTEWithCustomToolbar) {
+	--_sap_ui_richtexteditor__toolbar_height: 0rem;
+}
+
+.sapUiSizeCompact.sapUiRTE.sapUiRTEWithCustomToolbar,
+.sapUiSizeCompact .sapUiRTE.sapUiRTEWithCustomToolbar {
+	--_sap_ui_richtexteditor__toolbar_height: 2rem;
+}
+
+/* This fixes the focus of the split buttons in Edge */
+html[data-sap-ui-browser^="ed"] {
+	.sapUiRTE.sapUiRTEWithCustomToolbar .sapUiRTECustomToolbar .sapMBtnBase.sapMSBText .sapMBtnFocusDiv {
+		right: 1px;
+	}
+}
+
+.sapUiRTE .sapUiRteEditorContainer {
+	border-radius: 0;
+	border-width: 1px;
+	.tox-editor-container
+	.tox-editor-header {
+		padding: 0;
+	}
+
+	min-height: ~"calc(200px - var(--_sap_ui_richtexteditor__toolbar_height))";
+}
+
+.sapUiRTEWithCustomToolbar .sapUiRteEditorContainer {
+	box-sizing: border-box;
+	border-top: 0;
+	border-color: @sapUiFieldBorderColor;
+	box-shadow: none;
+}
+
+.sapUiRTEWithCustomToolbar .sapUiRteEditorContainer {
+	.mce-container.mce-panel.mce-first,
+	.mce-container.mce-panel.mce-last {
+		border: none;
+	}
+}
+
+svg.rteFontColorIcon {
+	width: 1.375rem;
+	height: 100%;
+	position: absolute;
+	margin: auto;
+	left: 0;
+	right: 0;
+}
+
+svg.rteFontColorIcon path {
+	fill: @sapUiContentIconColor;
+}
+
+svg.rteFontColorIcon .outline {
+	stroke-width: 1.4px;
+	stroke:@sapUiContentForegroundBorderColor;
+}
+
+.sapMBtnActive > svg.rteFontColorIcon path {
+	fill: @sapUiButtonActiveTextColor;
+}
+
+.sapUiSizeCompact svg.rteFontColorIcon {
+	width: 1rem;
+}
+
+.sapUiRTE .sapMSBText .sapMBtnIcon::before {
+	text-shadow:
+		-1px -1px 0 @sapUiContentForegroundBorderColor,
+		1px -1px 0 @sapUiContentForegroundBorderColor,
+		-1px 1px 0 @sapUiContentForegroundBorderColor,
+		1px 1px 0 @sapUiContentForegroundBorderColor;
+}

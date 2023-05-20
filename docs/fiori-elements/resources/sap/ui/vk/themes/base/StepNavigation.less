@@ -1,0 +1,50 @@
+.sapVizKitStepNavigationStepItem {
+	border: none;
+	padding: 0.1875em;
+}
+
+.sapVizKitStepNavigationStepItem.selected {
+	border: 0.1875em solid;
+	padding: 0;
+	border-color: @sapUiHighlight;
+}
+
+.sapVizKitStepNavigationStepItem:focus:not(.selected) {
+	outline: 1px dotted @sapUiHighlight;
+	outline-offset: -2px;
+}
+
+.sapVizKitStepNavigationStepItem:hover:not(.selected) {
+	border: 0.1875em solid;
+	padding: 0;
+	border-color: @sapUiDarkBorder;
+}
+
+.sapVizKitStepNavigationPopoverStepInfo {
+	width: "20%";
+	height: "15%";
+}
+
+.sapVizKitStepNavigationPopoverContent {
+	padding: 1rem;
+}
+
+.sapVizKitStepNavigationPlayOptionsSelect {
+	width: 15em;
+}
+
+.sapVizKitStepNavigationProcedureList {
+    width: 30%;
+}
+
+.sapVizKitStepNavigation .sapVizKitStepNavigationProcedureList  {
+	min-width: 10rem;
+}
+
+.sapVizKitStepNavigationPopoverTitle {
+	padding-left: 1rem;
+	padding-right: 2rem;
+	white-space: nowrap !important;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}

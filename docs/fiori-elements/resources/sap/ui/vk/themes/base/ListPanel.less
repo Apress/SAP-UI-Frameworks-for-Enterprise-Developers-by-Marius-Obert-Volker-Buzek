@@ -1,0 +1,43 @@
+/*...........................................................................*/
+/* LESS for control sap.ui.vk/ListPanel.control..............................*/
+/*...........................................................................*/
+
+
+/* main List Panel style..................................................*/
+.sapUiVkListPanel {
+
+}
+
+/* change margin and padding of panel header toolbar for right aligned expand icon */
+.sapMPanel .sapMPanelWrappingDivTb .sapUiVkLPTb.sapMIBar.sapMTB {
+	margin-left: 0.25rem;
+	padding-right: 0px;
+	margin-right: 3rem;
+}
+
+.sapMPanel.sapMPanelExpandable.sapUiVkListPanel .sapMTB.sapMPanelHeaderTB {
+	padding: 0rem; /* remove padding from header when collapsed completely */
+}
+
+.sapUiVkListPanel {
+	.sapMPanelContent { /* remove padding from panel content */
+		padding: 0px;
+	}
+
+	.sapMPanelWrappingDivTb {
+		button { /* move panel expand icon right */
+			right: 0px;
+		}
+	}
+
+	.sapMLIB:last-child { /* remove border from last list item to prevent double border together with panel content */
+		border-bottom: 0px;
+	}
+	/* indent list items by panel header icon width*/
+	.sapMLIB{
+		padding-left: 3rem;
+	}
+	.sapUiSizeCompact & .sapMLIB{
+		padding-left: 2.75rem;
+	}
+}

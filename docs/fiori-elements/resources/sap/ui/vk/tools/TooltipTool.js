@@ -1,0 +1,7 @@
+/*!
+ * SAP UI development toolkit for HTML5 (SAPUI5)
+
+        (c) Copyright 2009-2015 SAP SE. All rights reserved
+    
+ */
+sap.ui.define(["./Tool","./TooltipToolHandler","./TooltipToolGizmo"],function(t,i,e){"use strict";var o=t.extend("sap.ui.vk.tools.TooltipTool",{metadata:{library:"sap.ui.vk",properties:{followCursor:{type:"boolean",defaultValue:true},animate:{type:"boolean",defaultValue:false},offsetX:{type:"float",defaultValue:10},offsetY:{type:"float",defaultValue:15}},events:{hover:{parameters:{x:"int",y:"int",nodeRef:"any"}}}},constructor:function(e,s){if(o._instance){return o._instance}t.apply(this,arguments);this._viewport=null;this._handler=new i(this);o._instance=this}});o.prototype.init=function(){if(t.prototype.init){t.prototype.init.call(this)}this.setFootprint(["sap.ui.vk.threejs.Viewport","sap.ui.vk.svg.Viewport"]);this.setAggregation("gizmo",new e)};o.prototype.setAnimate=function(t){this.setProperty("animate",t);var i=this.getGizmo();i.rerender()};o.prototype.setActive=function(i,e,o){t.prototype.setActive.call(this,i,e,o);if(this._viewport){if(i){this._gizmo=this.getGizmo();if(this._gizmo){this._gizmo.show(this._viewport,this)}this._addLocoHandler()}else{this._removeLocoHandler();if(this._gizmo){this._gizmo.hide();this._gizmo=null}}}return this};o.prototype.setTitle=function(t){if(this._gizmo){this._gizmo.setTitle(t)}return this};o.prototype.queueCommand=function(t){if(this._addLocoHandler()){var i=this.getFootprint();for(var e=0;e<i.length;e++){if(this.isViewportType(i[e])){t();break}}}return this};return o});

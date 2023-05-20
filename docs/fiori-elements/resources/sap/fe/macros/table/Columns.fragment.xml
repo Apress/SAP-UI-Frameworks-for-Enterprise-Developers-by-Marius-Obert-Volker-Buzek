@@ -1,0 +1,31 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m"
+	xmlns:mdcTable="sap.ui.mdc.table"
+	template:require="{
+		FIELD: 'sap/fe/macros/field/FieldHelper',
+		COMMON: 'sap/fe/macros/CommonHelper',
+		TABLE: 'sap/fe/macros/table/TableHelper'
+	}"
+>
+	<template:if test="{tableDefinition>columns}">
+		<template:repeat list="{tableDefinition>columns}" var="column">
+			<template:if test="{= ${column>availability} === 'Default'}">
+				<template:if test="{= ${column>type} === 'Default'}">
+					<template:then>
+						<core:Fragment fragmentName="sap.fe.macros.table.CustomColumn" type="XML" />
+					</template:then>
+					<template:elseif test="{= ${column>type} === 'Annotation'}">
+						<template:with path="column>annotationPath" var="dataField">
+							<core:Fragment fragmentName="sap.fe.macros.table.Column" type="XML" />
+						</template:with>
+					</template:elseif>
+					<template:elseif test="{= ${column>type} === 'Slot'}">
+						<core:Fragment fragmentName="sap.fe.macros.table.SlotColumn" type="XML" />
+					</template:elseif>
+				</template:if>
+			</template:if>
+		</template:repeat>
+	</template:if>
+</core:FragmentDefinition>

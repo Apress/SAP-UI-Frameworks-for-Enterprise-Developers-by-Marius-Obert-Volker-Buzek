@@ -1,0 +1,6 @@
+/*!
+ * OpenUI5
+ * (c) Copyright 2009-2023 SAP SE or an SAP affiliate company.
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ */
+sap.ui.define(["./_Helper","./_V2MetadataConverter","./_V4MetadataConverter","sap/base/Log","sap/ui/thirdparty/jquery"],function(e,t,a,r,n){"use strict";return{create:function(o,i,s,d){var u={},f=e.buildQuery(d);return{read:function(c,l,p){var M;function v(e){var r=i==="4.0"||l?a:t,n=e.$XML,o=s&&!l;delete e.$XML;return Object.assign((new r).convertXMLMetadata(n,c,o),e)}if(c in u){if(p){throw new Error("Must not prefetch twice: "+c)}M=u[c].then(v);delete u[c]}else{M=new Promise(function(t,a){n.ajax(l?c:c+f,{method:"GET",headers:o}).then(function(e,a,r){var n=r.getResponseHeader("Date"),o=r.getResponseHeader("ETag"),i={$XML:e},s=r.getResponseHeader("Last-Modified");if(n){i.$Date=n}if(o){i.$ETag=o}if(s){i.$LastModified=s}t(i)},function(t,n,o){var i=e.createError(t,"Could not load metadata");r.error("GET "+c,i.message,"sap.ui.model.odata.v4.lib._MetadataRequestor");a(i)});if(!l&&d&&"sap-context-token"in d){delete d["sap-context-token"];f=e.buildQuery(d)}});if(p){u[c]=M}else{M=M.then(v)}}return M}}}}},false);

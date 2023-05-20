@@ -1,0 +1,100 @@
+/* ========================================================================== */
+/* CSS for control "sap.ushell.ui.launchpad.AnchorNavigationBar" (sap_belize) */
+/* ========================================================================== */
+
+.sapUshellAnchorRightOverFlowButton,
+.sapUshellAnchorLeftOverFlowButton {
+  .sapUiIcon {
+    color: @sapUiShellTextColor;
+  }
+
+  .sapMBtn:hover {
+    background-color: transparent;
+  }
+}
+
+.sapUshellAnchorNavigationBarInner  {
+  font-family: "SAP-icons";
+  background-color: transparent;
+
+  button {
+    background-color: transparent;
+    border-style: none;
+  }
+
+  .sapUiIcon {
+    font-family: "SAP-icons";
+    font-size: 1rem;
+  }
+}
+
+/* in normal state style should be like lite button with no border */
+.sapUshellAnchorNavigationBarInner #sapUshellAnchorBarOverflowButton {
+  .sapMBtnInner {
+    background-color: @sapUiButtonLiteBackground;
+  }
+
+  .sapUiIcon {
+    color: @sapUiShellTextColor;
+    text-shadow: @sapUiShadowText;
+  }
+
+  &:hover .sapMBtnInner {
+    background-color: @sapUiButtonLiteHoverBackground;
+  }
+
+  &:active {
+    .sapMBtnInner {
+      background-color: @sapUiButtonLiteActiveBackground;
+    }
+
+    .sapUiIcon {
+      color: @sapUiButtonActiveTextColor;
+      text-shadow: none;
+    }
+  }
+}
+
+/* in toggle state style should be like ToggleButton */
+.sapUshellAnchorNavigationBarInner .sapUshellAnchorItemOverFlowOpen #sapUshellAnchorBarOverflowButton,
+.sapUshellAnchorNavigationBarInner .sapUshellAnchorItemOverFlowPressed #sapUshellAnchorBarOverflowButton {
+  .sapMBtnInner {
+    background-color: @sapUiToggleButtonPressedBackground;
+  }
+
+  .sapUiIcon {
+    color: @sapUiToggleButtonPressedTextColor;
+    text-shadow: none;
+  }
+
+  &:hover {
+    .sapMBtnInner {
+      background-color: @sapUiToggleButtonPressedHoverBackground;
+    }
+
+    .sapUiIcon {
+      color: @sapUiToggleButtonPressedTextColor;
+      text-shadow: none;
+    }
+  }
+
+  &:focus .sapMBtnInner {
+    outline: 1px dotted @sapContent_ContrastFocusColor;
+  }
+}
+
+.sapUshellAnchorItemsPopover .sapUshellGroupLI {
+  background-color: @sapUiListBackground;
+}
+
+.sapUshellAnchorItemsPopover .sapUshellGroupLI.sapUshellAnchorPopoverItemSelected {
+  background-color: @sapUiListSelectionBackgroundColor;
+}
+
+.sapUshellAnchorItemsPopover .sapUshellGroupLI.sapUshellAnchorPopoverItemNonSelected {
+  background-color: @sapUiListBackground;
+
+  &:hover {
+    background-color: @sapUiListHoverBackground;
+  }
+}

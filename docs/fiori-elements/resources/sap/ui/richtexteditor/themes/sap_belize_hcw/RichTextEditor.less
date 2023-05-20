@@ -1,0 +1,30 @@
+/* ==================================================== */
+/* CSS for control sap.ui.richtexteditor.RichTextEditor */
+/* Belize High Contrast White Theme                     */
+/* ==================================================== */
+
+
+/*RichTextEditor with Custom toolbar*/
+.sapUiRTE.sapUiRTEWithCustomToolbar .sapUiRTECustomToolbar {
+
+	.sapMBarChild ~ .sapMBarChild {
+		margin-right: 0.25rem;
+		margin-left: 0;
+	}
+
+	.sapMBarChild:first-child {
+		margin-right: 0.25rem;
+	}
+
+	.sapMSB .sapMBtn:not(.sapMSBArrow) .sapMBtnInner.sapMBtnIconFirst .sapMBtnIcon {
+		padding-right: 0.375rem;
+	}
+}
+
+.sapUiSizeCompact {
+	.sapUiRTE.sapUiRTEWithCustomToolbar .sapUiRTECustomToolbar {
+		.sapMBtnBase.sapMSBText .sapMBtnFocusDiv {
+			right: 0.25rem;
+		}
+	}
+}

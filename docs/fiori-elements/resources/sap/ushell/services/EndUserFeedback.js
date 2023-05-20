@@ -1,0 +1,2 @@
+// Copyright (c) 2009-2023 SAP SE, All Rights Reserved
+sap.ui.define(["sap/ui/thirdparty/URI","sap/base/util/ObjectPath"],function(t,e){"use strict";function n(){this.sendFeedback=function(){return Promise.resolve()};this.getLegalText=function(){return""};this.isEnabled=function(){return Promise.reject()};this.getPathOfURL=function(e){var n=new t(e);return n.pathname()}}n.hasNoAdapter=true;return n},true);

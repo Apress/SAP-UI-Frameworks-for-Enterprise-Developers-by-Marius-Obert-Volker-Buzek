@@ -1,0 +1,37 @@
+.label {
+	padding-top: 0.75em;
+}
+
+.heading{
+	font-size: large;
+	color: black;
+	padding-top: 0.75em;
+}
+
+.vbox{
+	padding: 0.75em 0.75em 0.75em 0.75em;
+}
+
+.fullname{
+	font-size: medium;
+}
+
+.role{
+	font-size: small;
+	color: dimgray;
+}
+
+.headervbox{
+	padding: 0 0 0 0.5em;
+}
+
+.image{
+	border-style: solid;
+	border-width: thin;
+	border-color: darkgray;
+}
+
+.popoverheader{
+	font-size: medium;
+	color: black;
+}

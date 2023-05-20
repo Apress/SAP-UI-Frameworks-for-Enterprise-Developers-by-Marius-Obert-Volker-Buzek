@@ -1,0 +1,11 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:f="sap.f" xmlns:core="sap.ui.core">
+	<ResponsivePopover id="userDetails" showHeader="false" class="sapUiContentPadding" placement="Bottom">
+		<HBox>
+			<f:Avatar initials="{internal>initials}" displaySize="S" />
+			<VBox>
+				<Label class="sapUiMediumMarginBegin" text="{internal>name}" />
+				<Label class="sapUiMediumMarginBegin" text="{internal>id}" />
+			</VBox>
+		</HBox>
+	</ResponsivePopover>
+</core:FragmentDefinition>

@@ -1,0 +1,5 @@
+/*!
+ * SAPUI5
+ * (c) Copyright 2009-2023 SAP SE. All rights reserved.
+ */
+sap.ui.define(["sap/ui/comp/odata/ComboBox","sap/m/ComboBoxRenderer"],function(e,t){"use strict";var a="00000000-0000-0000-0000-000000000000";function i(e){return e===a}var r=e.extend("sap.ui.comp.smartfield.ComboBox",{metadata:{library:"sap.ui.comp",properties:{enteredValue:{type:"string",group:"Data",defaultValue:""},realValue:{type:"string",group:"Data",defaultValue:""}}},renderer:t});r.prototype.init=function(){e.prototype.init.apply(this,arguments);this.attachChange(function(){var e=this.getSelectedKey(),t=e?e:this.getValue();if(!e&&this.getItemByKey(t)){this.setSelectedKey(t)}this.setProperty("realValue",t)}.bind(this))};r.prototype.setRealValue=function(e){this.setValue(e);this.setSelectedKey(e);return this.setProperty("realValue",e)};r.prototype.setEnteredValue=function(e){if(typeof e!=="undefined"){this.setSelectedKey(e)}var t=this.getSelectedItem();if(e&&!t&&!i(e)){this.setValue(e)}var a=t?this.getSelectedKey():this.getValue();this.setProperty("enteredValue",a);return this};return r});

@@ -1,0 +1,37 @@
+
+/* ============================================= */
+/* CSS for control sap.ushell/AddBookmarkButton.control theme base */
+/* ============================================= */
+
+.sapUshellAddBookmarkForm{
+    padding: 0.5rem;
+    #saveAsTileHBox, .sapUshellSaveAsTileHBox {
+        position: relative;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        &:after {
+            content: " ";
+            position: absolute;
+            top:0;
+            left:0;
+            right: 0;
+            bottom: 0;
+        }
+    }
+    label ~ label {
+        padding-top: 0.5rem;
+    }
+
+    .sapMInputBase, .sapMSlt{
+        margin: 0;
+    }
+
+    .sapUshellTileBase {
+        position: relative;
+    }
+
+    .sapUshellTile {
+        float: none;
+        list-style-type: none;
+    }
+}

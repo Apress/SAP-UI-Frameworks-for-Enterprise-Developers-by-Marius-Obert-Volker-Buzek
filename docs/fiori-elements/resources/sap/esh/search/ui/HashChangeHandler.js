@@ -1,0 +1,7 @@
+/*! 
+ * SAPUI5
+
+		(c) Copyright 2009-2021 SAP SE. All rights reserved
+	 
+ */
+(function(){function e(e,r,i){if(i){return r?r(e):e}if(!e||!e.then){e=Promise.resolve(e)}return r?e.then(r):e}sap.ui.define(["sap/esh/search/ui/SearchHelper","./sinaNexTS/providers/abap_odata/UserEventLogger"],function(r,i){var t=i["UserEventType"];var s={handle:function i(s){try{const i=this;if(!r.isLoggingEnabled()){return e()}i.sourceUrlArray=[];if(s.oldShellHash!==null){i.sourceUrlArray.push(s.oldShellHash)}if(s.oldAppSpecificRoute!==null){if(s.oldAppSpecificRoute.substring(0,2)==="&/"){i.sourceUrlArray.push(s.oldAppSpecificRoute.substring(2))}else{i.sourceUrlArray.push(s.oldAppSpecificRoute)}}i._createSearchModel().then(function(){var e={type:t.ITEM_NAVIGATE,sourceUrlArray:this.sourceUrlArray,targetUrl:"#"+s.newShellHash,systemAndClient:this._getSID()};if(e.targetUrl.indexOf("=")!==-1){this.searchModel.sinaNext.logUserEvent(e)}}.bind(i));return e()}catch(e){return Promise.reject(e)}},_createSearchModel:function r(){try{const r=this;if(r.initializedPromise){return e(r.initializedPromise)}r.searchModel=sap.esh.search.ui.getModelSingleton({},"flp");r.initializedPromise=r.searchModel.initBusinessObjSearch();return e(r.initializedPromise)}catch(e){return Promise.reject(e)}},_getSID:function e(){var r={systemId:"",client:""};var i=window.location.href;var t=i.indexOf("sap-system=sid(");if(t!==-1){var s=i.substring(t).indexOf(")");if(s!==-1){var n=i.substring(t+15,t+s);if(n.split(".").length===2){r.systemId=n.split(".")[0];r.client=n.split(".")[1]}}}return r}};return s})})();

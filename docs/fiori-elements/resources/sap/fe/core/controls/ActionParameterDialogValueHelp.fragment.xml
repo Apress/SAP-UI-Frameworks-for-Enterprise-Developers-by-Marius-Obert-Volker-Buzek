@@ -1,0 +1,45 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:mdc="sap.ui.mdc"
+	xmlns:mdcv="sap.ui.mdc.valuehelp"
+	xmlns:mdcvc="sap.ui.mdc.valuehelp.content"
+	xmlns:unittest="http://schemas.sap.com/sapui5/preprocessorextension/sap.fe.unittesting/1"
+	xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	template:require="{
+		COMMON: 'sap/fe/macros/CommonHelper',
+		FIELD: 'sap/fe/macros/field/FieldHelper',
+		ID: 'sap/fe/core/helpers/StableIdHelper',
+		ValueHelpTemplating: 'sap/fe/macros/internal/valuehelp/ValueHelpTemplating',
+		Property: 'sap/fe/core/templating/PropertyFormatters'
+	}"
+>
+	<template:if test="{= FIELD.hasValueHelpAnnotation(${actionParameter>@}) }">
+		<mdc:dependents>
+			<mdc:ValueHelp
+				unittest:id="ActionParameterDialogValuehelpExpressionTest"
+				id="{= ID.generate([${actionName>@sapui.name},${parameter>$Name}]) }"
+				delegate="{= FIELD.getValueHelpDelegate(${action>$IsBound}, ${entitySet>@@COMMON.getContextPath}, ${actionName>@sapui.name}, ${parameter>$Name}) }"
+				validateInput="{= ValueHelpTemplating.requiresValidation(${actionParameter>@@Property.getProperty})}"
+			>
+				<mdc:typeahead>
+					<mdcv:Popover>
+						<mdcvc:MTable
+							id="{= ID.generate([${actionName>@sapui.name},${parameter>$Name}]) }::Popover::qualifier::"
+							caseSensitive="{= ValueHelpTemplating.useCaseSensitiveFilterRequests(${actionParameter>@@Property.getPropertyObjectPath}, ${actionParameter>/@Org.OData.Capabilities.V1.FilterFunctions})}"
+							useAsValueHelp="{= ${actionParameter>@com.sap.vocabularies.Common.v1.ValueListWithFixedValues} || false}"
+						/>
+					</mdcv:Popover>
+				</mdc:typeahead>
+				<template:if
+					test="{= ${actionParameter>@com.sap.vocabularies.Common.v1.ValueListWithFixedValues} ? (${actionParameter>@com.sap.vocabularies.Common.v1.ValueListWithFixedValues} === 'true') : true}"
+				>
+					<mdc:dialog>
+						<mdcv:Dialog />
+					</mdc:dialog>
+				</template:if>
+			</mdc:ValueHelp>
+		</mdc:dependents>
+	</template:if>
+</core:FragmentDefinition>

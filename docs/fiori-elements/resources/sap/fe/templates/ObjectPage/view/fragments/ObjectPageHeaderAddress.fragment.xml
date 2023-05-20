@@ -1,0 +1,25 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:macro="sap.fe.macros"
+	xmlns:dt="sap.ui.dt"
+	xmlns:fl="sap.ui.fl"
+	xmlns:fe="sap.fe.templates.ObjectPage.controls"
+	xmlns:unittest="http://schemas.sap.com/sapui5/preprocessorextension/sap.fe.unittesting/1"
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	template:require="{
+		MODEL: 'sap/ui/model/odata/v4/AnnotationHelper'
+	}"
+>
+	<template:with path="headerFacet>Target/$AnnotationPath/" var="addressPath">
+		<VBox id="{= ${converterHeaderFacet>headerFormData/id} }" displayInline="true">
+			<Title level="H3" text="{headerFacet>Label}" />
+			<Text
+				unittest:id="ObjectPageHeaderAddressTest"
+				renderWhitespace="true"
+				class="sapMLabel"
+				text="{addressPath>label@@MODEL.format}"
+			/>
+		</VBox>
+	</template:with>
+</core:FragmentDefinition>

@@ -1,0 +1,2 @@
+// Copyright (c) 2009-2023 SAP SE, All Rights Reserved
+sap.ui.define([],function(){"use strict";function t(t){var e;if(t&&t.content){for(e=0;e<t.content.length;e++){if(t.content[e].destroy){t.content[e].destroy()}}}}function e(e){var n;if(e){for(n=0;n<e.length;n++){t(e[n])}}}function n(t){if(t){e(t.tiles)}}function o(t){var e;if(t){for(e=0;e<t.length;e++){n(t[e])}}}return{destroyFLPAggregationModel:n,destroyFLPAggregationModels:o,destroyTileModel:t,destroyTileModels:e}});

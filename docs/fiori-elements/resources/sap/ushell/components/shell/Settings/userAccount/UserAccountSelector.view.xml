@@ -1,0 +1,18 @@
+<mvc:View
+		controllerName="sap.ushell.components.shell.Settings.userAccount.UserAccountSelector"
+		xmlns="sap.m"
+		xmlns:mvc="sap.ui.core.mvc"
+		xmlns:core="sap.ui.core">
+
+    <ObjectHeader icon="{config>/icon}" title="{config>/name}" backgroundDesign="Solid" class="sapUshellUserSettingDetailHeader"/>
+	<IconTabBar applyContentPadding="true" backgroundDesign="Transparent">
+		<items>
+			<IconTabFilter text="{i18n>UserAccountFld}" key="userAccountSetting">
+				<core:Fragment fragmentName="sap.ushell.components.shell.Settings.userAccount.UserAccountSetting" type="XML"></core:Fragment>
+			</IconTabFilter>
+			<IconTabFilter visible = "{config>/imgConsentEnabled}" text="{i18n>ProfileImgId}" key="userAccountImgConsentSelector">
+				<core:Fragment fragmentName="sap.ushell.components.shell.Settings.userAccount.UserAccountImgConsentSelector" type="XML"></core:Fragment>
+			</IconTabFilter>
+		</items>
+	</IconTabBar>
+</mvc:View>

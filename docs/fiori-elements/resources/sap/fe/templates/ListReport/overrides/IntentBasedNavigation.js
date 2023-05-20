@@ -1,0 +1,5 @@
+/*!
+ * SAP UI development toolkit for HTML5 (SAPUI5)
+ *      (c) Copyright 2009-2023 SAP SE. All rights reserved
+ */
+sap.ui.define(["sap/fe/core/CommonUtils"],function(t){"use strict";const e={adaptNavigationContext:function(e,i){const n=this.getView(),o=n.getController(),r=o._getFilterBarControl();if(r&&!e.isEmpty()){const l=n.getViewData(),s=l.fullContextPath;let c=Object.assign({},this.base.getView().getController().filterBarConditions);let g=[];if(l.contextPath){const e=n.getModel().getMetaModel(),i=t.getParameterInfo(e,l.contextPath),o=i.parameterProperties;g=o&&Object.keys(o)||[]}c=o._intentBasedNavigation.prepareFiltersForExternalNavigation(c,s,g);const f=o._getMultiModeControl();if(f){const t=f.getTabsModel();if(t){var a;const e=t.getProperty(`/${(a=f.content)===null||a===void 0?void 0:a.getSelectedKey()}/notApplicable/fields`);if(Array.isArray(e)&&e.length>0){e.forEach(function(t){delete c.filterConditions[t]})}}}t.addExternalStateFiltersToSelectionVariant(e,c,i,r);delete i.propertiesWithoutConflict}},getEntitySet:function(){return this.base.getCurrentEntitySet()}};return e},false);

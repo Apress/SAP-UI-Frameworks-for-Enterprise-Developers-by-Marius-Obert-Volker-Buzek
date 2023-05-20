@@ -1,0 +1,22 @@
+#searchFieldInShell {
+    #searchFieldInShell-select:not(.sapMSltPressed) {
+        background-color: fade(@sapUiFieldBackground, 80%);
+        &:not(:hover):not(:focus) {
+            border-color: fade(@sapUiFieldBorderColor, 60%);
+        }
+        span {
+            background-color: transparent;
+        }
+    }
+    #searchFieldInShell-input {
+        input:not(:hover):not(:focus) {
+            border-color: fade(@sapUiFieldBorderColor, 60%);
+        }
+    }
+    #searchFieldInShell-button-inner {
+        border-radius: 0;
+        &:not(:hover):not(:focus):not(:active) {
+            border-color: fade(@sapUiButtonBorderColor, 80%);
+        }
+    }
+}

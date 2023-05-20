@@ -1,0 +1,5 @@
+/*!
+ * SAP UI development toolkit for HTML5 (SAPUI5)
+ *      (c) Copyright 2009-2023 SAP SE. All rights reserved
+ */
+sap.ui.define(["sap/fe/core/converters/helpers/IssueManager","sap/fe/core/support/CommonHelper"],function(e,t){"use strict";var o={};var s=t.getIssueByCategory;var n=t.Categories;var r=t.Audiences;var c=e.IssueCategory;const a={id:"collectionFacetUnsupportedLevel",title:"CollectionFacet: Unsupported Levels",minversion:"1.80",audiences:[r.Application],categories:[n.Usage],description:"Collection facets at level 3 or lower (level 4, 5…) are not supported and will not be visible on the UI.",resolution:"At level 3 you can only use reference facets, but not collection facets.",resolutionurls:[{text:"CollectionFacets",href:"https://ui5.sap.com/#/topic/facfea09018d4376acaceddb7e3f03b6"}],check:function(e,t){s(e,t,c.Facets,"UnsupportedLevel")}};function l(){return[a]}o.getRules=l;return o},false);

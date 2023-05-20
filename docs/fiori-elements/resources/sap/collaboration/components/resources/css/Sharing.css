@@ -1,0 +1,23 @@
+.sharingVBox {
+				padding-top: 1em;
+}
+
+.linkVBox {
+				padding-top: 2em;
+}
+
+.objListItem {
+				padding: 0em;
+}
+
+.linkOpenJamGrpCreate
+{
+	padding-top: 0.5em;
+	float:right;
+}
+
+.fileNamesListContainer
+{
+	overflow-y: auto;
+	height: 10em;
+}

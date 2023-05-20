@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chip xmlns="http://schemas.sap.com/sapui2/services/Chip/1">
+	<implementation>
+		<sapui5>
+			<basePath>../../../../../</basePath>
+			<viewName>sap.ushell.components.tiles.indicatorDual.DualTile.view.js</viewName>
+		</sapui5>
+	</implementation>
+	<appearance>
+		<title />
+		<description />
+	</appearance>
+	<contracts>
+		<consume id="configuration">
+			<parameters>
+				<parameter name="tileConfiguration" />
+				<parameter name="isSufficient" />
+				<parameter name="timeStamp" />
+				<parameter name="cacheTimeStamp" />
+				<parameter name="row">1</parameter>
+				<parameter name="col">2</parameter>
+			</parameters>
+		</consume>
+		<consume id="writeConfiguration">
+			<parameters>
+				<parameter name="tileConfiguation" />
+				<parameter name="cacheTimeStamp" />
+			</parameters>
+		</consume>
+		<consume id="visible" />
+		<consume id="url" />
+		<consume id="preview" />
+		<consume id="search" />
+		<consume id="bag" />
+	</contracts>
+</chip>

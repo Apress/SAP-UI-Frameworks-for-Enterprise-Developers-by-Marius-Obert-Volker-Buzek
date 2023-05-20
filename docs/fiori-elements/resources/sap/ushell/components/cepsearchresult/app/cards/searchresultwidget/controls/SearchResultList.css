@@ -1,0 +1,248 @@
+/* Styles to apply a 3 column card layout */
+.sapUiCEPCatListCard:not(.sapUiCEPCatListNoData) .sapMListUl {
+  display: flex;
+  flex-wrap: wrap;
+  padding-inline-start: var(--sapUiMarginSmall);
+  padding-inline-end: 0;
+  padding-top: var(--sapUiMarginTiny);
+  padding-bottom: var(--sapUiMarginTiny);
+  align-content: flex-start;
+  height: calc(100% - 3.8rem);
+}
+
+.sapUiCEPCatListCard:not(.sapUiCEPCatListNoData) .sapMListUl>.sapMLIB {
+  border-bottom: none;
+  margin: var(--sapUiMarginTiny);
+  width: calc(33% - (var(--sapUiMarginTiny) * 2.5));
+  min-width: 300px;
+  cursor: default;
+}
+
+.sapUiCEPCatListCard:not(.sapUiCEPCatListNoData) .sapMListUl,
+.sapUiCEPCatListCard:not(.sapUiCEPCatListNoData) .sapMListUl>.sapMLIB {
+  background-color: var(--sapBackgroundColor) !important;
+}
+
+.sapUiCEPCatListCard .sapMListUl>.sapMLIB>.sapMLIBContent {
+  cursor: default;
+  min-height: 10rem;
+  height: 100%;
+  overflow: hidden;
+  border-radius: var(--sapUiElementBorderCornerRadius);
+  box-shadow: var(--sapUiShadowLevel0);
+  background-color: var(--sapUiTileBackground);
+}
+
+.sapUiCEPCatList .sapMListUl .sapMLIB:last-child {
+  border-bottom: none !important;
+}
+
+.sapUiCEPCatListCard:not(.sapUiCEPCatListNoData) .sapMLIBFocusable:focus {
+  border-radius: 0.7rem !important;
+}
+
+/* Styles to apply a tile layout */
+.sapUiCEPCatListTile:not(.sapUiCEPCatListNoData) .sapMListUl,
+.sapUiCEPCatListTile:not(.sapUiCEPCatListNoData) .sapMListUl>.sapMLIB {
+  background-color: var(--sapBackgroundColor) !important;
+}
+
+.sapUiCEPCatListTile:not(.sapUiCEPCatListNoData) .sapMListUl {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 1.5rem;
+  padding-top: 1rem;
+  align-content: flex-start;
+  height: calc(100% - 3.8rem);
+}
+
+.sapUiCEPCatListTile:not(.sapUiCEPCatListNoData) .sapMListUl>.sapUiCEPCatTileInstance {
+  border-bottom: none;
+  max-width: 23rem;
+  min-width: 11rem;
+  margin-right: 1rem;
+  background: transparent !important;
+}
+
+.sapUiCEPCatListTile:not(.sapUiCEPCatListNoData) .sapMListUl>.sapUiCEPCatTileInstance.sapUiCEPCatTileInstanceWide {
+  max-width: 24rem;
+  min-width: 24rem;
+}
+
+.sapUiCEPCatListTile:not(.sapUiCEPCatListNoData) .sapMListUl>.sapUiCEPCatTileInstance.sapUiCEPCatTileInstanceWide .TwoByOne {
+  width: 23rem !important;
+}
+
+.sapUiCEPCatListTile:not(.sapUiCEPCatListNoData) .sapMListUl>.sapUiCEPCatTileInstance>.sapMLIBContent {
+  height: 12rem;
+  overflow: hidden;
+}
+
+.sapUiCEPCatListTile:not(.sapUiCEPCatListNoData) .sapMLIBFocusable:focus {
+  outline: none !important;
+}
+
+.sapUiCEPCatListTile:not(.sapUiCEPCatListNoData) .sapUiComponentContainer {
+  position: absolute;
+}
+
+/* Override the focus of items */
+.sapUiCEPCatList:not(.sapUiCEPCatListCard) .sapMLIBFocusable:focus {
+  border-radius: 0.2rem !important;
+}
+.sapUiCEPCatList .sapUiCEPCatListTileSizestandardWide {
+  width: 23rem;
+}
+
+.sapUiCEPCatList .sapUiCEPCatListTileSizestandardWide .TwoByOne{
+  width: 23rem;
+}
+
+.sapUiCEPCatList .sapMTB.sapMTBStandard {
+  border-bottom-color: var(--sapUiListBorderColor);
+}
+
+.sapUiCEPCatList .sapFAvatarImageHolder {
+  background-size: contain;
+}
+
+.sapUiCEPCatList .sapMListNoData {
+  justify-content: start;
+  border: none !important;
+  min-width: 100% !important;
+  padding: 0 var(--sapUiMarginSmall) !important
+}
+
+.sapUiCEPCatList .sapMListNoData .sapMListNoDataText {
+  padding: 0 .7rem;
+  font-size: var(--sapMFontMediumSize);
+}
+
+.sapUiCEPCatList H1.sapMTitleTB {
+  padding-top: 0rem;
+}
+
+.sapUiCEPCatFooterBar {
+  margin-top: 0 !important;
+  padding-top: var(--sapUiMarginTiny);
+  overflow: visible;
+  border-top: 1px solid var(--sapUiListBorderColor) !important;
+}
+
+.sapUiCEPCatListKeyword {
+  padding: 2px 0.5rem;
+  font-size: var(--sapMFontSmallSize);
+  display: inline-block;
+  box-shadow: 0 0 1px 0px var(--sapUiContentLabelColor) !important;
+  border-radius: 0.35rem;
+  margin: 0.3rem 0 0 0;
+  margin-inline-end: 0.5rem;
+}
+
+.sapUiCEPCatListInfoSmall {
+  font-size: var(--sapMFontSmallSize);
+  color: var(--sapUiContentLabelColor);
+}
+
+.sapUiCEPCatListAvatarTitle {
+  box-shadow: 0 0 1px 0px var(--sapUiContentLabelColor) !important;
+}
+
+.sapUiCEPCatListAccentTags {
+  background-color: var(--sapUiAccentBackgroundColor10) !important;
+}
+
+.sapUiCEPCatListAccentTags[data-accent='1'] {
+  background-color: var(--sapUiAccentBackgroundColor1) !important;
+}
+
+.sapUiCEPCatListAccentTags[data-accent='2'] {
+  background-color: var(--sapUiAccentBackgroundColor2) !important;
+}
+
+.sapUiCEPCatListAccentTags[data-accent='3'] {
+  background-color: var(--sapUiAccentBackgroundColor3) !important;
+}
+
+.sapUiCEPCatListAccentTags[data-accent='4'] {
+  background-color: var(--sapUiAccentBackgroundColor4) !important;
+}
+
+.sapUiCEPCatListAccentTags[data-accent='5'] {
+  background-color: var(--sapUiAccentBackgroundColor5) !important;
+}
+
+.sapUiCEPCatListAccentTags[data-accent='6'] {
+  background-color: var(--sapUiAccentBackgroundColor6) !important;
+}
+
+.sapUiCEPCatListAccentTags[data-accent='7'] {
+  background-color: var(--sapUiAccentBackgroundColor7) !important;
+}
+
+.sapUiCEPCatListAccentTags[data-accent='8'] {
+  background-color: var(--sapUiAccentBackgroundColor8) !important;
+}
+
+.sapUiCEPCatListAccentTags[data-accent='9'] {
+  background-color: var(--sapUiAccentBackgroundColor9) !important;
+}
+
+.sapUiCEPCatListFieldText,
+sapUiCEPCatListFieldLink {
+  vertical-align: text-top;
+  font-size: var(--sapMFontSmallSize);
+}
+
+.sapUiCEPCatListFieldLabel {
+  font-size: var(--sapMFontSmallSize);
+}
+
+.sapUiCEPCatListAvatarTitle[data-people-status]:before {
+  content: ' ';
+  position: absolute;
+  border: 2px solid var(--sapUiTileBackground);
+  display: inline-block;
+  height: 1rem;
+  width: 1rem;
+  border-radius: 50%;
+  margin-top: 72%;
+  margin-left: 67%;
+  font-family: SAP-Icons;
+  font-size: 8px;
+  color: var(--sapUiTileBackground);
+  font-weight: bold;
+  text-align: center;
+  padding: 2px;
+  box-sizing: border-box;
+}
+
+.sapUiCEPCatListAvatarTitle[data-people-status='']:before {
+  display: none;
+}
+
+.sapUiCEPCatListAvatarTitle[data-people-status='online']:before {
+  background-color: var(--sapUiButtonSuccessActiveBackground);
+  content: '\e05b'
+}
+
+.sapUiCEPCatListAvatarTitle[data-people-status='busy']:before {
+  background-color: var(--sapUiButtonNegativeActiveBackground);
+}
+
+.sapUiCEPCatListAvatarTitle[data-people-status='nodisturb']:before {
+  background-color: var(--sapUiButtonNegativeActiveBackground);
+  content: '\e03e'
+}
+
+.sapUiCEPCatListAvatarTitle[data-people-status='offline']:before {
+  background-color: var(--sapUiAccentBackgroundColor10);
+}
+
+.sapUiCEPCatListAvatarTitle[data-people-status='away']:before {
+  background-color: var(--sapUiButtonCriticalBackground);
+}
+
+.sapUiCEPCatListAvatarTitle[data-people-status='ooo']:before {
+  background-color: var(--sapUiIndication8HoverBackground);
+}

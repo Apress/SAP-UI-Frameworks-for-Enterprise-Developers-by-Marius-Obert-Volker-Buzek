@@ -1,0 +1,42 @@
+/* ============================================================== */
+/* CSS for control "sap.ushell.ui.shell.ShellLayout" (sap_belize) */
+/* ============================================================== */
+
+._sapUshellShellSubHdr { /* Testpage only */
+  background-color: mix(@sapUiHighlight, @sapUiShellTextColor, 10);
+  color: @sapUiTileTextColor;
+}
+
+.sapUshellShellBG {
+  background-color: @sapUiShellBackground;
+}
+
+.sapUshellShellBG.sapUiShellBackgroundImage {
+  background-image: @sapUiShellBackgroundImage;
+  opacity: @sapUiShellBackgroundImageOpacity;
+  .sapUshellBackgroundRepeatMixin;
+}
+
+.sapUshellBackgroundRepeatMixin() when (@sapUiShellBackgroundImageRepeat) {
+  background-repeat: repeat;
+  background-position: left top;
+  background-size: auto;
+}
+
+.sapUshellBackgroundRepeatMixin() when not (@sapUiShellBackgroundImageRepeat) {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.sapUshellShapesDisplay() when (alpha(@sapUiShellBackgroundPatternColor) = 0),(@sapUiShellBackgroundPatternColor = transparent) {
+  display: none;
+}
+
+.sapUshellShell canvas #shell-shapes {
+  .sapUshellShapesDisplay;
+}
+
+.sapUshellMenuBarHeight {
+  min-height: 3rem;
+}

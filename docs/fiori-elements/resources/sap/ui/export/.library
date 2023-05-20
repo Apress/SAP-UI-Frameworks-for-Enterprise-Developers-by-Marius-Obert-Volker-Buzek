@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<library xmlns="http://www.sap.com/sap.ui.library.xsd">
+
+	<name>sap.ui.export</name>
+	<vendor>SAP SE</vendor>
+	<copyright>SAPUI5
+ * (c) Copyright 2009-2023 SAP SE. All rights reserved.</copyright>
+	<version>1.113.0</version>
+
+	<documentation>UI5 library: sap.ui.export</documentation>
+
+	<dependencies>
+		<dependency>
+			<libraryName>sap.ui.core</libraryName>
+		</dependency>
+	</dependencies>
+
+	<appData>
+		<!-- excludes for the JSDoc -->
+		<jsdoc xmlns="http://www.sap.com/ui5/buildext/jsdoc">
+			<exclude name="sap.ui.export.js."/>
+		</jsdoc>
+		<documentation xmlns="http://www.sap.com/ui5/buildext/documentation"
+			indexUrl="../../../../test-resources/sap/ui/export/demokit/docuindex.json" resolve="lib"/>
+		<releasenotes xmlns="http://www.sap.com/ui5/buildext/releasenotes"
+			url="../../../../test-resources/sap/ui/export/relnotes/changes-{major}.{minor}.json" resolve="lib"/>
+		<!-- excludes for the JSCoverage -->
+		<jscoverage xmlns="http://www.sap.com/ui5/buildext/jscoverage">
+			<exclude name="sap.ui.export.js."/>
+		</jscoverage>
+		<packaging xmlns="http://www.sap.com/ui5/buildext/packaging" version="2.0">
+			<module-infos>
+				<raw-module name="sap/ui/export/js/XLSXBuilder.js" requiresTopLevelScope="false" />
+			</module-infos>
+			<all-in-one>
+				<!-- exclude third party bundles and the worker code -->
+				<exclude name="sap/ui/export/js/" />
+			</all-in-one>
+		</packaging>
+		<ownership xmlns="http://www.sap.com/ui5/buildext/ownership">
+			<component>CA-UI5-TBL</component><!-- default component for library -->
+		</ownership>
+
+		<thirdparty xmlns="http://www.sap.com/ui5/buildext/thirdparty" >
+			<lib name="JSZip3" displayName="JSZip 3.7.1" npmName="jszip" version="3.7.1" hash="9548550e812008b802e8ea9c94cb4d34" homepage="https://github.com/Stuk/jszip" id="73555000106100074228">
+				<license url="https://github.com/Stuk/jszip/blob/main/LICENSE.markdown" type="MIT"/>
+				<copyright>2009-2016 Stuart Knightley &lt;stuart [at] stuartk.com&gt;</copyright>
+				<pattern>sap/ui/export/js/libs/JSZip3.js</pattern>
+			</lib>
+		</thirdparty>
+
+	</appData>
+
+</library>

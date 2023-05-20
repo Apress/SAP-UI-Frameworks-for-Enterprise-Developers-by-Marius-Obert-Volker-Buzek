@@ -1,0 +1,27 @@
+Version 2.0.1 (2020-04-27)
+  [BUG] Fixed the context menu incorrectly positioning on a scrolled page in TinyMCE 4 #POWERSPELL-14
+  [BUG] Fixed an unhandled exception thrown when enabling spellchecking in inline mode for TinyMCE 4 #POWERSPELL-15
+Version 2.0.0 (2020-02-13)
+  [FEATURE] Added multi-lingual spellchecking #POWERSPELL-1
+  [CHANGE] Rewrote spellchecking engine #POWERSPELL-1
+Version 1.1.0 (2019-04-16)
+  [FEATURE] Added language toolbar button to mark selected content as a specific language. #TINY-2992
+Version 0.11.0 (2018-10-18)
+  [FEATURE] Spellcheck on Shift+Enter. #TINY-1876
+Version 0.10.0 (2018-02-01)
+  [FEATURE] Decreased plugin size by improving build steps.
+Version 0.9.11 (2017-12-08)
+  [CHANGE] Only spellcheck when the selection is collapsed. #TINY-1299
+Version 0.9.10 (2017-08-17)
+  [CHANGE] Changed the default language code from en to en_us and "US English" is not en_us. #TINY-1178
+Version 0.9.9 (2017-05-23)
+  [FEATURE] Added aria labels to spellchecking dialog to improve a11y. #TINY-1048
+Version 0.9.8 (2017-05-23)
+  [FEATURE] Added new SpellcheckerIgnore/SpellcheckerIgnoreAll events. #TINY-1047
+Version 0.9.7 (2016-12-13)
+  [BUG] Fixed so the context menu key can be used on keyboards to access corrections. #TINY-735
+Version 0.9.6 (2016-10-27)
+  [FEATURE] Added version detection logic that check if this plugin is used with a compatible tinymce version. #TINY-639
+  [FEATURE] Added an option "spellchecker_active" set the default spellchecker active state. #TINY-646
+Version 0.9.5 (2016-09-22)
+  [BUG] Replacing words with suggestions would remove adjacent spaces on Edge. #TINY-594

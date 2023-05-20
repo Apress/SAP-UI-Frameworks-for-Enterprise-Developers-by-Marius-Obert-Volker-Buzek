@@ -1,0 +1,27 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:macro="sap.fe.macros"
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	template:require="{
+		MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+		COMMON: 'sap/fe/macros/CommonHelper',
+		ID: 'sap/fe/core/helpers/StableIdHelper',
+		UI: 'sap/fe/core/templating/UIFormatters'
+	}"
+>
+	<template:with path="headerFacet>Target/$AnnotationPath" var="collection" helper="MODEL.resolve$Path">
+		<template:with path="collection>" var="collection" helper="COMMON.getNavigationContext">
+			<VBox id="{= ID.generate(['fe', 'HeaderFacet', 'Contact', ${headerFacet>@@UI.getDataModelObjectPath}]) }" displayInline="true">
+				<template:if test="{headerFacet>@@MODEL.label}">
+					<Title level="H3" text="{headerFacet>@@MODEL.label}" class="sapUiSmallMarginBottom" />
+				</template:if>
+				<template:with path="headerFacet>Target/$AnnotationPath" var="metaPath">
+					<template:with path="headerFacet>Target/$AnnotationPath@@COMMON.getMetaPath" var="contactPath">
+						<macro:Contact metaPath="{metaPath>}" contextPath="{entitySet>}" visible="true" />
+					</template:with>
+				</template:with>
+			</VBox>
+		</template:with>
+	</template:with>
+</core:FragmentDefinition>

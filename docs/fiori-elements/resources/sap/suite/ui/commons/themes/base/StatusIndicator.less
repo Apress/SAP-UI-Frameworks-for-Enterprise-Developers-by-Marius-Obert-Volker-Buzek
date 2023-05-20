@@ -1,0 +1,164 @@
+/* ============================================= */
+/* CSS for control sap.suite.ui.commons/StatusIndicator*/
+/* ============================================= */
+
+@_sap_suite_ui_commons_StatusIndicator_SmallLabelMargin: 0.375rem;
+@_sap_suite_ui_commons_StatusIndicator_MediumLabelMargin: 0.5rem;
+@_sap_suite_ui_commons_StatusIndicator_LargeLabelMargin: 0.75rem;
+@_sap_suite_ui_commons_StatusIndicator_ExtraLargeLabelMargin: 1rem;
+
+.sapSuiteUiCommonsStatusIndicator {
+	overflow: hidden;
+	display: flex;
+}
+
+.sapSuiteUiCommonsStatusIndicatorHorizontal {
+	flex-direction: row;
+}
+
+.sapSuiteUiCommonsStatusIndicatorVertical {
+	flex-direction: column;
+}
+
+.sapSuiteUiCommonsStatusIndicatorLabelBeforeSvg {
+	order: 5;
+	align-self: center;
+}
+
+.sapSuiteUiCommonsStatusIndicatorLabelAfterSvg {
+	order: 20;
+	align-self: center;
+}
+
+.sapSuiteUiCommonsStatusIndicator:focus {
+	outline: 1px dotted @sapUiContentFocusColor;
+	outline-offset: 1px;
+}
+
+/**
+ * Label classes
+ */
+.sapSuiteUiCommonsStatusIndicatorLabel {
+	font-family: @sapUiFontFamily;
+	white-space: nowrap;
+}
+
+.sapSuiteUiCommonsStatusIndicatorSmallLabel {
+	font-size: @sapMFontSmallSize;
+}
+
+.sapSuiteUiCommonsStatusIndicatorMediumLabel {
+	font-size: @sapMFontMediumSize;
+}
+
+.sapSuiteUiCommonsStatusIndicatorLargeLabel {
+	font-size: 1.125rem;
+}
+
+.sapSuiteUiCommonsStatusIndicatorExtraLargeLabel {
+	font-size: 1.875rem;
+}
+
+/**
+ * Small margin between label and svg
+ */
+.sapSuiteUiCommonsStatusIndicatorSmallTopLabel {
+	margin-bottom: @_sap_suite_ui_commons_StatusIndicator_SmallLabelMargin;
+}
+
+.sapSuiteUiCommonsStatusIndicatorSmallRightLabel {
+	margin-left: @_sap_suite_ui_commons_StatusIndicator_SmallLabelMargin;
+}
+
+.sapSuiteUiCommonsStatusIndicatorSmallBottomLabel {
+	margin-top: @_sap_suite_ui_commons_StatusIndicator_SmallLabelMargin;
+}
+
+.sapSuiteUiCommonsStatusIndicatorSmallLeftLabel {
+	margin-right: @_sap_suite_ui_commons_StatusIndicator_SmallLabelMargin;
+}
+
+/**
+ * Medium margin between label and svg
+ */
+.sapSuiteUiCommonsStatusIndicatorMediumTopLabel {
+	margin-bottom: @_sap_suite_ui_commons_StatusIndicator_MediumLabelMargin;
+}
+
+.sapSuiteUiCommonsStatusIndicatorMediumRightLabel {
+	margin-left: @_sap_suite_ui_commons_StatusIndicator_MediumLabelMargin;
+}
+
+.sapSuiteUiCommonsStatusIndicatorMediumBottomLabel {
+	margin-top: @_sap_suite_ui_commons_StatusIndicator_MediumLabelMargin;
+}
+
+.sapSuiteUiCommonsStatusIndicatorMediumLeftLabel {
+	margin-right: @_sap_suite_ui_commons_StatusIndicator_MediumLabelMargin;
+}
+
+/**
+ * Large margin between label and svg
+ */
+.sapSuiteUiCommonsStatusIndicatorLargeTopLabel {
+	margin-bottom: @_sap_suite_ui_commons_StatusIndicator_LargeLabelMargin;
+}
+
+.sapSuiteUiCommonsStatusIndicatorLargeRightLabel {
+	margin-left: @_sap_suite_ui_commons_StatusIndicator_LargeLabelMargin;
+}
+
+.sapSuiteUiCommonsStatusIndicatorLargeBottomLabel {
+	margin-top: @_sap_suite_ui_commons_StatusIndicator_LargeLabelMargin;
+}
+
+.sapSuiteUiCommonsStatusIndicatorLargeLeftLabel {
+	margin-right: @_sap_suite_ui_commons_StatusIndicator_LargeLabelMargin;
+}
+
+/**
+ * Extra large margin between label and svg
+ */
+.sapSuiteUiCommonsStatusIndicatorExtraLargeTopLabel {
+	margin-bottom: @_sap_suite_ui_commons_StatusIndicator_ExtraLargeLabelMargin;
+}
+
+.sapSuiteUiCommonsStatusIndicatorExtraLargeRightLabel {
+	margin-left: @_sap_suite_ui_commons_StatusIndicator_ExtraLargeLabelMargin;
+}
+
+.sapSuiteUiCommonsStatusIndicatorExtraLargeBottomLabel {
+	margin-top: @_sap_suite_ui_commons_StatusIndicator_ExtraLargeLabelMargin;
+}
+
+.sapSuiteUiCommonsStatusIndicatorExtraLargeLeftLabel {
+	margin-right: @_sap_suite_ui_commons_StatusIndicator_ExtraLargeLabelMargin;
+}
+
+/**
+ * SVG container classes
+ */
+.sapSuiteUiCommonsStatusIndicatorSvg {
+	order: 10;
+}
+
+.sapSuiteUiCommonsStatusIndicatorSmallSvg {
+	width: 1.875rem;
+	height: 1.375rem;
+}
+
+.sapSuiteUiCommonsStatusIndicatorMediumSvg {
+	width: 2.8125rem;
+	height: 1.875rem;
+}
+
+.sapSuiteUiCommonsStatusIndicatorLargeSvg {
+	width: 5rem;
+	height: 3.4375rem;
+}
+
+.sapSuiteUiCommonsStatusIndicatorExtraLargeSvg {
+	width: 9.0625rem;
+	height: 6.25rem;
+}
+

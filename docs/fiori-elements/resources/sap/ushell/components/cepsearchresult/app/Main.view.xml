@@ -1,0 +1,47 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  xmlns:integration="sap.ui.integration.widgets"
+  xmlns:f="sap.f"
+  xmlns:sc="sap.ushell.components.cepsearchresult.app.controls"
+  xmlns:wp="sap.ushell.components.workPageBuilder.controls" width="100%" height="100%" controllerName="sap.ushell.components.cepsearchresult.app.Main" class="sapUiCEPSRApp" visible="false">
+  <VBox id="searchResultHeader" class="sapUiCEPSRHeader">
+    <f:DynamicPageTitle>
+      <f:heading>
+        <Title text="{parts:['appI18n>SEARCHRESULTAPP.HeaderTitle','manager>/totalCount', 'manager>/searchTerm'], formatter: '.translateTitle'}"/>
+      </f:heading>
+      <f:navigationActions>
+        <ToggleButton id="filterPanelToggle" icon="sap-icon://filter" type="Transparent" press="toggleFilterPanel"/>
+        <Button icon="sap-icon://overflow" type="Transparent" press="openTitleMenu"/>
+      </f:navigationActions>
+    </f:DynamicPageTitle>
+    <Label id="summaryText" text="" class="sapUiCEPSRSummary"/>
+    <FlexBox id="filterPanel" class="sapUiCEPSRFilters sapUiCEPSRFiltersHide">
+      <sc:FilterField>
+        <Label text="Sort By:" />
+        <Input value="Relevance" editable="false"/>
+      </sc:FilterField>
+    </FlexBox>
+    <IconTabHeader id="searchCategoriesTabs" mode="Inline" items="{manager>/categories}" select=".tabSelectionChange">
+      <items>
+        <IconTabFilter visible="{= !${manager>visible === false}}" key="{manager>name}" text="{manager>shortTitle} {= ${manager>_state/count} > 0 ? '(' + ${manager>_state/count} + ')' : '   '}" icon="{manager>icon}" />
+      </items>
+    </IconTabHeader>
+  </VBox>
+  <VBox class="sapUiCEPSRAppScroll">
+    <wp:WorkPage>
+      <wp:WorkPageRow>
+        <wp:WorkPageColumn columnWidth="24">
+          <wp:WorkPageCell>
+            <integration:Card id="searchResultWidget" action="handleCardAction" dataMode="Active">
+              <integration:layoutData>
+                <f:GridContainerItemLayoutData columns="16" minRows="4" />
+              </integration:layoutData>
+            </integration:Card>
+          </wp:WorkPageCell>
+        </wp:WorkPageColumn>
+        <wp:WorkPageColumn columnWidth="0">
+        </wp:WorkPageColumn>
+      </wp:WorkPageRow>
+    </wp:WorkPage>
+  </VBox>
+</mvc:View>

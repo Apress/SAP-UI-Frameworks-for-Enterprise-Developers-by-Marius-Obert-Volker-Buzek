@@ -1,0 +1,4 @@
+/*
+ * ! SAP UI development toolkit for HTML5 (SAPUI5) (c) Copyright 2009-2012 SAP AG. All rights reserved
+ */
+sap.ui.define(["./Container","./library"],function(t,e){"use strict";var n=t.extend("sap.ui.vbm.ClusterContainer",{metadata:{library:"sap.ui.vbm",properties:{},aggregations:{},events:{}}});n.prototype.init=function(){this._oItem=null};n.prototype.getPosition=function(){var t=this.getParent().getParent();var e=t.getInfoForCluster(this.getKey(),sap.ui.vbm.ClusterInfoType.NodeInfo);return e.pos[0]+";"+e.pos[1]+";0"};n.prototype.setPosition=function(){};n.prototype.getAlignment=function(){return 0};n.prototype.setAlignment=function(){};n.prototype.getItem=function(){return this._oItem};n.prototype.setItem=function(t){this._oItem=t;return this};n.prototype.getDataElement=function(){};n.prototype.handleChangedData=function(t){};return n});

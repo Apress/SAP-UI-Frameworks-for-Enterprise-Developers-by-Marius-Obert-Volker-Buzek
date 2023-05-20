@@ -1,0 +1,15 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:macro="sap.fe.macros.valuehelp"
+>
+	<macro:ValueHelpFilterBar
+		id="{source>id}::FilterBar"
+		contextPath="{contextPath>}"
+		_valueList="{valueList>}"
+		liveMode="false"
+		enableFallback="true"
+		hideBasicSearch="true"
+	/>
+</core:FragmentDefinition>

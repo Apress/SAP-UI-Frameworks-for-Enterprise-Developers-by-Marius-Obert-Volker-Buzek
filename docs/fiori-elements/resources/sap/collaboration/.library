@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<library xmlns="http://www.sap.com/sap.ui.library.xsd">
+
+	<name>sap.collaboration</name>
+	<vendor>SAP SE</vendor>
+	<copyright>SAP UI development toolkit for HTML5 (SAPUI5)
+
+(c) Copyright 2009-2017 SAP SE. All rights reserved</copyright>
+	<version>1.113.0</version>
+
+	<documentation>SAP UI library: SAP Collaboration for Social Media Integration.</documentation>
+
+	<dependencies>
+		<dependency>
+			<libraryName>sap.ui.core</libraryName>
+		</dependency>
+		<dependency>
+			<libraryName>sap.suite.ui.commons</libraryName>
+		</dependency>
+	</dependencies>
+
+	<appData>
+		<documentation xmlns="http://www.sap.com/ui5/buildext/documentation"
+		indexUrl="../../../test-resources/sap/collaboration/demokit/docuindex.json"
+		resolve="lib" />
+        <ownership xmlns="http://www.sap.com/ui5/buildext/ownership">
+            <component>CA-UI5-BS-SM</component>
+        </ownership>
+        <jscoverage>
+			<exclude name="*.js" /> <!-- exclude files within current folder --> 
+		</jscoverage>
+	</appData>
+
+</library>

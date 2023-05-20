@@ -1,0 +1,5 @@
+/*!
+ * SAP UI development toolkit for HTML5 (SAPUI5)
+ *      (c) Copyright 2009-2023 SAP SE. All rights reserved
+ */
+sap.ui.define(["sap/base/util/ObjectPath","sap/fe/core/CommonUtils"],function(e,t){"use strict";const n={actionWrapper:function(n,o,r,i){return new Promise(function(s){const l=n.getSource?n.getSource():n.oSource,a=t.getTargetView(l),c=l.getBindingContext();let u;let p;if(i!==undefined){p=i.contexts||[]}else if(c!==undefined){p=[c]}else{p=[]}if(a.getControllerName()==="sap.fe.templates.ObjectPage.ObjectPageController"||a.getControllerName()==="sap.fe.templates.ListReport.ListReportController"){u=a.getController().getExtensionAPI()}if(o.startsWith("/extension/")){const t=e.get(o.replace(/\//g,".").substr(1),u);s(t[r](c,p))}else{sap.ui.require([o],function(e){s(e[r].bind(u)(c,p))})}})},validationWrapper:function(e,t,n,o,r){return new Promise(function(i){let s;if(o.getControllerName()==="sap.fe.templates.ObjectPage.ObjectPageController"||o.getControllerName()==="sap.fe.templates.ListReport.ListReportController"){s=o.getController().getExtensionAPI()}sap.ui.require([e],function(e){i(e[t].bind(s)(r,n))})})}};return n},false);

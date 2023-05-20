@@ -1,0 +1,50 @@
+{
+  "_version": "1.21.0",
+  "sap.app": {
+    "id": "sap.fe.placeholder",
+    "type": "library",
+    "embeds": [],
+    "applicationVersion": {
+      "version": "1.113.0"
+    },
+    "title": "UI5 library: sap.fe.placeholder",
+    "description": "UI5 library: sap.fe.placeholder",
+    "ach": "CA-UI5-FE",
+    "resources": "resources.json",
+    "offline": true
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "supportedThemes": [
+      "base",
+      "sap_belize",
+      "sap_belize_hcb",
+      "sap_belize_hcw",
+      "sap_belize_plus",
+      "sap_fiori_3",
+      "sap_fiori_3_dark",
+      "sap_fiori_3_hcb",
+      "sap_fiori_3_hcw",
+      "sap_horizon",
+      "sap_horizon_dark",
+      "sap_horizon_hcb",
+      "sap_horizon_hcw"
+    ]
+  },
+  "sap.ui5": {
+    "dependencies": {
+      "libs": {
+        "sap.ui.core": {}
+      }
+    },
+    "library": {
+      "i18n": false,
+      "content": {
+        "controls": [],
+        "elements": [],
+        "types": [],
+        "interfaces": []
+      }
+    }
+  }
+}

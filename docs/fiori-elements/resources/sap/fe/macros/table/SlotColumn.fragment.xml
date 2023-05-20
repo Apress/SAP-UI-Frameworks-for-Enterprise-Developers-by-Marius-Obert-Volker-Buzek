@@ -1,0 +1,21 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns:mdcTable="sap.ui.mdc.table"
+	xmlns:core="sap.ui.core"
+	template:require="{
+		ID: 'sap/fe/core/helpers/StableIdHelper'
+	}"
+>
+	<mdcTable:Column
+		id="{= ID.generate([${this>id}, 'C', ${column>id}]) }"
+		dataProperty="{column>name}"
+		width="{column>width}"
+		importance="{column>importance}"
+		hAlign="{column>horizontalAlign}"
+		header="{column>header}"
+	>
+		<mdcTable:template>
+			<slot name="{column>key}" />
+		</mdcTable:template>
+	</mdcTable:Column>
+</core:FragmentDefinition>

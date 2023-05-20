@@ -1,0 +1,10 @@
+<core:FragmentDefinition height="100%" width="100%" xmlns="sap.m" xmlns:core="sap.ui.core">
+    <VBox>
+        <CheckBox id="imageConsentForUserCheckBox" selected="{config>/isImageConsentForUser}" text="{i18n>imgConsentMsg}"/>
+        <Panel expandable="true" headerText="{i18n>userImageConsentDialogShowTermsOfUse}" width="auto">
+            <content>
+                <Text text="{i18n>userImageConsentDialogTermsOfUse}"/>
+            </content>
+        </Panel>
+    </VBox>
+</core:FragmentDefinition>

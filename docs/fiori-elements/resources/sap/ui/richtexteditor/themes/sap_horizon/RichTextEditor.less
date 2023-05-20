@@ -1,0 +1,30 @@
+/* ==================================================== */
+/* CSS for control sap.ui.richtexteditor.RichTextEditor */
+/* Horizon theme                                        */
+/* ==================================================== */
+
+.sapUiRTE.sapUiRTEWithCustomToolbar {
+
+	.sapUiRteEditorContainer {
+		border: @sapUiContentFocusWidth solid @sapUiFieldActiveBorderColor !important;
+	};
+
+	.sapUiRTECustomToolbar.sapMTB.sapMTBStandard {
+		border-bottom: none;
+	}
+
+	.sapMBtn:hover > .sapMBtnHoverable,
+	.sapMBtn:not(.sapMBtnDisabled) .sapMBtnInner.sapMBtnActive {
+		background: @sapUiButtonHoverBackground;
+		border-color: @sapUiButtonHoverBorderColor;
+		box-shadow: @sapContent_Interaction_Shadow;
+	}
+
+	.sapMBtn .sapMBtnInner.sapMBtnActive:before {
+		display: none;
+	}
+
+	.sapMBtn:not(.sapMSBArrow) .sapMBtnInner .sapMBtnIcon {
+		top: 0.0625rem;
+	}
+}

@@ -1,0 +1,7 @@
+/*!
+ * 
+		SAP UI development toolkit for HTML5 (SAPUI5)
+		(c) Copyright 2009-2015 SAP SE. All rights reserved
+	
+ */
+sap.ui.define(["./library","./InfoTileRenderer","sap/ui/core/Renderer"],function(e,t,i){"use strict";var r=i.extend(t);r.renderContent=function(t,i){t.write("<div");t.writeAttribute("id",i.getId()+"-content");t.addClass("sapSuiteCmpTileContent");t.addClass(i.getSize());t.writeClasses();t.write(">");if(e.LoadState.Loaded==i.getState()){this.renderInnerContent(t,i)}t.write("</div>")};r.renderDescription=function(e,t){if(t.getDescription()||t.getUnit()){e.write("<div");e.addClass("sapSuiteInfoTileDescTxt");e.addClass(t.getState());e.addClass(t.getSize());e.writeClasses();e.writeAttribute("id",t.getId()+"-description-text");e.writeAttributeEscaped("title",this.createDescriptionTooltip(t));e.write(">");if(t.getDescription()){e.write("<span");e.writeAttribute("id",t.getId()+"-description");e.addClass("sapSuiteCmpTileDescInner");e.writeClasses();e.write(">");e.writeEscaped(t.getDescription());e.write("</span>")}if(t.getUnit()){e.write("<span");e.writeAttribute("id",t.getId()+"-unit");e.addClass("sapSuiteCmpTileUnitInner");e.writeClasses();e.write(">(");e.writeEscaped(t.getUnit());e.write(")</span>")}e.write("</div>")}};r.createDescriptionTooltip=function(e){var t=[];if(e.getDescription()){t.push(e.getDescription())}if(e.getUnit()){t.push("("+e.getUnit()+")")}return t.join(" ")};return r},true);

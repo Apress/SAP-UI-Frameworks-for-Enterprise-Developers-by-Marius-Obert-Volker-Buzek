@@ -1,0 +1,464 @@
+/* ============================================= */
+/* CSS for control sap.suite.ui.commons/Timeline.control */
+/* ============================================= */
+
+.sapSuiteUiCommonsTimeline {
+	/*min-width: 20rem;*/
+	max-width: 680px;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+}
+
+.sapSuiteUiCommonsTimeline:focus {
+	outline: 1px dotted @sapUiContentFocusColor;
+	outline-offset: 1px;
+}
+
+.sapSuiteUiCommonsTimelineContentWrapper {
+	position: relative;
+}
+
+.sapSuiteUiCommonsTimelineH {
+	white-space: nowrap;
+	position: relative;
+}
+
+.sapSuiteUiCommonsTimelineH .sapSuiteUiCommonsTimelineNoTextWrapper {
+	justify-content: flex-start;
+	margin-left: 10px;
+}
+
+.sapSuiteUiCommonsTimelineH:focus {
+	outline: 1px dotted @sapUiContentFocusColor;
+	outline-offset: 1px;
+}
+
+.sapSuiteUiCommonsTimelineH li {
+	white-space: normal;
+}
+
+.sapSuiteUiCommonsTimelineNoScroll.sapSuiteUiCommonsTimelineH {
+	display: inline-block;
+	width: auto;
+}
+
+.sapSuiteUiCommonsTimelineContents {
+	width: 100%;
+	padding: 0 0 1rem 0;
+	overflow: hidden;
+	position: relative;
+	z-index: 0;
+	overflow-x: hidden;
+	overflow-y: auto;
+
+	height: 100%;
+}
+
+.sapSuiteUiCommonsTimelineItemGetMoreButtonV {
+	display: flex;
+	justify-content: center;
+	padding-top: 5px;
+	padding-right: 5px;
+}
+
+.sapSuiteUiCommonsTimelineHeaderBar{
+	flex-shrink: 0;
+}
+
+.sapSuiteUiCommonsTimelineVerticalScroller {
+	width: calc(~"100% - 15px");
+	height: 70px;
+	position: absolute;
+	z-index: 15;
+	display: none;
+}
+
+.sapSuiteUiCommonsTimelineVerticalScroller .sapSuiteUiCommonsTimelineScrollerIconWrapper {
+	left: calc(~"50% - 19px");
+}
+
+.sapSuiteUiCommonsTimelineScrollerIconWrapper span,
+.sapSuiteUiCommonsTimelineVerticalScroller .sapSuiteUiCommonsTimelineScrollerIconWrapper span {
+	font-size: 20px;
+	color: white;
+	cursor: pointer;
+}
+
+.sapSuiteUiCommonsTimelineTopScroller .sapSuiteUiCommonsTimelineScrollerIconWrapper span {
+	margin-left: -1px;
+}
+
+.sapSuiteUiCommonsTimelineHorizontalTopLine ul{
+	margin-bottom: 4px;
+}
+
+.sapSuiteUiCommonsTimelineScrollerIconWrapper span:focus {
+	outline: none;
+}
+
+.sapSuiteUiCommonsTimelineScrollerIconWrapper {
+	position: absolute;
+	border-radius: 50%;
+	opacity: 1;
+	width: 35px;
+	height: 35px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.sapSuiteUiCommonsTimelineTopScroller {
+	top: 0px;
+}
+
+.sapSuiteUiCommonsTimelineBottomScroller {
+	bottom: 0;
+}
+
+.sapSuiteUiCommonsTimelineBottomScroller .sapSuiteUiCommonsTimelineScrollerIconWrapper {
+	bottom: 10px;
+}
+
+.sapSuiteUiCommonsTimelineItemGrp .sapSuiteUiCommonsTimelineGroupItemIcon {
+	position: absolute;
+	left: .5rem;
+	height: 1.625rem;
+	min-width: 1.625rem;
+	-webkit-border-radius: 1.625rem !important;
+	padding: 0 5px;
+}
+
+.sapSuiteUiCommonsTimelineHorizontalBottomLine {
+	margin-top: -12px;
+	display: flex;
+}
+
+.sapSuiteUiCommonsTimelineHorizontalTopLine {
+	padding-bottom: 1px;
+	display: flex;
+}
+
+.sapSuiteUiCommonsTimelineHorizontalBottomLine .sapSuiteUiCommonsTimelineItemLiWrapperV {
+	vertical-align: top;
+}
+
+.sapSuiteUiCommonsTimelineScrollH .sapSuiteUiCommonsTimelineHorizontalTopLine .sapSuiteUiCommonsTimelineItemLiWrapperV {
+	vertical-align: bottom;
+}
+
+.sapSuiteUiCommonsTimelineHorizontalMiddleLine {
+	height: 27px;
+}
+
+.sapSuiteUiCommonsTimelineGroupItemIconDbleSided {
+	position: absolute;
+}
+
+.sapSuiteUiCommonsTimelineGrouped .sapSuiteUiCommonsTimelineHorizontalTopLine .sapSuiteUiCommonsTimelineItemLiWrapperV {
+	padding-top: 40px;
+	margin-top: auto;
+}
+
+.sapSuiteUiCommonsTimelineItemUL {
+	margin: 10px;
+}
+
+.sapSuiteUiCommonsTimelineContentsNoScroll {
+}
+
+.sapSuiteUiCommonsTimelineScroll {
+	display: inline-block;
+}
+
+.sapSuiteUiCommonsTimelineScrollV .sapSuiteUiCommonsTimelineScroll {
+	display: block;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+.sapSuiteUiCommonsTimelineGetMoreBarDblSided {
+	height: 0px;
+}
+
+/* ============================================= */
+/* Horizontal stuff */
+/* ============================================= */
+
+.sapSuiteUiCommonsTimelineH {
+	width: 100%;
+	flex-direction: column;
+}
+
+.sapSuiteUiCommonsTimelineContentsH {
+	width: 100%;
+	padding-bottom: 18px;
+	z-index: 0;
+	overflow-x: auto;
+	overflow-y: auto;
+	position: relative;
+}
+
+.sapSuiteUiCommonsTimelineNoScroll .sapSuiteUiCommonsTimelineContentsH {
+	display: inline-block;
+	width: auto;
+}
+
+.sapSuiteUiCommonsTimelineH.sapSuiteUiCommonsTimelineAutomaticLineHeight {
+	display: flex;
+}
+.sapSuiteUiCommonsTimelineGrouped .sapSuiteUiCommonsTimelineContentsH {
+	padding-bottom: 44px;
+}
+
+.sapSuiteUiCommonsTimelineScrollH {
+	min-width: 25rem;
+	display: block;
+	position: relative;
+	margin-bottom: -5px;
+}
+
+.sapSuiteUiCommonsTimelineScrollH .sapSuiteUiCommonsTimelineItemUlWrapperV {
+	margin-bottom: 80px;
+}
+
+.sapSuiteUiCommonsTimelineNoScroll .sapSuiteUiCommonsTimelineScrollH {
+	display: inline-block;
+}
+
+.sapSuiteUiCommonsTimelineGetMoreH {
+	width: 10rem;
+	display: inline-block;
+	position: relative;
+	top: 0.9rem;
+	left: 1.5rem;
+}
+
+.sapSuiteUiCommonsTimelineHorizontalScroller {
+	position: absolute;
+	width: 100px;
+	display: none;
+	z-index: 2;
+}
+
+.sapSuiteUiCommonsTimelineHorizontalScroller .sapSuiteUiCommonsTimelineScrollerIconWrapper {
+	top: 275px;
+	left: 20px;
+}
+
+.sapSuiteUiCommonsTimelineScrollerIconWrapperTop {
+	margin-top: 5px;
+}
+
+.sapSuiteUiCommonsTimelineScrollerIconWrapperTop span {
+	transform: rotate(270deg);
+}
+
+.sapSuiteUiCommonsTimelineScrollerIconWrapperBottom span {
+	transform: rotate(90deg);
+}
+
+.sapSuiteUiCommonsTimelineHorizontalRightScroller .sapSuiteUiCommonsTimelineScrollerIconWrapper {
+	left: auto;
+	right: 20px;
+}
+
+.sapSuiteUiCommonsTimelineHorizontalScrollContainer {
+	position: relative;
+}
+
+.sapSuiteUiCommonsTimelineNoScroll .sapSuiteUiCommonsTimelineHorizontalTopLine
+.sapSuiteUiCommonsTimelineNoScroll .sapSuiteUiCommonsTimelineHorizontalBottomLine {
+	display: inline-block;
+}
+
+.sapSuiteUiCommonsTimelineHorizontalLeftScroller .sapSuiteUiCommonsTimelineScrollerIconWrapper {
+	transform: rotate(180deg);
+}
+
+.sapSuiteUiCommonsTimelineHorizontalRightScroller {
+	right: 0px;
+}
+
+.sapSuiteUiCommonsTimelineGetMoreBoxH {
+	position: absolute;
+	width: 10rem;
+	height: 3rem;
+	top: 2.2rem;
+}
+
+.sapSuiteUiCommonsTimelineTop.sapSuiteUiCommonsTimelineGetMoreBoxH {
+	top: -3.75rem;
+}
+
+.sapSuiteUiCommonsTimelineDblSided .sapSuiteUiCommonsTimelineGetMore {
+	margin-left: -23px;
+}
+
+.sapSuiteUiCommonsTimelineItemShowMorePopover .sapMTitle span {
+	font-weight: bold;
+}
+
+.sapSuiteUiCommonsTimelineItemShowMorePopover .sapSuiteUiCommonsTimelineItemPopoverText {
+	padding: 10px 15px;
+}
+
+.sapSuiteUiCommonsTimelineItemWrapperV.sapSuiteUiCommonsTimelineItemWrapperVRight {
+	flex-direction: row-reverse;
+}
+
+.sapSuiteUiCommonsTimelineRangeFilter .sapMSliderHandleTooltip {
+	width: auto !important;
+}
+
+.sapSuiteUiCommonsTimelineRangeFilterPanel .sapMPanelContent {
+	display: flex;
+	align-items: center;
+}
+
+.sapSuiteUiCommonsTimelineRangeFilterPanel.sapSuiteUiCommonsTimelineRangeFilterPanelShadowed .sapMPanelContent {
+	background-color: fade(@sapContent_ShadowColor, 5%);
+}
+
+.sapSuiteUiCommonsTimelineRangeSelect {
+	margin-left: 15px;
+	min-width: 10rem;
+}
+
+.sapSuiteUiCommonsTimelineRangeDatePicker {
+	margin-left: 15px;
+	margin-right: 25px;
+	min-width: 10rem;
+}
+
+.sapUiSizeCompact .sapMInputBaseHeightMargin.sapSuiteUiCommonsTimelineRangeDatePicker {
+	margin-left: 15px;
+	margin-right: 25px;
+	min-width: 10rem;
+}
+
+.sapSuiteUiCommonsTimelineRangeLabelNow {
+	margin-left: 15px;
+	margin-right: 25px;
+	min-width: 5em;
+}
+
+.sapSuiteUiCommonsTimelineInfoBar {
+	display: flex;
+	font-size: 0.975rem;
+	color: white;
+	flex-direction: column;
+}
+
+.sapSuiteUiCommonsTimelineRangeFilterPanel {
+	padding-bottom: 25px;
+}
+
+.sapSuiteUiCommonsTimelineRangeFilter li:first-child .sapMSliderLabel {
+	left: 0;
+	width: auto;
+}
+
+.sapSuiteUiCommonsTimelineRangeFilter .sapMSliderTickLabel:nth-last-child(2) .sapMSliderLabel {
+	right: 0;
+	left: auto;
+	width: auto;
+}
+
+.sapSuiteUiCommonsTimelineRangeFilter.sapTimelineRangeFilterNoDiff .sapMSliderTickLabel:nth-last-child(2) .sapMSliderLabel {
+	left : 0;
+	right: auto;
+	width: auto;
+}
+
+.sapSuiteUiCommonsTimelineH .sapSuiteUiCommonsTimelineInfoBar {
+	flex-direction: row;
+}
+
+.sapSuiteUiCommonsTimelineCustomMessageWrapper .sapSuiteUiCommonsTimelineCustomMessageClose,
+.sapSuiteUiCommonsTimelineInfoBar .sapSuiteUiCommonsTimelineInfoBarClose {
+	margin-left: auto;
+	padding: 7px 10px;
+}
+
+.sapSuiteUiCommonsTimelineInfoBarRangeFilter {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	margin-bottom: 1px;
+	border-radius: 4px;
+}
+
+.sapSuiteUiCommonsTimelineInfoBarFilter {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	margin-bottom: 1px;
+	border-radius: 4px;
+}
+
+.sapSuiteUiCommonsTimelineInfoBarBaseText {
+	padding-left: 8px;
+	padding-right: 8px;
+	font-size: 0.775rem;
+}
+
+.sapSuiteUiCommonsTimelineInfoBarClose {
+	cursor: pointer;
+}
+
+.sapSuiteUiCommonsTimelineCustomMessageWrapper {
+	display: flex;
+	font-size: 0.975rem;
+	color: white;
+	align-items: center;
+	margin-bottom: 1px;
+	border-radius: 4px;
+}
+
+.sapSuiteUiCommonsTimelineFilterSubmitButtonWrapper {
+	padding: 0.4rem 1rem 0.4rem 0;
+}
+
+.sapSuiteUiCommonsTimelineFilterDialog {
+	min-width: 20rem;
+	max-width: 40rem;
+}
+
+.sapSuiteUiCommonsTimelineNoTextWrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 1rem;
+}
+
+.sapSuiteUiCommonsTimelineRight .sapSuiteUiCommonsTimelineHorizontalMiddleLine ul,
+.sapSuiteUiCommonsTimelineDblSidedH .sapSuiteUiCommonsTimelineHorizontalMiddleLine ul {
+	margin-top: 0px;
+	margin-bottom: 3px;
+}
+
+.sapSuiteUiCommonsTimelineItemGetMoreButtonH {
+	padding-right: 15px;
+}
+
+.sapSuiteUiCommonsTimelineDblSided .sapSuiteUiCommonsTimelineShowMoreWrapper {
+	clear: both;
+}
+
+.sapSuiteUiCommonsTimelineDblSided .sapSuiteUiCommonsTimelineItemBarV {
+	height: calc(~"100% - 20px");
+}
+
+.sapSuiteUiCommonsTimelineDblSided .sapSuiteUiCommonsTimelineItemBarNoIcon.sapSuiteUiCommonsTimelineItemBarV {
+	height: calc(~"100% - 39px");
+}
+
+.sapSuiteUiCommonsTimelineFilterInfoBar{
+	min-height: 2rem;
+	max-height: 4rem;
+}
+
+.sapSuiteUiCommonsStringSliderTooltip {
+	line-height: 1.625rem;
+}

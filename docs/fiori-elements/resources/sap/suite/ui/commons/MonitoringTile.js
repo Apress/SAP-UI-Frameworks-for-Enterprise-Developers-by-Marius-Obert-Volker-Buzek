@@ -1,0 +1,7 @@
+/*!
+ * 
+		SAP UI development toolkit for HTML5 (SAPUI5)
+		(c) Copyright 2009-2015 SAP SE. All rights reserved
+	
+ */
+sap.ui.define(["./InfoTile","./library","sap/suite/ui/commons/MonitoringContent","./MonitoringTileRenderer"],function(t,e,i,o){"use strict";var n=t.extend("sap.suite.ui.commons.MonitoringTile",{metadata:{deprecated:true,library:"sap.suite.ui.commons",properties:{value:{type:"string",group:"Misc",defaultValue:null},iconSrc:{type:"string",group:"Misc",defaultValue:null},footerColor:{type:"sap.suite.ui.commons.InfoTileTextColor",group:"Misc",defaultValue:"Positive"}}}});n.prototype.init=function(){this._oTileCnt=new i(this.getId()+"-monitoring-tile-cnt");this.setContent(this._oTileCnt);t.prototype.init.apply(this)};n.prototype.setScale=function(t){this._oTileCnt.setScale(t);return this};n.prototype.getScale=function(){return this._oTileCnt.getScale()};n.prototype.setValue=function(t){this._oTileCnt.setValue(t);return this};n.prototype.getValue=function(){return this._oTileCnt.getValue()};n.prototype.setSize=function(t){this._oTileCnt.setSize(t);return this};n.prototype.getSize=function(){return this._oTileCnt.getSize()};n.prototype.setState=function(t){this._oTileCnt.setProperty("state",t,true);this.setProperty("state",t);return this};n.prototype.getState=function(){return this._oTileCnt.getState()};n.prototype.setIconSrc=function(t){this._oTileCnt.setIconSrc(t);return this};n.prototype.getIconSrc=function(){return this._oTileCnt.getIconSrc()};return n});

@@ -1,0 +1,71 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:mdc="sap.ui.mdc"
+	xmlns:mdcv="sap.ui.mdc.valuehelp"
+	xmlns:mdcvc="sap.ui.mdc.valuehelp.content"
+	xmlns:form="sap.ui.layout.form"
+	xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	template:require="{
+		MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+		COMMON: 'sap/fe/macros/CommonHelper',
+		ID: 'sap/fe/core/helpers/StableIdHelper',
+		ValueHelpTemplating: 'sap/fe/macros/internal/valuehelp/ValueHelpTemplating',
+		Property: 'sap/fe/core/templating/PropertyFormatters',
+		FIELD: 'sap/fe/macros/field/FieldHelper',
+		UI: 'sap/fe/core/templating/UIFormatters'
+	}"
+>
+	<template:with path="fields>" var="allFields">
+		<form:SimpleForm>
+			<template:repeat list="{allFields>}" var="key">
+				<template:with path="key>" helper="COMMON.getPathToKey" var="immutableKey">
+					<Label text="{= ${immutableKey>@com.sap.vocabularies.Common.v1.Label}}" />
+					<mdc:Field
+						delegate="{name:'sap/fe/macros/field/FieldBaseDelegate', payload:{retrieveTextFromValueList:true}}"
+						id="{= ID.generate(['CreateDialog', ${entitySet>@sapui.name}, ${immutableKey>@sapui.name}]) }"
+						value="{immutableKey>@@MODEL.format}"
+						width="100%"
+						required="{= FIELD.getRequired(${immutableKey>@sapui.name}, ${immutableKey>@@UI.getDataModelObjectPath}, ${requiredProperties>})}"
+						display="{immutableKey>@@FIELD.getAPDialogDisplayFormat}"
+						change="{= '.handleChange($event, \'' + ${immutableKey>@sapui.name} + '\')' }"
+						liveChange=".handleLiveChange"
+						fieldHelp="{= ${immutableKey>@@Property.hasValueHelp} ? ID.generate([${immutableKey>@sapui.name},'VH']) : undefined }"
+						customData:fieldName="{immutableKey>@sapui.name}"
+						editMode="{= ${immutableKey>@com.sap.vocabularies.Common.v1.FieldControl} &amp;&amp; ${immutableKey>@com.sap.vocabularies.Common.v1.FieldControl/$EnumMember} &amp;&amp; ${immutableKey>@com.sap.vocabularies.Common.v1.FieldControl/$EnumMember} === 'com.sap.vocabularies.Common.v1.FieldControlType/ReadOnly' ? 'Display' : 'Editable'}"
+					>
+						<template:if test="{immutableKey>@@Property.hasValueHelp}">
+							<template:then>
+								<mdc:dependents>
+									<mdc:ValueHelp
+										id="{= ID.generate([${immutableKey>@sapui.name},'VH']) }"
+										delegate="{= FIELD.getValueHelpDelegateForNonComputedVisibleKeyField(${immutableKey>@@Property.getPropertyPath}) }"
+										validateInput="{= ValueHelpTemplating.requiresValidation(${immutableKey>@@Property.getProperty})}"
+									>
+										<mdc:typeahead>
+											<mdcv:Popover>
+												<mdcvc:MTable
+													id="{= ID.generate([${immutableKey>@sapui.name},'VH']) }::Popover::qualifier::"
+													caseSensitive="{= ValueHelpTemplating.useCaseSensitiveFilterRequests(${immutableKey>@@Property.getPropertyObjectPath}, ${immutableKey>/@Org.OData.Capabilities.V1.FilterFunctions})}"
+													useAsValueHelp="{= ${immutableKey>@com.sap.vocabularies.Common.v1.ValueListWithFixedValues} || false}"
+												/>
+											</mdcv:Popover>
+										</mdc:typeahead>
+										<template:if
+											test="{= ${immutableKey>@com.sap.vocabularies.Common.v1.ValueListWithFixedValues} ? (${immutableKey>@com.sap.vocabularies.Common.v1.ValueListWithFixedValues} === 'true') : true}"
+										>
+											<mdc:dialog>
+												<mdcv:Dialog />
+											</mdc:dialog>
+										</template:if>
+									</mdc:ValueHelp>
+								</mdc:dependents>
+							</template:then>
+						</template:if>
+					</mdc:Field>
+				</template:with>
+			</template:repeat>
+		</form:SimpleForm>
+	</template:with>
+</core:FragmentDefinition>

@@ -1,0 +1,114 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m"
+	template:require="{
+					CONTACT: 'sap/fe/macros/contact/ContactHelper'
+	}"
+>
+	<QuickViewGroup heading="{= CONTACT.getContactTitle(${contact>fn}) }">
+		<QuickViewGroupElement
+			label="{= CONTACT.computeLabel('title', ${contact>title}) }"
+			value="{contact>title@@MODEL.format}"
+			type="text"
+			visible="{= !!${contact>title}}"
+		/>
+		<QuickViewGroupElement
+			label="{= CONTACT.computeLabel('org', ${contact>org}) }"
+			value="{contact>org@@MODEL.format}"
+			type="text"
+			visible="{= !!${contact>org}}"
+		/>
+		<template:if test="{contact>tel}">
+			<template:with path="contact>tel" var="tels">
+				<template:repeat
+					list="{path:'tels>', filters: { path: 'type/$EnumMember', operator: 'EndsWith', value1: 'preferred'}}"
+					var="tel"
+				>
+					<QuickViewGroupElement
+						label="{= CONTACT.computeLabel('phone', ${tel>type/$EnumMember})}"
+						value="{tel>uri/@@MODEL.format}"
+						target="{= CONTACT.formatUri('phone', ${tel>uri/@@MODEL.format})}"
+						type="phone"
+					/>
+				</template:repeat>
+				<template:repeat
+					list="{path:'tels>', filters: { path: 'type/$EnumMember', operator: 'EndsWith', value1: 'work'}}"
+					var="tel"
+				>
+					<QuickViewGroupElement
+						label="{= CONTACT.computeLabel('phone', ${tel>type/$EnumMember})}"
+						value="{tel>uri/@@MODEL.format}"
+						target="{= CONTACT.formatUri('phone', ${tel>uri/@@MODEL.format})}"
+						type="phone"
+					/>
+				</template:repeat>
+				<template:repeat
+					list="{path:'tels>', filters: { path: 'type/$EnumMember', operator: 'EndsWith', value1: 'cell'}}"
+					var="tel"
+				>
+					<QuickViewGroupElement
+						label="{= CONTACT.computeLabel('phone', ${tel>type/$EnumMember})}"
+						value="{tel>uri/@@MODEL.format}"
+						target="{= CONTACT.formatUri('phone', ${tel>uri/@@MODEL.format})}"
+						type="phone"
+					/>
+				</template:repeat>
+				<template:repeat list="{path:'tels>', filters: { path: 'type/$EnumMember', operator: 'EndsWith', value1: 'fax'}}" var="tel">
+					<QuickViewGroupElement
+						label="{= CONTACT.computeLabel('phone', ${tel>type/$EnumMember})}"
+						value="{tel>uri/@@MODEL.format}"
+						target="{= CONTACT.formatUri('phone', ${tel>uri/@@MODEL.format})}"
+						type="phone"
+					/>
+				</template:repeat>
+			</template:with>
+		</template:if>
+		<template:if test="{contact>email}">
+			<template:with path="contact>email" var="emails">
+				<template:repeat
+					list="{path:'emails>', filters: { path: 'type/$EnumMember', operator: 'EndsWith', value1: 'preferred'}}"
+					var="mail"
+				>
+					<QuickViewGroupElement
+						label="{= CONTACT.computeLabel('mail', ${mail>type/$EnumMember})}"
+						value="{mail>address/@@MODEL.format}"
+						target="{= CONTACT.formatUri('mail', ${mail>address/@@MODEL.format})}"
+						type="email"
+					/>
+				</template:repeat>
+				<template:repeat
+					list="{path:'emails>', filters: { path: 'type/$EnumMember', operator: 'EndsWith', value1: 'work'}}"
+					var="mail"
+				>
+					<QuickViewGroupElement
+						label="{= CONTACT.computeLabel('mail', ${mail>type/$EnumMember})}"
+						value="{mail>address/@@MODEL.format}"
+						target="{= CONTACT.formatUri('mail', ${mail>address/@@MODEL.format})}"
+						type="email"
+					/>
+				</template:repeat>
+			</template:with>
+		</template:if>
+		<template:if test="{contact>adr}">
+			<template:with path="contact>adr" var="adrs">
+				<template:repeat list="{adrs>}" var="adr">
+					<template:if test="{adr>label}">
+						<template:then>
+							<QuickViewGroupElement
+								label="{= CONTACT.computeLabel('address', ${adr>type/$EnumMember})}"
+								value="{adr>label/@@MODEL.format}"
+							/>
+						</template:then>
+						<template:else>
+							<QuickViewGroupElement
+								label="{= CONTACT.computeLabel('address', ${adr>type/$EnumMember})}"
+								value="{= CONTACT.formatAddress(${adr>street/@@MODEL.format}, ${adr>code/@@MODEL.format}, ${adr>locality/@@MODEL.format}, ${adr>region/@@MODEL.format}, ${adr>country/@@MODEL.format})}"
+							/>
+						</template:else>
+					</template:if>
+				</template:repeat>
+			</template:with>
+		</template:if>
+	</QuickViewGroup>
+</core:FragmentDefinition>

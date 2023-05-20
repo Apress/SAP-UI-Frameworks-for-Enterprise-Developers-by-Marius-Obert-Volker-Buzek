@@ -1,0 +1,95 @@
+{
+
+    "OrderOfLoadingBlocks": [
+        "AfterCoreExtLight",
+        "FLPComponents",
+        "FLPPlugins",
+        "WarmUpPlugins"
+    ],
+    "LoadingBlocks": {
+        "AfterCoreExtLight": {
+            "LoadingSteps": [
+                {
+                    "LoadingStep": "StartScheduler",
+                    "canBeLoadedAsync": false
+                },
+                {
+                    "LoadingStep": "MessagePopoverInit",
+                    "canBeLoadedAsync": true
+                },
+                {
+                    "LoadingStep": "UsageAnalytics",
+                    "canBeLoadedAsync": true
+                },
+                {
+                    "LoadingStep": "MenuBar",
+                    "canBeLoadedAsync": true
+                }
+            ],
+            "maxWaitInMs": 0
+        },
+        "FLPComponents": {
+            "LoadingSteps": [
+                {
+                    "LoadingStep": "ConditionalWaitForAppLoading",
+                    "canBeLoadedAsync": false
+                },
+                {
+                    "LoadingStep": "PostLoadingHeaderEnhancement",
+                    "canBeLoadedAsync": true
+                },
+                {
+                    "LoadingStep": "TrackingActivitiesSetting",
+                    "canBeLoadedAsync": true
+                },
+                {
+                    "LoadingStep": "UserActionsMenu",
+                    "canBeLoadedAsync": false
+                },
+                {
+                    "LoadingStep": "UserImage",
+                    "canBeLoadedAsync": false
+                },
+                {
+                    "LoadingStep": "Notifications",
+                    "canBeLoadedAsync": false
+                },
+                {
+                    "LoadingStep": "Search",
+                    "canBeLoadedAsync": false
+                },
+                {
+                    "LoadingStep": "ProductSwitch",
+                    "canBeLoadedAsync": false
+                },
+                {
+                    "LoadingStep": "UserSettings",
+                    "canBeLoadedAsync": false
+                }
+            ],
+            "maxWaitInMs": 0
+        },
+        "FLPPlugins": {
+            "LoadingSteps": [
+                {
+                    "LoadingStep": "LoadPlugins",
+                    "canBeLoadedAsync": true
+                },
+                {
+                    "LoadingStep": "FirstSegmentCompleteLoaded",
+                    "canBeLoadedAsync": false
+                }
+            ],
+            "maxWaitInMs": 0
+        },
+        "WarmUpPlugins": {
+            "LoadingSteps": [
+                {
+                    "LoadingStep": "WarmupPlugins",
+                    "canBeLoadedAsync": true
+                }
+            ],
+            "maxWaitInMs": 0
+        }
+    }
+}

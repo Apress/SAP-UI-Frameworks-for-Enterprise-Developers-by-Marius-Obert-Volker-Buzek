@@ -1,0 +1,38 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns:unittest="http://schemas.sap.com/sapui5/preprocessorextension/sap.fe.unittesting/1"
+	xmlns:macrodata="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	xmlns="sap.m"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+	template:require="{
+		MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+		COMMON: 'sap/fe/macros/CommonHelper',
+		FORM: 'sap/fe/macros/form/FormHelper',
+		ID: 'sap/fe/core/helpers/StableIdHelper'
+	}"
+>
+	<template:with path="facet>Target/$AnnotationPath" var="annotationPath">
+		<f:FormContainer
+			id="{= ${this>id} ? ID.generate(['fe', 'FormContainer', ${facet>ID}]) : undefined }"
+			unittest:id="formCAddr"
+			binding="{= FORM.generateBindingExpression((MODEL.getNavigationPath(${facet>Target/$AnnotationPath}) ? MODEL.getNavigationPath(${facet>Target/$AnnotationPath}) : ''),${contextPath>./@com.sap.vocabularies.Common.v1.SemanticKey})}"
+			visible="{= ${facet>./@com.sap.vocabularies.UI.v1.Hidden/$Path} ? ('{= !${' + ${facet>./@com.sap.vocabularies.UI.v1.Hidden/$Path} + '} }') : true }"
+			macrodata:navigationPath="{= MODEL.getNavigationPath(${annotationPath>}) ? MODEL.getNavigationPath(${annotationPath>}) : ''}"
+			macrodata:etName="{contextPath>./@sapui.name}"
+		>
+			<template:if test="{= ${facet>@@MODEL.label} }">
+				<f:title>
+					<core:Title level="{this>titleLevel}" text="{= ${facet>@@MODEL.label} }" />
+				</f:title>
+			</template:if>
+			<f:formElements>
+				<f:FormElement id="{= ${this>id} ? ID.generate([${this>id}, 'FormElement', ${facet>ID}]) : undefined}">
+					<f:fields>
+						<Text text="{facet>Target/$AnnotationPath/label@@MODEL.format}" class="sapMITBFilterNeutral" />
+					</f:fields>
+				</f:FormElement>
+			</f:formElements>
+		</f:FormContainer>
+	</template:with>
+</core:FragmentDefinition>

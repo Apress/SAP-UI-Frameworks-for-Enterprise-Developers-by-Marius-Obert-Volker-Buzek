@@ -1,0 +1,220 @@
+/* ======================================================== */
+/* CSS for control "sap.ushell.ui.shell.ShellLayout" (base) */
+/* ======================================================== */
+
+#shellPage {
+	overflow: hidden;
+	#shellPage-cont {overflow: hidden !important;}
+}
+html #canvas.sapUshellContainer-Narrow-Right {
+	user-select: none;
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Chrome/Safari/Opera */
+	-khtml-user-select: none; /* Konqueror */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+#canvas.sapUshellContainerDocked {
+	 &.sapUshellContainer-Narrow-Right {
+		 .sapUshellShellCntnt  {
+			 right: @_sap_ushell_CoPilot_DockingWidth;
+		 }
+	 }
+	&.sapUshellContainer-Narrow-Left {
+		.sapUshellShellCntnt  {
+			left: @_sap_ushell_CoPilot_DockingWidth;
+		}
+	}
+}
+
+#shell-floatingContainer .sapUshellShellFloatingContainerSelector{
+	cursor: pointer;
+}
+
+.sapUshellFloatingContainer .top{
+	top:0;
+}
+
+@keyframes sapUshellMinimizeOverlayAnimation {
+	0%  {
+		transform: scale(1);
+		opacity: 1;
+	}
+	100% {
+		transform: scale(0.95);
+		opacity: 0;
+	}
+}
+
+@keyframes sapUshellMaxgOverlayAnimation {
+	0%  {
+		opacity: 0;
+		transform: scale(0.95);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+.sapUshellContainerDockedMinimizeCoPilot{
+	animation: sapUshellMinimizeOverlayAnimation ease-in-out 150ms 0ms 1 alternate forwards;
+	-webkit-animation: sapUshellMinimizeOverlayAnimation ease-in-out 150ms 0ms 1 alternate forwards;
+	-moz-animation : sapUshellMinimizeOverlayAnimation ease-in-out 150ms 0ms 1 alternate forwards;
+	-ms-animation : sapUshellMinimizeOverlayAnimation ease-in-out 150ms 0ms 1 alternate forwards;
+}
+
+.sapUshellContainerDockedExtendCoPilot{
+	animation: sapUshellMaxgOverlayAnimation ease-in-out 300ms 50ms 1 alternate forwards;
+	-webkit-animation :sapUshellMaxgOverlayAnimation ease-in-out 300ms 50ms 1 alternate forwards;
+	-moz-animation : sapUshellMaxgOverlayAnimation ease-in-out 300ms 50ms 1 alternate forwards;
+	-ms-animation : sapUshellMaxgOverlayAnimation ease-in-out 300ms 50ms 1 alternate forwards;
+
+}
+
+html #canvas.sapUshellContainer-Narrow-Left {
+	user-select: none;
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Chrome/Safari/Opera */
+	-khtml-user-select: none; /* Konqueror */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+
+.sapUshellShellFloatingContainerWrapper  .sapUshellShellFloatingContainerFullHeight{
+	 height: 100% !important;
+	 max-height: 100% !important;
+	overflow: hidden;
+	position: relative;
+ }
+
+.sapUshellMoveCanvasRight{
+	position: absolute;
+	right:26rem;
+	left:0;
+}
+
+.sapUshellMoveCanvasLeft{
+	position: absolute;
+	right:0;
+	left:26rem;
+}
+
+.sapUshellShellDisplayDockingAreaLeft{
+	width: @_sap_ushell_CoPilot_DockingWidth;
+	height: 100%;
+	background: fade(@sapUiDragAndDropBackground, 80);
+	opacity: 0.25;
+	position: absolute;
+	z-index: 99;
+	top: 0;
+	border:0.125rem solid @sapUiDragAndDropActiveBorderColor;
+}
+
+.sapUshellShellDisplayDockingAreaRight{
+	//margin-left: 78%;
+	right: 0;
+	height: 100%;
+	width: @_sap_ushell_CoPilot_DockingWidth;
+	background: fade(@sapUiDragAndDropBackground, 80);
+	opacity: 0.25;
+	position: absolute;
+	z-index: 99;
+	top: 0;
+	border:0.125rem solid @sapUiDragAndDropActiveBorderColor;
+}
+#ContentPage{
+	background: white;
+}
+
+.sapUshellSamlDialogHidden {
+	visibility: hidden !important;
+}
+
+#SAMLDialog #SAMLDialog-scrollCont {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+#SAMLDialogFrame {
+	min-height:100%;
+	width:100%;
+	position: absolute;
+}
+
+.sapUshellShellBG {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 0;
+}
+
+/* Basics */
+
+.sapUshellShellCntnt {
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	isolation: isolate; /* Fix for issue with stacking context in FF 47 used in Selenium tests */
+}
+
+.sapUshellShellFooterVisible > .sapUshellShellCntnt {
+	bottom: 3rem;
+}
+
+.sapUiSizeCompact .sapUshellShellFooterVisible > .sapUshellShellCntnt {
+	bottom: 2.5rem;
+}
+
+.sapUshellShellHidden {
+	display: none !important;
+}
+
+.sapUshellMenuBarHeight {
+	min-height: 2.75rem;
+	background-color: @sapUiShellColor;
+}
+
+/* Canvas */
+
+.sapUshellShellCanvas {
+	top: @_sap_ushell_ShellHeader_BarHeight;
+}
+
+.sapUshellShell.sapUshellShellNoHead > .sapUshellShellCanvas {
+	top: 0;
+}
+
+.sapUshellShell {
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+	.sapMBar.sapMPageHeader:before, .sapMShellBrandingBar {
+		display: none;
+	}
+}
+
+#shell.sapUshellShellShowSearchOverlay:after {
+	content: "";
+	display: block;
+	position: absolute;
+	left: 0;
+	right: 0;
+	background: fade(@sapUiBlockLayerBackground, 40);
+	opacity: 0.4;
+	top: @_sap_ushell_ShellHeader_BarHeight;
+	bottom: 0;
+	z-index: 2;
+}

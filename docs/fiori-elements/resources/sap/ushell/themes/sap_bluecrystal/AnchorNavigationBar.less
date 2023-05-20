@@ -1,0 +1,74 @@
+/* =============================================================================== */
+/* CSS for control "sap.ushell.ui.launchpad.AnchorNavigationBar" (sap_bluecrystal) */
+/* =============================================================================== */
+
+.sapUshellAnchorNavigationBar {
+  border-bottom: 0.125rem solid rgba(255, 255, 255, 0.5);
+}
+
+#anchorNavigationBar {
+  .sapUshellAnchorItemOverFlow button:focus > .sapMFocusable {
+    outline: 1px dotted @sapUiInvertedElement;
+  }
+
+  .sapMBtn:hover > .sapMBtnHoverable {
+    background-color: transparent;
+  }
+}
+
+.sapUshellAnchorRightOverFlowButton,
+.sapUshellAnchorLeftOverFlowButton {
+  opacity: 0.5;
+
+  .sapUiIcon {
+    color: @sapUiInvertedElement;
+  }
+
+  .sapMBtn:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+  }
+}
+
+.sapUshellAnchorItemOverFlow.sapUshellAnchorItemOverFlowPressed {
+  border: 0.0625rem solid @sapUiInvertedElement;
+  background-color: @sapUiHighlight;
+  color: @sapUiInvertedElement;
+  opacity: 1;
+}
+
+.sapUshellAnchorItemOverFlow.sapUshellAnchorItemOverFlow:hover {
+  border: 0.0625rem solid @sapUiInvertedElement;
+}
+
+.sapUshellAnchorItemOverFlow {
+  font-family: "SAP-icons";
+  font-size: 1rem;
+  color: @sapUiInvertedElement;
+  background-color: transparent;
+  opacity: 0.5;
+
+  button {
+    background-color: transparent;
+    border-style: none;
+  }
+
+  .sapUiIcon {
+    font-family: "SAP-icons";
+    font-size: 1rem;
+    color: @sapUiInvertedElement;
+    background-color: transparent;
+  }
+
+  .sapMBtnInner {
+    background-color: transparent;
+    background: transparent;
+  }
+}
+
+.sapUshellAnchorItemsPopover .sapUshellGroupLI.sapUshellAnchorPopoverItemSelected {
+  background-color: @sapUiNeutralBG;
+}
+
+.sapUshellAnchorItemsPopover .sapUshellGroupLI.sapUshellAnchorPopoverItemNonSelected {
+  background-color: @sapUiLightestBG;
+}

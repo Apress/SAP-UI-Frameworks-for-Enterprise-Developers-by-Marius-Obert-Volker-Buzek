@@ -1,0 +1,91 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns:unittest="http://schemas.sap.com/sapui5/preprocessorextension/sap.fe.unittesting/1"
+	xmlns:macrodata="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	xmlns:core="sap.ui.core"
+	xmlns:controls="sap.fe.macros.controls"
+	xmlns="sap.m"
+	template:require="{
+				FIELD: 'sap/fe/macros/field/FieldHelper',
+				FieldTemplating: 'sap/fe/macros/field/FieldTemplating',
+				MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+				UI: 'sap/fe/core/templating/UIFormatters'
+				}"
+>
+	<template:if test="{dataField>}">
+		<VBox class="sapUiTinyMarginTopBottom">
+			<template:if test="{= ${dataField>IconUrl@@MODEL.value} !== undefined }">
+				<template:then>
+					<controls:ConditionalWrapper
+						core:require="{FieldRuntime: 'sap/fe/macros/field/FieldRuntime'}"
+						condition="{= FIELD.checkPrimaryActions(${semantic>}, false, ${viewData>/appComponent}) }"
+					>
+						<controls:contentTrue>
+							<controls:CustomQuickViewPage
+								unittest:id="CustomQuickViewPageIconUrlTest"
+								icon="{dataField>IconUrl@@MODEL.value}"
+								fallbackIcon="sap-icon://product"
+								title="{= FieldTemplating.getTextBinding(${dataField>Value@@UI.getDataModelObjectPath})}"
+								macrodata:titleLink="{= FIELD.getPrimaryAction(${semantic>}) }"
+								description="{= (${dataField>Label}) ? ${dataField>Label} : ${dataField>Value/$Path@com.sap.vocabularies.Common.v1.Label} }"
+							/>
+						</controls:contentTrue>
+						<controls:contentFalse>
+							<controls:CustomQuickViewPage
+								unittest:id="CustomQuickViewPageIconUrlTestNoLinkTitle"
+								icon="{dataField>IconUrl@@MODEL.value}"
+								fallbackIcon="sap-icon://product"
+								title="{= FieldTemplating.getTextBinding(${dataField>Value@@UI.getDataModelObjectPath})}"
+								description="{= (${dataField>Label}) ? ${dataField>Label} : ${dataField>Value/$Path@com.sap.vocabularies.Common.v1.Label} }"
+							/>
+						</controls:contentFalse>
+					</controls:ConditionalWrapper>
+				</template:then>
+				<template:elseif test="{= ${dataField>Value@@MODEL.value} !== undefined}">
+					<controls:ConditionalWrapper
+						core:require="{FieldRuntime: 'sap/fe/macros/field/FieldRuntime'}"
+						condition="{= FIELD.checkPrimaryActions(${semantic>}, false, ${viewData>/appComponent}) }"
+					>
+						<controls:contentTrue>
+							<controls:CustomQuickViewPage
+								unittest:id="CustomQuickViewPageTest"
+								title="{= FieldTemplating.getTextBinding(${dataField>Value@@UI.getDataModelObjectPath})}"
+								macrodata:titleLink="{= FIELD.getPrimaryAction(${semantic>}) }"
+								description="{= (${dataField>Label}) ? ${dataField>Label} : ${dataField>Value/$Path@com.sap.vocabularies.Common.v1.Label} }"
+							/>
+						</controls:contentTrue>
+						<controls:contentFalse>
+							<controls:CustomQuickViewPage
+								unittest:id="CustomQuickViewPageTestNoLinkTitle"
+								title="{= FieldTemplating.getTextBinding(${dataField>Value@@UI.getDataModelObjectPath})}"
+								description="{= (${dataField>Label}) ? ${dataField>Label} : ${dataField>Value/$Path@com.sap.vocabularies.Common.v1.Label} }"
+							/>
+						</controls:contentFalse>
+					</controls:ConditionalWrapper>
+				</template:elseif>
+				<template:else>
+					<controls:ConditionalWrapper
+						core:require="{FieldRuntime: 'sap/fe/macros/field/FieldRuntime'}"
+						condition="{= FIELD.checkPrimaryActions(${semantic>}, false, ${viewData>/appComponent}) }"
+					>
+						<controls:contentTrue>
+							<controls:CustomQuickViewPage
+								unittest:id="CustomQuickViewNoFieldValuePageTest"
+								title="{dataField>@@MODEL.format}"
+								macrodata:titleLink="{= FIELD.getPrimaryAction(${semantic>}) }"
+								description="{= (${dataField>Label}) ? ${dataField>Label} : ${dataField>Value/$Path@com.sap.vocabularies.Common.v1.Label} }"
+							/>
+						</controls:contentTrue>
+						<controls:contentFalse>
+							<controls:CustomQuickViewPage
+								unittest:id="CustomQuickViewNoFieldValuePageTestNoLinkTitle"
+								title="{dataField>@@MODEL.format}"
+								description="{= (${dataField>Label}) ? ${dataField>Label} : ${dataField>Value/$Path@com.sap.vocabularies.Common.v1.Label} }"
+							/>
+						</controls:contentFalse>
+					</controls:ConditionalWrapper>
+				</template:else>
+			</template:if>
+		</VBox>
+	</template:if>
+</core:FragmentDefinition>

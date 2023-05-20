@@ -1,0 +1,86 @@
+/* ==================================================================== */
+/* CSS for control "sap.ushell.ui.launchpad.AnchorNavigationBar" (base) */
+/* ==================================================================== */
+
+.sapUshellAnchorNavigationBar {
+  height: 3rem;
+  box-sizing: border-box;
+
+  &.sapMPageHeader::before {
+    border-top: none;
+  }
+}
+
+.sapUiMedia-StdExt-Phone .sapUshellAnchorNavigationBar { padding: 0 1rem; }
+.sapUiMedia-StdExt-Tablet .sapUshellAnchorNavigationBar,
+.sapUiMedia-StdExt-Desktop .sapUshellAnchorNavigationBar { padding: 0 2rem; }
+.sapUiMedia-StdExt-LargeDesktop .sapUshellAnchorNavigationBar { padding: 0 3rem; }
+
+.sapUshellAnchorNavigationBarInner {
+  position: relative;
+  display: flex;
+  height: 100%;
+  color: @sapUiShellTextColor;
+}
+
+.sapUshellAnchorNavigationBarItems {
+  display: inline-block;
+  white-space: nowrap;
+  width: 100%;
+  overflow: hidden;
+  height: 100%;
+}
+
+.sap-tablet .sapUshellAnchorNavigationBarItemsScroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  height: 100%;
+  width: 100%;
+  padding-bottom: 1.5rem;
+}
+
+.sapUshellAnchorNavigationBarItemsScroll {
+  outline: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sapUshellAnchorNavigationBarItemsScroll {
+  outline: none;
+  padding: 0;
+}
+
+.sapUshellAnchorNavigationBar .sapUshellAnchorNavigationBarInner .sapMBtn {
+  height: 100%; // fixed height for all form factors
+}
+
+.sapUshellTabBarOverflowButton {
+  visibility: visible !important;
+}
+
+.sap-desktop {
+  .sapUshellAnchorRightOverFlowButton {
+    visibility: visible;
+  }
+  .sapUshellAnchorLeftOverFlowButton {
+    visibility: visible;
+  }
+}
+
+.sap-tablet {
+  .sapUshellAnchorRightOverFlowButton, .sapUshellAnchorLeftOverFlowButton {
+    visibility: visible;
+  }
+}
+
+.sapUshellAnchorNavigationBarInvisible {
+  display: none;
+}
+
+// TODO: refactor and remove !important
+#sapUshellAnchorBarOverflowPopover{
+  top: 5.85rem !important;
+}
+#sapUshellAnchorBarOverflowPopover-cont{
+  height: 100% !important;
+}

@@ -1,0 +1,20 @@
+.sapUiCEPCatPag .sapMBtnDisabled.sapUiCEPCatPagNumber {
+  opacity: 1 !important;
+}
+.sapUiCEPCatPag .sapMBtn:hover .sapMBtnDefault {
+  border-color: transparent !important;
+  box-shadow: unset !important;
+}
+.sapUiCEPCatPag .sapMBtn .sapMBtnDefault {
+  background-color: transparent !important;
+  border-color: transparent;
+  font-family:inherit !important;
+}
+.sapUiCEPCatPag .sapMBtnDisabled .sapMBtnDefault {
+  color: var(--sapUiBaseText) !important;
+  font-weight: bold;
+  border-color: transparent;
+}
+.sapUiCEPCatPag .sapMBtnDefault, .sapUiCEPCatPag .sapMBtn:not(.sapMBtnDisabled) .sapUiIcon {
+  color: var(--sapUiLinkActiveColor) !important;
+}

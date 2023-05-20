@@ -1,0 +1,68 @@
+/* ======================================================================= */
+/* CSS for sap.suite.ui.commons/ProcessFlowConnectionLabel.control         */
+/* Base Theme                                                              */
+/* ======================================================================= */
+
+.sapSuiteUiCommonsProcessFlowConnectionLabel.sapMBtn {
+	position: absolute;
+	margin-top: -0.95rem;
+	z-index: 4;
+	right: 0.5rem;
+	height: 2rem;
+}
+
+.sapSuiteUiCommonsProcessFlowConnectionLabel.sapMBtn > .sapMBtnInner {
+	font-size: @sapMFontMediumSize;
+	height: 1.5rem;
+	text-shadow: none;
+	font-family: @sapUiFontFamily;
+	font-weight: normal;
+	padding: 0rem 0.2rem 0rem 0.2rem;
+	min-width: 2rem;
+	border-radius: 0.19rem;
+}
+
+.sapSuiteUiCommonsProcessFlowConnectionLabel.sapMBtn > .sapMBtnInner > .sapMBtnContent {
+	line-height: 1.5rem;
+}
+
+.sapSuiteUiCommonsProcessFlowConnectionLabel.sapMBtn > .sapMBtnInner.sapMBtnIconFirst {
+	padding-left: 1.35rem;
+}
+
+.sapSuiteUiCommonsProcessFlowConnectionLabel.sapMBtn > .sapMBtnInner > .sapMBtnIcon {
+	line-height: 1.35rem;
+	font-size: 1rem;
+}
+
+/* Corrects the vertical alignment of Icon in IE */
+html[data-sap-ui-browser^="ie"] .sapSuiteUiCommonsProcessFlowConnectionLabel.sapMBtn > .sapMBtnInner > .sapMBtnIcon {
+	line-height: 1.4rem;
+}
+
+/* Centers icon if icon only (without text) is used */
+.sapSuiteUiCommonsProcessFlowConnectionLabel.sapMBtn > .sapMBtnInner:not(.sapMBtnText) > .sapMBtnIcon {
+	width: 100%;
+}
+
+/* Centers icon for compact mode if icon only (without text) is used */
+.sapUiSizeCompact .sapSuiteUiCommonsProcessFlowConnectionLabel.sapMBtn > .sapMBtnInner:not(.sapMBtnText) > .sapMBtnIcon {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+/* Adds distance on the right and left if icon and text is used */
+.sapSuiteUiCommonsProcessFlowConnectionLabel.sapMBtn > .sapMBtnInner.sapMBtnText > .sapMBtnIcon {
+	width: 1rem;
+	margin-left: 0.2rem;
+	margin-right: 0.2rem;
+}
+
+/* Disabled */
+.sapSuiteUiCommonsProcessFlowConnectionLabel.sapMBtnDisabled {
+	opacity: 1;
+}
+.sapSuiteUiCommonsProcessFlowConnectionLabel.sapMBtnDisabled > .sapMBtnInner > .sapMBtnContent,
+.sapSuiteUiCommonsProcessFlowConnectionLabel.sapMBtnDisabled > .sapMBtnInner > .sapMBtnIcon {
+	opacity: 0.5;
+}

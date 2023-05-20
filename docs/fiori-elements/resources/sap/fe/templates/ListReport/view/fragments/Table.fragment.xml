@@ -1,0 +1,25 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:macro="sap.fe.macros.internal"
+	xmlns:core="sap.ui.core"
+	xmlns:unittest="http://schemas.sap.com/sapui5/preprocessorextension/sap.fe.unittesting/1"
+>
+	<macro:Table
+		unittest:id="TablePropertyExpressionTest"
+		metaPath="{presentationContext>annotationPath}"
+		tableDefinition="{visualizationDefinition>}"
+		contextPath="{fullContextPath>}"
+		filterBarId="{= ${converterContext>filterBarId} ? ${converterContext>filterBarId} : undefined}"
+		noDataText="{= ${sap.fe.i18n>T_TABLE_AND_CHART_NO_DATA_TEXT} }"
+		busy="{ui>/busy}"
+		variantSelected=".handlers.onVariantSelected"
+		variantSaved=".handlers.onVariantSaved"
+		isAlp="{converterContext>hasMultiVisualizations}"
+		onSegmentedButtonPressed="{= ${converterContext>hasMultiVisualizations} ? '.handlers.onSegmentedButtonPressed' : undefined }"
+		visible="{= ${converterContext>hasMultiVisualizations} ? '{= ${pageInternal>alpContentView} !== \'Chart\'}' : 'true' }"
+		tabTitle="{view>title}"
+		headerLevel="H2"
+		fieldMode="nowrapper"
+		stateChange=".handlers.onStateChange"
+	/>
+</core:FragmentDefinition>

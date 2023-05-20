@@ -1,0 +1,152 @@
+/* ==================================================== */
+/* CSS for control "sap.ushell.ui.tile.TileBase" (base) */
+/* ==================================================== */
+
+@_sap_ushell_TileBase_TextHighlightBgColor: @sapUiWarningBG; /* highlights for found search terms */
+
+@_sap_ushell_TileBase_TitleFontFamily: @sapUiFontFamily;
+@_sap_ushell_TileBase_FontWeight: normal;
+
+@_sap_ushell_TileBase_SubtitleFontFamily: @sapUiFontFamily;
+@_sap_ushell_TileBase_SubtitleFontWeight: normal;
+
+@_sap_ushell_TileBase_TitleFontSizeDesktop: 1rem;
+@_sap_ushell_TileBase_TitleLineHeightDesktop: 1.25rem;
+@_sap_ushell_TileBase_TitleMaxHeightDesktop: 2.4rem; /* fix ie bug - cut line */
+
+@_sap_ushell_TileBase_TitleFontSizePhone: 0.875rem;
+@_sap_ushell_TileBase_TitleLineHeightPhone: 1.25rem;
+
+@_sap_ushell_TileBase_SubtitleFontSizeDesktop: 0.875rem;
+@_sap_ushell_TileBase_SubtitleLineHeightDesktop: 1.375rem;
+
+@_sap_ushell_TileBase_SubtitleFontSizePhone: 0.75rem;
+@_sap_ushell_TileBase_SubtitleLineHeightPhone: 1.125rem;
+
+@_sap_ushell_TileBase_BottomLineFontFamily: @sapUiFontFamily;
+@_sap_ushell_TileBase_BottomLineFontWeight: normal;
+
+@_sap_ushell_TileBase_BottomLineFontSizeDesktop: 0.875rem;
+@_sap_ushell_TileBase_BottomLineLineHeightDesktop: 1.38rem;
+@_sap_ushell_TileBase_BottomLineBottomDesktop: 0.125rem;
+
+@_sap_ushell_TileBase_BottomLineFontSizePhone: 0.75rem;
+@_sap_ushell_TileBase_BottomLineLineHeightPhone: 1.13rem;
+@_sap_ushell_TileBase_BottomLineBottomPhone: 0.31rem;
+
+@_sap_ushell_TileBase_IconBottomDesktop: 2rem;
+@_sap_ushell_TileBase_IconFontSizeDesktop: 2.25rem;
+
+@_sap_ushell_TileBase_IconBottomPhone: 1.81rem;
+@_sap_ushell_TileBase_IconFontSizePhone: 1.5rem;
+
+@_sap_ushell_TileBase_PaddingDesktopHorizontal: 0.5rem;
+@_sap_ushell_TileBase_PaddingDesktopVertical: 0.5rem;
+
+@_sap_ushell_TileBase_PaddingPhoneHorizontal: 0.375rem;
+@_sap_ushell_TileBase_PaddingPhoneVertical: 0.625rem;
+
+.sapUshellTileBase {
+  border: 1px solid @sapUiTileBorderColor;
+  background: @sapUiTileBackground;
+  box-shadow: @sapUiShadowLevel0;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+
+  .sapUshellTileBaseHeader {
+    pointer-events: none;
+  }
+
+  .sapUshellTileBaseTitle,
+  .sapUshellTileBaseSubtitle {
+    padding: 0;
+    margin: 0;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  .sapUshellTileBaseTitle {
+    word-wrap: break-word;
+  }
+
+  .sapUshellTileBaseSubtitle {
+    white-space: nowrap;
+    word-wrap: normal;
+  }
+
+  .sapUshellTileBaseIcon {
+    pointer-events: none;
+    position: absolute;
+    left: auto !important;
+    cursor: pointer;
+  }
+
+  .sapUshellTileBaseInfo {
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    bottom: 0.25rem;
+    width: 94%;
+    position: absolute;
+    pointer-events: none;
+  }
+}
+
+.sapUiMedia-Std-Phone .sapUshellTileBase {
+  margin: 0;
+  padding: @_sap_ushell_TileBase_PaddingPhoneHorizontal @_sap_ushell_TileBase_PaddingPhoneVertical;
+
+  .sapUshellTileBaseTitle {
+    line-height: @_sap_ushell_TileBase_TitleLineHeightPhone;
+    max-height: @_sap_ushell_TileBase_TitleLineHeightPhone * 2;
+  }
+
+  .sapUshellTileBaseSubtitle {
+    line-height: @_sap_ushell_TileBase_SubtitleLineHeightPhone;
+  }
+
+  .sapUshellTileBaseIcon {
+    bottom: @_sap_ushell_TileBase_IconBottomPhone;
+  }
+
+  .sapUshellTileBaseInfo {
+    bottom: @_sap_ushell_TileBase_BottomLineBottomPhone;
+    line-height: @_sap_ushell_TileBase_BottomLineLineHeightPhone;
+    text-align: right;
+    right: @_sap_ushell_TileBase_PaddingPhoneHorizontal;
+  }
+}
+
+.sapUiMedia-Std-Tablet,
+.sapUiMedia-Std-Desktop {
+  .sapUshellTileBase {
+    margin: 0;
+    padding: @_sap_ushell_TileBase_PaddingDesktopHorizontal @_sap_ushell_TileBase_PaddingDesktopVertical;
+
+    .sapUshellTileBaseTitle {
+      line-height: 1.15;
+      max-height: @_sap_ushell_TileBase_TitleMaxHeightDesktop;
+      padding-bottom: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+
+    .sapUshellTileBaseIcon {
+      bottom: @_sap_ushell_TileBase_IconBottomDesktop;
+    }
+
+    .sapUshellTileBaseInfo {
+      bottom: @_sap_ushell_TileBase_BottomLineBottomDesktop;
+      line-height: @_sap_ushell_TileBase_BottomLineLineHeightDesktop;
+      text-align: right;
+      right: @_sap_ushell_TileBase_PaddingDesktopHorizontal
+    }
+  }
+}

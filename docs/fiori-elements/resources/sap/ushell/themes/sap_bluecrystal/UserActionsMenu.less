@@ -1,0 +1,26 @@
+/* BLUECRYSTAL */
+
+/* =============================================================== */
+/* Styles for the "ME area"                              */
+/* =============================================================== */
+
+.sapUshellLogoutButton {
+  color: fade(@sapUiInvertedElement, 50);
+  background-color: transparent;
+
+  &:hover {
+    background-color: fade(@sapUiInvertedElement, 30);
+    color: @sapUiInvertedElement;
+
+    span.sapUiIcon {
+      color: @sapUiInvertedElement;
+    }
+  }
+}
+.sapUshellLogoutButton div {
+  font-size: 1rem;
+}
+.sapUshellLogoutButton span.sapUiIcon {
+  color: fade(@sapUiInvertedElement, 50);
+  font-size: 0.75rem;
+}

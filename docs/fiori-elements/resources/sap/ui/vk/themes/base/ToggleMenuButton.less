@@ -1,0 +1,122 @@
+.sapUiVkTMB {
+	display: inline-block;
+	position: relative;
+	vertical-align: top;
+}
+
+.sapUiVkTMBInner {
+	height: 2.25rem;
+	border-radius: @sapUiButtonBorderCornerRadius;
+	.sapMBtn {
+		height: 2.25rem;
+		padding: 0;
+	}
+}
+
+.sapUiSizeCompact .sapUiVkTMBInner {
+	height: 1.625rem;
+	.sapMBtn {
+		height: 1.625rem;
+		padding: 0;
+	}
+}
+
+.sapUiVkTMB .sapUiVkTMBInner .sapUiVkTMBText .sapMBtnInner {
+	margin-right: 2rem;
+}
+
+.sapUiVkTMB .sapUiVkTMBArrow {
+	position: absolute;
+	top: 0;
+	right: 0;
+
+	.sapMBtnInner {
+		width: 2rem;
+		min-width: 2rem;
+	}
+}
+
+.sapUiVkTMB .sapUiVkTMBArrow .sapMBtnIcon {
+	font-size: 0.75rem;
+	line-height: 2.25rem;
+}
+
+.sapUiSizeCompact .sapUiVkTMB .sapUiVkTMBArrow .sapMBtnIcon {
+	line-height: 1.625rem;
+}
+
+.sapUiVkTMB .sapUiVkTMBText .sapMBtnInner {
+	text-align: left;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.sapUiVkTMB.sapMBtnTransparent .sapUiVkTMBText:hover .sapMBtnInner {
+	border-right-width: 0.0625rem;
+	padding-right: 0.5rem;
+}
+
+.sapMTB-Transparent-CTX .sapUiVkTMB .sapUiVkTMBText:hover .sapMBtnDefault.sapMBtnInner {
+	border-right-width: 0.0625rem;
+	padding-right: 0.5rem;
+}
+
+.sapUiVkTMB .sapUiVkTMBArrow .sapMBtnInner {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+.sapUiVkTMB:focus {
+	outline: none;
+}
+
+.sapUiVkTMB:focus .sapUiVkTMBInner::after {
+	content: '';
+	pointer-events: none;
+	position: absolute;
+}
+
+.sapUiSizeCompact {
+	.sapUiVkTMB .sapUiVkTMBInner .sapUiVkTMBText  .sapMBtnInner {
+		margin-right: 2rem;
+	}
+
+	.sapUiVkTMB .sapUiVkTMBInner .sapUiVkTMBArrow .sapMBtnIconFirst {
+		padding-left: 0;
+		padding-right: 0;
+	}
+	.sapMTB-Transparent-CTX .sapUiVkTMB .sapUiVkTMBText:hover .sapMBtnDefault.sapMBtnInner {
+		padding-right: 0.375rem;
+	}
+}
+
+.sapUiVkTMB:focus .sapUiVkTMBInner:not(.sapUiVkTMBInnerDisabled)::after {
+	top: 0.125rem;
+	bottom: 0.125rem;
+	left: 0.125rem;
+	right: 0.125rem;
+	border: 1px dotted @sapUiContentFocusColor;
+	border-radius: 0.125rem;
+}
+
+.sapUiSizeCompact {
+	.sapUiVkTMB:focus .sapUiVkTMBInner:not(.sapUiVkTMBInnerDisabled)::after {
+		top: 0.25rem;
+		bottom: 0.25rem;
+	}
+}
+
+// .sapUiVkTMB .sapUiVkTMBArrow .sapMBtnInner {
+// 	width: 2rem;
+// 	min-width: 2rem;
+// }
+
+/* ---------------------------------------------------------------------*/
+/* Disabled, hover and active states:                                   */
+/* ---------------------------------------------------------------------*/
+
+.sapUiVkTMBInner:hover:not(.sapMBtnInnerDisabled) {
+	background-image: none;
+	background-color: @sapUiButtonHoverBackground;
+	border-color: @sapUiButtonHoverBorderColor;
+}

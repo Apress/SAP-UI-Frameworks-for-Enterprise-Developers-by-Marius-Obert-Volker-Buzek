@@ -1,0 +1,5 @@
+/*!
+ * SAP UI development toolkit for HTML5 (SAPUI5)
+ *      (c) Copyright 2009-2023 SAP SE. All rights reserved
+ */
+sap.ui.define(["sap/fe/core/library","sap/fe/macros/filter/type/MultiValue","sap/fe/macros/filter/type/Range","sap/fe/macros/macroLibrary","sap/ui/core/Core","sap/ui/core/Fragment","sap/ui/core/library","sap/ui/core/XMLTemplateProcessor","sap/ui/mdc/field/ConditionsType","sap/ui/mdc/library","sap/ui/unified/library"],function(e,a,r,i,n,o,s,t,p,c,l){"use strict";var u={};const f="sap.fe.macros";u.macrosNamespace=f;const y=n.initLibrary({name:"sap.fe.macros",dependencies:["sap.ui.core","sap.ui.mdc","sap.ui.unified","sap.fe.core"],types:["sap.fe.macros.NavigationType"],interfaces:[],controls:[],elements:[],version:"1.113.0",noLibraryCSS:true});y.NavigationType={External:"External",InPage:"InPage",None:"None"};o.registerType("CUSTOM",{load:o.getType("XML").load,init:function(e){e.containingView={oController:e.containingView.getController()&&e.containingView.getController().getExtensionAPI(e.id)};for(var a=arguments.length,r=new Array(a>1?a-1:0),i=1;i<a;i++){r[i-1]=arguments[i]}return o.getType("XML").init.apply(this,[e,r])}});return y},false);

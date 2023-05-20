@@ -1,0 +1,6 @@
+/*!
+ * OpenUI5
+ * (c) Copyright 2009-2023 SAP SE or an SAP affiliate company.
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ */
+sap.ui.define(["sap/ui/dom/includeStylesheet","sap/base/util/uid"],function(e,n){"use strict";var r="SUCCESS";var t="FAIL";var i="PENDING";var s={};function u(u){var o={id:n(),status:i,counter:1};var c=new Promise(function(n,r){e(u,o.id,n,r)}).then(function(){var e=s[u];if(e.counter===0){a(u)}else{v(u,r)}}).catch(function(){v(u,t);return Promise.reject("File not found or some other network issue happened.")});o.promise=c;s=Object.assign({},s);s[u]=o;return o.promise}function a(e){var n=Object.assign({},s);var r=n[e];var t=document.getElementById(r.id);if(t&&t.parentNode){t.parentNode.removeChild(t)}delete n[e];s=n}function o(e){var n={};n[e]=Object.assign({},s[e]);n[e].counter++;s=Object.assign({},s,n);return s[e]}function c(e){var n={};n[e]=Object.assign({},s[e]);n[e].counter--;s=Object.assign({},s,n);return s[e]}function v(e,n){var r={};r[e]=Object.assign({},s[e]);r[e].status=n;s=Object.assign({},s,r);return s[e]}function f(e){return sap.ui.require.toUrl(e)+".css"}return{add:function(e){var n=f(e);var r=s[n];if(r){o(n);return r.promise}return u(n)},remove:function(e){var n=f(e);var t=s[n];if(t){var i=c(n);if(i.counter===0&&i.status===r){a(n)}}}}});

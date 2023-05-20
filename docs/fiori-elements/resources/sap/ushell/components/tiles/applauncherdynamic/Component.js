@@ -1,0 +1,2 @@
+// Copyright (c) 2009-2023 SAP SE, All Rights Reserved
+sap.ui.define(["sap/ui/core/mvc/View","sap/ui/core/UIComponent"],function(e,n){"use strict";return n.extend("sap.ushell.components.tiles.applauncherdynamic",{metadata:{interfaces:["sap.ui.core.IAsyncContentCreation"]},createContent:function(){var n=this.getComponentData();return e.create({viewName:"module:sap/ushell/components/tiles/applauncherdynamic/DynamicTileTmp.view",viewData:n})}})});

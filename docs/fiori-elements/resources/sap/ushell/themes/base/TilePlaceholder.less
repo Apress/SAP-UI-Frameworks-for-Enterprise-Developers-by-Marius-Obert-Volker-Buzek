@@ -1,0 +1,75 @@
+/* ===================================================== */
+/* CSS for control "sap.ushell.ui.launchpad.Tile" (base) */
+/* ===================================================== */
+
+.sapUshellLineModeContainer .sapUshellLinkTile-placeholder::after {
+  content: " ";
+  background-color: fade(@sapUiShellHoverBackground, 12);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: 3px;
+  border-radius: 3.2px
+}
+
+.sapUshellLineModeContainer {
+	.sapMGTLineMode {
+	  margin-right: @_sap_ushell_Tile_Spacing ;
+	}
+}
+
+.sapUshellSectionCompactArea {
+	.sapMGTLineMode {
+	  margin-right: @_sap_ushell_Tile_Spacing ;
+    margin-bottom: @_sap_ushell_Tile_Spacing ;
+	}
+}
+
+#sapUshellLinkDropMarkerDot::before {
+  position: absolute;
+  top: 0px;
+  height: 8px;
+  width: 8px;
+  border-radius: 4px;
+  background-color: @sapUiDragAndDropActiveBorderColor;
+  content: "";
+}
+
+#sapUshellLinkDropMarkerDot::after {
+  position: absolute;
+  margin-left: 2px;
+  height: 4px;
+  width: 4px;
+  border-radius: 2px;
+  top: 2px;
+  background-color: @sapUiDragAndDropBackground;
+  content: "";
+}
+
+#sapUshellLinkDropMarkerLine {
+  background-color: @sapUiDragAndDropActiveBorderColor;
+  height: 1.5rem;
+  width: 2px;
+  margin-left: 3px
+}
+
+#sapUshellLinkDropMarker {
+  position: absolute;
+}
+
+.sapUshellInner {
+  .sapUshellTile-placeholder,
+  .sapUshellLinkTile-placeholder {
+    float: left !important;
+    margin: 0 @_sap_ushell_Tile_Spacing @_sap_ushell_Tile_Spacing 0 !important;
+    border: 2px dashed fade(@sapUiShellTextColor, 50%) !important;
+    background-color: transparent !important;
+    box-shadow: @sapUiShadowLevel0;
+
+    > * {
+      display: none !important;
+    }
+  }
+}

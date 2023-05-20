@@ -1,0 +1,6 @@
+/*!
+ * OpenUI5
+ * (c) Copyright 2009-2023 SAP SE or an SAP affiliate company.
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ */
+sap.ui.define(["./ComboBoxRenderer","sap/ui/core/Renderer","sap/ui/core/library"],function(e,t,i){"use strict";var r=i.ValueState;var n=t.extend(e);n.renderOuterContentBefore=function(e,t){this.renderExpander(e,t)};n.renderOuterContent=function(e,t){this.renderSelectBox(e,t,"0");if(t.getDisplaySecondaryValues()){e.write('<span id="'+t.getId()+'-SecVal" style="display: none;"></span>')}};n.renderTextFieldEnabled=function(e,t){if(t.mobile){e.writeAttribute("tabindex","-1")}else if(!t.getEnabled()){e.writeAttribute("disabled","disabled");e.writeAttribute("tabindex","-1")}else if(!t.getEditable()){e.writeAttribute("tabindex","0")}else{e.writeAttribute("tabindex","0")}};n.renderARIAInfo=function(e,t){var i=-1;if(t.getSelectedItemId()){for(var n=0;n<t.getItems().length;n++){var a=t.getItems()[n];if(a.getId()==t.getSelectedItemId()){i=n+1;break}}}var d={autocomplete:"list",live:"polite",setsize:t.getItems().length,posinset:i>=0?i:undefined};if(t.getValueState()==r.Error){d["invalid"]=true}if(t.getDisplaySecondaryValues()){d["describedby"]={value:t.getId()+"-SecVal",append:true}}e.writeAccessibilityState(t,d)};return n},true);

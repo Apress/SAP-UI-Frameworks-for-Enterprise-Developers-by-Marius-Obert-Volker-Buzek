@@ -1,0 +1,24 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns:mdcTable="sap.ui.mdc.table"
+	xmlns:core="sap.ui.core"
+	xmlns:fpm="sap.fe.macros.fpm"
+	template:require="{
+		TABLE: 'sap/fe/macros/table/TableHelper',
+		ID: 'sap/fe/core/helpers/StableIdHelper'
+	}"
+>
+	<mdcTable:Column
+		id="{= ID.generate([${this>id}, 'C', ${column>id}]) }"
+		dataProperty="{column>name}"
+		width="{column>width}"
+		importance="{column>importance}"
+		header="{column>header}"
+		hAlign="{column>horizontalAlign}"
+	>
+		<!-- tbd. Note: passing in custom Data: customData:customProperties="{column>editor/properties}" -->
+		<mdcTable:template>
+			<fpm:CustomFragment id="{column>key}" fragmentName="{column>template}" contextPath="{targetCollection>}" />
+		</mdcTable:template>
+	</mdcTable:Column>
+</core:FragmentDefinition>

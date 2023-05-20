@@ -1,0 +1,68 @@
+.sapUshellDynamicTile {
+    /* Colors for displaying dynamic tile contents (esp. large numbers, arrows, text)
+    note: these values are different than the ones specified in TileBase */
+    .sapUshellDynamicTileData {
+        &.sapUshellDynamicTileDataNegative {
+             color: @sapUiHcNegativeColor;
+        .sapUshellDynamicTileDataUp {border-bottom-color: @sapUiHcNegativeColor; }
+        .sapUshellDynamicTileDataDown {border-top-color: @sapUiHcNegativeColor; }
+        }
+
+        &.sapUshellDynamicTileDataNeutral {
+             color: @sapUiHcNeutralColor;
+        .sapUshellDynamicTileDataUp {border-bottom-color: @sapUiHcNeutralColor; }
+        .sapUshellDynamicTileDataDown {border-top-color: @sapUiHcNeutralColor; }
+        }
+
+        &.sapUshellDynamicTileDataPositive {
+             color: @sapUiHcPositiveColor;
+        .sapUshellDynamicTileDataUp { border-bottom-color: @sapUiHcPositiveColor; }
+        .sapUshellDynamicTileDataDown { border-top-color: @sapUiHcPositiveColor; }
+        }
+
+        &.sapUshellDynamicTileDataCritical {
+             color: @sapUiHcCriticalColor;
+        .sapUshellDynamicTileDataUp { border-bottom-color: @sapUiHcCriticalColor; }
+        .sapUshellDynamicTileDataDown { border-top-color: @sapUiHcCriticalColor; }
+        }
+    }
+}
+
+.sapUiMedia-Std-Desktop, .sapUiMedia-Std-Tablet {
+  .sapUshellDynamicTile{
+
+    /* the number */
+    .sapUshellDynamicTileNumber {
+      font-size: @_sap_ushell_DynamicTile_NumberFontSizeDesktop;
+      font-weight: normal;
+    }
+    /* the scaling factor for the number */
+    .sapUshellDynamicTileNumberFactor {
+      font-weight: normal;
+      font-size: @_sap_ushell_DynamicTile_NumberFactorFontSizeDesktop;
+    }
+  }
+
+  .sapUshellDynamicTileStateArrow {
+    /* Desktop */
+    &.sapUshellDynamicTileDataUp, &.sapUshellDynamicTileDataDown {
+      font-size: @_sap_ushell_DynamicTile_NumberFontSizeDesktop;
+    }
+  }
+}
+
+.sapUiMedia-Std-Phone {
+  .sapUshellDynamicTile {
+    /* Phone */
+    /* the number */
+    .sapUshellDynamicTileNumber {
+      font-size:   @_sap_ushell_DynamicTile_NumberFontSizePhone;
+      font-weight: normal;
+    }
+    /* the scaling factor for the number */
+    .sapUshellDynamicTileNumberFactor {
+      font-weight: normal;
+      font-size:   @_sap_ushell_DynamicTile_NumberFactorFontSizePhone;
+    }
+  }
+}

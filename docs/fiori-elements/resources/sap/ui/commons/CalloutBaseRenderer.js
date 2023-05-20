@@ -1,0 +1,6 @@
+/*!
+ * OpenUI5
+ * (c) Copyright 2009-2023 SAP SE or an SAP affiliate company.
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ */
+sap.ui.define(["sap/ui/core/Configuration"],function(t){"use strict";var e={};e.render=function(e,i){var s=t.getAccessibility();var r=i.getId();e.write("<div");e.writeControlData(i);e.addClass("sapUiCltBase");if(this.addRootClasses){this.addRootClasses(e,i)}e.writeClasses();if(s){e.writeAttribute("role","dialog");var a=i.oRb.getText("CALLOUT_ARIA_NAME");if(a){e.writeAttributeEscaped("aria-label",a)}}if(i.getTooltip_AsString()){e.writeAttributeEscaped("title",i.getTooltip_AsString())}e.addStyle("display","none");e.writeStyles();e.write(">");e.write('<span id="'+r+'-fhfe" tabindex="0"></span>');e.write("<div");e.writeAttribute("id",r+"-cont");e.addClass("sapUiCltBaseCont");if(this.addContentClasses){this.addContentClasses(e,i)}e.writeClasses();e.writeAttribute("tabindex","-1");e.write(">");if(this.renderContent){this.renderContent(e,i)}e.write("</div>");e.write("<div");e.writeAttribute("id",r+"-arrow");if(s){e.writeAttribute("role","presentation")}e.addClass("sapUiCltBaseArr");if(this.addArrowClasses){this.addArrowClasses(e,i)}e.writeClasses();e.write("></div>");e.write('<span id="'+r+'-fhee" tabindex="0"></span>');e.write("</div>")};return e},true);

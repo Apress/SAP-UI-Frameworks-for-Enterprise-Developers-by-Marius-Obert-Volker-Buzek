@@ -1,0 +1,6 @@
+/*!
+ * OpenUI5
+ * (c) Copyright 2009-2023 SAP SE or an SAP affiliate company.
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ */
+sap.ui.define(["sap/ui/fl/changeHandler/BaseAddXml"],function(e){"use strict";var n={};function t(e){var n=e.index;if(e.referencedExtensionPoint){n+=t(e.referencedExtensionPoint)}return n}n.applyChange=function(n,i,r){var o=r.view;var a=r.modifier;var u=n.getSelector();var f;return Promise.resolve().then(function(){var e=n.getExtensionPointInfo&&n.getExtensionPointInfo();if(!e){return a.getExtensionPointInfo(u.name,o)}return e}).then(function(s){f=s;if(!f){throw new Error("AddXMLAtExtensionPoint-Error: Either no Extension-Point found by name '"+(u&&u.name)+"' or multiple Extension-Points available with the given name in the view (view.id='"+(o&&a.getId(o))+"'). Multiple Extension-points with the same name in one view are not supported!")}(f.defaultContent||[]).forEach(function(e){if(e){a.destroy(e)}});f.defaultContent=[];f.index=t(f);if(a.targets==="xmlTree"){f.skipAdjustIndex=true}return e.applyChange(n,i,r,f)}).then(function(e){if(f.ready){f.ready(e)}return true})};n.revertChange=e.revertChange;n.completeChangeContent=function(n,t){e.completeChangeContent(n,t)};return n},true);

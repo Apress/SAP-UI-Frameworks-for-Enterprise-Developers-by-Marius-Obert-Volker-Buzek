@@ -1,0 +1,87 @@
+<!-- * 	 @param idPrefix default 'F' Prefix for the id
+* 	 @param vhIdPrefix default 'FieldValueHelp' Prefix for the value help id -->
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:mdc="sap.ui.mdc"
+	xmlns:mdcField="sap.ui.mdc.field"
+	xmlns:form="sap.ui.layout.form"
+	xmlns:unittest="http://schemas.sap.com/sapui5/preprocessorextension/sap.fe.unittesting/1"
+	template:require="{
+		MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+		COMMON: 'sap/fe/macros/CommonHelper',
+		FIELD: 'sap/fe/macros/field/FieldHelper',
+		ID: 'sap/fe/core/helpers/StableIdHelper',
+		FE_MODEL: 'sap/fe/core/helpers/ModelHelper',
+		ValueHelpTemplating: 'sap/fe/macros/internal/valuehelp/ValueHelpTemplating',
+		Property: 'sap/fe/core/templating/PropertyFormatters'
+	}"
+>
+	<form:SimpleForm binding="{$Parameter}" width="20rem">
+		<template:repeat list="{action>$Parameter}" var="parameter">
+			<template:with path="parameter>" helper="COMMON.gotoActionParameter" var="actionParameter">
+				<!-- In case of bound actions the first parameter shall be ignored -->
+				<template:if test="{= !${action>$IsBound} || ${parameter>$Name} !== ${action>$Parameter/0/$Name} }">
+					<Label
+						unittest:id="ActionParameterDialogLabelExpressionTest"
+						id="{= ID.generate(['APD_', ${parameter>$Name}, 'Label']) }"
+						text="{= ${actionParameter>@com.sap.vocabularies.Common.v1.Label} ? ${actionParameter>@com.sap.vocabularies.Common.v1.Label} : ${parameter>$Name}}"
+					/>
+					<!-- TODOs:
+							edit mode, can there be also field control?
+                            value help
+                            additional value? (= text annotation)
+                            text arrangement?
+                            multipleLines?
+                -->
+					<template:if test="{=  !${parameter>$isCollection} }">
+						<template:then>
+							<!--The payload of FieldBaseDelegate is used to control the fallback feature 'retrieveTextFromValueList' -->
+							<mdc:Field
+								delegate="{name:'sap/fe/macros/field/FieldBaseDelegate', payload:{retrieveTextFromValueList:true}}"
+								unittest:id="ActionParameterDialogFieldExpressionTest"
+								id="{= ID.generate(['APD_', ${parameter>$Name}]) }"
+								value="{parameter>@@MODEL.format}"
+								display="{actionParameter>@@FIELD.getAPDialogDisplayFormat}"
+								editMode="{actionParameter>@@COMMON.getParameterEditMode}"
+								width="100%"
+								multipleLines="{= ${actionParameter>@com.sap.vocabularies.UI.v1.MultiLineText} ? (${actionParameter>@com.sap.vocabularies.UI.v1.MultiLineText} !== false)  : undefined}"
+								required="{= FIELD.isRequired(${actionParameter>@@FIELD.fieldControl}, 'Editable')}"
+								change="{= '.handleChange($event, \'' + ${parameter>$Name} + '\')' }"
+								fieldHelp="{= FIELD.getActionParameterDialogFieldHelp(${actionParameter>@}, ${actionName>@sapui.name}, ${parameter>$Name}) }"
+								visible="{= (${actionParameter>$Name} === 'ResultIsActiveEntity') ? false : ${actionParameter>@com.sap.vocabularies.UI.v1.Hidden@@FIELD.getActionParameterVisibility} }"
+								ariaLabelledBy="{= ID.generate(['APD_', ${parameter>$Name}, 'Label']) }"
+							>
+								<core:Fragment fragmentName="sap.fe.core.controls.ActionParameterDialogValueHelp" type="XML" />
+							</mdc:Field>
+						</template:then>
+						<template:else>
+							<mdc:MultiValueField
+								id="{= ID.generate(['APD_', ${parameter>$Name}]) }"
+								items="{actionParameter>@@FE_MODEL.getActionParameterItemsModelPath}"
+								delegate="{name: 'sap/fe/core/controls/MultiValueParameterDelegate'}"
+								unittest:id="ActionParameterDialogMultiValueFieldExpressionTest"
+								display="{actionParameter>@@FIELD.getAPDialogDisplayFormat}"
+								editMode="{actionParameter>@@COMMON.getParameterEditMode}"
+								width="100%"
+								multipleLines="{= ${actionParameter>@com.sap.vocabularies.UI.v1.MultiLineText} ? (${actionParameter>@com.sap.vocabularies.UI.v1.MultiLineText} !== false)  : undefined}"
+								required="{= FIELD.isRequired(${actionParameter>@@FIELD.fieldControl}, 'Editable')}"
+								fieldHelp="{= FIELD.getActionParameterDialogFieldHelp(${actionParameter>@}, ${actionName>@sapui.name}, ${parameter>$Name}) }"
+								change="{= '.handleChange($event, \'' + ${parameter>$Name} + '\')' }"
+								visible="{actionParameter>@com.sap.vocabularies.UI.v1.Hidden@@FIELD.getActionParameterVisibility}"
+								ariaLabelledBy="{= ID.generate(['APD_', ${parameter>$Name}, 'Label']) }"
+							>
+								<mdcField:MultiValueFieldItem
+									key="{path: 'mvfview>Key', type:'sap.ui.model.type.String'}"
+									description="{mvfview>Desc}"
+								/>
+								<core:Fragment fragmentName="sap.fe.core.controls.ActionParameterDialogValueHelp" type="XML" />
+							</mdc:MultiValueField>
+						</template:else>
+					</template:if>
+				</template:if>
+			</template:with>
+		</template:repeat>
+	</form:SimpleForm>
+</core:FragmentDefinition>

@@ -1,0 +1,51 @@
+<mvc:View controllerName="sap.ushell.components.shell.Settings.userLanguageRegion.LanguageRegionSelector"
+    xmlns="sap.m"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core">
+
+    <VBox class="sapUiSmallMargin" visible="{= !!${/isSettingsLoaded}}">
+        <form:SimpleForm id="languageForm" editable="true" layout="ResponsiveGridLayout" labelSpanS="5" columnsM="7">
+
+                <Label text="{i18n>languageAndRegionTit}" visible="{= !${/languageList}}" labelFor="languageSelectionInput"/>
+                <Text id="languageSelectionInput" text="{/selectedLanguageText}" visible="{= !${/languageList} }"/>
+                <Label text="{i18n>languageAndRegionTit}" visible="{= !!${/languageList}}" labelFor="languageSelectionSelect"/>
+                <Select id="languageSelectionSelect" visible="{= !!${/languageList} }" items="{/languageList}" selectedKey="{/selectedLanguage}" width="100%" change="._handleSelectChange">
+                    <core:Item key="{key}" text="{text}" />
+                </Select>
+
+                <Label text="{i18n>dateFormatFld}" visible="{= !${/DateFormatList}}" labelFor="dateFormatCombo"/>
+                <Text id="dateFormatCombo" visible="{= !${/DateFormatList}}" text="{/selectedDatePattern}" />
+                <Label text="{i18n>dateFormatFld}" visible="{= !!${/DateFormatList}}" labelFor="DateFormatSelectionSelect"/>
+                <Select id="DateFormatSelectionSelect" visible="{= !!${/DateFormatList}}" items="{/DateFormatList}" width="100%" selectedKey="{/selectedDatePattern}">
+                    <core:Item key="{value}" text="{description}" />
+                </Select>
+
+                <Label text="{i18n>timeFormatFld}" visible="{= !${/TimeFormatList}}" labelFor="hoursSegmentedButton"/>
+                <SegmentedButton id="hoursSegmentedButton" visible="{= !${/TimeFormatList}}" enabled="false" selectedKey="{/selectedTimeFormat}">
+                    <items>
+                        <SegmentedButtonItem key="12h" text="{i18n>btn12h}" />
+                        <SegmentedButtonItem key="24h" text="{i18n>btn24h}" />
+                    </items>
+                </SegmentedButton>
+                <Label text="{i18n>timeFormatFld}" visible="{= !!${/TimeFormatList}}" labelFor="TimeFormatSelectionSelect"/>
+                <Select id="TimeFormatSelectionSelect" visible="{= !!${/TimeFormatList}}" items="{/TimeFormatList}" width="100%" selectedKey="{/selectedTimeFormat}">
+                    <core:Item key="{value}" text="{description}" />
+                </Select>
+
+                <Label text="{i18n>timeZoneFld}" visible="{= ${/isEnableUserProfileSetting}}" labelFor="TimeZoneSelectionSelect" />
+                <Select id="TimeZoneSelectionSelect" visible="{= !!${/TimeZoneList}}" items="{/TimeZoneList}" width="100%" selectedKey="{/selectedTimeZone}">
+                    <core:Item key="{value}" text="{description}" />
+                </Select>
+                <Label visible="false"/>
+                <Text text="{i18n>TimeZoneHelpingText}" class="sapUshellFlpSettingsHint" visible="{/isTimeZoneIanaAvailable}" width="100%"/>
+
+                <Label text="{i18n>numberFormatFld}" visible="{= ${/isEnableUserProfileSetting}}" labelFor="NumberFormatSelectionSelect" />
+                <Select id="NumberFormatSelectionSelect" visible="{= !!${/NumberFormatList}}" items="{/NumberFormatList}" width="100%" selectedKey="{/selectedNumberFormat}">
+                    <core:Item key="{value}" text="{description}" />
+                </Select>
+
+       </form:SimpleForm>
+        <Text text="{i18n>LanguageAndRegionHelpingText}" class="sapUshellFlpSettingsWideDescription" visible="{= !!${/languageList}}" width="100%"/>
+    </VBox>
+</mvc:View>

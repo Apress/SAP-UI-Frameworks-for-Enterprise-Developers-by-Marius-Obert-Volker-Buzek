@@ -1,0 +1,331 @@
+<mvc:View
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:layout="sap.ui.layout"
+    xmlns:table="sap.ui.table"
+    controllerName="sap.ushell.components.tiles.action.Configuration">
+    <MessageStrip
+        type="Warning"
+        enableFormattedText="true"
+        showIcon="true"
+        showCloseButton="false"
+        class="sapUiResponsiveMargin"
+        visible="{= !!${/config/deprecation_text}}"
+        text="{/config/deprecation_text}" />
+    <form:Form id="configuration" maxContainerCols="2" minWidth="1024" editable="true">
+        <form:layout>
+            <form:ResponsiveGridLayout />
+        </form:layout>
+        <form:FormContainer id="categoryChipConfiguration" title="{i18n>configuration.category.action_chip_configuration}">
+            <form:FormElement label="{i18n>configuration.semantic_object}">
+                <Input
+                    id="semantic_objectInput"
+                    width="100%"
+                    tooltip="{i18n>configuration.semantic_object.tooltip}"
+                    maxLength="30"
+                    liveChange="onConfigurationInputChange"
+                    valueHelpRequest="onValueHelpRequest"
+                    showValueHelp="true"
+                    showSuggestion="true"
+                    value="{/value}"
+                    enabled="{/config/editable}" />
+            </form:FormElement>
+            <form:FormElement label="{i18n>configuration.semantic_action}">
+                <Input
+                    id="semantic_actionInput"
+                    value="{/config/semantic_action}"
+                    maxLength="50"
+                    liveChange="onConfigurationInputChange"
+                    enabled="{/config/editable}"
+                    valueHelpRequest="onActionValueHelpRequest"
+                    showValueHelp="true"
+                    showSuggestion="true"
+                    width="100%"
+                    tooltip="{i18n>configuration.semantic_action.tooltip}" />
+            </form:FormElement>
+        </form:FormContainer>
+        <form:FormContainer id="categoryTargetApplication" title="{i18n>configuration.category.target_application}">
+            <form:FormElement id="targetType" label="{i18n>configuration.target_applicationType}">
+                <ComboBox
+                    id="targetTypeInput"
+                    selectedKey="{/config/navigation_provider}"
+                    enabled="{/config/editable}"
+                    selectionChange="onApplicationTypeChange" />
+            </form:FormElement>
+            <form:FormElement id="application_description" label="{i18n>configuration.target_application.description}">
+                <Input
+                    id="target_application_descriptionInput"
+                    value="{/config/display_title_text}"
+                    liveChange="onConfigurationInputChange"
+                    width="100%"
+                    enabled="{/config/editable}"
+                    tooltip="{i18n>configuration.target_application.description.tooltip}" />
+            </form:FormElement>
+            <form:FormElement id="application_url" label="{i18n>configuration.target_application.url}">
+                <Input
+                    id="target_application_urlInput"
+                    value="{/config/url}"
+                    enabled="{/config/editable}"
+                    maxLength="512"
+                    liveChange="onConfigurationInputChange"
+                    width="100%" tooltip="{i18n>configuration.target_application.url.tooltip}" />
+            </form:FormElement>
+            <form:FormElement id="application_component" label="{i18n>configuration.target_application.component}">
+                <Input
+                    id="target_application_componentInput"
+                    value="{/config/ui5_component}"
+                    enabled="{/config/editable}"
+                    liveChange="onConfigurationInputChange"
+                    width="100%"
+                    tooltip="{i18n>configuration.target_application.component.tooltip}" />
+            </form:FormElement>
+            <form:FormElement id="navigation_provider_role" label="{i18n>configuration.navigation_provider_role}">
+                <Input
+                    id="navigation_provider_roleInput"
+                    valueHelpRequest="onRoleValueHelpRequest"
+                    showValueHelp="true"
+                    showTableSuggestionValueHelp="true"
+                    enabled="{/config/editable}"
+                    showSuggestion="true"
+                    value="{/value}"
+                    width="100%"
+                    maxLength="10"
+                    class="sapUshellTargetMappingToUpperCase"
+                    tooltip="{i18n>configuration.navigation_provider_role.tooltip}"
+                    liveChange="onConfigurationInputChange">
+                    <suggestionColumns>
+                        <Column hAlign="Begin" popinDisplay="Inline" demandPopin="true">
+                            <Label text="{i18n>configuration.navigation_provider_role}" />
+                        </Column>
+                        <Column hAlign="Begin" popinDisplay="Inline" demandPopin="true">
+                            <Label text="{i18n>configuration.navigation_provider_instance}" />
+                        </Column>
+                    </suggestionColumns>
+                </Input>
+            </form:FormElement>
+            <form:FormElement id="navigation_provider_instance"
+                label="{i18n>configuration.navigation_provider_instance}">
+                <Input
+                    id="navigation_provider_instanceInput"
+                    value="{/value}"
+                    width="100%"
+                    maxLength="32"
+                    valueHelpRequest="onInstanceValueHelpRequest"
+                    enabled="{/config/editable}"
+                    showValueHelp="true"
+                    showSuggestion="true"
+                    suggest="instanceSuggest"
+                    tooltip="{i18n>configuration.navigation_provider_instance.tooltip}"
+                    liveChange="onConfigurationInputChange"
+                    class="sapUshellTargetMappingToUpperCase" />
+            </form:FormElement>
+            <form:FormElement id="target_application_alias" label="{i18n>configuration.target_application_alias}">
+                <Input
+                    id="target_application_aliasInput"
+                    value="{/value}"
+                    width="100%"
+                    valueHelpRequest="onAliasValueHelpRequest"
+                    enabled="{/config/editable}"
+                    showValueHelp="true"
+                    showSuggestion="true"
+                    suggest="aliasSuggest"
+                    tooltip="{i18n>configuration.target_application_alias.tooltip}"
+                    liveChange="onConfigurationInputChange" />
+            </form:FormElement>
+            <form:FormElement id="target_application_id" label="{i18n>configuration.target_application_id}">
+                <Input
+                    id="target_application_idInput"
+                    value="{/config/target_application_id}"
+                    width="100%"
+                    maxLength="32"
+                    enabled="{/config/editable}"
+                    tooltip="{i18n>configuration.target_application_id.tooltip}"
+                    liveChange="onConfigurationInputChange" />
+            </form:FormElement>
+            <form:FormElement id="target_transaction" label="{i18n>configuration.target_transaction}">
+                <Input
+                    id="target_transactionInput"
+                    value="{/config/transaction/code}"
+                    width="100%"
+                    maxLength="20"
+                    enabled="{/config/editable}"
+                    tooltip="{i18n>configuration.target_transaction.tooltip}"
+                    liveChange="onConfigurationInputChange" />
+            </form:FormElement>
+            <form:FormElement id="target_wcf_application_id" label="{i18n>configuration.target_wcf.application_id}">
+                <Input
+                    id="target_wcf_application_idInput"
+                    value="{/config/wcf/application_id}"
+                    width="100%"
+                    maxLength="30"
+                    enabled="{/config/editable}"
+                    liveChange="onConfigurationInputChange" />
+            </form:FormElement>
+            <form:FormElement id="target_web_dynpro_application" label="{i18n>configuration.target_web_dynpro.application}">
+                <Input
+                    id="target_web_dynpro_applicationInput"
+                    value="{/config/web_dynpro/application}"
+                    width="100%"
+                    maxLength="30"
+                    enabled="{/config/editable}"
+                    tooltip="{i18n>configuration.target_web_dynpro_application.tooltip}"
+                    liveChange="onConfigurationInputChange" />
+            </form:FormElement>
+            <form:FormElement id="target_web_dynpro_configuration" label="{i18n>configuration.target_web_dynpro.configuration}">
+                <Input
+                    id="target_web_dynpro_configurationInput"
+                    value="{/config/web_dynpro/configuration}"
+                    width="100%"
+                    maxLength="32"
+                    enabled="{/config/editable}"
+                    tooltip="{i18n>configuration.target_web_dynpro_application.tooltip}"
+                    liveChange="onConfigurationInputChange" />
+            </form:FormElement>
+            <form:FormElement id="target_system_alias" label="{i18n>configuration.target_system_alias}">
+                <Input
+                    id="target_system_aliasInput"
+                    value="{/config/target_system_alias}"
+                    width="100%"
+                    maxLength="30"
+                    enabled="{/config/editable}"
+                    tooltip="{i18n>configuration.target_system_alias.tooltip}"
+                    liveChange="onConfigurationInputChange" />
+            </form:FormElement>
+            <form:FormElement id="urlt_application_component" label="{i18n>configuration.target_application.component}">
+                <Input
+                    id="urlt_application_componentInput"
+                    value="{/config/url_template/parameters/ui5ComponentName}"
+                    enabled="{/config/editable}"
+                    liveChange="onConfigurationInputChange"
+                    width="100%"
+                    tooltip="{i18n>configuration.target_application.component.tooltip}" />
+            </form:FormElement>
+            <form:FormElement id="target_urlt_system_alias" label="{i18n>configuration.target_system_alias}">
+                <Input
+                    id="target_urlt_system_aliasInput"
+                    value="{/config/url_template/parameters/systemAlias}"
+                    width="100%"
+                    maxLength="30"
+                    enabled="{/config/editable}"
+                    tooltip="{i18n>configuration.target_system_alias.tooltip}"
+                    liveChange="onConfigurationInputChange" />
+            </form:FormElement>
+            <form:FormElement id="application_type_deprecated">
+                <MessageStrip text="{i18n>applicationTypeDeprecated}" type="Warning" showIcon="true" />
+            </form:FormElement>
+        </form:FormContainer>
+        <form:FormContainer id="categoryGeneral" title="{i18n>configuration.category.general}">
+            <form:layoutData>
+                <layout:GridData span="L12 M12 S12" />
+            </form:layoutData>
+            <form:FormElement label="{i18n>configuration.display_info_text}">
+                <Input
+                    id="additionalInfo"
+                    value="{/config/display_info_text}"
+                    enabled="{/config/editable}"
+                    width="100%"
+                    liveChange="onConfigurationInputChange" />
+            </form:FormElement>
+            <form:FormElement label="{i18n>configuration.form_factor}" tooltip="{i18n>configuration.form_factor.tooltip}">
+                <CheckBox
+                    id="desktopCB"
+                    text="{i18n>configuration.form_factor_desktop}"
+                    select="onFormFactorChange"
+                    selected="{/config/desktopChecked}"
+                    enabled="{/config/manualFormFactor}" />
+                <CheckBox
+                    id="tabletCB"
+                    text="{i18n>configuration.form_factor_tablet}"
+                    select="onFormFactorChange"
+                    selected="{/config/tabletChecked}"
+                    enabled="{/config/manualFormFactor}" />
+                <CheckBox
+                    id="phoneCB"
+                    text="{i18n>configuration.form_factor_phone}"
+                    select="onFormFactorChange"
+                    selected="{/config/phoneChecked}"
+                    enabled="{/config/manualFormFactor}" />
+            </form:FormElement>
+            <form:FormElement label="{i18n>configuration.signature.table.title}">
+                <VBox>
+                    <table:Table
+                        id="mappingSignatureTable"
+                        rows="{/config/rows}"
+                        selectionBehavior="Row"
+                        selectionMode="Multi"
+                        visibleRowCount="5"
+                        enableColumnReordering="false"
+                        rowHeight="30px">
+                        <table:Column id="nameCol" width="82px">
+                            <Label text="{i18n>configuration.signature.table.name}" />
+                            <table:template>
+                                <Input
+                                    value="{name}"
+                                    editable="{editable}"
+                                    placeholder="{i18n>configuration.signature.table.nameFieldLbl}"
+                                    change="checkDuplicateNames" />
+                            </table:template>
+                        </table:Column>
+                        <table:Column id="mandatoryCol" width="92px" hAlign="Center">
+                            <Label text="{i18n>configuration.signature.table.mandatory}" />
+                            <table:template>
+                                <CheckBox selected="{mandatory}" editable="{editable}" select="handleMandatoryChange" />
+                            </table:template>
+                        </table:Column>
+                        <table:Column id="valueCol" width="85px">
+                            <Label text="{i18n>configuration.signature.table.value}" />
+                            <table:template>
+                                <Input value="{value}" editable="{editable}" enabled="{valEnabled}" />
+                            </table:template>
+                        </table:Column>
+                        <table:Column id="isRegExCol" width="162px" hAlign="Center">
+                            <Label text="{i18n>configuration.signature.table.isRegEx}" />
+                            <table:template>
+                                <CheckBox selected="{isRegularExpression}" editable="{editable}" enabled="{valEnabled}" />
+                            </table:template>
+                        </table:Column>
+                        <table:Column id="defValueCol" width="110px">
+                            <Label text="{i18n>configuration.signature.table.defaultValue}" />
+                            <table:template>
+                                <Input value="{defaultValue}" editable="{editable}" enabled="{defValEnabled}" />
+                            </table:template>
+                        </table:Column>
+                        <table:Column id="renameToCol" width="82px" visible="{= ${/config/navigation_provider} !== 'LPD' }">
+                            <Label
+                                text="{i18n>configuration.signature.table.renameTo}"
+                                tooltip="{i18n>configuration.signature.table.renameTo.tooltip}" />
+                            <table:template>
+                                <Input value="{rename_to}" editable="{editable}" />
+                            </table:template>
+                        </table:Column>
+                    </table:Table>
+                    <HBox wrap="Wrap">
+                        <CheckBox
+                            id="isUnknownAllowed"
+                            text="{i18n>configuration.signature.table.allowUndefined}"
+                            enabled="{/config/editable}"
+                            selected="{/config/isUnknownAllowed}"
+                            width="400px">
+                            <layoutData>
+                                <FlexItemData growFactor="1"/>
+                            </layoutData>
+                        </CheckBox>
+                        <Button
+                            id="addRow"
+                            enabled="{/config/editable}"
+                            text="{i18n>configuration.signature.table.add}"
+                            press="addRow"
+                            width="100px" />
+                        <Button
+                            id="deleteRow"
+                            enabled="{/config/editable}"
+                            text="{i18n>configuration.signature.table.delete}"
+                            press="deleteRow"
+                            width="100px" />
+                    </HBox>
+                </VBox>
+            </form:FormElement>
+        </form:FormContainer>
+    </form:Form>
+</mvc:View>

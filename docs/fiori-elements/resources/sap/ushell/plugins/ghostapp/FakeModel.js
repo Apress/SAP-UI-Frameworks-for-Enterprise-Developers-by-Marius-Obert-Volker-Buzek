@@ -1,0 +1,2 @@
+// Copyright (c) 2009-2023 SAP SE, All Rights Reserved
+sap.ui.define(["sap/ui/model/odata/v2/ODataModel"],function(e){"use strict";var t=e.extend("sap.ushell.plugins.ghostapp.FakeModel",{constructor:function(t,a){e.apply(this,arguments);this.setDeferredGroups(["undefined",this.sDefaultChangeGroup])},setDeferredGroups:function(){e.prototype.setDeferredGroups.apply(this,arguments);this.mDeferredGroups.undefined="undefined"}});t.getMetadata().getName=function(){return"sap.ui.model.odata.v2.ODataModel"};return t});

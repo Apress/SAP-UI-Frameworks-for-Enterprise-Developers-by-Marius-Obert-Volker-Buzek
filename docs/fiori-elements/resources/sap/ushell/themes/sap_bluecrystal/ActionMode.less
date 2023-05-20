@@ -1,0 +1,29 @@
+/* ==================================================================== */
+/* CSS for control "sap.ushell.components.ActionMode" (sap_bluecrystal) */
+/* ==================================================================== */
+
+@_sap_ushell_ActionMode_ActiveTile: fade(@sapUiDarkestBG, 20%);
+
+/* CSS for the activation button and cover DIV of tile in action mode */
+.sapUshellDashboardView {
+  .sapUshellTileActionLayerDiv {
+    box-shadow: 0 0 0 0 @_sap_ushell_ActionMode_ActiveTile;
+    background: transparent;
+  }
+
+  .sapUshellTileActionLayerDivSelected {
+    opacity: 1;
+    background-color: @_sap_ushell_ActionMode_ActiveTile;
+    outline: 1px solid @_sap_ushell_ActionMode_ActiveTile;
+
+    .sapUshellTileActionDivCenter {
+      opacity: 0;
+    }
+
+    .sapUshellTileActionIconDivBottomInnerDiv {
+      background-color: @_sap_ushell_ActionMode_ActiveTile;
+      height: 100%;
+      border-radius: 0.25rem;
+    }
+  }
+}

@@ -1,0 +1,1 @@
+sap.ui.define(["sap/fe/test/ListReport"],function(e){"use strict";var s={actions:{},assertions:{}};return new e({appId:"com.apress.beershop",componentId:"BeersList",entitySet:"Beers"},s)});

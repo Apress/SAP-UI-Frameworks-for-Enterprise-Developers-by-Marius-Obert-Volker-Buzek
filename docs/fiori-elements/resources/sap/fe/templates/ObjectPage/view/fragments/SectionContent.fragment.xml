@@ -1,0 +1,274 @@
+<core:FragmentDefinition
+	xmlns:uxap="sap.uxap"
+	xmlns:core="sap.ui.core"
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns:macro="sap.fe.macros"
+	xmlns:layout="sap.ui.layout"
+	xmlns:dt="sap.ui.dt"
+	xmlns="sap.m"
+	xmlns:opcontrol="sap.fe.templates.ObjectPage.controls"
+	template:require="{
+		MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+		OP: 'sap/fe/templates/ObjectPage/ObjectPageTemplating',
+		COMMON: 'sap/fe/macros/CommonHelper',
+		ID: 'sap/fe/core/helpers/StableIdHelper'
+	}"
+>
+	<!-- We want to ensure that statically non visible sections are non visible-->
+	<template:if test="{subSection>visible}">
+		<template:if test="{= ${subSection>type} === 'XMLFragment'}">
+			<template:then>
+				<core:Fragment fragmentName="sap.fe.templates.ObjectPage.view.fragments.FormActions" type="XML" />
+				<uxap:blocks>
+					<uxap:ObjectPageLazyLoader
+						stashed="{subSection>objectPageLazyLoaderEnabled}"
+						id="{= ID.generate(['fe', 'lazyLoader', ${subSection>id}])}"
+					>
+						<opcontrol:SubSectionBlock>
+							<opcontrol:content>
+								<template:if test="{= ${subSection>sideContent} !== undefined}">
+									<template:then>
+										<layout:DynamicSideContent
+											id="{= ID.generate(['fe', ${subSection>key}, 'SideContentLayout'])}"
+											showMainContent="true"
+											showSideContent="{subSection>sideContent/visible}"
+											sideContentFallDown="BelowM"
+											containerQuery="true"
+											equalSplit="{subSection>sideContent/equalSplit}"
+										>
+											<layout:mainContent>
+												<core:Fragment
+													fragmentName="sap.fe.templates.ObjectPage.view.fragments.SectionCustomSection"
+													type="XML"
+												/>
+											</layout:mainContent>
+											<layout:sideContent>
+												<core:Fragment
+													fragmentName="sap.fe.templates.ObjectPage.view.fragments.SideContentCustomContainer"
+													type="XML"
+												/>
+											</layout:sideContent>
+										</layout:DynamicSideContent>
+									</template:then>
+									<template:else>
+										<core:Fragment
+											fragmentName="sap.fe.templates.ObjectPage.view.fragments.SectionCustomSection"
+											type="XML"
+										/>
+									</template:else>
+								</template:if>
+							</opcontrol:content>
+						</opcontrol:SubSectionBlock>
+					</uxap:ObjectPageLazyLoader>
+				</uxap:blocks>
+			</template:then>
+			<template:elseif test="{= ${subSection>type} === 'Form'}">
+				<core:Fragment fragmentName="sap.fe.templates.ObjectPage.view.fragments.FormActions" type="XML" />
+				<uxap:blocks>
+					<uxap:ObjectPageLazyLoader
+						stashed="{subSection>objectPageLazyLoaderEnabled}"
+						id="{= ID.generate(['fe', 'lazyLoader', ${subSection>id}])}"
+					>
+						<opcontrol:SubSectionBlock>
+							<opcontrol:content>
+								<template:if test="{= ${subSection>sideContent} !== undefined}">
+									<template:then>
+										<layout:DynamicSideContent
+											id="{= ID.generate(['fe', ${subSection>key}, 'SideContentLayout'])}"
+											showMainContent="true"
+											showSideContent="{subSection>sideContent/visible}"
+											sideContentFallDown="BelowM"
+											containerQuery="true"
+											equalSplit="{subSection>sideContent/equalSplit}"
+										>
+											<layout:mainContent>
+												<core:Fragment
+													fragmentName="sap.fe.templates.ObjectPage.view.fragments.SectionFormContent"
+													type="XML"
+												/>
+											</layout:mainContent>
+											<layout:sideContent>
+												<core:Fragment
+													fragmentName="sap.fe.templates.ObjectPage.view.fragments.SideContentCustomContainer"
+													type="XML"
+												/>
+											</layout:sideContent>
+										</layout:DynamicSideContent>
+									</template:then>
+									<template:else>
+										<core:Fragment
+											fragmentName="sap.fe.templates.ObjectPage.view.fragments.SectionFormContent"
+											type="XML"
+										/>
+									</template:else>
+								</template:if>
+							</opcontrol:content>
+						</opcontrol:SubSectionBlock>
+					</uxap:ObjectPageLazyLoader>
+				</uxap:blocks>
+				<template:if test="{subSection>formDefinition/hasFacetsNotPartOfPreview}">
+					<template:then>
+						<!-- Button "Show More / Less" is displayed for a collection facets that contains at least one reference facets with annotation "PartOfPreview === TRUE" -->
+						<uxap:moreBlocks>
+							<template:if test="{= ${subSection>level} === 2}">
+								<Title level="{= ${section>subSections}.length > 1 ? 'H5' : 'H4'}" text="{subSection>title}" />
+							</template:if>
+							<opcontrol:SubSectionBlock>
+								<opcontrol:content>
+									<template:if test="{= ${subSection>sideContent} !== undefined}">
+										<template:then>
+											<layout:DynamicSideContent
+												id="{= ID.generate(['fe', ${subSection>key}, 'MoreSideContentLayout'])}"
+												showMainContent="true"
+												showSideContent="{subSection>sideContent/visible}"
+												sideContentFallDown="BelowM"
+												containerQuery="true"
+												equalSplit="{subSection>sideContent/equalSplit}"
+											>
+												<layout:mainContent>
+													<core:Fragment
+														fragmentName="sap.fe.templates.ObjectPage.view.fragments.SectionMoreFormContent"
+														type="XML"
+													/>
+												</layout:mainContent>
+												<layout:sideContent>
+													<!--No Side Content for MoreBlocks so far-->
+												</layout:sideContent>
+											</layout:DynamicSideContent>
+										</template:then>
+										<template:else>
+											<core:Fragment
+												fragmentName="sap.fe.templates.ObjectPage.view.fragments.SectionMoreFormContent"
+												type="XML"
+											/>
+										</template:else>
+									</template:if>
+								</opcontrol:content>
+							</opcontrol:SubSectionBlock>
+						</uxap:moreBlocks>
+					</template:then>
+				</template:if>
+			</template:elseif>
+			<template:elseif test="{= ${subSection>type} === 'DataVisualization'}">
+				<template:if test="{= OP.isVisualizationIsPartOfPreview(${subSection>}) }">
+					<template:then>
+						<uxap:blocks>
+							<uxap:ObjectPageLazyLoader
+								stashed="{subSection>objectPageLazyLoaderEnabled}"
+								id="{= ID.generate(['fe', 'lazyLoader', ${subSection>id}])}"
+							>
+								<template:if test="{= ${subSection>level} === 2}">
+									<Title
+										level="{= ${section>subSections}.length > 1 ? 'H5' : 'H4'}"
+										text="{subSection>title}"
+										visible="{subSection>titleVisible}"
+									/>
+								</template:if>
+								<opcontrol:SubSectionBlock visible="{subSection>visible}">
+									<opcontrol:content>
+										<template:if test="{= ${subSection>sideContent} !== undefined}">
+											<template:then>
+												<layout:DynamicSideContent
+													id="{= ID.generate(['fe', ${subSection>key}, 'SideContentLayout'])}"
+													showMainContent="true"
+													showSideContent="{subSection>sideContent/visible}"
+													sideContentFallDown="BelowM"
+													containerQuery="true"
+													equalSplit="{subSection>sideContent/equalSplit}"
+												>
+													<layout:mainContent>
+														<core:Fragment
+															fragmentName="sap.fe.templates.ObjectPage.view.fragments.SectionPresentationVisualization"
+															type="XML"
+														/>
+													</layout:mainContent>
+													<layout:sideContent>
+														<core:Fragment
+															fragmentName="sap.fe.templates.ObjectPage.view.fragments.SideContentCustomContainer"
+															type="XML"
+														/>
+													</layout:sideContent>
+												</layout:DynamicSideContent>
+											</template:then>
+											<template:else>
+												<core:Fragment
+													fragmentName="sap.fe.templates.ObjectPage.view.fragments.SectionPresentationVisualization"
+													type="XML"
+												/>
+											</template:else>
+										</template:if>
+									</opcontrol:content>
+								</opcontrol:SubSectionBlock>
+							</uxap:ObjectPageLazyLoader>
+						</uxap:blocks>
+					</template:then>
+					<template:else>
+						<!-- Button "Show More / Less" is displayed for a collection facets that contains at least one reference facets with annotation "PartOfPreview === TRUE" -->
+						<uxap:moreBlocks>
+							<template:if test="${subSection>level} === 2}">
+								<Title
+									level="{= ${section>subSections}.length > 1 ? 'H5' : 'H4'}"
+									text="{subSection>title}"
+									visible="{subSection>titleVisible}"
+								/>
+							</template:if>
+							<opcontrol:SubSectionBlock>
+								<opcontrol:content>
+									<template:if test="{= ${subSection>sideContent} !== undefined}">
+										<template:then>
+											<layout:DynamicSideContent
+												id="{= ID.generate(['fe', ${subSection>key}, 'MoreSideContentLayout'])}"
+												showMainContent="true"
+												showSideContent="{subSection>sideContent/visible}"
+												sideContentFallDown="BelowM"
+												containerQuery="true"
+												equalSplit="{subSection>sideContent/equalSplit}"
+											>
+												<layout:mainContent>
+													<core:Fragment
+														fragmentName="sap.fe.templates.ObjectPage.view.fragments.SectionPresentationVisualization"
+														type="XML"
+													/>
+												</layout:mainContent>
+												<layout:sideContent>
+													<!--No Side Content for MoreBlocks so far-->
+												</layout:sideContent>
+											</layout:DynamicSideContent>
+										</template:then>
+										<template:else>
+											<core:Fragment
+												fragmentName="sap.fe.templates.ObjectPage.view.fragments.SectionPresentationVisualization"
+												type="XML"
+											/>
+										</template:else>
+									</template:if>
+								</opcontrol:content>
+							</opcontrol:SubSectionBlock>
+						</uxap:moreBlocks>
+					</template:else>
+				</template:if>
+			</template:elseif>
+			<template:elseif test="{= ${subSection>type} === 'EmbeddedComponent'}">
+				<uxap:blocks>
+					<uxap:ObjectPageLazyLoader
+						stashed="{subSection>objectPageLazyLoaderEnabled}"
+						id="{= ID.generate(['fe', 'lazyLoader', ${subSection>id}])}"
+					>
+						<opcontrol:SubSectionBlock>
+							<opcontrol:content>
+								<core:Fragment
+									fragmentName="sap.fe.templates.ObjectPage.view.fragments.SectionEmbeddedComponent"
+									type="XML"
+								/>
+							</opcontrol:content>
+						</opcontrol:SubSectionBlock>
+					</uxap:ObjectPageLazyLoader>
+				</uxap:blocks>
+			</template:elseif>
+			<template:elseif test="{= ${subSection>type} === 'Unknown'}">
+				<Text text="{subSection>text}" />
+			</template:elseif>
+			<template:else />
+		</template:if>
+	</template:if>
+</core:FragmentDefinition>

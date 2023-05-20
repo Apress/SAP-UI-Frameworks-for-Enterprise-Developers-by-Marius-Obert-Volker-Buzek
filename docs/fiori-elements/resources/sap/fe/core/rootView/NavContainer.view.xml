@@ -1,0 +1,3 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" displayBlock="true" height="100%" controllerName="sap.fe.core.rootView.NavContainer">
+	<NavContainer id="appContent" autoFocus="false" />
+</mvc:View>

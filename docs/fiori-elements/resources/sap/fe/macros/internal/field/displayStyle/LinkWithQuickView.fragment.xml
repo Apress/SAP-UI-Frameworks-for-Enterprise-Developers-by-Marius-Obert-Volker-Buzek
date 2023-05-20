@@ -1,0 +1,16 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:macro="sap.fe.macros">
+	<Link
+		id="{this>noWrapperId}"
+		core:require="{FieldRuntime: 'sap/fe/macros/field/FieldRuntime', WSR: 'sap/base/strings/whitespaceReplacer'}"
+		text="{= ${this>formatOptions/retrieveTextFromValueList} ? ${this>textFromValueList} : ${this>text} }"
+		visible="{this>displayVisible}"
+		wrapping="{= ${this>wrap} === undefined ? true : ${this>wrap} }"
+		press="FieldRuntime.pressLink"
+		ariaLabelledBy="{this>ariaLabelledBy}"
+		emptyIndicatorMode="{this>emptyIndicatorMode}"
+	>
+		<dependents>
+			<macro:QuickView dataField="{dataField>}" semanticObject="{this>semanticObject}" contextPath="{entitySet>}" />
+		</dependents>
+	</Link>
+</core:FragmentDefinition>

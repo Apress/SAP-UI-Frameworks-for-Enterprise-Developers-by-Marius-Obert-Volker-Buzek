@@ -1,0 +1,31 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:macro="sap.fe.macros"
+	xmlns:controls="sap.fe.core.controls"
+	template:require="{
+		FIELD: 'sap/fe/macros/field/FieldHelper'
+	}"
+>
+	<controls:FormElementWrapper visible="{this>displayVisible}">
+		<VBox class="{= FIELD.getMarginClass(${this>formatOptions/compactSemanticKey}) }">
+			<template:if test="{= ${this>formatOptions/semanticKeyStyle} === 'ObjectIdentifier' }">
+				<template:then>
+					<core:Fragment fragmentName="sap.fe.macros.internal.field.displayStyle.ObjectIdentifier" type="XML" />
+				</template:then>
+				<template:else>
+					<core:Fragment fragmentName="sap.fe.macros.internal.field.displayStyle.LabelSemanticKey" type="XML" />
+				</template:else>
+			</template:if>
+			<template:if test="{= ${this>formatOptions/fieldGroupDraftIndicatorPropertyPath} === null }">
+				<macro:DraftIndicator
+					draftIndicatorType="IconAndText"
+					entitySet="{entitySet>}"
+					isDraftIndicatorVisible="{='{parts: [{value: \'' + ${property>$Path} + '\'}, {path: \'internal>semanticKeyHasDraftIndicator\'} , {path: \'HasDraftEntity\'}, {path: \'IsActiveEntity\'}, {path: \'pageInternal>hideDraftInfo\'}] , formatter: \'sap.fe.macros.field.FieldRuntime.isDraftIndicatorVisible\'}'}"
+					ariaLabelledBy="{this>ariaLabelledBy}"
+				/>
+			</template:if>
+		</VBox>
+	</controls:FormElementWrapper>
+</core:FragmentDefinition>

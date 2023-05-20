@@ -1,0 +1,73 @@
+/* ============================================================= */
+/* CSS for control sap.ushell/DynamicTile.control sap_hcb theme */
+/* ============================================================= */
+
+
+.sapUshellDynamicTile {
+    /* Colors for displaying dynamic tile contents (esp. large numbers, arrows, text)
+    note: these values are different than the ones specified in TileBase */
+    .sapUshellDynamicTileData {
+        &.sapUshellDynamicTileDataNegative {
+             color: @sapHCNegative;
+        .sapUshellDynamicTileDataUp {border-bottom-color: @sapHCNegative; }
+        .sapUshellDynamicTileDataDown {border-top-color: @sapHCNegative; }
+        }
+
+        &.sapUshellDynamicTileDataNeutral {
+             color: @sapHCNeutral;
+        .sapUshellDynamicTileDataUp {border-bottom-color: @sapHCNeutral; }
+        .sapUshellDynamicTileDataDown {border-top-color: @sapHCNeutral; }
+        }
+
+        &.sapUshellDynamicTileDataPositive {
+             color: @sapHCPositive;
+        .sapUshellDynamicTileDataUp { border-bottom-color: @sapHCPositive; }
+        .sapUshellDynamicTileDataDown { border-top-color: @sapHCPositive; }
+        }
+
+        &.sapUshellDynamicTileDataCritical {
+             color: @sapHCCritical;
+        .sapUshellDynamicTileDataUp { border-bottom-color: @sapHCCritical; }
+        .sapUshellDynamicTileDataDown { border-top-color: @sapHCCritical; }
+        }
+    }
+}
+
+.sapUiMedia-Std-Desktop, .sapUiMedia-Std-Tablet {
+  .sapUshellDynamicTile{
+
+    /* the number */
+    .sapUshellDynamicTileNumber {
+      font-size: @_sap_ushell_DynamicTile_NumberFontSizeDesktop;
+      font-weight: normal;
+    }
+    /* the scaling factor for the number */
+    .sapUshellDynamicTileNumberFactor {
+      font-weight: normal;
+      font-size: @_sap_ushell_DynamicTile_NumberFactorFontSizeDesktop;
+    }
+  }
+
+  .sapUshellDynamicTileStateArrow {
+    /* Desktop */
+    &.sapUshellDynamicTileDataUp, &.sapUshellDynamicTileDataDown {
+      font-size: @_sap_ushell_DynamicTile_NumberFontSizeDesktop;
+    }
+  }
+}
+
+.sapUiMedia-Std-Phone {
+  .sapUshellDynamicTile {
+    /* Phone */
+    /* the number */
+    .sapUshellDynamicTileNumber {
+      font-size:   @_sap_ushell_DynamicTile_NumberFontSizePhone;
+      font-weight: normal;
+    }
+    /* the scaling factor for the number */
+    .sapUshellDynamicTileNumberFactor {
+      font-weight: normal;
+      font-size:   @_sap_ushell_DynamicTile_NumberFactorFontSizePhone;
+    }
+  }
+}

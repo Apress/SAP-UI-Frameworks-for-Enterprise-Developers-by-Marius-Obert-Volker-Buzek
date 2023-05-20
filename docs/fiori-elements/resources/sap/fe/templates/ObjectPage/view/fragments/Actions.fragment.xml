@@ -1,0 +1,188 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns:unittest="http://schemas.sap.com/sapui5/preprocessorextension/sap.fe.unittesting/1"
+	xmlns:macrodata="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:macro="sap.fe.macros.internal"
+	xmlns:components="sap.fe.templates.ObjectPage.components"
+	template:require="{
+		ID: 'sap/fe/core/helpers/StableIdHelper',
+		OP: 'sap/fe/templates/ObjectPage/ObjectPageTemplating',
+		MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+		UI: 'sap/fe/core/templating/UIFormatters',
+		CRIT: 'sap/fe/core/templating/CriticalityFormatters',
+		COMMON: 'sap/fe/macros/CommonHelper',
+		DATAFIELDANNOTATIONS : 'sap/fe/core/converters/annotations/DataField',
+		FIELD: 'sap/fe/macros/field/FieldHelper',
+		DEFAULTACTIONHANDLER: 'sap/fe/macros/internal/helpers/DefaultActionHandler',
+		FE_MODEL: 'sap/fe/core/helpers/ModelHelper'
+	}"
+>
+	<template:if test="{converterContext>header/actions}">
+		<template:repeat list="{converterContext>header/actions}" var="headerAction">
+			<template:if test="{= ${headerAction>type} === 'DraftActions' &amp;&amp; OP.checkDraftState(${entitySet>@}) }">
+				<template:then>
+					<components:DraftHandlerButton contextPath="{entitySet>}" id="fe::StandardAction::SwitchDraftAndActiveObject" />
+					<template:if test="{= !${entitySet>@@FE_MODEL.isCollaborationDraftSupported} }">
+						<ToolbarSpacer />
+					</template:if>
+				</template:then>
+				<template:elseif test="{= ${headerAction>type} === 'CollaborationAvatars' }">
+					<core:Fragment fragmentName="sap.fe.templates.ObjectPage.view.fragments.CollaborationDraft" type="XML" />
+					<ToolbarSpacer />
+				</template:elseif>
+				<template:elseif test="{= OP.isManifestAction(${headerAction>}) }">
+					<template:if test="{= ${headerAction>type} === 'Menu'}">
+						<template:then>
+							<template:with path="headerAction>defaultAction/annotationPath" var="dataFieldForDefaultAction">
+								<template:with
+									path="dataFieldForDefaultAction>Action"
+									helper="COMMON.getActionContext"
+									var="defaultActionContext"
+								>
+									<MenuButton
+										core:require="{FPM: 'sap/fe/core/helpers/FPMHelper'}"
+										text="{headerAction>text}"
+										menuPosition="BeginBottom"
+										id="{= ID.generate(['fe',${headerAction>id}])}"
+										visible="{headerAction>visible}"
+										enabled="{headerAction>enabled}"
+										useDefaultActionOnly="{= DEFAULTACTIONHANDLER.getUseDefaultActionOnly(${headerAction>})}"
+										buttonMode="{= DEFAULTACTIONHANDLER.getButtonMode(${headerAction>})}"
+										defaultAction="{= OP.getDefaultActionHandler(${converterContext>header}, ${headerAction>}, ${dataFieldForDefaultAction>}, ${entitySet>@sapui.name})}"
+									>
+										<menu>
+											<Menu>
+												<template:repeat list="{headerAction>menu}" var="menuItemAction">
+													<template:with path="menuItemAction>annotationPath" var="dataField">
+														<template:if test="{= ${menuItemAction>type} === 'ForAction'}">
+															<template:then>
+																<MenuItem
+																	id="{= ID.generate(['fe', ${dataField>@@UI.getDataModelObjectPath}]) }"
+																	text="{dataField>Label}"
+																	press="{= ${menuItemAction>command} ? ('cmd:' + ${menuItemAction>command}) : OP.getPressExpressionForEdit(${dataField>}, ${entitySet>@sapui.name}, ${headerAction>}) }"
+																	visible="{menuItemAction>visible}"
+																	enabled="{menuItemAction>enabled}"
+																/>
+															</template:then>
+															<template:elseif test="{= ${menuItemAction>type} === 'ForNavigation'}">
+																<MenuItem
+																	id="{= ID.generate(['fe', ${dataField>@@UI.getDataModelObjectPath}]) }"
+																	text="{dataField>Label}"
+																	press="{= ${menuItemAction>command} ? ('cmd:' + ${menuItemAction>command}) : ${menuItemAction>press}}"
+																	enabled="{menuItemAction>enabled}"
+																	visible="{menuItemAction>visible}"
+																	macrodata:IBNData="{menuItemAction>customData}"
+																/>
+															</template:elseif>
+															<template:else>
+																<MenuItem
+																	id="{= ID.generate(['fe',${menuItemAction>id}])}"
+																	text="{menuItemAction>text}"
+																	press="{= ${menuItemAction>command} ? ('cmd:' + ${menuItemAction>command}) : COMMON.buildActionWrapper(${menuItemAction>}, ${headerAction>})}"
+																	visible="{menuItemAction>visible}"
+																	enabled="{menuItemAction>enabled}"
+																/>
+															</template:else>
+														</template:if>
+													</template:with>
+												</template:repeat>
+											</Menu>
+										</menu>
+									</MenuButton>
+								</template:with>
+							</template:with>
+						</template:then>
+						<template:else>
+							<Button
+								unittest:id="ManifestActionTest"
+								core:require="{FPM: 'sap/fe/core/helpers/FPMHelper'}"
+								id="{= ID.generate(['fe',${headerAction>id}])}"
+								text="{headerAction>text}"
+								press="{= ${headerAction>command} ? ('cmd:' + ${headerAction>command}) : COMMON.buildActionWrapper(${headerAction>})}"
+								type="Default"
+								visible="{headerAction>visible}"
+								enabled="{headerAction>enabled}"
+							/>
+						</template:else>
+					</template:if>
+				</template:elseif>
+				<template:elseif test="{= ${headerAction>type} === 'Primary'}">
+					<template:with path="entitySet>" helper="OP.getEditAction" var="editAction">
+						<template:with path="editAction>@Org.OData.Core.V1.OperationAvailable" var="operationAvailable">
+							<template:if test="{= ${operationAvailable>} !== false }">
+								<Button
+									unittest:id="EditActionTest"
+									id="fe::StandardAction::Edit"
+									type="{= OP.buildEmphasizedButtonExpression(${fullContextPath>@@UI.getDataModelObjectPath}) }"
+									text="{sap.fe.i18n>C_COMMON_OBJECT_PAGE_EDIT}"
+									enabled="{headerAction>enabled}"
+									visible="{headerAction>visible}"
+									press="cmd:Edit"
+								>
+									<layoutData>
+										<OverflowToolbarLayoutData priority="NeverOverflow" />
+									</layoutData>
+								</Button>
+							</template:if>
+						</template:with>
+					</template:with>
+				</template:elseif>
+				<template:elseif test="{= ${headerAction>type} === 'Secondary'}">
+					<Button
+						unittest:id="DeleteActionTest"
+						id="fe::StandardAction::Delete"
+						type="Default"
+						text="{sap.fe.i18n>C_COMMON_DELETE}"
+						visible="{headerAction>visible}"
+						enabled="{headerAction>enabled}"
+						press="cmd:DeleteObject"
+						ariaHasPopup="Dialog"
+					/>
+				</template:elseif>
+				<template:elseif test="{= ${headerAction>type} === 'ForAction' || ${headerAction>type} === 'Copy'}">
+					<template:with path="headerAction>annotationPath" var="dataField">
+						<template:if
+							test="{= ${dataField>$Type} === 'com.sap.vocabularies.UI.v1.DataFieldForAction' &amp;&amp; ${dataField>Determining} !== true }"
+						>
+							<template:with path="dataField>Action" helper="COMMON.getActionContext" var="actionContext">
+								<template:with path="dataField>Action" helper="COMMON.getPathToBoundActionOverload" var="isBound">
+									<template:if
+										test="{= !(${dataField>./@com.sap.vocabularies.UI.v1.Hidden} === true) &amp;&amp; (${isBound>$IsBound} !== true || ${actionContext>@Org.OData.Core.V1.OperationAvailable} !== false) }"
+									>
+										<Button
+											id="{= ID.generate(['fe', ${dataField>@@UI.getDataModelObjectPath}]) }"
+											unittest:id="AnnotationActionTest"
+											text="{= ${headerAction>text} ? ${headerAction>text} : ${dataField>Label} }"
+											press="{= ${headerAction>command} ? ('cmd:' + ${headerAction>command}) : OP.getPressExpressionForEdit(${dataField>}, ${entitySet>@sapui.name}, ${headerAction>}) }"
+											visible="{headerAction>visible}"
+											enabled="{headerAction>enabled}"
+											type="{= CRIT.buildExpressionForCriticalityButtonType(${dataField>@@UI.getDataModelObjectPath}) }"
+											ariaHasPopup="{= DATAFIELDANNOTATIONS.isDataModelObjectPathForActionWithDialog(${actionContext>@@UI.getDataModelObjectPath})}"
+										/>
+									</template:if>
+								</template:with>
+							</template:with>
+						</template:if>
+					</template:with>
+				</template:elseif>
+				<template:elseif test="{= ${headerAction>type} === 'ForNavigation'}">
+					<template:with path="headerAction>annotationPath" var="dataField">
+						<Button
+							id="{= ID.generate(['fe', ${dataField>@@UI.getDataModelObjectPath}]) }"
+							text="{headerAction>text}"
+							press="{= ${headerAction>command} ? ('cmd:' + ${headerAction>command}) : ${headerAction>press}}"
+							enabled="{headerAction>enabled}"
+							type="{headerAction>buttonType}"
+							visible="{headerAction>visible}"
+							macrodata:IBNData="{headerAction>customData}"
+						/>
+					</template:with>
+				</template:elseif>
+			</template:if>
+		</template:repeat>
+	</template:if>
+	<core:Fragment fragmentName="sap.fe.templates.ObjectPage.view.fragments.RelatedApps" type="XML" />
+	<macro:Share id="fe::Share" visible="{= OP.getShareButtonVisibility(${viewData>/}) }" />
+</core:FragmentDefinition>

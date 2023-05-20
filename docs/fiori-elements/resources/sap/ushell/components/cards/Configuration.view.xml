@@ -1,0 +1,27 @@
+<mvc:View
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:codeeditor="sap.ui.codeeditor"
+    controllerName="sap.ushell.components.cards.Configuration"
+    height="100%">
+    <VBox fitContainer="true" justifyContent="SpaceBetween">
+        <MessageStrip
+            id="messageStrip"
+            showIcon="true"
+            showCloseButton="false"
+            type="Warning"
+            visible="{/config/displayOriginalLanguageWarning}"
+            text="{
+                parts: [
+                    'i18n>edit_configuration.original_locale_not_fit_message',
+                    '/config/originalLanguage',
+                    '/config/sapLogonLanguage'
+                ],
+                'formatter': '.formatter'
+            }" />
+        <Title text="{i18n>configuration.category.card_manifest}" class="sapUiTinyMargin" />
+        <codeeditor:CodeEditor id="manifestEditor" value="{/data/editorValue}" editable="{/config/manifestEditorEditable}" type="json">
+            <codeeditor:layoutData><FlexItemData growFactor="1" /></codeeditor:layoutData>
+        </codeeditor:CodeEditor>
+    </VBox>
+</mvc:View>

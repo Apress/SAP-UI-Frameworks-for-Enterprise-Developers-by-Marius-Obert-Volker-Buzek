@@ -1,0 +1,2 @@
+// Copyright (c) 2009-2023 SAP SE, All Rights Reserved
+sap.ui.define([],function(){"use strict";function t(){this._init.apply(this,arguments)}t.prototype._init=function(t,e){this._oServiceConfiguration=e;this.oAdapter=t;this._pagesCache=[]};t.prototype.getPage=function(t){if(!this._pagesCache[t]){this._pagesCache[t]=this.oAdapter.getPage(t)}return this._pagesCache[t]};t.prototype.getPages=function(t){return this.oAdapter.getPages(t)};t.hasNoAdapter=false;return t});

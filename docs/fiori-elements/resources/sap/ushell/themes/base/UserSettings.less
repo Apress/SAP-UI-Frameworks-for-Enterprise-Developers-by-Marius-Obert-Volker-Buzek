@@ -1,0 +1,156 @@
+/* ========================================================================== */
+/* CSS for control "sap.ushell.components.shell.Settings.UserSettings" (base) */
+/* ========================================================================== */
+
+.sapMBar .sapMText {
+  font-size: 1rem;
+}
+
+.sapUshellUserSettingMaster {
+  width: 100%;
+  overflow-y: auto;
+}
+
+.sapUshellUserSettingMaster .sapMLIBContent .sapMSLIImg {
+  border-radius: 100%;
+}
+
+.sapUshellUserSettingMaster .sapMSF {
+  padding: 0.25rem;
+}
+
+.sapUiSizeCompact .sapUshellUserSettingMaster .sapMSF {
+  padding: 0.1875rem;
+}
+
+.sapUshellUserSettingDetailHeader .sapMImg {
+  border-radius: 100%
+}
+
+.sapUshellUserSettingDetailContent {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+
+  @media (min-width: 600px) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.sapUshellUserSettingsDetailsKey {
+  padding-top: 1rem;
+  margin-right: 0.5rem;
+  text-align: right !important;
+}
+
+.sap-phone {
+  .sapUshellUserSettingsDetailsKey {
+    padding-right: 0.75rem;
+    padding-left: 0.75rem;
+  }
+}
+
+.sap-tablet,
+.sap-desktop {
+  .sapUshellUserSettingsDetailsKey {
+    width: 11.75rem
+  }
+}
+
+html[dir=rtl] {
+  .sapUshellUserSettingsDetailsKey {
+    text-align: left !important;
+  }
+}
+
+.sapUshellUserSettingsDetailsValue {
+  padding-top: 0.625rem;
+  text-align: left;
+}
+
+html[dir=rtl] {
+  .sapUshellUserSettingsDetailsValue {
+    text-align: right;
+  }
+}
+
+#defaultParametersSelector .sapUiRGLContainerCont {
+  padding-bottom: 2rem;
+}
+
+#defaultParametersSelector .sapUiRespGridBreak {
+  display: none;
+}
+
+#languageRegionSelector,
+#defaultParametersSelector,
+#UserAccountSelector,
+#UserAccountSetting {
+  .sapMLabel {
+    margin-right: 0.5rem;
+  }
+}
+
+#defaultParametersSelector {
+  overflow-y: auto;
+
+  .sapUshellExtendedDefaultParamsButton {
+    margin-left: 0.5rem;
+  }
+
+  .sapUiFormResGrid.sapUiFormBackgrTranslucent > div {
+    background: none;
+  }
+
+  /* fix form behavior with groups in two columns */
+  .sapUshellShellDefaultValuesForm > .sapUiForm > .sapUiFormResGrid .sapUiRespGrid > div {
+    width: 100%;
+  }
+
+  .sapUshellDefaultValuesSmartField {
+    width: 12rem !important;
+  }
+
+  .sapUshellDefaultValuesDirtyState {
+    font-style: italic;
+  }
+
+  .sapUshellSystemContextsSelection,
+  .sapUshellSmartVariantManagement,
+  .sapUshellDefaultValuesDirtyState {
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    @media (min-width: 600px) {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+}
+
+#detailuserPrefThemeSelector .sapUshellUserSettingDetailHeader {
+  border-bottom: none !important;
+}
+
+.sapUshellUserSettingMaster .sapUshellUserSettingMasterListItem {
+  height: 4rem;
+}
+
+.sapUshellUserSettingDetailHeader .sapMOHIcon {
+  margin-top: 0rem;
+}
+
+.sapUshellSettingsPage section {
+  background-color: lighten(@sapUiListBackground, 2);
+  box-sizing: border-box;
+}
+
+.sapUshellSettingsPage > section {
+  padding-bottom: 2.5rem;
+}
+
+.sapUshellUserAccountLabel {
+  padding-top: 0.25rem;
+  margin-right: 0.25rem;
+}

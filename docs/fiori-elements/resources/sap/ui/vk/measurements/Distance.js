@@ -1,0 +1,7 @@
+/*!
+ * SAP UI development toolkit for HTML5 (SAPUI5)
+
+        (c) Copyright 2009-2015 SAP SE. All rights reserved
+    
+ */
+sap.ui.define(["./Measurement","./MeasurementType"],function(t,o){"use strict";var i=function(o){t.apply(this,arguments);this._showArrows=o&&"showArrows"in o?o.showArrows:true;this._point1=o&&"point1"in o?o.point1.slice():[0,0,0];this._point2=o&&"point2"in o?o.point2.slice():[0,0,0]};i.prototype=Object.create(t.prototype);i.prototype.constructor=i;i.prototype.isDistance=true;t._classMap.set(o.Distance,i);i.prototype.getShowArrows=function(){return this._showArrows};i.prototype.setShowArrows=function(t){this._showArrows=t;return this};i.prototype.getPoint1=function(){return this._point1};i.prototype.setPoint1=function(t){var o=this._point1;o[0]=t[0];o[1]=t[1];o[2]=t[2];return this};i.prototype.getPoint2=function(){return this._point2};i.prototype.setPoint2=function(t){var o=this._point2;o[0]=t[0];o[1]=t[1];o[2]=t[2];return this};i.prototype.toString=function(){return"{ visible: "+this._visible+", showArrows: "+this._showArrows+", p1: ["+this._point1.join(", ")+"]"+", p2: ["+this._point2.join(", ")+"]"+" }"};i.prototype.getDistance=function(){var t=this._point1;var o=this._point2;var i=t[0]-o[0];var r=t[1]-o[1];var n=t[2]-o[2];return Math.sqrt(i*i+r*r+n*n)};i.prototype.toJSON=function(){return{type:o.Distance,id:this._id,visible:this._visible,showArrows:this._showArrows,point1:Array.from(this._point1),point2:Array.from(this._point2),features:this._features.map(function(t){return t!=null?t.toJSON():null})}};return i});

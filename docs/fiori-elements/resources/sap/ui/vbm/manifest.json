@@ -1,0 +1,110 @@
+{
+  "_version": "1.21.0",
+  "sap.app": {
+    "id": "sap.ui.vbm",
+    "type": "library",
+    "embeds": [],
+    "applicationVersion": {
+      "version": "1.113.0"
+    },
+    "title": "SAP UI library: sap.ui.vbm",
+    "description": "SAP UI library: sap.ui.vbm",
+    "ach": "CA-GTF-VBZ",
+    "resources": "resources.json",
+    "offline": true
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "supportedThemes": [
+      "base",
+      "sap_belize",
+      "sap_belize_hcb",
+      "sap_belize_hcw",
+      "sap_belize_plus",
+      "sap_bluecrystal",
+      "sap_fiori_3",
+      "sap_fiori_3_dark",
+      "sap_fiori_3_hcb",
+      "sap_fiori_3_hcw",
+      "sap_hcb",
+      "sap_horizon",
+      "sap_horizon_dark",
+      "sap_horizon_hcb",
+      "sap_horizon_hcw"
+    ]
+  },
+  "sap.ui5": {
+    "dependencies": {
+      "minUI5Version": "1.113",
+      "libs": {
+        "sap.ui.core": {
+          "minVersion": "1.113.0"
+        },
+        "sap.ui.commons": {
+          "minVersion": "1.113.0",
+          "lazy": true
+        },
+        "sap.ui.unified": {
+          "minVersion": "1.113.0",
+          "lazy": true
+        }
+      }
+    },
+    "library": {
+      "i18n": false,
+      "content": {
+        "controls": [
+          "sap.ui.vbm.AnalyticMap",
+          "sap.ui.vbm.GeoMap",
+          "sap.ui.vbm.VBI",
+          "sap.ui.vbm.Cluster",
+          "sap.ui.vbm.Viewport"
+        ],
+        "elements": [
+          "sap.ui.vbm.Area",
+          "sap.ui.vbm.Areas",
+          "sap.ui.vbm.Box",
+          "sap.ui.vbm.Boxes",
+          "sap.ui.vbm.Circle",
+          "sap.ui.vbm.Circles",
+          "sap.ui.vbm.Container",
+          "sap.ui.vbm.Containers",
+          "sap.ui.vbm.DragSource",
+          "sap.ui.vbm.DropTarget",
+          "sap.ui.vbm.Feature",
+          "sap.ui.vbm.FeatureCollection",
+          "sap.ui.vbm.GeoJsonLayer",
+          "sap.ui.vbm.GeoCircle",
+          "sap.ui.vbm.GeoCircles",
+          "sap.ui.vbm.Legend",
+          "sap.ui.vbm.LegendItem",
+          "sap.ui.vbm.Pie",
+          "sap.ui.vbm.PieItem",
+          "sap.ui.vbm.Pies",
+          "sap.ui.vbm.Region",
+          "sap.ui.vbm.Resource",
+          "sap.ui.vbm.Route",
+          "sap.ui.vbm.Routes",
+          "sap.ui.vbm.Spot",
+          "sap.ui.vbm.Spots",
+          "sap.ui.vbm.VoAggregation",
+          "sap.ui.vbm.VoBase",
+          "sap.ui.vbm.ClusterBase",
+          "sap.ui.vbm.ClusterTree",
+          "sap.ui.vbm.ClusterGrid",
+          "sap.ui.vbm.ClusterDistance",
+          "sap.ui.vbm.Heatmap",
+          "sap.ui.vbm.HeatPoint",
+          "sap.ui.vbm.ClusterContainer",
+          "sap.ui.vbm.Adapter",
+          "sap.ui.vbm.Adapter3D"
+        ],
+        "types": [
+          "sap.ui.vbm.ClusterInfoType",
+          "sap.ui.vbm.SemanticType"
+        ],
+        "interfaces": []
+      }
+    }
+  }
+}

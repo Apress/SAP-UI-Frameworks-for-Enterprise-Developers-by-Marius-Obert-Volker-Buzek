@@ -1,0 +1,94 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+    <Dialog
+        id="quickAccess"
+        class="sapContrastPlus"
+        title="{i18n>quickAccessDialog_title}"
+        verticalScrolling="false"
+        contentWidth="25rem"
+        draggable="true"
+        resizable="true"
+        stretch="{device>/system/phone}">
+        <buttons>
+            <Button id="quickAccessCloseButton"
+                text="{i18n>closeBtn}"
+                press="._closeDialog"/>
+        </buttons>
+        <content>
+            <IconTabBar id="quickAccessIconTabBar"
+                class="sapUshellUserActionsMenuTabBar"
+                stretchContentHeight="true"
+                backgroundDesign="Transparent"
+                expandable="false">
+                <items>
+                    <IconTabFilter id="recentActivityFilter"
+                        text="{i18n>recentActivities}">
+                        <content>
+                            <ScrollContainer horizontal="false" vertical="true" height="100%" width="100%">
+                                <List id="sapUshellActivityListrecentActivities"
+                                    showSeparators="None"
+                                    items="{/recentActivities}"
+                                    noDataText="{i18n>recentActivitiesNoDataText}"
+                                    itemPress="._itemPress">
+                                    <items>
+                                        <StandardListItem
+                                            class="sapUshellQuickAccessListIcon"
+                                            type="Active"
+                                            title="{
+                                                parts: [
+                                                    {path:'title'},
+                                                    {path:'appType'}
+                                                ],
+                                                formatter:'._titleFormatter'
+                                            }"
+                                            description="{
+                                                parts: [
+                                                    {path:'appType'}
+                                                ],
+                                                formatter:'._descriptionFormatter'
+                                            }"
+                                            icon="{= ${icon} ? ${icon} : 'sap-icon://header'}"
+                                            iconInset="false"
+                                            info="{timestamp}"/>
+                                    </items>
+                                </List>
+                            </ScrollContainer>
+                        </content>
+                    </IconTabFilter>
+                    <IconTabFilter id="frequentlyUsedFilter"
+                        text="{i18n>frequentActivities}">
+                        <content>
+                            <ScrollContainer horizontal="false" vertical="true" height="100%" width="100%">
+                                <List id="sapUshellActivityListfrequentActivities"
+                                      showSeparators="None"
+                                      items="{/frequentActivities}"
+                                      noDataText="{i18n>frequentActivitiesNoDataText}"
+                                      itemPress="._itemPress">
+                                    <items>
+                                        <StandardListItem
+                                            class="sapUshellQuickAccessListIcon"
+                                            type="Active"
+                                            title="{
+                                                    parts: [
+                                                        {path:'title'},
+                                                        {path:'appType'}
+                                                    ],
+                                                    formatter:'._titleFormatter'
+                                                }"
+                                            description="{
+                                                    parts: [
+                                                        {path:'appType'}
+                                                    ],
+                                                formatter:'._descriptionFormatter'
+                                            }"
+                                            icon="{= ${icon} ? ${icon} : 'sap-icon://header'}"
+                                            iconInset="false"/>
+                                    </items>
+                                </List>
+                            </ScrollContainer>
+                        </content>
+                    </IconTabFilter>
+                </items>
+            </IconTabBar>
+        </content>
+    </Dialog>
+</core:FragmentDefinition>

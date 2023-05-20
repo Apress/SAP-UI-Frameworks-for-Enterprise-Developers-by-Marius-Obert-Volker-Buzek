@@ -1,0 +1,250 @@
+/******** search box ancestors ********/
+
+/******** search field group ********/
+
+#searchFieldInShell {
+    display: block;
+    height: 100%;
+    width: 100%;
+
+    #searchFieldInShell-input {
+        input::-webkit-search-cancel-button {
+            -webkit-appearance: none;
+        }
+    }
+
+    & > .sapMFlexBox {
+        height: 100%;
+        align-items: center;
+
+        > div:nth-child(1) {
+            max-width: 50%;
+            max-width: ~"calc(50% - 1.5rem)";
+            margin-right: 0.125rem;
+        }
+
+        & > div:nth-child(2) {
+            flex-basis: 4rem !important;
+        }
+
+        & > div:nth-child(4) {
+            margin-left: 0.125rem;
+        }
+    }
+}
+
+#searchFieldInShell #searchFieldInShell-select.sapMSlt.sapMSltIconOnly {
+    width: 2.5rem;
+}
+
+.sapUiSizeCompact #searchFieldInShell #searchFieldInShell-select.sapMSlt.sapMSltIconOnly {
+    width: unset;
+}
+
+body:not(.sapUiSizeCompact) #searchFieldInShell .sapMFlexBox > div:nth-child(1) {
+    min-width: 2.45rem !important;
+}
+
+#searchFieldInShell-select,
+#searchFieldInShell-input,
+#searchFieldInShell button {
+    display: block;
+}
+
+html.sapUiMedia-Std-Phone #searchFieldInShell {
+    > div:first-child {
+        padding-left: 0.25rem;
+    }
+
+    > div:last-child {
+        padding-right: 0.25rem;
+    }
+}
+
+/******** suggestion ********/
+
+// avoid suggestion background
+.searchSuggestionCustomListItem {
+    background-color: transparent;
+}
+
+#searchFieldInShell-input-popup {
+    i {
+        font-style: inherit;
+    }
+
+    tr:not(.sapMLIBActive) li:not(.sapMLIBActive) i {
+        color: @sapUiContentMarkerTextColor;
+    }
+
+    li {
+        background-color: transparent;
+        display: block;
+        border: none;
+    }
+}
+
+table[id*="searchFieldInShell-input"] {
+    td,
+    .sapMLIBShowSeparator > td {
+        border-top: none;
+    }
+}
+
+#searchFieldInShell-input-popup-table-tblBody .sapMLIBContent {
+    white-space: nowrap;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 2rem;
+}
+
+.suggestListItemCell {
+    line-height: 2rem;
+}
+
+.sapUshellSearchSuggestAppIcon {
+    margin-left: 0.6rem;
+    margin-right: 0.6rem;
+    line-height: 2rem;
+}
+
+.sapUshellSearchSuggestFilterIcon {
+    margin-left: 0.6rem;
+    margin-right: 0.6rem;
+    line-height: 2rem;
+    color: @sapUiContentLabelColor;
+}
+
+.sapUshellSearchObjectSuggestIcon {
+    margin-left: 0.6rem;
+    margin-right: 0.6rem;
+    line-height: 2rem;
+}
+
+tr:not(.sapMLIBActive) li:not(.sapMLIBActive) .sapUshellSearchSuggestAppIcon {
+    color: @sapUiContentNonInteractiveIconColor;
+}
+
+.searchSuggestion:not(.searchAppSuggestion) .suggestListItemCell:empty {
+    display: none;
+}
+
+.searchSuggestion .suggestIcon,
+.suggestText {
+    //    vertical-align: text-top;
+}
+
+/******** suggestion header ********/
+
+.sapUiSizeCompact tr.searchHeaderSuggestion {
+    height: 2.5rem;
+}
+
+tr.searchHeaderSuggestion div.sapuiVlt {
+    width: 100%;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: @sapUiListTableGroupHeaderBorderColor;
+    padding-top: 1rem;
+    padding-bottom: 0.2rem;
+}
+
+tr.searchHeaderSuggestion div.sapuiVlt span.sapMLabel {
+    color: @sapUiListTableGroupHeaderTextColor;
+}
+
+tr.searchHeaderSuggestion.sapMLIBHoverable:hover {
+    background: @sapUiListBackground;
+}
+
+.sapUiSizeCozy tr.searchHeaderSuggestion {
+    .sapMListTblCell {
+        padding-top: 0.5rem;
+        padding-bottom: 0rem;
+
+        div.sapuiVlt {
+            padding-top: 0.8rem;
+            padding-bottom: 0.4rem;
+        }
+    }
+}
+
+/******** object suggestion ********/
+
+div.sapUshellSearchObjectSuggestion-Container {
+    display: flex;
+    align-items: center;
+
+    .sapUshellSearchObjectSuggestion-Labels {
+        margin-left: 0.5rem;
+
+        .sapUshellSearchObjectSuggestion-Label1 {
+            color: @sapUiListTextColor;
+        }
+
+        .sapUshellSearchObjectSuggestion-Label2 {
+            color: @sapUiContentLabelColor;
+        }
+    }
+}
+
+.sapUiSizeCozy .searchObjectSuggestion {
+    height: 4rem;
+
+    .sapMListTblCell {
+        padding-top: 0.75rem;
+        padding-bottom: 0rem;
+    }
+}
+
+/******** object suggestion cirular image ********/
+
+.sapUshellSearchObjectSuggestionImage-Initial {
+    width: auto;
+    max-height: 2.25rem;
+}
+
+.sapUiSizeCompact .sapUshellSearchObjectSuggestionImage-Wrapper {
+    width: 2.25rem;
+    height: 2.25rem;
+}
+
+.sapUshellSearchObjectSuggestionImage-Wrapper {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.sapUshellSearchObjectSuggestionImage-Wrapper-Portrait {
+    position: relative;
+    overflow: hidden;
+}
+
+.sapUshellSearchObjectSuggestionImage-Wrapper-Portrait img {
+    width: 100%;
+    height: auto;
+}
+
+.sapUshellSearchObjectSuggestionImage-Wrapper-Landscape {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+}
+
+.sapUshellSearchObjectSuggestionImage-Wrapper-Landscape img {
+    width: auto;
+    height: 100%;
+}
+
+/******** recent suggestion ********/
+.searchRecentSuggestion .suggestText {
+    margin-left: 0.5rem; // space between text and search icon, aligned with object suggestion icon
+    padding-right: 0.1rem; // make some room for italic letters leaning to the right
+}
+
+/******** data source select ********/
+
+.sapMPopover ul li[id*="searchFieldInShell-select"] {
+    height: 2.125rem;
+    line-height: 2.125rem;
+}

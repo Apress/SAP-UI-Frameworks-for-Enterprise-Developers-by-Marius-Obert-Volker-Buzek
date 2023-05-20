@@ -1,0 +1,106 @@
+<core:FragmentDefinition
+        xmlns="sap.m"
+        xmlns:core="sap.ui.core"
+        xmlns:form="sap.ui.layout.form">
+    <Dialog
+        id="aboutDialog"
+        title="{i18n>about}"
+        contentWidth="40rem"
+        horizontalScrolling="false"
+        beforeOpen=".onBeforeOpen"
+        class="sapContrastPlus"
+        afterClose=".onAfterClose">
+        <content>
+            <form:SimpleForm
+                id="aboutDialogApplicationForm"
+                editable="false"
+                layout="ColumnLayout"
+                visible="{ path: 'AppInfo>/', formatter: '.isFormVisible' }"
+                columnsM="{ path: 'AppInfo>/', formatter: '.calculateNumberOfColumns' }"
+                columnsL="{ path: 'AppInfo>/', formatter: '.calculateNumberOfColumns' }"
+                columnsXL="{ path: 'AppInfo>/', formatter: '.calculateNumberOfColumns' }"
+                labelSpanM="12"
+                labelSpanL="12"
+                labelSpanXL="12">
+                <form:title>
+                    <core:Title text="{i18n>aboutCategoryApplication}" level="H3"></core:Title>
+                </form:title>
+                <Label id="appInfoAppTitleLabel" visible="{= !!${AppInfo>/appTitle/label}}" text="{AppInfo>/appTitle/label}"/>
+                <Text id="appInfoAppTitleText" visible="{= !!${AppInfo>/appTitle/label}}" text="{AppInfo>/appTitle/text}"/>
+                <Label id="appInfoAppIdLabel" visible="{= !!${AppInfo>/appId/label}}" text="{AppInfo>/appId/label}"/>
+                <Text id="appInfoAppIdText" visible="{= !!${AppInfo>/appId/label}}" text="{AppInfo>/appId/text}"/>
+                <Label id="appInfoAppVersionLabel" visible="{= !!${AppInfo>/appVersion/label}}" text="{AppInfo>/appVersion/label}"/>
+                <Text id="appInfoAppVersionText" visible="{= !!${AppInfo>/appVersion/label}}" text="{AppInfo>/appVersion/text}"/>
+                <Label id="appInfoAppSupportInfoLabel" visible="{= !!${AppInfo>/appSupportInfo/label}}" text="{AppInfo>/appSupportInfo/label}"/>
+                <Text id="appInfoAppSupportInfoText" visible="{= !!${AppInfo>/appSupportInfo/label}}" text="{AppInfo>/appSupportInfo/text}"/>
+                <Label id="appInfoTechnicalAppComponentIdLabel" visible="{= !!${AppInfo>/technicalAppComponentId/label}}" text="{AppInfo>/technicalAppComponentId/label}"/>
+                <Text id="appInfoTechnicalAppComponentIdText" visible="{= !!${AppInfo>/technicalAppComponentId/label}}" text="{AppInfo>/technicalAppComponentId/text}"/>
+                <Label id="appInfoAppFrameworkIdLabel" visible="{= !!${AppInfo>/appFrameworkId/label}}" text="{AppInfo>/appFrameworkId/label}"/>
+                <Text id="appInfoAppFrameworkIdText" visible="{= !!${AppInfo>/appFrameworkId/label}}" text="{AppInfo>/appFrameworkId/text}"/>
+                <Label id="appInfoAppFrameworkVersionLabel" visible="{= !!${AppInfo>/appFrameworkVersion/label}}" text="{AppInfo>/appFrameworkVersion/label}"/>
+                <Text id="appInfoAppFrameworkVersionText" visible="{= !!${AppInfo>/appFrameworkVersion/label}}" text="{AppInfo>/appFrameworkVersion/text}"/>
+                <Label id="appInfoContentProviderLabel" visible="{= !!${AppInfo>/contentProviderLabel/label}}" text="{AppInfo>/contentProviderLabel/label}"/>
+                <Text id="appInfoContentProviderText" visible="{= !!${AppInfo>/contentProviderLabel/label}}" text="{AppInfo>/contentProviderLabel/text}"/>
+            </form:SimpleForm>
+
+            <form:SimpleForm
+                id="aboutDialogSystemForm"
+                editable="false"
+                layout="ColumnLayout"
+                visible="{ path: 'SysInfo>/', formatter: '.isFormVisible' }"
+                columnsM="{ path: 'SysInfo>/', formatter: '.calculateNumberOfColumns' }"
+                columnsL="{ path: 'SysInfo>/', formatter: '.calculateNumberOfColumns' }"
+                columnsXL="{ path: 'SysInfo>/', formatter: '.calculateNumberOfColumns' }"
+                labelSpanM="12"
+                labelSpanL="12"
+                labelSpanXL="12">
+                <form:title>
+                    <core:Title text="{i18n>aboutCategorySystem}" level="H3"></core:Title>
+                </form:title>
+                <Label id="sysInfoProductNameLabel" visible="{= !!${SysInfo>/productName/label}}" text="{SysInfo>/productName/label}"/>
+                <Text id="sysInfoProductNameText" visible="{= !!${SysInfo>/productName/label}}" text="{SysInfo>/productName/text}"/>
+                <Label id="sysInfoProductVersionLabel" visible="{= !!${SysInfo>/productVersion/label}}" text="{SysInfo>/productVersion/label}"/>
+                <Text id="sysInfoProductVersionText" visible="{= !!${SysInfo>/productVersion/label}}" text="{SysInfo>/productVersion/text}"/>
+                <Label id="sysInfoSystemNameLabel" visible="{= !!${SysInfo>/systemName/label}}" text="{SysInfo>/systemName/label}"/>
+                <Text id="sysInfoSystemNameText" visible="{= !!${SysInfo>/systemName/label}}" text="{SysInfo>/systemName/text}"/>
+                <Label id="sysInfoSystemRoleLabel" visible="{= !!${SysInfo>/systemRole/label}}" text="{SysInfo>/systemRole/label}"/>
+                <Text id="sysInfoSystemRoleText" visible="{= !!${SysInfo>/systemRole/label}}" text="{SysInfo>/systemRole/text}"/>
+                <Label id="sysInfoTenantRoleLabel" visible="{= !!${SysInfo>/tenantRole/label}}" text="{SysInfo>/tenantRole/label}"/>
+                <Text id="sysInfoTenantRoleText" visible="{= !!${SysInfo>/tenantRole/label}}" text="{SysInfo>/tenantRole/text}"/>
+            </form:SimpleForm>
+
+            <form:SimpleForm
+                id="aboutDialogUserForm"
+                editable="false"
+                layout="ColumnLayout"
+                visible="{ path: 'UserEnvInfo>/', formatter: '.isFormVisible' }"
+                columnsM="{ path: 'UserEnvInfo>/', formatter: '.calculateNumberOfColumns' }"
+                columnsL="{ path: 'UserEnvInfo>/', formatter: '.calculateNumberOfColumns' }"
+                columnsXL="{ path: 'UserEnvInfo>/', formatter: '.calculateNumberOfColumns' }"
+                labelSpanM="12"
+                labelSpanL="12"
+                labelSpanXL="12">
+                <form:title>
+                    <core:Title text="{i18n>aboutCategoryUser}" level="H3"></core:Title>
+                </form:title>
+                <Label id="userEnvInfoDeviceTypeLabel" visible="{= !!${UserEnvInfo>/deviceType/label}}" text="{UserEnvInfo>/deviceType/label}"/>
+                <Text id="userEnvInfoDeviceTypeText" visible="{= !!${UserEnvInfo>/deviceType/label}}" text="{UserEnvInfo>/deviceType/text}"/>
+                <Label id="userEnvInfoActiveThemeLabel" visible="{= !!${UserEnvInfo>/activeTheme/label}}" text="{UserEnvInfo>/activeTheme/label}"/>
+                <Text id="userEnvInfoActiveThemeText" visible="{= !!${UserEnvInfo>/activeTheme/label}}" text="{UserEnvInfo>/activeTheme/text}"/>
+                <Label id="userEnvInfoOptimizedForTouchLabel" visible="{= !!${UserEnvInfo>/optimizedForTouch/label}}" text="{UserEnvInfo>/optimizedForTouch/label}"/>
+                <Text id="userEnvInfoOptimizedForTouchText" visible="{= !!${UserEnvInfo>/optimizedForTouch/label}}" text="{UserEnvInfo>/optimizedForTouch/text}"/>
+                <Label id="userEnvInfoTouchSupportedLabel" visible="{= !!${UserEnvInfo>/touchSupported/label}}" text="{UserEnvInfo>/touchSupported/label}"/>
+                <Text id="userEnvInfoTouchSupportedText" visible="{= !!${UserEnvInfo>/touchSupported/label}}" text="{UserEnvInfo>/touchSupported/text}"/>
+                <Label id="userEnvInfoUserAgentFldLabel" visible="{= !!${UserEnvInfo>/userAgentFld/label}}" text="{UserEnvInfo>/userAgentFld/label}"/>
+                <Text id="userEnvInfoUserAgentFldText" visible="{= !!${UserEnvInfo>/userAgentFld/label}}" text="{UserEnvInfo>/userAgentFld/text}"/>
+            </form:SimpleForm>
+        </content>
+        <beginButton>
+            <Button
+                id="aboutDialogCloseButton"
+                text="{i18n>closeBtn}"
+                type="Transparent"
+                press=".onClose" />
+        </beginButton>
+    </Dialog>
+</core:FragmentDefinition>

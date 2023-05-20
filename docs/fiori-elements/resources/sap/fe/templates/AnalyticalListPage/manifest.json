@@ -1,0 +1,33 @@
+{
+	"_version": "1.14.0",
+	"sap.app": {
+		"id": "sap.fe.templates.AnalyticalListPage",
+		"type": "component",
+		"applicationVersion": {
+			"version": "1.113.0"
+		},
+		"title": "Analytical List Page",
+		"tags": {
+			"keywords": ["Analytical List Page"]
+		},
+		"ach": "CA-UI5-FE",
+		"embeddedBy": "../",
+		"offline": false,
+		"resources": "resources.json"
+	},
+	"sap.ui5": {
+		"services": {
+			"templatedViewService": {
+				"settings": {
+					"converterType": "AnalyticalListPage"
+				}
+			}
+		},
+		"dependencies": {
+			"minUI5Version": "${sap.ui5.core.version}",
+			"libs": {
+				"sap.fe.macros": {}
+			}
+		}
+	}
+}

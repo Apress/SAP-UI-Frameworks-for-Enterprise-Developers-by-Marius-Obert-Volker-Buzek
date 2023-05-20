@@ -1,0 +1,38 @@
+/* ========================================================= */
+/* CSS for control "sap.ushell.ui.launchpad.PlusTile" (base) */
+/* ========================================================= */
+
+.sapUshellPlusTile {
+  box-sizing: border-box;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  box-shadow: none;
+  width: @_sap_ushell_Tile_WidthPhone;
+  @media (min-width: 375px) { width: @_sap_ushell_Tile_WidthDesktop; }
+
+  .sapUiIcon {
+    line-height: @_sap_ushell_Tile_HeightPhone;
+    @media (min-width: 375px) { line-height: @_sap_ushell_Tile_HeightDesktop; }
+  }
+
+  &.sapUshellSmall {
+    width: @_sap_ushell_Tile_WidthPhone;
+
+    .sapUiIcon {
+      line-height: @_sap_ushell_Tile_HeightPhone;
+    }
+  }
+
+  .sapUiIcon {
+    position: static;
+    outline: none;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+  }
+}
+
+.sapUshellHidePlusTile {
+  visibility: hidden;
+}

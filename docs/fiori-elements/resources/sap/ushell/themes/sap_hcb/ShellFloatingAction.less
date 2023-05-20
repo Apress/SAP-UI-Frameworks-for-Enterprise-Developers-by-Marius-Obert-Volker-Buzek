@@ -1,0 +1,34 @@
+/* ============================================= */
+/* CSS for control sap.ushell/ui/Shell/ShellFloatingAction sap_hcb theme*/
+/* ============================================= */
+.sapUshellShellFloatingAction div {
+  border: 2px solid @sapHCStandardFG;
+
+  .sapUiIcon {
+    margin: -1px -1px 0 -1px;
+  }
+}
+
+.sapUshellShellFloatingAction.sapUshellActive {
+  .sapMBtnInner {
+    background-color: @sapHCHighlightAltBG;
+  }
+
+  .sapMBtnInner:hover {
+    background-color: @sapUiHighlight;
+  }
+}
+
+.sapUshellShellFloatingAction .sapMBtnInner:focus {
+  border: 2px dotted @sapHCStandardFG;
+}
+
+.sapUshellShellFloatingAction:focus>.sapMBtnInner.sapMFocusable {
+  border-radius: 1.25rem;
+  border: 2px dotted @sapHCStandardFG;
+}
+
+.sapUshellShellFloatingAction:focus>.sapMBtnInner.sapMFocusable:not(.sapMBtnActive){
+  border-radius: 1.25rem;
+  border: 2px dotted @sapHCStandardFG;
+}

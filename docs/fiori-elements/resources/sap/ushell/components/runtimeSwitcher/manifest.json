@@ -1,0 +1,45 @@
+{
+    "_version": "1.39.0",
+    "sap.app": {
+        "id": "sap.ushell.components.runtimeSwitcher",
+        "applicationVersion": {
+            "version": "1.113.0"
+        },
+        "ach": "CA-FLP-FE-COR",
+        "type": "component",
+        "title": ""
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+
+    "sap.ui5": {
+        "componentName": "sap.ushell.components.runtimeSwitcher",
+        "rootView": {
+            "viewName": "sap.ushell.components.runtimeSwitcher.view.RuntimeSwitcher",
+            "type": "XML",
+            "async": true
+        },
+        "componentUsages": {
+            "pagesComponent": {
+                "name": "sap.ushell.components.pages",
+                "componentData": {
+                    "navigationDisabled": true
+                },
+                "lazy": true
+            },
+            "workpageComponent": {
+                "name": "sap.ushell.components.workPageRuntime",
+                "componentData": {
+                    "navigationDisabled": true
+                },
+                "lazy": true
+            }
+        }
+    }
+}

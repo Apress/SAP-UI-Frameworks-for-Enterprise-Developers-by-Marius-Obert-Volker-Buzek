@@ -1,0 +1,35 @@
+/*!
+ * SAP UI development toolkit for HTML5 (SAPUI5)
+ *      (c) Copyright 2009-2023 SAP SE. All rights reserved
+ */
+sap.ui.define(["sap/fe/core/converters/helpers/IssueManager", "sap/fe/core/support/CommonHelper"], function (IssueManager, CommonHelper) {
+  "use strict";
+
+  var _exports = {};
+  var getIssueByCategory = CommonHelper.getIssueByCategory;
+  var Categories = CommonHelper.Categories;
+  var Audiences = CommonHelper.Audiences;
+  var IssueCategory = IssueManager.IssueCategory;
+  const oInvalidAnnotationColumnKey = {
+    id: "invalidAnnotationColumnKey",
+    title: "AnnotationColumnKey: Invalid Key",
+    minversion: "1.98",
+    audiences: [Audiences.Application],
+    categories: [Categories.Usage],
+    description: "The key of the annotation column is needed as a valid identifier in the application manifest.",
+    resolution: "A column key set in the application manifest must correspond to an existing annotation column.",
+    resolutionurls: [{
+      text: "InvalidAnnotationColumnKey",
+      href: "https://ui5.sap.com/#/topic/d525522c1bf54672ae4e02d66b38e60c"
+    }],
+    check: function (oIssueManager, oCoreFacade) {
+      getIssueByCategory(oIssueManager, oCoreFacade, IssueCategory.Manifest, "InvalidKey");
+    }
+  };
+  function getRules() {
+    return [oInvalidAnnotationColumnKey];
+  }
+  _exports.getRules = getRules;
+  return _exports;
+}, false);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJvSW52YWxpZEFubm90YXRpb25Db2x1bW5LZXkiLCJpZCIsInRpdGxlIiwibWludmVyc2lvbiIsImF1ZGllbmNlcyIsIkF1ZGllbmNlcyIsIkFwcGxpY2F0aW9uIiwiY2F0ZWdvcmllcyIsIkNhdGVnb3JpZXMiLCJVc2FnZSIsImRlc2NyaXB0aW9uIiwicmVzb2x1dGlvbiIsInJlc29sdXRpb251cmxzIiwidGV4dCIsImhyZWYiLCJjaGVjayIsIm9Jc3N1ZU1hbmFnZXIiLCJvQ29yZUZhY2FkZSIsImdldElzc3VlQnlDYXRlZ29yeSIsIklzc3VlQ2F0ZWdvcnkiLCJNYW5pZmVzdCIsImdldFJ1bGVzIl0sInNvdXJjZVJvb3QiOiIuIiwic291cmNlcyI6WyJJbnZhbGlkQW5ub3RhdGlvbkNvbHVtbktleS5zdXBwb3J0LnRzIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IElzc3VlQ2F0ZWdvcnkgfSBmcm9tIFwic2FwL2ZlL2NvcmUvY29udmVydGVycy9oZWxwZXJzL0lzc3VlTWFuYWdlclwiO1xuaW1wb3J0IHsgQXVkaWVuY2VzLCBDYXRlZ29yaWVzLCBnZXRJc3N1ZUJ5Q2F0ZWdvcnkgfSBmcm9tIFwic2FwL2ZlL2NvcmUvc3VwcG9ydC9Db21tb25IZWxwZXJcIjtcbmNvbnN0IG9JbnZhbGlkQW5ub3RhdGlvbkNvbHVtbktleSA9IHtcblx0aWQ6IFwiaW52YWxpZEFubm90YXRpb25Db2x1bW5LZXlcIixcblx0dGl0bGU6IFwiQW5ub3RhdGlvbkNvbHVtbktleTogSW52YWxpZCBLZXlcIixcblx0bWludmVyc2lvbjogXCIxLjk4XCIsXG5cdGF1ZGllbmNlczogW0F1ZGllbmNlcy5BcHBsaWNhdGlvbl0sXG5cdGNhdGVnb3JpZXM6IFtDYXRlZ29yaWVzLlVzYWdlXSxcblx0ZGVzY3JpcHRpb246IFwiVGhlIGtleSBvZiB0aGUgYW5ub3RhdGlvbiBjb2x1bW4gaXMgbmVlZGVkIGFzIGEgdmFsaWQgaWRlbnRpZmllciBpbiB0aGUgYXBwbGljYXRpb24gbWFuaWZlc3QuXCIsXG5cdHJlc29sdXRpb246IFwiQSBjb2x1bW4ga2V5IHNldCBpbiB0aGUgYXBwbGljYXRpb24gbWFuaWZlc3QgbXVzdCBjb3JyZXNwb25kIHRvIGFuIGV4aXN0aW5nIGFubm90YXRpb24gY29sdW1uLlwiLFxuXHRyZXNvbHV0aW9udXJsczogW3sgdGV4dDogXCJJbnZhbGlkQW5ub3RhdGlvbkNvbHVtbktleVwiLCBocmVmOiBcImh0dHBzOi8vdWk1LnNhcC5jb20vIy90b3BpYy9kNTI1NTIyYzFiZjU0NjcyYWU0ZTAyZDY2YjM4ZTYwY1wiIH1dLFxuXHRjaGVjazogZnVuY3Rpb24gKG9Jc3N1ZU1hbmFnZXI6IGFueSwgb0NvcmVGYWNhZGU6IGFueSAvKm9TY29wZTogYW55Ki8pIHtcblx0XHRnZXRJc3N1ZUJ5Q2F0ZWdvcnkob0lzc3VlTWFuYWdlciwgb0NvcmVGYWNhZGUsIElzc3VlQ2F0ZWdvcnkuTWFuaWZlc3QsIFwiSW52YWxpZEtleVwiKTtcblx0fVxufTtcbmV4cG9ydCBmdW5jdGlvbiBnZXRSdWxlcygpIHtcblx0cmV0dXJuIFtvSW52YWxpZEFubm90YXRpb25Db2x1bW5LZXldO1xufVxuIl0sIm1hcHBpbmdzIjoiO0FBQUE7QUFBQTtBQUFBOzs7Ozs7Ozs7RUFFQSxNQUFNQSwyQkFBMkIsR0FBRztJQUNuQ0MsRUFBRSxFQUFFLDRCQUE0QjtJQUNoQ0MsS0FBSyxFQUFFLGtDQUFrQztJQUN6Q0MsVUFBVSxFQUFFLE1BQU07SUFDbEJDLFNBQVMsRUFBRSxDQUFDQyxTQUFTLENBQUNDLFdBQVcsQ0FBQztJQUNsQ0MsVUFBVSxFQUFFLENBQUNDLFVBQVUsQ0FBQ0MsS0FBSyxDQUFDO0lBQzlCQyxXQUFXLEVBQUUsK0ZBQStGO0lBQzVHQyxVQUFVLEVBQUUsZ0dBQWdHO0lBQzVHQyxjQUFjLEVBQUUsQ0FBQztNQUFFQyxJQUFJLEVBQUUsNEJBQTRCO01BQUVDLElBQUksRUFBRTtJQUErRCxDQUFDLENBQUM7SUFDOUhDLEtBQUssRUFBRSxVQUFVQyxhQUFrQixFQUFFQyxXQUFnQixFQUFrQjtNQUN0RUMsa0JBQWtCLENBQUNGLGFBQWEsRUFBRUMsV0FBVyxFQUFFRSxhQUFhLENBQUNDLFFBQVEsRUFBRSxZQUFZLENBQUM7SUFDckY7RUFDRCxDQUFDO0VBQ00sU0FBU0MsUUFBUSxHQUFHO0lBQzFCLE9BQU8sQ0FBQ3JCLDJCQUEyQixDQUFDO0VBQ3JDO0VBQUM7RUFBQTtBQUFBIn0=

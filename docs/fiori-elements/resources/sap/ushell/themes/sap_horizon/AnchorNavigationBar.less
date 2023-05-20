@@ -1,0 +1,78 @@
+/* =============================================== */
+/* CSS for control sap.ushell/AnchorNavigationBar  */
+/* Horizon theme                                   */
+/* =============================================== */
+
+.sapUshellAnchorNavigationBar {
+  background: @sapUiShellNavigationBackground;
+  box-shadow: @sapUiShellShadow;
+  height: 2.75rem;
+  padding: 0 2rem;
+}
+
+// AnchorNavigationBars inner bar
+.sapUshellAnchorNavigationBarInner {
+  color: @sapUiShellNavigationTextColor;
+  padding: 0 .1875rem;
+}
+
+// more buttons: left / right / overflow: sizing and padding of the inner element
+.sapUshellAnchorNavigationBar .sapMBtn>.sapMBtnInner {
+  border-radius: .375rem;
+}
+
+.sapUshellAnchorItemsPopover .sapUshellGroupLI {
+  background-color: @sapUiListBackground;
+}
+
+// Popover Item selected
+.sapUshellAnchorItemsPopover .sapUshellGroupLI.sapUshellAnchorPopoverItemSelected {
+
+  background-color: @sapUiListSelectionBackgroundColor;
+
+  // do not show small bottom border after selection
+  &.sapMLIB {
+    border-bottom: none;
+  }
+
+  // only focused selected items get an outline.
+  &:focus {
+    border-radius: .625rem;
+    outline: @sapUiContentFocusWidth solid @sapUiContentFocusColor;
+  }
+}
+
+// Popover Item unselected
+.sapUshellAnchorItemsPopover .sapUshellGroupLI.sapUshellAnchorPopoverItemNonSelected {
+  background-color: @sapUiListBackground;
+
+  // do not show small bottom border after selection
+  &.sapMLIB {
+    border-bottom: none;
+  }
+
+  // hover properties for unselected Popover Items
+  &:hover {
+    background-color: @sapUiListHoverBackground;
+  }
+
+  // focused unselected items show an outline.
+  &:focus {
+    border-radius: .625rem;
+    outline: @sapUiContentFocusWidth solid @sapUiContentFocusColor;
+  }
+}
+
+// the scroll wrapper of the AnchorNavigationBar.
+.sapUshellAnchorNavigationBarItemsScroll {
+  height: inherit;
+}
+
+// width of navigation buttons left, right, overflow
+.sapUshellAnchorNavigationBarInner #sapUshellAnchorBarOverflowButton,
+.sapUshellAnchorNavigationBarInner .sapUshellAnchorLeftOverFlowButton,
+.sapUshellAnchorNavigationBarInner .sapUshellAnchorRightOverFlowButton {
+  .sapMBtnInner {
+    min-width: 1.625rem;
+  }
+}

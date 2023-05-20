@@ -1,0 +1,16 @@
+.showMoreReplies {
+	background-color : #ffffff;
+}
+
+.replyTextAreaToBottom {
+	position : absolute;
+	bottom : 1px;
+}
+
+.replyTextArea {
+	padding: 1px 0;
+}
+
+.replyFeedListItem {
+	padding-right: 30px;
+}

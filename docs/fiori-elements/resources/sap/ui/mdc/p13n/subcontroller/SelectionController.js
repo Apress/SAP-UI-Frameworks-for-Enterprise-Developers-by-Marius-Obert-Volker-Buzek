@@ -1,0 +1,6 @@
+/*!
+ * OpenUI5
+ * (c) Copyright 2009-2023 SAP SE or an SAP affiliate company.
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ */
+sap.ui.define(["sap/m/p13n/SelectionController","sap/base/util/merge"],function(e,t){"use strict";var n=e.extend("sap.ui.mdc.p13n.subcontroller.SelectionController");n.prototype._createAddRemoveChange=function(e,t,n){delete n.key;var a={selectorElement:e,changeSpecificData:{changeType:t,content:n}};return a};n.prototype.getCurrentState=function(e){var t=this.getAdaptationControl().getCurrentState()[this.getStateKey()];if(t instanceof Array&&!e){t=t.map(function(e){e.key=e.name;return e})}return t};n.prototype.getDelta=function(n){if(n.changedState instanceof Array){var a=t([],n.changedState);a.map(function(e){e.key=e.name;return e});n.changedState=a}if(n.existingState instanceof Array){var r=t([],n.existingState);r.map(function(e){e.key=e.name;return e});n.existingState=r}n.deltaAttributes.push("name");return e.prototype.getDelta.apply(this,arguments)};n.prototype._createMoveChange=function(e,t,n,a){var r={selectorElement:a,changeSpecificData:{changeType:n,content:{name:e,index:t}}};return r};return n});

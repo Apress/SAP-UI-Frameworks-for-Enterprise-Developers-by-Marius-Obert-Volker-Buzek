@@ -1,0 +1,7 @@
+/*!
+ * 
+		SAP UI development toolkit for HTML5 (SAPUI5)
+		(c) Copyright 2009-2015 SAP SE. All rights reserved
+	
+ */
+sap.ui.define([],function(){"use strict";function e(e,t,i){this.oGraph=e;this.oSourceNode=t;this.oSettings=Object.assign({fnLineValue:function(){return 1},bIgnoreDirections:false,bIgnoreCollapsed:false},i);this._compute()}e.prototype._compute=function(){var e,t,i,o=[this.oSourceNode],n={},r={},s={},g=this.oSettings.fnLineValue,h=this.oSettings.bIgnoreDirections,u=this.oSettings.bIgnoreCollapsed;function f(e,t){for(var i=0;i<o.length;i++){if(t>r[o[i].getKey()]){o.splice(i,0,e);return}}o.push(e)}function l(t,i){var o=i?t.getFromNode():t.getToNode(),n=o.getKey(),h=r[e.getKey()]+g(t);if(h<r[n]){r[n]=h;s[n]={line:t,reverse:i};f(o,h)}}this.oGraph.getNodes().forEach(function(e){r[e.getKey()]=Number.MAX_VALUE});r[this.oSourceNode.getKey()]=0;while(o.length>0){e=o.shift();if(n[e.getKey()]){continue}if(u&&(e.isHidden()||e.getVisible()===false||e._isIgnored())){continue}n[e.getKey()]=true;t=e.getChildLines();for(i=0;i<t.length;i++){l(t[i],false)}if(h){t=e.getParentLines();for(i=0;i<t.length;i++){l(t[i],true)}}}this.mDist=r;this.mPath=s};e.prototype.getShortestPathTo=function(e){var t=this.mPath[e.getKey()],i=[],o,n;if(t){o=t.reverse?t.line.getFromNode():t.line.getToNode()}while(t&&o!==this.oSourceNode){i.push(t.line);n=t.reverse?t.line.getToNode():t.line.getFromNode();t=this.mPath[n.getKey()];if(t){o=t.reverse?t.line.getFromNode():t.line.getToNode()}}return i};return e},true);

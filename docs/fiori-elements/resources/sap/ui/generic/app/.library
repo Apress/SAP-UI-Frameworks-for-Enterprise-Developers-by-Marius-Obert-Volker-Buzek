@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<library xmlns="http://www.sap.com/sap.ui.library.xsd">
+
+    <name>sap.ui.generic.app</name>
+    <vendor>SAP SE</vendor>
+    <copyright>SAPUI5
+
+(c) Copyright 2009-2020 SAP SE. All rights reserved</copyright>
+    <version>1.113.0</version>
+
+    <documentation>The SAPUI5 library contains classes that are mainly used in smart template applications, but can also be used in any Fiori/UI5 application
+                   that uses the OData protocol to communicate with an application server.</documentation>
+
+    <dependencies>
+        <dependency>
+            <libraryName>sap.ui.core</libraryName>
+        </dependency>
+        <dependency>
+            <libraryName>sap.ui.comp</libraryName>
+			<lazy>true</lazy>
+        </dependency>
+        <dependency>
+            <libraryName>sap.m</libraryName>
+        </dependency>
+        <dependency>
+            <libraryName>sap.fe.navigation</libraryName>
+			<lazy>true</lazy>
+        </dependency>
+    </dependencies>
+
+    <appData>
+        <!-- package name for selenium -->
+        <selenium xmlns="http://www.sap.com/ui5/buildext/selenium" package="com.sap.ui5.selenium.generic.app"/>
+        <!-- excludes for the JSDoc -->
+        <jsdoc xmlns="http://www.sap.com/ui5/buildext/jsdoc">
+            <exclude name="sap.ui.generic.app.js."/>
+        </jsdoc>
+        <!-- excludes for the JSCoverage -->
+        <jscoverage xmlns="http://www.sap.com/ui5/buildext/jscoverage">
+            <exclude name="sap.ui.generic.app.js."/>
+        </jscoverage>
+		<documentation xmlns="http://www.sap.com/ui5/buildext/documentation"
+			indexUrl="../../../../../test-resources/sap/ui/generic/app/demokit/docuindex.json"
+			resolve="lib" />
+        <releasenotes xmlns="http://www.sap.com/ui5/buildext/releasenotes"
+                      url="../../../../../test-resources/sap/ui/generic/app/relnotes/changes-{major}.{minor}.json"
+                      resolve="lib" />
+
+
+        <ownership xmlns="http://www.sap.com/ui5/buildext/ownership">
+
+            <component>
+                <name>CA-UI5-FE-NAV</name>
+                <modules>
+                    <module>sap/ui/generic/app/navigation/*</module>
+                </modules>
+            </component>
+
+            <component>
+                <name>CA-UI5-ST</name>
+                <modules>
+                    <module>sap/ui/generic/app/ApplicationController</module>
+                    <module>sap/ui/generic/app/AppComponent</module>
+                    <module>sap/ui/generic/app/transaction/*</module>
+                    <module>sap/ui/generic/app/util/*</module>
+                </modules>
+            </component>
+
+        </ownership>
+    </appData>
+
+</library>

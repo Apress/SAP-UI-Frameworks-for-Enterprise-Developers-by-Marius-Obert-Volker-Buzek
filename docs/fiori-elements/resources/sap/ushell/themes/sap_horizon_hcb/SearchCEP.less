@@ -1,0 +1,332 @@
+/* ======================================= */
+/* CSS for control sap.ushell/ShellHeader  */
+/* Horizon theme                           */
+/* ======================================= */
+.sapUshellCEPListCenter {
+  top: 0.1rem !important;
+  margin: auto;
+  padding: .2rem 0rem 0rem 0rem;
+  margin-bottom: 1rem;
+}
+// Placeholder SearchField in CEP
+#PlaceHolderSearchField>.sapMSFF {
+  border-radius: initial;
+  //height: 2.25rem !important;
+  background-color: @sapShellColor;
+  border: 0.0625rem solid @sapShell_InteractiveBorderColor;
+  color: @sapShell_InteractiveTextColor;
+
+  &:focus {
+    background-color: @sapShell_Active_Background;
+    border: 0.0625rem solid @sapShell_InteractiveBorderColor;
+  }
+
+  &:hover {
+    background-color: @sapShellColor;
+    border: 0.0625rem solid @sapShell_InteractiveBorderColor;
+    box-shadow: none;
+  }
+}
+
+.sapUshellCEPSearchFieldMargin {
+  margin-top: 0.1rem;
+}
+
+// Placeholder SearchField - placholder text
+#PlaceHolderSearchField-I::placeholder {
+  font-weight: normal;
+  color: @sapField_PlaceholderTextColor;
+}
+
+// SearchField in popover - CEP
+#CEPSearchField>.sapMSFF {
+  border-radius: initial;
+  //height: 2.25rem !important;
+  background-color: @sapShellColor;
+  border: 0.0625rem solid @sapShell_InteractiveBorderColor;
+  color: @sapShell_InteractiveTextColor;
+
+  &:focus {
+    background-color: @sapShell_Active_Background;
+    border: 0.0625rem solid @sapShell_InteractiveBorderColor;
+  }
+
+  &:hover {
+    background-color: @sapShellColor;
+    border: 0.0625rem solid @sapShell_InteractiveBorderColor;
+    box-shadow: none;
+  }
+}
+
+// SearchField in popover - placholder text
+#CEPSearchField-I::placeholder {
+  color: @sapField_PlaceholderTextColor;
+  font-weight: normal;
+}
+
+/** Clear Search Button **/
+#PlaceHolderSearchField-search {
+  border-radius: initial;
+  line-height: 2;
+
+  &:hover {
+    box-shadow: none;
+    border: 0.0625px solid @sapShell_InteractiveBorderColor;
+  }
+
+  &:active {
+    background-color: @sapShell_Active_Background;
+    border: 0.0625px solid @sapShell_InteractiveBorderColor;
+  }
+}
+
+#PlaceHolderSearchField-reset {
+  border-radius: initial;
+  line-height: 2;
+
+  &:hover {
+    border: 0.0625px solid @sapShell_InteractiveBorderColor;
+    box-shadow: none;
+  }
+
+  &:active {
+    border: 0.0625px solid @sapShell_InteractiveBorderColor;
+  }
+}
+
+#CEPSearchField-search {
+  border-radius: initial;
+  line-height: 2;
+
+  &:hover {
+    box-shadow: none;
+    border: 0.0625px solid @sapShell_InteractiveBorderColor;
+  }
+
+  &:active {
+    background-color: @sapShell_Active_Background;
+    border: 0.0625px solid @sapShell_InteractiveBorderColor;
+  }
+}
+
+#CEPSearchField-reset {
+  border-radius: initial;
+  line-height: 2;
+
+  &:hover {
+    border: 0.0625px solid @sapShell_InteractiveBorderColor;
+    box-shadow: none;
+  }
+
+  &:active {
+    border: 0.0625px solid @sapShell_InteractiveBorderColor;
+  }
+}
+
+#CEPSearchField.sapMSFVal>.sapMSFF .sapMSFS {
+  color: @sapShell_InteractiveTextColor;
+  border: 0.0625px solid @sapShell_InteractiveBorderColor;
+}
+/**/
+
+#FrequentlyUsedAppsList>.sapMGrowingList {
+  border-bottom: none;
+}
+
+.sapUshellCEPSearchFieldPopover {
+}
+
+//#SearchFieldList>#SearchHistoryList>.sapMListShowSeparatorsNone .sapMLIBShowSeparator:hover {
+//  box-shadow: inset 0 -0.0625rem #fff;
+//}
+
+//#FrequentlyUsedAppsList>.sapMListShowSeparatorsNone .sapMLIBShowSeparator:hover {
+//  box-shadow: inherit;
+//}
+//
+//#SearchResultList>.sapMListShowSeparatorsNone .sapMLIBShowSeparator:hover {
+//  box-shadow: inherit;
+//}
+//
+//#ExternalSearchAppsList>.sapMListShowSeparatorsNone .sapMLIBShowSeparator:hover {
+//  box-shadow: inherit;
+//}
+
+#SearchFieldList>.sapMListShowSeparatorsNone .sapMLIBShowSeparator:hover {
+  box-shadow: inset 0 -0.0625rem transparent;
+}
+
+#SearchFieldList #SearchHistoryList>.sapMListShowSeparatorsNone .sapMLIBShowSeparator:hover {
+  box-shadow: inset 0 -0.0625rem @sapUiContentFocusColor;
+}
+
+#SearchFieldList #FrequentlyUsedAppsList>.sapMListShowSeparatorsNone .sapMLIBShowSeparator:hover {
+  box-shadow: inset 0 -0.0625rem @sapUiContentFocusColor;
+}
+
+#SearchFieldList #SearchResultList>.sapMListShowSeparatorsNone .sapMLIBShowSeparator:hover {
+  box-shadow: inset 0 -0.0625rem @sapUiContentFocusColor;
+}
+
+#SearchFieldList #ExternalSearchAppsList>.sapMListShowSeparatorsNone .sapMLIBShowSeparator:hover {
+  box-shadow: inset 0 -0.0625rem @sapUiContentFocusColor;
+}
+
+.sapUshellCEPSearchFieldMargin {
+  margin-top: 0.1rem;
+}
+/*
+ */
+#SearchHistoryList-trigger-content>.sapMGrowingListTrigger {
+  border-color: transparent;
+
+  &:hover {
+    border-bottom: 1px solid @sapUiContentFocusColor;
+    border-radius: initial;
+  }
+}
+
+
+#FrequentlyUsedAppsList-trigger-content>.sapMGrowingListTrigger {
+  border-color: transparent;
+
+  &:hover {
+    border-bottom: 1px solid @sapUiContentFocusColor;
+    border-radius: initial;
+  }
+}
+
+#SearchResultList-trigger-content>.sapMGrowingListTrigger {
+  border-color: transparent;
+
+  &:hover {
+    border-bottom: 1px solid @sapUiContentFocusColor;
+    border-radius: initial;
+  }
+}
+
+#ProductsList-trigger-content>.sapMGrowingListTrigger {
+  border-color: transparent;
+
+  &:hover {
+    border-bottom: 1px solid @sapUiContentFocusColor;
+    border-radius: initial;
+  }
+}
+
+#ExternalSearchAppsList-trigger-content>.sapMGrowingListTrigger {
+  border-color: transparent;
+
+  &:hover {
+    border-bottom: 1px solid @sapUiContentFocusColor;
+    border-radius: initial;
+  }
+}
+/*
+ */
+#SearchHistoryList-triggerText {
+  font-weight: normal;
+  text-align: left;
+  font-size: .9rem;
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+#FrequentlyUsedAppsList-triggerText {
+  font-weight: normal;
+  text-align: left;
+  font-size: .9rem;
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+#SearchResultList-triggerText {
+  font-weight: normal !important;
+  text-align: left !important;
+  font-size: .9rem !important;
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+#ProductsList-triggerText {
+  font-weight: normal !important;
+  text-align: left !important;
+  font-size: .9rem !important;
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+#ExternalSearchAppsList-triggerText {
+  font-weight: normal;
+  text-align: left;
+  font-size: .9rem;
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+/*
+ */
+#SearchHistoryList-trigger-content>.sapMGrowingListTrigger>.sapMGrowingListDescription {
+  display: none !important;
+}
+
+#FrequentlyUsedAppsList-trigger-content>.sapMGrowingListTrigger>.sapMGrowingListDescription {
+  display: none !important;
+}
+
+#SearchResultList-trigger-content>.sapMGrowingListTrigger>.sapMGrowingListDescription {
+  display: none !important;
+}
+
+#ProductsList-trigger-content>.sapMGrowingListTrigger>.sapMGrowingListDescription {
+  display: none !important;
+}
+
+#ExternalSearchAppsList-trigger-content>.sapMGrowingListTrigger>.sapMGrowingListDescription {
+  display: none !important;
+}
+/*
+ */
+#FrequentlyUsedAppsList>.sapMListHdrText {
+  font-size: 0.75rem;
+  text-overflow: ellipsis;
+  padding-bottom: .4rem;
+  height: 1rem;
+  line-height: .6rem;
+  padding: 0 1rem;
+  border-color: transparent;
+}
+
+#ProductsList>.sapMListHdrText {
+  font-size: 0.75rem;
+  text-overflow: ellipsis;
+  padding-bottom: .4rem;
+  height: 1rem;
+  line-height: .6rem;
+  padding: 0 1rem;
+  border-color: transparent;
+}
+
+#ExternalSearchAppsList>.sapMListHdrText {
+  font-size: 0.75rem;
+  text-overflow: ellipsis;
+  padding-bottom: .4rem;
+  height: 1rem;
+  line-height: .6rem;
+  padding: 0 1rem;
+  border-color: transparent;
+}

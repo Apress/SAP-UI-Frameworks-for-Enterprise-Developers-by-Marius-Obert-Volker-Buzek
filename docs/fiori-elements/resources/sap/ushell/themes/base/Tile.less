@@ -1,0 +1,223 @@
+/* ===================================================== */
+/* CSS for control "sap.ushell.ui.launchpad.Tile" (base) */
+/* ===================================================== */
+
+@_sap_ushell_Tile_WidthDesktop: 11rem;
+@_sap_ushell_Tile_HeightDesktop: 11rem;
+@_sap_ushell_Tile_LongWidthDesktop: (2 * @_sap_ushell_Tile_WidthDesktop) + @_sap_ushell_Tile_Spacing;
+
+@_sap_ushell_Tile_WidthPhone: 9.25rem;
+@_sap_ushell_Tile_HeightPhone: 9.25rem;
+@_sap_ushell_Tile_LongWidthPhone: (2 * @_sap_ushell_Tile_WidthPhone) + @_sap_ushell_Tile_Spacing;
+@_sap_ushell_Tile_LongHeightPhone: 9.25rem;
+
+@_sap_ushell_Tile_ShadowWidth: 0.25rem;
+
+/* BCP 1870411969: keep in mind two standard Tiles should fit in the same row on 320px width; see also "(min-width: 375px)" */
+@_sap_ushell_Tile_Spacing: 0.5rem;
+
+// use 0.475rem to make 2 tiles appear in the same row for 375px
+@_sap_ushell_Tile_SpacingXS: 0.475rem;
+@_sap_ushell_Tile_SpacingS: 0.475rem;
+@_sap_ushell_Tile_Spacing: 0.5rem;
+@_sap_ushell_Tile_WidthXS: 4.375rem;
+@_sap_ushell_Tile_WidthS: 5.25rem;
+@_sap_ushell_Tile_Width: 5.25rem;
+
+/* Tile footer (plus button in tile catalog) */
+@_sap_ushell_Tile_FooterCornerRadius: 0.25rem;
+@_sap_ushell_Tile_FooterPosition: relative;
+@_sap_ushell_Tile_FooterPositionTop: 0.44rem;
+@_sap_ushell_Tile_FooterTextAlignment: center;
+@_sap_ushell_Tile_FooterLineHeight: inherit;
+
+.sapUshellTile:hover .sapUshellTileFooterElement {
+  z-index: auto;
+}
+
+#catalogTiles .sapUshellTile {
+  overflow: visible;
+}
+
+#catalogTiles.sapUshellTileContainer .sapUshellTileInner {
+  position: relative;
+}
+
+.sapUshellTileEntrance {
+  -webkit-animation: sapUshellTileEntranceAnimation 0.3s;
+  animation: sapUshellTileEntranceAnimation 0.3s;
+}
+
+.sapUshellTileActionDivCenter {
+  border-radius: @sapUiTileBorderCornerRadius;
+}
+
+@-webkit-keyframes sapUshellTileEntranceAnimation {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes sapUshellTileEntranceAnimation {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.sapUshellTile,
+.sapUshellTileInner {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.sapUshellTile {
+  float: left;
+  cursor: pointer;
+  position: relative;
+  margin: 0 @_sap_ushell_Tile_Spacing @_sap_ushell_Tile_Spacing 0;
+
+  .sap-phone & {
+    margin: 0; /* flex is used on phones, see "TileContainer.less" (base) */
+  }
+
+  &.sapUshellHidden,
+  .sapUshellTileActionsIconClass {
+    display: none;
+  }
+
+  .sapUshellTileInner {
+    display: block;
+  }
+
+  /* no link decorations for inner controls */
+  a.sapUshellTileInner {
+    text-decoration: none;
+  }
+}
+
+.sapUshellCatalogsContainer .sapUshellTile:not(.sapUshellTileWrapper) {
+  /* allows real custom Tiles (i.e. not "sapUshellAppBox") to be taller in the AppFinder (i.e. due to "sapUshellTilePinButtonOverlay") */
+  height: revert;
+}
+
+/* DOM hierarchy: .sapUshellTile[ > ].sapUshellTileWrapper > sapUshellTileInner > sapUshellTileBase */
+.sapUshellTile,
+.sapUshellTileWrapper,
+.sapUshellTileInner,
+.sapUshellTileBase,
+.sapUshellInner .sapUshellTile-placeholder,
+.sapUshellInner .sapUshellLinkTile-placeholder {
+  outline: none;
+  box-sizing: border-box;
+  border-radius: @sapUiTileBorderCornerRadius;
+  width: @_sap_ushell_Tile_WidthPhone;
+  height: @_sap_ushell_Tile_HeightPhone;
+
+  &.sapUshellLong,
+  .sapUshellLong & {
+    width: @_sap_ushell_Tile_LongWidthPhone;
+    height: @_sap_ushell_Tile_LongHeightPhone;
+  }
+
+  @media (min-width: 375px) {
+    width: @_sap_ushell_Tile_WidthDesktop;
+    height: @_sap_ushell_Tile_HeightDesktop;
+
+    &.sapUshellSmall,
+    .sapUshellSmall & {
+      width: @_sap_ushell_Tile_WidthPhone;
+      height: @_sap_ushell_Tile_HeightPhone;
+    }
+
+    &.sapUshellLong,
+    .sapUshellLong & {
+      width: @_sap_ushell_Tile_LongWidthDesktop;
+      height: @_sap_ushell_Tile_HeightDesktop;
+
+      &.sapUshellSmall,
+      .sapUshellSmall & {
+        width: @_sap_ushell_Tile_LongWidthPhone;
+        height: @_sap_ushell_Tile_LongHeightPhone;
+      }
+    }
+  }
+}
+
+#shellPage .sapUshellLinkTile-clone {
+  vertical-align: middle;
+  line-height: normal !important;
+  background-color: lighten(@sapBrandColor, 48) !important;
+  height: initial;
+  padding: 0px;
+
+  br,
+  .sapMGTLineStyleHelper,
+  .sapMGTActionsContainer {
+    display: none;
+  }
+}
+
+#shellPage .sapUshellTile-clone {
+  box-shadow: @sapUiShadowLevel2;
+
+  .sapUshellTileActionIconDivBottom,
+  .sapUshellTileDeleteClickArea {
+    display: none;
+  }
+}
+
+.sap-desktop {
+  .sapUshellTileContainerLocked,
+  .sapUshellTileContainerEditMode {
+    .sapUshellTile .sapUshellTileActionsIconClass{
+      display: none;
+    }
+  }
+
+  .sapUshellTile {
+    &.showTileActionsIcon,
+    &:hover {
+      .sapUshellTileActionsIconClass.sapUiIcon {
+        opacity: 1;
+        transition: opacity 0.3s ease-in-out;
+      }
+    }
+
+    .sapUshellTileActionsIconClass.sapUiIcon {
+      position: relative;
+      float: right;
+      display: block;
+      cursor: pointer;
+      height: 2rem;
+      width: 2rem;
+      border-bottom-right-radius: 0.25rem;
+      z-index: 1;
+      transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+      -webkit-transform: rotate(90deg);
+      transition: opacity 0.3s ease-in-out;
+      opacity: 0;
+      margin-top: -@_sap_ushell_Tile_HeightDesktop;
+    }
+  }
+}
+
+.sapUshellTile:focus::after {
+  content: "";
+  position: absolute;
+  top: 0.1875rem;
+  bottom: 0.1875rem;
+  left: 0.1875rem;
+  right: 0.1875rem;
+  z-index: 2;
+  pointer-events: none;
+  border-radius: @sapUiTileBorderCornerRadius;
+}
+
+.sapUshellTile .sapUiIcon {
+  cursor: pointer;
+}
+
+#catalogTiles .sapUshellTile:focus .sapMGT {
+  border-color: transparent;
+}

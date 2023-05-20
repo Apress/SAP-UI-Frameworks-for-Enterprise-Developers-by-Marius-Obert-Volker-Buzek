@@ -1,0 +1,6 @@
+/*!
+ * OpenUI5
+ * (c) Copyright 2009-2023 SAP SE or an SAP affiliate company.
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ */
+sap.ui.define(["sap/m/p13n/Engine"],function(e){"use strict";return{actions:{settings:function(){return{handler:function(r,n){var t=r.getP13nMode();var i=t.indexOf("Type");if(i>-1){t.splice(i,1)}if(r.isPropertyHelperFinal()){return e.getInstance().getRTASettingsActionHandler(r,n,t)}else{return r.finalizePropertyHelper().then(function(){return e.getInstance().getRTASettingsActionHandler(r,n,t)})}}}}},properties:{width:{ignore:true},height:{ignore:true},delegate:{ignore:true},header:{ignore:true},noDataText:{ignore:true},p13nMode:{ignore:true},legendVisible:{ignore:true},ignoreToolbarActions:{ignore:true},minWidth:{ignore:true},minHeight:{ignore:true},sortConditions:{ignore:true},filterConditions:{ignore:true},showChartTooltip:{ignore:true},autoBindOnInit:{ignore:true},chartType:{ignore:true},showSelectionDetails:{ignore:true},propertyInfo:{ignore:true},headerLevel:{ignore:false},headerVisible:{ignore:false}},aggregations:{items:{ignore:true},actions:{ignore:true},selectionDetailsActions:{ignore:true},_toolbar:{ignore:false},_breadcrumbs:{ignore:true},_innerChart:{ignore:true}}}});

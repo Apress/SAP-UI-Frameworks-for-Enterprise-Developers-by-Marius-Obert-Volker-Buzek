@@ -1,0 +1,1 @@
+{"version":3,"file":"BuildingBlockFormatter.js","names":["sap","ui","define","base64Decode","base64","atob"],"sources":["BuildingBlockFormatter-dbg.js"],"mappings":";;;;AAIAA,IAAIC,GAAGC,OAAO,GAAI,WAChB,aAEA,MAAO,CACLC,aAAcC,GACLC,KAAKD,GAGlB,EAAG"}

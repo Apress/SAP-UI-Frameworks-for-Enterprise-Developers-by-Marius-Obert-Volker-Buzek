@@ -1,0 +1,2 @@
+// Copyright (c) 2009-2023 SAP SE, All Rights Reserved
+sap.ui.define(["sap/ushell/services/_PluginManager/HeaderExtensions","sap/ushell/services/_PluginManager/MenuExtensions"],function(e,n){"use strict";var r={Header:i,Menu:s};function s(e){return Promise.resolve(n(e))}function i(){return Promise.resolve(e)}function u(e,n){var s=r[n];if(!s){return Promise.reject("Unsupported extension: '"+n+"'")}return s(e)}return u});

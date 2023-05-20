@@ -1,0 +1,40 @@
+/* =============================================== */
+/* Shared styles for all other CSS of this library */
+/* =============================================== */
+
+/* In order to override any unwanted scrolling, overflow should be hidden */
+html {
+  overflow: hidden;
+}
+
+/* Shared between ShellLayout and ShellHeader */
+@_sap_ushell_ShellHeader_BarHeight: 2.75rem;
+@_sap_ushell_CoPilot_DockingWidth: 26rem;
+
+/* For cross-browser compatible animations */
+.opacity(@opacity: 0.5) {
+  opacity: @opacity;
+}
+
+.transition(...) {
+  -webkit-transition: @arguments;
+  -moz-transition: @arguments;
+  transition: @arguments;
+}
+
+.sapUshellIframeDialog .sapMDialogScrollCont {
+  height: 100%;
+}
+
+.sapUShellFullHeight {
+  height: 100%;
+  overflow-y: hidden;
+}
+
+.sapUshellFullWidth {
+  width: 100%
+}
+
+.sapUshellZeroOpacity {
+  opacity: 0;
+}

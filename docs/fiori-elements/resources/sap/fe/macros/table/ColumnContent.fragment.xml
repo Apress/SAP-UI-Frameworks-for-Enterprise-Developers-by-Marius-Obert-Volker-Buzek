@@ -1,0 +1,256 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns:mdc="sap.ui.mdc"
+	xmlns:mdcTable="sap.ui.mdc.table"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:macro="sap.fe.macros"
+	xmlns:internalMacro="sap.fe.macros.internal"
+	xmlns:controls="sap.fe.core.controls"
+	template:require="{
+		COMMON: 'sap/fe/macros/CommonHelper',
+		FIELD: 'sap/fe/macros/field/FieldHelper',
+		ID: 'sap/fe/core/helpers/StableIdHelper',
+		MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+		Property: 'sap/fe/core/templating/PropertyFormatters',
+		TABLE: 'sap/fe/macros/table/TableHelper',
+		UI: 'sap/fe/core/templating/UIFormatters'
+	}"
+	xmlns:macrodata="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+>
+	<template:if
+		test="{= (${dataField>$Type}.indexOf('DataFieldForAnnotation') > -1) &amp;&amp; (${dataField>Target/$AnnotationPath}.indexOf('@com.sap.vocabularies.UI.v1.Chart') > -1)}"
+	>
+		<template:then>
+			<template:with path="dataField>Target/$AnnotationPath" var="collection" helper="MODEL.resolve$Path">
+				<template:with path="collection>" var="collection" helper="COMMON.getNavigationContext">
+					<internalMacro:MicroChart
+						id="{= ID.generate([${this>id}, ${dataField>@@UI.getDataModelObjectPath}]) }"
+						contextPath="{collection>}"
+						metaPath="{dataField>Target/$AnnotationPath/}"
+						showOnlyChart="{= TABLE.getShowOnlyChart(${this>}, ${column>}) }"
+						size="{= TABLE.getChartSize(${this>}, ${column>}) }"
+						hideOnNoData="true"
+						isAnalytics="{tableDefinition>enableAnalytics}"
+					/>
+				</template:with>
+			</template:with>
+		</template:then>
+		<template:elseif
+			test="{= ${dataField>Value} &amp;&amp; ${dataField>Value/$Path} &amp;&amp; UI.isMultiValueField(${dataField>Value@@Property.getPropertyObjectPath})}"
+		>
+			<internalMacro:MultiValueField contextPath="{collection>}" metaPath="{dataField>}">
+				<internalMacro:formatOptions displayOnly="true" />
+			</internalMacro:MultiValueField>
+		</template:elseif>
+		<template:elseif
+			test="{= (${dataField>$Type}.indexOf('DataFieldForAnnotation') > -1) &amp;&amp; (${dataField>Target/$AnnotationPath}.indexOf('FieldGroup') > -1)}"
+		>
+			<template:with path="dataField>Target/$AnnotationPath/Data/" var="dataFieldCollections">
+				<VBox
+					visible="{= TABLE.getVBoxVisibility( ${dataFieldCollections>}, ${column>FieldGroupHiddenExpressions}, ${dataField>} ) }"
+				>
+					<template:repeat list="{dataFieldCollections>}" var="fieldGroupDataField">
+						<template:if test="{= ${column>showDataFieldsLabel} &amp;&amp; !!${fieldGroupDataField>@@FIELD.computeLabelText} }">
+							<template:then>
+								<HBox
+									alignItems="{= FIELD.buildExpressionForAlignItems(${fieldGroupDataField>Target/$AnnotationPath/Visualization/$EnumMember}) }"
+								>
+									<Label
+										id="{= TABLE.getFieldGroupLabelStableId(${this>id},${fieldGroupDataField>@@UI.getDataModelObjectPath}) }"
+										text="{= ${fieldGroupDataField>@@FIELD.computeLabelText} + ':' }"
+										class="sapUiTinyMarginEnd"
+									/>
+									<VBox>
+										<layoutData>
+											<FlexItemData growFactor="1" />
+										</layoutData>
+										<internalMacro:Field
+											vhIdPrefix="{= ID.generate([${this>id}, 'TableValueHelp']) }"
+											editMode="{this>columnEditMode}"
+											entitySet="{collection>}"
+											dataField="{fieldGroupDataField>}"
+											textAlign="Left"
+											wrap="{= ${this>tableType} === 'ResponsiveTable' ? true : false }"
+											class="{= TABLE.getMarginClass( ${dataFieldCollections>}  , ${fieldGroupDataField>} , ${fieldGroupDataField>Target/$AnnotationPath/Visualization/$EnumMember}, ${column>FieldGroupHiddenExpressions/}) }"
+											onChange="{this>onChange}"
+											ariaLabelledBy="{= TABLE.getColumnStableId(${this>id},${dataField>@@UI.getDataModelObjectPath}) +' '+ TABLE.getFieldGroupLabelStableId(${this>id},${fieldGroupDataField>@@UI.getDataModelObjectPath}) }"
+											navigateAfterAction="{column>isNavigable}"
+											showErrorObjectStatus="{column>formatOptions/showErrorObjectStatus}"
+										>
+											<internalMacro:formatOptions
+												textLinesEdit="{column>formatOptions/textLinesEdit}"
+												textMaxLines="{column>formatOptions/textMaxLines}"
+												textMaxCharactersDisplay="{column>formatOptions/textMaxCharactersDisplay}"
+												textExpandBehaviorDisplay="{column>formatOptions/textExpandBehaviorDisplay}"
+												textAlignMode="Table"
+												showEmptyIndicator="true"
+												semanticKeyStyle="{= ${this>tableType} === 'ResponsiveTable' ? 'ObjectIdentifier' : 'Label' }"
+												hasDraftIndicator="{column>formatOptions/hasDraftIndicator}"
+												fieldGroupDraftIndicatorPropertyPath="{column>formatOptions/fieldGroupDraftIndicatorPropertyPath}"
+												fieldGroupName="{column>formatOptions/fieldGroupName}"
+												showIconUrl="{= ${fieldGroupDataField>Inline} &amp;&amp; ${fieldGroupDataField>IconUrl} }"
+												ignoreNavigationAvailable="{= ${tableDefinition>enableAnalytics} ? true : false }"
+												isAnalytics="{tableDefinition>enableAnalytics}"
+												isCurrencyAligned="true"
+												compactSemanticKey="{tableDefinition>control/isCompactType}"
+											/>
+											<template:if
+												test="{=FIELD.getBindingInfoForTextArrangement(${this>}, ${dataField>Value/$Path@com.sap.vocabularies.Common.v1.Text@com.sap.vocabularies.UI.v1.TextArrangement}, ${dataField>}) }"
+											>
+												<internalMacro:customData>
+													<core:CustomData
+														key="extraProperty"
+														value="{=FIELD.getBindingInfoForTextArrangement(${this>}, ${dataField>Value/$Path@com.sap.vocabularies.Common.v1.Text@com.sap.vocabularies.UI.v1.TextArrangement}, ${dataField>}) }"
+													/>
+												</internalMacro:customData>
+											</template:if>
+										</internalMacro:Field>
+									</VBox>
+								</HBox>
+							</template:then>
+							<template:else>
+								<internalMacro:Field
+									vhIdPrefix="{= ID.generate([${this>id}, 'TableValueHelp']) }"
+									editMode="{this>columnEditMode}"
+									entitySet="{collection>}"
+									dataField="{fieldGroupDataField>}"
+									wrap="{= ${this>tableType} === 'ResponsiveTable' ? true : false }"
+									class="{= TABLE.getMarginClass( ${dataFieldCollections>}  , ${fieldGroupDataField>} , ${fieldGroupDataField>Target/$AnnotationPath/Visualization/$EnumMember}, ${column>FieldGroupHiddenExpressions/}) }"
+									onChange="{this>onChange}"
+									ariaLabelledBy="{= TABLE.getColumnStableId(${this>id},${dataField>@@UI.getDataModelObjectPath}) }"
+									navigateAfterAction="{column>isNavigable}"
+									showErrorObjectStatus="{column>formatOptions/showErrorObjectStatus}"
+								>
+									<internalMacro:formatOptions
+										fieldMode="{this>fieldMode}"
+										textLinesEdit="{column>formatOptions/textLinesEdit}"
+										textMaxLines="{column>formatOptions/textMaxLines}"
+										textMaxCharactersDisplay="{column>formatOptions/textMaxCharactersDisplay}"
+										textExpandBehaviorDisplay="{column>formatOptions/textExpandBehaviorDisplay}"
+										textAlignMode="Table"
+										semanticKeyStyle="{= ${this>tableType} === 'ResponsiveTable' ? 'ObjectIdentifier' : 'Label' }"
+										hasDraftIndicator="{column>formatOptions/hasDraftIndicator}"
+										fieldGroupDraftIndicatorPropertyPath="{column>formatOptions/fieldGroupDraftIndicatorPropertyPath}"
+										fieldGroupName="{column>formatOptions/fieldGroupName}"
+										showIconUrl="{= ${fieldGroupDataField>Inline} &amp;&amp; ${fieldGroupDataField>IconUrl} }"
+										ignoreNavigationAvailable="{= ${tableDefinition>enableAnalytics} ? true : false }"
+										isAnalytics="{tableDefinition>enableAnalytics}"
+										isCurrencyAligned="true"
+										compactSemanticKey="{tableDefinition>control/isCompactType}"
+									/>
+									<template:if
+										test="{=FIELD.getBindingInfoForTextArrangement(${this>}, ${dataField>Value/$Path@com.sap.vocabularies.Common.v1.Text@com.sap.vocabularies.UI.v1.TextArrangement}, ${dataField>}) }"
+									>
+										<internalMacro:customData>
+											<core:CustomData
+												key="extraProperty"
+												value="{=FIELD.getBindingInfoForTextArrangement(${this>}, ${dataField>Value/$Path@com.sap.vocabularies.Common.v1.Text@com.sap.vocabularies.UI.v1.TextArrangement}, ${dataField>}) }"
+											/>
+										</internalMacro:customData>
+									</template:if>
+								</internalMacro:Field>
+							</template:else>
+						</template:if>
+					</template:repeat>
+
+					<template:if test="{= ${collection>@com.sap.vocabularies.Common.v1.DraftRoot} }">
+						<template:if test="{= ${collection>./@com.sap.vocabularies.Common.v1.SemanticKey} }">
+							<template:if test="{column>formatOptions/fieldGroupDraftIndicatorPropertyPath}">
+								<controls:FormElementWrapper>
+									<macro:DraftIndicator
+										draftIndicatorType="IconAndText"
+										entitySet="{collection>}"
+										isDraftIndicatorVisible="{= FIELD.isDraftIndicatorVisibleInFieldGroup(${column>}) }"
+										ariaLabelledBy="{this>ariaLabelledBy}"
+									/>
+								</controls:FormElementWrapper>
+							</template:if>
+						</template:if>
+					</template:if>
+					<template:if test="{= ${collection>./@com.sap.vocabularies.Common.v1.SemanticKey} }">
+						<template:if test="{column>formatOptions/fieldGroupDraftIndicatorPropertyPath}">
+							<ObjectStatus
+								visible="{column>formatOptions/showErrorObjectStatus}"
+								class="sapUiSmallMarginBottom"
+								text="{sap.fe.i18n>Contains_Errors}"
+								state="Error"
+							/>
+						</template:if>
+					</template:if>
+				</VBox>
+			</template:with>
+		</template:elseif>
+		<template:else>
+			<internalMacro:Field
+				vhIdPrefix="{= ID.generate([${this>id}, 'TableValueHelp']) }"
+				editMode="{this>columnEditMode}"
+				entitySet="{collection>}"
+				dataField="{dataField>}"
+				wrap="{= ${this>tableType} === 'ResponsiveTable' ? true : false }"
+				onChange="{this>onChange}"
+				ariaLabelledBy="{= ${column>formatOptions/hasDraftIndicator} ? TABLE.getColumnStableId(${this>id},${dataField>@@UI.getDataModelObjectPath}) : undefined}"
+				navigateAfterAction="{column>isNavigable}"
+				showErrorObjectStatus="{column>formatOptions/showErrorObjectStatus}"
+			>
+				<internalMacro:formatOptions
+					fieldMode="{this>fieldMode}"
+					textLinesEdit="{column>formatOptions/textLinesEdit}"
+					textMaxLines="{column>formatOptions/textMaxLines}"
+					textMaxCharactersDisplay="{column>formatOptions/textMaxCharactersDisplay}"
+					textExpandBehaviorDisplay="{column>formatOptions/textExpandBehaviorDisplay}"
+					textAlignMode="Table"
+					semanticKeyStyle="{= ${this>tableType} === 'ResponsiveTable' ? 'ObjectIdentifier' : 'Label' }"
+					hasDraftIndicator="{column>formatOptions/hasDraftIndicator}"
+					fieldGroupDraftIndicatorPropertyPath="{column>formatOptions/fieldGroupDraftIndicatorPropertyPath}"
+					fieldGroupName="{column>formatOptions/fieldGroupName}"
+					showIconUrl="{= ${dataField>Inline} &amp;&amp; ${dataField>IconUrl} }"
+					ignoreNavigationAvailable="{= ${tableDefinition>enableAnalytics} ? true : false }"
+					isAnalytics="{tableDefinition>enableAnalytics}"
+					isCurrencyAligned="true"
+					compactSemanticKey="{tableDefinition>control/isCompactType}"
+				/>
+				<template:if
+					test="{=FIELD.getBindingInfoForTextArrangement(${this>}, ${dataField>Value/$Path@com.sap.vocabularies.Common.v1.Text@com.sap.vocabularies.UI.v1.TextArrangement}, ${dataField>}) }"
+				>
+					<internalMacro:customData>
+						<core:CustomData
+							key="extraProperty"
+							value="{=FIELD.getBindingInfoForTextArrangement(${this>}, ${dataField>Value/$Path@com.sap.vocabularies.Common.v1.Text@com.sap.vocabularies.UI.v1.TextArrangement}, ${dataField>}) }"
+						/>
+					</internalMacro:customData>
+				</template:if>
+			</internalMacro:Field>
+			<template:if test="{= ${this>creationMode} === 'CreationRow'}">
+				<mdcTable:creationTemplate>
+					<!-- the creation row shall use the form visualization (to be checked with UX)-->
+					<internalMacro:Field
+						core:require="{TableRuntime: 'sap/fe/macros/table/TableRuntime'}"
+						vhIdPrefix="{= ID.generate([${this>id}, 'TableValueHelp']) }"
+						editMode="{this>columnEditMode}"
+						entitySet="{collection>}"
+						dataField="{dataField>}"
+						wrap="{= ${this>tableType} === 'ResponsiveTable' ? true : false }"
+						onChange="TableRuntime.onFieldChangeInCreationRow($event, '{this>customValidationFunction}')}"
+						showErrorObjectStatus="{column>formatOptions/showErrorObjectStatus}"
+					>
+						<internalMacro:formatOptions
+							textLinesEdit="{column>formatOptions/textLinesEdit}"
+							textMaxLines="{column>formatOptions/textMaxLines}"
+							textMaxCharactersDisplay="{column>formatOptions/textMaxCharactersDisplay}"
+							textExpandBehaviorDisplay="{column>formatOptions/textExpandBehaviorDisplay}"
+							textAlignMode="Table"
+							semanticKeyStyle="{= ${this>tableType} === 'ResponsiveTable' ? 'ObjectIdentifier' : 'Label' }"
+							hasDraftIndicator="{column>formatOptions/hasDraftIndicator}"
+							fieldGroupDraftIndicatorPropertyPath="{column>formatOptions/fieldGroupDraftIndicatorPropertyPath}"
+							fieldGroupName="{column>formatOptions/fieldGroupName}"
+							showIconUrl="{= ${dataField>Inline} &amp;&amp; ${dataField>IconUrl} }"
+							ignoreNavigationAvailable="{= ${tableDefinition>enableAnalytics} ? true : false }"
+							isCurrencyAligned="true"
+						/>
+					</internalMacro:Field>
+				</mdcTable:creationTemplate>
+			</template:if>
+		</template:else>
+	</template:if>
+</core:FragmentDefinition>

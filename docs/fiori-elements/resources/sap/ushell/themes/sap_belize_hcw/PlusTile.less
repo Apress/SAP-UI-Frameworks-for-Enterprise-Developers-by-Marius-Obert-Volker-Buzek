@@ -1,0 +1,24 @@
+/* ============================================= */
+/* CSS for control sap.ushell/PlusTile.control sap_hcb theme*/
+/* ============================================= */
+
+/* General Plus Tile */
+
+.sapUshellTile.sapUshellPlusTile {
+
+    background-color:   fade(@sapUiShellBackground,0);
+    border-color:       @sapUiTileBorderColor;
+
+    &:hover {
+      box-shadow:   0 0 0 1px  @sapUiTileBorderColor;
+    }
+
+    &:hover .sapUiIcon {
+        color: @sapUiTileIconColor;
+    }
+
+    .sapUiIcon {
+        color:                @sapUiTileIconColor;
+        font-size:            1.8em;
+    }
+}

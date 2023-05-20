@@ -1,0 +1,32 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:uxap="sap.uxap"
+	xmlns:unittest="http://schemas.sap.com/sapui5/preprocessorextension/sap.fe.unittesting/1"
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	template:require="{
+		UI: 'sap/fe/core/templating/UIFormatters'
+	}"
+>
+	<template:with path="entityType>@com.sap.vocabularies.UI.v1.HeaderInfo" var="headerInfo">
+		<template:with path="header>avatar" var="avatar">
+			<uxap:expandedHeading>
+				<FlexBox renderType="Bare">
+					<FlexBox visible="{header>title/expandedImageVisible}">
+						<core:Fragment fragmentName="sap.fe.templates.ObjectPage.view.fragments.HeadingAvatar" type="XML" />
+					</FlexBox>
+					<core:Fragment fragmentName="sap.fe.templates.ObjectPage.view.fragments.HeadingTitle" type="XML" />
+				</FlexBox>
+			</uxap:expandedHeading>
+			<uxap:snappedHeading>
+				<FlexBox renderType="Bare">
+					<core:Fragment fragmentName="sap.fe.templates.ObjectPage.view.fragments.HeadingAvatar" type="XML" />
+					<core:Fragment fragmentName="sap.fe.templates.ObjectPage.view.fragments.HeadingTitle" type="XML" />
+				</FlexBox>
+			</uxap:snappedHeading>
+			<uxap:snappedTitleOnMobile>
+				<core:Fragment fragmentName="sap.fe.templates.ObjectPage.view.fragments.HeadingTitle" type="XML" />
+			</uxap:snappedTitleOnMobile>
+		</template:with>
+	</template:with>
+</core:FragmentDefinition>

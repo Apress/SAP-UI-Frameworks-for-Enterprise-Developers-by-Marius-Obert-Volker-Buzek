@@ -1,0 +1,37 @@
+/* ============================================= */
+/* CSS for control sap.ushell/AnchorItem.control */
+/* ============================================= */
+
+.sapUshellAnchorItem {
+    font-family: @sapFontFamily;
+    font-size: @sapMFontHeader6Size;
+    font-weight: @sapUiFontHeaderWeight;
+    opacity: 1;
+  }
+
+  .sapUshellAnchorItem:hover {
+      color: @sapUiShellNavigationSelectedTextColor;
+  }
+
+  .sapUshellAnchorItemSelected {
+    color: @sapUiShellNavigationSelectedTextColor;
+  }
+
+  .sapUshellAnchorItemSelected .sapUshellAnchorItemInner:not(.sapUshellAnchorInnerMarker) {
+    border-bottom-color: @sapUiShellNavigationSelectedColor;
+  }
+
+
+  // focus for item
+  .sap-desktop:not([data-sap-ui-browser^="ie"]) .sapUshellAnchorItem:focus {
+    outline: 1px dotted @sapUiShellNavigationTextColor;
+    outline-offset: -1px;
+  }
+
+  .sap-desktop .sapUshellAnchorItemOverFlow .sapMBtn:focus>.sapMFocusable {
+    outline-color: @sapUiShellNavigationTextColor;
+  }
+
+  .sapUshellAnchorItemInner {
+    font-size: @sapMFontMediumSize;
+  }

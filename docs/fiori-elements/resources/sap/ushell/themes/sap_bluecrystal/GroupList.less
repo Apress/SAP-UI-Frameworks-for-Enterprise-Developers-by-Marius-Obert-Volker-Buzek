@@ -1,0 +1,54 @@
+/* ========================================================================= */
+/* CSS for control "sap.ushell.ui.launchpad.GroupListItem" (sap_bluecrystal) */
+/* ========================================================================= */
+
+@_sap_ushell_ListItem_HoverBackgroundColor: #e2ecf3;
+@_sap_ushell_GroupListItem_BackgroundColor: @sapUiExtraLightBG;
+
+@_sap_ushell_ListItem_BackgroundColor: @_sap_ushell_GroupListItem_BackgroundColor;
+@_sap_ushell_ListItem_BorderBottom: 1px solid @sapUiLightBorder;
+
+@_sap_ushell_GroupList_BackgroundColor: @_sap_ushell_GroupListItem_BackgroundColor;
+@_sap_ushell_GroupList_FontFamily: @sapUiFontFamily;
+@_sap_ushell_GroupList_FontSize: @sapMFontHeader6Size;
+@_sap_ushell_GroupList_FontWeight: @sapUiFontHeaderWeight;
+@_sap_ushell_GroupList_Color: @sapUiHeaderText;
+
+.sapUshellGroupList {
+  background-color: @_sap_ushell_GroupList_BackgroundColor;
+}
+
+.sapUshellGroupItemList {
+  background-color: @sapUiExtraLightBG;
+}
+
+.sapUshellGroupListItem.sapMLIB,
+.sapUshellDefaultGroupItem.sapMLIB {
+  background-color: @_sap_ushell_ListItem_BackgroundColor;
+  border-bottom: @_sap_ushell_ListItem_BorderBottom;
+}
+
+.sapUshellGroupListItem .sapMSLITitleOnly,
+.sapUshellDefaultGroupItem .sapMSLITitleOnly {
+  color: @_sap_ushell_GroupList_Color;
+  font-size: @_sap_ushell_GroupList_FontSize;
+  font-family: @_sap_ushell_GroupList_FontFamily;
+  font-weight: @_sap_ushell_GroupList_FontWeight;
+}
+
+.sapUshellGroupListItem.sapUshellOver,
+.sapUshellGroupListItem.sapUshellSelected,
+.sapUshellDefaultGroupItem.sapUshellOver,
+.sapUshellDefaultGroupItem.sapUshellSelected {
+  background-color: @_sap_ushell_ListItem_HoverBackgroundColor;
+}
+
+.sapUshellDefaultGroupItem:active,
+.sapUshellGroupListItem:active {
+  @media (min-width: 1024px) { background-color: @_sap_ushell_ListItem_HoverBackgroundColor; }
+}
+
+.sap-desktop .sapUshellDefaultGroupItem:hover,
+.sap-desktop .sapUshellGroupListItem:hover {
+  background-color: @_sap_ushell_ListItem_HoverBackgroundColor;
+}

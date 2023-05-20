@@ -1,0 +1,13 @@
+/*! 
+ * SAPUI5
+
+		(c) Copyright 2009-2021 SAP SE. All rights reserved
+	 
+ */
+(function(){sap.ui.define(["../../sina/SuggestionCalculationMode","./pivotTableParser"],function(e,a){function r(e,a){if(!(e instanceof a)){throw new TypeError("Cannot call a class as a function")}}function t(e,a){for(var r=0;r<a.length;r++){var t=a[r];t.enumerable=t.enumerable||false;t.configurable=true;if("value"in t)t.writable=true;Object.defineProperty(e,t.key,t)}}function u(e,a,r){if(a)t(e.prototype,a);if(r)t(e,r);Object.defineProperty(e,"prototype",{writable:false});return e}
+/*!
+   * SAPUI5
+
+		(c) Copyright 2009-2021 SAP SE. All rights reserved
+	
+   */var i=e["SuggestionCalculationMode"];var n=function(){function e(a){r(this,e);this.provider=a;this.sina=a.sina}u(e,[{key:"parseSuggestions",value:function e(r,t){t=a.parse(t);var u=[];var i;var n;for(var o=0;o<t.cells.length;o++){i=null;var s=t.cells[o];if(s.$$Attribute$$!=="$$AllAttributes$$"){continue}switch(s.$$Term$$.Scope){case"SearchHistory":if(s.$$DataSource$$==="$$AllDataSources$$"){i=this.parseSearchTermSuggestion(r,s)}break;case"ObjectData":if(s.$$DataSource$$==="$$AllDataSources$$"){i=this.parseSearchTermSuggestion(r,s);n=i}else{i=this.parseSearchTermAndDataSourceSuggestion(r,s);if(i&&i.filter.dataSource!==n.filter.dataSource){n.childSuggestions.push(i)}i=null}break;case"DataSources":if(s.$$DataSource$$==="$$AllDataSources$$"){i=this.parseDataSourceSuggestion(r,s)}break}if(i){u.push(i)}}return u}},{key:"parseDataSourceSuggestion",value:function e(a,r){var t=this.sina.getDataSource(r.$$Term$$.Value);if(!t){return null}var u=a.filter.clone();u.setDataSource(t);return this.sina._createDataSourceSuggestion({calculationMode:i.Data,dataSource:t,label:r.$$Term$$.ValueFormatted})}},{key:"parseSearchTermSuggestion",value:function e(a,r){var t=this.parseCalculationMode(r.$$Term$$.Scope);var u=a.filter.clone();u.setSearchTerm(r.$$Term$$.Value);return this.sina._createSearchTermSuggestion({searchTerm:r.$$Term$$.Value,calculationMode:t,filter:u,label:r.$$Term$$.ValueFormatted})}},{key:"parseSearchTermAndDataSourceSuggestion",value:function e(a,r){var t=this.parseCalculationMode(r.$$Term$$.Scope);var u=a.filter.clone();u.setSearchTerm(r.$$Term$$.Value);var i=this.sina.getDataSource(r.$$DataSource$$);if(!i){return null}u.setDataSource(i);return this.sina._createSearchTermAndDataSourceSuggestion({searchTerm:r.$$Term$$.Value,dataSource:i,calculationMode:t,filter:u,label:r.$$Term$$.ValueFormatted})}},{key:"parseCalculationMode",value:function e(a){switch(a){case"SearchHistory":return i.History;case"ObjectData":return i.Data}}}]);return e}();function o(e,a,r){var t=new n(e);return t.parseSuggestions(a,r)}var s={__esModule:true};s.parse=o;return s})})();

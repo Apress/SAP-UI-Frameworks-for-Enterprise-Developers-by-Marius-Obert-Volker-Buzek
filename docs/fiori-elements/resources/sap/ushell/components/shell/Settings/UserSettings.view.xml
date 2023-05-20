@@ -1,0 +1,98 @@
+<mvc:View
+    displayBlock="true"
+    controllerName="sap.ushell.components.shell.Settings.UserSettings"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core">
+
+    <Dialog
+        id="userSettingsDialog"
+        class="sapUshellUserSetting sapContrastPlus"
+        showHeader="false"
+        contentHeight="42rem"
+        contentWidth="58rem"
+        afterClose="._afterClose"
+        escapeHandler="._handleCancel"
+        stretch="{device>/system/phone}">
+        <customHeader>
+            <Bar id="settingsBar">
+                <contentLeft>
+                    <Button id="userSettingsNavBackButton"
+                        icon="sap-icon://nav-back"
+                        press="._navBackButtonPressHandler"
+                        tooltip="{i18n>ToggleButtonShow}"
+                        visible="false"/>
+                    <ToggleButton id="userSettingsMenuButton"
+                        icon="sap-icon://menu2"
+                        press="._navToggleButtonPressHandler"
+                        tooltip="{i18n>ToggleButtonShow}"
+                        visible="false"/>
+                </contentLeft>
+                <contentMiddle>
+                    <Title
+                        text="{i18n>userSettings}"/>
+                </contentMiddle>
+            </Bar>
+        </customHeader>
+        <content>
+            <Page
+                class="sapUshellSettingsPage"
+                showHeader="false">
+                <content>
+                    <SplitApp id="settingsApp"
+                        defaultTransitionNameDetail="show"
+                        mode="{= ${device>/system/desktop} ? 'StretchCompressMode' : 'ShowHideMode'}">
+                        <masterPages>
+                            <Page id="userSettingMaster"
+                                class="sapUshellUserSettingMaster"
+                                showHeader="false">
+                                <content>
+                                    <List id="userSettingEntryList"
+                                        items="{/entries}"
+                                        mode="SingleSelectMaster"
+                                        selectionChange="._itemPress">
+                                        <StandardListItem
+                                            class="sapUshellUserSettingMasterListItem"
+                                            title= "{title}"
+                                            description="{
+                                                parts: ['id', 'tabs', 'results>/entries'],
+                                                formatter: '._formatDescription'
+                                            }"
+                                            icon="{= !!${icon} ? ${icon} : 'sap-icon://action-settings' }"
+                                            iconDensityAware="false"
+                                            visible="{visible}"
+                                            type="{= ${device>/system/phone} ? 'Navigation' : 'Inactive'}">
+                                            <customData>
+                                                <core:CustomData key="help-id" value="{entryHelpID}" writeToDom="{= !!${entryHelpID}}" />
+                                            </customData>
+                                        </StandardListItem>
+                                    </List>
+                                </content>
+                            </Page>
+                        </masterPages>
+                    </SplitApp>
+                </content>
+                <footer>
+                    <OverflowToolbar>
+                        <Button
+                            id="userSettingsMessagePopoverBtn"
+                            visible="false"
+                            press="._handleMessagePopoverPress"
+                            icon="sap-icon://message-error"
+                            ariaHasPopup="Dialog"/>
+                        <ToolbarSpacer/>
+                        <Button
+                            id="userSettingSaveButton"
+                            text="{i18n>saveBtn}"
+                            type="Emphasized"
+                            press="._handleSaveButtonPress"/>
+                        <Button
+                            id="userSettingCancelButton"
+                            text="{i18n>cancelBtn}"
+                            press="._handleCancel"/>
+                    </OverflowToolbar>
+                </footer>
+            </Page>
+        </content>
+    </Dialog>
+</mvc:View>

@@ -1,0 +1,48 @@
+<core:FragmentDefinition
+	xmlns="sap.suite.ui.microchart"
+	xmlns:core="sap.ui.core"
+	xmlns:oDataV4MicroChart="sap.fe.macros.microchart"
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	template:require="{
+		MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+		MICROCHART: 'sap/fe/macros/microchart/MicroChartHelper',
+		CRIT: 'sap/fe/core/templating/CriticalityFormatters',
+		UI: 'sap/fe/core/templating/UIFormatters',
+		ID: 'sap/fe/core/helpers/StableIdHelper'
+	}"
+>
+	<template:if test="{= MICROCHART.shouldMicroChartRender('Stacked Bar', ${DataPoint>}, ${DataPoint>Value/$Path@})}">
+		<template:then>
+			<template:with path="DataPoint>Value/$Path" helper="MODEL.resolve$Path" var="Measure">
+				<oDataV4MicroChart:MicroChartContainer
+					id="{= ${this>id} ? ID.generate([${this>id}, 'StackedBarMicroChart']) : undefined }"
+					showOnlyChart="{this>showOnlyChart}"
+					chartTitle="{= ${this>title} || ${metaPath>Title}}"
+					chartDescription="{= ${this>description} || ${metaPath>Description}}"
+					dataPointQualifiers="{= MICROCHART.getDataPointQualifiersForMicroChart(${DataPoint>./@sapui.name}) }"
+					binding="{= ${this>batchGroupId} ? ('{path:\'\', parameters : { $$groupId: \'' + ${this>batchGroupId} + '\'} }') : undefined }"
+					onTitlePressed="{this>onTitlePressed}"
+					navigationType="{this>navigationType}"
+				>
+					<template:if test="{= !${this>showOnlyChart} || (${this>showOnlyChart} !== 'true' ? true : false)}">
+						<core:Fragment fragmentName="sap.fe.macros.microchart.fragments.MicroChartTitle" type="XML" />
+					</template:if>
+					<StackedBarMicroChart
+						hideOnNoData="{this>hideOnNoData}"
+						size="{this>size}"
+						bars="{= MICROCHART.getAggregationForMicrochart('Bars', ${contextPath>}, ${DataPoint>}, ${contextPath>@sapui.name}, '', ${Measure>@}, ${metaPath>Dimension}) }"
+					>
+						<bars>
+							<StackedBarMicroChartBar
+								value="{DataPoint>Value@@MODEL.value}"
+								displayValue="{= ${DataPoint>Value/$Path@com.sap.vocabularies.Common.v1.Text} ? ${DataPoint>Value/$Path@com.sap.vocabularies.Common.v1.Text@@MODEL.value} : undefined }"
+								valueColor="{= ${DataPoint>Criticality} ? CRIT.buildExpressionForCriticalityColorMicroChart(${DataPoint>@@UI.getDataModelObjectPath}) : undefined }"
+							/>
+						</bars>
+					</StackedBarMicroChart>
+				</oDataV4MicroChart:MicroChartContainer>
+			</template:with>
+		</template:then>
+		<template:elseif test="{= MICROCHART.logWarning('StackedBar', { DataPoint_Value : ${DataPoint>Value} }) }" />
+	</template:if>
+</core:FragmentDefinition>

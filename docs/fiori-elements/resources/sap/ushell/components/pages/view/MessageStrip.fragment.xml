@@ -1,0 +1,13 @@
+<core:FragmentDefinition xmlns="sap.m"
+                         xmlns:core="sap.ui.core">
+    <MessageStrip
+        text="{i18n>MyHome.InitialPage.MessageStrip.Text}"
+        showIcon="true"
+        visible="{view>/personalizationAvailable}"
+        close=".onMessageStripClose"
+        showCloseButton="true">
+        <link>
+            <Link text="{i18n>MyHome.InitialPage.MessageStrip.Link}" press=".onImportDialogPress"/>
+        </link>
+    </MessageStrip>
+</core:FragmentDefinition>

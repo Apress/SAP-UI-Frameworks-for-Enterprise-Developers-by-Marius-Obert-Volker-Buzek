@@ -1,0 +1,186 @@
+.sapSuiteUiCommonsImageEditorContainer {
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	display: flex;
+	flex-direction: column;
+
+	&:focus{
+		outline: 1px dotted @sapUiContentFocusColor;
+		outline-offset: 1px;
+	}
+}
+
+.sapSuiteUiCommonsImageEditorContainerHeaderToolbar {
+	flex: 0 0 auto;
+}
+
+.sapSuiteUiCommonsImageEditorContainerMobileToolbar {
+	flex: 0 0 auto;
+	display: none;
+}
+
+.sapSuiteUiCommonsImageEditorContainerMobileSlider {
+	display: none;
+}
+
+.sapSuiteUiCommonsImageEditorContainerContent {
+	display: flex;
+	flex: 1 1 auto;
+	min-height: 1px; // fix for problems with height propagation to min-height property
+}
+
+.sapSuiteUiCommonsImageEditorContainerPanel {
+	flex: 0 0 16.25rem;
+	overflow: auto;
+	background-color: @sapUiPageFooterBackground;
+
+	.sapSuiteUiCommonsImageEditorContainerPanelArea {
+		padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+	}
+}
+
+.sapUiMedia-Std-Phone {
+	.sapSuiteUiCommonsImageEditorContainerContent {
+		flex-direction: column;
+	}
+
+	.sapSuiteUiCommonsImageEditorContainerWrapper {
+		order: 0;
+	}
+
+	.sapSuiteUiCommonsImageEditorContainerWrapper {
+		min-height: 1px;
+	}
+
+	.sapSuiteUiCommonsImageEditorContainerPanel {
+		order:1;
+		flex: 0 0 auto;
+	}
+
+	.sapSuiteUiCommonsImageEditorContainerGridList > ul {
+		flex-wrap: nowrap;
+		overflow: auto;
+	}
+
+	.sapSuiteUiCommonsImageEditorContainerGridItem {
+		width: 5.5rem;
+		flex: 0 0 auto;
+	}
+
+	.sapSuiteUiCommonsImageEditorContainerGridItem > .sapMLIBContent {
+		height: 5rem;
+	}
+
+	.sapSuiteUiCommonsImageEditorContainerGridItemHeaderContent.sapSuiteUiCommonsImageEditorContainerGridItemHeaderFilterContent {
+		height: 2.5rem;
+	}
+
+	.sapSuiteUiCommonsImageEditorContainerMobileToolbar {
+		display: flex;
+	}
+
+	.sapSuiteUiCommonsImageEditorContainerMobileSlider {
+		display: inline-block;
+	}
+
+	.sapSuiteUiCommonsImageEditorContainerPanelArea, .sapSuiteUiCommonsImageEditorContainerHeaderToolbar {
+		display: none;
+	}
+
+	.sapSuiteUiCommonsImageEditorContainerPanelArea.sapSuiteUiCommonsImageEditorContainerPanelAreaMobile {
+		display: block;
+	}
+}
+
+.sapSuiteUiCommonsImageEditorContainerFilterIcons {
+	font-family: "SAP-icons";
+
+	.sapMITBText {
+		font-size: @sapMFontLargeSize;
+	}
+}
+
+// grid list 
+.sapSuiteUiCommonsImageEditorContainerGridList > ul {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+// change z-index to show whole outline when the items are in focus
+.sapSuiteUiCommonsImageEditorContainerGridList .sapMLIBFocusable:focus {
+	z-index: 1;
+}
+
+.sapSuiteUiCommonsImageEditorContainerTabBar {
+	// override default padding of the icon tab bar
+	.sapMITBContent {
+		padding: 0;
+		border-bottom: 0;
+	}
+
+	.sapMITH {
+		border-bottom: 0;
+	}
+}
+
+.sapSuiteUiCommonsImageEditorContainerGridItem {
+	width: 50%;
+}
+
+.sapSuiteUiCommonsImageEditorContainerGridItem > .sapMLIBContent {
+	display: flex;
+	box-sizing: border-box;
+	flex-direction: column;
+	justify-content: center;
+	height: 6.25rem;
+	padding: 0.5rem;
+	box-shadow: 0 0 0 1px @sapUiListBorderColor;
+}
+
+.sapSuiteUiCommonsImageEditorContainerGridItemIcon {
+	flex: 1 1 auto;
+}
+
+.sapSuiteUiCommonsImageEditorContainerGridItemHeaderContent {
+	width: 100%;
+	height: 3.125rem; // absolute height, because 100% causes problems in some browsers
+	fill: @sapUiButtonBackground;
+	stroke: @sapUiButtonBorderColor;
+	stroke-width: 1.001; // decimal number to force rendering even with crispEdges turned on
+
+	&.sapSuiteUiCommonsImageEditorContainerGridItemHeaderFilterContent {
+		height: 3.625rem;
+	}
+
+	rect {
+		vector-effect: non-scaling-stroke; // prevents stroke from scaling because of the viewBox, doesn't work in IE but should look closely enough
+		shape-rendering: crispEdges;
+	}
+
+	ellipse {
+		vector-effect: non-scaling-stroke;
+	}
+}
+
+.sapSuiteUiCommonsImageEditorContainerGridItemLabel {
+	font-family: @sapUiFontFamily;
+	font-size: @sapMFontSmallSize;
+	color: @sapUiBaseText;
+	margin-top: 0.75rem;
+}
+
+&.sapSuiteUiCommonsImageEditorContainerGridItemSelected {
+	background-color: @sapUiListSelectionBackgroundColor;
+	box-shadow: 0 0 0 1px @sapUiListSelectionBackgroundColor;
+}
+
+.sapSuiteUiCommonsImageEditorContainerWrapper {
+	display: flex;
+	flex: 1 1 auto;
+	min-height: 100%;
+	padding: 1rem;
+	min-width: 1px;
+	background-color: @sapUiContentForegroundColor;
+	box-sizing: border-box;
+}

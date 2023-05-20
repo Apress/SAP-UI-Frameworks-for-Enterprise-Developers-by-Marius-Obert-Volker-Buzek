@@ -1,0 +1,61 @@
+/* ========================================================================== */
+/* CSS for sap.suite.ui.commons/ProcessFlowConnectionLabel.control            */
+/* Belize HCW Theme                                                           */
+/* ========================================================================== */
+
+/* Selected/Highlighted */
+.sapSuiteUiCommonsProcessFlowConnectionLabel.sapSuiteUiCommonsLabelSelected > .sapMBtnInner,
+.sapSuiteUiCommonsProcessFlowConnectionLabel.sapSuiteUiCommonsLabelHighlighted > .sapMBtnInner {
+	border-width: 0.125rem;
+	border-color: @sapUiButtonBorderColor;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+}
+
+.sapSuiteUiCommonsProcessFlowConnectionLabel.sapMBtnDisabled > .sapMBtnInner {
+	background-color: @sapUiButtonBackground;
+	border-color: @sapUiHcReducedForeground;
+}
+
+/* Dimmed */
+.sapSuiteUiCommonsProcessFlowConnectionLabel.sapSuiteUiCommonsLabelDimmed:not(.sapMBtnDisabled) > .sapMBtnInner:not(.sapSuiteUiCommonsProcessFlowLabelHover) {
+	border-color: @sapUiHcReducedAltForeground;
+}
+
+/* Configure inner text element of Label for specific state. */
+.sapSuiteUiCommonsProcessFlowConnectionLabel.sapSuiteUiCommonsLabelStateNegative > .sapMBtnInner:not(.sapSuiteUiCommonsProcessFlowLabelHover):not(.sapSuiteUiCommonsProcessFlowLabelActive) {
+	color: @sapUiNegativeText;
+}
+.sapSuiteUiCommonsProcessFlowConnectionLabel.sapSuiteUiCommonsLabelStateCritical > .sapMBtnInner:not(.sapSuiteUiCommonsProcessFlowLabelHover):not(.sapSuiteUiCommonsProcessFlowLabelActive) {
+	color: @sapUiCriticalText;
+}
+.sapSuiteUiCommonsProcessFlowConnectionLabel.sapSuiteUiCommonsLabelStatePositive > .sapMBtnInner:not(.sapSuiteUiCommonsProcessFlowLabelHover):not(.sapSuiteUiCommonsProcessFlowLabelActive) {
+	color: @sapUiPositiveText;
+}
+.sapSuiteUiCommonsProcessFlowConnectionLabel.sapSuiteUiCommonsLabelStateNeutral > .sapMBtnInner:not(.sapSuiteUiCommonsProcessFlowLabelHover):not(.sapSuiteUiCommonsProcessFlowLabelActive) {
+	color: @sapUiButtonTextColor;
+}
+
+/* Configure inner icon element of Label for specific state. */
+.sapSuiteUiCommonsProcessFlowConnectionLabel.sapSuiteUiCommonsLabelStateNegative > .sapMBtnInner > .sapMBtnIcon:not(.sapSuiteUiCommonsProcessFlowLabelHover):not(.sapSuiteUiCommonsProcessFlowLabelActive) {
+	color: @sapUiNegativeElement;
+}
+.sapSuiteUiCommonsProcessFlowConnectionLabel.sapSuiteUiCommonsLabelStateCritical > .sapMBtnInner > .sapMBtnIcon:not(.sapSuiteUiCommonsProcessFlowLabelHover):not(.sapSuiteUiCommonsProcessFlowLabelActive) {
+	color: @sapUiCriticalElement;
+}
+.sapSuiteUiCommonsProcessFlowConnectionLabel.sapSuiteUiCommonsLabelStatePositive > .sapMBtnInner > .sapMBtnIcon:not(.sapSuiteUiCommonsProcessFlowLabelHover):not(.sapSuiteUiCommonsProcessFlowLabelActive) {
+	color: @sapUiPositiveElement;
+}
+.sapSuiteUiCommonsProcessFlowConnectionLabel.sapSuiteUiCommonsLabelStateNeutral > .sapMBtnInner > .sapMBtnIcon:not(.sapSuiteUiCommonsProcessFlowLabelHover):not(.sapSuiteUiCommonsProcessFlowLabelActive) {
+	color: @sapUiNeutralElement;
+}
+
+/* hover */
+.sapSuiteUiCommonsProcessFlowLabelHover {
+	color: @sapUiHcStandardForeground ;
+}
+
+/* active */
+.sapSuiteUiCommonsProcessFlowLabelActive {
+	color: @sapUiHcStandardForeground ;
+}

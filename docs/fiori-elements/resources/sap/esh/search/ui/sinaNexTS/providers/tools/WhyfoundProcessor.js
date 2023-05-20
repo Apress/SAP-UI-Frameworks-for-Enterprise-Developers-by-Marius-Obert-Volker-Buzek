@@ -1,0 +1,13 @@
+/*! 
+ * SAPUI5
+
+		(c) Copyright 2009-2021 SAP SE. All rights reserved
+	 
+ */
+(function(){function t(t,e,r){if(r){return e?e(t):t}if(!t||!t.then){t=Promise.resolve(t)}return e?t.then(e):t}sap.ui.define(["../../sina/SearchResultSetItemAttributeGroup"],function(e){function r(t,e){if(!(t instanceof e)){throw new TypeError("Cannot call a class as a function")}}function i(t,e){for(var r=0;r<e.length;r++){var i=e[r];i.enumerable=i.enumerable||false;i.configurable=true;if("value"in i)i.writable=true;Object.defineProperty(t,i.key,i)}}function a(t,e,r){if(e)i(t.prototype,e);if(r)i(t,r);Object.defineProperty(t,"prototype",{writable:false});return t}
+/*!
+   * SAPUI5
+
+		(c) Copyright 2009-2021 SAP SE. All rights reserved
+	
+   */var u=e["SearchResultSetItemAttributeGroup"];var n=function(){function e(t){r(this,e);this.sina=t}a(e,[{key:"processRegularWhyFoundAttributes",value:function t(e,r,i,a){var u;for(var n in i){if(n===e&&i[n][0]){u=i[n][0];if(a.usage.Title||a.usage.TitleDescription||a.usage.Detail){delete i[n]}}}u=this.calculateValueHighlighted(r,a,u);return u}},{key:"processAdditionalWhyfoundAttributes",value:function e(r,i){try{const e=this;var a=e;for(var n in r){if(r[n][0]){(function(){var t=i.dataSource.getAttributeMetadata(n);var e=t.id||n;var s=r[n][0];var f="";if(i.attributesMap[n]){f=i.attributesMap[n].valueFormatted;f=typeof f==="string"?f:JSON.stringify(f)}var l=typeof s==="string"?s:JSON.stringify(s);var o=a.sina._createSearchResultSetItemAttribute({id:e,label:t.label||n,value:"",valueFormatted:f,valueHighlighted:l,isHighlighted:true,metadata:t});var c=i.attributes.find(function(t){return t.id===e});if(i.detailAttributes.find(function(t){return t instanceof u&&t.isAttributeDisplayed(e)})===undefined){i.detailAttributes.push(o);if(c===undefined){i.attributes.push(o)}}else if(c===undefined){i.attributes.push(o);i.detailAttributes.push(o)}else{o.value=c.value;c=o}delete r[n]})()}}return t(i)}catch(t){return Promise.reject(t)}}},{key:"_getFirstItemIfArray",value:function t(e){if(Array.isArray(e)){e=e[0]}return e}},{key:"calculateValueHighlighted",value:function t(e,r,i){var a="com.sap.vocabularies.Search.v1.Highlighted";var u="com.sap.vocabularies.Search.v1.Snippets";var n="";if(r.format==="MultilineText"){n=e[a];if(n){return this._getFirstItemIfArray(n)}n=e[u];if(n){return this._getFirstItemIfArray(n)}return i}n=e[u];if(n){return this._getFirstItemIfArray(n)}n=e[a];if(n){return this._getFirstItemIfArray(n)}return this._getFirstItemIfArray(i)}},{key:"calIsHighlighted",value:function t(e){if(typeof e==="string"&&e.length>0&&e.indexOf("<b>")>-1&&e.indexOf("</b>")>-1){return true}if(Array.isArray(e)&&e.length>0){return true}return false}}]);return e}();var s={__esModule:true};s.WhyfoundProcessor=n;return s})})();

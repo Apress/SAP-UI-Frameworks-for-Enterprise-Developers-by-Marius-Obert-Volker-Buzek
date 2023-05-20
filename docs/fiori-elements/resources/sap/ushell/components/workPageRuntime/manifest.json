@@ -1,0 +1,46 @@
+{
+    "_version": "1.39.0",
+    "sap.app": {
+        "id": "sap.ushell.components.workPageRuntime",
+        "applicationVersion": {
+            "version": "1.113.0"
+        },
+        "ach": "CA-FLP-FE-UI",
+        "type": "component",
+        "title": ""
+    },
+    "sap.ui": {
+        "fullWidth": false,
+        "technology": "UI5",
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "componentUsages": {
+            "pageBuilder": {
+                "name": "sap.ushell.components.workPageBuilder",
+                "lazy": true
+            }
+        },
+        "componentName": "sap.ushell.components.workPageRuntime",
+        "rootView": {
+            "viewName": "sap.ushell.components.workPageRuntime.view.WorkPageRuntime",
+            "type": "XML",
+            "async": true
+        },
+        "dependencies": {
+            "minUI5Version": "1.99",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.m": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        }
+    }
+}

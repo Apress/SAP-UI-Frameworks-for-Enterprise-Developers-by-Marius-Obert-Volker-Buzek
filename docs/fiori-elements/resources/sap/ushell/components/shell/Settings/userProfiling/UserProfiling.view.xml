@@ -1,0 +1,8 @@
+<mvc:View
+      width="100%"
+      controllerName="sap.ushell.components.shell.Settings.userProfiling.UserProfiling"
+      xmlns="sap.m"
+      xmlns:mvc="sap.ui.core.mvc">
+
+    <VBox id="profilingContent" class="sapUshellUserSettingDetailContent" />
+</mvc:View>

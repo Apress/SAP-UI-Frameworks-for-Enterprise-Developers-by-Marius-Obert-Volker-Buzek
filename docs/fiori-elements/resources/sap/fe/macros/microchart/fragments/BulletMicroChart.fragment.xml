@@ -1,0 +1,116 @@
+<core:FragmentDefinition
+	xmlns="sap.suite.ui.microchart"
+	xmlns:core="sap.ui.core"
+	xmlns:oDataV4MicroChart="sap.fe.macros.microchart"
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	template:require="{
+		MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+		MICROCHART: 'sap/fe/macros/microchart/MicroChartHelper',
+		CRIT: 'sap/fe/core/templating/CriticalityFormatters',
+		COMMON: 'sap/fe/macros/CommonHelper',
+		UI: 'sap/fe/core/templating/UIFormatters',
+		ID: 'sap/fe/core/helpers/StableIdHelper'
+	}"
+>
+	<!-- MODEL.value is used instead MODEL.format because, MODEL.format adds type as Unit when Currency/Unit annotations exist and the control property expects decimal as type -->
+	<template:if test="{= MICROCHART.shouldMicroChartRender('Bullet', ${DataPoint>}, ${DataPoint>Value/$Path@})}">
+		<template:then>
+			<template:with path="DataPoint>Value/$Path" helper="MODEL.resolve$Path" var="Measure">
+				<oDataV4MicroChart:MicroChartContainer
+					id="{= ${this>id} ? ID.generate([${this>id}, 'BulletMicroChart']) : undefined }"
+					showOnlyChart="{this>showOnlyChart}"
+					chartTitle="{= ${this>title} || ${metaPath>Title}}"
+					chartDescription="{= ${this>description} || ${metaPath>Description}}"
+					uomPath="{= MICROCHART.getUOMPathForMicrochart(${this>showOnlyChart}, ${Measure>@}) }"
+					binding="{= MICROCHART.getBindingExpressionForMicrochart('Bullet', ${Measure>@}, ${this>}, ${contextPath>}, ${contextPath>@sapui.name}) }"
+					visible="{= MICROCHART.getHiddenPathExpression(${DataPoint>Value/$Path@com.sap.vocabularies.UI.v1.Hidden}) }"
+					navigationType="{this>navigationType}"
+					onTitlePressed="{this>onTitlePressed}"
+				>
+					<template:if test="{= !${this>showOnlyChart} || (${this>showOnlyChart} !== 'true' ? true : false)}">
+						<core:Fragment fragmentName="sap.fe.macros.microchart.fragments.MicroChartTitle" type="XML" />
+					</template:if>
+					<BulletMicroChart
+						targetValue="{DataPoint>TargetValue@@MODEL.value}"
+						forecastValue="{DataPoint>ForecastValue@@MODEL.value}"
+						maxValue="{DataPoint>MaximumValue@@MODEL.format}"
+						minValue="{DataPoint>MinimumValue@@MODEL.format}"
+						actualValueLabel="{= MICROCHART.formatDecimal(${DataPoint>Value/$Path}, ${DataPoint>Value/$Path/$}, (${DataPoint>ValueFormat} &amp;&amp; ${DataPoint>ValueFormat/NumberOfFractionalDigits})) }"
+						targetValueLabel="{= MICROCHART.formatDecimal(${DataPoint>TargetValue/$Path}, ${DataPoint>TargetValue/$Path/$}, (${DataPoint>ValueFormat} &amp;&amp; ${DataPoint>ValueFormat/NumberOfFractionalDigits})) }"
+						showDeltaValue="{= ${DataPoint>Visualization/$EnumMember} &amp;&amp; ${DataPoint>Visualization/$EnumMember}.indexOf('DeltaBulletChart') > -1 }"
+						mode="{= ${DataPoint>Visualization/$EnumMember} &amp;&amp; ${DataPoint>Visualization/$EnumMember}.indexOf('DeltaBulletChart') > -1 ? 'Delta' : undefined }"
+						size="{this>size}"
+						hideOnNoData="{this>hideOnNoData}"
+					>
+						<template:if
+							test="{= ${DataPoint>Criticality} || (!${DataPoint>Criticality} &amp;&amp; !${DataPoint>CriticalityCalculation}) }"
+						>
+							<template:then>
+								<actual>
+									<BulletMicroChartData
+										value="{DataPoint>Value@@MODEL.value}"
+										color="{= ${DataPoint>Criticality} ? CRIT.buildExpressionForCriticalityColorMicroChart(${DataPoint>@@UI.getDataModelObjectPath}) : undefined }"
+									/>
+								</actual>
+							</template:then>
+							<template:else>
+								<template:with path="DataPoint>CriticalityCalculation" var="CriticalityCalculation">
+									<template:with path="DataPoint>CriticalityCalculation/ImprovementDirection/$EnumMember" var="Direction">
+										<actual>
+											<BulletMicroChartData
+												value="{DataPoint>Value@@MODEL.value}"
+												color="{= COMMON.getCriticalityCalculationBinding(${Direction>},
+									${DataPoint>Value@@MODEL.value},
+									${CriticalityCalculation>DeviationRangeLowValue@@MODEL.format},
+									${CriticalityCalculation>ToleranceRangeLowValue@@MODEL.format},
+									${CriticalityCalculation>AcceptanceRangeLowValue@@MODEL.format},
+									${CriticalityCalculation>AcceptanceRangeHighValue@@MODEL.format},
+									${CriticalityCalculation>ToleranceRangeHighValue@@MODEL.format},
+									${CriticalityCalculation>DeviationRangeHighValue@@MODEL.format}) }"
+											/>
+										</actual>
+										<thresholds>
+											<template:if
+												test="{= ${Direction>}.indexOf('Minimize') === -1 &amp;&amp; ${CriticalityCalculation>DeviationRangeLowValue} }"
+											>
+												<BulletMicroChartData
+													value="{CriticalityCalculation>DeviationRangeLowValue@@MODEL.format}"
+													color="{CriticalityCalculation>DeviationRangeLowValue@@MICROCHART.getThresholdColor}"
+												/>
+											</template:if>
+											<template:if
+												test="{= ${Direction>}.indexOf('Minimize') === -1 &amp;&amp; ${CriticalityCalculation>ToleranceRangeLowValue} }"
+											>
+												<BulletMicroChartData
+													value="{CriticalityCalculation>ToleranceRangeLowValue@@MODEL.format}"
+													color="{CriticalityCalculation>ToleranceRangeLowValue@@MICROCHART.getThresholdColor}"
+												/>
+											</template:if>
+											<template:if
+												test="{= ${Direction>}.indexOf('Maximize') === -1 &amp;&amp; ${CriticalityCalculation>ToleranceRangeHighValue} }"
+											>
+												<BulletMicroChartData
+													value="{CriticalityCalculation>ToleranceRangeHighValue@@MODEL.format}"
+													color="{CriticalityCalculation>ToleranceRangeHighValue@@MICROCHART.getThresholdColor}"
+												/>
+											</template:if>
+											<template:if
+												test="{= ${Direction>}.indexOf('Maximize') === -1 &amp;&amp; ${CriticalityCalculation>DeviationRangeHighValue} }"
+											>
+												<BulletMicroChartData
+													value="{CriticalityCalculation>DeviationRangeHighValue@@MODEL.format}"
+													color="{CriticalityCalculation>DeviationRangeHighValue@@MICROCHART.getThresholdColor}"
+												/>
+											</template:if>
+										</thresholds>
+									</template:with>
+								</template:with>
+							</template:else>
+						</template:if>
+					</BulletMicroChart>
+				</oDataV4MicroChart:MicroChartContainer>
+			</template:with>
+		</template:then>
+		<template:elseif test="{= MICROCHART.logWarning('Bullet', { DataPoint_Value : ${DataPoint>Value} }) }" />
+	</template:if>
+</core:FragmentDefinition>

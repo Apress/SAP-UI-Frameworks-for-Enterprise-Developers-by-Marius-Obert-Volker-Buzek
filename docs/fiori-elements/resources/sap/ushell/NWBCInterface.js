@@ -1,0 +1,2 @@
+//Copyright (c) 2009-2023 SAP SE, All Rights Reserved
+sap.ui.define(["sap/ushell/EventHub","sap/ushell/Config"],function(e,n){"use strict";var t={};t.notifyUserActivity=function(){e.emit("nwbcUserIsActive",Date.now())};t.getSessionTimeoutMinutes=function(){var e=0;if(n.last("/core/shell/sessionTimeoutIntervalInMinutes")>0){e=n.last("/core/shell/sessionTimeoutIntervalInMinutes")}return e};t.isAnyAppKeptAlive=function(){return new Promise(function(e){sap.ui.require(["sap/ushell/components/applicationIntegration/Storage"],function(n){e(n.length()>0)})})};return t});

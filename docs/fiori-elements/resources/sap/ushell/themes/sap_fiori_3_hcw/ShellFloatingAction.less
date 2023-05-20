@@ -1,0 +1,31 @@
+.sapUshellShellFloatingAction div {
+  border: 2px solid @sapUiHcStandardForeground;
+
+  .sapUiIcon {
+    margin: -1px -1px 0 -1px;
+  }
+}
+
+.sapUshellShellFloatingAction.sapUshellActive {
+  .sapMBtnInner {
+    background-color: @sapUiHcHighlightAltBackground;
+  }
+
+  .sapMBtnInner:hover {
+    background-color: @sapUiHighlight;
+  }
+}
+
+.sapUshellShellFloatingAction .sapMBtnInner:focus {
+  border: 2px dotted @sapUiHcStandardForeground;
+}
+
+.sapUshellShellFloatingAction:focus>.sapMBtnInner.sapMFocusable {
+  border-radius: 1.25rem;
+  border: 2px dotted @sapUiHcStandardForeground;
+}
+
+.sapUshellShellFloatingAction:focus>.sapMBtnInner.sapMFocusable:not(.sapMBtnActive){
+  border-radius: 1.25rem;
+  border: 2px dotted @sapUiHcStandardForeground;
+}

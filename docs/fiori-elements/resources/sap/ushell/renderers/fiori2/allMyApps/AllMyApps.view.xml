@@ -1,0 +1,92 @@
+<mvc:View
+    controllerName="sap.ushell.renderers.fiori2.allMyApps.AllMyApps"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    height="100%">
+    <SplitApp
+        id="sapUshellAllMyAppsMasterDetail"
+        mode="{= ${/isPhoneWidth} ? 'ShowHideMode' : 'StretchCompressMode'}"
+        class="sapUshellAllMyAppsView">
+        <masterPages>
+            <Page id="sapUshellAllMyAppsMasterPage" showHeader="false">
+                <landmarkInfo>
+                    <PageAccessibleLandmarkInfo
+                        rootLabel="{i18n>allMyApps_CatalogsList}"/>
+                </landmarkInfo>
+                <content>
+                    <List
+                        id="sapUshellAllMyAppsDataSourcesList"
+                        tooltip="{i18n>catalogSelect_tooltip}"
+                        rememberSelections="true"
+                        items="{allMyAppsModel>/AppsData}"
+                        showNoData="false"
+                        growingThreshold="100"
+                        mode="SingleSelectMaster"
+                        itemPress=".handleMasterListItemPress"
+                        selectionChange=".handleMasterListItemPress">
+                        <StandardListItem
+                            title="{allMyAppsModel>title}"
+                            wrapping="true"
+                            type="{
+                                parts: ['allMyAppsModel>type', '/allMyAppsMasterLevel'],
+                                formatter: '.formatListItemType'
+                            }">
+                        </StandardListItem>
+                    </List>
+                </content>
+            </Page>
+        </masterPages>
+
+        <detailPages>
+            <Page id="sapUshellAllMyAppsDetailsPage" showHeader="false">
+                <landmarkInfo>
+                    <PageAccessibleLandmarkInfo
+                        rootLabel="{i18n>allMyApps_ListOfApps}"/>
+                </landmarkInfo>
+                <content>
+                    <Title id="sapUshellAllMyAppsDetailsHeaderLabel" wrapping="true" class="sapUiSmallMarginTopBottom"/>
+                    <ScrollContainer
+                            id="allMyAppsScrollContainer"
+                            class="sapUshellAllMyAppsDetailsItemContainer"
+                            horizontal="false"
+                            vertical="true">
+                        <content>
+                            <List id="oItemsContainerlist" items="{allMyAppsModel>apps}">
+                                <CustomListItem
+                                        class="sapUshellAllMyAppsListItem"
+                                        type="Active"
+                                        press=".onAppItemClick">
+                                    <content>
+                                        <VBox>
+                                            <Label text="{allMyAppsModel>title}" class="sapUshellAllMyAppsItemTitle"/>
+                                            <Label
+                                                text="{allMyAppsModel>subTitle}"
+                                                visible="{= !!${allMyAppsModel>subTitle}}"
+                                                class="sapUshellAllMyAppsItemSubTitle"/>
+                                        </VBox>
+                                    </content>
+                                </CustomListItem>
+                            </List>
+                        </content>
+                    </ScrollContainer>
+                    <VBox
+                        id="sapUshellAllMyAppsCustomPanel"
+                        visible="{= !!${allMyAppsModel>numberCustomTiles}}"
+                        class="sapUshellAllMyAppsCustomPanel">
+                        <Text id="sapUshellAllMyAppsCustomPanelLabel" text="{allMyAppsModel>sCustomLabel}"/>
+                        <Link
+                            id="sapUshellAllMyAppsCustomPanelLink"
+                            visible="{allMyAppsModel>/catalogEnabled}"
+                            text="{allMyAppsModel>sCustomLink}"
+                            press=".handleCustomPanelLinkPress"/>
+                    </VBox>
+                </content>
+            </Page>
+            <Page id="sapUshellAllMyAppsEmptyDetailsPage" showHeader="false" enableScrolling="false">
+                <content>
+                    <Label class="sapUshellAllMyAppsEmptyDetailsPageText" text="{i18n>AllMyAppsEmptyText}" textAlign="Center"/>
+                </content>
+            </Page>
+        </detailPages>
+    </SplitApp>
+</mvc:View>

@@ -1,0 +1,672 @@
+.sapSuiteUiCommonsAccount {
+	width: 100%;
+	border: 1px solid @sapUiPageHeaderBorderColor;
+	border-bottom: 5px solid @sapUiPageHeaderBorderColor;
+	border-radius: 5px;
+	position: relative;
+
+	max-width: 400px;
+}
+
+.sapSuiteUiCommonsAccountPanel .sapMPanelContent {
+	background-color: @sapUiGroupContentBackground;
+}
+
+.sapSuiteUiCommonsAccountPanelOverlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 50;
+	background-color: fade(@sapUiGroupContentBackground, 80);
+	display: none;
+}
+
+.sapSuiteUiCommonsAccountPanelOverlay.sapSuiteUiCommonsAccountPanelOverlayVisible {
+	display: block;
+}
+
+.sapSuiteUiCommonsAccountCollapsed.sapSuiteUiCommonsAccount {
+	border-bottom: none;
+}
+
+.sapSuiteUiCommonsTAccountBaseInfoIconWrapper {
+	width: 18px;
+	height: 18px;
+
+	background-color: @sapUiActive;
+	border: 1px solid @sapUiActive;
+	color: @sapUiContentContrastIconColor;
+
+	border-radius: 50%;
+	font-family: "SAP-icons";
+	font-size: @sapMFontLargeSize;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	display: none;
+}
+
+.sapSuiteUiCommonsAccountContent {
+	width: 100%;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	cursor: pointer;
+}
+
+.sapSuiteUiCommonsAccountDebit .sapSuiteUiCommonsAccountContent {
+	padding-left: 0.375rem;
+}
+
+.sapSuiteUiCommonsAccountCredit .sapSuiteUiCommonsAccountContent {
+	padding-right: 0.375rem;
+	text-align: right;
+}
+
+html[dir=rtl] .sapSuiteUiCommonsAccountCredit .sapSuiteUiCommonsAccountContent{
+	text-align: left;
+}
+
+.sapSuiteUiCommonsTAccountInfoIconWrapper {
+	position: absolute;
+	right: -9px;
+	top: -9px;
+}
+
+.sapSuiteUiCommonsGroupInfoIconWrapper {
+	margin-left: 8px;
+}
+
+.sapSuiteUiCommonsAccountCollapsed.sapSuiteUiCommonsAccountItemSelectedByGroup .sapSuiteUiCommonsTAccountInfoIconWrapper,
+.sapSuiteUiCommonsAccountGroupCollapsed.sapSuiteUiCommonsAccountItemSelectedByGroup .sapSuiteUiCommonsGroupInfoIconWrapper {
+	display: flex;
+}
+
+.sapSuiteUiCommonsAccountGroupCollapseIcon {
+  	height: 0.9375rem;
+}
+
+.sapSuiteUiCommonsAccount:focus {
+	outline: 1px dotted @sapUiContentFocusColor;
+}
+
+.sapSuiteUiCommonsAccountTHeader {
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 1px solid @sapUiGroupTitleBorderColor;
+	align-items: center;
+	height: 2rem;
+	font-size: @sapMFontSmallSize;
+	margin: 0 1rem 0 1rem;
+}
+
+.sapSuiteUiCommonsAccountTHeader.sapSuiteUiCommonsAccountTHeaderOpening {
+	border-bottom: 0.125rem solid @sapUiGroupTitleBorderColor;
+}
+
+.sapSuiteUiCommonsAccountEmpty .sapSuiteUiCommonsAccountTHeader.sapSuiteUiCommonsAccountTHeaderOpening {
+	border-bottom: none;
+}
+
+.sapSuiteUiCommonsAccountNoData {
+	padding: 5px;
+}
+
+.sapSuiteUiCommonsAccountOpeningHeader,
+.sapSuiteUiCommonsAccountClosingHeader {
+	display: flex;
+	border-bottom: 0.0625rem solid @sapUiGroupTitleBorderColor;
+	align-items: center;
+	height: auto;
+	font-size: @sapMFontSmallSize;
+	margin: 0 1rem;
+}
+
+.sapSuiteUiCommonsAccountClosingHeader {
+	border-top: 0.0625rem solid @sapUiGroupTitleBorderColor;
+	border-bottom: 0;
+}
+
+.sapSuiteUiCommonsAccountClosingHeaderLine {
+	border-top: 0.0625rem solid @sapUiGroupTitleBorderColor;
+	height: 0.0625rem;
+	margin: 0 1rem;
+}
+
+.sapSuiteUiCommonsAccountHeader {
+  	cursor: grab;
+	min-height: 2rem;
+	background-color: @sapUiObjectHeaderBackground;
+	border-bottom: 1px solid @sapUiPageHeaderBorderColor;
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	justify-content: space-between;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+	font-size: @sapMFontMediumSize;
+
+}
+
+.sapSuiteUiCommonsInfoIcon {
+	user-select: none;
+}
+
+.sapUiSizeCozy .sapSuiteUiCommonsAccountHeader {
+	min-height: 3rem;
+}
+
+.sapSuiteUiCommonsAccountHeaderFirst {
+	display: flex;
+	flex-direction: row;
+	flex-shrink: 2;
+	overflow: hidden;
+}
+
+.sapSuiteUiCommonsAccountHeaderSUM {
+	word-break: break-all;
+}
+
+.sapSuiteUiCommonsAccountHeaderTitle {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	margin: 0.5rem 0.2608rem;
+  	max-height: 4.2rem;
+  	min-height: 1rem;
+  	display: -webkit-box;
+  	-webkit-box-orient: vertical;
+  	-webkit-line-clamp: 4;
+}
+
+.sapSuiteUiCommonsAccountTHeaderOpeningDebitTitle,
+.sapSuiteUiCommonsAccountTHeaderOpeningCreditTitle {
+	font-size: @sapMFontMediumSize;
+	font-weight: bold;
+	padding: 1rem 0;
+	width: 50%;
+}
+
+.sapSuiteUiCommonsAccountTHeaderOpeningDebitTitle{
+	text-align: left;
+	border-right: 1px dashed @sapUiGroupTitleBorderColor;
+}
+
+.sapSuiteUiCommonsAccountTHeaderOpeningCreditTitle {
+	text-align: right;
+}
+
+html[dir=rtl] .sapSuiteUiCommonsAccountCredit .sapSuiteUiCommonsAccountTHeaderOpeningCreditTitle {
+	text-align: left;
+}
+
+.sapSuiteUiCommonsAccountHeaderTitleWrapper {
+  	margin: 0.5rem 0.2608rem;
+}
+
+.sapSuiteUiCommonsAccountHeaderTitleWithSubtitle {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-height: 2rem;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+}
+
+.sapSuiteUiCommonsAccountHeaderSubtitle {
+	color: @sapUiContentLabelColor;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-height: 2rem;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+}
+
+.sapSuiteUiCommonsAccountHeaderSecond {
+	margin-right: 1rem;
+}
+
+.sapSuiteUiCommonsAccountHeaderExpandWrapper {
+	width: 2.5rem;
+	display: flex;
+	justify-content: center;
+	padding-left: 5px;
+	flex-shrink: 0;
+  	padding-top: 0.5625rem;
+}
+
+.sapSuiteUiCommonsAccountTWrapper {
+	background-color: @sapUiGroupContentBackground;
+}
+
+/** ITEM **/
+.sapSuiteUiCommonsAccountItem {
+	display: flex;
+	flex-direction: row;
+	padding-top: 0.25rem;
+	padding-bottom: 0.5rem;
+
+	overflow: hidden;
+}
+
+.sapSuiteUiCommonsAccountDebitCredit {
+	width: 100%;
+	margin-bottom: 0.2rem;
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	padding: 1px;
+}
+
+.sapSuiteUiCommonsAccountMiddleBorder {
+	position: absolute;
+	width: 1px;
+	pointer-events: none;
+	left: 50%;
+	height: 100%;
+	border-left: 1px dashed @sapUiGroupTitleBorderColor;
+}
+
+.sapSuiteUiCommonsAccountBlankItem {
+	visibility: hidden;
+	width: 100%;
+}
+
+.sapSuiteUiCommonsAccountContent:hover {
+	background-color: @sapUiListHoverBackground;
+}
+
+.sapSuiteUiCommonsAccountItem.sapSuiteUiCommonsAccountItemSelected .sapSuiteUiCommonsAccountContent,
+.sapSuiteUiCommonsAccountItem.sapSuiteUiCommonsAccountItemSelectedByGroup .sapSuiteUiCommonsAccountContent {
+	background-color: @sapUiListSelectionBackgroundColor;
+}
+
+.sapSuiteUiCommonsAccountItem:focus {
+	outline: 1px dotted @sapUiContentFocusColor;
+}
+
+.sapSuiteUiCommonsAccountCredit .sapSuiteUiCommonsAccountItem {
+	flex-direction: row-reverse;
+	width: 100%;
+}
+
+.sapSuiteUiCommonsAccountCredit .sapSuiteUiCommonsAccountColorBar {
+	margin-right: 0.375rem;
+}
+
+.sapSuiteUiCommonsAccountDebit .sapSuiteUiCommonsAccountColorBar {
+	margin-left: 0.375rem;
+}
+
+.sapSuiteUiCommonsAccountDebitCredit .sapSuiteUiCommonsAccountItem {
+	width: 50%;
+}
+
+html[dir=rtl] .sapSuiteUiCommonsAccountDebitCredit .sapSuiteUiCommonsAccountItemLeft.sapSuiteUiCommonsAccountItem {
+	text-align: right;
+}
+
+html[dir=rtl] .sapSuiteUiCommonsAccountDebitCredit .sapSuiteUiCommonsAccountItemRight.sapSuiteUiCommonsAccountItem {
+	text-align: left;
+}
+
+.sapSuiteUiCommonsAccountDebitCredit .sapSuiteUiCommonsAccountItemLeft.sapSuiteUiCommonsAccountItem {
+	flex-direction: row;
+	text-align: left;
+}
+
+.sapSuiteUiCommonsAccountDebitCredit .sapSuiteUiCommonsAccountItemRight.sapSuiteUiCommonsAccountItem {
+	flex-direction: row-reverse;
+	text-align: right;
+	margin-left: 50%;
+}
+
+
+
+.sapSuiteUiCommonsAccountItemLeft {
+	.sapSuiteUiCommonsAccountColorBar,
+	.sapSuiteUiCommonsAccountContent {
+		margin-left: 0.375rem;
+	}
+}
+
+.sapSuiteUiCommonsAccountItemRight {
+	.sapSuiteUiCommonsAccountColorBar,
+	.sapSuiteUiCommonsAccountContent {
+		margin-right: 0.375rem;
+	}
+}
+
+.sapSuiteUiCommonsAccountTBody {
+	display: flex;
+	justify-content: space-between;
+}
+
+.sapSuiteUiCommonsAccountColorBar {
+	width: 4px;
+	margin-top: 10px;
+	margin-bottom: 8px;
+	flex-shrink: 0;
+}
+
+.sapSuiteUiCommonsAccountDebit {
+	border-right: 1px dashed @sapUiGroupTitleBorderColor;
+	width: 50%;
+	padding-top: 0.5rem;
+	margin-bottom: 0.2rem;
+}
+
+.sapSuiteUiCommonsAccountItemTitle {
+	font-weight: bold;
+	font-size: @sapMFontSmallSize;
+	word-break: break-all;
+}
+
+.sapSuiteUiCommonsAccountItemProperty {
+	font-size: @sapMFontSmallSize;
+	word-break: break-all;
+}
+
+.sapSuiteUiCommonsAccountItemProperties {
+	overflow: hidden;
+}
+
+.sapSuiteUiCommonsAccountCredit .sapSuiteUiCommonsAccountItemProperties {
+	text-align: right;
+}
+
+.sapSuiteUiCommonsAccountItemProperties > div:first-child {
+	padding-top: 3px;
+}
+
+.sapSuiteUiCommonsAccountItemLabel {
+	font-size: @sapMFontSmallSize;
+	margin-top: 3px;
+	color: @sapUiContentLabelColor;
+	word-break: break-word;
+}
+
+.sapSuiteUiCommonsAccountCredit {
+	display: flex;
+	width: 50%;
+	flex-direction: column;
+	align-items: flex-start;
+	padding-top: 0.5rem;
+
+	margin-bottom: 0.2rem;
+}
+
+/** GROUP **/
+.sapSuiteUiCommonsAccountGroup {
+	width: 100%;
+}
+
+.sapSuiteUiCommonsAccountGroup:focus {
+	outline: 1px dotted @sapUiContentFocusColor;
+}
+
+.sapSuiteUiCommonsAccountGroupColumn {
+	display: flex;
+	flex-direction: column;
+	margin-right: 1rem;
+	width: 100%;
+}
+
+.sapSuiteUiCommonsAccountGroupContent {
+	display: flex;
+	flex-direction: row;
+  	outline: none;
+}
+
+.sapSuiteUiCommonsTAccountDropZoneTop,
+.sapSuiteUiCommonsTAccountDropZoneBottom {
+	z-index: -500;
+	position: absolute;
+	width: 100%;
+	max-width: 400px;
+	height: 55%;
+}
+
+.sapSuiteUiCommonsTAccountDropZoneTop {
+  	top: -5px;
+}
+
+.sapSuiteUiCommonsTAccountDropZoneBottom {
+	bottom: -6px;
+}
+
+.sapSuiteUiCommonsAccountGroupDroppingArea {
+	width: 100%;
+	height: 1rem;
+	box-sizing: border-box;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 1000;
+}
+
+.sapSuiteUiCommonsAccountGroupDroppingAreaActive,
+.sapSuiteUiCommonsAccountGroupDroppingAreaActiveSide {
+	&.sapSuiteUiCommonsAccountGroupDroppingArea {
+	  	cursor: grabbing;
+	}
+}
+
+div:nth-last-child(1),
+div:nth-last-child(2),
+div:only-child {
+	&.sapSuiteUiCommonsAccountGroupDroppingArea {
+		flex-grow: 1;
+		justify-content: center;
+
+		&.sapSuiteUiCommonsAccountGroupDroppingAreaActive,
+		&.sapSuiteUiCommonsAccountGroupDroppingAreaActiveSide {
+			min-height: 8rem;
+		}
+
+		.sapSuiteUiCommonsAccountGroupDroppingAreaInner,
+		.sapSuiteUiCommonsAccountGroupDroppingAreaInnerText {
+			top: 0;
+			position: absolute;
+		}
+
+		.sapSuiteUiCommonsAccountGroupDroppingAreaInnerText {
+			padding-top: 3.5rem;
+		}
+	}
+}
+
+div:nth-last-child(1),
+div:nth-last-child(2),
+div:first-child,
+div:only-child {
+	&.sapSuiteUiCommonsAccountGroupDroppingAreaActive,
+	&.sapSuiteUiCommonsAccountGroupDroppingAreaActiveSide {
+		&.sapSuiteUiCommonsAccountGroupDroppingArea {
+			height: auto;
+			max-width: 400px;
+
+			.sapSuiteUiCommonsAccountGroupDroppingAreaInnerText {
+				color: @sapUiHighlight;
+				font-size: @sapMFontLargeSize;
+				display: flex;
+			}
+
+			.sapSuiteUiCommonsAccountGroupDroppingAreaInner {
+				height: 6rem;
+				border: 1px solid @sapUiHighlight;
+				background: none;
+				margin-left: 0px;
+				margin-top: 1rem;
+				margin-bottom: 1rem;
+				display: block;
+				max-width: 400px;
+				top: 0;
+			}
+
+			.sapSuiteUiCommonsAccountGroupDroppingAreaInnerBall {
+				display: none;
+			}
+		}
+	}
+}
+
+.sapUiSizeCozy .sapSuiteUiCommonsAccountGroupDroppingArea {
+  	height: 1.5rem;
+}
+
+.sapSuiteUiCommonsAccountGroupDroppingAreaActive,
+.sapSuiteUiCommonsAccountGroupDroppingAreaActiveSide {
+	.sapSuiteUiCommonsAccountGroupDroppingAreaInner,
+	.sapSuiteUiCommonsAccountGroupDroppingAreaInnerBall {
+		display: block;
+	}
+}
+
+
+
+.sapSuiteUiCommonsAccountGroupDroppingAreaInner {
+	width: 100%;
+	height: 1px;
+	background: @sapUiSelected;
+	position: relative;
+	margin-left: 10px;
+	display: none;
+}
+
+.sapSuiteUiCommonsAccountGroupDroppingAreaInnerText {
+	display: none;
+	position: absolute;
+}
+
+.sapSuiteUiCommonsAccountGroupDroppingAreaInnerBall {
+	position: absolute;
+	right: -11px;
+	width: 10px;
+	height: 10px;
+	border: 1px solid @sapUiSelected;
+	border-radius: 50%;
+	display: none;
+}
+
+.sapSuiteUiCommonsAccountItemDragging {
+	opacity: 0.2;
+}
+
+.sapSuiteUiCommonsAccountItemDragging .sapSuiteUiCommonsAccountHeader,
+.sapSuiteUiCommonsAccountItemDragging.sapSuiteUiCommonsAccount {
+	background-color: @sapUiGroupTitleBorderColor;
+	border-color: @sapUiGroupTitleBorderColor;
+}
+
+.sapSuiteUiCommonsAccountItemDragging .sapSuiteUiCommonsAccountColorBar {
+	background-color: @sapUiGroupTitleBorderColor !important;
+}
+
+.sapSuiteUiCommonsGroupHeader {
+	display: flex;
+	flex-direction: row;
+	min-height: 2rem;
+	border-bottom: 1px solid @sapUiGroupTitleBorderColor;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.sapUiSizeCozy .sapSuiteUiCommonsGroupHeader {
+	height: 3rem;
+}
+
+.sapSuiteUiCommonsGroupHeaderExpandWrapper {
+	width: 2.5rem;
+	flex-shrink: 0;
+}
+
+.sapSuiteUiCommonsGroupHeaderFirst {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	width: 100%;
+	padding-bottom: 5px;
+}
+
+.sapSuiteUiCommonsGroupHeaderExpandWrapper {
+	display: flex;
+	justify-content: center;
+}
+
+.sapSuiteUiCommonsGroupHeaderIcon {
+	margin-left: 0.5rem;
+}
+
+.sapUiSizeCozy .sapSuiteUiCommonsGroupHeaderIcon {
+	margin-left: 0.75rem;
+}
+
+.sapSuiteUiCommonsGrouptHeaderSeparator {
+	width: 1px;
+	height: 1rem;
+	margin-left: 5px;
+	margin-right: 5px;
+	background-color: fade(dimgray, 20);
+}
+
+.sapSuiteUiCommonsGroupHeaderSecond {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-left: auto;
+	min-width: 5rem;
+}
+
+.sapSuiteUiCommonsGroupHeaderTitle {
+	font-size: @sapMFontMediumSize;
+}
+
+.sapSuiteUiCommonsGrouptHeaderSUM {
+	font-size: @sapMFontMediumSize;
+}
+
+/** PANEL **/
+.sapSuiteUiCommonsAccountPanelSum {
+	font-weight: bold !important;
+	flex-shrink: 0 !important;
+}
+
+.sapSuiteUiCommonsAccountPanelLabel,
+.sapSuiteUiCommonsAccountPanelSum {
+	font-size: @sapMFontLargeSize;
+}
+
+.sapSuiteUiCommonsAccountPanel:focus {
+	outline: 1px dotted @sapUiContentFocusColor;
+}
+
+.sapSuiteUiCommonsAccountPopupHeader {
+	padding: 0.5rem;
+	border-bottom: 1px solid @sapUiGroupTitleBorderColor;
+}
+
+.sapSuiteUiCommonsAccountsPopupList {
+	border-top: 1px solid @sapUiGroupTitleBorderColor;
+}
+
+.sapSuiteUiCommonsAccountsPopupSelectAllWrapper {
+	background: @sapUiPageFooterBorderColor;
+}
+
+.sapSuiteUiCommonsAccountsPopupSelectAll {
+	width: 100%;
+}
+
+.sapSuiteUiCommonsAccountsPopupSearch {
+	padding-left: 4px !important;
+	padding-right: 4px !important;
+}
+
+.sapSuiteUiCommonsAccountItem.sapSuiteUiCommonsAccountItemHighlightGroup {
+	background-color: red;
+}

@@ -1,0 +1,34 @@
+<core:FragmentDefinition xmlns="sap.m"
+  xmlns:core="sap.ui.core">
+  <CustomListItem type="Active">
+    <VBox class="sapUiSmallMarginBegin sapUiSmallMarginBottom">
+      <HBox class="sapUiMediumMarginEnd sapUiSmallMarginTop">
+        <Avatar src="{data>icon}"
+           fallbackIcon="{category>list/item/icon/src}"
+           displaySize="{= ${category>list/item/icon/size} || 'S'}"
+           class="sapUiCEPCatListAvatarTitle"
+           backgroundColor="{= ${data>iconBackgroundColor} || ${category>list/item/icon/backgroundColor}}"
+           initials="{data>initials}"
+           displayShape="{= ${category>list/item/icon/shape} || 'Square'}"/>
+        <VBox class="sapUiSmallMarginBegin sapUiSmallMarginBottom">
+          <ObjectIdentifier title="{data>title}" text="{data>description}" titleActive="{= !!${data>_navigation} || !!${data>url}}"
+          titlePress=".itemNavigate"
+          />
+        </VBox>
+      </HBox>
+      <Link text="{data>workspace}" visible="{= !!${data>workspace}}" press="handleWorkspaceLinkPress" />
+      <Text text="{data>info}" visible="{= !!${data>info}}"/>
+      <VBox class="sapUiTinyMarginBottom" visible="{= !!${data>infoSmall1} || !!${data>infoSmall2}}">
+        <Text text="{data>infoSmall1}" visible="{= !!${data>infoSmall1}}" class="sapUiCEPCatListInfoSmall"/>
+        <Text text="{data>infoSmall2}" visible="{= !!${data>infoSmall2}}" class="sapUiCEPCatListInfoSmall"/>
+      </VBox>
+      <HBox visible="{= ${data>keywords}.length > 0}" items="{path:'data>keywords', templateShareable:true}">
+        <Text text="{= ${data>text} || ${data>}}" class="sapUiCEPCatListKeyword sapUiCEPCatListAccentTags">
+          <customData>
+            <core:CustomData key="accent" value="{= ${data>accent} + ''}" writeToDom="true" />
+          </customData>
+        </Text>
+      </HBox>
+   </VBox>
+  </CustomListItem>
+</core:FragmentDefinition>

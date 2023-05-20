@@ -1,0 +1,2 @@
+// Copyright (c) 2009-2023 SAP SE, All Rights Reserved
+sap.ui.define([],function(){"use strict";var e={};e.GROUP_TYPE={Applications:"applications",FrequentApplications:"frequentApplications",FrequentProducts:"frequentProducts",RecentSearches:"recentSearches",HomePageApplications:"homePageApplications",ExternalSearchApplications:"externalSearchApplications"};e.ENTRY_TYPE={App:"app",Product:"product",ExternalLink:"ex-link",SearchText:"text"};return e},false);

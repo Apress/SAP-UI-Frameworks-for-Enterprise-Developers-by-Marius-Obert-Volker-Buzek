@@ -1,0 +1,26 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns="sap.m"
+	xmlns:macro="sap.fe.macros.internal"
+	xmlns:core="sap.ui.core"
+	template:require="{
+		HELPER: 'sap/fe/macros/chart/ChartHelper'
+	}"
+>
+	<macro:Chart
+		id="{visualizationDefinition>id}"
+		_applyIdToContent="true"
+		contextPath="{visualizationDefinition>collection}"
+		metaPath="{presentationContext>annotationPath}"
+		chartDefinition="{visualizationDefinition>}"
+		selectionMode="Multiple"
+		personalization="{visualizationDefinition>personalization}"
+		chartDelegate="{= '{name: \'sap/fe/templates/AnalyticalListPage/chart/FEChartDelegate\', payload: { contextPath: \'' + HELPER.getCollectionName(${visualizationDefinition>collection}) + '\', parameters:{$$groupId:\'$auto.Workers\'}, selectionMode: \'Multiple\' } }' }"
+		selectionChange=".handlers.onChartSelectionChanged"
+		headerLevel="H2"
+		noDataText="{= ${visualizationDefinition>collection} !== '' ? ${sap.fe.i18n>T_TABLE_AND_CHART_NO_DATA_TEXT} : ${sap.fe.i18n>M_CHART_NO_ANNOTATION_SET_TEXT} }"
+		stateChange=".handlers.onStateChange"
+		variantSaved=".handlers.onVariantSaved"
+		variantSelected=".handlers.onVariantSelected"
+	/>
+</core:FragmentDefinition>

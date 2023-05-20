@@ -1,0 +1,14 @@
+<mvc:View
+    controllerName="sap.ushell.components.shell.Settings.userActivities.UserActivitiesSetting"
+    xmlns="sap.m"
+    xmlns:lf="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc">
+    <lf:SimpleForm id="userActivitiesForm" layout="ResponsiveGridLayout" class="sapUiSmallMarginBegin">
+        <lf:content>
+            <VBox>
+                <CheckBox id="enableTrackingCheckbox" selected="{/checkboxIsChecked}" text="{i18n>trackingLabel}" wrapping="true"/>
+                <Button text="{i18n>cleanActivityLabel}" press=".onClearHistory" visible="{/checkboxIsChecked}"/>
+            </VBox>
+        </lf:content>
+    </lf:SimpleForm>
+</mvc:View>

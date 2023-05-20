@@ -1,0 +1,42 @@
+[
+  {
+    "ID": "9c937100-d459-491f-a72d-81b2929af10f",
+    "name": "Augustiner-Bräu Wagner KG",
+    "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/8/83/Augustiner_Braeu_Muenchen.svg/440px-Augustiner_Braeu_Muenchen.svg.png"
+  },
+  {
+    "ID": "fa6b959e-3a01-40ef-872e-6030ee4de4e5",
+    "name": "Alpirsbacher Klosterbräu",
+    "logo": "https://assets.untappd.com/site/brewery_logos/brewery-7739_8af98.jpeg"
+  },
+  {
+    "ID": "6832ba00-c20e-48b4-a685-dca4aff2ca13",
+    "name": "Blue Moon Brewing Company",
+    "logo": "https://assets.untappd.com/site/brewery_logos/brewery-127804_1a670.jpeg"
+  },
+  {
+    "ID": "d265037f-4996-4195-a1fb-b0a8ab5c6f30",
+    "name": "Giesinger Bräu",
+    "logo": "https://assets.untappd.com/site/brewery_logos/brewery-GiesingerBrau_24085.jpeg"
+  },
+  {
+    "ID": "4aeebbed-90c2-4bdd-aa70-d8eecb8eaebb",
+    "name": "Badische Staatsbrauerei Rothaus",
+    "logo": "https://assets.untappd.com/site/brewery_logos/brewery-BadischeStaatsbrauereiRothaus_1077.jpeg"
+  },
+  {
+    "ID": "7eaabbed-90c2-4bdd-aa70-d8eecb8eaebb",
+    "name": "Privatbrauerei Waldhaus",
+    "logo": "https://assets.untappd.com/site/brewery_logos/brewery-13505_285df.jpeg"
+  },
+  {
+    "ID": "cb0fb1f6-2853-4f93-8670-69697e3a595e",
+    "name": "lille",
+    "logo": "https://assets.untappd.com/site/brewery_logos/brewery-191088_39bbf.jpeg"
+  },
+  {
+    "ID": "087f986c-4b4f-4b19-a971-4e9586e74909",
+    "name": "Grüner Bier",
+    "logo": "https://assets.untappd.com/site/brewery_logos/brewery-155061_cd3fc.jpeg"
+  }
+]

@@ -1,0 +1,1055 @@
+/******** fiori search related css styles ********/
+/******** detail ********/
+
+.displayFlexBox() {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+.flex(@flex) {
+    -ms-flex: @flex;
+    -webkit-flex: @flex;
+    flex: @flex;
+}
+
+.flexDirection(@direction) {
+    -ms-flex-direction: @direction;
+    -webkit-flex-direction: @direction;
+    flex-direction: @direction;
+}
+
+.flexAlign(@align) {
+    -webkit-align-items: @align;
+    align-items: @align;
+}
+
+.flexWrap(@wrap) {
+    -ms-flex-wrap: @wrap;
+    -webkit-flex-wrap: @wrap;
+    flex-wrap: @wrap;
+}
+
+.justifyContent(@justifyContent) {
+    -ms-flex-pack: @justifyContent;
+    -webkit-justify-content: @justifyContent;
+    justify-content: @justifyContent;
+}
+
+.order(@order) {
+    -ms-flex-order: @order;
+    -ms-order: @order;
+    -webkit-order: @order;
+    order: @order;
+}
+
+.searchResultList {
+    overflow: hidden;
+}
+
+.sapUshellSearchResultListItem {
+    > .sapMLIBContent {
+        padding: 0;
+    }
+}
+
+.sapUshellSearchResultListItem-Container {
+    .displayFlexBox();
+    .flexWrap(nowrap);
+}
+
+.sapUshellSearchResultListItem-ContentValueHelp {
+    /* .flex(1 0 100%);
+    min-width: 0%; */
+}
+
+.sapUshellSearchResultListItem-Content {
+    .flex(0 1 100%);
+    min-width: 0%;
+}
+
+.sapUshellSearchResultListItem-TitleAndImageContainer {
+    .displayFlexBox();
+    box-sizing: border-box;
+    width: 100%;
+    padding: 1rem 1rem 0 0.5rem;
+
+    .sapUshellSearchResultListItem-WithImage & {
+        @media all and @searchDesktopSize {
+            width: 75%;
+        }
+        @media all and @searchTabletSize {
+            width: 66%;
+        }
+    }
+}
+
+.sapUshellSearchResultListItem-TitleContainer {
+    .displayFlexBox();
+    .flexAlign(baseline);
+    -ms-flex-align: center;
+    white-space: nowrap;
+    max-width: 100%;
+    min-width: 0%;
+    .flex(1 1 auto);
+    .flexWrap(nowrap);
+}
+
+.sapUshellSearchResultListItemDoc-AttributesExpandContainer {
+    .flex(1 1 auto);
+    height: 7.875rem;
+    overflow: hidden;
+}
+
+.sapUshellSearchResultListItemDoc-AttributesExpandContainer.sapUshellSearchResultListItem-AttributesExpanded {
+    height: auto;
+}
+
+.sapUshellSearchResultListItemDoc-ThumbnailSnippetContainer {
+    display: inline-flex;
+    .flex(0 1 50%);
+    max-width: 50%;
+    margin-top: 0.5rem;
+}
+.sapUshellSearchResultListItemNote-ThumbnailSnippetContainer {
+    display: inline-flex;
+    .flex(0 1 75%);
+    max-width: 75%;
+    margin-top: 0.5rem;
+}
+
+.sapUshellSearchResultListItemDoc-ThumbnailContainer {
+    display: inline-block;
+    height: 6.25rem;
+    width: 6.25rem;
+    .flex(0 0 auto);
+    margin-right: 1.125rem;
+    margin-bottom: 0.75rem;
+    text-align: right;
+    visibility: hidden;
+}
+
+.sapUshellSearchResultListItemDoc-ThumbnailContainer-hidden {
+    display: none;
+}
+
+.sapUshellSearchResultListItemDoc-ThumbnailContainerInner {
+    position: relative;
+    display: inline-block;
+    padding: 0.25rem;
+    box-shadow: @sapUiShadowLevel0;
+}
+.sapUshellSearchResultListItemDoc-ThumbnailContainerInner::before {
+    content: "";
+    position: absolute;
+    top: -0.375rem;
+    left: -0.375rem;
+    height: 1rem;
+    width: 1rem;
+    background: linear-gradient(
+        135deg,
+        @sapUiListBackground 0%,
+        @sapUiListBackground 50%,
+        @sapUiGroupContentBorderColor 50%,
+        @sapUiGroupContentBorderColor 100%
+    );
+    border-top: 0.25rem solid @sapUiListBackground;
+    border-left: 0.25rem solid @sapUiListBackground;
+}
+.sapUshellSearchResultListItemDoc-ThumbnailZoomIcon {
+    color: @sapUiContentContrastTextColor;
+    position: absolute;
+    right: -0.125rem;
+    bottom: -0.125rem;
+    border-radius: 0.5rem;
+    background: @sapUiLink;
+    height: 1rem;
+    width: 1rem;
+    font-size: 0.7rem;
+    line-height: 1rem;
+    padding-left: 1px;
+    box-sizing: border-box;
+}
+
+.sapUshellSearchResultListItemDoc-Thumbnail {
+    vertical-align: bottom;
+    max-height: 5.75rem;
+    max-width: 5.75rem;
+}
+
+.sapUshellSearchResultListItemDoc-Snippet {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    line-height: 1.5;
+    max-height: 6.5rem;
+    .order(20);
+    b {
+        font-weight: bold;
+        background-color: @sapUiContentSearchHighlightColor;
+    }
+}
+
+.sapUshellSearchResultListItemDoc-AttributesContainer {
+    margin-top: 0.5rem;
+    display: inline-flex;
+    .flex(0 1 50%);
+    max-width: 50%;
+    .flexWrap(wrap);
+    line-height: 1.5;
+    max-height: 6.5rem;
+    align-content: flex-start;
+}
+
+.sapUshellSearchResultListItemNote-AttributesContainer {
+    .displayFlexBox();
+    .flex(0 1 100%);
+    .flexWrap(wrap);
+    max-width: 25%;
+    margin-top: 0.5rem;
+    .flexDirection(column);
+    line-height: 1.5;
+    max-height: 6.5rem;
+    align-content: flex-start;
+}
+
+.sapUshellSearchResultListItemDoc-AttributeValue {
+    display: inline-block;
+    .flex(0 1 50%);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding-left: 1rem;
+    box-sizing: border-box;
+    line-height: inherit;
+    b {
+        font-weight: bold;
+        background-color: @sapUiContentSearchHighlightColor;
+    }
+}
+
+.sapUshellSearchResultListItemNote-AttributeValue {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding-left: 1rem;
+    box-sizing: border-box;
+    line-height: inherit;
+    b {
+        font-weight: bold;
+        background-color: @sapUiContentSearchHighlightColor;
+    }
+}
+
+.sapUshellSearchResultList-HideMultiSelection .sapUshellSearchResultListItem-CheckboxExpandContainer {
+    display: none;
+}
+
+.sapUshellSearchResultList-HideMultiSelection .sapUshellSearchResultListItem-Attributes {
+    padding-left: 1rem;
+}
+
+.sapUshellSearchResultList-ShowMultiSelection .sapUshellSearchResultListItem-CheckboxExpandContainer {
+    display: inline-block;
+}
+
+.sapUshellSearchResultList-ShowMultiSelection .sapUshellSearchResultListItem-Attributes {
+    /*     margin-left:0; */
+    padding-left: 2rem;
+}
+
+.sapUshellSearchResultListItem-CheckboxExpandContainer {
+    display: none;
+    .flex(0 0 auto);
+    height: 1rem;
+}
+
+.sapUshellSearchResultListItem-CheckboxExpandContainer-Hidden {
+    display: none;
+}
+
+.sapUshellSearchResultListItem-CheckboxContainer {
+    height: 1rem;
+    width: 1rem;
+}
+
+.sapUshellSearchResultListItem-CheckboxAlignmentContainer {
+    display: inline-block;
+    display: block;
+    top: -0.5rem;
+    left: -0.5rem;
+    position: relative;
+    height: auto;
+    & > div {
+        display: block;
+    }
+}
+
+.sapUshellSearchResultListItem-HeaderEntry {
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    b {
+        font-weight: bold;
+        background-color: @sapUiContentSearchHighlightColor;
+    }
+
+    &.sapUshellSearchResultListItem-Title {
+        font-size: 1.125rem;
+        min-width: 0%;
+        max-width: 100%;
+        .flex(0 1 auto);
+        margin-right: 0.5rem;
+        margin-left: 0.5rem;
+        line-height: 1.5625rem;
+
+        @media all and @searchPhoneSize {
+            margin-left: 0;
+        }
+    }
+
+    &.sapUshellSearchResultListItem-TitleDescription {
+        .flex(0 1 auto);
+        .flex(0 0 auto);
+
+        margin-right: 0.5rem;
+    }
+
+    &.sapUshellSearchResultListItem-TitleDelimiter {
+        .flex(0 0 auto);
+
+        margin-right: 0.5rem;
+        color: @sapUiToolbarSeparatorColor;
+
+        @media all and @searchPhoneSize {
+            display: none;
+        }
+    }
+
+    &.sapUshellSearchResultListItem-TitleDescription,
+    &.sapUshellSearchResultListItem-TitleCategory,
+    &.sapUshellSearchResultListItem-TitleCategoryLink {
+        max-width: 80%;
+        white-space: nowrap;
+        -webkit-flex-shrink: 0;
+        flex-shrink: 0;
+    }
+
+    &.sapUshellSearchResultListItem-TitleDescription,
+    &.sapUshellSearchResultListItem-TitleCategory {
+        color: @sapUiContentLabelColor;
+    }
+}
+
+.sapUshellSearchResultListItem-TitleImage {
+    display: none;
+}
+
+.sapUshellSearchResultListItem-ContentContainer {
+    .displayFlexBox();
+    .flexWrap(wrap);
+}
+
+.sapUshellSearchResultListItem-AttributesAndActions {
+    .displayFlexBox();
+    .flexWrap(wrap);
+}
+
+.sapUshellSearchResultListItem-AttributesExpandContainer {
+    .flex(1 1 auto);
+    height: 3.75rem;
+    overflow: visible !important;
+}
+
+.sapUshellSearchResultListItem-AttributesExpandContainerValueHelp {
+    height: 100%;
+}
+
+.sapUshellSearchResultListItem-AttributesExpandContainer.sapUshellSearchResultListItem-AttributesExpanded {
+    height: auto;
+}
+
+.sapUshellSearchResultListItem-Attributes {
+    .flex(1 1 100%);
+    .displayFlexBox();
+    .flexWrap(wrap);
+    margin: 0;
+    padding-top: 0.5rem;
+    padding-left: 1rem;
+    padding-bottom: 0.375rem;
+    max-width: 100%;
+    box-sizing: border-box;
+
+    & > li {
+        list-style-type: none;
+    }
+}
+
+.sapUshellSearchResultListItem-AttributesExpanded {
+    .sapUshellSearchResultListItem-GenericAttribute.sapUshellSearchResultListItem-MainAttribute,
+    .sapUshellSearchResultListItem-GenericAttribute.sapUshellSearchResultListItem-WhyFoundAttribute {
+        opacity: 1;
+        display: inline-block;
+    }
+}
+
+.sapUshellSearchResultListItem-GenericAttributeValueHelp {
+    .flex(1 1 auto);
+    width: 100%;
+    padding-right: 0;
+    opacity: 1;
+}
+
+.sapUshellSearchResultListItem-AttributeValueContainerValueHelp {
+    display: inline;
+}
+
+.sapUshellSearchResultListItem-TitleContainerValueHelp > a.sapMLnk {
+    color: @sapTextColor;
+    font-size: unset;
+    width: 85%;
+}
+
+.sapUshellSearchResultListItem-GenericAttribute {
+    display: inline-block;
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+    .flexWrap(wrap);
+    margin-bottom: 0.625rem;
+    padding-right: 1rem;
+    height: 2.25rem;
+    overflow: hidden;
+    box-sizing: border-box;
+    b {
+        font-weight: bold;
+        background-color: @sapUiContentSearchHighlightColor;
+    }
+
+    &.sapUshellSearchResultListItem-EmptyAttributePlaceholder {
+        flex-grow: 1;
+    }
+}
+
+.sapUshellSearchResultListItem-ImageAttribute {
+    overflow: visible;
+    max-height: ~"calc(2.75rem - 2 * 1px)";
+    .order(5);
+
+    &.sapUshellSearchResultListItem-LonelyImageAttribute {
+        width: auto;
+    }
+}
+
+.sapUshellSearchResultListItem-ImageContainer.sapUshellSearchResultListItem-ImageContainerRound {
+    display: inline-flex;
+}
+
+.sapUshellSearchResultListItem-TitleImage.sapUshellSearchResultListItem-ImageContainerRound,
+.sapUshellSearchResultListItem-ImageContainer.sapUshellSearchResultListItem-ImageContainerRound {
+    flex-direction: column;
+    .justifyContent(center);
+    .flexAlign(center);
+    border-radius: 50%;
+    width: 4.4rem;
+    @media all and @searchPhoneSize {
+        display: inline-flex;
+        width: 3rem;
+    }
+
+    overflow: hidden;
+
+    .sapUshellSearchResultListItem-Image {
+        max-height: inherit;
+        width: 4.4rem;
+        @media all and @searchPhoneSize {
+            width: 3rem;
+        }
+        flex: 1 1 auto;
+    }
+}
+
+.sapUshellSearchResultListItem-ImageAttributeHidden {
+    display: none;
+}
+
+.sapUshellSearchResultListItem-ExpandSpacerAttribute {
+    .order(199);
+    height: 0.875rem;
+    margin: 0;
+    padding: 0;
+    width: 0;
+}
+
+.sapUshellSearchResultListItem-WhyFoundSpacerAttribute {
+    .order(198);
+    flex-basis: 100%;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 0.625rem;
+    height: 0;
+}
+
+.sapUshellSearchResultListItem-WhyFoundAttribute {
+    .order(200);
+    opacity: 0;
+}
+
+.sapUshellSearchResultListItem-AttributeValueContainer {
+    display: block;
+}
+
+.sapUshellSearchResultListItem-AttributeKey,
+.sapUshellSearchResultListItem-AttributeValue {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.sapUshellSearchResultListItem-AttributeKey {
+    display: block;
+    &::after {
+        content: ":";
+    }
+}
+
+.sapUshellSearchResultListItem-AttributeValue {
+    line-height: normal;
+    &:not(.sapUshellSearchResultListItem-AttributeLink) {
+        color: @sapUiListTextColor;
+    }
+}
+
+.sapUshellSearchResultListItem-ImageContainer {
+    display: inline-flex;
+    display: block;
+    .flexDirection(column);
+    .flexAlign(center);
+    .justifyContent(space-around);
+    height: 4.4rem;
+    position: relative;
+    top: -1.9rem;
+    overflow: visible;
+    white-space: nowrap;
+}
+
+.sapUshellSearchResultListItem-ImageContainerAlignmentHelper {
+    display: inline-block;
+    width: 0px;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.sapUshellSearchResultListItem-Image {
+    display: inline-block;
+    max-height: 100%;
+    max-height: ~"calc(100% - 1px * 2)";
+    width: auto;
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+.sapUshellSearchResultListItem-GenericAttribute.sapUshellSearchResultListItem-LongtextAttribute {
+    width: 100%;
+    opacity: 0;
+    &:nth-child(1) {
+        opacity: 1;
+    }
+    &.sapUshellSearchResultListItem-MainAttribute.sapUshellSearchResultListItem-OrderDesktop-0 {
+        @media all and @searchDesktopSize {
+            opacity: 1;
+        }
+    }
+    &.sapUshellSearchResultListItem-MainAttribute.sapUshellSearchResultListItem-OrderTablet-0 {
+        @media all and @searchTabletSize {
+            opacity: 1;
+        }
+    }
+    .sapUshellSearchResultListItem-ImageAttribute + & {
+        .order(-10);
+        opacity: 1;
+        @media all and @searchDesktopSize {
+            width: 75%;
+        }
+        @media all and @searchTabletSize {
+            width: 66%;
+        }
+    }
+    &[data-sap-searchresultitem-attributeweight-desktop="3"] {
+        @media all and @searchDesktopSize {
+            width: 75%;
+        }
+    }
+    &[data-sap-searchresultitem-attributeweight-desktop="2"] {
+        @media all and @searchDesktopSize {
+            width: 50%;
+        }
+    }
+    &[data-sap-searchresultitem-attributeweight-tablet="2"] {
+        @media all and @searchTabletSize {
+            width: 66%;
+        }
+    }
+    &[data-sap-searchresultitem-attributeweight-desktop="1"] {
+        @media all and @searchDesktopSize {
+            width: 25%;
+        }
+    }
+    &[data-sap-searchresultitem-attributeweight-tablet="1"] {
+        @media all and @searchTabletSize {
+            width: 33%;
+        }
+    }
+    & ~ .sapUshellSearchResultListItem-MainAttribute {
+        opacity: 0;
+        .sapUshellSearchResultListItem-AttributesExpanded & {
+            opacity: 1;
+        }
+        &.sapUshellSearchResultListItem-OrderDesktop-0 {
+            @media all and @searchDesktopSize {
+                opacity: 1;
+            }
+        }
+        &.sapUshellSearchResultListItem-OrderTablet-0 {
+            @media all and @searchTabletSize {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+@media all and @searchDesktopSize {
+    .sapUshellSearchResultListItem-GenericAttribute.sapUshellSearchResultListItem-LongtextAttribute {
+        &[data-sap-searchresultitem-attributeweight-desktop="1"]
+            ~ .sapUshellSearchResultListItem-MainAttribute.sapUshellSearchResultListItem-OrderDesktop-0 {
+            opacity: 1;
+            .sapUshellSearchResultListItem-AttributesExpanded & {
+                opacity: 1;
+            }
+        }
+        &[data-sap-searchresultitem-attributeweight-desktop="2"]
+            ~ .sapUshellSearchResultListItem-MainAttribute.sapUshellSearchResultListItem-OrderDesktop-0 {
+            opacity: 1;
+            .sapUshellSearchResultListItem-AttributesExpanded & {
+                opacity: 1;
+            }
+        }
+        &[data-sap-searchresultitem-attributeweight-desktop="3"]
+            ~ .sapUshellSearchResultListItem-MainAttribute.sapUshellSearchResultListItem-OrderDesktop-0 {
+            opacity: 1;
+            .sapUshellSearchResultListItem-AttributesExpanded & {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+@media all and @searchTabletSize {
+    .sapUshellSearchResultListItem-GenericAttribute.sapUshellSearchResultListItem-LongtextAttribute {
+        &[data-sap-searchresultitem-attributeweight-tablet="1"]
+            ~ .sapUshellSearchResultListItem-MainAttribute.sapUshellSearchResultListItem-OrderTablet-0 {
+            opacity: 1;
+            .sapUshellSearchResultListItem-AttributesExpanded & {
+                opacity: 1;
+            }
+        }
+        &[data-sap-searchresultitem-attributeweight-tablet="2"]
+            ~ .sapUshellSearchResultListItem-MainAttribute.sapUshellSearchResultListItem-OrderTablet-0 {
+            opacity: 1;
+            .sapUshellSearchResultListItem-AttributesExpanded & {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+@media all and @searchTabletSize {
+    .sapUshellSearchResultListItem-DisplayNoneAttribute-Tablet {
+        display: none;
+    }
+}
+
+@media all and @searchDesktopSize {
+    .sapUshellSearchResultListItem-DisplayNoneAttribute-Desktop {
+        display: none;
+    }
+}
+
+.generate-sapUshellSearchResultListItem-OrderClasses(20);
+.generate-sapUshellSearchResultListItem-OrderClasses(@n, @i: 0) when (@i =< @n) {
+    .sapUshellSearchResultListItem-OrderTablet-@{i} {
+        @media all and @searchTabletSize {
+            order: (@i * 10);
+            &:not(.sapUshellSearchResultListItem-WhyFoundAttribute-Tablet) {
+                & when (@i > 3) {
+                    display: none;
+                }
+            }
+        }
+    }
+    .sapUshellSearchResultListItem-OrderDesktop-@{i} {
+        @media all and @searchDesktopSize {
+            order: (@i * 10);
+            &:not(.sapUshellSearchResultListItem-WhyFoundAttribute-Desktop) {
+                & when (@i > 2) {
+                    display: none;
+                }
+            }
+        }
+    }
+    .generate-sapUshellSearchResultListItem-OrderClasses(@n, (@i + 1));
+}
+
+.sapUshellSearchResultListItem-GenericAttribute {
+    @media all and @searchDesktopSize {
+        width: 25%;
+    }
+    @media all and @searchTabletSize {
+        width: 33%;
+    }
+    opacity: 0;
+    display: none;
+    &.sapUshellSearchResultListItem-ImageAttribute {
+        opacity: 1;
+        display: inline-block;
+    }
+    &.sapUshellSearchResultListItem-MainAttribute {
+        @media all and @searchDesktopSize {
+            &.sapUshellSearchResultListItem-OrderDesktop-0 {
+                opacity: 1;
+                display: inline-block;
+            }
+        }
+        @media all and @searchTabletSize {
+            &.sapUshellSearchResultListItem-OrderTablet-0 {
+                opacity: 1;
+                display: inline-block;
+            }
+        }
+        @media all and @searchDesktopSize {
+            .sapUshellSearchResultListItem-AttributesPrepareExpansion
+                &:not(.sapUshellSearchResultListItem-OrderDesktop-0) {
+                opacity: 0;
+                display: inline-block;
+            }
+        }
+        @media all and @searchTabletSize {
+            .sapUshellSearchResultListItem-AttributesPrepareExpansion
+                &:not(.sapUshellSearchResultListItem-OrderTablet-0) {
+                opacity: 0;
+                display: inline-block;
+            }
+        }
+        .sapUshellSearchResultListItem-AttributesExpanded & {
+            opacity: 1;
+            display: inline-block;
+        }
+    }
+}
+
+.sapUshellSearchResultListItem-ExpandButtonContainer {
+    .displayFlexBox();
+    .flex(0 0 auto);
+    .flexAlign(flex-end);
+}
+
+.sapUshellSearchResultListItem-ExpandButton {
+    .displayFlexBox();
+    .justifyContent(center);
+    .flexAlign(flex-end);
+    padding: 0 0.25rem;
+}
+
+.sapUshellSearchResultListItem-Action {
+    display: inline-block;
+    margin-right: 1rem;
+    line-height: 2rem;
+    white-space: nowrap;
+    .flex(1 1 auto);
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media all and @searchPhoneSize {
+    .sapUshellSearchResultListItem-CheckboxExpandContainer {
+        display: none;
+    }
+    .sapUshellSearchResultListItem-TitleAndImageContainer {
+        padding: 0.5rem;
+    }
+    .sapUshellSearchResultListItem-TitleContainer {
+        .flexDirection(column);
+        .flexAlign(flex-start);
+        .flex(1 1 100%);
+    }
+    .sapUshellSearchResultListItem-Title {
+        font-size: 1rem;
+        padding: 0;
+        margin-left: 0;
+    }
+    .sapUshellSearchResultListItem-TitleImage {
+        display: inline-block;
+        display: block;
+        -webkit-flex-shrink: 0;
+        flex-shrink: 0;
+        height: 3rem;
+        white-space: nowrap;
+        margin-left: 0.5rem;
+    }
+    .sapUshellSearchResultListItem-Image {
+        vertical-align: top;
+    }
+    .sapUshellSearchResultListItem-ImageFormat-Round {
+        width: 3rem;
+        height: 3rem;
+    }
+    .sapUshellSearchResultListItem-Category {
+        max-width: 100%;
+    }
+    .sapUshellSearchResultListItem-AttributesExpandContainer {
+        height: auto;
+    }
+    .sapUshellSearchResultListItem-AttributesAndActions {
+        .flexWrap(nowrap);
+    }
+    .sapUshellSearchResultListItem-Attributes {
+        .flex(0 1 100%);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        .flexDirection(column);
+        padding: 0.5rem;
+        padding-top: 0;
+        margin: 0;
+        .flex(0 1 100%);
+        li:nth-of-type(1n + 4) {
+            display: none;
+            .sapUshellSearchResultListItem-AttributesExpanded & {
+                display: none;
+            }
+        }
+        .sapUshellSearchResultListItem-WithImage & {
+            .displayFlexBox();
+            li:nth-of-type(-1n + 4) {
+                .displayFlexBox();
+                opacity: 1;
+            }
+            li.sapUshellSearchResultListItem-ImageAttribute {
+                display: none;
+            }
+        }
+    }
+    .sapUshellSearchResultListItem-GenericAttribute {
+        width: 100%;
+        .flex(1 1 auto);
+        padding-right: 0;
+        opacity: 1;
+    }
+    .sapUshellSearchResultListItem-MainAttribute {
+        .displayFlexBox();
+        flex-wrap: nowrap;
+        margin: 0;
+        height: auto;
+        white-space: nowrap;
+    }
+    .sapUshellSearchResultListItem-ImageAttribute,
+    sapUshellSearchResultListItem-ExpandSpacerAttribute,
+    sapUshellSearchResultListItem-WhyFoundSpacerAttribute {
+        display: none;
+    }
+    .sapUshellSearchResultListItem-AttributeValueContainer {
+        overflow: hidden;
+        .flex(0 3 auto);
+    }
+    .sapUshellSearchResultListItem-AttributeKey,
+    .sapUshellSearchResultListItem-AttributeValue {
+        display: inline-block;
+        max-width: 100%;
+    }
+    .sapUshellSearchResultListItem-AttributeKey {
+        margin-right: 0.5rem;
+        .flex(0 5 auto);
+    }
+    .sapUshellSearchResultListItem-ExpandButtonContainer {
+        display: none;
+    }
+    .sapUshellSearchResultListItem-ExpandSpacerAttribute {
+        display: none;
+    }
+}
+
+.sapUshellSearchResultListItem-RelatedObjectsToolbar {
+    display: none;
+    .flex(1 1 100%);
+    max-width: 100%;
+    @media all and @searchPhoneSize {
+        .displayFlexBox();
+        .justifyContent(flex-end);
+        .flexDirection(column);
+        .flex(0 0 auto);
+        padding: 0.5rem 0.5rem 0.5rem 0;
+    }
+    .sapMTB.sapUshellSearchResultListItem-RelatedObjectsToolbar-ToolbarValueHelp {
+        width: 3.75rem;
+        background-color: transparent;
+    }
+    .sapUshellSearchResultListItem-RelatedObjectsToolbar-Toolbar {
+        border: none;
+        background-color: @sapUiButtonStandardBG;
+        @media all and @searchPhoneSize {
+            background-color: transparent;
+        }
+        .sapUshellSearchResultListItem-RelatedObjectsToolbar-Element {
+            margin: 0;
+            margin-right: 1rem;
+            &:first-of-type {
+                margin-left: 1rem;
+            }
+            @media all and @searchPhoneSize {
+                display: none;
+            }
+        }
+    }
+    .sapUshellSearchResultListItem-AttributesExpanded & {
+        display: block;
+        @media all and @searchPhoneSize {
+            .displayFlexBox();
+        }
+    }
+}
+
+.sapUshellSearchResultListItem-RelatedObjectsToolbarValueHelp {
+    display: contents;
+    background-color: transparent;
+    width: 3rem;
+}
+
+.sapUshellSearchResultListItem-Document {
+    .sapUshellSearchResultListItem-TitleAndImageContainer {
+        width: 100%;
+    }
+    .sapUshellSearchResultListItem-AttributesExpandContainer {
+        @media all and @searchNotPhoneSize {
+            height: 100%;
+        }
+
+        .sapUshellSearchResultListItem-AttributesAndActions {
+            @media all and @searchNotPhoneSize {
+                .flexWrap(nowrap);
+                padding-left: 1rem;
+            }
+
+            .sapUshellSearchResultListItem-DocumentThumbnailContainer {
+                display: inline-block;
+                margin-top: 0.75rem;
+                margin-bottom: 0.625rem;
+                padding-right: 1rem;
+
+                @media all and @searchPhoneSize {
+                    display: none;
+                }
+
+                .sapUshellSearchResultListItem-DocumentThumbnailBorder {
+                    height: 6.25rem;
+                    width: 6.25rem;
+                    display: inline-flex;
+                    .justifyContent(center);
+                    padding: 0.25rem;
+                    box-shadow: @sapUiShadowLevel0;
+                    box-sizing: border-box;
+                    position: relative;
+
+                    .sapUshellSearchResultListItem-DocumentThumbnail-DogEar {
+                        width: 1rem;
+                        height: 1rem;
+                        border-top: 2px solid @sapUiListBackground;
+                        border-left: 2px solid @sapUiListBackground;
+                        position: absolute;
+                        top: -3px;
+                        left: -3px;
+                        background: linear-gradient(
+                            135deg,
+                            @sapUiListBackground 0%,
+                            @sapUiListBackground 48%,
+                            @sapUiGroupContentBorderColor 50%,
+                            @sapUiGroupContentBorderColor 100%
+                        );
+                    }
+
+                    .sapUshellSearchResultListItem-DocumentThumbnailZoomIcon {
+                        cursor: pointer;
+                        cursor: inherit;
+                        color: @sapUiContentContrastTextColor;
+                        position: absolute;
+                        right: -0.125rem;
+                        bottom: -0.125rem;
+                        border-radius: 0.5rem;
+                        background: @sapUiLink;
+                        height: 1rem;
+                        width: 1rem;
+                        font-size: 0.7rem;
+                        line-height: 1rem;
+                        padding-left: 1px;
+                        box-sizing: border-box;
+                    }
+
+                    .sapUshellSearchResultListItem-DocumentThumbnail {
+                        max-height: 100%;
+                        max-width: 100%;
+                        height: inherit;
+                    }
+                }
+            }
+            .sapUshellSearchResultListItem-MultiLineDescription {
+                .flex(1 0);
+                margin-top: 0.5rem;
+                margin-bottom: 1rem;
+                padding-right: 1rem;
+                max-height: 5rem;
+                overflow: hidden;
+                b {
+                    font-weight: bold;
+                    background-color: @sapUiContentSearchHighlightColor;
+                }
+                @media all and @searchPhoneSize {
+                    display: none;
+                }
+            }
+
+            @media all and @searchNotPhoneSize {
+                .sapUshellSearchResultListItem-Attributes {
+                    display: inline-flex;
+                    .flex(0 0 50%);
+                    width: 50%;
+                    padding-left: 0;
+                    align-content: flex-start;
+                    .sapUshellSearchResultListItem-GenericAttribute {
+                        width: 50%;
+                        &:nth-of-type(-n + 4) {
+                            opacity: 1;
+                            display: inline-block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.sapUshellSearchResultListItem-Selected {
+    background-color: @sapUiListSelectionBackgroundColor;
+}
+
+.sapUshellResultListGrid {
+    b {
+        font-weight: bold;
+        background-color: @sapUiContentSearchHighlightColor;
+    }
+
+    .sapUshellResultListGrid-ImageContainerRound {
+        .sapMImageContentImageIcon {
+            border-radius: 50%;
+            width: 3.2rem;
+        }
+    }
+}

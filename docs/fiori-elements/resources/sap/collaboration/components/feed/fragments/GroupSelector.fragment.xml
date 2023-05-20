@@ -1,0 +1,23 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<ResponsivePopover
+		id="responsivePopover"
+		placement="Vertical"
+		contentWidth="20em"
+		title="{i18n>ST_GROUP_SELECT_HEADER}"
+		>
+		<content>
+			<SearchField
+				liveChange=".onGroupSearch"
+				width="100%"/>
+			<List
+				id="list"
+				mode="SingleSelectMaster"
+				noDataText="{i18n>GRP_NO_GROUPS_FOUND_TEXT}"
+				growing="true"
+				growingThreshold="5"
+				growingScrollToLoad="false"
+				selectionChange=".onGroupSelected">
+			</List>
+		</content>
+	</ResponsivePopover>
+</core:FragmentDefinition>

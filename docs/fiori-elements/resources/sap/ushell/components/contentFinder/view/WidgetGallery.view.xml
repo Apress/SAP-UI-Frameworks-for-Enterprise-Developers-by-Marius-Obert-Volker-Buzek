@@ -1,0 +1,63 @@
+<mvc:View
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:cssgrid="sap.ui.layout.cssgrid"
+    xmlns:f="sap.f"
+    controllerName="sap.ushell.components.contentFinder.controller.WidgetGallery"
+    id="sapContentFinderWidgetGallery"
+    height="100%"
+    class="sapUiSizeCompact">
+    <VBox class="sapCepContentFinderBeginEndPadding sapUiSmallMarginTop sapUiTinyMarginBottom">
+        <Title id="widgetGalleryTitle" titleStyle="H5" text="{i18n>ContentFinder.WidgetGallery.AllWidgets.Title}">
+            <layoutData>
+                <OverflowToolbarLayoutData minWidth="6rem" shrinkable="true" priority="High"/>
+            </layoutData>
+        </Title>
+    </VBox>
+    <VBox items="{path: '/widgetGallery/widgetGroups'}" class="sapCepContentFinderBeginEndPadding">
+        <items>
+            <VBox class="sapUiTinyMarginBottom">
+                <OverflowToolbar asyncMode="true" style="Clear" class="sapCepContentFinderToolbar" visible="{= !!${title}}">
+                    <Title titleStyle="H6" text="{title}" />
+                </OverflowToolbar>
+                <f:GridList
+                        id="sapCepContentFinderGridList"
+                        mode="None"
+                        items="{
+                            path: 'widgets',
+                            templateShareable: false,
+                            key: 'id'
+                        }">
+                    <f:customLayout>
+                        <cssgrid:GridResponsiveLayout containerQuery="true">
+                            <cssgrid:layout>
+                                <cssgrid:GridSettings gridGap="1.5rem"
+                                                      gridTemplateColumns="repeat(2, calc(50% - 0.75rem))"
+                                                      gridAutoRows="5rem"/>
+                            </cssgrid:layout>
+                        </cssgrid:GridResponsiveLayout>
+                    </f:customLayout>
+
+                    <f:GridListItem type="Active" press=".onSelectWidgetType">
+                        <HBox alignItems="Center" height="100%" class="sapUiSmallMarginEnd">
+
+                            <Avatar src="{icon}" class="sapUiSmallMarginEnd sapUiSmallMarginBegin"
+                                    backgroundColor="Placeholder">
+                                <layoutData>
+                                    <FlexItemData maxHeight="3rem" />
+                                </layoutData>
+                            </Avatar>
+
+                            <VBox>
+                                <Title text="{title}" titleStyle="H6" wrapping="true" />
+                                <Label text="{description}" visible="{= !!${description}}" wrapping="true" />
+                            </VBox>
+                        </HBox>
+                    </f:GridListItem>
+                </f:GridList>
+            </VBox>
+        </items>
+    </VBox>
+</mvc:View>

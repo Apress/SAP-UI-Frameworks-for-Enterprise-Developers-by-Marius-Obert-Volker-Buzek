@@ -1,0 +1,58 @@
+{
+    "_version": "1.21.0",
+    "sap.flp": {
+        "type": "tile",
+        "tileSize": "1x1",
+        "vizOptions": {
+            "displayFormats": {
+                "supported": ["standard", "standardWide", "compact", "flat", "flatWide"],
+                "default": "standard"
+            }
+        }
+    },
+    "sap.app": {
+        "id": "sap.ushell.components.tiles.cdm.applauncherdynamic",
+        "_version": "1.0.0",
+        "type": "component",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "",
+        "description": "",
+        "tags": {
+            "keywords": []
+        },
+        "ach": "CA-FLP-FE-COR"
+    },
+    "sap.ui": {
+        "_version": "1.1.0",
+        "icons": {
+            "icon": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        },
+        "supportedThemes": [
+            "sap_hcb",
+            "sap_belize",
+            "sap_belize_plus"
+        ]
+    },
+    "sap.ui5": {
+        "_version": "1.1.0",
+        "componentName": "sap.ushell.components.tiles.cdm.applauncherdynamic",
+        "dependencies": {
+            "minUI5Version": "1.42",
+            "libs": {
+                "sap.m": {}
+            }
+        },
+        "rootView": {
+            "viewName": "sap.ushell.components.tiles.cdm.applauncherdynamic.DynamicTile",
+            "type": "JS"
+        },
+        "handleValidation": false
+    }
+}

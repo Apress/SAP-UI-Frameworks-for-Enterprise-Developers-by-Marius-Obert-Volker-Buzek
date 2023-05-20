@@ -1,0 +1,4 @@
+/*
+ * ! SAP UI development toolkit for HTML5 (SAPUI5) (c) Copyright 2009-2012 SAP AG. All rights reserved
+ */
+sap.ui.define(["./VoBase","./library"],function(t,e){"use strict";var n=t.extend("sap.ui.vbm.Container",{metadata:{library:"sap.ui.vbm",properties:{position:{type:"string",group:"Misc",defaultValue:null},alignment:{type:"string",group:"Misc",defaultValue:"0"}},aggregations:{item:{type:"sap.ui.core.Control",multiple:false}},events:{}}});n.prototype.openContextMenu=function(t){this.getParent().openContextMenu("Container",this,t)};n.prototype.getDataElement=function(){var e=t.prototype.getDataElement.apply(this,arguments);var n=this.oParent.mBindInfo;e.IK=this.getUniqueId();if(n.P){e.P=this.getPosition()}if(n.AL){e.AL=this.getAlignment()}return e};n.prototype.handleChangedData=function(t){if(t.P){this.setPosition(t.P)}};return n});

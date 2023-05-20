@@ -1,0 +1,9 @@
+/*!
+ * SAPUI5
+ * (c) Copyright 2009-2023 SAP SE. All rights reserved.
+ */.sapUiAccKeysHighlighDom:first-letter{text-decoration:underline 20% black}/*!
+ * SAPUI5
+ * (c) Copyright 2009-2023 SAP SE. All rights reserved.
+ */.sapUiExportSettings .sapUiExportSettingsLabel>.sapMLabel::after{content:":"}
+/* Inline theming parameters */
+#sap-ui-theme-sap\.ui\.export{background-image:url('data:text/plain;utf-8,%7B%7D')}

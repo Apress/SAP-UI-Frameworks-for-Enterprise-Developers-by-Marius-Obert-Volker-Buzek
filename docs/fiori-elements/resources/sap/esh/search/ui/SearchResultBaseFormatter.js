@@ -1,0 +1,7 @@
+/*! 
+ * SAPUI5
+
+		(c) Copyright 2009-2021 SAP SE. All rights reserved
+	 
+ */
+(function(){sap.ui.define(["./i18n"],function(e){function t(e){return e&&e.__esModule&&typeof e.default!=="undefined"?e.default:e}function r(e,t){if(!(e instanceof t)){throw new TypeError("Cannot call a class as a function")}}function a(e,t){for(var r=0;r<t.length;r++){var a=t[r];a.enumerable=a.enumerable||false;a.configurable=true;if("value"in a)a.writable=true;Object.defineProperty(e,a.key,a)}}function n(e,t,r){if(t)a(e.prototype,t);if(r)a(e,r);Object.defineProperty(e,"prototype",{writable:false});return e}var i=t(e);var u=function(){function e(t){r(this,e);this.model=t}n(e,[{key:"formatSortAttributes",value:function e(){var t=[];var r=this.model.sinaNext;var a=this.model.getDataSource();var n=r.dataSourceMap[a.id].attributesMetadata;if(!Array.isArray(n)||n.length===0){return[]}for(var u=0;u<n.length;u++){var f=n[u];if(f.isSortable){t.push({name:f.label,key:"searchSortAttributeKey"+u,attributeId:f.id})}}var o=function e(t,r){if(t.name<r.name){return-1}if(t.name>r.name){return 1}return 0};t.sort(o);t.unshift({name:i.getText("defaultRank"),key:"searchSortAttributeKeyDefault",attributeId:"DEFAULT_SORT_ATTRIBUTE"});var l=this.model.getOrderBy().orderBy;if(typeof l==="undefined"){l="DEFAULT_SORT_ATTRIBUTE"}for(var s=0;s<t.length;s++){if(t[s].attributeId===l){t[s].selected=true}else{t[s].selected=false}}return t}}]);return e}();return u})})();

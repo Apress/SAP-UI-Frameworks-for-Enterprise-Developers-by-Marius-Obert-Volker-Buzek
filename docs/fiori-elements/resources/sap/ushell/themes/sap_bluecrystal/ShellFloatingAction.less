@@ -1,0 +1,56 @@
+/* ============================================= */
+/* CSS for control sap.ushell/ui/Shell/ShellFloatingAction sap_bluecrystal theme*/
+/* ============================================= */
+
+.sapUshellShellFloatingAction .sapMBtnInner  {
+  border: 1px solid @sapUiInvertedElement;
+  text-shadow: 0 0 0 @sapUiLightShadowTint;
+
+  .sapUiIcon {
+    color: @sapUiInvertedElement;
+    background-color: @sapUiFooterBG;
+    box-shadow: 0 0 1.875rem 0.125rem fade(@sapUiDarkShadowTint, 15%);
+
+    .sapUshellActive {
+      background-color: @sapUiHighlight;
+    }
+  }
+
+  .sapUiIcon:hover{
+    background-color:rgba(78,85,89,0.96);
+  }
+  .sapUiIcon:active{
+    background-color: @sapUiHighlight;
+  }
+}
+
+.sapUshellShellFloatingAction:focus > .sapMBtnInner.sapMFocusable {
+  border: none;
+  background: transparent;
+
+  .sapMBtnIcon {
+    border: 2px dotted @sapUiInvertedElement;
+  }
+}
+
+.sapUshellShellFloatingAction.sapUshellActive {
+  .sapUiIcon {
+    background-color: @sapUiHighlight;
+
+  }
+  .sapUiIcon:hover{
+    background-color:@sapUiHighlight;
+  }
+  .sapUiIcon:active{
+    background-color: #006ca7;
+  }
+}
+
+.sapUshellShellFloatingAction .sapMBtnInner:active {
+  background-color: @sapUiInvertedElement;
+  border-color: @sapUiInvertedElement;
+}
+
+.sapUshellShellFloatingAction .sapMBtnInner:focus {
+  border: 1px dotted @sapUiLightestBorder;
+}

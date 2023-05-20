@@ -1,0 +1,5 @@
+/*!
+ * SAP UI development toolkit for HTML5 (SAPUI5)
+ *      (c) Copyright 2009-2023 SAP SE. All rights reserved
+ */
+sap.ui.define(["sap/fe/core/converters/helpers/IssueManager","sap/ui/support/library"],function(e,t){"use strict";var s={};var i=e.IssueSeverity;var r=e.IssueCategory;const o=t.Categories,n=t.Severity,a=t.Audiences;s.Categories=o;s.Audiences=a;s.Severity=n;const c=function(e){switch(e){case i.Low:return n.Low;case i.High:return n.High;case i.Medium:return n.Medium}};s.getSeverity=c;const u=function(e,t,s,i){const o=t.getComponents();let n;Object.keys(o).forEach(e=>{var t,s;const i=o[e];if((i===null||i===void 0?void 0:(t=i.getMetadata())===null||t===void 0?void 0:(s=t.getParent())===null||s===void 0?void 0:s.getName())==="sap.fe.core.AppComponent"){n=i}});if(n){const t=n.getDiagnostics().getIssuesByCategory(r[s],i);t.forEach(function(t){e.addIssue({severity:c(t.severity),details:t.details,context:{id:t.category}})})}};s.getIssueByCategory=u;return s},false);

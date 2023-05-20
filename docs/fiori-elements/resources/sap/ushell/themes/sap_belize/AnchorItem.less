@@ -1,0 +1,19 @@
+/* ============================================= */
+/* CSS for control sap.ushell/AnchorItem.control */
+/* ============================================= */
+
+.sapUshellAnchorItem {
+  font-family: @sapFontFamily;
+  font-size: @sapMFontHeader6Size;
+  font-weight: @sapUiFontHeaderWeight;
+  opacity: 1;
+}
+
+.sapUshellAnchorItemInner {
+  text-shadow: @sapUiShadowText;
+}
+
+.sap-desktop:not([data-sap-ui-browser^="ie"]) .sapUshellAnchorItem:focus {
+  outline: 1px dotted @sapUiContentFocusColor;
+  outline-offset: -1px;
+}

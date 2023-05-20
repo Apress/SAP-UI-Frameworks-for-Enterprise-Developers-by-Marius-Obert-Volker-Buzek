@@ -1,0 +1,34 @@
+<core:FragmentDefinition
+    xmlns="sap.ushell.ui.shell"
+    xmlns:core="sap.ui.core"
+    xmlns:ui="sap.ushell.ui">
+    <!-- Shell Layout with AppContainer instead of the ViewPortContainer for the no-viewports scenario -->
+    <ShellLayout
+        id="shell"
+        floatingContainerVisible="false"
+        toolAreaVisible="{/currentState/toolAreaVisible}"
+        enableCanvasShapes="{/enableBackGroundShapes}">
+        <canvasSplitContainer>
+            <SplitContainer
+                id="shell-split"
+                showSecondaryContent="{/currentState/showPane}"
+                subHeader="{ path: '/currentState/subHeader', factory: '.shellUpdateAggItem' }"
+                secondaryContent="{ path: '/currentState/paneContent', factory: '.shellUpdateAggItem' }">
+                <content>
+                    <core:ComponentContainer id="menuBarComponentContainer" async="true" />
+                    <!-- The id is "viewPortContainer" to keep consistency with the Fiori2 API -->
+                    <ui:AppContainer id="viewPortContainer" beforeNavigate=".onBeforeNavigate" afterNavigate=".onAfterNavigate" />
+                </content>
+                <secondaryContent />
+            </SplitContainer>
+        </canvasSplitContainer>
+        <rightFloatingContainer>
+            <RightFloatingContainer
+                id="right-floating-container"
+                top="8"
+                hideItemsAfterPresentation="true"
+                visible="{/currentState/showRightFloatingContainer}"
+                floatingContainerItems="{ path: '/currentState/RightFloatingContainerItems', factory: '.shellUpdateAggItem' }" />
+        </rightFloatingContainer>
+    </ShellLayout>
+</core:FragmentDefinition>

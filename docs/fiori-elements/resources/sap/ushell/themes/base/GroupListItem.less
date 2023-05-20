@@ -1,0 +1,54 @@
+	/* ============================================= */
+	/* CSS for control sap.ushell/GroupListItem.control */
+	/* ============================================= */
+	/* List Item */
+	.sapUshellGroupLI {
+		padding : 0;
+		cursor: pointer;
+		outline: none;
+		width: 100%;
+		height: 3rem;
+		list-style: none;
+		table-layout: fixed; /*Use to fix the size of input-fields and ellipsis (necessary for ie).*/
+
+		.sapMLIBContentNF {
+			left: 0;
+			table-layout: fixed; /*Use to fix the size of input-fields and ellipsis (necessary for ie).*/
+		}
+
+		.sapMLIBContent {
+			width: 100%;
+		}
+
+		.sapMLIBContent.sapMLIBContentMargin {
+			padding-left: 0 !important;
+			padding-right: 0 !important;
+		}
+
+		.sapMSLIDiv {
+			& > .sapMInput {
+				margin-left: 0.25rem;
+				margin-right: 0.25rem;
+			}
+
+			.sapMSLITitleOnly {
+				width: 100%;
+				margin-left: 0;
+				padding-left: 1.25rem;
+				padding-right: 1.25rem;
+				display: -moz-inline-box;
+				box-sizing: border-box;
+			}
+		}
+
+		.sapMSLIDiv.sapMSLITitleDiv {
+			min-width: 0;
+			padding-left: 0;
+		}
+	}
+
+    /* ============================Compact Mode=================================== */
+
+	.sapUiSizeCompact .sapUshellGroupLI {
+		height: 2rem;
+    }

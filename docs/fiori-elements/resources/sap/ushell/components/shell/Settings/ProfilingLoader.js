@@ -1,0 +1,2 @@
+// Copyright (c) 2009-2023 SAP SE, All Rights Reserved
+sap.ui.define(["sap/ushell/Config"],function(e){"use strict";function n(){return new Promise(function(n){sap.ushell.Container.getServiceAsync("UsageAnalytics").then(function(i){if(i.systemEnabled()&&i.isSetUsageAnalyticsPermitted()){sap.ui.require(["sap/ushell/components/shell/Settings/userProfiling/UsageAnalyticsProfiling"],function(i){var s=e.last("/core/userPreferences/profiling");s.push(i.getProfiling());e.emit("/core/userPreferences/profiling",s);n()})}else{n()}})})}return function e(){return Promise.all([n()])}});

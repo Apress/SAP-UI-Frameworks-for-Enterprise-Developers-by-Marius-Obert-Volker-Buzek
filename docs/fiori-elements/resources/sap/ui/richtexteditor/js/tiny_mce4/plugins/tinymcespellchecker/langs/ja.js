@@ -1,0 +1,3 @@
+tinymce.addI18n('ja', {
+'The spelling service was not found: ({0})': '\u30B9\u30DA\u30EA\u30F3\u30B0\u30B5\u30FC\u30D3\u30B9\u304C\u898B\u3064\u304B\u308A\u307E\u305B\u3093\u3067\u3057\u305F\uFF1A ({0})'
+});

@@ -1,0 +1,5 @@
+/*!
+ * SAPUI5
+ * (c) Copyright 2009-2023 SAP SE. All rights reserved.
+ */
+sap.ui.define(["sap/ui/comp/library","sap/ui/core/Element"],function(e,t){"use strict";var i=t.extend("sap.ui.comp.navpopover.LinkData",{metadata:{library:"sap.ui.comp",properties:{text:{type:"string",defaultValue:null},href:{type:"string",defaultValue:null},internalHref:{type:"string",defaultValue:null},target:{type:"string",defaultValue:null},description:{type:"string",defaultValue:undefined},visible:{type:"boolean",defaultValue:true},key:{type:"string",defaultValue:undefined},press:{type:"object",defaultValue:null},isSuperiorAction:{type:"boolean"},visibleChangedByUser:{type:"boolean"}}}});i.prototype.getJson=function(){return{key:this.getKey(),href:this.getHref(),internalHref:this.getInternalHref(),text:this.getText(),target:this.getTarget(),description:this.getDescription(),visible:this.getVisible(),press:this.getPress(),isSuperiorAction:this.getIsSuperiorAction()}};i.convert2Json=function(e){return e.map(function(e){return e.getJson()})};return i});

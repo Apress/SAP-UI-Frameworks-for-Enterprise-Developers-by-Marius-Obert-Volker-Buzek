@@ -1,0 +1,23 @@
+/* =============================================================================== */
+/* CSS for control "sap.ushell.ui.launchpad.AnchorNavigationBar"                   */
+/* =============================================================================== */
+
+#anchorNavigationBar .sapMBtn:hover>.sapMBtnHoverable {
+  background-color: @sapUiShellHoverBackground;
+}
+
+.sapUshellAnchorRightOverFlowButton,
+.sapUshellAnchorLeftOverFlowButton {
+  .sapUiIcon {
+    color: @sapUiHcStandardForeground;
+  }
+}
+
+// width of navigation buttons left, right, overflow
+.sapUshellAnchorNavigationBarInner #sapUshellAnchorBarOverflowButton,
+.sapUshellAnchorNavigationBarInner .sapUshellAnchorLeftOverFlowButton,
+.sapUshellAnchorNavigationBarInner .sapUshellAnchorRightOverFlowButton {
+  .sapMBtnInner {
+    min-width: 1.625rem;
+  }
+}

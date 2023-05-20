@@ -1,0 +1,22 @@
+Version 2.1.0 (2019-10-17)
+  [BUG] Fixed select menu being hidden while changing selection and when hovering. #TINY-3752
+  [FEATURE] Added the ability to include "extra" menu items that allow reloading with different search params. #MENTIONS-17
+Version 2.0.1 (2019-02-19)
+  [BUG] Fixed mentions_select callback getting called multiple times. #TINY-3256
+  [BUG] Fixed issue with select menu remaining visible when removing the editor. #TINY-3256
+Version 2.0.0 (2019-02-04)
+  Support for TinyMCE 5
+Version 1.1.1
+  [FEATURE] Added highlight type-a-head for mentions matching. #TINY-1516
+Version 1.1.0 (2018-02-01)
+  [FEATURE] Decreased plugin size by improving build steps.
+Version 1.0.6 (2016-12-08)
+  [BUG] Fixed issue where the ui would be accessed directly instead of though a factory.
+Version 1.0.5 (2017-08-17)
+  [FEATURE] Changed so the mentions menu is triggered on one character instead of two. #TINY-1186
+Version 1.0.4 (2017-05-23)
+  [FEATURE] Added functionality to add selected mention to the document by pressing the tab button. #TINY-1046
+Version 1.0.3 (2016-12-13)
+  [BUG] Fixed incorrect positioning for menus when document had scroll and inline editor was used. #TINY-825
+Version 1.0.2 (2016-10-25)
+  [FEATURE] Added version detection logic that check if mentions is used with a compatible tinymce version. #TINY-639

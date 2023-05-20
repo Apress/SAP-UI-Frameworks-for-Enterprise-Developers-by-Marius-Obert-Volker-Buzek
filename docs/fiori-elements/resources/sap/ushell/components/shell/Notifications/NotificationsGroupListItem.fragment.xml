@@ -1,0 +1,41 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    core:require="{
+        utils: 'sap/ushell/utils'
+    }">
+    <NotificationList
+        id="sapUshellNotificationsListType"
+        class="sapUshellNotificationsList sapContrastPlus"
+        mode="SingleSelect"
+        showSeparators="Inner"
+        noDataText="{i18n>noNotificationsMsg}"
+        items="{/notificationsByTypeDescending}">
+        <NotificationListGroup
+            title="{GroupHeaderText}"
+            collapsed="{Collapsed}"
+            showEmptyGroup="true"
+            showItemsCounter="false"
+            enableCollapseButtonWhenEmpty="true"
+            autoPriority="false"
+            datetime="{ path: 'CreatedAt', formatter: 'utils.formatDate' }"
+            priority="{ path: 'Priority', formatter: '.priorityFormatter' }"
+            busy="{= !!${Busy}}"
+            buttons="{
+                path: 'Actions',
+                templateShareable: true,
+                sorter: { path: 'Nature', descending: true }
+            }"
+            items="{
+                path: 'aNotifications',
+                templateShareable: true
+            }"
+            close="onNotificationGroupItemClose"
+            onCollapse="onNotificationGroupItemCollapse">
+            <core:Fragment fragmentName="sap.ushell.components.shell.Notifications.NotificationsListItem" type="XML" />
+            <buttons>
+                <Button text="{GroupActionText}" press=".onNotificationGroupItemButtonPress" />
+            </buttons>
+        </NotificationListGroup>
+    </NotificationList>
+</core:FragmentDefinition>

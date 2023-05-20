@@ -1,0 +1,22 @@
+/* =================================== */
+/* CSS for control sap.ushell/Section  */
+/* =================================== */
+
+.sapUshellSection {
+    .sapUshellSectionTitle {
+      font-weight: bold;
+      text-shadow: 0 0 0.125rem contrast(@sapUiShellGroupTitleTextColor, @sapUiContentShadowColor, @sapUiContentContrastShadowColor, @sapUiContentContrastTextThreshold);
+    }
+
+  .sapUshellSectionHeader {
+    border-radius: 0.75rem 0.75rem 0 0;
+  }
+
+  &.sapUshellSectionEdit {
+    border-radius: 0.75rem;
+
+    &.sapUshellSectionHidden {
+      border-radius: 0.75rem;
+    }
+  }
+}

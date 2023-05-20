@@ -1,0 +1,215 @@
+{
+    "StartScheduler": {
+        "loadingMode": "continueOnEvent",
+
+        "continueOnEvent": {
+            "eventName": "startScheduler"
+        },
+        "userCanTrigger": false,
+        "canBeInterrupted": false
+    },
+    "LoadPlugins": {
+        "loadingMode": "byEvent",
+
+        "byEvent": {
+            "eventName": "loadRendererExtensions",
+            "eventData": ""
+        },
+        "Dependencies": []
+    },
+    "MessagePopoverInit": {
+        "loadingMode": "byEvent",
+
+        "byEvent": {
+            "eventName": "initMessagePopover",
+            "eventData": ""
+        },
+        "Dependencies": []
+    },
+    "TrackingActivitiesSetting": {
+        "loadingMode": "byEvent",
+        "byEvent":{
+            "eventName": "loadTrackingActivitiesSetting",
+            "eventData": ""
+        },
+        "Dependencies": []
+    },
+    "UsageAnalytics": {
+        "loadingMode": "byEvent",
+
+        "byEvent": {
+            "eventName": "loadUsageAnalytics",
+            "eventData": ""
+        },
+        "Dependencies": []
+    },
+    "MenuBar": {
+        "loadingMode": "byComponentCreate",
+
+        "byComponentCreate": {
+            "enabled": true,
+            "ui5ComponentOptions": {
+                "name": "sap.ushell.components.shell.MenuBar",
+                "manifest": true
+            },
+            "url": "sap/ushell/components/shell/MenuBar"
+        },
+        "configSwitch": [
+            {
+                "path":"/core/menu/enabled",
+                "assertionValue": true
+            }
+        ],
+        "userCanTrigger": false,
+        "canBeInterrupted": false
+    },
+    "Notifications": {
+        "loadingMode": "byComponentCreate",
+
+        "excludedFLPStates": ["lean", "lean-home"],
+
+        "byComponentCreate": {
+            "enabled": true,
+            "ui5ComponentOptions": {
+                "name": "sap.ushell.components.shell.Notifications",
+                "manifest": false
+            },
+            "url": "sap/ushell/components/shell/Notifications"
+        },
+
+        "configSwitch": [
+            {
+                "path": "/core/shell/model/enableNotifications",
+                "assertionValue": true
+            }
+        ],
+
+        "userCanTrigger": false,
+        "canBeInterrupted": false
+    },
+    "PostLoadingHeaderEnhancement": {
+        "loadingMode": "byComponentCreate",
+
+        "byComponentCreate": {
+            "enabled": true,
+            "ui5ComponentOptions": {
+                "name": "sap.ushell.components.shell.PostLoadingHeaderEnhancement",
+                "manifest": false
+            },
+            "url": "sap/ushell/components/shell/PostLoadingHeaderEnhancement"
+        },
+        "userCanTrigger": false,
+        "canBeInterrupted": false
+    },
+    "UserActionsMenu": {
+        "loadingMode": "byComponentCreate",
+
+        "byComponentCreate": {
+            "enabled": true,
+            "ui5ComponentOptions": {
+                "name": "sap.ushell.components.shell.UserActionsMenu",
+                "manifest": false
+            },
+            "url": "sap/ushell/components/shell/UserActionsMenu"
+        },
+        "Dependencies": ["TrackingActivitiesSetting"],
+        "userCanTrigger": false,
+        "canBeInterrupted": false
+    },
+    "ProductSwitch": {
+        "loadingMode": "byComponentCreate",
+        "byComponentCreate": {
+            "enabled": true,
+            "ui5ComponentOptions": {
+                "name": "sap.ushell.components.shell.ProductSwitch",
+                "manifest": false
+            },
+            "url": "sap/ushell/components/shell/ProductSwitch"
+        },
+        "configSwitch": [
+            {
+                "path": "/core/productSwitch/enabled",
+                "assertionValue": true
+            }
+        ],
+        "userCanTrigger": false,
+        "canBeInterrupted": false
+    },
+    "UserSettings": {
+        "loadingMode": "byComponentCreate",
+
+        "byComponentCreate": {
+            "enabled": true,
+            "ui5ComponentOptions": {
+                "name": "sap.ushell.components.shell.Settings",
+                "manifest": false
+            },
+            "url": "sap/ushell/components/shell/Settings"
+        },
+        "userCanTrigger": false,
+        "canBeInterrupted": false
+    },
+    "UserImage" : {
+        "loadingMode":"byComponentCreate",
+
+        "byComponentCreate": {
+            "enabled": true,
+            "ui5ComponentOptions": {
+                "name": "sap.ushell.components.shell.UserImage",
+                "manifest": false
+            },
+            "url": "sap/ushell/components/shell/UserImage"
+        },
+
+        "userCanTrigger": false,
+        "canBeInterrupted": false
+    },
+    "Search": {
+        "loadingMode":"byComponentCreate",
+
+        "excludedFLPStates": ["lean", "lean-home"],
+
+        "byComponentCreate": {
+            "enabled": true,
+            "ui5ComponentOptions": {
+                "name": "sap.ushell.components.shell.Search",
+                "manifest": false
+            },
+            "url": "sap/ushell/components/shell/Search"
+        },
+
+        "userCanTrigger": false,
+        "canBeInterrupted": false
+    },
+
+    "FirstSegmentCompleteLoaded": {
+        "loadingMode": "continueOnEvent",
+
+        "continueOnEvent": {
+            "eventName": "firstSegmentCompleteLoaded"
+        },
+        "userCanTrigger": false,
+        "canBeInterrupted": false
+    },
+    "WarmupPlugins": {
+        "loadingMode": "byEvent",
+
+        "excludedFLPStates": ["app"],
+
+        "byEvent": {
+            "eventName": "loadWarmupPlugins",
+            "eventData": ""
+        },
+        "Dependencies": ["FirstSegmentCompleteLoaded", "LoadPlugins"]
+    },
+    "ConditionalWaitForAppLoading": {
+        "loadingMode": "waitInMs",
+
+        "waitInMs": {
+            "waitingTime": 3000
+        },
+
+        "mandatoryFLPStates": ["app"]
+    }
+
+}

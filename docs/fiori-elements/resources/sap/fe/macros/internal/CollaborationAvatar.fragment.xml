@@ -1,0 +1,15 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m"
+>
+	<Avatar
+		core:require="{FieldRuntime: 'sap/fe/macros/field/FieldRuntime'}"
+		visible="{this>collaborationHasActivityExpression}"
+		initials="{this>collaborationInitialsExpression}"
+		displaySize="Custom"
+		customDisplaySize="1.75rem"
+		customFontSize="1rem"
+		backgroundColor="{this>collaborationColorExpression}"
+	/>
+</core:FragmentDefinition>

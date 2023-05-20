@@ -1,0 +1,11 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<CustomListItem>
+		<content>
+			<Label
+				text="{Name}"
+				width="20em"
+				class="sapUiTinyMarginBeginEnd sapUiTinyMarginTopBottom"
+			/>
+		</content>
+	</CustomListItem>
+</core:FragmentDefinition>

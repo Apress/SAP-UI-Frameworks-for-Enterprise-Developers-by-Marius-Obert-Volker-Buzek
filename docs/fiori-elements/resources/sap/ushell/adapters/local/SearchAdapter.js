@@ -1,0 +1,2 @@
+// Copyright (c) 2009-2023 SAP SE, All Rights Reserved
+sap.ui.define(["sap/ui/thirdparty/jquery"],function(e,r){"use strict";var i=function(r,i,t){this.isSearchAvailable=function(){var r=e.Deferred();r.resolve(true);return r.promise()}};return i},false);

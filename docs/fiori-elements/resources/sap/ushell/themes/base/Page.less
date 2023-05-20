@@ -1,0 +1,49 @@
+/* ===================================================== */
+/* CSS for control "sap.ushell.ui.launchpad.Page" (base) */
+/* ======================================================*/
+
+.sapUshellPage {
+  @margin-between-sections: 1.5rem;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 1rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+
+  @media (min-width: 600px) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  @media (min-width: 1440px) {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  .sapUshellPageTitle {
+    padding-bottom: 0.5rem;
+    font-size: @sapMFontHeader3Size;
+  }
+
+  .sapUshellPageAddSectionButton {
+    align-self: center;
+    margin-top: @margin-between-sections;
+  }
+
+  .sapUshellPageSection {
+    margin-bottom: @margin-between-sections;
+    display: flex;
+    flex-direction: column;
+
+    &:first-of-type .sapUshellSectionTitle {
+      padding-top: 0.5rem
+    }
+  }
+
+  &.sapUshellPageComposing {
+    background-color: @sapUiBaseColor;
+  }
+}

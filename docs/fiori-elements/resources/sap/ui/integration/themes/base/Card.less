@@ -1,0 +1,24 @@
+/* =============================================== */
+/* CSS for control sap.ui.integration.widgets/Card */
+/* Base theme                                      */
+/* ================================================*/
+
+.sapUiIntCard {
+	min-height: 5rem;
+}
+
+.sapUiIntCardDialog {
+	.sapUiIntCard {
+		border-radius: @sapUiElementBorderCornerRadius;
+	}
+
+	&.sapMDialog:not(.sapUiResponsiveContentPadding):not(.sapUiContentPadding) .sapMDialogScroll {
+		padding-bottom: 0px;
+		padding-top: 0px;
+	}
+}
+
+.sapFCard.sapUiIntCardWithFooter .sapFCardContent {
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}

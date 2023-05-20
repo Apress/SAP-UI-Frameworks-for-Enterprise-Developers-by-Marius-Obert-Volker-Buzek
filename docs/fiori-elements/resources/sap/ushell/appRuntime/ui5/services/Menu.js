@@ -1,0 +1,2 @@
+// Copyright (c) 2009-2023 SAP SE, All Rights Reserved
+sap.ui.define(["sap/ushell/services/Menu","sap/ushell/appRuntime/ui5/AppRuntimeService"],function(e,s){"use strict";function t(){e.call(this,arguments);this.getSpacesPagesHierarchy=function(){return new Promise(function(e){s.sendMessageToOuterShell("sap.ushell.services.Menu.getSpacesPagesHierarchy").done(e)})}}t.prototype=e.prototype;t.hasNoAdapter=e.hasNoAdapter;return t});

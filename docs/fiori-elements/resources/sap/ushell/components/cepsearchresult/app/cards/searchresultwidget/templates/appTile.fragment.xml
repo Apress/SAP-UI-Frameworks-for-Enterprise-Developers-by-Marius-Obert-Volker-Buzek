@@ -1,0 +1,8 @@
+<core:FragmentDefinition xmlns="sap.m"
+  xmlns:core="sap.ui.core"
+  xmlns:self="sap.ushell.components.cepsearchresult.app.cards.searchresultwidget.controls"
+  >
+  <CustomListItem class="sapUiCEPCatTileInstance">
+    <self:Tile viz="{data>_viz}"></self:Tile>
+  </CustomListItem>
+</core:FragmentDefinition>

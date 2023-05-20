@@ -1,0 +1,13 @@
+<View
+    xmlns="sap.ui.core.mvc"
+    xmlns:ushell="sap.ushell.ui.tile"
+    controllerName="sap.ushell.components.tiles.action.ActionTile"
+    height="100%"
+    width="100%">
+    <ushell:TileBase
+        id="actionTile"
+        title="{i18n>tile.display.action_chip}"
+        subtitle="{/displayText}"
+        icon="sap-icon://action"
+        press="onPress" />
+</View>

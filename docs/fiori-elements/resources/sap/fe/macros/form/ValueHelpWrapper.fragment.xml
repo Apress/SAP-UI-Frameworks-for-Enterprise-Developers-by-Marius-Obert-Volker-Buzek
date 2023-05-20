@@ -1,0 +1,14 @@
+<core:FragmentDefinition
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m"
+	xmlns:macro="sap.fe.macros"
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	template:require="{FORM: 'sap/fe/macros/form/FormHelper'}"
+>
+	<macro:ValueHelp
+		_flexId="{= ${this>idPrefix} + '-content_FieldValueHelp'}"
+		property="{property>}"
+		contextPath="{contextPath>}"
+		binding="{= FORM.generateBindingExpression(${this>navigationPath},${entitySet>./@com.sap.vocabularies.Common.v1.SemanticKey})}"
+	/>
+</core:FragmentDefinition>

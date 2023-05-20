@@ -1,0 +1,30 @@
+<core:FragmentDefinition xmlns="sap.m"
+                         xmlns:core="sap.ui.core">
+    <Dialog title="{i18n>MyHome.ImportDialog.Title}" class="sapUiContentPadding" contentWidth="30rem">
+        <content>
+            <Text text="{i18n>MyHome.ImportDialog.Info}" class="sapUiSmallMarginBottom" />
+
+            <List
+                items="{/PersonalizedGroups}"
+                mode="MultiSelect"
+                growingThreshold="50"
+                class="sapUiSmallMarginBottom"
+                includeItemInSelection="true"
+                busy="{/busy}">
+                <StandardListItem
+                    title="{title}"
+                    selected="{selected}" />
+            </List>
+        </content>
+        <beginButton>
+            <Button
+                text="{i18n>MyHome.ImportDialog.Button.AddAppsToPage}"
+                press=".doImport"
+                type="Emphasized"
+                enabled="{= !${/busy}}"/>
+        </beginButton>
+        <endButton>
+            <Button text="{i18n>MyHome.ImportDialog.Button.Cancel}" press=".close" />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

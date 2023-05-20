@@ -1,0 +1,27 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <Popover
+        id="sapUshellUserActionsMenuPopover"
+        placement="Bottom"
+        showArrow="true"
+        showHeader="false"
+        class="sapUshellPopupContainer sapContrastPlus">
+        <content>
+            <List
+                class="sapUshellPopoverList"
+                showSeparators="None"
+                includeItemInSelection="true"
+                items="{
+                    path: '/actions',
+                    factory: '.userActionsMenuPopoverItemFactory'
+                }">
+                <headerToolbar>
+                    <Toolbar style="Clear">
+                        <Title level="H1" text="{/userName}" />
+                    </Toolbar>
+                </headerToolbar>
+            </List>
+        </content>
+    </Popover>
+</core:FragmentDefinition>

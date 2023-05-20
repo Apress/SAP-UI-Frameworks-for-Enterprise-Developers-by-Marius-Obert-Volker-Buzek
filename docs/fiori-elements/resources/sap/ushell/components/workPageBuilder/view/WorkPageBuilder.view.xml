@@ -1,0 +1,136 @@
+<mvc:View
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:dnd="sap.ui.core.dnd"
+    xmlns:cep="sap.ushell.components.workPageBuilder.controls"
+    controllerName="sap.ushell.components.workPageBuilder.controller.WorkPageBuilder"
+    id="sapCepWorkPageBuilder"
+    height="100%">
+    <Page
+        id="sapCepPage"
+        showHeader="false"
+        showFooter="{= !!${/editMode} &amp;&amp; !!${/showFooter} }"
+        backgroundDesign="Transparent"
+        floatingFooter="true">
+        <cep:WorkPage
+            id="sapCepWorkPage"
+            editMode="{/editMode}"
+            emptyIllustrationTitle="{i18n>WorkPage.EmptyPage.Title}"
+            emptyIllustrationMessage="{i18n>WorkPage.EmptyPage.Message}"
+            emptyIllustrationButtonText="{i18n>WorkPage.EmptyPage.Button.Add}"
+            rows="{path: 'Rows', templateShareable: false, key: 'Id'}"
+            loaded="{/loaded}"
+            addFirstRow=".onAddFirstRow">
+            <cep:title>
+                <Title text="{Descriptor/title}" level="H2" titleStyle="H3"
+                       visible="{= !!${Descriptor/title}}"/>
+            </cep:title>
+            <cep:WorkPageRow
+                id="sapCepRow"
+                addRowButtonTooltip="{i18n>WorkPage.Row.AddRowButtonTooltip}"
+                editMode="{/editMode}"
+                columns="{path: 'Columns', templateShareable:false, key: 'Id'}"
+                addRow=".onAddRow">
+                <cep:controlButtons>
+                    <Button
+                        id="sapCepRowButtonDelete"
+                        class="sapCepWorkPageRowControlButton"
+                        press=".onDeleteRow"
+                        icon="sap-icon://delete"
+                        tooltip="{i18n>WorkPage.Row.OverflowToolbar.DeleteRowButtonTooltip}"
+                        visible="{/editMode}"/>
+                </cep:controlButtons>
+                <cep:headerBar>
+                    <OverflowToolbar id="sapCepRowOverflowToolbar" class="sapCepRowOverflowToolbar"
+                                     visible="{= ${/editMode} || !!${Descriptor/title} }">
+                        <Label id="sapCepLabelTitle" labelFor="sapCepRowInputTitle"
+                               text="{i18n>WorkPage.Row.OverflowToolbar.RowTitleLabel}" visible="{/editMode}">
+                            <layoutData>
+                                <OverflowToolbarLayoutData group="1"/>
+                            </layoutData>
+                        </Label>
+                        <Input id="sapCepRowInputTitle" value="{Descriptor/title}" editable="true" placeholder="{i18n>WorkPage.Row.OverflowToolbar.RowTitleOptional}"
+                               change=".onEditTitle" visible="{/editMode}">
+                            <layoutData>
+                                <OverflowToolbarLayoutData group="1" shrinkable="true" minWidth="12rem"/>
+                            </layoutData>
+                        </Input>
+                    </OverflowToolbar>
+                </cep:headerBar>
+
+                <cep:title>
+                    <Title id="sapCepRowTitle" wrapping="true" class="sapCepRowSectionTitle" text="{Descriptor/title}" visible="{= !${/editMode} }"/>
+                </cep:title>
+
+                <cep:WorkPageColumn
+                    id="sapCepColumn"
+                    editMode="{/editMode}"
+                    columnWidth="{Descriptor/columnWidth}"
+                    deleteColumnButtonTooltip="{i18n>WorkPage.Column.DeleteColumnButtonTooltip}"
+                    addColumnButtonTooltip="{i18n>WorkPage.Column.AddColumnButtonTooltip}"
+                    addWidgetButtonText="{i18n>WorkPage.Column.AddWidgetButtonText}"
+                    columnResized=".onResize"
+                    columnResizeCompleted=".onResizeCompleted"
+                    cells="{path: 'Cells', templateShareable:false, key: 'Id'}"
+                    addColumn=".onAddColumn"
+                    removeColumn=".onDeleteColumn"
+                    addWidget=".openWidgetGallery">
+                    <cep:WorkPageCell
+                        id="sapCepCell"
+                        editMode="{/editMode}"
+                        snapToRow="true"
+                        widgets="{path: 'Widgets', factory: '.widgetFactory', key: 'Id'}"
+                        deleteCell=".onDeleteCell"
+                        tileEditMode="{
+                            parts: [
+                                { path: '/editMode' },
+                                { path: 'Widgets' }
+                            ], formatter: '.tileEditMode'
+                        }"
+                        addApplications=".openTilesAppSearch"
+                        moveVisualization=".onGridDrop"
+                        gridColumnsChange=".onGridColumnsChange"
+                        deleteWidgetTooltip="{i18n>WorkPage.WidgetContainer.DeleteWidgetButtonTooltip}"
+                        addApplicationButtonText="{i18n>WorkPage.Section.AddVizInstanceButtonText}"
+                        gridContainerGap="{viewSettings>/gridContainerGap/gridContainerGap}"
+                        gridContainerGapXS="{viewSettings>/gridContainerGap/gridContainerGapXS}"
+                        gridContainerGapS="{viewSettings>/gridContainerGap/gridContainerGapS}"
+                        gridContainerGapM="{viewSettings>/gridContainerGap/gridContainerGapM}"
+                        gridContainerGapL="{viewSettings>/gridContainerGap/gridContainerGapL}"
+                        gridContainerGapXL="{viewSettings>/gridContainerGap/gridContainerGapXL}"
+                        gridContainerRowSize="{viewSettings>/gridContainerRowSize/gridContainerRowSize}"
+                        gridContainerRowSizeXS="{viewSettings>/gridContainerRowSize/gridContainerRowSizeXS}"
+                        gridContainerRowSizeS="{viewSettings>/gridContainerRowSize/gridContainerRowSizeS}"
+                        gridContainerRowSizeM="{viewSettings>/gridContainerRowSize/gridContainerRowSizeM}"
+                        gridContainerRowSizeL="{viewSettings>/gridContainerRowSize/gridContainerRowSizeL}"
+                        gridContainerRowSizeXL="{viewSettings>/gridContainerRowSize/gridContainerRowSizeXL}"
+                    >
+                    </cep:WorkPageCell>
+                    <cep:dragDropConfig>
+                        <dnd:DropInfo
+                            drop=".onCellDrop($event)"
+                            enabled="{/editMode}"
+                            targetAggregation="cells"
+                            dragEnter=".onCellDragEnter"
+                            dropPosition="On"
+                        />
+                    </cep:dragDropConfig>
+                </cep:WorkPageColumn>
+            </cep:WorkPageRow>
+        </cep:WorkPage>
+        <footer>
+            <Bar id="sapCepFooterBar">
+                <contentRight>
+                    <Button
+                        text="{i18n>WorkPage.EditMode.Save}"
+                        enabled="{/workPageHasChanges}"
+                        type="Emphasized"
+                        press=".saveEditChanges"/>
+                    <Button
+                        text="{i18n>WorkPage.EditMode.Cancel}"
+                        press=".cancelEditChanges"/>
+                </contentRight>
+            </Bar>
+        </footer>
+    </Page>
+</mvc:View>

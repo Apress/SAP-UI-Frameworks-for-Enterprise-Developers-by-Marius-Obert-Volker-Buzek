@@ -1,0 +1,100 @@
+<core:FragmentDefinition
+	xmlns="sap.suite.ui.microchart"
+	xmlns:core="sap.ui.core"
+	xmlns:oDataV4MicroChart="sap.fe.macros.microchart"
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	template:require="{
+		MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+		MICROCHART: 'sap/fe/macros/microchart/MicroChartHelper',
+		CRIT: 'sap/fe/core/templating/CriticalityFormatters',
+		COMMON: 'sap/fe/macros/CommonHelper',
+		UI: 'sap/fe/core/templating/UIFormatters',
+		ID: 'sap/fe/core/helpers/StableIdHelper'
+	}"
+>
+	<!-- MODEL.value is used instead MODEL.format because, MODEL.format adds type as Unit when Currency/Unit annotations exist and the control property expects decimal as type -->
+	<template:if test="{= MICROCHART.shouldMicroChartRender('Column', ${DataPoint>}, ${DataPoint>Value/$Path@}, ${metaPath>})}">
+		<template:then>
+			<template:with path="DataPoint>Value/$Path" helper="MODEL.resolve$Path" var="Measure">
+				<template:with path="metaPath>Dimensions/0/" var="Dimension">
+					<oDataV4MicroChart:MicroChartContainer
+						id="{= ${this>id} ? ID.generate([${this>id}, 'ColumnMicroChart']) : undefined }"
+						showOnlyChart="{this>showOnlyChart}"
+						chartTitle="{= ${this>title} || ${metaPath>Title}}"
+						chartDescription="{= ${this>description} || ${metaPath>Description}}"
+						uomPath="{= MICROCHART.getUOMPathForMicrochart(${this>showOnlyChart}, ${Measure>@}) }"
+						measures="{DataPoint>Value/$Path}"
+						dimension="{= ${Dimension>$PropertyPath@com.sap.vocabularies.Common.v1.Text} ? ${Dimension>$PropertyPath@com.sap.vocabularies.Common.v1.Text/$Path} : ${Dimension>$PropertyPath} }"
+						measurePrecision="{= ${DataPoint>Value/$Path/$Precision} ? ${DataPoint>Value/$Path/$Precision} : undefined }"
+						measureScale="{= MICROCHART.getMeasureScaleForMicroChart(${DataPoint>}) }"
+						dimensionPrecision="{= ${Dimension>$PropertyPath/$Precision} ? ${Dimension>$PropertyPath/$Precision} : undefined }"
+						dataPointQualifiers="{= MICROCHART.getDataPointQualifiersForMicroChart(${DataPoint>./@sapui.name}) }"
+						binding="{= ${this>batchGroupId} ? ('{path:\'\', parameters : { $$groupId: \'' + ${this>batchGroupId} + '\'} }') : undefined }"
+						onTitlePressed="{this>onTitlePressed}"
+						navigationType="{this>navigationType}"
+						calendarPattern="{= MICROCHART.getCalendarPattern(${Dimension>$PropertyPath/$Type}, ${Dimension>$PropertyPath@}) }"
+					>
+						<template:if test="{= !${this>showOnlyChart} || (${this>showOnlyChart} !== 'true' ? true : false)}">
+							<core:Fragment fragmentName="sap.fe.macros.microchart.fragments.MicroChartTitle" type="XML" />
+						</template:if>
+						<ColumnMicroChart
+							hideOnNoData="{this>hideOnNoData}"
+							columns="{= MICROCHART.getAggregationForMicrochart('Columns', ${contextPath>}, ${DataPoint>}, ${contextPath>@sapui.name}, ${Dimension>}, ${Measure>@}) }"
+							size="{this>size}"
+						>
+							<columns>
+								<template:if
+									test="{= ${DataPoint>Criticality} || (!${DataPoint>Criticality} &amp;&amp; !${DataPoint>CriticalityCalculation}) }"
+								>
+									<template:then>
+										<ColumnMicroChartData
+											value="{path:'DataPoint>Value@@MODEL.value', type:'sap.ui.model.odata.type.Decimal'}"
+											color="{= ${DataPoint>Criticality} ? CRIT.buildExpressionForCriticalityColorMicroChart(${DataPoint>@@UI.getDataModelObjectPath}) : undefined }"
+										/>
+									</template:then>
+									<template:else>
+										<template:with path="DataPoint>CriticalityCalculation" var="CriticalityCalculation">
+											<template:with
+												path="DataPoint>CriticalityCalculation/ImprovementDirection/$EnumMember"
+												var="Direction"
+											>
+												<ColumnMicroChartData
+													value="{path:'DataPoint>Value@@MODEL.value', type:'sap.ui.model.odata.type.Decimal'}"
+													color="{= COMMON.getCriticalityCalculationBinding(${Direction>},
+												${DataPoint>Value@@MODEL.value},
+												${CriticalityCalculation>DeviationRangeLowValue@@MODEL.format},
+												${CriticalityCalculation>ToleranceRangeLowValue@@MODEL.format},
+												${CriticalityCalculation>AcceptanceRangeLowValue@@MODEL.format},
+												${CriticalityCalculation>AcceptanceRangeHighValue@@MODEL.format},
+												${CriticalityCalculation>ToleranceRangeHighValue@@MODEL.format},
+												${CriticalityCalculation>DeviationRangeHighValue@@MODEL.format}) }"
+												/>
+											</template:with>
+										</template:with>
+									</template:else>
+								</template:if>
+							</columns>
+							<template:if test="{= ${this>showOnlyChart} !== 'true' }">
+								<leftBottomLabel>
+									<ColumnMicroChartLabel />
+								</leftBottomLabel>
+								<leftTopLabel>
+									<ColumnMicroChartLabel />
+								</leftTopLabel>
+								<rightBottomLabel>
+									<ColumnMicroChartLabel />
+								</rightBottomLabel>
+								<rightTopLabel>
+									<ColumnMicroChartLabel />
+								</rightTopLabel>
+							</template:if>
+						</ColumnMicroChart>
+					</oDataV4MicroChart:MicroChartContainer>
+				</template:with>
+			</template:with>
+		</template:then>
+		<template:elseif
+			test="{= MICROCHART.logWarning('Column', { DataPoint_Value : ${DataPoint>Value}, Dimension : ${metaPath>Dimensions/0/$PropertyPath} }) }"
+		/>
+	</template:if>
+</core:FragmentDefinition>

@@ -1,0 +1,252 @@
+@CHARSET "UTF-8";
+
+.ThingViewer {
+	/*	min-height:800px; */
+	position: relative;
+}
+
+.ThingInspector {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+}
+
+.sapFactsheetUtiTilePadding td {
+	padding: 0.2rem 0.3rem 0.3rem 0.3rem;
+}
+
+.sapFactsheetUtiTableNoTopBorder th {
+	border: 0;
+}
+
+.sapFactsheetUtiLabel {
+	color: #666666;
+}
+
+.sapFactsheetUtiPanel .sapMList,.sapFactsheetUtiPanel.sapMList {
+	padding: 1rem 0;
+	background-color: rgba(255, 255, 255, 0.8);
+}
+
+.sapFactsheetUtiPaddingTop {
+	padding-top: 0.5rem;
+}
+
+.sapFactsheetUtiSeparatorPadding.sapMText {
+	padding: 0 0.35rem;
+	top: -0.15rem;
+	position: relative;
+}
+
+.sapFactsheetUtiSeparatorPaddingForDecimal.sapMText {
+	padding: 0 0.35rem 0 0;
+}
+
+html[dir="rtl"] .sapFactsheetUtiSeparatorPaddingForDecimal.sapMText {
+    padding: 0 0 0 0.35rem;
+}
+
+.sapFactsheetUtiRelIcon {
+	color: #666666;
+}
+
+.sapFactsheetUtiLabelMargin {
+	margin-right: 1rem;
+}
+
+.sapFactsheetUtiHLayoutLabelValue {
+	margin-bottom: 10px;
+}
+
+.sapFactsheetUtiHLayoutLabelValue .sapMText {
+	position: relative;
+	top: -2px;
+}
+
+.sapFactsheetUtiHLayoutPadding {
+	margin-bottom: 0.65rem;
+	padding-top: 0.15rem;
+}
+
+.sapFactsheetUtiHLayoutPadding .sapMLnk.sapMLnkWrapping {
+	text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.sapFactsheetUtiVLayoutPadding {
+    padding-top: 0.1rem;
+}
+
+.sapFactsheetUtiAnnotationFormLayout .sapMListTblCell {
+	padding: .5rem .5rem;
+}
+
+.sapFactsheetUtiGeneralInformationOverviewFacet .sapFactsheetUtiDataField.sapMText,.sapFactsheetUtiGeneralInformationOverviewFacet .sapMLnk.sapMLnkWrapping
+	{
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+html[data-sap-ui-browser^=ie] .sapFactsheetUtiGeneralInformationOverviewFacet .sapFactsheetUtiDataField.sapMText,html[data-sap-ui-browser^=ie] .sapFactsheetUtiGeneralInformationOverviewFacet .sapMLnk.sapMLnkWrapping
+    {
+    word-wrap: normal;
+}
+
+.sapFactsheetUtiGeneralInformationUtg .sapSuiteUtgContent {
+	background-color: rgba(255, 255, 255, 0.8);
+	padding-top: 1rem;
+}
+
+.sapFactsheetUtiGeneralInformationUtgContent .sapSuiteUtgContent {
+	background: none;
+	padding: 0.5rem 0 0 0;
+}
+
+.sapFactsheetUtiGeneralInformationUtgContent.sapSuiteUtg {
+	padding: 5px;
+}
+
+.sapFactsheetUtiGeneralInformationUtgContent .sapSuiteUtgHeader {
+	border: 0;
+}
+
+.sapFactsheetUtiGeneralInformationUtgContent .sapSuiteUtgTitle {
+	margin-bottom: 0;
+	font-size: 1.125rem;
+	line-height: 1em;
+}
+
+.sapFactsheetUtiGeneralInformationUtgContent .sapFactsheetUtiPanel,.sapFactsheetUtiGeneralInformationUtgContent .sapFactsheetUtiPanel .sapMList
+	{
+	background: none;
+	padding: 0;
+}
+
+.sapFactsheetUtiGeoPopup .vbi-detail-content, .sapFactsheetUtiGeoPopup .sapUiForm, 
+.sapFactsheetUtiGeoPopup .sapUiFormResLayout, .sapFactsheetUtiGeoPopup .sapUiFormResLayout>div {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.sapFactsheetUtiGeoPopup .sapUiForm .sapMLabel, .sapFactsheetUtiGeoPopup .sapUiForm .sapMText, .sapFactsheetUtiGeoPopup .sapUiForm .sapMLnk {
+    font-size: 0.72rem;
+    text-align: left;
+}
+
+.sapFactsheetUtiGeoPopup .sapUiFormResLayout>div {
+    padding: 0;
+}
+
+.sapFactsheetUtiGeoPopupHead {
+	padding-bottom: 0.1rem;
+	font-size: 1rem;
+	color: #000088;
+	align: left;
+	text-align: left;
+}
+
+.sapFactsheetUtiGeoPopupHeadFontPhone {
+	font-size: 0.85rem;
+}
+
+.sapFactsheetUtiGeoPopupDescr {
+	padding-top: 0rem;
+	font-size: 0.9rem;
+	color: #666666;
+	align: left;
+	text-align: left;
+}
+
+.sapFactsheetUtiGeoPopupDescrFontPhone {
+	font-size: 0.8rem;
+}
+
+.sapFactsheetUtiGeoPopupText {
+	color: #666666;
+	padding-top: 0.4rem;
+}
+
+.sapFactsheetUtiGeoPopupText .sapMListTbl .sapMText,.sapFactsheetUtiGeoPopupText .sapMListTbl .sapMLabel,.sapFactsheetUtiGeoPopupText .sapMListTbl .sapMLnk
+	{
+	font-size: 0.725rem;
+}
+
+.sapFactsheetUtiGeoPopupText .sapMListTblCell:first-child,.sapFactsheetUtiGeoPopupText .sapMListTblNone:first-child+.sapMListTblCell
+	{
+	padding-left: 0.3rem;
+}
+
+.sapFactsheetUtiGeoPopupText .sapUiFormResLayout label, .sapFactsheetUtiGeoPopupText .sapFactsheetUtiFormPadding {
+    padding-bottom: 0;
+} 
+
+.sapFactsheetUtiFilterInput {
+	padding: 10px;
+}
+
+.sapFactsheetUtiPictureViewerOverview .sapUiHLayoutChildWrapper {
+	margin-right: 20px;
+	max-width: 85px;
+	overflow: hidden;
+}
+
+.sapFactsheetUtiCarouselMaxImageHeightPhone {
+	max-height: 300px;
+}
+
+.sapFactsheetUtiCarouselMaxImageHeight {
+	max-height: 500px;
+}
+
+.sapFactsheetUtiHorizontalLayout {
+	width: 100%;
+	overflow: hidden;
+}
+
+.sapFactsheetUtiContactsGrid.sapUiRespGrid {
+	margin: 0;
+	padding: 0;
+}
+
+.sapFactsheetUtiContactsBox {
+	height: 5rem;
+	margin-top: 0.5rem;
+}
+
+.sapMText.sapFactsheetUtiContactsName {
+    font-weight: bold;
+}
+
+.sapFactsheetUtiContactsImage {
+	width: 60px;
+	text-align: left;
+}
+
+.sapFactsheetUtiTextName {
+	margin-bottom: 8px;
+}
+
+.sapFactsheetUtiTextValue {
+	color: #666666;
+}
+
+.sapFactsheetUtiEmptyTile.sapSuiteFov {
+	background-color: rgba(255, 255, 255, 0.4);
+}
+
+.sapFactsheetUtiFormPadding {
+	padding-bottom: 0.5rem;
+}
+
+html[data-sap-ui-browser^=ie] .sapFactsheetUtiFormPadding {
+    padding-bottom: 0.25rem;
+}
+
+.sapFactsheetUtiGeneralInformationUtgContent .sapFactsheetUtiFormLayout .sapUiFormResLayout>div,
+.sapFactsheetUtiGeneralInformationOverviewFacet .sapFactsheetUtiFormLayout .sapUiFormResLayout>div {
+	background-color: transparent;
+	padding: 0;
+}

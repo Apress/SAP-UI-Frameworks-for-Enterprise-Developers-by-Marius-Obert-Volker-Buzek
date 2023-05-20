@@ -1,0 +1,38 @@
+.sapUiCEPSRApp .sapUiCEPSRAppScroll {
+  overflow: auto;
+}
+.sapUiCEPSRApp .sapUiCEPSRHeader {
+  background-color: var(--_sap_m_IconTabBar_HeaderBackground)
+}
+.sapUiCEPSRApp .sapUiCEPSRSummary {
+  margin: -1rem 2rem 1rem;
+  position: relative;
+  z-index:5
+}
+
+
+.sapUiCEPSRApp .sapUiCEPSRFilters {
+  flex-direction: row;
+  gap: 2rem;
+  padding: 0 2rem 1rem;
+  box-sizing: border-box;
+  background-color: var(--_sap_m_IconTabBar_HeaderBackground);
+  box-shadow: var(--_sap_m_IconTabBar_ShellHeaderShadow);
+  border-bottom: var(_sap_m_IconTabBar_HeaderBorderBottom);
+  position:relative;
+  z-index: 1;
+}
+.sapUiCEPSRApp .sapUiCEPSRFiltersHide .sapUiCEPSRFilterField{
+  display: none;
+}
+.sapUiCEPSRApp .sapUiCEPSRFiltersHide {
+  padding-bottom: 1px;
+}
+.sapUiCEPSRApp .sapUiCEPSRFilterField {
+  flex-direction: column;
+  min-width: 250px;
+  max-width: 250px;
+}
+.sapUiCEPSRApp .sapFDynamicPageToggleHeaderIndicator {
+  display: none;
+}

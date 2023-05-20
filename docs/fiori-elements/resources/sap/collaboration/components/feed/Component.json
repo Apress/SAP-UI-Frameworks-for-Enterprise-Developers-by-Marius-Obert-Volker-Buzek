@@ -1,0 +1,12 @@
+{
+    "name": "sap.collaboration.components.feed",
+    "version": "1.0",
+    "description": "Feed component to display feeds from SAP Jam",
+    "keywords": [
+        "Group Feed",
+        "SAP Jam",
+        "Jam"
+    ],
+    "dependencies": {
+    }
+}

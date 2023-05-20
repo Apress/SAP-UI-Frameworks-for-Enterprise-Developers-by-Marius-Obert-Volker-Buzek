@@ -1,0 +1,39 @@
+<mvc:View
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    controllerName="sap.ushell.components.runtimeSwitcher.controller.RuntimeSwitcher"
+    height="100%">
+
+    <NavContainer id="switcherNavContainer">
+        <Page
+            id="emptyPage"
+            showHeader="false" />
+
+        <Page
+            id="pagesRuntime"
+            enableScrolling="false"
+            showHeader="false">
+            <core:ComponentContainer
+                height="100%"
+                usage="pagesComponent"
+                manifest="true"
+                componentCreated=".pageComponentCreated"
+                async="true"/>
+        </Page>
+
+        <Page
+            id="workpagesRuntime"
+            enableScrolling="false"
+            showHeader="false">
+            <core:ComponentContainer
+                height="100%"
+                usage="workpageComponent"
+                manifest="true"
+                componentCreated=".workPageComponentCreated"
+                async="true"/>
+        </Page>
+
+    </NavContainer>
+
+</mvc:View>

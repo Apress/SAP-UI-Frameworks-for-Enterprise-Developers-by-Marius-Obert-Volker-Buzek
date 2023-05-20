@@ -1,0 +1,280 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns="sap.m"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:macro="sap.fe.macros"
+	xmlns:macroForm="sap.fe.macros.form"
+	xmlns:internalMacro="sap.fe.macros.internal"
+	xmlns:core="sap.ui.core"
+	xmlns:controls="sap.fe.macros.controls"
+	xmlns:dt="sap.ui.dt"
+	xmlns:unittest="http://schemas.sap.com/sapui5/preprocessorextension/sap.fe.unittesting/1"
+	xmlns:macrodata="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	xmlns:fpm="sap.fe.macros.fpm"
+	template:require="{
+		MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+		ID: 'sap/fe/core/helpers/StableIdHelper',
+		COMMON: 'sap/fe/macros/CommonHelper',
+		FORM: 'sap/fe/macros/form/FormHelper',
+		UI: 'sap/fe/core/templating/UIFormatters',
+		DataField: 'sap/fe/core/templating/DataFieldFormatters',
+		FormTemplating: 'sap/fe/macros/internal/form/FormTemplating',
+		FieldTemplating: 'sap/fe/macros/field/FieldTemplating',
+		Property: 'sap/fe/core/templating/PropertyFormatters',
+		FIELD: 'sap/fe/macros/field/FieldHelper'
+	}"
+>
+	<f:FormContainer
+		core:require="{FormContainerRuntime: 'sap/fe/macros/form/FormContainerAPI'}"
+		unittest:id="formC"
+		dt:designtime="{this>designtimeSettings}"
+		id="{= ${this>id} || undefined}"
+		visible="{this>visible}"
+		macrodata:navigationPath="{this>navigationPath}"
+		macrodata:etName="{contextPath>./@sapui.name}"
+	>
+		<template:if test="{this>title}">
+			<f:title>
+				<core:Title level="{this>titleLevel}" text="{this>title}" />
+			</f:title>
+		</template:if>
+
+		<template:if test="{actions>}">
+			<template:then>
+				<f:toolbar>
+					<OverflowToolbar
+						id="{= ${this>id} ? ID.generate([${this>id}, 'FormActionsToolbar']) : undefined}"
+						binding="{= FORM.generateBindingExpression(${this>navigationPath},${contextPath>./@com.sap.vocabularies.Common.v1.SemanticKey})}"
+					>
+						<Title level="{this>titleLevel}" text="{this>title}" />
+						<ToolbarSpacer />
+						<template:repeat list="{actions>}" var="action">
+							<core:Fragment fragmentName="sap.fe.macros.form.FormActionButtons" type="XML" />
+						</template:repeat>
+					</OverflowToolbar>
+				</f:toolbar>
+			</template:then>
+		</template:if>
+		<f:dependents>
+			<macroForm:FormContainerAPI formContainerId="{this>id}" showDetails="{internal>showDetails}" />
+			<!-- Create the value help dialogs for fields inside form container -->
+			<template:repeat list="{path:'dataFieldCollection>'}" var="dataField">
+				<template:with path="dataField>annotationPath" var="dataField">
+					<!-- <template:if test="{= ${dataField>$Type} !== 'com.sap.vocabularies.UI.v1.DataFieldForAction' &amp;&amp; !${formElements>Target}}"> -->
+					<template:if test="{this>id}">
+						<macro:ValueHelp
+							idPrefix="{= ID.generate([${this>id}, 'FieldValueHelp']) }"
+							property="{dataField>Value}"
+							contextPath="{contextPath>}"
+							useMultiValueField="true"
+							binding="{= FORM.generateBindingExpression(${this>navigationPath},${contextPath>./@com.sap.vocabularies.Common.v1.SemanticKey})}"
+						/>
+					</template:if>
+					<!-- </template:if> -->
+				</template:with>
+				<!-- Create the value help dialogs for connected fields -->
+				<template:if test="${dataField>type} === 'Annotation'}">
+					<template:then>
+						<template:with path="dataField>annotationPath" var="annotationDataField">
+							<template:if test="{annotationDataField>Target@@DataField.isSemanticallyConnectedFields}">
+								<template:then>
+									<template:repeat list="{annotationDataField>Target/$AnnotationPath/Data}" var="data">
+										<template:with path="data>" helper="COMMON.getDataFromTemplate" var="element">
+											<template:if test="{this>id}">
+												<template:if
+													test="{= !FIELD.isFieldPartOfForm(${dataFieldCollection>}, ${element>@@UI.getDataModelObjectPath}) }"
+												>
+													<macro:ValueHelp
+														idPrefix="{= ID.generate([${this>id}, 'FieldValueHelp']) }"
+														property="{element>Value}"
+														contextPath="{contextPath>}"
+														useMultiValueField="true"
+														binding="{= FORM.generateBindingExpression(${this>navigationPath},${contextPath>./@com.sap.vocabularies.Common.v1.SemanticKey})}"
+													/>
+												</template:if>
+											</template:if>
+										</template:with>
+									</template:repeat>
+								</template:then>
+							</template:if>
+						</template:with>
+					</template:then>
+				</template:if>
+			</template:repeat>
+		</f:dependents>
+		<f:formElements>
+			<template:with path="dataFieldCollection>" var="formElements">
+				<template:if test="{= ${formElements>0/annotationPath}.indexOf('com.sap.vocabularies.UI.v1.DataPoint') > -1 }">
+					<template:then>
+						<template:with path="formElements>0/annotationPath" var="dataPoint">
+							<f:FormElement
+								dt:designtime="{= ${dataPoint>Value/$Path@com.sap.vocabularies.UI.v1.AdaptationHidden} ? 'not-adaptable-tree' : undefined }"
+								id="{= ${this>id} ? ID.generate([${this>id}, 'FormElement', ${dataPoint>@@UI.getDataModelObjectPath}]) : undefined}"
+								label="{dataPoint>@@FIELD.computeLabelText}"
+								visible="{= FieldTemplating.getVisibleExpression(${dataPoint>@@UI.getDataModelObjectPath})}"
+								binding="{= FORM.generateBindingExpression(${this>navigationPath},${contextPath>./@com.sap.vocabularies.Common.v1.SemanticKey})}"
+							>
+								<f:fields>
+									<internalMacro:Field
+										idPrefix="{= ${this>id} ? ID.generate([${this>id}, 'FormElement', ${dataPoint>@@UI.getDataModelObjectPath}]) : '' }"
+										vhIdPrefix="{= ${this>id} ? ID.generate([${this>id}, 'FieldValueHelp']) : ''}"
+										entitySet="{contextPath>}"
+										dataField="{dataPoint>}"
+										editMode="{= ${this>displayMode} === 'true' ? 'Display' : undefined}"
+										onChange="{this>onChange}"
+									>
+										<internalMacro:formatOptions textAlignMode="Form" showEmptyIndicator="true" />
+									</internalMacro:Field>
+								</f:fields>
+							</f:FormElement>
+						</template:with>
+					</template:then>
+					<template:elseif
+						test="{= ${formElements>0/annotationPath}.indexOf('com.sap.vocabularies.Communication.v1.Contact') > -1 }"
+					>
+						<template:with path="formElements>0/annotationPath" var="metaPath">
+							<f:FormElement
+								dt:designtime="{= ${metaPath>./@com.sap.vocabularies.UI.v1.AdaptationHidden} ? 'not-adaptable-tree' : undefined }"
+								binding="{= FORM.generateBindingExpression(${this>navigationPath},${contextPath>./@com.sap.vocabularies.Common.v1.SemanticKey})}"
+							>
+								<f:label>
+									<Label
+										text="{metaPath>fn/$Path@com.sap.vocabularies.Common.v1.Label}"
+										visible="{= FieldTemplating.getVisibleExpression(${dataField>@@UI.getDataModelObjectPath})}"
+									>
+										<layoutData>
+											<f:ColumnElementData cellsLarge="12" />
+										</layoutData>
+									</Label>
+								</f:label>
+								<f:fields>
+									<macro:Contact metaPath="{metaPath>}" contextPath="{contextPath>}" visible="true" />
+								</f:fields>
+							</f:FormElement>
+						</template:with>
+					</template:elseif>
+					<template:else>
+						<template:repeat list="{path: 'formElements>'}" var="dataField">
+							<template:if test="{= ${dataField>type} === 'Annotation'}">
+								<template:then>
+									<template:with path="dataField>annotationPath" var="annotationDataField">
+										<template:if test="{annotationDataField>Target@@DataField.isSemanticallyConnectedFields}">
+											<template:then>
+												<f:FormElement
+													dt:designtime="{= ${annotationDataField>Value/$Path@com.sap.vocabularies.UI.v1.AdaptationHidden} ? 'not-adaptable-tree' : undefined }"
+													id="{= ${this>id} ? ID.generate([${this>id}, 'SemanticFormElement', ${annotationDataField>@@UI.getDataModelObjectPath}]) : '' }"
+													visible="{= (${dataField>isPartOfPreview}) ? FieldTemplating.getVisibleExpression(${annotationDataField>@@UI.getDataModelObjectPath}) : '{= ${internal>showDetails} === true}'}"
+													binding="{= FORM.generateBindingExpression(${this>navigationPath},${contextPath>./@com.sap.vocabularies.Common.v1.SemanticKey})}"
+												>
+													<f:label>
+														<Label
+															text="{annotationDataField>@@FIELD.computeLabelText}"
+															id="{= ${this>id} ? ID.generate([${this>id}, 'SemanticFormElementLabel', ${annotationDataField>@@UI.getDataModelObjectPath}]) : '' }"
+														/>
+													</f:label>
+													<f:fields>
+														<controls:FieldWrapper
+															required="{= UI.getRequiredExpressionForConnectedDataField(${annotationDataField>Target@@UI.getDataModelObjectPath}) }"
+														>
+															<HBox>
+																<template:repeat
+																	list="{annotationDataField>Target/$AnnotationPath/Data}"
+																	var="data"
+																>
+																	<template:with
+																		path="data>"
+																		helper="COMMON.getDataFromTemplate"
+																		var="element"
+																	>
+																		<core:Fragment
+																			fragmentName="sap.fe.macros.internal.field.ConnectedDataField"
+																			type="XML"
+																		/>
+																	</template:with>
+																</template:repeat>
+															</HBox>
+														</controls:FieldWrapper>
+													</f:fields>
+												</f:FormElement>
+											</template:then>
+											<template:elseif
+												test="{= ${annotationDataField>Value} &amp;&amp; ${annotationDataField>Value/$Path} &amp;&amp; UI.isMultiValueField(${annotationDataField>Value@@Property.getPropertyObjectPath})}"
+											>
+												<f:FormElement
+													dt:designtime="{= ${annotationDataField>Value/$Path@com.sap.vocabularies.UI.v1.AdaptationHidden} ? 'not-adaptable-tree' : undefined }"
+													id="{= ${this>id} ? ID.generate([${this>id}, 'FormElement', ${annotationDataField>@@UI.getDataModelObjectPath}]) : undefined }"
+													label="{annotationDataField>@@FIELD.computeLabelText}"
+													visible="{= (${dataField>isPartOfPreview}) ? FieldTemplating.getVisibleExpression(${annotationDataField>@@UI.getDataModelObjectPath}) : '{= ${internal>showDetails} === true}'}"
+													binding="{= FORM.generateBindingExpression(${this>navigationPath},${contextPath>./@com.sap.vocabularies.Common.v1.SemanticKey})}"
+												>
+													<f:fields>
+														<internalMacro:MultiValueField
+															idPrefix="{= ${this>id} ? ID.generate([${this>id}, 'FormElement', ${annotationDataField>@@UI.getDataModelObjectPath}]) : '' }"
+															vhIdPrefix="{= ${this>id} ? ID.generate([${this>id}, 'FieldValueHelp']) : '' }"
+															contextPath="{contextPath>}"
+															metaPath="{annotationDataField>}"
+														>
+															<internalMacro:formatOptions showEmptyIndicator="true" />
+														</internalMacro:MultiValueField>
+													</f:fields>
+												</f:FormElement>
+											</template:elseif>
+											<template:else>
+												<f:FormElement
+													dt:designtime="{= ${annotationDataField>Value/$Path@com.sap.vocabularies.UI.v1.AdaptationHidden} ? 'not-adaptable-tree' : undefined }"
+													id="{= ${this>id} ? ID.generate([${this>id}, 'FormElement', ${annotationDataField>@@UI.getDataModelObjectPath}]) : undefined }"
+													label="{annotationDataField>@@FIELD.computeLabelText}"
+													visible="{= (${dataField>isPartOfPreview}) ? FieldTemplating.getVisibleExpression(${annotationDataField>@@UI.getDataModelObjectPath}) : '{= ${internal>showDetails} === true}'}"
+													binding="{= FORM.generateBindingExpression(${this>navigationPath},${contextPath>./@com.sap.vocabularies.Common.v1.SemanticKey})}"
+												>
+													<f:fields>
+														<internalMacro:Field
+															idPrefix="{= ${this>id} ? ID.generate([${this>id}, 'FormElement', ${annotationDataField>@@UI.getDataModelObjectPath}]) : '' }"
+															vhIdPrefix="{= ${this>id} ? ID.generate([${this>id}, 'FieldValueHelp']) : '' }"
+															entitySet="{contextPath>}"
+															dataField="{annotationDataField>}"
+															onChange="{this>onChange}"
+														>
+															<internalMacro:formatOptions
+																textLinesEdit="{dataField>formatOptions/textLinesEdit}"
+																textMaxLines="{dataField>formatOptions/textMaxLines}"
+																textMaxCharactersDisplay="{dataField>formatOptions/textMaxCharactersDisplay}"
+																textExpandBehaviorDisplay="{dataField>formatOptions/textExpandBehaviorDisplay}"
+																textAlignMode="Form"
+																showEmptyIndicator="true"
+															/>
+														</internalMacro:Field>
+													</f:fields>
+												</f:FormElement>
+											</template:else>
+										</template:if>
+									</template:with>
+								</template:then>
+								<template:elseif test="{= ${dataField>type} === 'Default'}">
+									<f:FormElement
+										dt:designtime="{= ${dataField>Value/$Path@com.sap.vocabularies.UI.v1.AdaptationHidden} ? 'not-adaptable-tree' : undefined }"
+										id="{= ${this>id} ? ID.generate([${this>id}, ${dataField>id}]) : '' }"
+										label="{dataField>label}"
+										visible="{dataField>visible}"
+										binding="{= FORM.generateBindingExpression(${this>navigationPath},${contextPath>./@com.sap.vocabularies.Common.v1.SemanticKey})}"
+									>
+										<f:fields>
+											<fpm:CustomFragment
+												id="{= ID.generate([${this>id}, ${dataField>key}]) }"
+												fragmentName="{dataField>template}"
+												contextPath="{entitySet>}"
+											/>
+										</f:fields>
+									</f:FormElement>
+								</template:elseif>
+								<template:elseif test="{= ${dataField>type} === 'Slot'}">
+									<slot name="{dataField>key}" />
+								</template:elseif>
+							</template:if>
+						</template:repeat>
+					</template:else>
+				</template:if>
+			</template:with>
+		</f:formElements>
+	</f:FormContainer>
+</core:FragmentDefinition>

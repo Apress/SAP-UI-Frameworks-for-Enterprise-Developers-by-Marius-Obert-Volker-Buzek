@@ -1,0 +1,292 @@
+/* ========================================= */
+/* CSS for control sap.ushell/TileContainer  */
+/* ========================================= */
+
+@_sap_ushell_TileContainer_GroupHeaderTitleColor: @sapUiShellGroupTitleTextColor;
+@_sap_ushell_TileContainer_GroupTitleFontFamily: @sapUiFontFamily;
+@_sap_ushell_TileContainer_GroupTitleFontWeight: bold;
+@_sap_ushell_TileContainer_EditModeBGColor: fade(@sapUiBaseColor, 30);
+@_sap_ushell_TileContainer_PlaceholderColor: @sapUiShellTextColor;
+@_sap_ushell_TileContainer_AddGroupText: @sapUiButtonTextColor;
+@_sap_ushell_LinkContainer_BackgroundColor: @sapUiPageHeaderBackground; /* interim, specification is not available */
+@_sap_ushell_TileContainer_HiddenGroupBackground: fade(darken(darken(saturate(@sapUiShellBackground, 6), 7.8), 20), 10);
+
+@_sap_ushell_TileContainer_GroupTitleFontSizeDesktop: @sapMFontHeader4Size;
+@_sap_ushell_TileContainer_GroupTitleFontSizePhone: @sapMFontHeader4Size;
+
+@_sap_ushell_TileContainer_CatalogGroupTitleFontFamily: @sapUiFontFamily;
+@_sap_ushell_TileContainer_CatalogGroupTitleFontWeight: bold;
+
+/* circle div for dragging indicator */
+.sapUshellCircle {
+  background-color: fade(@sapUiShellTextColor, 40);
+  border-radius: 0.57rem;
+}
+
+.sapUshellTileContainerLocked h2:after {
+  color: @sapUiShellTextColor;
+}
+
+/* only TileContainers located on the dashboard */
+.sapUshellDashboardGroupsContainer {
+  .sapUshellContainerTitle {
+    font-family: @_sap_ushell_TileContainer_GroupTitleFontFamily;
+    font-weight: @_sap_ushell_TileContainer_GroupTitleFontWeight;
+    text-shadow: 0 0 0.125rem contrast(@sapUiShellGroupTitleTextColor, @sapUiContentShadowColor, @sapUiContentContrastShadowColor, @sapUiContentContrastTextThreshold);
+  }
+
+  .sapUshellTileContainerEditMode {
+    position: relative;
+  }
+}
+.sapUshellContainerTitle {
+  color: @sapUiShellGroupTitleTextColor;
+  text-shadow: @sapUiContentTextShadow;
+}
+
+.sapUiMedia-Std-Phone {
+  .sapUshellContainerTitle {
+    color: @_sap_ushell_TileContainer_GroupHeaderTitleColor;
+    font-size: @_sap_ushell_TileContainer_GroupTitleFontSizePhone;
+  }
+
+  .sapUshellContainerTitle.sapUshellCatalogContainerTitle {
+    font-family: @sapUiFontFamily;
+    font-size: @sapMFontHeader5Size;
+    font-weight: @sapUiFontHeaderWeight;
+    color: @sapUiShellGroupTitleTextColor
+  }
+
+  .sapUshellTileContainerTitleInput {
+    ::-webkit-input-placeholder,
+    :-moz-placeholder,
+    ::-moz-placeholder,
+    :-ms-input-placeholder,
+    label,
+    input {
+      font-size: @_sap_ushell_TileContainer_GroupTitleFontSizePhone;
+    }
+  }
+}
+
+.sapUiMedia-Std-Tablet,
+.sapUiMedia-Std-Desktop {
+  .sapUshellContainerTitle {
+    font-size: @_sap_ushell_TileContainer_GroupTitleFontSizeDesktop;
+    font-weight: @_sap_ushell_TileContainer_GroupTitleFontWeight;
+  }
+
+  .sapUshellContainerTitle.sapUshellCatalogContainerTitle {
+    font-family: @sapUiFontFamily;
+    font-size: @sapMFontHeader5Size;
+    font-weight: @sapUiFontHeaderWeight;
+    color: @sapUiShellGroupTitleTextColor
+  }
+
+  .sapUshellLinkTile:focus {
+    outline-color: @sapUiContentFocusColor;
+  }
+
+  .sapUshellTileContainerTitleInput input {
+    font-size: @_sap_ushell_TileContainer_GroupTitleFontSizeDesktop;
+  }
+
+  .sapUshellTileContainerTitleInput {
+    ::-webkit-input-placeholder,
+    :-moz-placeholder,
+    ::-moz-placeholder,
+    :-ms-input-placeholder {
+      font-size: @_sap_ushell_TileContainer_GroupTitleFontSizeDesktop;
+    }
+
+    label {
+      /* ie */
+      margin-top: 0.125rem;
+    }
+  }
+}
+
+/* only TileContainers located on the catalog */
+.sapUshellCatalog .sapUshellTileContainerContent h3 {
+  font-family: @_sap_ushell_TileContainer_CatalogGroupTitleFontFamily;
+  font-weight: @_sap_ushell_TileContainer_CatalogGroupTitleFontWeight;
+}
+
+.sapUshellTileContainerContent {
+  .sapUshellNoFilteredItems {
+    font-size: 1rem;
+  }
+
+  .sapUshellInner:after {
+    font-size: 0;
+  }
+}
+
+.sapUshellTileContainer {
+  .sapUshellTileContainerBeforeContent,
+  .sapUshellTileContainerAfterContent {
+    .sapUshellAddGroupButton {
+      .sapMBtnIcon {
+        font-size: 1.0rem;
+      }
+
+      div {
+        color: @_sap_ushell_TileContainer_AddGroupText;
+        border: 1.125rem;
+        font-size: 1.25rem;
+
+        & > * {
+          font-size: 1.25rem;
+          color: @_sap_ushell_TileContainer_AddGroupText;
+        }
+      }
+    }
+  }
+}
+
+.sapUshellTileContainer .sapFCard:focus::after {
+  border: 1px dotted @sapUiContentFocusColor;
+}
+
+.sapMBtn.sapUshellAddGroupButton:hover > .sapMBtnInner:not(.sapMBtnActive) {
+  background-color: @sapUiButtonHoverBackground;
+}
+
+.sapUshellTileContainerContent {
+  .sapUshellTileContainerHeader {
+    .sapUshellContainerTitle:focus {
+      outline-color: @sapUiContentFocusColor;
+    }
+
+    &:focus {
+      outline-color: @sapUiContentFocusColor;
+    }
+  }
+
+  .sapUshellTileContainerHeader:focus {
+    outline: 1px dotted @sapUiContentFocusColor;
+  }
+}
+
+.sapUshellTileContainerEditMode .sapUshellTileContainerHeader {
+  position: relative;
+}
+
+.sapUshellTileContainerHeader .sapUshellHeaderActionButton div {
+  background-color: transparent;
+  color: @sapUiShellTextColor;
+}
+
+.sapMBtn.sapUshellHeaderActionButton:hover > .sapMBtnInner:not(.sapMBtnActive) {
+  background-color: @sapUiButtonHoverBackground;
+}
+
+#dashboardGroups .sapUshellDashboardGroupsContainerItem-placeholder {
+  border: 2px dashed @_sap_ushell_TileContainer_PlaceholderColor;
+  background-color: transparent;
+
+  .sapUshellTileContainerEditMode {
+    background: transparent;
+  }
+}
+
+.sapUshellDashboardGroupsContainerItem.sapUshellDashboardGroupsContainerItem-clone {
+  .sapUshellContainerTitle {
+    background-color: @_sap_ushell_TileContainer_EditModeBGColor;
+    border-color: @sapUiListBorderColor ;
+    font-weight: inherit;
+  }
+
+  .sapUshellGroupBackgroundContainer  {
+    background-color: transparent;
+  }
+}
+
+.sapUshellTileContainerHeader .sapUshellTileContainerTitleInput input {
+  background: rgba(255, 255, 255, 0.2);
+  color: @_sap_ushell_TileContainer_GroupHeaderTitleColor;
+}
+
+.sapUshellTileContainerTitleInput {
+  ::-webkit-input-placeholder,
+  :-moz-placeholder,
+  ::-moz-placeholder,
+  :-ms-input-placeholder,
+  label {
+    color: @_sap_ushell_TileContainer_GroupHeaderTitleColor;
+  }
+}
+
+.sapUshellContainerIcon {
+  color: @_sap_ushell_TileContainer_GroupHeaderTitleColor;
+}
+
+.sapUiMedia-Std-Phone .sapUshellTileContainerTitleInput input {
+  font-size: @_sap_ushell_TileContainer_GroupTitleFontSizePhone;
+}
+
+.sapUiMedia-Std-Tablet .sapUshellTileContainerTitleInput input,
+.sapUiMedia-Std-Desktop .sapUshellTileContainerTitleInput input {
+  font-size: @_sap_ushell_TileContainer_GroupTitleFontSizeDesktop;
+}
+
+.sapUiMedia-Std-Phone .sapUshellTileContainerTitleInput {
+  ::-webkit-input-placeholder,
+  :-moz-placeholder,
+  ::-moz-placeholder,
+  :-ms-input-placeholder,
+  label {
+    font-size: @_sap_ushell_TileContainer_GroupTitleFontSizePhone;
+  }
+}
+
+.sapUiMedia-Std-Tablet .sapUshellTileContainerTitleInput,
+.sapUiMedia-Std-Desktop .sapUshellTileContainerTitleInput {
+  ::-webkit-input-placeholder,
+  :-moz-placeholder,
+  ::-moz-placeholder,
+  :-ms-input-placeholder {
+    font-size: @_sap_ushell_TileContainer_GroupTitleFontSizeDesktop;
+  }
+
+  label {
+    /* ie */
+    margin-top: 0.125rem;
+  }
+}
+
+.sapUshellGroupBackgroundContainer {
+  background: @_sap_ushell_TileContainer_EditModeBGColor;
+}
+
+.sapUshellNoLinksAreaPresentTextInner {
+  font-size: 1.125rem;
+  font-style: italic;
+  color: @sapUiShellGroupTextColor;
+}
+
+.sapUshellTransformationError {
+  background-color: lighten(@sapBrandColor, 48);
+}
+
+.sapUshellTransformationErrorIcon {
+  color: @sapUiNegativeElement;
+}
+
+.sapUshellTransformationErrorText {
+  font-family: @sapUiFontFamily;
+  font-size: @sapMFontMediumSize;
+  line-height: 1.4;
+  color: @sapUiBaseText;
+}
+
+.sapUshellDashboardGroupsContainer .sapUshellTileContainerEditMode:not(.sapUshellTileContainerLocked):not(.sapUshellTileContainerDefault) {
+  .sapUshellContainerTitle:hover > {
+    outline: 1px solid fade(@sapUiFieldHoverBorderColor, 50);
+    background-color: fade(@sapUiFieldHoverBackground, 50);
+  }
+}
+
+.sapUshellTileContainerEditModeHidden .sapUshellGroupBackgroundContainer {
+  background-color:  @_sap_ushell_TileContainer_HiddenGroupBackground;
+}

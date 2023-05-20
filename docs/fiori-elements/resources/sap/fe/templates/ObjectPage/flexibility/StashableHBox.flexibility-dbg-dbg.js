@@ -1,0 +1,19 @@
+/*!
+ * SAP UI development toolkit for HTML5 (SAPUI5)
+ *      (c) Copyright 2009-2023 SAP SE. All rights reserved
+ */
+sap.ui.define(["sap/ui/fl/changeHandler/BaseRename"], function (BaseRename) {
+  "use strict";
+
+  const StashableHBoxFlexibility = {
+    stashControl: "default",
+    unstashControl: "default",
+    renameHeaderFacet: BaseRename.createRenameChangeHandler({
+      propertyName: "title",
+      translationTextType: "XFLD",
+      changePropertyName: "headerFacetTitle"
+    })
+  };
+  return StashableHBoxFlexibility;
+}, false);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJTdGFzaGFibGVIQm94RmxleGliaWxpdHkiLCJzdGFzaENvbnRyb2wiLCJ1bnN0YXNoQ29udHJvbCIsInJlbmFtZUhlYWRlckZhY2V0IiwiQmFzZVJlbmFtZSIsImNyZWF0ZVJlbmFtZUNoYW5nZUhhbmRsZXIiLCJwcm9wZXJ0eU5hbWUiLCJ0cmFuc2xhdGlvblRleHRUeXBlIiwiY2hhbmdlUHJvcGVydHlOYW1lIl0sInNvdXJjZVJvb3QiOiIuIiwic291cmNlcyI6WyJTdGFzaGFibGVIQm94LmZsZXhpYmlsaXR5LnRzIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBCYXNlUmVuYW1lIGZyb20gXCJzYXAvdWkvZmwvY2hhbmdlSGFuZGxlci9CYXNlUmVuYW1lXCI7XG5cbmNvbnN0IFN0YXNoYWJsZUhCb3hGbGV4aWJpbGl0eSA9IHtcblx0c3Rhc2hDb250cm9sOiBcImRlZmF1bHRcIixcblx0dW5zdGFzaENvbnRyb2w6IFwiZGVmYXVsdFwiLFxuXHRyZW5hbWVIZWFkZXJGYWNldDogQmFzZVJlbmFtZS5jcmVhdGVSZW5hbWVDaGFuZ2VIYW5kbGVyKHtcblx0XHRwcm9wZXJ0eU5hbWU6IFwidGl0bGVcIixcblx0XHR0cmFuc2xhdGlvblRleHRUeXBlOiBcIlhGTERcIixcblx0XHRjaGFuZ2VQcm9wZXJ0eU5hbWU6IFwiaGVhZGVyRmFjZXRUaXRsZVwiXG5cdH0pXG59O1xuXG5leHBvcnQgZGVmYXVsdCBTdGFzaGFibGVIQm94RmxleGliaWxpdHk7XG4iXSwibWFwcGluZ3MiOiI7QUFBQTtBQUFBO0FBQUE7Ozs7RUFFQSxNQUFNQSx3QkFBd0IsR0FBRztJQUNoQ0MsWUFBWSxFQUFFLFNBQVM7SUFDdkJDLGNBQWMsRUFBRSxTQUFTO0lBQ3pCQyxpQkFBaUIsRUFBRUMsVUFBVSxDQUFDQyx5QkFBeUIsQ0FBQztNQUN2REMsWUFBWSxFQUFFLE9BQU87TUFDckJDLG1CQUFtQixFQUFFLE1BQU07TUFDM0JDLGtCQUFrQixFQUFFO0lBQ3JCLENBQUM7RUFDRixDQUFDO0VBQUMsT0FFYVIsd0JBQXdCO0FBQUEifQ==

@@ -1,0 +1,20 @@
+<core:FragmentDefinition
+    xmlns="sap.ushell.ui"
+    xmlns:core="sap.ui.core"
+    xmlns:shell="sap.ushell.ui.shell">
+    <ShellHeader
+        id="shell-header"
+        showLogo="{/showLogo}"
+        visible="{/headerVisible}"
+        homeUri="{/homeUri}"
+        headItems="{ path: '/headItems', factory: '.shellUpdateAggItem' }"
+        headEndItems="{ path: '/headEndItems', factory: '.shellUpdateAggItem', filters: [{ path: '', test: '.isHeadEndItemNotInOverflow' }] }"
+        centralAreaElement="{/centralAreaElement}"
+        title="{/title}">
+        <appTitle>
+            <shell:ShellAppTitle
+                id="shellAppTitle"
+                text="{/application/title}" />
+        </appTitle>
+    </ShellHeader>
+</core:FragmentDefinition>

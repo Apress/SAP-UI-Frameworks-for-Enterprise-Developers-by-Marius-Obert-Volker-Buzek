@@ -1,0 +1,30 @@
+<mvc:View
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    controllerName="sap.ushell.components.workPageRuntime.controller.WorkPageRuntime"
+    height="100%">
+    <NavContainer id="workpageNavContainer">
+        <Page
+            id="workPage"
+            busy="{= !${/loaded}}"
+            enableScrolling="false"
+            showHeader="false">
+            <core:ComponentContainer
+                height="100%"
+                usage="pageBuilder"
+                manifest="true"
+                async="true"
+                componentCreated="onWorkPageBuilderCreated"
+            />
+        </Page>
+        <MessagePage
+            id="errorPage"
+            showHeader="false"
+            description="" />
+        <Page
+            id="emptyPage"
+            showHeader="false" />
+    </NavContainer>
+
+</mvc:View>

@@ -1,0 +1,89 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns="sap.m"
+	xmlns:internalMacro="sap.fe.macros.internal"
+	xmlns:core="sap.ui.core"
+	xmlns:unittest="http://schemas.sap.com/sapui5/preprocessorextension/sap.fe.unittesting/1"
+	xmlns:fpm="sap.fe.macros.fpm"
+	xmlns:l="sap.ui.layout"
+	template:require="{
+		MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+		ID: 'sap/fe/core/helpers/StableIdHelper',
+		OP: 'sap/fe/templates/ObjectPage/ObjectPageTemplating',
+		FIELD: 'sap/fe/macros/field/FieldHelper'
+	}"
+>
+	<VBox id="{= ${converterHeaderFacet>headerFormData/id} }" displayInline="true">
+		<template:if test="{converterHeaderFacet>headerFormData/label}">
+			<Title level="H3" text="{converterHeaderFacet>headerFormData/label}" class="sapUiSmallMarginBottom" />
+		</template:if>
+		<template:if test="{= OP.doesFieldGroupContainOnlyOneMultiLineDataField(${converterHeaderFacet>headerFormData/formElements})}">
+			<template:then>
+				<template:with path="converterHeaderFacet>headerFormData/formElements/0/" var="dataField">
+					<!-- There should only be 1 DataField -->
+					<template:if test="{dataField>visible}">
+						<layoutData>
+							<FlexItemData maxWidth="300px" />
+						</layoutData>
+						<template:with path="dataField>annotationPath" var="annotationDataField">
+							<Text text="{annotationDataField>Value@@MODEL.format}" emptyIndicatorMode="On" />
+						</template:with>
+					</template:if>
+				</template:with>
+			</template:then>
+			<template:else>
+				<template:repeat list="{converterHeaderFacet>headerFormData/formElements}" var="formElement">
+					<template:if test="{= ${formElement>type} === 'Annotation' }">
+						<template:then>
+							<template:with path="formElement>annotationPath" var="dataField">
+								<HBox
+									unittest:id="ObjectPageHeaderHBoxTest"
+									class="sapUiTinyMarginBottom"
+									visible="{formElement>visible}"
+									renderType="{= OP.getHeaderFormHboxRenderType(${dataField>@@UI.getDataModelObjectPath})}"
+								>
+									<Label
+										unittest:id="ObjectPageHeaderLabelTest"
+										id="{= ID.generate([ ${formElement>idPrefix}, 'Label'])}"
+										text="{= ${dataField>@@FIELD.computeLabelText} + ':' }"
+										visible="{= !!${dataField>@@FIELD.computeLabelText} }"
+										class="sapUiTinyMarginEnd"
+										vAlign="{= ${formElement>isValueMultilineText} === true ? 'Middle' : 'Inherit' }"
+										wrapping="true"
+									/>
+									<internalMacro:Field
+										idPrefix="{formElement>idPrefix}"
+										editMode="Display"
+										entitySet="{entitySet>}"
+										dataField="{dataField>}"
+										ariaLabelledBy="{= ID.generate([ ${formElement>idPrefix}, 'Label'])}"
+									>
+										<internalMacro:formatOptions textAlignMode="Form" showEmptyIndicator="true" fieldMode="nowrapper" />
+									</internalMacro:Field>
+								</HBox>
+							</template:with>
+						</template:then>
+						<template:elseif test="{= ${formElement>type} === 'Default'}">
+							<l:HorizontalLayout class="sapUiTinyMarginBottom">
+								<template:if test="{formElement>label}">
+									<Label text="{formElement>label}:" class="sapUiTinyMarginEnd" />
+								</template:if>
+								<fpm:CustomFragment
+									id="{formElement>key}"
+									fragmentName="{formElement>template}"
+									contextPath="{entitySet>}"
+								/>
+							</l:HorizontalLayout>
+						</template:elseif>
+						<template:else>
+							<!-- ERROR HANDLING: Unsupported Header Facet Type -->
+							<VBox width="150px" class="sapUiSmallMargin">
+								<Text text="Unsupported Facet Type: {formElement>type}" visible="true" wrapping="true" />
+							</VBox>
+						</template:else>
+					</template:if>
+				</template:repeat>
+			</template:else>
+		</template:if>
+	</VBox>
+</core:FragmentDefinition>

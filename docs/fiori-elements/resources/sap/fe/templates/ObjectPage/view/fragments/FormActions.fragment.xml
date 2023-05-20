@@ -1,0 +1,20 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:uxap="sap.uxap"
+>
+	<!--
+		This Fragment renders Action buttons in Sections.
+		UI.DataFieldForActions from
+		1. UI.Identification with a qualifer
+		2. UI.FieldGroup
+		3. UI.StatusInfo
+		will be capable of rendering action buttons in Sections.
+	 -->
+	<uxap:actions>
+		<template:repeat list="{subSection>actions}" var="action">
+			<core:Fragment fragmentName="sap.fe.macros.form.FormActionButtons" type="XML" />
+		</template:repeat>
+	</uxap:actions>
+</core:FragmentDefinition>

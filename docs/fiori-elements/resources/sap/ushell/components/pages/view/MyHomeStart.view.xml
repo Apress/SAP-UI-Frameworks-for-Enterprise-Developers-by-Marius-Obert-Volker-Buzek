@@ -1,0 +1,25 @@
+<mvc:View
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    controllerName="sap.ushell.components.pages.controller.MyHome">
+    <Page showHeader="false">
+        <core:Fragment fragmentName="sap.ushell.components.pages.view.MessageStrip" type="XML" class="sapUiSmallMargin" />
+        <VBox
+              class="sapUiSmallMargin"
+              alignItems="Center"
+              justifyContent="Center">
+
+            <IllustratedMessage
+                illustrationSize="Scene"
+                illustrationType="sapIllus-NoData"
+                title="{i18n>MyHome.InitialPage.Title}"
+                description="{i18n>MyHome.InitialPage.Description}">
+                <additionalContent>
+                    <Button text="{i18n>MyHome.InitialPage.Button.EditPage}"
+                            press=".onEditPress"/>
+                </additionalContent>
+            </IllustratedMessage>
+        </VBox>
+    </Page>
+</mvc:View>

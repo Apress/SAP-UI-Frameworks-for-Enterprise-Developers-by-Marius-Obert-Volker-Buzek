@@ -1,0 +1,16 @@
+{
+    "sap.app": {
+        "id": "sap.ushell.Card",
+        "type": "card",
+        "applicationVersion": {
+            "version": "1.0.0"
+        }
+    },
+    "sap.ui": {
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    }
+}

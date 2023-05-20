@@ -1,0 +1,7 @@
+/*!
+ * SAP UI development toolkit for HTML5 (SAPUI5)
+
+        (c) Copyright 2009-2015 SAP SE. All rights reserved
+    
+ */
+sap.ui.define(["./DeleteMeasurementToolHandler","./Tool"],function(e,t){"use strict";var i=t.extend("sap.ui.vk.tools.DeleteMeasurementTool",{metadata:{library:"sap.ui.vk"}});var r=i.getMetadata().getParent().getClass().prototype;i.prototype.init=function(){if(r.init){r.init.call(this)}this._viewport=null;this._handler=new e(this);this._highlightedMeasurementDomRef=null;this.setFootprint(["sap.ui.vk.threejs.Viewport","sap.ui.vk.svg.Viewport"])};i.prototype.setActive=function(e,t,i){r.setActive.call(this,e,t,i);if(this._viewport){if(e){this._addLocoHandler();this._viewport.addStyleClass("sapUiVizKitDeleteDistanceCursor")}else{this._viewport.removeStyleClass("sapUiVizKitDeleteDistanceCursor");this.highlightMeasurement(null,this._viewport.getMeasurementSurface());this._removeLocoHandler()}}return this};i.prototype.highlightMeasurement=function(e,t){var i=this._highlightedMeasurementDomRef;if(e===i){return null}if(i!=null){this._viewport.getMeasurementSurface().highlightMeasurement(i._measurement,false)}if(e!=null){this._viewport.getMeasurementSurface().highlightMeasurement(e._measurement,true,this._viewport,this._viewport.getCamera())}this._highlightedMeasurementDomRef=e;return this};i.prototype.removeMeasurement=function(e){var t=this._viewport.getMeasurementSurface();var i=e._measurement;t.removeMeasurement(i);if(t.getMeasurements().length===0){this.setActive(false,this._viewport)}return this};return i});

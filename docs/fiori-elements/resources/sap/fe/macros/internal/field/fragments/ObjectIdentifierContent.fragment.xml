@@ -1,0 +1,25 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:macro="sap.fe.macros"
+>
+	<ObjectIdentifier
+		core:require="{FieldRuntime: 'sap/fe/macros/field/FieldRuntime'}"
+		id="{this>noWrapperId}"
+		title="{this>identifierTitle}"
+		text="{this>identifierText}"
+		titleActive="{this>hasQuickView}"
+		titlePress="FieldRuntime.pressLink"
+		ariaLabelledBy="{this>ariaLabelledBy}"
+		emptyIndicatorMode="{this>emptyIndicatorMode}"
+	>
+		<template:if test="{= ${this>hasQuickView}}">
+			<template:then>
+				<dependents>
+					<macro:QuickView dataField="{dataField>}" semanticObject="{this>semanticObject}" contextPath="{entitySet>}" />
+				</dependents>
+			</template:then>
+		</template:if>
+	</ObjectIdentifier>
+</core:FragmentDefinition>

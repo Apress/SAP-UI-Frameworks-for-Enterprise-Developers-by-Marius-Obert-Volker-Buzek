@@ -1,0 +1,131 @@
+<core:FragmentDefinition
+    height="100%"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m">
+    <Popover
+        initialFocus="CEPSearchField"
+        id="searchFieldPopover"
+        placement="Bottom"
+        showArrow="false"
+        showHeader="false"
+        offsetX="-13"
+        beforeOpen=".onBeforeOpen"
+        afterOpen=".onAfterOpen"
+        afterClose=".onAfterClose"
+        horizontalScrolling="false">
+        <content>
+            <SearchField
+                id="CEPSearchField"
+                width="99%"
+                placeholder="{i18n>search}"
+                tooltip="{i18n>search}"
+                enableSuggestions="true"
+                search=".onSearch"
+                suggest=".onSuggest"
+                class="sapUshellCEPListCenter"
+            />
+            <List id="SearchHistoryList"
+                  visible="false"
+                  showSeparators="None"
+                  xmlns="sap.m"
+                  items="{
+                      path: 'searchTerms>/'
+              }"
+                  itemPress=".onRecentSearchPress"
+                  growing="true"
+                  showNoData="false"
+                  updateStarted=".onGrowingStarted"
+                  growingThreshold="2"
+                  growingScrollToLoad="false">
+                <StandardListItem
+                    type="Active"
+                    title="{searchTerms>text}"
+                    icon="sap-icon://history"
+                    iconDensityAware="false"
+                    class="sapUiTinyMarginBeginEnd"/>
+            </List>
+            <List id="FrequentlyUsedAppsList"
+                  visible="false"
+                  showSeparators="None"
+                  xmlns="sap.m"
+                  items="{
+                      path: 'freqUsedApps>/'
+              }"
+                  itemPress=".onFreqUsedAppsPress"
+                  class="sapUiTinyMarginEnd sapUiTinyMarginTopBottom"
+                  growing="true"
+                  showNoData="false"
+                  growingThreshold="6"
+                  growingScrollToLoad="false">
+                <StandardListItem
+                    type="Active"
+                    title="{freqUsedApps>title}"
+                    icon="{freqUsedApps>icon}"
+                    iconDensityAware="false"
+                    class="sapUiTinyMarginBeginEnd"/>
+            </List>
+            <List id="ProductsList"
+                  showSeparators="None"
+                  visible="false"
+                  xmlns="sap.m"
+                  items="{
+                                    path: 'productsResults>/'
+                                }"
+                  itemPress=".onProductsPress"
+                  class="sapUiTinyMarginEnd sapUiTinyMarginTopBottom"
+                  growing="true"
+                  growingThreshold="6"
+                  growingScrollToLoad="false">
+                <StandardListItem
+                    type="Active"
+                    title="{productsResults>text}"
+                    icon="{productsResults>icon}"
+                    iconDensityAware="false"
+                    class="sapUiTinyMarginBeginEnd"
+                />
+            </List>
+            <List id="SearchResultList"
+                  showSeparators="None"
+                  visible="false"
+                  xmlns="sap.m"
+                  items="{
+                                    path: 'searchResults>/'
+                                }"
+                  itemPress=".onSearchResultPress"
+                  class="sapUiTinyMarginEnd sapUiTinyMarginTopBottom"
+                  growing="true"
+                  growingThreshold="6"
+                  updateFinished=".onGrowingFinishedResults"
+                  growingScrollToLoad="false">
+                <StandardListItem
+                    type="Active"
+                    title="{searchResults>text}"
+                    icon="{searchResults>icon}"
+                    iconDensityAware="false"
+                    class="sapUiTinyMarginBeginEnd"
+                />
+            </List>
+            <List id="ExternalSearchAppsList"
+                  showSeparators="None"
+                  visible="false"
+                  xmlns="sap.m"
+                  items="{
+                                    path: 'externalSearchResults>/'
+                                }"
+                  itemPress=".onExternalSearchResultPress"
+                  class="sapUiTinyMarginEnd sapUiTinyMarginTopBottom"
+                  growing="true"
+                  showNoData="false"
+                  growingThreshold="6"
+                  growingScrollToLoad="false">
+                <StandardListItem
+                    type="Active"
+                    title="{externalSearchResults>text}"
+                    icon="{externalSearchResults>icon}"
+                    iconDensityAware="false"
+                    class="sapUiTinyMarginBeginEnd"
+                />
+            </List>
+        </content>
+    </Popover>
+</core:FragmentDefinition>

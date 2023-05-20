@@ -1,0 +1,7 @@
+/*! 
+ * SAPUI5
+
+		(c) Copyright 2009-2021 SAP SE. All rights reserved
+	 
+ */
+(function(){function e(e,r,n){if(n){return r?r(e):e}if(!e||!e.then){e=Promise.resolve(e)}return r?e.then(r):e}function r(e){return function(){for(var r=[],n=0;n<arguments.length;n++){r[n]=arguments[n]}try{return Promise.resolve(e.apply(this,r))}catch(e){return Promise.reject(e)}}}sap.ui.define(["./sinaNexTS/providers/multi/FederationType","./sinaNexTS/sina/SinaConfiguration"],function(n,t){const i=r(function(r){return e(sap.ushell.Container.getServiceAsync("ClientSideTargetResolution"),function(n){return e(n.getSystemContext(r),function(e){var n=e.getProperty("esearch.provider");var t=e.getFullyQualifiedXhrUrl("sap/opu/odata/sap/ESH_SEARCH_SRV");if(!n){return}return{contentProviderId:r,provider:n.toLowerCase(),label:r,url:t}})})});const o=r(function(r){return!sap||!sap.cf?Promise.resolve(r):e(sap.ushell.Container.getServiceAsync("CommonDataModel"),function(n){return e(n.getApplications(),function(n){var t=Object.keys(n).reduce(function(e,r){var t=n[r];var i=t["sap.app"]&&t["sap.app"].contentProviderId;if(i){e[i]=true}return e},{});var o=Object.keys(t);var s=[];for(var c=0;c<o.length;++c){var l=o[c];s.push(i(l))}return e(Promise.all(s),function(e){if(!e||e.length===0){return r}else{e=e.filter(function(e){if(typeof e!=="undefined"){return e}});return[{provider:u.MULTI,subProviders:e,federationType:a.advanced_round_robin,url:""},u.DUMMY]}})})})});var a=n["FederationType"];var u=t["AvailableProviders"];var s={__esModule:true};s.readCFlpConfiguration=o;return s})})();

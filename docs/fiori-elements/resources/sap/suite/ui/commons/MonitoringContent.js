@@ -1,0 +1,7 @@
+/*!
+ * 
+		SAP UI development toolkit for HTML5 (SAPUI5)
+		(c) Copyright 2009-2015 SAP SE. All rights reserved
+	
+ */
+sap.ui.define(["./library","sap/ui/core/Control","sap/ui/core/Icon","sap/ui/events/KeyCodes","./MonitoringContentRenderer"],function(e,t,o,i,n){"use strict";var s=t.extend("sap.suite.ui.commons.MonitoringContent",{metadata:{deprecated:true,library:"sap.suite.ui.commons",properties:{value:{type:"string",group:"Misc",defaultValue:null},iconSrc:{type:"string",group:"Misc",defaultValue:null},size:{type:"sap.suite.ui.commons.InfoTileSize",group:"Misc",defaultValue:"Auto"},state:{type:"sap.suite.ui.commons.LoadState",group:"Misc",defaultValue:"Loaded"},animateTextChange:{type:"boolean",group:"Misc",defaultValue:true}},aggregations:{icon:{type:"sap.ui.core.Icon",multiple:false}},events:{press:{}}}});s.prototype.init=function(){this._oIcon=new o(this.getId()+"-icon");this.setAggregation("icon",this._oIcon)};s.prototype.onAfterRendering=function(){if(e.LoadState.Loaded===this.getState()||this.getAnimateTextChange()){this.$().animate({opacity:"1"},1e3)}};s.prototype.setIconSrc=function(e){this._oIcon.setSrc(e);return this};s.prototype.getIconSrc=function(){return this._oIcon.getSrc()};s.prototype.ontap=function(e){this.firePress()};s.prototype.onkeydown=function(e){if(e.which===i.ENTER||e.which===i.SPACE){this.firePress();e.preventDefault()}};return s});
