@@ -1,0 +1,23 @@
+{
+  "generator-template-ui5-project": {
+    "projectname": "openui5",
+    "namespaceUI5": "com.apress",
+    "enableFPM": false,
+    "platform": "Static webserver",
+    "viewtype": "XML",
+    "ui5libs": "Content delivery network (OpenUI5)",
+    "newdir": true,
+    "initrepo": true,
+    "namespaceURI": "com/apress",
+    "uimodules": [
+      "uimodule"
+    ],
+    "opa5Journeys": [
+      "Main"
+    ],
+    "opa5pos": [
+      "Main"
+    ],
+    "setupCompleted": true
+  }
+}

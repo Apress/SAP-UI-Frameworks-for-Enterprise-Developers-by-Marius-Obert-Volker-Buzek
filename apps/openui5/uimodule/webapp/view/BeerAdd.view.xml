@@ -1,0 +1,67 @@
+<mvc:View controllerName="com.apress.openui5.controller.BeerAdd" displayBlock="true"
+  xmlns:core="sap.ui.core"
+  xmlns="sap.m"
+  xmlns:f="sap.ui.layout.form"
+  xmlns:l="sap.ui.layout"
+  xmlns:mvc="sap.ui.core.mvc">
+  <core:Fragment fragmentName="com.apress.openui5.view.Header" type="XML" />
+  <Page class="reducedHeight">
+    <customHeader>
+      <Bar>
+        <contentLeft>
+          <Button id="back" icon="sap-icon://nav-back" press="onNavBack" />
+        </contentLeft>
+        <contentMiddle>
+          <Title id="BeerAdd" text="{i18n>BeerAdd}" />
+        </contentMiddle>
+        <contentRight>
+          <Button id="save" text="{i18n>Save}" enabled="true" press="handleSavePress" />
+        </contentRight>
+      </Bar>
+    </customHeader>
+    <content>
+      <VBox class="sapUiSmallMargin">
+        <f:Form id="Form1" editable="true" validationSuccess=".onValidationSuccess" validationError=".onValidationError">
+          <f:title>
+            <core:Title text="{i18n>General}" />
+          </f:title>
+          <f:layout>
+            <f:ResponsiveGridLayout labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false" />
+          </f:layout>
+          <f:formContainers>
+            <f:FormContainer>
+              <f:formElements>
+                <f:FormElement label="{i18n>Name}">
+                  <f:fields>
+                    <Input required="true" value="{path: '/name', type: 'sap.ui.model.type.String', constraints: { minLength:4 }}" id="name" fieldGroupIds="newBeer" />
+                  </f:fields>
+                </f:FormElement>
+                <f:FormElement label="{i18n>Brewery}">
+                  <f:fields>
+                    <Input required="true" value="{path: '/brewery', type: 'sap.ui.model.type.String', constraints: { minLength:4 }}" id="brewery" fieldGroupIds="newBeer" />
+                  </f:fields>
+                </f:FormElement>
+                <f:FormElement label="{i18n>IBU}">
+                  <f:fields>
+                    <Input required="true" value="{path: '/ibu', type: 'sap.ui.model.type.Float', constraints: { minimum: 1 }}" id="ibu" fieldGroupIds="newBeer" />
+                  </f:fields>
+                </f:FormElement>
+                <f:FormElement label="{i18n>ABV}">
+                  <f:fields>
+                    <Input required="true" value="{path: '/abv', type: 'sap.ui.model.type.Float', constraints: { minimum: 1, maximum: 100 }}" id="abv" fieldGroupIds="newBeer" />
+                  </f:fields>
+                </f:FormElement>
+                <f:FormElement label="{i18n>Logo}">
+                  <f:fields>
+                    <Input value="{path: '/logo', type: 'sap.ui.model.type.String', constraints: { startsWith:'https', minLength:7  }}" required="true" fieldGroupIds="newBeer" />
+                  </f:fields>
+                </f:FormElement>
+              </f:formElements>
+            </f:FormContainer>
+          </f:formContainers>
+        </f:Form>
+      </VBox>
+    </content>
+  </Page>
+</mvc:View>
+
