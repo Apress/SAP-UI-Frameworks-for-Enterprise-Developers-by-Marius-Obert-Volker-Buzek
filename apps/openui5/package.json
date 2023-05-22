@@ -2,10 +2,10 @@
     "name": "openui5",
     "version": "0.0.1",
     "scripts": {
-        "start": "ui5 serve --config=uimodule/ui5.yaml  --open index.html",
+        "start": "ui5 serve --config=uimodule/ui5.yaml --open index.html",
         "build:ui": "run-s build:uimodule",
         "build": "run-s build:uimodule",
-        "test": "echo 1",
+        "test": "npm run karma-ci",
         "karma-ci": "karma start karma-ci.conf.js",
         "clearCoverage": "shx rm -rf coverage",
         "karma": "run-s clearCoverage karma-ci",
