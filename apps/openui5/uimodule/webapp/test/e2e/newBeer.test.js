@@ -3,7 +3,7 @@
 
 const { listSelector, popoverButton, nameInput, breweryInput, ibuInput, abvInput, logoInput, saveButton } = require("./_selectors");
 
-describe("read", () => {
+describe("write scenario", () => {
     before(async () => {
         const button = await browser.asControl(popoverButton)
         // trick 17 to switch the browser to English!

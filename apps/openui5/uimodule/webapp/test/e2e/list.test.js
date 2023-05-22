@@ -2,7 +2,7 @@
 
 const { listSelector, popoverButton } = require("./_selectors");
 
-describe("read", () => {
+describe("read scenario", () => {
     it("should find the list of all beers", async () => {
         // locates and presses the product switcher button
         // to open the overlay dialog
