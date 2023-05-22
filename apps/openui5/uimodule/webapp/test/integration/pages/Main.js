@@ -23,7 +23,7 @@ sap.ui.require(["sap/ui/test/Opa5", "sap/ui/test/actions/Press"], function (Opa5
                     return this.waitFor({
                         controlType: "sap.m.Title",
                         properties: {
-                            text: expectedTitle
+                            text: expectedTitle,
                         },
                         success: function () {
                             Opa5.assert.ok(true, "The page shows the correct title");

@@ -1,5 +1,3 @@
-sap.ui.define([
-	"./controller/BeerAdd.controller"
-], function() {
-	"use strict";
+sap.ui.define(["./controller/BeerAdd.controller"], function () {
+    "use strict";
 });

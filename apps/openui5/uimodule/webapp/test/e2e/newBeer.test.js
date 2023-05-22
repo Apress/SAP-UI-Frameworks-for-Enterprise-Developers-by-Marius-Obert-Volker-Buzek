@@ -5,7 +5,7 @@ const { listSelector, popoverButton, nameInput, breweryInput, ibuInput, abvInput
 
 describe("write scenario", () => {
     before(async () => {
-        const button = await browser.asControl(popoverButton)
+        const button = await browser.asControl(popoverButton);
         // trick 17 to switch the browser to English!
         await button.exec(() => {
             sap.ui.getCore().getConfiguration().setLanguage("en");

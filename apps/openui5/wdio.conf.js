@@ -72,14 +72,14 @@ exports.config = {
                         ? ["--headless"]
                         : process.argv.indexOf("--debug") > -1
                         ? ["window-size=1440,800", "--auto-open-devtools-for-tabs"]
-                        : ["window-size=1440,800"]
+                        : ["window-size=1440,800"],
             },
-            acceptInsecureCerts: true
+            acceptInsecureCerts: true,
             // If outputDir is provided WebdriverIO can capture driver session logs
             // it is possible to configure which logTypes to include/exclude.
             // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
             // excludeDriverLogs: ['bugreport', 'server'],
-        }
+        },
     ],
     //
     // ===================
@@ -158,8 +158,8 @@ exports.config = {
     // See the full list at http://mochajs.org/
     mochaOpts: {
         ui: "bdd",
-        timeout: process.argv.indexOf("--debug") > -1 ? 600000 : 60000
-    }
+        timeout: process.argv.indexOf("--debug") > -1 ? 600000 : 60000,
+    },
     //
     // =====
     // Hooks
@@ -306,4 +306,4 @@ exports.config = {
      */
     // onReload: function(oldSessionId, newSessionId) {
     // }
-}
+};

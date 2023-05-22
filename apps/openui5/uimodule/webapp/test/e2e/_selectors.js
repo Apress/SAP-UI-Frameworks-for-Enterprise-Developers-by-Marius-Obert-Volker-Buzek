@@ -46,5 +46,5 @@ module.exports = {
         selector: {
             id: "container-com.apress.openui5---BeerAdd--save",
         },
-    }
+    },
 };
