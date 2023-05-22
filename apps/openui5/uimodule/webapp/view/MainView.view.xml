@@ -1,0 +1,8 @@
+<mvc:View controllerName="com.apress.openui5.controller.MainView" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns="sap.m" displayBlock="true">
+    <core:Fragment fragmentName="com.apress.openui5.view.Header" type="XML" />
+    <Page title="{i18n>MainView}" id="MainView">
+        <content>
+            <IllustratedMessage title="{i18n>PleaseSelectAPage}" description="{i18n>UsePageSwitch}" />
+        </content>
+    </Page>
+</mvc:View>

@@ -5,18 +5,6 @@ metadata:
   name: com.apress.beershop
 type: application
 
-builder:
-  resources:
-    excludes:
-      - "/test/**"
-      - "/localService/**"
-  ### use this for deployment targets such as Work Zone
-  # customTasks:
-  #   - name: ui5-task-zipper
-  #     afterTask: generateCachebusterInfo
-  #     configuration:
-  #       archiveName: com_apress_beershop
-
 framework:
   name: SAPUI5
   version: "1.113.0"

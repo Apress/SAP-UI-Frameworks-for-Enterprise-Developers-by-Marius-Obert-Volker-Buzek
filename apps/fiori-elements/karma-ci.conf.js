@@ -1,7 +1,7 @@
 module.exports = function (config) {
-  "use strict"
+  "use strict";
 
-  require("./karma.conf")(config)
+  require("./karma.conf")(config);
   config.set({
     // test results reporter to use
     // possible values: "dots", "progress", "coverage"
@@ -14,6 +14,6 @@ module.exports = function (config) {
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: true
-  })
-}
+    singleRun: true,
+  });
+};

@@ -1,0 +1,11 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:f="sap.f" xmlns:core="sap.ui.core">
+   <ResponsivePopover placement="Bottom" showHeader="false">
+       <f:ProductSwitch change="fnPageSwitch">
+           <f:items>
+               <f:ProductSwitchItem src="sap-icon://home" title="{i18n>Home}" targetSrc="RouteMainView" />
+               <f:ProductSwitchItem src="sap-icon://add" title="{i18n>AddNewBeer}" targetSrc="BeerAdd" />
+               <f:ProductSwitchItem src="sap-icon://list" title="{i18n>ShowAllBeers}" targetSrc="BeerList" />
+           </f:items>
+       </f:ProductSwitch>
+   </ResponsivePopover>
+</core:FragmentDefinition>

@@ -1,0 +1,108 @@
+{
+    "beers": [
+        {
+            "ID": "b8c3fc14-22e2-4f42-837a-e6134775a186",
+            "name": "Lagerbier Hell",
+            "abv": "5.2",
+            "ibu": "12",
+            "brewery": "Augustiner-Bräu Wagner KG",
+            "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/8/83/Augustiner_Braeu_Muenchen.svg/440px-Augustiner_Braeu_Muenchen.svg.png"
+        },
+        {
+            "ID": "08d5b3fb-549c-4be7-9ac8-e039d75823e7",
+            "name": "Edelstoff",
+            "abv": "5.7",
+            "ibu": "17",
+            "brewery": "Augustiner-Bräu Wagner KG",
+            "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/8/83/Augustiner_Braeu_Muenchen.svg/440px-Augustiner_Braeu_Muenchen.svg.png"
+        },
+        {
+            "ID": "9e1704e3-6fd0-4a5d-bfb1-13ac47f7976b",
+            "name": "Kloster Zwickel",
+            "abv": "5.4",
+            "ibu": "21",
+            "brewery": "Alpirsbacher Klosterbräu",
+            "logo": "https://assets.untappd.com/site/brewery_logos/brewery-7739_8af98.jpeg"
+        },
+        {
+            "ID": "2a1704e3-6fd0-4a5d-bfb1-43ac47f7976b",
+            "name": "Pils",
+            "abv": "4.9",
+            "ibu": "28",
+            "brewery": "Alpirsbacher Klosterbräu",
+            "logo": "https://assets.untappd.com/site/brewery_logos/brewery-7739_8af98.jpeg"
+        },
+        {
+            "ID": "9473beeb-1a74-4589-82b8-4fdcce1d66d5",
+            "name": "Blue Moon Belgian White",
+            "abv": "5.4",
+            "ibu": "9",
+            "brewery": "Blue Moon Brewing Company",
+            "logo": "https://assets.untappd.com/site/brewery_logos/brewery-127804_1a670.jpeg"
+        },
+        {
+            "ID": "e4172f62-8ae3-4829-2cf1-b8f04e4c5dc3",
+            "name": "Sternhagel",
+            "abv": "8.5",
+            "ibu": "60",
+            "brewery": "Giesinger Bräu",
+            "logo": "https://assets.untappd.com/site/brewery_logos/brewery-GiesingerBrau_24085.jpeg"
+        },
+        {
+            "ID": "f5578f62-9ae1-4829-8cf1-b8f13e4c5dc3",
+            "name": "Erhellung",
+            "abv": "5.3",
+            "ibu": "18",
+            "brewery": "Giesinger Bräu",
+            "logo": "https://assets.untappd.com/site/brewery_logos/brewery-GiesingerBrau_24085.jpeg"
+        },
+        {
+            "ID": "8a67be38-be68-401f-a2ee-0accd920f7c2",
+            "name": "Tannenzäpfle",
+            "abv": "5.1",
+            "ibu": "32",
+            "brewery": "Badische Staatsbrauerei Rothaus",
+            "logo": "https://assets.untappd.com/site/brewery_logos/brewery-BadischeStaatsbrauereiRothaus_1077.jpeg"
+        },
+        {
+            "ID": "fe9479d4-6f60-47e5-b565-a215e6292935",
+            "name": "Weizenzäpfle",
+            "abv": "5.4",
+            "ibu": "13",
+            "brewery": "Badische Staatsbrauerei Rothaus",
+            "logo": "https://assets.untappd.com/site/brewery_logos/brewery-BadischeStaatsbrauereiRothaus_1077.jpeg"
+        },
+        {
+            "ID": "1efd2b35-6fd4-4ac5-a73e-64dfc3fb123b",
+            "name": "Diplom Pils",
+            "abv": "4.9",
+            "ibu": "30",
+            "brewery": "Privatbrauerei Waldhaus",
+            "logo": "https://assets.untappd.com/site/brewery_logos/brewery-13505_285df.jpeg"
+        },
+        {
+            "ID": "1bedbcc6-2333-46e6-9561-34b325a00f9c",
+            "name": "Helles",
+            "abv": "5.1",
+            "ibu": "16",
+            "brewery": "lille",
+            "logo": "https://assets.untappd.com/site/brewery_logos/brewery-191088_39bbf.jpeg"
+        },
+        {
+            "ID": "8f616952-1e4e-4595-9e9e-798d936f4d39",
+            "name": "Grünerla",
+            "abv": "4.9",
+            "ibu": "11",
+            "brewery": "Grüner Bier",
+            "logo": "https://assets.untappd.com/site/brewery_logos/brewery-155061_cd3fc.jpeg"
+        },
+        {
+            "ID": "66bd3170-fb54-4781-83e8-62fcd1a460bc",
+            "name": "Festmärzen",
+            "abv": "5.9",
+            "ibu": "13",
+            "brewery": "Grüner Bier",
+            "logo": "https://assets.untappd.com/site/brewery_logos/brewery-155061_cd3fc.jpeg"
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+<mvc:View controllerName="com.apress.openui5.controller.BeerList" displayBlock="true" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc">
+    <core:Fragment fragmentName="com.apress.openui5.view.Header" type="XML" />
+    <Page class="reducedHeight" title="{i18n>BeerList}" id="BeerList" showNavButton="true" navButtonPress="onNavBack">
+        <subHeader>
+            <OverflowToolbar>
+                <SearchField liveChange=".onSearch" width="100%" />
+            </OverflowToolbar>
+        </subHeader>
+        <content>
+            <IllustratedMessage illustrationType="sapIllus-EmptyList" visible="{= !${sample>/beers} || ${sample>/beers/length} === 0  }" />
+            <List id="beerList" visible="{= ${sample>/beers/length} > 0 }" items="{
+         path: 'sample>/beers',
+         sorter: {
+           path: 'name'
+         }
+       }">
+                <items>
+                    <StandardListItem title="{sample>name}" info="{sample>brewery}" icon="{sample>logo}" description="{= 'ABV ' +${sample>abv} + ' IBU ' + ${sample>ibu} }" />
+                </items>
+            </List>
+        </content>
+    </Page>
+
+</mvc:View>

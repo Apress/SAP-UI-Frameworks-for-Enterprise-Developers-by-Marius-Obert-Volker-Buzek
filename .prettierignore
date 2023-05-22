@@ -1,0 +1,5 @@
+node_modules/
+mta_archives/
+deployer/resources/
+docs
+dist
