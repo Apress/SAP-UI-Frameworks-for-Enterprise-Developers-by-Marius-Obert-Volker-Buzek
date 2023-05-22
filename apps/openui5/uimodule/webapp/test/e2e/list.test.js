@@ -3,12 +3,12 @@
 const { listSelector, popoverButton } = require("./_selectors");
 
 describe("read", () => {
-    it("should find the list of all customers", async () => {
+    it("should find the list of all beers", async () => {
         // locates and presses the product switcher button
         // to open the overlay dialog
         await browser.asControl(popoverButton).press();
 
-        // locates and presses "Show All Customers"
+        // locates and presses "Show All Beers"
         await browser
             .asControl({
                 selector: {
@@ -17,7 +17,7 @@ describe("read", () => {
                     viewId: "container-com.apress.openui5---MainView",
                     i18NText: {
                         propertyName: "title",
-                        key: "ShowAllCustomers",
+                        key: "ShowAllBeers",
                     },
                     searchOpenDialogs: true,
                 },
@@ -28,9 +28,9 @@ describe("read", () => {
         expect(listItems.length).toBeGreaterThanOrEqual(10);
     });
 
-    it("should find Marius as the first customer", async () => {
+    it("should find the 'Blue Moon' as the first beer", async () => {
         const firstListItem = await browser.asControl(listSelector).getItems(0);
         const firstListItemTitle = await firstListItem.getTitle();
-        expect(firstListItemTitle).toEqual("Marius Obert");
+        expect(firstListItemTitle).toEqual("Blue Moon Belgian White");
     });
 });
