@@ -1,0 +1,21 @@
+specVersion: "3.0"
+metadata:
+    name: openui5_uimodule
+type: application
+resources:
+    configuration:
+        paths:
+            webapp: uimodule/webapp
+framework:
+    name: OpenUI5
+    version: 1.108.0
+    libraries:
+        - name: sap.ui.core
+        - name: sap.m
+        - name: sap.f
+        - name: sap.ui.layout
+        - name: themelib_sap_horizon
+        # all of the below are dependencies for the Test Recorder...
+        - name: themelib_sap_fiori_3
+        - name: sap.ui.table
+        - name: sap.tnt
