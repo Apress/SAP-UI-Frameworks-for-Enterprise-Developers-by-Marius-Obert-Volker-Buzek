@@ -8,7 +8,7 @@ describe("write scenario", () => {
         const button = await browser.asControl(popoverButton);
         // trick 17 to switch the browser to English!
         await button.exec(() => {
-            sap.ui.getCore().getConfiguration().setLanguage("en");
+            return sap.ui.getCore().getConfiguration().setLanguage("en");
         });
         // locates and presses the product switcher button
         // to open the overlay dialog
