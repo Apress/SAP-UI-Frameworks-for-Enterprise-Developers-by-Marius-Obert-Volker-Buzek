@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/IObert/book-samples.git"
+    "url": "git+https://github.com/Apress/SAP-UI-Frameworks-for-Enterprise-Developers-by-Marius-Obert-Volker-Buzek.git"
   },
   "workspaces": [
     "apps/*"
@@ -17,9 +17,9 @@
   "author": "IObert & VoBu",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/IObert/book-samples/issues"
+    "url": "https://github.com/Apress/SAP-UI-Frameworks-for-Enterprise-Developers-by-Marius-Obert-Volker-Buzek/issues"
   },
-  "homepage": "https://github.com/IObert/book-samples#readme",
+  "homepage": "https://github.com/Apress/SAP-UI-Frameworks-for-Enterprise-Developers-by-Marius-Obert-Volker-Buzek#readme",
   "devDependencies": {
     "prettier": "^2.8.4"
   }
