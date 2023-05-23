@@ -5,6 +5,7 @@
         "start": "ui5 serve --config=uimodule/ui5.yaml --open index.html",
         "build:ui": "run-s build:uimodule",
         "build": "run-s build:uimodule",
+        "build:deploy": "run-s build:uimodule:deploy build:mtar",
         "test": "npm run karma-ci",
         "karma-ci": "karma start karma-ci.conf.js",
         "clearCoverage": "shx rm -rf coverage",
