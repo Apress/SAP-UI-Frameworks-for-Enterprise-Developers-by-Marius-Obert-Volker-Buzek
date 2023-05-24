@@ -12,29 +12,39 @@ h1 {
 }
 
 header {
-  background-color: #333;
-  color: #fff;
+  background-color: #000;
+  color: #fad161;
   padding: 20px;
   text-align: center;
-  position: sticky;
   top: 0;
-  z-index: 999;
-  width: 100%;
+  /* background-image: url('cover.jpg'); */
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: contain;
 }
 
-header nav ul {
+nav {
+  position: sticky;
+  top: 0;
+  background-color: #000;
+  padding: 20px;
+  text-align: center;
+  z-index: 999;
+}
+
+nav ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-header nav ul li {
+nav ul li {
   display: inline-block;
   margin-right: 10px;
 }
 
-header nav ul li a {
-  color: #fff;
+nav ul li a {
+  color: #fad161;
   text-decoration: none;
 }
 
@@ -42,8 +52,9 @@ header nav ul li a {
   background-position: center;
   background-repeat: no-repeat;
   background-size: auto;
-  height: 100vh;
+  height: 75vh;
   position: relative;
+  background-size: contain;
 }
 
 #openui5 {
@@ -68,18 +79,21 @@ header nav ul li a {
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  color: #444;
+  width: 100%;
 }
 
-.preview-content h1 {
+.preview-content h1 a {
   margin-bottom: 20px;
-}
-
-.preview-content a {
-  background-color: #888;
-  color: #444;
+  background-color: #000;
+  color: #fad161;
   padding: 10px 20px;
   text-decoration: none;
+  border-radius: 10px;
+  font-weight: lighter;
+}
+
+#fiorielements .preview-content h1 a:hover {
+  cursor: not-allowed;
 }
 
 .ribbon {
@@ -90,7 +104,6 @@ header nav ul li a {
   width: 18em;
   height: 2em;
   overflow: hidden;
-  background-color: #dc3545;
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
