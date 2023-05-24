@@ -12,7 +12,8 @@ h1 {
 }
 
 header {
-  background-color: #000;
+  position: relative;
+  background-color: #222;
   color: #fad161;
   padding: 20px;
   text-align: center;
@@ -21,15 +22,16 @@ header {
   background-repeat: no-repeat;
   background-position: right center;
   background-size: contain;
+  z-index: 99;
 }
 
 nav {
   position: sticky;
   top: 0;
-  background-color: #000;
+  background-color: #222;
   padding: 20px;
   text-align: center;
-  z-index: 999;
+  z-index: 99;
 }
 
 nav ul {
@@ -52,47 +54,34 @@ nav ul li a {
   background-position: center;
   background-repeat: no-repeat;
   background-size: auto;
-  height: 75vh;
+  height: 100vh;
   position: relative;
   background-size: contain;
-}
-
-#openui5 {
-  background-image: url("openui5-cover.jpg");
-}
-
-#fiorielements {
-  background-image: url("fiori-elements-cover.jpg");
-}
-
-#webcomponents {
-  background-image: url("ui5-webcomponents-cover.jpg");
-}
-
-#fundamentals {
-  background-image: url("fundamental-library-styles-cover.jpg");
-}
-
-.preview-content {
-  position: absolute;
-  top: 10%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.parallax-section img {
+  object-fit: contain;
+  height: auto;
+  max-height: 80vh;
   width: 100%;
 }
 
-.preview-content h1 a {
+.parallax-section h2 a {
   margin-bottom: 20px;
-  background-color: #000;
+  background-color: #222;
   color: #fad161;
   padding: 10px 20px;
   text-decoration: none;
   border-radius: 10px;
   font-weight: lighter;
+  white-space: nowrap;
 }
 
-#fiorielements .preview-content h1 a:hover {
+#fiorielements .parallax-section h1 a:hover {
   cursor: not-allowed;
 }
 
@@ -120,7 +109,7 @@ nav ul li a {
   -o-transform: rotate(-45deg);
   transform: rotate(-45deg);
   font-size: 16px;
-  background-color: #6c757d;
+  background-color: #222;
   top: auto;
   bottom: 4.6em;
   -webkit-transform: rotate(45deg);
