@@ -1,0 +1,5 @@
+/*!
+ * SAP UI development toolkit for HTML5 (SAPUI5)
+ *      (c) Copyright 2009-2023 SAP SE. All rights reserved
+ */
+sap.ui.define(["sap/fe/core/converters/helpers/IssueManager","sap/fe/core/support/CommonHelper"],function(e,n){"use strict";var t={};var i=n.getIssueByCategory;var o=n.Categories;var a=n.Audiences;var s=e.IssueCategory;const r={id:"invalidAnnotationColumnKey",title:"AnnotationColumnKey: Invalid Key",minversion:"1.98",audiences:[a.Application],categories:[o.Usage],description:"The key of the annotation column is needed as a valid identifier in the application manifest.",resolution:"A column key set in the application manifest must correspond to an existing annotation column.",resolutionurls:[{text:"InvalidAnnotationColumnKey",href:"https://ui5.sap.com/#/topic/d525522c1bf54672ae4e02d66b38e60c"}],check:function(e,n){i(e,n,s.Manifest,"InvalidKey")}};function c(){return[r]}t.getRules=c;return t},false);

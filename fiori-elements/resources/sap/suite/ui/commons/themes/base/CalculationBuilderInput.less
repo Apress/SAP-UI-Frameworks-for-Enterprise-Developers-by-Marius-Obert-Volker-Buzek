@@ -1,0 +1,107 @@
+.sapCalculationBuilderInput {
+	border: 1px solid @sapUiGroupTitleBorderColor;
+	padding: 0.75rem;
+	min-height: 2.5rem;
+
+	position: relative;
+	user-select: text;
+	&:focus {
+		outline: none;
+	}
+	&:focus::before {
+		content: "";
+		position: absolute;
+		top: 2px;
+		left: 2px;
+		right: 2px;
+		bottom: 2px;
+		border: 1px dotted @sapUiContentFocusColor;
+		pointer-events: none;
+	}
+
+	box-sizing: border-box;
+}
+
+.sapUiSizeCompact .sapCalculationBuilderInput {
+	padding: 0.25rem;
+	min-height: 1.725rem;
+}
+
+html.sap-phone .sapCalculationBuilderInput span,
+html.sap-tablet:not(.sap-desktop) .sapCalculationBuilderInput span {
+	-webkit-user-select: text;
+}
+
+.sapCalculationBuilderInputError.sapCalculationBuilderInput {
+	border-color: @sapUiErrorBorder;
+	border-width: 2px;
+}
+
+.sapCalculationBuilderInputWrapper {
+	background-color: @sapUiFieldBackground;
+}
+
+.sapCalculationBuilderInputOuterWrapperMargin {
+	margin-top: 1rem;
+}
+
+.sapCalculationBuilderInputToolbar {
+	border: none;
+	height: 3rem;
+	.sapCalculationBuilderInputToolbarFunctionMenu {
+		margin-left: 0.75rem;
+	}
+	.sapCalculationBuilderInputToolbarMenuButtons {
+		.sapMBtnInner {
+			height: 2rem;
+		}
+		.sapMBtnContent {
+			line-height: 30px;
+		}
+		&.sapMMenuBtn.sapMMenuBtnRegular .sapMBtnInner::after {
+			height: 30px;
+			line-height: 30px;
+		}
+	}
+	.sapCalculationBuilderInputToolbarButtons {
+		.sapMBtnInner {
+			height: 2rem;
+		}
+		.sapMBtnContent {
+			line-height: 30px;
+			font-size: 1.25rem;
+			font-weight: bold;
+		}
+		.sapMBtnIcon {
+			line-height: 30px;
+		}
+	}
+}
+
+.sapUiSizeCompact .sapCalculationBuilderInputToolbar {
+	height: 3rem;
+	.sapMBtn {
+		padding: 0;
+	}
+}
+
+.sapCalculationBuilderReadOnly .sapCalculationBuilderInputWrapper {
+	background: transparent;
+}
+
+.sapCalculationBuilderReadOnly .sapCalculationBuilderInput {
+	border: none;
+}
+
+.sapCalculationBuilderInputErrorArea {
+	white-space: pre-line;
+	background-color: fade(@sapUiButtonRejectActiveBackground, 25%);
+	font-size: @sapMFontSmallSize;
+	position: absolute;
+	padding: 3px;
+	display: none;
+}
+
+.sapCalculationBuilderItemTextDefault {
+	overflow-wrap: break-word;
+}

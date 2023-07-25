@@ -1,0 +1,5 @@
+/*!
+ * SAP UI development toolkit for HTML5 (SAPUI5)
+ *      (c) Copyright 2009-2023 SAP SE. All rights reserved
+ */
+sap.ui.define(["sap/fe/core/helpers/ClassSupport","sap/m/MessageItem","sap/m/MessagePopover"],function(e,t,s){"use strict";var r,o;var a=e.defineUI5Class;function i(e,t){e.prototype=Object.create(t.prototype);e.prototype.constructor=e;n(e,t)}function n(e,t){n=Object.setPrototypeOf?Object.setPrototypeOf.bind():function e(t,s){t.__proto__=s;return t};return n(e,t)}let p=(r=a("sap.fe.macros.messages.MessagePopover"),r(o=function(e){i(r,e);function r(){return e.apply(this,arguments)||this}var o=r.prototype;o.init=function e(){s.prototype.init.apply(this);this.setModel(sap.ui.getCore().getMessageManager().getMessageModel(),"message");this.bindAggregation("items",{path:"message>/",length:9999,template:new t({type:"{message>type}",title:"{message>message}",description:"{message>description}",markupDescription:true,longtextUrl:"{message>descriptionUrl}",subtitle:"{message>additionalText}",activeTitle:"{= ${message>controlIds}.length > 0 ? true : false}"})});this.setGroupItems(true)};return r}(s))||o);return p},false);

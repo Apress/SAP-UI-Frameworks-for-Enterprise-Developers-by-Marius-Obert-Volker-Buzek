@@ -1,0 +1,6 @@
+/*!
+ * SAP UI development toolkit for HTML5 (SAPUI5)
+
+(c) Copyright 2009-2017 SAP SE. All rights reserved
+ */
+sap.ui.define(["sap/m/MessageBox","sap/m/MessageToast","sap/ui/base/Object"],function(e,s,a){"use strict";var u=a.extend("sap.collaboration.components.utils.MessageQueueUtil",{messageTypes:{messageToast:"MToast",messageBox:"MBox"},aMessageQueue:[],displayMessage:function(a,u,t){var g=u;g.onClose=this.afterMessageClose();this.addMessageToQueue(a,g,t);if(this.aMessageQueue.length==1){if(this.aMessageQueue[0].type==this.messageTypes.messageBox){e.show(this.aMessageQueue[0].message,this.aMessageQueue[0].options)}else if(this.aMessageQueue[0].type==this.messageTypes.messageToast){s.show(this.aMessageQueue[0].message,this.aMessageQueue[0].options)}}},addMessageToQueue:function(e,s,a){this.aMessageQueue.push({message:e,options:s,type:a})},afterMessageClose:function(){var a=this;return function(){a.aMessageQueue.shift();if(a.aMessageQueue.length!=0){if(a.aMessageQueue[0].type==a.messageTypes.messageBox){e.show(a.aMessageQueue[0].message,a.aMessageQueue[0].options)}else if(a.aMessageQueue[0].type==a.messageTypes.messageToast){s.show(a.aMessageQueue[0].message,a.aMessageQueue[0].options)}}}}});return u});

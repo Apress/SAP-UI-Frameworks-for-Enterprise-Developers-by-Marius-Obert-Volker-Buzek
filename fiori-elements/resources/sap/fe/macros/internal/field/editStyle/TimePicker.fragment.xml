@@ -1,0 +1,41 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns:unittest="http://schemas.sap.com/sapui5/preprocessorextension/sap.fe.unittesting/1"
+	xmlns:log="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	template:require="{
+							MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+							COMMON: 'sap/fe/macros/CommonHelper',
+							FIELD: 'sap/fe/macros/field/FieldHelper',
+							ID: 'sap/fe/core/helpers/StableIdHelper',
+							UI: 'sap/fe/core/templating/UIFormatters',
+							FE_MODEL: 'sap/fe/core/helpers/ModelHelper'
+						 }"
+>
+	<TimePicker
+		core:require="{FieldRuntime: 'sap/fe/macros/field/FieldRuntime'}"
+		unittest:id="MacroInput"
+		log:sourcePath="{this>dataSourcePath}"
+		id="{= (${this>idPrefix} ? ID.generate([${this>idPrefix}, 'Field-edit']) : undefined) }"
+		value="{this>valueBindingExpression}"
+		width="100%"
+		editable="{this>editableExpression}"
+		enabled="{this>enabledExpression}"
+		required="{this>requiredExpression}"
+		change="FieldRuntime.handleChange($controller, $event)"
+		fieldGroupIds="{this>fieldGroupIds}"
+		textAlign="{parts: [{path:'dataField>'}, {path:'this>formatOptions'}, {path:'property>@@FIELD.getPropertyCollection'}, {path:'this>editModeAsObject'}, {path:'property>@@UI.getConverterContext'}], formatter:'FIELD.getTypeAlignment'}"
+		validateFieldGroup="FieldRuntime.onValidateFieldGroup($controller, $event)"
+		ariaLabelledBy="{this>ariaLabelledBy}"
+		afterValueHelpOpen="{= ${this>collaborationEnabled} ? 'FieldRuntime.handleOpenPicker' : undefined}"
+		afterValueHelpClose="{= ${this>collaborationEnabled} ? 'FieldRuntime.handleClosePicker' : undefined}"
+		liveChange="{= ${this>collaborationEnabled} ? 'FieldRuntime.handleLiveChange' : undefined}"
+	>
+		<template:if test="{this>collaborationEnabled}">
+			<layoutData>
+				<FlexItemData growFactor="9" />
+			</layoutData>
+		</template:if>
+	</TimePicker>
+</core:FragmentDefinition>

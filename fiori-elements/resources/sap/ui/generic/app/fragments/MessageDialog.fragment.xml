@@ -1,0 +1,26 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout">
+	<Dialog class="sapUiNoContentPadding" id="messageDialog" state="{settings>/state}" type="Message"
+		showHeader="true" horizontalScrolling="false" draggable="true" 
+		contentHeight="440px" contentWidth="440px" verticalScrolling="false">
+		<content>
+			<MessageView items="{settings>/messages}" showDetailsPageHeader="false" itemSelect="onMessageSelect" groupItems="{settings>/grouping}">
+				<MessageItem type="{settings>type}" title="{settings>message}" description="{settings>description}" 
+							longtextUrl="{settings>descriptionUrl}" groupName="{= ${settings>/messageToGroupName}[${settings>id}] || ${settings>/genericGroupName} }" />
+			</MessageView>
+		</content>
+		<customHeader>
+			<Bar>
+				<contentMiddle>
+					<Text text="{settings>/title}" />
+				</contentMiddle>
+				<contentLeft>
+					<Button icon="sap-icon://nav-back" visible="{settings>/backButtonVisible}" press="onBackButtonPress"/>
+				</contentLeft>
+			</Bar>
+		</customHeader>
+		<buttons>
+			<Button text="{settings>/actionButtonText}" visible="{settings>/showActionButton}" id="actionButton" press="onActionButtonPressed"  type="Emphasized"/>
+			<Button text="{=${settings>/showActionButton} ? ${settings>/cancelButtonText} : ${settings>/closeButtonText}}" id="Close" press="onMessageDialogClose"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

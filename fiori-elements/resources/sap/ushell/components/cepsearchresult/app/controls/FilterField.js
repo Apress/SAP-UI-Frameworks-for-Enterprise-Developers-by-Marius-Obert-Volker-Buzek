@@ -1,0 +1,4 @@
+/*!
+ * Copyright (c) 2009-2023 SAP SE, All Rights Reserved
+ */
+sap.ui.define(["sap/m/FlexBox","sap/m/Label","sap/m/Input","sap/m/MultiComboBox","sap/m/DynamicDateRange","sap/ui/core/ListItem"],function(e,t,a,n,s,r){"use strict";var i=e.extend("sap.ushell.components.cepsearchresult.app.controls.FilterField",{metadata:{},renderer:e.getMetadata().getRenderer()});i.prototype.onBeforeRendering=function(){this.addStyleClass("sapUiCEPSRFilterField")};i.create=function(e,o){var d=new i({items:[new t({text:e.label})]});if(e.type==="string"){d.addItem(new a({value:e.value,change:o}))}else if(e.type==="set"){var l=new n({showSecondaryValues:true,selectionChange:o});for(var p=0;p<e.data.json.length;p++){l.addItem(new r(e.data.json[p]))}d.addItem(l)}else if(e.type==="dateRange"){var u=new s({options:["DATE","TODAY","YESTERDAY","DATERANGE","LASTDAYS","LASTWEEKS","LASTMONTHS","THISWEEK","LASTWEEK","THISMONTH","LASTMONTH"],change:o});d.addItem(u)}return d};return i});

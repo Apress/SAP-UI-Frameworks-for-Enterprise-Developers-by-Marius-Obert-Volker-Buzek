@@ -1,0 +1,32 @@
+/* ===================================================================== */
+/* CSS for control "sap.ushell.ui.launchpad.LoadingDialog" (sap_fiori_3) */
+/* ===================================================================== */
+
+/* "sapUshellLoadingDialog"       : block layer
+   "sapUshellLoadingDialogControl": popup */
+
+.sapUshellLoadingDialog {
+  background-color: @sapUiShellBackground;
+  .transition(opacity 1s ease-in-out);
+  .opacity(0.9);
+
+  .sap-phone & {
+    .opacity(1); /* loading screen should not be transparent on phones, as it is critical performance-wise */
+  }
+}
+
+.sapUshellLoadingDialogControl {
+  color: @sapUiTileTextColor;
+  border: 0 ;
+  background: transparent;
+  .opacity(1);
+  .transition(opacity 0.25s ease-in-out);
+
+  .sapUshellLoadingDialogAppData {
+    .opacity(1);
+  }
+
+  .sapUiIcon {
+    color: @sapUiTileTextColor;
+  }
+}

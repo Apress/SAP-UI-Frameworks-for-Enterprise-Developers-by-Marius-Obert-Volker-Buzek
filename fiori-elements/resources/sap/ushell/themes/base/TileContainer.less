@@ -1,0 +1,495 @@
+/* ============================================================== */
+/* CSS for control "sap.ushell.ui.launchpad.TileContainer" (base) */
+/* ============================================================== */
+
+/* Circles for dragging indicator */
+.sapUshellCircleBase {
+  height: 0.5rem;
+  width: 2.5rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sapUshellCircle {
+  width: 0.25rem;
+  height: 0.25rem;
+  display: inline-block;
+  margin-left: 0.125rem;
+  vertical-align: top;
+}
+
+/* all TileContainers */
+.sapUshellDisableLockedGroupDuringDrag .sapUshellInner,
+.sapUshellDisableLockedGroupDuringDrag .sapUshellLineModeContainer {
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
+  opacity: 0.5;
+  position: relative; /* needed because of bug in IE */
+}
+
+.sapUshellInner {
+  display: block;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+
+  .sap-phone & {
+    display: flex;
+    flex-wrap: wrap;
+    gap: @_sap_ushell_Tile_Spacing;
+  }
+}
+
+.sapUshellTileContainerContent .sapUshellTileContainerHeader.sapUshellGroupHeaderHidden {
+  height: 0;
+  display: none;
+}
+
+.sapUshellTileContainerContent .sapUshellTileContainerHeader.sapUshellFirstGroupHeaderHidden {
+  height: 0;
+}
+
+.sapUshellTileContainer {
+  .sapFCard {
+    margin: 0 @_sap_ushell_Tile_Spacing @_sap_ushell_Tile_Spacing 0;
+
+    .sap-phone & {
+      margin: 0; /* flex is used on phones */
+    }
+
+    &:focus::after {
+      content: "";
+      position: absolute;
+      top: 0.1875rem;
+      bottom: 0.1875rem;
+      left: 0.1875rem;
+      right: 0.1875rem;
+      z-index: 2;
+      pointer-events: none;
+      border-radius: 0.25rem;
+    }
+  }
+
+  &.sapUshellHidden {
+    display: none;
+  }
+
+  .sapUshellTileContainerBeforeContent,
+  .sapUshellTileContainerAfterContent {
+    max-width: 10rem;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+
+    /* in order to add 0.5 rem to each inner side of the Add Button */
+    .sapUshellAddGroupButton {
+      position: relative;
+      height: 2.5rem;
+      padding: 0;
+
+      /* move the text to the right */
+      .sapMBtnContentRight {
+        padding-left: 2.875rem;
+      }
+
+      .sapMBtnPaddingRight {
+        padding-right: 1.25rem;
+      }
+    }
+  }
+}
+
+.sapUshellContainerIcon {
+  font-size: 1rem;
+}
+
+.sapUshellTileContainerContent {
+  .sapUshellNoFilteredItems {
+    text-align: center;
+  }
+
+  .sapUshellInner:after {
+    clear: both;
+    content: "";
+    display: block;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+    padding: 0;
+    margin: 0;
+  }
+
+  .sapUshellContainerTitleFlex {
+    display: flex;
+    height: 3.2rem;
+    margin-right: 1rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .sapUshellContainerTitle {
+    cursor: default;
+    display: inline;
+    flex-shrink: 1;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+  }
+
+  /* Tile Container Header - Input and buttons */
+
+  .sapUshellTileContainerHeader {
+    .sapUshellHeaderActionButton {
+      position: static;
+      padding: 0;
+    }
+
+    .sapUshellTileContainerHeader:focus {
+      outline: 0.063rem dotted;
+    }
+  }
+
+  .sapUshellCatalogTileContainerHeader {
+    height: auto;
+    margin-bottom: 1rem;
+  }
+
+  .sapUshellCatalogTileContainerHeaderInner {
+    padding-top: 0.5rem;
+  }
+
+  .sapUshellTileContainerTitleInput {
+    .sapMInputDivWrapper {
+      height: 2.5rem;
+    }
+
+    input {
+      border: none;
+      padding: 0 0.5rem;
+    }
+  }
+
+  .sapUshellContainerHeaderActions {
+    margin-left: 1rem;
+  }
+
+  .sapUshellOverlayGroupActionPanel {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.sapUiMedia-StdExt-Phone {
+  .sapUshellTileContainerContent .sapUshellTileContainerTitleInput {
+    width: 16rem !important;
+  }
+}
+
+.sapUiMedia-Std-Tablet,
+.sapUiMedia-Std-Desktop {
+  .sapUshellTileContainerContent .sapUshellTileContainerTitleInput {
+    width: 60% !important;
+  }
+}
+
+.sapUshellDashboardGroupsContainerItem {
+  margin-top: 1rem;
+}
+
+.sapUshellDashboardGroupsContainerItem,
+.sapUshellDashboardGroupsContainerItem .sapUshellTileContainer,
+.sapUshellDashboardGroupsContainerItem .sapUshellTileContainer .sapUshellTileContainerContent {
+  &:focus {
+    outline: none;
+  }
+}
+
+.sapUshellDashboardGroupsContainerItem-clone .sapUshellLineModeContainer {
+  display: none;
+}
+
+.sap-phone .sapUshellDashboardGroupsContainerItem-clone .sapUshellTileContainerContent .sapUshellContainerTitle {
+  display: block;
+}
+
+.sapUiMedia-Std-Phone .sapUshellDashboardGroupsContainer .sapUshellTileContainerEditMode .sapUshellContainerTitle {
+  height: auto;
+  line-height: 2rem;
+  padding: 0;
+}
+
+html[dir=rtl] .sapUshellDashboardGroupsContainer .sapUshellTileContainerContent {
+  direction: rtl;
+}
+
+/* Only TileContainers located on the dashboard */
+.sapUshellDashboardGroupsContainer .sapUshellContainerTitle {
+  /* truncate group titles */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* only TileContainers located on the dashboard */
+.sap-phone .sapUshellDashboardGroupsContainer {
+  .sapUshellTileContainerContent.sapUshellTileContainerEditMode {
+    padding: 0;
+  }
+
+  .sapUshellContainerTitle {
+    /* truncate group titles */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.sapUshellTileContainerContent {
+  margin-right: auto;
+}
+
+/* group focus is relevant for keyboard navigation, not relevant for mobile */
+.sap-phone .sapUshellDashboardGroupsContainer .sapUshellTileContainerContent:focus,
+.sap-tablet .sapUshellDashboardGroupsContainer .sapUshellTileContainerContent:focus {
+  outline: 0;
+}
+
+#dashboardGroups .sapUshellDashboardGroupsContainerItem-placeholder {
+  height: 2.75rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  border-radius: 0.25rem;
+}
+
+.sap-phone #dashboardGroups .sapUshellDashboardGroupsContainerItem-placeholder {
+  margin-bottom: 4rem;
+}
+
+html[dir=rtl] .sapUshellDashboardGroupsContainerItem.sapUshellDashboardGroupsContainerItem-clone {
+  direction: ltr;
+}
+
+.sapUshellDashboardGroupsContainerItem.sapUshellDashboardGroupsContainerItem-clone {
+  align-items: center;
+  padding-bottom: 6.25rem; /* for smooth scrolling */
+
+  .sapUshellTileContainerEditMode {
+    border: none;
+    background-color: transparent;
+  }
+
+  .sapUshellCircleBase {
+    visibility: hidden;
+  }
+
+  .sapUshellContainerTitle {
+    padding: 0.5rem 1rem;
+    border: 0.0625rem solid;
+    border-radius: 0.375rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: inline-block;
+    cursor: -webkit-grabbing;
+  }
+
+  .sapUshellTilesContainer-sortable,
+  .sapUshellTileContainerBeforeContent,
+  .sapUshellTileContainerAfterContent,
+  .sapUshellContainerHeaderActions {
+    display: none;
+  }
+}
+
+#dashboardGroups .sapUshellDashboardGroupsContainerItem-placeholder .sapUshellTileContainer {
+  display: none;
+}
+
+/* input field and Container title */
+.sapUshellTileContainer&:not(.sapUshellEditing) .sapMInput,
+.sapUshellTileContainer.sapUshellEditing .sapUshellContainerTitle {
+  display: none;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+  background-color: red;
+}
+
+.sapUshellTileContainerBeforeContent {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.sapUshellTileContainerAfterContent {
+  button {
+    margin-top: 0.5rem;
+  }
+
+  &.sapUshellHidden {
+    display: none;
+  }
+}
+
+.sapUshellContainerIcon.sapUshellContainerIconHidden {
+  display: none;
+}
+
+.sapUshellDashboardGroupsContainerItem-placeholder + .sapUshellDashboardGroupsContainerItem {
+  margin-top: -3.5rem;
+}
+
+.sapUshellTileContainerHidden {
+  visibility: hidden;
+}
+
+.sapUshellTileContainerRemoveContent {
+  display: none;
+}
+
+.sapUiSizeCompact {
+  .sapUshellTileContainerBeforeContent {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .sapUshellTileContainer {
+    .sapUshellTileContainerBeforeContent,
+    .sapUshellTileContainerAfterContent {
+      .sapUshellAddGroupButton {
+        height: 2rem;
+
+        div {
+          position: static;
+        }
+      }
+    }
+  }
+}
+
+.sap-desktop {
+  .sapUshellTileContainerContent .sapMBtn:focus > .sapUshellPinSelected {
+    outline: .0625rem dotted @sapUiContentContrastFocusColor;
+  }
+}
+
+.sapUshellTileContainerEditMode .sapUshellLineModeContainer.sapUshellNoLinksAreaPresent {
+  visibility: visible;
+  height: 3rem;
+  margin-top: 0.6rem; /* allows drag-and-drop placeholder to disappear when no longer hovering */
+  background-color: transparent;
+
+  &.sapUshellEmptyLinkAreaHover {
+    border: solid;
+    border-width: 0.125rem;
+    border-color: @sapUiDragAndDropActiveBorderColor;
+    background-color: @sapUiDragAndDropActiveBackground;
+  }
+}
+
+.sapUshellTileContainerEditMode .sapUshellLineModeContainer.sapUshellNoLinksAreaPresent.sapUshellNoLinksAreaPresentError {
+  border: none;
+}
+
+.sapUshellLineModeContainer {
+  box-sizing: border-box;
+  position: relative;
+  margin-top: @_sap_ushell_Tile_Spacing;
+
+  .sapUshellLinksInnerContainer:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+  .sapUshellLinksInnerContainer {
+    .sapUshellLinkTile {
+      display: inline-block;
+      margin-right: @_sap_ushell_Tile_Spacing;
+      margin-bottom: @_sap_ushell_Tile_Spacing;
+    }
+  }
+
+
+}
+
+.sapUshellLinksAreaHidden .sapUshellLineModeContainer {
+  visibility: hidden;
+
+  &.sapUshellNoLinksAreaPresent,
+  .sapUshellNoLinksAreaPresentText,
+  .sapUshellNoLinksAreaPresentText .sapUshellNoLinksAreaPresentTextInner {
+    display: none;
+  }
+}
+
+.sapUshellEmptyLinksAreaPlaceHolder .sapUshellNoLinksAreaPresent {
+  visibility: hidden;
+}
+
+.sapUshellGroupBackgroundContainer {
+  height: 100%;
+  width: 100%;
+  display: inline-block;
+  position: absolute;
+  margin-right: 0;
+  border-radius: 2px;
+}
+
+.sapUshellDashboardGroupsContainer .sapUshellTileContainerEditMode {
+  padding: 0;
+}
+
+.sapUshellTileContainerBeforeContent {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.sapUshellTileContainerTabsModeEmptyLinksArea.sapUshellTileContainerEditMode {
+  .sapUshellInner {
+    padding-left: 0;
+  }
+
+  .sapUshellLineModeContainer,
+  .sapUshellLineModeContainer.sapUshellNoLinksArePresent {
+    margin-left: 0;
+  }
+}
+
+.sapUshellNoLinksAreaPresentText {
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.sapUshellNoLinksAreaPresentTextInner {
+  align-self: center;
+}
+
+.sapUshellTransformationError {
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 4;
+  display: flex;
+  justify-content: center;
+}
+
+.sapUshellTransformationErrorInnerWrapper {
+  align-self: center;
+  display: inherit;
+}
+
+.sapUshellTransformationErrorIcon {
+  padding-right: 0.5rem;
+}
+
+.sapUiSizeCozy .sapUshellTileContainer .sapUshellContainerHeaderActions .sapUshellHeaderActionButton {
+  margin-top: -0.5rem;
+}

@@ -1,0 +1,22 @@
+/* ==================================== */
+/* CSS for control sap.ushell/PlusTile  */
+/* Horizon theme                        */
+/* ==================================== */
+
+.sapUshellTile.sapUshellPlusTile {
+  background-color: transparent;
+  border: 1px solid fade(@sapUiShellGroupTextColor, 20);
+
+  &:hover {
+    background-color: fade(@sapUiShellGroupTextColor, 4);
+  }
+
+  &:active {
+    background-color: fade(@sapUiShellGroupTextColor, 8);
+  }
+
+  .sapUiIcon {
+    color: @sapUiShellGroupTextColor;
+    font-size: 1.375rem;
+  }
+}

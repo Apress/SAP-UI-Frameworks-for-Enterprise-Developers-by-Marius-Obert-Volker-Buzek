@@ -1,0 +1,121 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:mdc="sap.ui.mdc"
+	xmlns:core="sap.ui.core"
+	xmlns:macro="sap.fe.macros"
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	xmlns:mdcv="sap.ui.mdc.valuehelp"
+	xmlns:mdcvc="sap.ui.mdc.valuehelp.content"
+	template:require="{
+		MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+		COMMON: 'sap/fe/core/controllerextensions/collaboration/CollaborationCommon',
+		HELPER: 'sap/fe/macros/CommonHelper',
+		UI: 'sap/fe/core/templating/UIFormatters'
+	}"
+	core:require="{FORMATTER: 'sap/fe/core/formatters/CollaborationFormatter'}"
+>
+	<Dialog
+		id="dialog"
+		title="{= COMMON.getInvitationDialogTitleExpBinding(${contextPath>./@com.sap.vocabularies.UI.v1.HeaderInfo@@UI.getDataModelObjectPath}) }"
+		binding="{internal>collaboration}"
+	>
+		<VBox class="sapUiMediumMargin">
+			<VBox width="40em">
+				<MessageStrip
+					text="{sap.fe.i18n>C_COLLABORATIONDRAFT_INVITATION_MESSAGESTRIP}"
+					type="Information"
+					showIcon="true"
+					showCloseButton="false"
+					class="sapUiMediumMarginBottom"
+				/>
+			</VBox>
+
+			<Label text="{sap.fe.i18n>C_COLLABORATIONDRAFT_INVITATION_INPUT_LABEL}" />
+			<HBox class="sapUiMediumMarginBottom" width="100%" id="newUserBox">
+				<mdc:Field
+					id="UserID"
+					value="{internal>UserID}"
+					additionalValue="{internal>UserDescription}"
+					display="DescriptionValue"
+					width="37em"
+					required="true"
+					fieldHelp="userValueHelp"
+					placeholder="{sap.fe.i18n>C_COLLABORATIONDRAFT_INVITATION_INPUT_PLACEHOLDER}"
+					change=".addUserChanged"
+				>
+					<mdc:dependents>
+						<mdc:ValueHelp
+							id="userValueHelp"
+							delegate="{= COMMON.getValueHelpDelegate(${contextPath>@@UI.getDataModelObjectPath}) }"
+							validateInput="true"
+						>
+							<mdc:typeahead>
+								<mdcv:Popover>
+									<mdcvc:MTable id="userValueHelp::Popover::qualifier::" caseSensitive="true" useAsValueHelp="false" />
+								</mdcv:Popover>
+							</mdc:typeahead>
+							<mdc:dialog>
+								<mdcv:Dialog />
+							</mdc:dialog>
+						</mdc:ValueHelp>
+					</mdc:dependents>
+				</mdc:Field>
+				<Button
+					class="sapUiTinyMarginBegin"
+					text="{sap.fe.i18n>C_COLLABORATIONDRAFT_INVITATION_DIALOG_ADD_USER}"
+					press=".addUser"
+				/>
+			</HBox>
+
+			<Table id="userList" width="40em" items="{internal>invitedUsers}">
+				<headerToolbar>
+					<Toolbar width="100%">
+						<content>
+							<Title text="{sap.fe.i18n>C_COLLABORATIONDRAFT_INVITATION_TABLE_TOOLBAR_TITLE}" level="H3" />
+							<ToolbarSpacer />
+							<SearchField width="15em" />
+						</content>
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<Column width="3em" />
+					<Column width="20em">
+						<Text text="{sap.fe.i18n>C_COLLABORATIONDRAFT_INVITATION_TABLE_USER_COLUMN}" />
+					</Column>
+					<Column width="17em">
+						<Text text="{sap.fe.i18n>C_COLLABORATIONDRAFT_INVITATION_TABLE_USER_STATUS_COLUMN}" />
+					</Column>
+					<Column width="5em" />
+				</columns>
+				<items>
+					<ColumnListItem vAlign="Middle" highlight="{= ${internal>transient} ? 'Information' : 'None' }">
+						<cells>
+							<Avatar displaySize="XS" backgroundColor="Accent{internal>color}" initials="{internal>initials}" />
+							<Text text="{internal>name}" />
+							<ObjectStatus
+								state="{path : 'internal>status', formatter: '.formatUserStatusColor'}"
+								text="{path : 'internal>status', formatter: '.formatUserStatus'}"
+							/>
+							<HBox>
+								<Button
+									icon="sap-icon://decline"
+									type="Transparent"
+									press=".removeUser"
+									visible="{= !!${internal>transient} }"
+								/>
+							</HBox>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</VBox>
+
+		<beginButton>
+			<Button text="{sap.fe.i18n>C_COLLABORATIONDRAFT_INVITATION_DIALOG_CONFIRMATION}" press=".share" type="Emphasized" />
+		</beginButton>
+		<endButton>
+			<Button text="{sap.fe.i18n>C_COLLABORATIONDRAFT_INVITATION_DIALOG_CANCEL}" press=".close" />
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,74 @@
+/* =================================== */
+/* CSS for control sap.ushell/Catalog  */
+/* Horizon theme                       */
+/* =================================== */
+
+/* Menu bar */
+
+.sapUshellCatalogNewGroupBackButton {
+  background: transparent;
+}
+
+#catalogTiles .sapUshellTile {
+  box-shadow: @sapUiShadowLevel0;
+}
+
+#appFinderPage > header .sapMSegB {
+  padding: 0;
+}
+
+.sapUshellAppBoxIcon {
+  color: @sapUiTileIconColor;
+}
+
+.sapUshellAppBox {
+  box-shadow: @sapUiShadowLevel0;
+  background: @sapUiTileBackground;
+  border-radius: @sapUiTileBorderCornerRadius;
+}
+
+.sapUshellAppBox:focus {
+  outline: 1px dotted @sapUiContentFocusColor;
+  outline: 2px solid @sapUiContentFocusColor;
+  outline-offset: -0.1875rem;
+}
+
+.sapUshellAppBox:hover {
+  background: @sapUiTileHoverBackground
+}
+
+.sapUshellAppBox:active {
+  background: @sapUiTileActiveBackground
+}
+
+.sapUshellHierarchyFolders .sapMPage > .sapMPageHeader + .sapMPageSubHeader + section {
+  top: 5rem;
+}
+
+.sapUshellHierarchyFolders header.sapMPageSubHeader {
+  color: @sapUiTileBackground;
+}
+
+.sapUshellAppFinderSearch .sapUshellEasyAccessSearchResultText {
+  color: @sapUiTileTextColor;
+}
+
+.sapUshellPinButton:not(:hover) .sapUshellPinSelected .sapUiIcon {
+  color: @sapUiButtonActiveTextColor;
+}
+
+#catalogTiles, #catalogTilesSearchPage {
+  .sapUshellTilePinButtonOverlay {
+    background-color: @sapUiTileBackground;
+  }
+}
+
+.sapUshellPinSelected {
+  outline-color: @sapUiButtonActiveTextColor;
+  background-color: @sapUiButtonActiveBackground;
+  border-color: @sapUiButtonActiveBorderColor;
+}
+
+.sapUshellHierarchyFolders .sapUshellEasyAccessMasterPageHeader {
+  background-color: transparent;
+}

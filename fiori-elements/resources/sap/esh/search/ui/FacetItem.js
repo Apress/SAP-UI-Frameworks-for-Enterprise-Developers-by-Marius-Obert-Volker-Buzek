@@ -1,0 +1,7 @@
+/*! 
+ * SAPUI5
+
+		(c) Copyright 2009-2021 SAP SE. All rights reserved
+	 
+ */
+(function(){sap.ui.define([],function(){function e(e,t){if(!(e instanceof t)){throw new TypeError("Cannot call a class as a function")}}function t(e,t){for(var i=0;i<t.length;i++){var l=t[i];l.enumerable=l.enumerable||false;l.configurable=true;if("value"in l)l.writable=true;Object.defineProperty(e,l.key,l)}}function i(e,i,l){if(i)t(e.prototype,i);if(l)t(e,l);Object.defineProperty(e,"prototype",{writable:false});return e}var l=function(){function t(i){e(this,t);var l=i||{};this.selected=l.selected||false;this.level=l.level||0;this.filterCondition=l.filterCondition;this.value=l.value||"";this.label=typeof l.label==="undefined"?"":l.label+"";this.facetTitle=l.facetTitle||"";this.facetAttribute=l.facetAttribute||"";this.valueLabel=this.value;this.advanced=l.advanced||false;this.listed=l.listed||false;this.icon=l.icon;this.visible=l.visible||true}i(t,[{key:"equals",value:function e(t){return this.facetTitle===t.facetTitle&&this.label===t.label&&this.value===t.value&&this.filterCondition.equals(t.filterCondition)}},{key:"clone",value:function e(){var i=new t;i.facetTitle=this.facetTitle;i.selected=this.selected;i.label=this.label;i.icon=this.icon;i.level=this.level;i.value=this.value;i.valueLabel=this.valueLabel;i.filterCondition=this.filterCondition.clone();return i}}]);return t}();return l})})();

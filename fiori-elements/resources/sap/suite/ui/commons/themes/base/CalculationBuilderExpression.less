@@ -1,0 +1,113 @@
+.sapCalculationBuilderDelimiter {
+	display: flex;
+	width: 0.5rem;
+	min-width: 0.5rem;
+	height: 3rem;
+	align-self: stretch;
+	align-items: center;
+	justify-items: center;
+	border: 1px solid transparent;
+	background: transparent;
+	z-index: 50;
+	position: relative;
+}
+
+.sapUiSizeCozy .sapCalculationBuilderDelimiter {
+	width: auto;
+}
+
+.sapCalculationBuilderDelimiterNewButton {
+	display: none;
+	left: -14px;
+	width: 32px;
+	height: 32px;
+	position: absolute;
+	border-radius: 3px;
+	z-index: 10000;
+
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+
+
+	outline: none;
+	border: 1px solid @sapUiButtonTextColor;
+	background-color: @sapUiButtonBackground;
+	color: @sapUiButtonTextColor;
+}
+
+.sapCalculationBuilderDelimiterNewButton:hover {
+	background-color: @sapUiButtonHoverBackground;
+}
+
+.sapCalculationBuilderDelimiterNewButtonIcon{
+	pointer-events: none;
+	line-height: 34px;
+	margin-left: 9px;
+}
+
+.ui-selectable-helper {
+  // TODO: change color
+  border: 1px dashed @sapUiNeutralBorder;
+  position: absolute;
+  z-index: 40;
+}
+
+.sapCalculationBuilderWrapItems {
+	position: relative;
+	.sapCalculationBuilderSelected {
+	  flex-wrap: wrap;
+	}
+}
+
+.sapCalculationBuilderSelected {
+  display: flex;
+  align-items: center;
+}
+
+.sapCalculationBuilderDraggingSelectedClone {
+	display: flex;
+	align-items: center;
+}
+
+.sapCalculationBuilderNavMainPage {
+  	.sapMLIB {
+		padding: 0;
+  	}
+  	.sapMSLIImgIcon {
+		font-size: 1rem;
+  	}
+  	.sapMLIB.sapMSLI {
+		height: 4.5rem;
+  	}
+}
+
+.sapCalculationBuilderPopoverOperatorsButton {
+	.sapMBtn {
+	  	padding: 0;
+	}
+	.sapMBtnInner {
+	  	height: 2rem;
+	}
+	.sapMBtnContent {
+	  	line-height: 30px;
+	  	font-size: 1rem;
+	  	font-weight: bold
+	}
+	.sapMBtnIcon {
+	  	line-height: 30px;
+	}
+}
+
+.sapCalculationBuilderExpressionErrorIcon {
+	color: @sapUiNegativeElement;
+	position: absolute;
+
+	display: none;
+	top: 0;
+	right: 2px;
+}
+
+.sapCalculationBuilderExpressionSAPFont {
+	font-family: 'SAP-icons';
+}

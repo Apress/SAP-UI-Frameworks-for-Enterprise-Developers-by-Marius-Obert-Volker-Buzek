@@ -1,0 +1,1 @@
+{"version":3,"file":"Startup.js","names":["sap","ui","define","Opa5","extend","iStartMyApp","this","iStartMyUIComponent","componentConfig","name","async","manifest"],"sources":["Startup-dbg.js"],"mappings":"AAAAA,IAAIC,GAAGC,OAAO,CAAC,oBAAqB,SAAUC,GAC1C,aAEA,OAAOA,EAAKC,OAAO,2DAA4D,CAC3EC,YAAa,WACTC,KAAKC,oBAAoB,CACrBC,gBAAiB,CACbC,KAAM,qBACNC,MAAO,KACPC,SAAU,OAGtB,GAER"}

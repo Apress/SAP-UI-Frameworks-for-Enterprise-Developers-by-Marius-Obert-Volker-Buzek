@@ -1,0 +1,139 @@
+<mvc:View
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:dnd="sap.ui.core.dnd"
+    xmlns:data="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns:launchpad="sap.ushell.ui.launchpad"
+    controllerName="sap.ushell.components.pages.controller.PageRuntime"
+    height="100%">
+    <NavContainer id="pagesRuntimeNavContainer">
+        <NavContainer id="pagesNavContainer" pages="{/pages}">
+            <pages>
+                <Page
+                    data:pageId="{id}"
+                    showHeader="false"
+                    backgroundDesign="Transparent"
+                    floatingFooter="true">
+                    <content>
+                        <launchpad:Page
+                            edit="{viewSettings>/actionModeEditActive}"
+                            dataHelpId="Page-{id}"
+                            showTitle="{viewSettings>/showPageTitle}"
+                            title="{title}"
+                            sections="{
+                                path: 'sections',
+                                templateShareable: false,
+                                key: 'id'
+                            }"
+                            addSectionButtonPressed=".handleEditModeAction('addSection', $event, ${$source>/}, ${$parameters>/})"
+                            enableSectionReordering="{viewSettings>/actionModeEditActive}"
+                            sectionDrop=".handleEditModeAction('moveSection', $event, ${$source>/}, ${$parameters>/})">
+                            <launchpad:sections>
+                                <launchpad:Section
+                                    title="{title}"
+                                    class="sapContrastPlus"
+                                    sizeBehavior="{viewSettings>/sizeBehavior}"
+                                    dataHelpId="Section-{id}"
+                                    default="{default}"
+                                    visualizations="{
+                                        path: 'visualizations',
+                                        factory: '._visualizationFactory',
+                                        key: 'id'
+                                    }"
+                                    gridContainerGap="{viewSettings>/gridContainerGap/gridContainerGap}"
+                                    gridContainerGapXS="{viewSettings>/gridContainerGap/gridContainerGapXS}"
+                                    gridContainerGapS="{viewSettings>/gridContainerGap/gridContainerGapS}"
+                                    gridContainerGapM="{viewSettings>/gridContainerGap/gridContainerGapM}"
+                                    gridContainerGapL="{viewSettings>/gridContainerGap/gridContainerGapL}"
+                                    gridContainerGapXL="{viewSettings>/gridContainerGap/gridContainerGapXL}"
+                                    gridContainerRowSize="{viewSettings>/gridContainerRowSize/gridContainerRowSize}"
+                                    gridContainerRowSizeXS="{viewSettings>/gridContainerRowSize/gridContainerRowSizeXS}"
+                                    gridContainerRowSizeS="{viewSettings>/gridContainerRowSize/gridContainerRowSizeS}"
+                                    gridContainerRowSizeM="{viewSettings>/gridContainerRowSize/gridContainerRowSizeM}"
+                                    gridContainerRowSizeL="{viewSettings>/gridContainerRowSize/gridContainerRowSizeL}"
+                                    gridContainerRowSizeXL="{viewSettings>/gridContainerRowSize/gridContainerRowSizeXL}"
+                                    enableGridBreakpoints="false"
+                                    enableGridContainerQuery="{viewSettings>/ushellContainerDocked}"
+                                    editable="{viewSettings>/actionModeEditActive}"
+                                    add=".handleEditModeAction('addVisualization', $event, ${$source>/}, ${$parameters>/})"
+                                    delete=".handleEditModeAction('deleteSection', $event, ${$source>/}, ${$parameters>/})"
+                                    reset=".handleEditModeAction('resetSection', $event, ${$source>/}, ${$parameters>/})"
+                                    sectionVisibilityChange=".handleEditModeAction('changeSectionVisibility', $event, ${$source>/}, ${$parameters>/})"
+                                    titleChange=".handleEditModeAction('changeSectionTitle', $event, ${$source>/}, ${$parameters>/})"
+                                    enableVisualizationReordering="{viewSettings>/personalizationEnabled}"
+                                    areaDragEnter=".onAreaDragEnter"
+                                    visualizationDrop=".moveVisualization($event, ${$source>/}, ${$parameters>/})"
+                                    showSection="{visible}"
+                                    visible="{= !!${visualizations}.length || ${viewSettings>/actionModeEditActive} }"
+                                    noVisualizationsText="{i18n>PageRuntime.EditMode.EmptySection}"
+                                    showNoVisualizationsText="{viewSettings>/actionModeEditActive}"
+                                    enableAddButton="{viewSettings>/showAddButton}"
+                                    enableResetButton="{ parts: ['id', 'preset'], formatter: '._sectionEnableReset'}"
+                                    enableDeleteButton="{ parts: ['id', 'preset'], formatter: '._sectionEnableDelete'}"
+                                    enableShowHideButton="{viewSettings>/showHideButton}" />
+                            </launchpad:sections>
+                            <launchpad:dragDropConfig>
+                                <dnd:DropInfo
+                                    groupName="Section"
+                                    targetAggregation="sections"
+                                    dragEnter=".onDragEnter"
+                                    drop=".moveVisualization($event, ${$source>/}, ${$parameters>/})" />
+                            </launchpad:dragDropConfig>
+                        </launchpad:Page>
+                    </content>
+                    <footer>
+                        <Bar class="sapUshellDashboardFooter" visible="{viewSettings>/actionModeActive}">
+                            <contentRight>
+                                <Button
+                                    text="{i18n>closeEditMode}"
+                                    type="Emphasized"
+                                    press=".handleEditModeAction('save', $event, ${$source>/}, ${$parameters>/})" />
+                            </contentRight>
+                            <customData>
+                                <core:CustomData
+                                    key="sap-ui-fastnavgroup"
+                                    value="true"
+                                    writeToDom="true" />
+                            </customData>
+                        </Bar>
+                    </footer>
+                    <landmarkInfo>
+                        <PageAccessibleLandmarkInfo
+                            rootRole="Region"
+                            rootLabel="{i18n>PageSectionRegion}"
+                            headerRole="None"
+                            contentRole="None"
+                            footerRole="None" />
+                    </landmarkInfo>
+                </Page>
+            </pages>
+            <customData>
+                <core:CustomData
+                    key="help-id"
+                    value="{= ${viewSettings>/personalizationEnabled} ? 'general-page-id-pers-allowed' : 'general-page-id-no-pers-allowed'}"
+                    writeToDom="true" />
+            </customData>
+        </NavContainer>
+        <MessagePage
+            id="errorPage"
+            showHeader="false"
+            icon="{errorPage>/icon}"
+            text="{errorPage>/text}"
+            description="{errorPage>/description}">
+            <buttons>
+                <Button
+                    text="{i18n>PageRuntime.CannotLoadPage.DetailsButton}"
+                    visible="{= !!${errorPage>/details} &amp;&amp; !${errorPage>/description}}"
+                    press="._pressViewDetailsButton" />
+                <Button
+                    text="{i18n>PageRuntime.CannotLoadPage.CopyButton}"
+                    visible="{= !!${errorPage>/details}}"
+                    press="._copyToClipboard" />
+            </buttons>
+        </MessagePage>
+        <Page
+            id="emptyPage"
+            showHeader="false" />
+    </NavContainer>
+</mvc:View>

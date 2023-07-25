@@ -1,0 +1,829 @@
+
+/*...........................................................................*/
+/* LESS for control sap.ui.vbm/VBI.control...................................*/
+/*...........................................................................*/
+
+
+/* main vbi container style..................................................*/
+.vbi-main {
+  border: none;
+  /* change box model to enable relative sizing with fixed border */  
+  /* not needed without border
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;  
+  box-sizing: border-box; */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.vbi-hidden {
+	display: none;
+}
+
+.vbi-viewport {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	overflow: hidden;
+}
+
+.vbi-moveable-layer {
+	
+}
+
+.vbi-map-layer {
+
+}
+
+.vbi-structure-layer {
+}
+
+/* geoscene canvas style.....................................................*/
+.vbi-geoscenecanvas {
+   -ms-touch-action: none;
+   touch-action: none;  
+}
+.vbi-map-active {
+	opacity: 1;
+	transition: opacity 1s ease;
+}
+.vbi-map-inactive {
+	opacity: 0;
+}
+
+/* container vo style..........................................................*/
+.vbi-container-vo {
+   -ms-touch-action: none;
+   touch-action: none;
+   pointer-events: auto;	/* explicitly set to make sure element receives events */
+}
+
+
+/*...........................................................................*/
+/* Begin of Navigation Control styles........................................*/
+/*...........................................................................*/
+
+.vbi-nav{
+	position: absolute;
+	top: 10px;
+	left: 10px;
+}
+
+.vbi-nav * { 
+	background-image: url('img/sapvisualbusiness.png');
+	position: absolute;
+}
+
+.vbi-cursor-reset,
+.vbi-cursor-left,
+.vbi-cursor-top,
+.vbi-cursor-right,
+.vbi-cursor-down,
+.vbi-scrollpoint{ cursor: pointer; }
+
+.vbi-cursor{
+	position: absolute;
+	width: 72px;
+	height: 72px;
+	background-position: -5px 305px;
+}
+.vbi-cursor:hover{ background-position: -5px 228px; }
+
+
+.vbi-cursor-grip{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 72px;
+	height: 72px;
+	background-position: -82px 305px;
+}
+
+.vbi-cursor-middle{
+	position: absolute;
+	top: 7px;
+	left: 7px;
+	width: 58px;
+	height: 58px;
+	background-position: -159px 305px;
+	display: block;
+}
+
+.vbi-cursor-middle .vbi-cursor-reset{
+	position: absolute;
+	width: 16px;
+	height: 16px;
+	background-position: -222px 305px; 
+	left: 21px;
+	top: 21px;
+	display: block;
+}
+
+html[ dir=rtl ] .vbi-cursor-middle .vbi-cursor-reset{
+	left: auto;
+	right: 21px;
+}
+
+
+.vbi-cursor-middle .vbi-cursor-reset:hover{ background-position: -222px 284px; }
+
+.vbi-cursor-middle .vbi-cursor-left{
+	position: absolute;
+	width: 13px;
+	height: 12px;
+	top: 23px;
+	left: 8px;
+	background-position: -134px 228px;
+}
+
+
+html[ dir=rtl ] .vbi-cursor-middle .vbi-cursor-left {
+	left: auto;
+	right: 8px;
+}
+
+
+.vbi-cursor-middle .vbi-cursor-left:hover{background-position: -134px 211px;}
+
+.vbi-cursor-middle .vbi-cursor-top{
+	position: absolute;
+	width: 12px;
+	height: 13px;
+	top: 8px;
+	left: 23px;
+	background-position: -82px 228px; 
+}
+.vbi-cursor-middle .vbi-cursor-top:hover{background-position: -82px 210px;}
+
+.vbi-cursor-middle .vbi-cursor-right{
+	position: absolute;
+	width: 13px;
+	height: 12px;
+	top: 23px;
+	right:8px;
+	background-position: -116px 228px;
+}
+
+
+html[ dir=rtl ] .vbi-cursor-middle .vbi-cursor-right {
+	right:auto;
+	left: 8px;
+}
+
+
+.vbi-cursor-middle .vbi-cursor-right:hover{background-position: -116px 211px;}
+
+.vbi-cursor-middle .vbi-cursor-down{
+	position: absolute;
+	width: 12px;
+	height: 13px;
+	bottom: 8px;
+	left: 23px;
+	background-position: -99px 228px;
+}
+.vbi-cursor-middle .vbi-cursor-down:hover{background-position: -99px 210px;}
+
+.vbi-scrollarea{
+	position: absolute;
+	top: 84px;
+	left: 27px;
+	height: 94px;
+	width: 18px;
+	background: none;
+	display: block;
+}
+
+.vbi-scrolllineupperending{
+	position: absolute;
+	width: 10px;
+	height: 4px;
+	left: 4px;
+	top: 0px;
+	background-position: -243px 305px;
+}
+
+.vbi-scrollline{
+	position: absolute;
+	width: 10px;
+	height: 85px;
+	top: 4px;
+	left: 4px;
+	background-image: url('img/scrollline.png');
+	background-repeat: repeat-y;  
+}
+
+.vbi-scrolllinelowerending{
+	position: absolute;
+	width: 10px;
+	height: 5px;
+	left: 4px;
+	top: 89px;
+	background-position: -243px 290px;
+}
+
+.vbi-scrollpoint{
+	position: absolute;
+	width: 18px;
+	height: 18px;
+	left: 0px; 
+	background-position: -235px 242px;
+	top: 0px;
+}
+.vbi-scrollpoint:hover{background-position: -235px 219px;}
+
+
+.vbi-navmobile-home,
+.vbi-navmobile-zoomin,
+.vbi-navmobile-zoomout
+{ 
+	line-height: 32px;
+	color: rgba( 0, 0, 0, 0.5 );
+	background-color: rgba(255, 255, 255, 0.5);
+	padding: 0px 0px; 
+	background-image: none;
+	position: absolute;
+    width: 32px;
+    height: 32px;
+    font-size:28px;
+	border: 1px solid rgba(120, 120, 120, 1.0);
+	background-clip:content-box;
+	text-align: center;
+}
+
+.vbi-navmobile-home{
+	font-family: "SAP-icons", Arial, Helvetica, sans-serif; 
+   font-size:22px;
+}
+
+.vbi-navmobile-zoomin{
+	top: 40px;
+}
+.vbi-navmobile-zoomout{
+	top: 80px;
+}
+
+/*...........................................................................*/
+/* End of Navigation Control styles..........................................*/
+/*...........................................................................*/
+
+
+/*...........................................................................*/
+/* Begin of Detail Window styles.............................................*/
+/*...........................................................................*/
+
+@_sap_ui_vbm_VBI_DetailBG: rgba(255, 255, 255, 0.9);
+
+.vbi-detail {
+   box-sizing: border-box;
+   position: absolute;
+   margin: 0;
+   padding:0.9375rem;
+   background-color: @_sap_ui_vbm_VBI_DetailBG;
+   box-shadow: 0rem 0rem 1.875rem 0.125rem rgba(0, 0, 0, 0.15); /* to get a shadow around the box */
+   /*max-width:18rem;*/ 
+   /*max-height:20rem;*/
+   -webkit-user-select: initial;
+   -moz-user-select: text;
+   -ms-user-select: initial;
+   user-select: initial;
+
+}
+
+
+.vbi-detail > .vbi-detail-arrow {
+   position: absolute;
+   left: 1.563rem;         /* shift arrow to the left*/
+   margin: 0;
+   border-top: 0;
+   /* all borders are first transparent......................................*/
+   /* the correction is done in the specialization...........................*/
+   border-left: 0.5rem solid transparent;               
+   border-top: 0.5rem solid transparent;
+   border-right: 0.5rem solid transparent;
+   border-bottom: 0.5rem solid transparent;
+
+   /* there is no padding....................................................*/
+   padding: 0;
+   width: 0;
+   height: 0;
+   font-size: 0;
+   line-height: 0;
+   _border-right-color: pink;
+   _border-left-color: pink;
+   _filter: chroma(color=pink);
+}
+
+/*...........................................................................*/
+/* left side arrow...........................................................*/
+
+.vbi-detail > .vbi-detail-arrow.vbi-detail-left
+{
+   left: -0.5rem;
+   top: 0.9375rem;
+   
+   /* only right border is used all others are transparent...................*/
+   border-left: 0rem solid transparent;
+   border-right: 0.5rem solid;    
+   border-right-color: @_sap_ui_vbm_VBI_DetailBG;
+   
+}
+
+/* borders for arrow.........................................................*/
+.vbi-detail-border .vbi-detail-arrow.vbi-detail-left.vbi-detail-border-arrow
+{ 
+   position: absolute;
+   top: 0.9375rem; 
+   left: -0.563rem;                           
+   border-left: 0rem solid transparent;
+   border-right: 0.5rem solid;    
+   border-right-color: #a6b5d1;
+   
+}
+
+/* border for detail div.....................................................*/
+.vbi-detail-border 
+{ 
+   border: 0.0625rem #a6b5d1 solid; /* color border*/
+}
+
+.vbi-detail > .vbi-detail-header
+{
+   /* font definition of the callout header..................................*/
+   font-size: @sapUiFontHeader4Size;
+   font-family: @sapUiFontFamily;
+   font-weight: bold;
+   color: @sapUiText; 
+   overflow: hidden;     
+   vertical-align: top;
+   /*text-overflow: ellipsis;*/
+   white-space: nowrap;
+   left: 0rem;
+   top: 0rem;
+   padding: 0;
+   margin: 0;
+   border-width:0;
+   line-height:normal;
+}
+
+
+.vbi-detail-closebutton
+{
+   font-family: "SAP-icons", Arial, Helvetica, sans-serif; 
+   font-size:0.750rem;
+   text-align: center;
+   position: absolute;
+   margin: 0;
+   padding: 0;
+   margin: 0;
+   border-width: 0;
+   background-color: rgba(255, 255, 255, 0.0);
+   -moz-box-sizing: border-box;   
+   box-sizing: border-box;
+   cursor: pointer;
+}
+
+.vbi-detail-closebutton-desktop
+{
+   border-top: 0.063rem solid transparent;
+   right: 0.3125rem;
+   top: 0.3125rem;
+   height: 1.375rem;
+   width: 1.375rem;
+
+}
+
+.vbi-detail-closebutton-tablet
+{
+	border-top: 0.125rem solid transparent;
+   right: 0.0rem;
+   top: 0.0rem;
+   height: 2rem;
+   width: 2rem;
+
+}
+
+@_sap_ui_vbm_VBI_DetailCloseHoverBG: rgba(128, 150, 189, 1.0); 
+
+.vbi-detail-closebutton:hover
+{
+	background-color: @_sap_ui_vbm_VBI_DetailCloseHoverBG;
+}
+.vbi-detail-closebutton:active 
+{
+	background-color: @_sap_ui_vbm_VBI_DetailCloseHoverBG;
+}
+
+ .vbi-detail-closebutton:before
+ { 
+	content: "\e03e";
+	color: rgba(107, 125, 151, 1.0);
+ }
+ .vbi-detail-closebutton-desktop:before
+{
+	vertical-align: -25%;
+}
+
+ .vbi-detail-closebutton-tablet:before
+{
+	vertical-align: -50%;
+}
+ 
+
+.vbi-detail-closebutton:hover::before
+{ 
+	color: #ffffff;
+}
+
+.vbi-detail-closebutton:active::before
+{ 
+	color: #ffffff;
+}
+
+.vbi-detail .vbi-detail-title
+{
+   display:inline-block;
+   text-align: center;
+   top: 0rem;
+   left: 0rem;
+   margin: 0;
+   padding: 0 1rem 1rem 0;
+   border-width: 0;
+   width: 100%;
+   -moz-box-sizing: border-box;   
+   box-sizing: border-box;
+   overflow: hidden;   
+   text-overflow: ellipsis;  
+   /* max-width:18rem; */
+}
+
+.vbi-detail-content 
+{
+   position: relative;
+   margin: 0rem;
+   padding: 0rem;
+   border: 0rem;
+   background-color: @_sap_ui_vbm_VBI_DetailBG;
+   box-sizing: border-box;
+   -moz-box-sizing: border-box;
+}
+
+/* Styles for phone */
+
+.vbi-detail-phone
+{
+	
+   box-sizing: border-box;
+   position: absolute;
+   margin: 0;
+   background-color: @_sap_ui_vbm_VBI_DetailBG;
+	width: 100%;
+	min-height: 3.5 rem;
+	padding-bottom: 0.75rem;
+	padding-right: 2rem;
+	padding-left: 1rem;
+	padding-top: 0.75rem;
+   border-top: 0.0625rem #a6b5d1 solid; 
+   border-left: 0rem;
+   border-right: 0rem;
+   border-bottom: 0rem;
+   box-shadow: 0rem 0rem 1.875rem 0.125rem rgba(0, 0, 0, 0.15);
+}
+
+.vbi-detail-header-phone
+{
+   font-size: 0.875rem;
+   font-family: @sapUiFontFamily;
+   font-weight: bold;
+   color: @sapUiText; 
+   overflow: hidden;     
+   vertical-align: top;
+   /*text-overflow: ellipsis;*/
+   white-space: nowrap;
+   left: 0rem;
+   top: 0rem;
+   padding: 0;
+   margin: 0;
+   border-width:0;
+}
+.vbi-detail-title-phone
+{
+   display:inline-block;
+   text-align: center;
+   top: 0rem;
+   left: 0rem;
+   margin: 0;
+   border-width: 0;
+   width: 100%;
+   box-sizing: border-box;
+   overflow: hidden;   
+   text-overflow: ellipsis;  
+	padding: 0 0 0.375rem 0;
+	max-width: none;
+}
+
+/*...........................................................................*/
+/* 2d elements for Detail Window.............................................*/
+/*...........................................................................*/
+
+.vbi-2d-common
+{
+   position: absolute;
+   font-size: 12px;
+   font-family: @sapUiFontFamily; 
+   color: @sapUiBaseText;
+   background-color: transparent;      
+   text-align: left;
+   vertical-align: middle; 
+}
+
+.vbi-2d-caption
+{
+	font-family: @sapUiFontFamily;
+	color: @sapUiText;
+}
+
+vbi-2d-label
+{
+
+}
+
+.vbi-2d-link
+{
+
+}
+
+.vbi-2d-image
+{
+	
+}
+
+.vbi-2d-button
+{
+   color: @sapUiButtonTextColor;
+   background-color: @sapUiButtonBackground;
+   border-color: @sapUiButtonBorderColor;
+   border-width: 1px;
+   border-style: solid;
+   border-radius: 2px;
+}
+
+/*...........................................................................*/
+/* End of Detail Window styles...............................................*/
+/*...........................................................................*/
+
+
+/*...........................................................................*/
+/* Begin of Legend window style .............................................*/
+/*...........................................................................*/
+
+.vbi-legend {
+	box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 1.875rem 0.125rem;
+   top: 0;
+   box-sizing: border-box;
+   position: absolute;
+   margin: 0;
+   background-color: rgba(255, 255, 255, 0.9);
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;   
+   color: black;
+   text-align: left;
+
+}
+
+html[ dir=rtl ] .vbi-legend {
+   text-align: right;
+}
+
+.vbi-legend > .vbi-legend-header
+{
+	padding: 0.5rem 1rem 0.5rem 3rem;
+   overflow: hidden;     
+   vertical-align: top;
+   white-space: nowrap;
+   top: 0rem;
+   height: 1rem;
+}
+
+.vbi-legend-header{ 
+cursor: pointer;
+  -webkit-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;   
+   touch-action: none;
+}
+
+.vbi-legend .vbi-legend-title
+{
+   display:block;
+   
+   
+   font-size: 14px;
+   font-family: @sapUiFontFamily;
+   
+   overflow: hidden;   
+   text-overflow: ellipsis;  
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;   
+}
+
+.vbi-legend-button
+{
+   font-family: "SAP-icons", Arial, Helvetica, sans-serif; 
+   font-size: 1rem;
+   text-align: center;
+   position: absolute;
+   height: 2rem;
+   width: 3rem;
+   cursor: pointer;
+}
+
+.vbi-legend-button .vbi-legend-button-col
+{
+	
+}
+
+.vbi-legend-button .vbi-legend-button-exp
+{
+	
+}
+
+.vbi-legend-button-col:hover
+{
+	
+}
+.vbi-legend-button-col:active 
+{
+	
+}
+
+.vbi-legend-button-col:before
+ { 
+	content: "\e1f9";
+	vertical-align: -25%;
+	vertical-align: -webkit-baseline-middle;
+	-ms-transform: translate(0, 10%);
+	
+	
+ }
+
+ 
+.vbi-legend-button-exp:hover
+{
+	
+}
+.vbi-legend-button-exp:active 
+{
+	
+}
+
+.vbi-legend-button-exp:before
+ {
+	content: "\e1c0";
+	vertical-align: -25%;
+ 	vertical-align: -webkit-baseline-middle;
+ 	-ms-transform: translate(0, 10%);
+ }
+
+
+html[ dir=rtl ] .vbi-legend-button-exp:before
+{
+	content: "\e1bf";
+}
+
+ 
+.vbi-legend-content 
+{
+   position: relative;
+   overflow-y: auto;
+   overflow-x: hidden;
+   
+}
+
+.vbi-legend-table 
+{
+    
+	
+	float: left;
+	width: 100%;
+	border-collapse: collapse; 
+	td { padding-left: 1rem; padding-top: 0rem; padding-bottom: 0rem;
+	};
+	td:nth-child(1){
+     width:1rem;
+    };
+	tr { line-height: 30px;
+	
+	};
+ }
+td.vbi-legend-content-celltext
+{
+	padding: 0rem 1rem 0rem 0.5rem;
+	
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;   
+   white-space: nowrap;
+}
+
+
+.vbi-legend-content-celltext-group
+{
+
+	font-style: italic;
+}
+
+.vbi-legend-content-celldiv
+{
+	height: 1rem;
+	width: 1rem;
+	object-fit: contain;
+	transform: translate(0, 25%);
+}
+
+.vbi-legend-content-celldiv-square
+{
+	
+	height: 0.875rem;
+	width: 0.875rem;
+	border-style: solid;
+	border-width: 0.0625rem;
+	border-color: white;
+}
+
+
+
+
+
+
+
+/*...........................................................................*/
+/* End of Legend window style ...............................................*/
+/*...........................................................................*/
+
+
+/*...........................................................................*/
+/* Copyright style...........................................................*/
+/*...........................................................................*/
+
+.vbi-copyright
+{
+	color:  black;
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	text-align: center;
+	font-size: 10px;
+	padding-right:10px;
+	padding-left:10px;
+	background-color: rgba(255,255,255,0.45);
+	background: -moz-linear-gradient(right,rgba(255,255,255,0.45),rgba(255,255,255,0.45) 80%,rgba(255,255,255,0)); /* Firefox */
+	background: -webkit-linear-gradient(right,rgba(255,255,255,0.45),rgba(255,255,255,0.45) 80%,rgba(255,255,255,0));	/* Chrome, Safari */
+	background: -ms-linear-gradient(right,rgba(255,255,255,0.45),rgba(255,255,255,0.45) 80%,rgba(255,255,255,0));
+   	a[href] 
+   	{
+    	color: #436976;
+   	}
+}
+
+/*...........................................................................*/
+/* Scale style...............................................................*/
+/*...........................................................................*/
+
+.vbi-scale
+{
+	left: 5px;
+	position: absolute;
+	bottom: 1px;
+	pointer-events: none;
+}
+
+/*...........................................................................*/
+/* End of Scale style........................................................*/
+/*...........................................................................*/
+
+/*...........................................................................*/
+/* VBI Icon font.............................................................*/
+/*...........................................................................*/
+
+@font-face {
+    font-family: 'VBI-Icons';
+    src:url('fonts/VBI-Icons.eot?#iefix') format('embedded-opentype'),
+    	url('fonts/VBI-Icons.woff2') format('woff2'),
+    	url('fonts/VBI-Icons.woff') format('woff'),
+    	url('fonts/VBI-Icons.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*...........................................................................*/
+/* End of VBI Icon font......................................................*/
+/*...........................................................................*/

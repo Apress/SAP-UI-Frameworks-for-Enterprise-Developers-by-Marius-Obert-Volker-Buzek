@@ -1,0 +1,38 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:ushell="sap.ushell.ui">
+    <Dialog
+        title="{= ${_internal>/isSpaces} ? ${_i18n>valueHelpDialogTitlePages} : ${_i18n>valueHelpDialogTitleGroups}}"
+        contentWidth="25rem"
+        stretch="{_device>/system/phone}"
+        horizontalScrolling="false">
+        <subHeader>
+            <Toolbar>
+                <SearchField
+                    id="ContentNodesSearch"
+                    search="._onValueHelpSearch"
+                    width="100%">
+                </SearchField>
+            </Toolbar>
+        </subHeader>
+        <content>
+            <Tree
+                id="ContentNodesTree"
+                items="{path: '_internal>/items', templateShareable: false}"
+                mode="MultiSelect"
+                includeItemInSelection="true"
+                rememberSelections="true">
+                <items>
+                    <ushell:ContentNodeTreeItem
+                        selectable="{_internal>isContainer}"
+                        title="{_internal>label}"
+                        selected="{_internal>selected}"/>
+                </items>
+            </Tree>
+        </content>
+        <beginButton>
+            <Button id="AddButton" text="{_i18n>valueHelpDialogButtonApply}" type="Emphasized" press="._onValueHelpBeginButtonPressed"/>
+        </beginButton>
+        <endButton>
+            <Button text="{_i18n>valueHelpDialogButtonCancel}" press="._onValueHelpEndButtonPressed"/>
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

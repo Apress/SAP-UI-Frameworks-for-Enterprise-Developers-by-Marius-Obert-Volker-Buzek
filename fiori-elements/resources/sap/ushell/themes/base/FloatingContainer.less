@@ -1,0 +1,51 @@
+/* ============================================================== */
+/* CSS for control "sap.ushell.ui.shell.FloatingContainer" (base) */
+/* ============================================================== */
+
+.sapUshellFloatingContainer {
+  position: absolute;
+  width: @_sap_ushell_CoPilot_DockingWidth;
+  max-height: 46rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+#shell-floatingContainer:focus {
+  outline: 0.1px dotted @sapUiContentFocusColor;
+}
+
+@media (max-width: 417px) {
+  .sapUshellFloatingContainer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    right: 0;
+    top: 0;
+  }
+
+  .sapUshellShellFloatingContainerWrapper {
+    position: absolute;
+    top: 0 !important;
+    right: 0 !important;
+    left: 0 !important;
+    bottom: 0;
+  }
+}
+
+.sapUshellFloatingContainer-clone {
+  position: absolute !important;
+  z-index: 9;
+}
+
+.sapUshellShellFloatingContainerWrapper {
+  z-index: 9;
+}
+
+.sapUshellShellFloatingContainerSelector {
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}

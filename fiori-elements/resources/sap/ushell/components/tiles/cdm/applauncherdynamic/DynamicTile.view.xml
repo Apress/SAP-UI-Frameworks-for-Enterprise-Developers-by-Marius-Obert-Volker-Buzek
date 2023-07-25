@@ -1,0 +1,43 @@
+<mvc:View
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    controllerName="sap.ushell.components.tiles.cdm.applauncherdynamic.DynamicTile"
+    height="100%"
+    width="100%">
+    <GenericTile
+        additionalTooltip="{/properties/contentProviderLabel}"
+        systemInfo="{= ${/properties/showContentProviderOnViz} ? ${/properties/contentProviderLabel}:''}"
+        frameType="{/properties/frameType}"
+        header="{/properties/title}"
+        scope="{/properties/scope}"
+        sizeBehavior="{/properties/sizeBehavior}"
+        subheader="{/properties/subtitle}"
+        url="{
+            path: '/properties/targetURL',
+            formatter: '._getLeanUrl'
+        }"
+        wrappingType="{/properties/wrappingType}"
+        press=".onPress">
+        <TileContent
+            id="numericTileContent"
+            footer="{/properties/info}"
+            footerColor="{
+                path: '/properties/infoState',
+                formatter: '._formatValueColor'
+            }"
+            unit="{/properties/number_unit}">
+            <NumericContent
+                icon="{/properties/icon}"
+                indicator="{/properties/number_state_arrow}"
+                scale="{/properties/number_factor}"
+                truncateValueTo="5"
+                value="{/properties/number_value}"
+                valueColor="{
+                    path: '/properties/number_value_state',
+                    formatter: '._getValueColor'
+                }"
+                withMargin="false"
+                width="100%" />
+        </TileContent>
+    </GenericTile>
+</mvc:View>

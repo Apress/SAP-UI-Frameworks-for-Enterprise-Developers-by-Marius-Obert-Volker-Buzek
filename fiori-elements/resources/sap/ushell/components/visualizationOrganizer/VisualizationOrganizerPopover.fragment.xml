@@ -1,0 +1,63 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <Popover
+        id="sapUshellVisualizationOrganizerPopover"
+        class="sapContrastPlus"
+        placement="VerticalPreferredBottom"
+        contentHeight="220px"
+        modal="true"
+        titleAlignment="Start"
+        showHeader="true"
+        title="{i18n>VisualizationOrganizer.Title}">
+        <subHeader>
+            <HBox class="sapUiTinyMarginBeginEnd sapUiTinyMarginTop">
+                <SearchField
+                    id="sapUshellVisualizationOrganizerSearch"
+                    tooltip="{i18n>VisualizationOrganizer.SearchField.Tooltip}"
+                    search="._onSearch"
+                    width="auto"/>
+                <ToggleButton id="sapUshellVisualizationOrganizerSelectedPages"
+                    icon="sap-icon://multi-select"
+                    press="._onSearch"
+                    class="sapUiTinyMarginBeginEnd"
+                tooltip="{i18n>VisualizationOrganizer.ToggleButton.Tooltip}"/>
+            </HBox>
+        </subHeader>
+        <content>
+            <List
+                id="sapUshellVisualizationOrganizerSpacesList"
+                mode="MultiSelect"
+                items="{
+                    path: '/pages',
+                    sorter: { path: '', group: '.groupBySpace' },
+                    groupHeaderFactory: '.getGroupHeader'
+                }"
+                noDataText="{i18n>VisualizationOrganizer.PagesList.NoDataText}"
+                selectionChange=".onSelectionChange">
+                <items>
+                    <StandardListItem
+                        title="{title}"
+                        type="Active"
+                        selected="{selected}"
+                        press=".pagePressed"/>
+                </items>
+            </List>
+        </content>
+        <footer>
+            <Bar>
+                <contentRight>
+                    <Button
+                        id="sapUshellVisualizationOrganizerOKButton"
+                        text="{i18n>okBtn}"
+                        type="Emphasized"
+                        press=".okay"/>
+                    <Button
+                        id="sapUshellVisualizationOrganizerCloseButton"
+                        text="{i18n>cancelBtn}"
+                        press=".cancel"/>
+                </contentRight>
+            </Bar>
+        </footer>
+    </Popover>
+</core:FragmentDefinition>

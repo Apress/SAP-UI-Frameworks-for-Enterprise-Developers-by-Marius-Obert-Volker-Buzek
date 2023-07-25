@@ -1,0 +1,1406 @@
+//default animation
+.sapUiVizKitAnnotationNodeDefault {
+    position: absolute;
+    display: block;
+    background-color:white;
+    border: 0.125rem solid black;
+    border-radius: 50%;
+    width: 0.625rem;
+    height: 0.625rem;
+    z-index: 1;
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.9));
+}
+
+.sapUiVizKitAnnotationLeaderDefault {
+    position: absolute;
+    width: 0.0625rem;
+    background-color: black;
+    animation-delay: inherit;
+    animation-duration: 0.5s;
+    animation-name: var(--animation-name, annotationLeader);
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.9));
+}
+
+.sapUiVizKitAnnotationDefault {
+	position: absolute;
+	color: black;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-width: 0.125rem;
+    border-color: black;
+	background-color: lightgray;
+	cursor: default;
+    // max-width: 6.25rem;
+    white-space: normal;
+    display: block;
+    animation-delay: inherit;
+    animation-fill-mode: both;
+    animation-duration: 1s;
+    animation-name: var(--animation-name, annotationDefault);
+    visibility: visible;
+    z-index: 1;
+}
+
+.sapUiVizKitAnnotationDefault::before{
+    content: '';
+    position: absolute;
+    display: block;
+    top: -0.125rem;
+    left: -0.125rem;
+    width: 0.75rem;
+    height: ~"calc(100% + 0.25rem)";
+    background: transparent;
+    border-top: 0.125rem solid;
+    border-bottom: 0.125rem solid;
+    border-color: black;
+    box-sizing: border-box;
+}
+
+.sapUiVizKitAnnotationDefault::after{
+    content: '';
+    position: absolute;
+    display: block;
+    top: -0.125rem;;
+    right: -0.125rem;
+    width: 0.75rem;
+    height: ~"calc(100% + 0.25rem)";
+    background: transparent;
+    border-top: 0.125rem solid;
+    border-bottom: 0.125rem solid;
+    border-color: black;
+    box-sizing: border-box;
+}
+
+.sapUiVizKitAnnotationDefault {
+    background: repeating-linear-gradient(135deg, transparent, transparent 3px, var(--border-color, transparent) 3px, var(--border-color, transparent) 8px);
+    animation: var(--animation-name, shine) 1s infinite linear;
+    >.sapUiVizKitAnnotationText {
+        padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+        margin: 0.2rem 0.2rem 0.2rem 0.2rem;
+        background-color: var(--background-color, rgba(221, 221, 221, 0.5));
+        animation-delay: inherit;
+        animation-name: var(--animation-name, annotationDefaultText);
+        animation-timing-function: linear;
+        animation-duration: 1s;
+        overflow: var(--overflow, hidden);
+        text-overflow: ellipsis;
+    }
+
+    >.sapUiVizKitAnnotationElement0 {
+        position: absolute;
+        border-top: 0.0625rem solid black;
+        height: 0%;
+        display: block;
+        left: 100%;
+        width: 25%;
+        top: 50%;
+        animation-delay: inherit;
+        animation-fill-mode: both;
+        animation-duration: 2s;
+        animation-name: var(--animation-name, annotationDefaultLine1);
+    }
+
+    >.sapUiVizKitAnnotationElement1 {
+        position: absolute;
+        border-right: 0.0625rem solid black;
+        height: 75%;
+        display: block;
+        right: -25%;
+        top: 50%;
+        width: 0%;
+        animation-delay: inherit;
+        animation-fill-mode: both;
+        animation-duration: 3s;
+        animation-name: var(--animation-name, annotationDefaultLine2);
+    }
+
+    >.sapUiVizKitAnnotationElement2 {
+        position: absolute;
+        border-bottom: 0.0625rem solid black;
+        height: 0%;
+        display: block;
+        left: 50%;
+        top: 125%;
+        width: 75%;
+        animation-delay: inherit;
+        animation-fill-mode: both;
+        animation-duration: 4s;
+        animation-name: var(--animation-name, annotationDefaultLine3);
+    }
+
+    >.sapUiVizKitAnnotationElement3 {
+        position: absolute;
+        border-right: 0.0625rem solid black;
+        height: 1rem;
+        display: block;
+        left: 50%;
+        top: 125%;
+        width: 0%;
+        animation-delay: inherit;
+        animation-fill-mode: both;
+        animation-duration: 5s;
+        animation-name: var(--animation-name, annotationDefaultLine4);
+    }
+
+    >.sapUiVizKitAnnotationElement4 {
+        position: absolute;
+        border: 0.125rem solid black;
+        border-radius: 50%;
+        height: 1rem;
+        display: block;
+        left: ~"calc(50% - 0.625rem)";
+        top:  ~"calc(125% + 1rem)";
+        width: 1rem;
+        animation-delay: inherit;
+        animation-fill-mode: both;
+        animation-duration: 6s;
+        animation-name: var(--animation-name, annotationDefaultCircle);
+    }
+}
+
+@keyframes annotationDefault {
+    0% {
+        transform: scaleX(0);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+};
+
+@keyframes annotationDefaultLine1 {
+    0% {
+        transform: scaleX(0);
+    }
+    50% {
+        transform: scaleX(0);
+    }
+    100% {
+        transform-origin: left;
+        transform: scaleX(1);
+    }
+}
+
+@keyframes annotationDefaultLine2 {
+    0% {
+        transform: scaleY(0);
+    }
+    66% {
+        transform: scaleY(0);
+    }
+    100% {
+        transform-origin: top;
+        transform: scaleY(1);
+    }
+}
+
+@keyframes annotationDefaultLine3 {
+    0% {
+        transform: scaleX(0);
+    }
+    75% {
+        transform: scaleX(0);
+    }
+    100% {
+        transform-origin: right;
+        transform: scaleX(1);
+    }
+}
+
+@keyframes annotationDefaultLine4 {
+    0% {
+        transform: scaleY(0);
+    }
+    80% {
+        transform: scaleY(0);
+    }
+    100% {
+        transform-origin: top;
+        transform: scaleY(1);
+    }
+}
+
+@keyframes annotationDefaultCircle {
+    0%{
+        opacity: 0%;
+    }
+    83%{
+        opacity: 0%;
+    }
+    100%{
+        opacity: 100%;
+    }
+}
+
+// animation 2
+.sapUiVizKitAnnotationNodeExplode {
+    position: absolute;
+    display: block;
+    background-color:black;
+    border-radius: 50%;
+    width: 0.625rem;
+    height: 0.625rem;
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.9));
+}
+
+.sapUiVizKitAnnotationLeaderExplode {
+    position: absolute;
+    width: 0.0625rem;
+    background-color: black;
+    animation-delay: inherit;
+    animation-duration: 0.5s;
+    animation-name: var(--animation-name, annotationLeader);
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.9));
+}
+
+.sapUiVizKitAnnotationExplode {
+    position: absolute;
+    white-space: normal;
+    animation-fill-mode: both;
+    animation-duration: 2s;
+    animation-name: var(--animation-name, annotationExplode);
+    z-index: 1;
+}
+
+.sapUiVizKitAnnotationExplode::before{
+    content: '';
+    position: absolute;
+    display: block;
+    top: -0.125rem;
+    left: -0.125rem;
+    width: 1.25rem;
+    height: ~"calc(100% + 0.35rem)";
+    background: transparent;
+    border-top: 0.125rem solid;
+    border-bottom: 0.125rem solid;
+    box-sizing: border-box;
+}
+
+.sapUiVizKitAnnotationExplode::after{
+    content: '';
+    position: absolute;
+    display: block;
+    top: -0.125rem;;
+    right: -0.125rem;
+    width: 1.25rem;
+    height: ~"calc(100% + 0.35rem)";
+    background: transparent;
+    border-top: 0.125rem solid;
+    border-bottom: 0.125rem solid;
+    box-sizing: border-box;
+}
+
+.sapUiVizKitAnnotationExplode {
+    color: black;
+    background: repeating-linear-gradient(135deg, transparent, transparent 3px, var(--border-color, transparent) 3px, var(--border-color, transparent) 8px);
+    animation: var(--animation-name, shine) 1s infinite linear;
+    >.sapUiVizKitAnnotationText::before{
+        content: '';
+        position: absolute;
+        display: block;
+        top: -0.125rem;
+        left: -0.125rem;
+        width: 0.125rem;
+        height: ~"calc(100% + 0.25rem)";
+        background: transparent;
+        border-top: 1.25rem solid;
+        border-bottom: 1.25rem solid;
+        box-sizing: border-box;
+    }
+
+    >.sapUiVizKitAnnotationText::after{
+        content: '';
+        position: absolute;
+        display: block;
+        top: -0.125rem;;
+        right: -0.125rem;
+        width: 0.125rem;
+        height: ~"calc(100% + 0.25rem)";
+        background: transparent;
+        border-top: 1.25rem solid;
+        border-bottom: 1.25rem solid;
+        box-sizing: border-box;
+    }
+
+    >.sapUiVizKitAnnotationText {
+        padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+        margin: 0.2rem 0.2rem 0.2rem 0.2rem;
+        background-color: var(--background-color, rgba(221, 221, 221, 0.5));
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -o-user-select: none;
+        user-select: none;
+        overflow: var(--overflow, hidden);
+        text-overflow: ellipsis;
+    }
+
+    >.sapUiVizKitAnnotationElement0 {
+        position: absolute;
+        display: block;
+        width: 2.0rem;
+        height: 3.35rem;
+        left: ~"calc(100% - 2rem)";
+        top: 100%;
+        border-right: 0.0625rem solid;
+        transform-origin: top right;
+        transform: rotate(-45deg);
+        animation-delay: inherit;
+        animation-fill-mode: both;
+        animation-duration: 3s;
+        animation-name: var(--animation-name, annotationRightL);
+    }
+
+    >.sapUiVizKitAnnotationElement1 {
+        position: absolute;
+        display: block;
+        border-bottom: 0.0625rem solid black;
+        width: ~"calc(50% + 2.3rem)";
+        height: 2rem;
+        left: ~"calc(50% + 0.125rem)";
+        top: ~"calc(100% + 0.35rem)";
+        animation-delay: inherit;
+        animation-fill-mode: both;
+        animation-duration: 4s;
+        animation-name: var(--animation-name, annotationBottomL);
+    }
+
+    >.sapUiVizKitAnnotationElement2 {
+        position: absolute;
+        display: block;
+        background-color:black;
+        border-radius: 50%;
+        width: 0.625rem;
+        height: 0.625rem;
+        left: ~"calc(50% - 0.125rem)";
+        top: ~"calc(100% + 2rem)";
+        animation-delay: inherit;
+        animation-fill-mode: both;
+        animation-duration: 5s;
+        animation-name: var(--animation-name, annotationDot);
+    }
+}
+
+.sapUiVizKitAnnotationExplode:hover {
+    transition: filter .3s;
+    filter: drop-shadow(0 0 2rem #5E696E);
+}
+
+@keyframes annotationExplode {
+    from {
+        opacity: 0;
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes annotationRightL {
+    0% {
+        transform: scale(0) rotate(-45deg);
+    }
+    25% {
+        transform: scale(0) rotate(-45deg);
+    }
+    100% {
+        transform-origin: top right;
+        transform: scale(1) rotate(-45deg);
+    }
+}
+
+@keyframes annotationBottomL {
+    0% {
+        transform: scale(0);
+    }
+    75% {
+        transform: scale(0);
+    }
+    100% {
+        transform-origin: bottom right;
+        transform: scale(1);
+    }
+}
+
+@keyframes annotationDot {
+    0% {
+        transform: scale(0);
+    }
+    80% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes annotationLeader {
+    0%{
+        opacity: 0%;
+    }
+    83%{
+        opacity: 0%;
+    }
+    100%{
+        opacity: 100%;
+    }
+}
+
+// animation 3
+.sapUiVizKitAnnotationNodeSquare {
+    position: absolute;
+    display: block;
+    background-color:orange;
+    width: 0.375rem;
+    height: 0.375rem;
+    z-index: 1;
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.9));
+}
+
+.sapUiVizKitAnnotationLeaderSquare {
+    position: absolute;
+    width: 0.0625rem;
+    background-color: black;
+    animation-delay: inherit;
+    animation-duration: 2s;
+    animation-name: var(--animation-name, annotationLeader);
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.9));
+}
+
+.sapUiVizKitAnnotationSquare {
+    color: black;
+    position: absolute;
+    white-space: normal;
+    background: repeating-linear-gradient(135deg, transparent, transparent 3px, var(--border-color, transparent) 3px, var(--border-color, transparent) 8px);
+    animation-duration: 0.75s;
+    filter: drop-shadow(0 0 1rem black);
+    z-index: 1;
+
+    >.sapUiVizKitAnnotationText {
+        border: 0.125rem solid;
+        background-clip: text;
+        animation-delay: inherit;
+        animation-fill-mode: both;
+        animation-duration: 2s;
+        animation-name: var(--animation-name, annotationSquareText);
+        animation-direction: inherit;
+        z-index: 1;
+        background-color: var(--background-color, rgba(221, 221, 221, 0.5));
+        padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+        margin: 0.2rem 0.2rem 0.2rem 0.2rem;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -o-user-select: none;
+        user-select: none;
+        overflow: var(--overflow, hidden);
+        text-overflow: ellipsis;
+    }
+
+
+    >.sapUiVizKitAnnotationElement0 {
+        position: absolute;
+        background-color:#e99d42;
+        width: 1rem;
+        height: 1rem;
+        left: ~"calc(100% - 0.75rem)";
+        bottom: ~"calc(100% - 0.75rem)";
+        z-index: 2;
+        animation-delay: inherit;
+        animation-fill-mode: both;
+        animation-duration: 2s;
+        animation-name: var(--animation-name, annotationBottomSquare);
+        animation-direction: inherit;
+    }
+
+    >.sapUiVizKitAnnotationElement1 {
+        position: absolute;
+        display: block;
+        width: 2rem;
+        height: 4rem;
+        left: ~"calc(100% - 1.75rem)";
+        bottom: ~"calc(100% + 0.25rem)";
+        border-right: 0.0625rem solid;
+        transform-origin: bottom right;
+        transform: rotate(45deg);
+        animation-delay: inherit;
+        animation-fill-mode: both;
+        animation-duration: 3s;
+        animation-name: var(--animation-name, annotationRightTop);
+        animation-direction: inherit;
+    }
+
+    >.sapUiVizKitAnnotationElement2 {
+        position: absolute;
+        display: block;
+        background-color:black;
+        width: 0.375rem;
+        height: 0.375rem;
+        left: ~"calc(100% + 3rem)";
+        bottom: ~"calc(100% + 3rem)";
+        animation-delay: inherit;
+        animation-fill-mode: both;
+        animation-duration: 4s;
+        animation-name: var(--animation-name, annotationTopSquare);
+        animation-direction: inherit;
+    }
+}
+
+.sapUiVizKitAnnotationSquare:hover {
+    transition: filter .3s;
+    filter: drop-shadow(0 0 2rem black);
+}
+
+.sapUiVizKitAnnotationSquare.leaderlineRight {
+    >.sapUiVizKitAnnotationElement4 {
+        position: absolute;
+        background-color: #e99d42;
+        width: 0.375rem;
+        height: 0.375rem;
+        left: ~"calc(100% - 0.35rem)";
+        top: ~"calc(100% - 0.55rem)";
+        z-index: 2;
+        animation-delay: inherit;
+        animation-fill-mode: both;
+        animation-duration: 1s;
+        animation-name: var(--animation-name, annotationSquareText);
+        animation-direction: inherit;
+    }
+}
+
+.sapUiVizKitAnnotationSquare.leaderlineLeft {
+    >.sapUiVizKitAnnotationElement6 {
+        position: absolute;
+        background-color: #e99d42;
+        width: 0.375rem;
+        height: 0.375rem;
+        top: ~"calc(100% - 0.6rem)";
+        z-index: 2;
+        animation-delay: inherit;
+        animation-fill-mode: both;
+        animation-duration: 1s;
+        animation-name: var(--animation-name, annotationSquareText);
+        animation-direction: inherit;
+    }
+}
+
+@keyframes annotationRightTop {
+    0% {
+        transform: scale(0) translateX(-0.5rem)
+    }
+    25% {
+        transform-origin: bottom right;
+        transform: translateX(-0.5rem) rotate(0deg) scale(0.25)
+    }
+    75% {
+        transform-origin: bottom right;
+        transform:  translateX(-0.5rem) rotate(0deg) scale(0.75)
+    }
+    100% {
+        transform-origin: bottom right;
+        transform: rotate(45deg) scale(1)
+    }
+}
+
+@keyframes annotationBottomSquare {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes annotationTopSquare {
+    0% {
+        transform: scale(0);
+    }
+    75% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes annotationSquareText {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    75% {
+        transform-origin: left bottom;
+        transform: rotate3d(0, 0, 1, -45deg);
+        opacity: 0;
+    }
+    100% {
+        transform-origin: left bottom;
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+}
+
+// animation 4
+.sapUiVizKitAnnotationNodeRandom {
+    position: absolute;
+    background-color:#fdc200;
+    width: 1rem;
+    height: 1rem;
+    z-index: 2;
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.9));
+}
+
+.sapUiVizKitAnnotationLeaderRandom {
+    position: absolute;
+    width: 0.1rem;
+    background-color: #969696;
+    animation-delay: inherit;
+    animation-duration: 2s;
+    animation-name: var(--animation-name, annotationLeader);
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.9));
+}
+
+.sapUiVizKitAnnotationRandom::before{
+    content: '';
+    position: absolute;
+    display: block;
+    top: 0.1rem;
+    left: -0.1rem;
+    width: 1.5rem;
+    height: ~"calc(100% - 0.2rem)";
+    margin-left: 0.1rem;
+    background: transparent;
+    border-top: 0.1rem solid;
+    border-bottom: 0.1rem solid;
+    border-left: 0.1rem solid;
+    border-color: #969696;
+    box-sizing: border-box;
+    animation-delay: inherit;
+    animation-fill-mode: both;
+    animation-duration: 3s;
+    animation-name: var(--animation-name, annotationRandomElement);
+    animation-direction: inherit;
+}
+
+.sapUiVizKitAnnotationRandom::after{
+    content: '';
+    position: absolute;
+    display: block;
+    top: 0.1rem;;
+    right: -0.1rem;
+    width: 1.5rem;
+    height: ~"calc(100% - 0.2rem)";
+    margin-right: 0.1rem;
+    background: transparent;
+    border-top: 0.1rem solid;
+    border-bottom: 0.1rem solid;
+    border-right: 0.1rem solid;
+    border-color: #969696;
+    box-sizing: border-box;
+    animation-delay: inherit;
+    animation-fill-mode: both;
+    animation-duration: 3s;
+    animation-name: var(--animation-name, annotationRandomElement);
+    animation-direction: inherit
+}
+
+.sapUiVizKitAnnotationRandom {
+    color:black;
+    position: absolute;
+    background: repeating-linear-gradient(135deg, transparent, transparent 3px, var(--border-color, transparent) 3px, var(--border-color, transparent) 8px);
+    animation-duration: 3s;
+    z-index: 1;
+    >.sapUiVizKitAnnotationText {
+        word-wrap: break-word;
+        word-break: break-all;
+        white-space: normal;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -o-user-select: none;
+        user-select: none;
+        margin: 0.3rem 0.3rem 0.3rem 0.3rem;
+        padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+        width: var(--div-width);
+        height: var(--div-height);
+        z-index: 1;
+        background-color: var(--background-color, rgba(221, 221, 221, 0.5));
+        animation-delay: inherit;
+        animation-fill-mode: both;
+        animation-duration: 3s;
+        animation-name: var(--animation-name, annotationRandomWrapper);
+        animation-direction: inherit;
+        overflow: var(--overflow, hidden);
+        text-overflow: ellipsis;
+    }
+
+    >.sapUiVizKitAnnotationElement0 {
+        position: absolute;
+        background-color:#fdc200;
+        width: 1rem;
+        height: 1rem;
+        left: var(--square-left);
+        bottom: var(--square-bottom);
+        z-index: 2;
+        animation-delay: inherit;
+        animation-fill-mode: both;
+        animation-duration: 4s;
+        animation-name: var(--animation-name, annotationRandomBottom);
+        animation-direction: inherit;
+    }
+
+    >.sapUiVizKitAnnotationElement1 {
+        position: absolute;
+        background-color:#fdc200;
+        width: 0.5rem;
+        height: 0.5rem;
+        left: -0.25rem;
+        z-index: 2;
+        bottom: ~"calc(50% - 0.15rem)";
+        animation-delay: inherit;
+        animation-fill-mode: both;
+        animation-duration: 3s;
+        animation-name: var(--animation-name, annotationRandomSquare);
+        animation-direction: inherit;
+    }
+
+    >.sapUiVizKitAnnotationElement4 {
+        position: absolute;
+        background-color:#fdc200;
+        width: 0.5rem;
+        height: 0.5rem;
+        z-index: 2;
+        left: ~"calc(100% - 0.25rem)";
+        bottom: ~"calc(50% - 0.15rem)";
+        animation-delay: inherit;
+        animation-fill-mode: both;
+        animation-duration: 3s;
+        animation-name: var(--animation-name, annotationRandomSquare);
+        animation-direction: inherit;
+    }
+
+
+    >.sapUiVizKitAnnotationElement2 {
+        position: absolute;
+        width: 0.1rem;
+        background-color: #969696;
+        animation-delay: inherit;
+        animation-fill-mode: both;
+        animation-duration: 3s;
+        animation-name: var(--animation-name, annotationRandomElement);
+        animation-direction: inherit;
+    }
+}
+
+@keyframes shine {
+    0% { background-position: -1px -1px;}
+    100% { background-position: -12px -12px;}
+}
+
+@keyframes annotationRandomWrapper {
+    0% {
+        transform: scale3d(0, 0, 0);
+    }
+    25% {
+        transform: scale3d(0, 0.8, 0);
+    }
+    100% {
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+@keyframes annotationRandomSquare {
+    50%,
+    to {
+      opacity: 1;
+    }
+
+    from,
+    25%,
+    75% {
+      opacity: 0;
+    }
+}
+
+@keyframes annotationRandomElement {
+    0% {
+        opacity: 0;
+    }
+
+    75% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes annotationRandomTextSpan {
+    0% {
+        opacity: 0;
+        filter: blur(3px);
+    }
+    75% {
+        opacity: 0;
+        filter: blur(3px);
+    }
+    100% {
+        filter: blur(0px);
+        opacity: 1;
+    }
+}
+
+
+@keyframes annotationRandomBottom {
+    12.5%,
+    25% {
+        opacity: 1;
+    }
+    75% {
+        opacity: 1;
+        transform: rotate(0deg) scale3d(1, 1, 1);
+    }
+    87.5% {
+        opacity: 1;
+        transform: rotate(90deg) scale3d(1.5, 1.5, 1);
+    }
+    100% {
+        opacity: 1;
+        transform: rotate(180deg) scale3d(1, 1, 1);
+    }
+
+    0%,
+    6.25%,
+    18.75% {
+        opacity: 0;
+    }
+}
+
+@keyframes annotationStatic {
+    0% {
+        opacity: 1;
+        stroke-dashoffset: 0;
+    }
+    100% {
+        opacity: 1;
+        stroke-dashoffset: 0;
+    }
+}
+
+// editing mode
+.sapUiVizKitAnnotationNodeEditing {
+    position: absolute;
+    display: block;
+    border: 0.125rem solid #2d90f3;
+    box-shadow: 0 0 5px #a0caef;
+    border-radius: 50%;
+    background-color:#de0926;
+    width: 0.375rem;
+    height: 0.375rem;
+    z-index: 2;
+    cursor: grab
+}
+
+.sapUiVizKitAnnotationLeaderEditing {
+    position: absolute;
+    width: 0.0625rem;
+    background-color: #2d90f3;
+    box-shadow: 0 0 5px #a0caef;
+}
+.sapUiVizKitAnnotationEditing {
+    position: absolute;
+    white-space: normal;
+    z-index: 1;
+
+    >.sapUiVizKitAnnotationText {
+        border: 0.125rem solid;
+        background-clip: text;
+        z-index: 1;
+        border: 0.1rem solid;
+        border-color: #2d90f3;
+        box-shadow: 0 0 5px #a0caef;
+        background-color: #ffffff;
+        padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+        margin: 0.2rem 0.2rem 0.2rem 0.2rem;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -o-user-select: none;
+        user-select: none;
+        overflow: var(--overflow, hidden);
+        text-overflow: ellipsis;
+    }
+
+    .sapUiVizKitAnnotationElement0 {
+        position: absolute;
+        display: block;
+        border: 0.125rem solid #2d90f3;
+        box-shadow: 0 0 5px #a0caef;
+        border-radius: 50%;
+        background-color:#de0926;
+        width: 0.375rem;
+        height: 0.375rem;
+        z-index: 2;
+        cursor: nw-resize;
+    }
+
+    .sapUiVizKitAnnotationElement1 {
+        position: absolute;
+        display: block;
+        border: 0.125rem solid #2d90f3;
+        box-shadow: 0 0 5px #a0caef;
+        border-radius: 50%;
+        background-color:#de0926;
+        width: 0.375rem;
+        height: 0.375rem;
+        left: ~"calc(50% - 0.25rem)";
+        z-index: 2;
+        cursor: n-resize;
+    }
+
+    .sapUiVizKitAnnotationElement2 {
+        position: absolute;
+        display: block;
+        border: 0.125rem solid #2d90f3;
+        box-shadow: 0 0 5px #a0caef;
+        border-radius: 50%;
+        background-color:#de0926;
+        width: 0.375rem;
+        height: 0.375rem;
+        left: ~"calc(100% - 0.5rem)";
+        z-index: 2;
+        cursor: ne-resize;
+    }
+
+    .sapUiVizKitAnnotationElement3 {
+        position: absolute;
+        display: block;
+        border: 0.125rem solid #2d90f3;
+        box-shadow: 0 0 5px #a0caef;
+        border-radius: 50%;
+        background-color:#de0926;
+        width: 0.375rem;
+        height: 0.375rem;
+        left: ~"calc(100% - 0.5rem)";
+        top: ~"calc(50% - 0.3rem)";
+        z-index: 2;
+        cursor: e-resize;
+    }
+
+    .sapUiVizKitAnnotationElement4 {
+        position: absolute;
+        display: block;
+        border: 0.125rem solid #2d90f3;
+        box-shadow: 0 0 5px #a0caef;
+        border-radius: 50%;
+        background-color:#de0926;
+        width: 0.375rem;
+        height: 0.375rem;
+        left: ~"calc(100% - 0.5rem)";
+        top: ~"calc(100% - 0.6rem)";
+        z-index: 2;
+        cursor: se-resize;
+    }
+
+    .sapUiVizKitAnnotationElement5 {
+        position: absolute;
+        display: block;
+        border: 0.125rem solid #2d90f3;
+        box-shadow: 0 0 5px #a0caef;
+        border-radius: 50%;
+        background-color:#de0926;
+        width: 0.375rem;
+        height: 0.375rem;
+        left: ~"calc(50% - 0.25rem)";
+        top: ~"calc(100% - 0.6rem)";
+        z-index: 2;
+        cursor: s-resize;
+    }
+
+    .sapUiVizKitAnnotationElement6 {
+        position: absolute;
+        display: block;
+        border: 0.125rem solid #2d90f3;
+        box-shadow: 0 0 5px #a0caef;
+        border-radius: 50%;
+        background-color:#de0926;
+        width: 0.375rem;
+        height: 0.375rem;
+        top: ~"calc(100% - 0.6rem)";
+        z-index: 2;
+        cursor: sw-resize;
+    }
+
+    .sapUiVizKitAnnotationElement7 {
+        position: absolute;
+        display: block;
+        border: 0.125rem solid #2d90f3;
+        box-shadow: 0 0 5px #a0caef;
+        border-radius: 50%;
+        background-color:#de0926;
+        width: 0.375rem;
+        height: 0.375rem;
+        top: ~"calc(50% - 0.3rem)";
+        z-index: 2;
+        cursor: w-resize;
+    }
+
+    >.sapUiVizKitAnnotationText:hover {
+        cursor: grab
+    }
+}
+
+//expand style
+.sapUiVizKitAnnotationNodeExpand {
+    position: absolute;
+    display: block;
+    background-color:white;
+    border: 0.125rem solid black;
+    border-radius: 50%;
+    width: 0.625rem;
+    height: 0.625rem;
+    z-index: 1;
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.9));
+}
+
+.sapUiVizKitAnnotationLeaderExpand {
+    position: absolute;
+    width: 0.0625rem;
+    background-color: black;
+    animation-delay: inherit;
+    animation-duration: 0.25s;
+    animation-name: var(--animation-name, annotationLeader);
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.9));
+}
+
+.sapUiVizKitAnnotationExpand {
+	position: absolute;
+	color: black;
+	background-color: lightgray;
+	cursor: default;
+    white-space: normal;
+    display: block;
+    animation-delay: inherit;
+    animation-fill-mode: both;
+    animation-duration: 0.25s;
+    visibility: visible;
+    z-index: 1;
+}
+
+.sapUiVizKitAnnotationReverse {
+    animation-direction: reverse;
+    animation-name: hideAll;
+    visibility: hidden;
+}
+
+@keyframes hideAll {
+    0% {
+        visibility: hidden;
+    }
+    0.1% {
+        visibility: hidden;
+    }
+    100% {
+        visibility: visible;
+    }
+}
+
+.sapUiVizKitAnnotationExpand::before{
+    content: '';
+    position: absolute;
+    display: block;
+    top: -0.0625rem;
+    left: -0.0625rem;
+    width: 0.75rem;
+    height: ~"calc(100% + 0.125rem)";
+    background: transparent;
+    border-top: 0.0625rem solid;
+    border-bottom: 0.0625rem solid;
+    border-left: 0.0625rem solid;
+    border-color: black;
+    box-sizing: border-box;
+    animation-delay: inherit;
+    animation-name: var(--animation-name, annotationExpandBefore);
+    animation-timing-function: linear;
+    animation-duration: 0.25s;
+    animation-direction: inherit;
+}
+
+@keyframes annotationExpandBefore {
+    0% {
+        transform: scaleY(0);
+        border-top-color: transparent;
+        border-bottom-color: transparent;
+    }
+    19.9% {
+        border-top-color: transparent;
+        border-bottom-color: transparent;
+    }
+    20% {
+        transform: scaleY(1);
+        border-top-color: black;
+        border-bottom-color: black;
+    }
+}
+
+.sapUiVizKitAnnotationExpand::after{
+    content: '';
+    position: absolute;
+    display: block;
+    top: -0.0625rem;;
+    right: -0.0625rem;
+    width: 0.75rem;
+    height: ~"calc(100% + 0.125rem)";
+    background: transparent;
+    border-top: 0.0625rem solid;
+    border-bottom: 0.0625rem solid;
+    border-right: 0.0625rem solid;
+    border-color: black;
+    box-sizing: border-box;
+    animation-delay: inherit;
+    animation-name: var(--animation-name, annotationExpandAfter);
+    animation-timing-function: linear;
+    animation-duration: 0.25s;
+    animation-direction: inherit;
+}
+
+@keyframes annotationExpandAfter {
+    0% {
+        right: 100%;
+        visibility: hidden;
+    }
+    19% {
+        visibility: hidden;
+    }
+    20% {
+        right: 100%;
+        visibility: visible;
+    }
+    100% {
+        right: 0;
+    }
+
+}
+
+.sapUiVizKitAnnotationExpand {
+    background: repeating-linear-gradient(135deg, transparent, transparent 3px, var(--border-color, transparent) 3px, var(--border-color, transparent) 8px);
+    >.sapUiVizKitAnnotationText {
+        padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+        margin: 0.2rem 0.2rem 0.2rem 0.2rem;
+        background-color: var(--background-color, rgba(255, 255, 255, 0.8));
+        animation-delay: inherit;
+        animation-name: var(--animation-name, annotationExpandText);
+        animation-timing-function: linear;
+        animation-duration: 0.25s;
+        animation-direction: inherit;
+        overflow: var(--overflow, hidden);
+        text-overflow: ellipsis;
+    }
+
+    @keyframes annotationExpandText {
+        0% {
+            visibility: hidden;
+        }
+        99.9% {
+            visibility: hidden;
+        }
+        100% {
+            visibility: visible;
+        }
+    }
+
+    @keyframes annotationExpandTextSpan {
+        0% {
+            visibility: hidden;
+        }
+        99.9% {
+            visibility: hidden;
+        }
+        100% {
+            visibility: visible;
+        }
+    }
+
+    .sapUiVizKitAnnotationText::before {
+        content: '';
+        box-sizing: border-box;
+        margin: 0.2rem 0.2rem 0.2rem 0.2rem;
+        position: absolute;
+        display: block;
+        left: 0;
+        top: 0;
+        width: ~"calc(100% - 0.4rem)";
+        height: ~"calc(100% - 0.4rem)";
+        background-color: rgba(255, 255, 255, 0.8);
+        animation-delay: inherit;
+        animation-name: var(--animation-name, annotationExpandTextBefore);
+        animation-timing-function: linear;
+        animation-duration: 0.25s;
+        animation-direction: inherit;
+        visibility: hidden;
+    }
+
+    @keyframes annotationExpandTextBefore {
+        0% {
+            width: 0%;
+        }
+        25% {
+            width: 0%;
+            visibility: visible;
+        }
+        100% {
+            width: ~"calc(100% - 0.4rem)";
+            visibility: hidden;
+        }
+    }
+}
+
+
+// hidden style
+.sapUiVizKitAnnotationHidden {
+    display: none;
+}
+
+// annotations container
+.sapUiVizKitAnnotationContainer {
+    position: absolute;
+    z-index: 0;
+}
+
+//RTE
+.sapUiVizKitRichTextEditor.sapUiRTE {
+    min-height: 0;
+}
+
+.sapUiVizKitRichTextEditor {
+    >.mce-tinymce {
+        height: 100% !important;
+        >.mce-container-body {
+            height: 100% !important;
+            >.mce-edit-area {
+                height: 100% !important;
+            }
+
+            >.mce-edit-area * {
+                height: 100% !important;
+            }
+        }
+    }
+}
+
+// svg leaderlines
+.sapUiVizKitAnnotationSVGDefault {
+    position: absolute;
+    fill: none;
+    pointer-events: none;
+    animation-direction: inherit;
+    path {
+        position: absolute;
+        stroke-width: 0.1rem;
+        stroke: black;
+        stroke-dasharray: var(--stroke-dasharray, 1000);
+        stroke-dashoffset: var(--stroke-dashoffset, 1000);
+        animation-delay: inherit;
+        animation: var(--animation-name, dash) 0.5s linear forwards;
+        animation-direction: inherit;
+        filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.9));
+    }
+}
+
+@keyframes dash {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.sapUiVizKitAnnotationSVGExplode {
+    position: absolute;
+    fill: none;
+    pointer-events: none;
+    animation-direction: inherit;
+    path {
+        position: absolute;
+        stroke-width: 0.1rem;
+        stroke: black;
+        stroke-dasharray: var(--stroke-dasharray, 1000);
+        stroke-dashoffset: var(--stroke-dashoffset, 1000);
+        animation-delay: inherit;
+        animation: var(--animation-name, dash) 0.5s linear forwards;
+        animation-direction: inherit;
+        filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.9));
+    }
+}
+
+.sapUiVizKitAnnotationSVGSquare {
+    position: absolute;
+    fill: none;
+    pointer-events: none;
+    animation-direction: inherit;
+    path {
+        position: absolute;
+        stroke-width: 0.0625rem;
+        stroke: black;
+        stroke-dasharray: var(--stroke-dasharray, 1000);
+        stroke-dashoffset: var(--stroke-dashoffset, 1000);
+        animation-delay: inherit;
+        animation: var(--animation-name, dash) 0.5s linear forwards;
+        animation-direction: inherit;
+        filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.9));
+    }
+}
+
+.sapUiVizKitAnnotationSVGRandom {
+    position: absolute;
+    fill: none;
+    pointer-events: none;
+    animation-direction: inherit;
+    path {
+        position: absolute;
+        stroke-width: 0.0625rem;
+        stroke: #969696;
+        stroke-dasharray: var(--stroke-dasharray, 1000);
+        stroke-dashoffset: var(--stroke-dashoffset, 1000);
+        animation-delay: inherit;
+        animation: var(--animation-name, dash) 0.5s linear forwards;
+        animation-direction: inherit;
+        filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.9));
+    }
+}
+
+.sapUiVizKitAnnotationSVGEditing {
+    position: absolute;
+    fill: none;
+    pointer-events: none;
+    path {
+        position: absolute;
+        stroke-width: 0.1rem;
+        stroke: #2d90f3;
+        box-shadow: 0 0 5px #a0caef;
+    }
+}
+
+.sapUiVizKitAnnotationSVGExpand {
+    position: absolute;
+    fill: none;
+    pointer-events: none;
+    animation-direction: inherit;
+    path {
+        position: absolute;
+        stroke-width: 0.1rem;
+        stroke: black;
+        stroke-dasharray: var(--stroke-dasharray, 1000);
+        stroke-dashoffset: var(--stroke-dashoffset, 1000);
+        animation-delay: inherit;
+        animation: var(--animation-name, dash) 0.5s linear forwards;
+        animation-direction: inherit;
+        filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.9));
+    }
+}

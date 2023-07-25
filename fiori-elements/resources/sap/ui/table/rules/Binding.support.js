@@ -1,0 +1,6 @@
+/*!
+ * OpenUI5
+ * (c) Copyright 2009-2023 SAP SE or an SAP affiliate company.
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ */
+sap.ui.define(["./TableHelper.support","sap/ui/support/library","sap/base/Log"],function(e,i,t){"use strict";var n=i.Categories;var a=i.Severity;var r=e.normalizeRule({id:"AnalyticsNoDeviatingUnits",minversion:"1.38",categories:[n.Bindings],title:"Analytical Binding reports 'No deviating units found...'",description:"The analytical service returns duplicate IDs. This could also lead to many requests, but the analytical service "+"expects to receive just one record",resolution:"Adjust the service implementation.",check:function(i,n,r){var s=e.find(r,true,"sap.ui.table.AnalyticalTable");var l="NO_DEVIATING_UNITS";var o={};e.checkLogEntries(function(e){if(e.level!=t.Level.ERROR&&e.level!=t.Level.FATAL){return false}var i=e.supportInfo;return i&&i.type==="sap.ui.model.analytics.AnalyticalBinding"&&i.analyticalError===l},function(t){var n=t.supportInfo.analyticalBindingId;if(n&&!o[l+"-"+n]){var r;for(var u=0;u<s.length;u++){r=s[u].getBinding();if(r&&r.__supportUID===n){o[l+"-"+n]=true;e.reportIssue(i,"Analytical Binding reports 'No deviating units found...'",a.High,s[u].getId())}}}})}});return[r]},true);

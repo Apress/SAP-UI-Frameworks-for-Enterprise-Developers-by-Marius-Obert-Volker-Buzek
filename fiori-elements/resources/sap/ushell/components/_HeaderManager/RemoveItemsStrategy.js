@@ -1,0 +1,2 @@
+// Copyright (c) 2009-2023 SAP SE, All Rights Reserved
+sap.ui.define(["sap/base/Log"],function(e){"use strict";function n(e,n){return n.some(function(n){return e.indexOf(n)>=0})}function t(e,n){return e.filter(function(e){return n.indexOf(e)===-1})}function i(i,r){var u=i;if(n(i,r)){u=t(i,r)}else{e.warning("You cannot remove item: "+r+", the item does not exists.")}return u}return{execute:i}});

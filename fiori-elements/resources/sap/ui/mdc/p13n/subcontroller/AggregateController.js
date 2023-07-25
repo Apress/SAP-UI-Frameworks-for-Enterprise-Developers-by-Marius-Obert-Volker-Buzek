@@ -1,0 +1,6 @@
+/*!
+ * OpenUI5
+ * (c) Copyright 2009-2023 SAP SE or an SAP affiliate company.
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ */
+sap.ui.define(["./SelectionController","sap/ui/mdc/p13n/P13nBuilder","sap/base/util/merge"],function(t,e,r){"use strict";var n=t.extend("sap.ui.mdc.p13n.subcontroller.AggregateController");n.prototype.getStateKey=function(){return"aggregations"};n.prototype.getCurrentState=function(){return this.getAdaptationControl().getAggregateConditions()};n.prototype.sanityCheck=function(t){var e=[];Object.keys(t).forEach(function(r){var n={name:r,key:r};if(t[r].hasOwnProperty("aggregated")){n["aggregated"]=t[r].aggregated}e.push(n)});return e};n.prototype.getDelta=function(e){e.existingState=this.sanityCheck(e.existingState);return t.prototype.getDelta.apply(this,arguments)};n.prototype.initAdaptationUI=function(t){return null};n.prototype.getChangeOperations=function(){return{add:"addAggregate",remove:"removeAggregate"}};n.prototype._getPresenceAttribute=function(){return"aggregated"};n.prototype.mixInfoAndState=function(t){var e=this.getCurrentState();var r=this.prepareAdaptationData(t,function(t,r){var n=e[r.name];t.aggregated=!!n;return r.aggregatable});return r};return n});

@@ -1,0 +1,61 @@
+<Dialog xmlns="sap.m" xmlns:core="sap.ui.core" id="exportSettingsDialog" title="{i18n>EXPORT_SETTINGS_TITLE}" horizontalScrolling="false" verticalScrolling="true" afterClose=".onAfterClose" class="sapUiContentPadding sapUiExportSettings">
+	<content>
+		<VBox renderType="Bare" width="100%" class="sapUiExportSettingsLabel">
+			<Label text="{i18n>FILE_NAME}" labelFor="exportSettingsDialog-fileName"/>
+			<Input id="exportSettingsDialog-fileName" value="{/fileName}" liveChange=".onFileNameChange" class="sapUiTinyMarginBottom"/>
+
+			<Label text="{i18n>SELECT_FORMAT}" labelFor="exportSettingsDialog-fileType"/>
+			<Select id="exportSettingsDialog-fileType" selectedKey="{/fileType}" items="{/fileTypeCollection}" change=".onFileTypeChange" width="100%" class="sapUiTinyMarginBottom">
+				<items>
+					<core:Item key="{key}" text="{text}"/>
+				</items>
+			</Select>
+
+			<Label text="{i18n>SELECT_DESTINATION}" labelFor="exportSettingsDialog-destination" visible="{path: '/destinationCollection', formatter: '.hasDestinations'}"/>
+			<Select id="exportSettingsDialog-destination" selectedKey="{/destination}" items="{/destinationCollection}" visible="{path: '/destinationCollection', formatter: '.hasDestinations'}" enabled="{path: '/fileType', formatter: '.isDestinationEnabled'}" width="100%" class="sapUiTinyMarginBottom">
+				<items>
+					<core:Item key="{key}" text="{text}"/>
+				</items>
+			</Select>
+
+			<CheckBox id="exportSettingsDialog-includeFilterSettings" selected="{/includeFilterSettings}" text="{i18n>INCLUDE_FILTER_SETTINGS}"  visible="{path:'/fileType', formatter: '.isSpreadsheet'}"/>
+			<CheckBox id="exportSettingsDialog-includeFilterSettings-PDF" enabled="{/capabilities/PDF/CoverPage}"  selected="{/includeFilterSettings}" text="{i18n>INCLUDE_FILTER_SETTINGS}"  visible="{path:'/fileType', formatter: '.isPDF'}" tooltip="{i18n>TOOLTIP_FILTER_SETTINGS}"/>
+			<CheckBox id="exportSettingsDialog-pdfArchive" enabled="{/capabilities/PDF/ArchiveFormat}" selected="{/pdfArchive}" text="{i18n>ARCHIVE_FORMAT}"  visible="{path:'/fileType', formatter: '.isPDF'}" tooltip="{i18n>TOOLTIP_ARCHIVE_FORMAT}"/>
+			<CheckBox id="exportSettingsDialog-splitCells" selected="{/splitCells}" text="{i18n>SPLIT_CELLS}" visible="{path:'/fileType', formatter: '.isSpreadsheet'}"/> <!-- Will be hidden in case of PDF because it needs to be always true  and is applied implicitly -->
+			<CheckBox id="exportSettingsDialog-addDateTime" selected="{/addDateTime}" text="{i18n>ADD_DATE_TIME}" visible="false"/>
+
+			<!-- PDF Specific settings -->
+			<Label text="{i18n>PAPER_SIZE}" labelFor="exportSettingsDialog-papersize" visible="{path:'/fileType', formatter: '.isPDF'}"/>
+			<Select id="exportSettingsDialog-papersize" selectedKey="{/paperSize}" items="{/paperSizeCollection}" width="100%" visible="{path:'/fileType', formatter: '.isPDF'}" class="sapUiTinyMarginBottom">
+				<items>
+					<core:Item key="{key}" text="{text}"/>
+				</items>
+			</Select>
+
+			<Label text="{i18n>ORIENTATION}" labelFor="exportSettingsDialog-orientation" visible="{path:'/fileType', formatter: '.isPDF'}"/>
+			<Select id="exportSettingsDialog-orientation" selectedKey="{/orientation}" items="{/orientationCollection}" width="100%" visible="{path:'/fileType', formatter: '.isPDF'}" class="sapUiTinyMarginBottom">
+				<items>
+					<core:Item key="{key}" text="{text}"/>
+				</items>
+			</Select>
+
+			<Label text="{i18n>FONT_SIZE}" labelFor="exportSettingsDialog-fontSize" visible="{path:'/fileType', formatter: '.isPDF'}"/>
+			<Input id="exportSettingsDialog-fontSize" value="{/fontSize}" enabled="{/capabilities/PDF/FontSize}" liveChange=".onFontSizeChange" class="sapUiTinyMarginBottom" visible="{path:'/fileType', formatter: '.isPDF'}" tooltip="{i18n>TOOLTIP_FONT_SIZE}"/>
+
+			<CheckBox id="exportSettingsDialog-accessibility" selected="{/doEnableAccessibility}" text="{i18n>ENABLE_ACCESSIBILITY}" tooltip="{i18n>TOOLTIP_PDF_ACCESSIBILITY}" visible="{path:'/fileType', formatter: '.isPDF'}"/>
+			<CheckBox id="exportSettingsDialog-fitToPage" enabled="{/capabilities/PDF/FitToPage}" selected="{/fitToPage}" text="{i18n>FITTOPAGE}" tooltip="{i18n>TOOLTIP_FITTOPAGE}" visible="{path:'/fileType', formatter: '.isPDF'}"/>
+			<CheckBox id="exportSettingsDialog-signature" enabled="{/capabilities/PDF/Signature}" selected="{/signature}" text="{i18n>ENABLE_SIGNATURE}" tooltip="{i18n>TOOLTIP_PDF_SIGNATURE}" visible="{path:'/fileType', formatter: '.isPDF'}"/>
+
+			<Label id="exportSettingsDialog-signatureReasonLabel" text="{i18n>SIGNATURE_REASON}" labelFor="exportSettingsDialog-signatureReason" visible="{/signature}"/>
+			<Input id="exportSettingsDialog-signatureReason" value="{/signatureReason}" class="sapUiTinyMarginBottom" visible="{/signature}"/>
+
+			<CheckBox id="exportSettingsDialog-showPageNumber" enabled="{/capabilities/PDF/HeaderFooter}" selected="{/showPageNumber}" text="{i18n>SHOW_PAGENUM}" tooltip="{i18n>TOOLTIP_PDF_PAGENUMBER}" visible="{path:'/fileType', formatter: '.isPDF'}"/>
+		</VBox>
+	</content>
+	<beginButton>
+		<Button id="exportSettingsDialog-exportButton" press=".onExport" text="{path:'/destination', formatter:'.formatExportButton'}" type="Emphasized"/>
+	</beginButton>
+	<endButton>
+		<Button id="exportSettingsDialog-cancelButton" press=".onCancel" text="{i18n>CANCEL_BUTTON}" type="Transparent"/>
+	</endButton>
+</Dialog>

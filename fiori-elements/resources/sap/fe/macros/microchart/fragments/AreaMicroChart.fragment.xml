@@ -1,0 +1,210 @@
+<core:FragmentDefinition
+	xmlns="sap.suite.ui.microchart"
+	xmlns:core="sap.ui.core"
+	xmlns:oDataV4MicroChart="sap.fe.macros.microchart"
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	template:require="{
+		MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+		MICROCHART: 'sap/fe/macros/microchart/MicroChartHelper',
+		ID: 'sap/fe/core/helpers/StableIdHelper'
+	}"
+>
+	<!-- MODEL.value is used instead MODEL.format because, MODEL.format adds type as Unit when Currency/Unit annotations exist and the control property expects decimal as type -->
+	<template:if test="{= MICROCHART.shouldMicroChartRender('Area', ${DataPoint>}, ${DataPoint>Value/$Path@}, ${metaPath>})}">
+		<template:then>
+			<template:with path="DataPoint>Value/$Path" helper="MODEL.resolve$Path" var="Measure">
+				<template:with path="metaPath>Dimensions/0/" var="Dimension">
+					<oDataV4MicroChart:MicroChartContainer
+						core:require="{MICROCHARTR: 'sap/fe/macros/microchart/MicroChartHelper' }"
+						id="{= ${this>id} ? ID.generate([${this>id}, 'AreaMicroChart']) : undefined }"
+						showOnlyChart="{this>showOnlyChart}"
+						chartTitle="{= ${this>title} || ${metaPath>Title}}"
+						chartDescription="{= ${this>description} || ${metaPath>Description}}"
+						uomPath="{= MICROCHART.getUOMPathForMicrochart(${this>showOnlyChart}, ${Measure>@}) }"
+						measures="{DataPoint>Value/$Path}"
+						dimension="{= ${Dimension>$PropertyPath@com.sap.vocabularies.Common.v1.Text} ? ${Dimension>$PropertyPath@com.sap.vocabularies.Common.v1.Text/$Path} : ${Dimension>$PropertyPath} }"
+						measurePrecision="{= ${DataPoint>Value/$Path/$Precision} ? ${DataPoint>Value/$Path/$Precision} : undefined }"
+						measureScale="{= MICROCHART.getMeasureScaleForMicroChart(${DataPoint>}) }"
+						dimensionPrecision="{= ${Dimension>$PropertyPath/$Precision} ? ${Dimension>$PropertyPath/$Precision} : undefined }"
+						dataPointQualifiers="{= ${DataPoint>./@sapui.name}.indexOf('com.sap.vocabularies.UI.v1.DataPoint') === -1 ? undefined : (${DataPoint>./@sapui.name}.indexOf('#') > -1 ? ${DataPoint>./@sapui.name}.split('#')[1] : '') }"
+						binding="{= ${this>batchGroupId} ? ('{path:\'\', parameters : { $$groupId: \'' + ${this>batchGroupId} + '\'} }') : undefined }"
+						onTitlePressed="{this>onTitlePressed}"
+						navigationType="{this>navigationType}"
+						calendarPattern="{= MICROCHART.getCalendarPattern(${Dimension>$PropertyPath/$Type}, ${Dimension>$PropertyPath@}) }"
+					>
+						<template:if test="{= !${this>showOnlyChart} || (${this>showOnlyChart} !== 'true' ? true : false)}">
+							<core:Fragment fragmentName="sap.fe.macros.microchart.fragments.MicroChartTitle" type="XML" />
+						</template:if>
+						<AreaMicroChart hideOnNoData="{this>hideOnNoData}" size="{this>size}">
+							<chart>
+								<AreaMicroChartItem
+									points="{= MICROCHART.getAggregationForMicrochart('Points', ${contextPath>}, ${DataPoint>}, ${contextPath>@sapui.name}, ${Dimension>}, ${Measure>@}) }"
+								>
+									<points>
+										<AreaMicroChartPoint
+											x="{= (${Dimension>$PropertyPath/$Type} === 'Edm.Date' ||  (${Dimension>$PropertyPath/$Type} === 'Edm.String' &amp;&amp; MICROCHART.getCalendarPattern(${Dimension>$PropertyPath/$Type}, ${Dimension>$PropertyPath@}))) ? MICROCHART.getX(${Dimension>$PropertyPath}, ${Dimension>$PropertyPath/$Type}, ${Dimension>$PropertyPath@}) : ${Dimension>@@.MODEL.format} }"
+											y="{DataPoint>Value@@.MODEL.value}"
+										/>
+									</points>
+								</AreaMicroChartItem>
+							</chart>
+							<target>
+								<AreaMicroChartItem
+									points="{= '{path:\'' + (${contextPath>$kind} === 'EntitySet' ? '/' : '') + ${contextPath>@sapui.name} + '\'}' }"
+								>
+									<points>
+										<AreaMicroChartPoint
+											x="{= (${Dimension>$PropertyPath/$Type} === 'Edm.Date' ||  (${Dimension>$PropertyPath/$Type} === 'Edm.String' &amp;&amp; MICROCHART.getCalendarPattern(${Dimension>$PropertyPath/$Type}, ${Dimension>$PropertyPath@}))) ? MICROCHART.getX(${Dimension>$PropertyPath}, ${Dimension>$PropertyPath/$Type}, ${Dimension>$PropertyPath@}) : ${Dimension>@@.MODEL.format} }"
+											y="{DataPoint>TargetValue@@.MODEL.value}"
+										/>
+									</points>
+								</AreaMicroChartItem>
+							</target>
+							<template:if test="{= ${this>showOnlyChart} !== true }">
+								<firstXLabel>
+									<AreaMicroChartLabel />
+								</firstXLabel>
+								<firstYLabel>
+									<AreaMicroChartLabel />
+								</firstYLabel>
+								<lastXLabel>
+									<AreaMicroChartLabel />
+								</lastXLabel>
+								<lastYLabel>
+									<AreaMicroChartLabel />
+								</lastYLabel>
+							</template:if>
+							<template:if
+								test="{= ${DataPoint>CriticalityCalculation} &amp;&amp; ${DataPoint>CriticalityCalculation/ImprovementDirection/$EnumMember} }"
+							>
+								<template:with path="DataPoint>CriticalityCalculation" var="CriticalityCalculation">
+									<template:if
+										test="{= ${CriticalityCalculation>ImprovementDirection/$EnumMember} === 'com.sap.vocabularies.UI.v1.ImprovementDirectionType/Minimize'}"
+									>
+										<template:then>
+											<minThreshold>
+												<AreaMicroChartItem
+													color="Good"
+													points="{= '{path:\'' + (${contextPath>$kind} === 'EntitySet' ? '/' : '') + ${contextPath>@sapui.name} + '\'}' }"
+												>
+													<points>
+														<AreaMicroChartPoint
+															x="{= (${Dimension>$PropertyPath/$Type} === 'Edm.Date' ||  (${Dimension>$PropertyPath/$Type} === 'Edm.String' &amp;&amp; MICROCHART.getCalendarPattern(${Dimension>$PropertyPath/$Type}, ${Dimension>$PropertyPath@}))) ? MICROCHART.getX(${Dimension>$PropertyPath}, ${Dimension>$PropertyPath/$Type}, ${Dimension>$PropertyPath@}) : ${Dimension>@@.MODEL.format} }"
+															y="{CriticalityCalculation>ToleranceRangeHighValue@@.MODEL.format}"
+														/>
+													</points>
+												</AreaMicroChartItem>
+											</minThreshold>
+											<maxThreshold>
+												<AreaMicroChartItem
+													color="Error"
+													points="{= '{path:\'' + (${contextPath>$kind} === 'EntitySet' ? '/' : '') + ${contextPath>@sapui.name} + '\'}' }"
+												>
+													<points>
+														<AreaMicroChartPoint
+															x="{= (${Dimension>$PropertyPath/$Type} === 'Edm.Date' ||  (${Dimension>$PropertyPath/$Type} === 'Edm.String' &amp;&amp; MICROCHART.getCalendarPattern(${Dimension>$PropertyPath/$Type}, ${Dimension>$PropertyPath@}))) ? MICROCHART.getX(${Dimension>$PropertyPath}, ${Dimension>$PropertyPath/$Type}, ${Dimension>$PropertyPath@}) : ${Dimension>@@.MODEL.format} }"
+															y="{CriticalityCalculation>DeviationRangeHighValue@@.MODEL.format}"
+														/>
+													</points>
+												</AreaMicroChartItem>
+											</maxThreshold>
+										</template:then>
+										<template:elseif
+											test="{= ${CriticalityCalculation>ImprovementDirection/$EnumMember} === 'com.sap.vocabularies.UI.v1.ImprovementDirectionType/Maximize'}"
+										>
+											<minThreshold>
+												<AreaMicroChartItem
+													color="Error"
+													points="{= '{path:\'' + (${contextPath>$kind} === 'EntitySet' ? '/' : '') + ${contextPath>@sapui.name} + '\'}' }"
+												>
+													<points>
+														<AreaMicroChartPoint
+															x="{= (${Dimension>$PropertyPath/$Type} === 'Edm.Date' ||  (${Dimension>$PropertyPath/$Type} === 'Edm.String' &amp;&amp; MICROCHART.getCalendarPattern(${Dimension>$PropertyPath/$Type}, ${Dimension>$PropertyPath@}))) ? MICROCHART.getX(${Dimension>$PropertyPath}, ${Dimension>$PropertyPath/$Type}, ${Dimension>$PropertyPath@}) : ${Dimension>@@.MODEL.format} }"
+															y="{CriticalityCalculation>DeviationRangeLowValue@@.MODEL.format}"
+														/>
+													</points>
+												</AreaMicroChartItem>
+											</minThreshold>
+											<maxThreshold>
+												<AreaMicroChartItem
+													color="Good"
+													points="{= '{path:\'' + (${contextPath>$kind} === 'EntitySet' ? '/' : '') + ${contextPath>@sapui.name} + '\'}' }"
+												>
+													<points>
+														<AreaMicroChartPoint
+															x="{= (${Dimension>$PropertyPath/$Type} === 'Edm.Date' ||  (${Dimension>$PropertyPath/$Type} === 'Edm.String' &amp;&amp; MICROCHART.getCalendarPattern(${Dimension>$PropertyPath/$Type}, ${Dimension>$PropertyPath@}))) ? MICROCHART.getX(${Dimension>$PropertyPath}, ${Dimension>$PropertyPath/$Type}, ${Dimension>$PropertyPath@}) : ${Dimension>@@.MODEL.format} }"
+															y="{CriticalityCalculation>ToleranceRangeLowValue@@.MODEL.format}"
+														/>
+													</points>
+												</AreaMicroChartItem>
+											</maxThreshold>
+										</template:elseif>
+										<template:elseif
+											test="{= ${CriticalityCalculation>ImprovementDirection/$EnumMember} === 'com.sap.vocabularies.UI.v1.ImprovementDirectionType/Target'}"
+										>
+											<minThreshold>
+												<AreaMicroChartItem
+													color="Error"
+													points="{= '{path:\'' + (${contextPath>$kind} === 'EntitySet' ? '/' : '') + ${contextPath>@sapui.name} + '\'}' }"
+												>
+													<points>
+														<AreaMicroChartPoint
+															x="{= (${Dimension>$PropertyPath/$Type} === 'Edm.Date' ||  (${Dimension>$PropertyPath/$Type} === 'Edm.String' &amp;&amp; MICROCHART.getCalendarPattern(${Dimension>$PropertyPath/$Type}, ${Dimension>$PropertyPath@}))) ? MICROCHART.getX(${Dimension>$PropertyPath}, ${Dimension>$PropertyPath/$Type}, ${Dimension>$PropertyPath@}) : ${Dimension>@@.MODEL.format} }"
+															y="{CriticalityCalculation>DeviationRangeLowValue@@.MODEL.format}"
+														/>
+													</points>
+												</AreaMicroChartItem>
+											</minThreshold>
+											<maxThreshold>
+												<AreaMicroChartItem
+													color="Error"
+													points="{= '{path:\'' + (${contextPath>$kind} === 'EntitySet' ? '/' : '') + ${contextPath>@sapui.name} + '\'}' }"
+												>
+													<points>
+														<AreaMicroChartPoint
+															x="{= (${Dimension>$PropertyPath/$Type} === 'Edm.Date' ||  (${Dimension>$PropertyPath/$Type} === 'Edm.String' &amp;&amp; MICROCHART.getCalendarPattern(${Dimension>$PropertyPath/$Type}, ${Dimension>$PropertyPath@}))) ? MICROCHART.getX(${Dimension>$PropertyPath}, ${Dimension>$PropertyPath/$Type}, ${Dimension>$PropertyPath@}) : ${Dimension>@@.MODEL.format} }"
+															y="{CriticalityCalculation>DeviationRangeHighValue@@.MODEL.format}"
+														/>
+													</points>
+												</AreaMicroChartItem>
+											</maxThreshold>
+											<innerMinThreshold>
+												<AreaMicroChartItem
+													color="Good"
+													points="{= '{path:\'' + (${contextPath>$kind} === 'EntitySet' ? '/' : '') + ${contextPath>@sapui.name} + '\'}' }"
+												>
+													<points>
+														<AreaMicroChartPoint
+															x="{= (${Dimension>$PropertyPath/$Type} === 'Edm.Date' ||  (${Dimension>$PropertyPath/$Type} === 'Edm.String' &amp;&amp; MICROCHART.getCalendarPattern(${Dimension>$PropertyPath/$Type}, ${Dimension>$PropertyPath@}))) ? MICROCHART.getX(${Dimension>$PropertyPath}, ${Dimension>$PropertyPath/$Type}, ${Dimension>$PropertyPath@}) : ${Dimension>@@.MODEL.format} }"
+															y="{CriticalityCalculation>ToleranceRangeLowValue@@.MODEL.format}"
+														/>
+													</points>
+												</AreaMicroChartItem>
+											</innerMinThreshold>
+											<innerMaxThreshold>
+												<AreaMicroChartItem
+													color="Good"
+													points="{= '{path:\'' + (${contextPath>$kind} === 'EntitySet' ? '/' : '') + ${contextPath>@sapui.name} + '\'}' }"
+												>
+													<points>
+														<AreaMicroChartPoint
+															x="{= (${Dimension>$PropertyPath/$Type} === 'Edm.Date' ||  (${Dimension>$PropertyPath/$Type} === 'Edm.String' &amp;&amp; MICROCHART.getCalendarPattern(${Dimension>$PropertyPath/$Type}, ${Dimension>$PropertyPath@}))) ? MICROCHART.getX(${Dimension>$PropertyPath}, ${Dimension>$PropertyPath/$Type}, ${Dimension>$PropertyPath@}) : ${Dimension>@@.MODEL.format} }"
+															y="{CriticalityCalculation>ToleranceRangeHighValue@@.MODEL.format}"
+														/>
+													</points>
+												</AreaMicroChartItem>
+											</innerMaxThreshold>
+										</template:elseif>
+									</template:if>
+								</template:with>
+							</template:if>
+						</AreaMicroChart>
+					</oDataV4MicroChart:MicroChartContainer>
+				</template:with>
+			</template:with>
+		</template:then>
+		<template:elseif
+			test="{= MICROCHART.logWarning('Area', { DataPoint_Value : ${DataPoint>Value}, Dimension : ${metaPath>Dimensions/0/$PropertyPath}, CriticalityCalculation : (${DataPoint>CriticalityCalculation} &amp;&amp; ${DataPoint>CriticalityCalculation/ImprovementDirection/$EnumMember}) }) }"
+		/>
+	</template:if>
+</core:FragmentDefinition>

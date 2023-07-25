@@ -1,0 +1,281 @@
+.sapUiVizKitMeasurementSurface {
+    position: absolute;
+    top: 0;
+    left: 0;
+    fill: none;
+    // This prevents the measurement surface from being returned from document.elementFromPoint().
+    // This attribute is only temporary overridden in Surface#hitTest(). This is required because
+    // the measurement surface overlaps the viewport and other gizmos. Without this attribute other
+    // gizmos beneath the measurement surface will not receive pointer events.
+    pointer-events: none;
+
+    circle {
+        r: 0.2rem;
+        stroke: @sapIndicationColor_5;
+        stroke-width: @sapElement_Condensed_LineHeight / 12;
+        fill: @sapIndicationColor_5;
+        filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.9));
+    }
+
+    line {
+        position: absolute;
+        stroke-width: @sapElement_Condensed_LineHeight / 12;
+        stroke: @sapIndicationColor_5;
+        filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.9));
+    }
+
+    path {
+        fill: @sapUiContentIllustrativeColor2;
+        stroke-width: @sapElement_Condensed_LineHeight / 12;
+        fill-opacity: 0.75;
+        filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.9));
+    }
+
+    path.sapUiVizKitMeasurementArea {
+        stroke: @sapIndicationColor_5;
+        fill: @sapUiContentIllustrativeColor2;
+        fill-opacity: 0.75;
+    }
+
+    path.sapUiVizKitMeasurementFill {
+        fill: @sapUiContentIllustrativeColor2;
+        fill-opacity: 0.75;
+        stroke: none;
+    }
+
+    path.sapUiVizKitMeasurementStroke {
+        stroke: @sapIndicationColor_5;
+        fill: none;
+    }
+
+    path.sapUiVizKitMeasurementAreaSelfIntersecting {
+        stroke-dasharray: 4 2;
+    }
+
+    path.sapUiVizKitMeasurementAreaEdgeIntersecting {
+        stroke: @sapIndicationColor_2;
+    }
+
+    path.sapUiVizKitMeasurementContour {
+        stroke: @sapIndicationColor_5;
+        fill: none;
+    }
+
+    path.sapUiVizKitMeasurementDashed {
+        stroke: @sapUiContentIllustrativeColor3;
+        stroke-dasharray: 4 2;
+    }
+
+    path.sapUiVizKitMeasurementDotted {
+        stroke: @sapUiContentIllustrativeColor5;
+        stroke-dasharray: 2 2;
+    }
+
+    #arrow-start-highlighted,#arrow-end-highlighted > polygon {
+        // The polygon style is used for arrows in line marker-start and marker-end attributes.
+        fill: @sapUiContentIllustrativeColor3;
+    }
+
+    #arrow-start0,#arrow-end0 > polygon {
+        // The polygon style is used for arrows in line marker-start and marker-end attributes.
+        fill: @sapIndicationColor_5;
+    }
+
+    #arrow-start1,#arrow-end1 > polygon {
+        fill: @sapIndicationColor_4;
+    }
+
+    #arrow-start2,#arrow-end2 > polygon {
+        fill: @sapIndicationColor_2;
+    }
+
+    #arrow-start3,#arrow-end3 > polygon {
+        fill: @sapIndicationColor_7;
+    }
+
+    #arrow-start4,#arrow-end4 > polygon {
+        fill: @sapIndicationColor_8;
+    }
+
+    path.sapUiVizKitMeasurementStrokeColor0 {
+        stroke: @sapIndicationColor_5;
+    }
+
+    path.sapUiVizKitMeasurementStrokeColor1 {
+        stroke: @sapIndicationColor_4;
+    }
+
+    path.sapUiVizKitMeasurementStrokeColor2 {
+        stroke: @sapIndicationColor_2;
+    }
+
+    path.sapUiVizKitMeasurementStrokeColor3 {
+        stroke: @sapIndicationColor_7;
+    }
+
+    path.sapUiVizKitMeasurementStrokeColor4 {
+        stroke: @sapIndicationColor_8;
+    }
+
+    rect {
+        rx: 0.25rem;
+        ry: 0.25rem;
+        height: 1.5 * @sapFontLargeSize;
+        stroke-width: @sapElement_Condensed_LineHeight / 12;
+        stroke: @sapBaseColor;
+        filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.9));
+    }
+
+    text {
+        text-anchor: middle;
+        dominant-baseline: middle;
+        font-size: @sapFontLargeSize;
+        fill: @sapContent_BadgeTextColor;
+    }
+}
+
+.sapUiVizKitMeasurementHighlighted {
+    line {
+        stroke: @sapUiContentIllustrativeColor3;
+    }
+    path {
+        stroke: @sapUiContentIllustrativeColor3;
+        fill: none;
+    }
+    polygon {
+        // The polygon style is used for arrows in line marker-start and marker-end attributes.
+        fill: @sapUiContentIllustrativeColor3;
+    }
+    rect {
+        fill: @sapUiContentIllustrativeColor3;
+    }
+}
+
+.sapUiVizKitMeasurement0 {
+    line {
+        stroke: @sapIndicationColor_5;
+    }
+    path {
+        stroke: @sapIndicationColor_5;
+        fill: none;
+    }
+    polygon {
+        fill: @sapIndicationColor_5;
+    }
+    rect {
+        fill: @sapIndicationColor_5;
+    }
+}
+
+.sapUiVizKitMeasurement1 {
+    line {
+        stroke: @sapIndicationColor_4;
+    }
+    path {
+        stroke: @sapIndicationColor_4;
+        fill: none;
+    }
+    polygon {
+        fill: @sapIndicationColor_4;
+    }
+    rect {
+        fill: @sapIndicationColor_4;
+    }
+}
+
+.sapUiVizKitMeasurement2 {
+    line {
+        stroke: @sapIndicationColor_2;
+    }
+    path {
+        stroke: @sapIndicationColor_2;
+        fill: none;
+    }
+    polygon {
+        fill: @sapIndicationColor_2;
+    }
+    rect {
+        fill: @sapIndicationColor_2;
+    }
+}
+
+.sapUiVizKitMeasurement3 {
+    line {
+        stroke: @sapIndicationColor_7;
+    }
+    path {
+        stroke: @sapIndicationColor_7;
+        fill: none;
+    }
+    polygon {
+        fill: @sapIndicationColor_7;
+    }
+    rect {
+        fill: @sapIndicationColor_7;
+    }
+}
+
+.sapUiVizKitMeasurement4 {
+    line {
+        stroke: @sapIndicationColor_8;
+    }
+    path {
+        stroke: @sapIndicationColor_8;
+        fill: none;
+    }
+    polygon {
+        fill: @sapIndicationColor_8;
+    }
+    rect {
+        fill: @sapIndicationColor_8;
+    }
+}
+
+// Color Radio Button: external div to render border for selection.
+.sapUiVizKitMeasurementColorRb {
+    margin: 0.171875rem;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 0.25rem;
+    display: inline-block;
+    border: 1px solid transparent;
+    outline-width: 0px;
+    padding: 0.125rem;
+}
+
+.sapUiVizKitMeasurementColorRbSel {
+    border: 1px solid black;
+}
+
+// Color Radio Button: internal div to render color and focus.
+.sapUiVizKitMeasurementColorRb > div {
+    width: 100%;
+    height: 100%;
+    border-radius: 0.25rem;
+}
+
+.sapUiVizKitMeasurementColorRb:focus > div {
+    outline: @sapContent_FocusWidth @sapContent_FocusStyle white;
+    outline-offset: -0.1875rem;
+    border-radius: 0.25rem;
+}
+
+.sapUiVizKitDistanceCursor {
+    cursor: url('images/vk-distance.svg') 0 0, auto;
+}
+
+.sapUiVizKitAngleCursor {
+    cursor: url('images/vk-angle.svg') 0 0, auto;
+}
+
+.sapUiVizKitAreaCursor {
+    cursor: url('images/vk-area.svg') 0 0, auto;
+}
+
+.sapUiVizKitDeleteDistanceCursor {
+    cursor: url('images/vk-delete.svg') 0 0, pointer;
+}
+
+.sapUiVizKitCalibrateDistanceCursor {
+    cursor: url('images/vk-calibrate-distance.svg') 0 0, pointer;
+}

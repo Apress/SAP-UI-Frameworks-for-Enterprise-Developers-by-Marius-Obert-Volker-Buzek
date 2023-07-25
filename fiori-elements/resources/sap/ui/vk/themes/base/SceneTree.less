@@ -1,0 +1,25 @@
+.sapUiVkSceneTree {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	-webkit-transform: translate3d(0,0,0);
+}
+
+//iPad rendering is not consistent with Windows so we have to add this
+//float: none style to prevent a bug where the text labels overlapping
+//with the expand arrows.
+.sapUiVkSceneTree .sapUiTableTreeIcon {
+	float: none;
+}
+
+.sapUiVkSceneTree [id$=visibilityColumn] {
+	padding: 0;
+}
+
+.sapUiVkSceneTree [id$=visibilityColumn] .sapUiTableColCell {
+	padding: 0;
+}
+
+.sapUiVkSceneTree .sapUiTableCell {
+	padding: 0;
+}

@@ -1,0 +1,25 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	xmlns:core="sap.ui.core"
+>
+	<MenuButton
+		id="fe::RelatedApps"
+		text="{sap.fe.i18n>T_OP_RELATED_APPS}"
+		binding="{internal>relatedApps}"
+		visible="{internal>visibility}"
+	>
+		<menu>
+			<Menu items="{path: 'internal>items', sorter: { path: 'text' }}">
+				<items>
+					<MenuItem
+						text="{internal>text}"
+						customData:targetSemObject="{internal>targetSemObject}"
+						customData:targetAction="{internal>targetAction}"
+						press="._intentBasedNavigation.navigate(${internal>targetSemObject}, ${internal>targetAction}, ${internal>targetParams})"
+					/>
+				</items>
+			</Menu>
+		</menu>
+	</MenuButton>
+</core:FragmentDefinition>

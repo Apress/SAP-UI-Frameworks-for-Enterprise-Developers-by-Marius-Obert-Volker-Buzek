@@ -1,0 +1,366 @@
+/* ================================================================ */
+/* CSS for control "sap.ushell.components.appfinder.Catalog" (base) */
+/* ================================================================ */
+
+@AppFinderTileBorderRadius: 0.25rem;
+
+.sapUiMedia-StdExt-Phone .sapUshellCatalogsContainer { margin: 0 0.45rem; }
+.sapUiMedia-StdExt-Tablet .sapUshellCatalogsContainer,
+.sapUiMedia-StdExt-Desktop .sapUshellCatalogsContainer,
+.sapUiMedia-StdExt-LargeDesktop .sapUshellCatalogsContainer { margin: 0 2rem 0 1rem; }
+
+.sap-phone { /* on phones the menu is always toggleable, so "sapUshellCatalogsContainer" can use normal margins (same as header) */
+  &.sapUiMedia-StdExt-Phone .sapUshellCatalogsContainer { margin: 0 0.45rem; }
+  &.sapUiMedia-StdExt-Tablet .sapUshellCatalogsContainer,
+  &.sapUiMedia-StdExt-Desktop .sapUshellCatalogsContainer { margin: 0 2rem; }
+  &.sapUiMedia-StdExt-LargeDesktop .sapUshellCatalogsContainer { margin: 0 3rem; }
+}
+
+.sapUshellCatalogNewGroupBackButton {
+  height: 3rem;
+  margin: 0;
+  padding: 0.25rem 0;
+  vertical-align: top;
+}
+
+#popoverContainer .sapMList {
+  padding: 1px;
+}
+
+#appFinderPage {
+  .forwardToViewAnimation { animation: forwardToViewAnimation 0.3s linear; }
+  .forwardOutOfViewAnimation { animation: forwardOutOfViewAnimation 0.3s linear; }
+  .backToViewAnimation { animation: forwardOutOfViewAnimation 0.3s linear reverse; }
+  .backOutOfViewAnimation { animation: forwardToViewAnimation 0.3s linear reverse; }
+
+  @keyframes forwardToViewAnimation {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(0%); }
+  }
+
+  @keyframes forwardOutOfViewAnimation {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-100%); }
+  }
+}
+
+.sapUshellAppsView {
+  .sapMBreadcrumbs {
+    margin-top: -0.2rem;
+    margin-bottom: 0.8rem;
+
+    & + .sapMMessagePage {
+      height: calc(~"100% - 3rem");
+    }
+  }
+}
+
+.sap-phone .sapUshellCatalogsContainer .sapUshellInner {
+  margin-bottom: 0.5rem; /* flex is used on phones */
+
+  > br {
+    display: none; /* flex is used on phones */
+  }
+}
+
+.sapUshellAppBox,
+.sapUshellCatalogsContainer .sapUshellTile {
+  box-sizing: border-box;
+  float: revert;
+  display: inline-block;
+  vertical-align: top;
+  border-radius: @AppFinderTileBorderRadius;
+  list-style-type: none;
+  cursor: pointer;
+  margin: 0 0.5rem 0.5rem 0;
+
+  .sap-phone & {
+    margin: 0; /* flex is used on phones */
+  }
+
+  .sapMGT,
+  .sapUshellGT {
+    box-shadow: revert; /* prevents duplicated "box-shadow" (AppFinder Tiles already have their own) */
+  }
+}
+
+.sapUshellAppBox {
+  width: 19rem;
+  height: 8rem;
+  font-size: 1rem;
+
+  .sapUshellAppBoxInner {
+    height: calc(~"100% - 4.25rem");
+    position: relative;
+    padding-top: 1rem;
+    padding-bottom: 0.75rem;
+    padding-left: 1rem;
+    padding-right: 0.5rem;
+  }
+
+  .sapUshellPinButton {
+    position: relative;
+    bottom: 0;
+    right: 0;
+    padding: 0;
+    margin-bottom: 0.25rem;
+    margin-top: 0.25rem;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+    float: right;
+  }
+
+  .sapUshellAppBoxIcon {
+    float: left;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    width: 2rem;
+    margin-right: 0.5rem;
+  }
+
+  .sapUshellAppBoxTitle {
+    font-size: 1rem;
+    padding: 0;
+    line-height: 1.25rem;
+    overflow: hidden;
+  }
+
+  .sapUshellAppBoxSubtitle {
+    font-size: 0.875rem;
+    padding-top: 0.25rem;
+    line-height: 1rem;
+    overflow: hidden;
+    margin-right: 3rem;
+  }
+
+  .sapUshellAppBoxHeaderElementOneLine {
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .sapUshellAppBoxHeaderElementTwoLines {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+
+    &.sapUshellAppBoxTitle { height: 2.5rem; }
+    &.sapUshellAppBoxSubtitle { height: 2rem; }
+  }
+
+  .sapUshellAppBoxHeader {
+    overflow: hidden;
+  }
+}
+
+.sapUshellAppBox {
+  .sapUshellPinButton,
+  .sapUshellPinButton > div {
+    height: 2rem;
+    width: 2rem;
+  }
+
+  .sapUshellAppBoxSubtitle {
+    margin-right: 2.5rem;
+  }
+}
+
+body:not(.sapUiSizeCozy) {
+  .sapUshellAppBox .sapUshellPinButton .sapMBtnInner {
+    height: 1.625rem;
+    min-width: 2rem;
+  }
+
+  .sapUshellAppBox .sapUshellPinButton .sapMBtnInner .sapMBtnIcon {
+    width: 1rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    max-height: 1.5rem;
+  }
+}
+
+.sapUiSizeCozy .sapUshellAppBox {
+  .sapUshellPinButton,
+  .sapUshellPinButton > div {
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+
+  .sapUshellAppBoxInner {
+    height: calc(~"100% - 4.75rem");
+  }
+}
+
+.sapUshellAppBoxHeaderArea {
+  height: 61px;
+}
+
+.sapUshellAppBoxActionsArea {
+  border-top: 1px solid @sapUiGroupTitleBorderColor;
+  position: relative;
+  background-color: @sapUiTileBackground;
+}
+
+.sapUshellAppBox .sapUshellPinButton span {
+  margin: 0;
+}
+
+#catalogSelect {
+  overflow-y: auto;
+}
+
+#catalogTiles,
+#catalogTilesSearchPage {
+  .sapUshellTilePinButtonOverlay {
+    border-top: 1px solid @sapUiGroupTitleBorderColor;
+    border-bottom-right-radius: @AppFinderTileBorderRadius;
+    border-bottom-left-radius: @AppFinderTileBorderRadius;
+    text-align: right;
+    z-index: 1;
+    position: relative;
+    background-color: @sapUiTileBackground;
+    padding-top: 0;
+    padding-bottom: 0;
+
+    @media (min-width: 375px) {
+      padding-top: 0.25rem;
+      padding-bottom: 0.25rem;
+    }
+  }
+}
+
+#catalogTiles .sapUshellTile:focus .sapUshellTilePinButtonOverlay {
+  background-color: transparent;
+}
+
+.sapUshellActionButton {
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+#catalogSelectBusyIndicator {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  height: auto;
+}
+
+#appFinderSubHeader {
+  height: 2.8rem;
+  align-content: center;
+
+  &,
+  #appFinderSearchContainer {
+    flex-wrap: wrap;
+  }
+
+  > * {
+    margin: 0;
+  }
+}
+
+#appFinderPage-cont {
+  top: 2.8rem;
+  height: auto !important; /* fix sapui5 bug when you use sap.m.SplitApp inside sap.m.Page */
+}
+
+.sapUshellHierarchyFolders {
+  .sapMPageHeader .sapMBarRight .sapMBarLeft {
+    padding-left: 0.5rem;
+  }
+
+  .sapMBarRight {
+    min-width: 5rem;
+  }
+}
+
+.sapUiMedia-StdExt-Phone #appFinderSubHeader { padding: 0 1rem; }
+.sapUiMedia-StdExt-Tablet #appFinderSubHeader,
+.sapUiMedia-StdExt-Desktop #appFinderSubHeader { padding: 0 2rem; }
+.sapUiMedia-StdExt-LargeDesktop #appFinderSubHeader { padding: 0 3rem; }
+
+@media (max-width: 799px) {
+  .sapUshellAppFinderWithEasyAccess.sapUshellAppFinderTags,
+  .sapUshellAppFinderWithEasyAccess.sapUshellAppFinderSearch,
+  .sapUshellAppFinderTags.sapUshellAppFinderSearch {
+    .sapUiSizeCompact & {
+      #appFinderSubHeader { height: 4.4rem; }
+      #appFinderPage-cont { top: 4.4rem; }
+    }
+
+    .sapUiSizeCozy & {
+      #appFinderSubHeader { height: 5.6rem; }
+      #appFinderPage-cont { top: 5.6rem; }
+    }
+  }
+
+  .sapUshellAppFinderWithEasyAccess.sapUshellAppFinderTags.sapUshellAppFinderSearch {
+    .sapUiSizeCompact & {
+      #appFinderSubHeader { height: 6.4rem; }
+      #appFinderPage-cont { top: 6.4rem; }
+    }
+
+    .sapUiSizeCozy & {
+      #appFinderSubHeader { height: 8.3rem; }
+      #appFinderPage-cont { top: 8.3rem; }
+    }
+  }
+
+  #appFinderSubHeader {
+    justify-content: flex-start;
+
+    #openCloseButtonAppFinderSubheader {
+      position: absolute;
+      z-index: 1;
+    }
+
+    #appFinderSegmentedButtons {
+      /* as the width is set an an inline style by the control itself, there is no other option than using !important */
+      width: 100% !important;
+    }
+
+    #appFinderSearchContainer {
+      &,
+      #appFinderTagFilter,
+      #appFinderSearch,
+      .sapMFlexItem {
+        /* as the width is set an an inline style by the control itself, there is no other option than using !important */
+        width: 100% !important;
+      }
+    }
+  }
+
+  .sapUshellAppFinderToggleButton #appFinderSubHeader {
+    #appFinderSegmentedButtons,
+    #appFinderSearchContainer {
+      padding-left: 2.5rem;
+    }
+  }
+}
+
+@media (min-width: 800px) {
+  #appFinderSubHeader {
+    justify-content: space-between;
+
+    .sapUshellAppFinderTags:not(.sapUshellAppFinderToggleButton):not(.sapUshellAppFinderWithEasyAccess) &,
+    .sapUshellAppFinderSearch:not(.sapUshellAppFinderToggleButton):not(.sapUshellAppFinderWithEasyAccess) & {
+      justify-content: flex-end;
+    }
+
+    .sapUshellAppFinderTags & #appFinderSearchContainer #appFinderSearch {
+      padding-left: 0.5rem;
+    }
+  }
+}
+
+@media (min-width: 1440px) {
+  .sapUshellAppFinderWithEasyAccess #appFinderSubHeader {
+    justify-content: center;
+
+    #appFinderSearchContainer {
+      position: absolute;
+      right: 3rem;
+    }
+  }
+}

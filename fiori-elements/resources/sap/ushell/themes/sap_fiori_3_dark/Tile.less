@@ -1,0 +1,125 @@
+/* General Tile Colors */
+@_sap_ushell_Tile_TextColor:							@sapUiTileTextColor;
+
+/* Tile Footer (plus button in tile catalog) */
+@_sap_ushell_Tile_FooterBorder:						@sapUiShellBorderColor;
+@_sap_ushell_Tile_FooterIconColor:						@sapUiTileTextColor;
+
+.sapUshellTile {
+
+  &.showTileActionsIcon .sapUshellTileActionsIconClass.sapUiIcon, .sapUshellTileActionsIconClass.sapUiIcon {
+      color: @sapUiBrand;
+    }
+
+      background: @sapUiTileBackground;
+      border: none;
+      color: @_sap_ushell_Tile_TextColor;
+
+	footer {
+
+		text-align: @_sap_ushell_Tile_FooterTextAlignment;
+
+		& > * {
+			background: @_sap_ushell_Tile_FooterBorder;
+
+			.sapUiIcon {
+				line-height: @_sap_ushell_Tile_FooterLineHeight;
+				font-size: 1rem;
+				color: @_sap_ushell_Tile_FooterIconColor;
+				position: @_sap_ushell_Tile_FooterPosition;
+				top: @_sap_ushell_Tile_FooterPositionTop;
+			}
+
+			.sapMBtnInner{
+				height: 2rem;
+                border: none;
+                -moz-box-shadow: inset 0 2px 0.19rem 0 rgba(0,0,0, 0.1);
+				-webkit-box-shadow: inset 0 2px 0.19rem 0 rgba(0,0,0, 0.1);
+				box-shadow: inset 0 2px 0.19rem 0 rgba(0,0,0, 0.1);
+			}
+
+			&:first-child {
+				border-bottom-left-radius: @_sap_ushell_Tile_FooterCornerRadius;
+			}
+			&:last-child {
+				border-bottom-right-radius: @_sap_ushell_Tile_FooterCornerRadius;
+			}
+		}
+	}
+  &.sapUshellFeedTileBG {
+    background-color: transparent;
+  }
+}
+
+.sapUshellTileActionDivCenter {
+  background: @sapUiTileBackground;
+}
+
+.sapUiMedia-Std-Tablet .sapUshellTileInner,
+.sapUiMedia-Std-Phone .sapUshellTileInner{
+
+  a.sapUshellTileInner:visited {
+    color: @_sap_ushell_Tile_TextColor;
+  }
+}
+
+.sapUshellTileDeleteIconOuterClass {
+  background: @sapUiButtonBackground;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+  border : 1px solid @sapUiButtonBorderColor;
+}
+
+.sapUshellTileDeleteIconInnerClass {
+  color: @sapUiButtonIconColor;
+}
+
+.sapUshellTileDeleteClickArea:hover {
+    background: @sapUiButtonHoverBackground;
+    border : 1px solid @sapUiButtonHoverBorderColor;
+
+}
+
+.sapUshellTileDeleteClickArea:active {
+    background: @sapUiButtonActiveBackground;
+    border : 1px solid @sapUiButtonActiveBorderColor;
+
+  .sapUshellTileDeleteIconInnerClass {
+    color: @sapUiButtonActiveTextColor;
+  }
+}
+
+.sapUshellTileActionsIconClass.sapUiIcon {
+    color: @sapUiBrand;
+    background: @sapUiShellBackground;
+}
+
+.sapUshellTile:hover .sapUshellTileActionIconDivBottom {
+  color : @sapUiBrand;
+}
+
+.sapUshellTile:focus::after {
+  border-color: @sapUiContentFocusColor;
+  border-width: 1px;
+  border-style: dotted;
+}
+
+.sapUshellTile .sapUshellTileBase {
+  border: 1px solid @sapUiTileBackground;
+  background: @sapUiTileBackground;
+}
+
+.sapUshellTileFooterInfoNegative {
+  color: @sapUiNegativeElement;
+}
+
+.sapUshellTileFooterInfoNeutral {
+  color: @sapUiNeutralElement
+}
+
+.sapUshellTileFooterInfoPositive {
+  color: @sapUiPositiveElement
+}
+
+.sapUshellTileFooterInfoCritical {
+  color: @sapUiCriticalElement;
+}

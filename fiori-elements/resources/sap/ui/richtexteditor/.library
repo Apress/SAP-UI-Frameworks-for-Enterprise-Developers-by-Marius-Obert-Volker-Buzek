@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<library xmlns="http://www.sap.com/sap.ui.library.xsd" >
+
+	<name>sap.ui.richtexteditor</name>
+	<vendor>SAP SE</vendor>
+	<copyright>SAPUI5
+ * (c) Copyright 2009-2023 SAP SE. All rights reserved.</copyright>
+	<version>1.113.0</version>
+
+	<documentation>A rich text editor (RTE) control. Requires installation of an additional rich text editor library.</documentation>
+
+	<dependencies>
+		<dependency>
+			<libraryName>sap.ui.core</libraryName>
+		</dependency>
+	</dependencies>
+
+	<appData>
+		<selenium xmlns="http://www.sap.com/ui5/buildext/selenium" package="com.sap.ui5.selenium.richtexteditor" />
+		<jsdoc xmlns="http://www.sap.com/ui5/buildext/jsdoc" >
+			<exclude name="sap.ui.richtexteditor.js." />
+		</jsdoc>
+		<!-- demokit module app -->
+		<documentation xmlns="http://www.sap.com/ui5/buildext/documentation"
+			indexUrl="../../../../test-resources/sap/ui/richtexteditor/demokit/docuindex.json"
+			resolve="lib" />
+		<!-- excludes for the JSCoverage -->
+		<jscoverage xmlns="http://www.sap.com/ui5/buildext/jscoverage" >
+			<exclude name="sap.ui.richtexteditor.js." />
+		</jscoverage>
+		<packaging xmlns="http://www.sap.com/ui5/buildext/packaging" version="2.0" >
+			<all-in-one>
+				<exclude name="sap/ui/richtexteditor/js/" />
+			</all-in-one>
+		</packaging>
+		<releasenotes xmlns="http://www.sap.com/ui5/buildext/releasenotes"
+			url="../../../../test-resources/sap/ui/richtexteditor/relnotes/changes-{major}.{minor}.json"
+			resolve="lib" />
+		<ownership xmlns="http://www.sap.com/ui5/buildext/ownership">
+			<component>CA-UI5-CTR-RIL</component><!-- default component for library, embedded text as a shortcut for <name>text</name> -->
+		</ownership>
+
+		<thirdparty xmlns="http://www.sap.com/ui5/buildext/thirdparty" >
+			<lib name="TinyMCE-4" displayName="TinyMCE 4.9.10" npmName="tinymce" version="4.9.10-80" npmVersion="4.9.10" hash="26698e06dd894ced8f08d568e308348c" homepage="https://www.tiny.cloud/" id="73554900100200014330">
+				<license url="https://about.tiny.cloud/legal/" type="Commercial"/>
+				<copyright>Tiny Technologies, Inc.</copyright>
+				<pattern>sap/ui/richtexteditor/js/tiny_mce4/*</pattern>
+			</lib>
+			<lib name="TinyMCE-5" displayName="TinyMCE 5.10.2" npmName="tinymce" version="5.10.2-126" npmVersion="5.10.2" hash="cce2b828c61aeab976d029e981d7b5d1" homepage="https://www.tiny.cloud/" id="73555000100200017025">
+				<license url="https://about.tiny.cloud/legal/" type="Commercial"/>
+				<copyright>Tiny Technologies, Inc.</copyright>
+				<pattern>sap/ui/richtexteditor/js/tiny_mce5/*</pattern>
+			</lib>
+			<lib name="TinyMCE-6" displayName="TinyMCE 6.3.1" npmName="tinymce" version="6.3.1-12" npmVersion="6.3.1" hash="68eb2d537fa024951f9ac92cca5e7b08" homepage="https://www.tiny.cloud/">
+				<license url="https://about.tiny.cloud/legal/" type="Commercial"/>
+				<copyright>Tiny Technologies, Inc.</copyright>
+				<pattern>sap/ui/richtexteditor/js/tiny_mce6/*</pattern>
+			</lib>
+		</thirdparty>
+
+	</appData>
+
+</library>

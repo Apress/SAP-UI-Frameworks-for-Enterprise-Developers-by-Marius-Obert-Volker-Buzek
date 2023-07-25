@@ -1,0 +1,28 @@
+Version 2.3.2 (2021-11-03)
+  [BUG] Fixed an exception getting thrown for hints when the editor was rendered in a shadow root #TINY-8197
+Version 2.3.1 (2021-05-20)
+  [SECURITY] Upgraded third-party dependencies to fix a moderate severity ReDoS vulnerability #TINY-7438
+Version 2.3.0 (2020-11-18)
+  [FEATURE] Added the ability to maintain the cursor position when opening the code dialog #TINY-5091
+  [BUG] Fixed the code view not using monospace fonts #TINY-6579
+  [BUG] Fixed an issue where non-breaking spaces were inserted instead of regular spaces on Safari #TINY-6579
+Version 2.2.0 (2020-09-29)
+  [FEATURE] Added support for loading UI components within a ShadowRoot #TINY-6299
+Version 2.1.0 (2020-07-01)
+  [FEATURE] Added search/replace support #TINY-6113
+  [BUG] Fixed the editor `referrer_policy` setting not working when loading additional resources #TINY-5087
+Version 2.0.3 (2020-01-28)
+  [BUG] Fixed gutter rendering in the wrong location in TinyMCE 4 #ADVCODE-11
+  [BUG] Fixed code editor dialog not resizing responsively in TinyMCE 5 #ADVCODE-12
+Version 2.0.2 (2019-11-07)
+  [BUG] Fixed gutter not responding to touch events #ADVCODE-8
+Version 2.0.0 (2019-02-04)
+  Support for TinyMCE 5
+Version 1.2.0 (2018-02-01)
+  Decreased plugin size by improving build steps.
+Version 1.1.1 (2017-12-28)
+  [BUG] Fixed issue where the ui would be accessed directly instead of though a factory.
+Version 1.1.0 (2017-03-01)
+  [FEATURE] Added HTML autocomplete addon. Open a new tag by writing '<' and a dropdown menu will appear showing a list of suggestions of HTML tags that narrows down as you continue writing. #TINY-556
+Version 1.0.2 (2016-10-25)
+  [FEATURE] Added version detection logic that check if this plugin is used with a compatible tinymce version. #TINY-639

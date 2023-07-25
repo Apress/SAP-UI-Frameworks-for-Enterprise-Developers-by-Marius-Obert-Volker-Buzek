@@ -1,0 +1,59 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:controls="sap.fe.macros.controls"
+	xmlns:macro="sap.fe.macros"
+	xmlns:unittest="http://schemas.sap.com/sapui5/preprocessorextension/sap.fe.unittesting/1"
+	template:require="{
+							CRIT: 'sap/fe/core/templating/CriticalityFormatters',
+							UI: 'sap/fe/core/templating/UIFormatters'
+						 }"
+>
+	<template:if test="{= ${this>formatOptions/isAnalytics} &amp;&amp; ${this>hasUnitOrCurrency} }">
+		<template:then>
+			<controls:ConditionalWrapper
+				id="{this>noWrapperId}"
+				condition="{= UI.hasValidAnalyticalCurrencyOrUnit(${property>$Path@@UI.getDataModelObjectPath})}"
+			>
+				<controls:contentTrue>
+					<ObjectStatus
+						unittest:id="MacroDataFieldObjectStatus"
+						icon="{= CRIT.buildExpressionForCriticalityIcon(${dataField>@@UI.getDataModelObjectPath})}"
+						state="{= CRIT.buildExpressionForCriticalityColor(${dataField>@@UI.getDataModelObjectPath})}"
+						visible="{this>displayVisible}"
+						text="{this>text}"
+						emptyIndicatorMode="{this>emptyIndicatorMode}"
+						class="sapMTextRenderWhitespaceWrap"
+					/>
+				</controls:contentTrue>
+				<controls:contentFalse>
+					<ObjectStatus text="*" visible="{this>displayVisible}" />
+				</controls:contentFalse>
+			</controls:ConditionalWrapper>
+		</template:then>
+		<template:else>
+			<ObjectStatus
+				id="{this>noWrapperId}"
+				unittest:id="MacroDataFieldObjectStatus"
+				icon="{= CRIT.buildExpressionForCriticalityIcon(${dataField>@@UI.getDataModelObjectPath})}"
+				state="{= CRIT.buildExpressionForCriticalityColor(${dataField>@@UI.getDataModelObjectPath})}"
+				text="{this>text}"
+				visible="{this>displayVisible}"
+				emptyIndicatorMode="{this>emptyIndicatorMode}"
+				core:require="{FieldRuntime: 'sap/fe/macros/field/FieldRuntime'}"
+				active="{this>hasQuickView}"
+				press="FieldRuntime.pressLink"
+				ariaLabelledBy="{this>ariaLabelledBy}"
+			>
+				<template:if test="{= ${this>hasQuickView}}">
+					<template:then>
+						<dependents>
+							<macro:QuickView dataField="{dataField>}" semanticObject="{this>semanticObject}" contextPath="{entitySet>}" />
+						</dependents>
+					</template:then>
+				</template:if>
+			</ObjectStatus>
+		</template:else>
+	</template:if>
+</core:FragmentDefinition>

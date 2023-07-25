@@ -1,0 +1,66 @@
+{
+	"_version": "1.0.0",
+
+	"sap.app": {
+		"_version": "1.0.0",
+		"i18n": {
+			"bundleUrl": "i18n/i18n.properties",
+			"supportedLocales": [
+				""
+			],
+			"fallbackLocale": ""
+		},
+		"id": "sap.ushell.appRuntime.ui5.plugins.waAgent.Component",
+		"title": "",
+		"type": "component",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"ach": "CA-FLP-FE-AI",
+		"embeddedBy": "../../../../",
+		"resources": "resources.json"
+	},
+
+	"sap.ui": {
+		"_version": "1.0.0",
+
+		"technology": "UI5",
+		"supportedThemes": [],
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+
+	"sap.ui5": {
+		"_version": "1.0.0",
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"dependencies": {
+			"minUI5Version": "1.70.0",
+			"libs": {
+				"sap.ui.core": {
+					"minVersion": "1.70.0"
+				}
+			}
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"uri": "i18n/i18n.properties",
+				"settings": {
+					"supportedLocales": [
+						""
+					],
+					"fallbackLocale": ""
+				}
+			}
+		}
+	},
+	"sap.flp": {
+		"type": "plugin"
+	}
+}

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<library xmlns="http://www.sap.com/sap.ui.library.xsd">
+	<name>sap.fe.core</name>
+	<vendor>SAP SE</vendor>
+	<copyright>
+		SAP UI development toolkit for HTML5 (SAPUI5)
+        (c) Copyright 2009-2021 SAP SE. All rights reserved
+	</copyright>
+	<version>1.113.0</version>
+
+	<documentation>UI5 library: sap.fe.core</documentation>
+
+	<dependencies>
+		<dependency>
+			<libraryName>sap.ui.core</libraryName>
+		</dependency>
+		<dependency>
+			<libraryName>sap.f</libraryName>
+		</dependency>
+		<dependency>
+			<libraryName>sap.fe.navigation</libraryName>
+		</dependency>
+		<dependency>
+			<libraryName>sap.fe.placeholder</libraryName>
+		</dependency>
+		<dependency>
+			<libraryName>sap.m</libraryName>
+		</dependency>
+		<dependency>
+			<libraryName>sap.ui.layout</libraryName>
+			<lazy>true</lazy>
+		</dependency>
+		<dependency>
+			<libraryName>sap.ui.mdc</libraryName>
+			<lazy>false</lazy>
+		</dependency>
+		<dependency>
+			<libraryName>sap.ui.fl</libraryName>
+		</dependency>
+	</dependencies>
+
+	<appData>
+		<!-- excludes for the JSDoc -->
+		<jsdoc xmlns="http://www.sap.com/ui5/buildext/jsdoc">
+			<exclude name="sap.fe.core.js." />
+		</jsdoc>
+		<!-- excludes for the JSCoverage -->
+		<jscoverage xmlns="http://www.sap.com/ui5/buildext/jscoverage">
+			<exclude name="sap.fe.core.js." />
+		</jscoverage>
+		<releasenotes
+			xmlns="http://www.sap.com/ui5/buildext/releasenotes"
+			url="../../../../test-resources/sap/fe/core/relnotes/changes-{major}.{minor}.json"
+			resolve="lib"
+		/>
+		<ownership xmlns="http://www.sap.com/ui5/buildext/ownership">
+			<component>CA-UI5-FE</component>
+			<!-- default component for library, embedded text as a shortcut for <name>text</name> -->
+		</ownership>
+	</appData>
+</library>

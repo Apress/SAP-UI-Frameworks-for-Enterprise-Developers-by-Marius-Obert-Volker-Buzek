@@ -1,0 +1,69 @@
+<core:FragmentDefinition
+	xmlns="sap.suite.ui.microchart"
+	xmlns:core="sap.ui.core"
+	xmlns:m="sap.m"
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns:macrodata="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	template:require="{
+		MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+		HELPER: 'sap/fe/macros/visualfilters/InteractiveChartHelper',
+		ID: 'sap/fe/core/helpers/StableIdHelper',
+        FieldHelper: 'sap/fe/macros/field/FieldHelper',
+		UI: 'sap/fe/core/templating/UIFormatters',
+		COMMON: 'sap/fe/macros/CommonHelper',
+		FieldTemplating: 'sap/fe/macros/field/FieldTemplating',
+		MACRO: 'sap/fe/macros/MacroTemplating'
+	}"
+>
+	<!-- Internal only -->
+
+	<template:if test="{= ${chartAnnotation>Measures/0/} &amp;&amp; ${chartAnnotation>Dimensions/0/} }">
+		<template:then>
+			<template:with path="chartAnnotation>Measures/0" helper="COMMON.getMeasureAttributeForMeasure" var="DataPoint">
+				<template:with path="chartAnnotation>Measures/0/" var="Measure">
+					<template:with path="chartAnnotation>Dimensions/0/" var="Dimension">
+						<InteractiveDonutChart
+							core:require="{VisualFilterRuntime: 'sap/fe/macros/visualfilters/VisualFilterRuntime'}"
+							selectionChanged="VisualFilterRuntime.selectionChanged"
+							visible="{= '{= !${internal>' + ID.generate([${metaPath>@@MACRO.getPath}]) + '/showOverLayForVF}}'}"
+							segments="{parts:[{path:'chartAnnotation>'},{path:'contextPath>'},{path: 'Dimension>$PropertyPath@com.sap.vocabularies.Common.v1.Text'},{path:'Dimension>$PropertyPath/$Type'},{path:'metaPath>SortOrder'}, {path: 'this>selectionVariantAnnotation'}, {path:'this>bCustomAggregate'}, {path:'this>aggregateProperties'}, {path:'this>bUoMHasCustomAggregate'}],formatter:'HELPER.getAggregationBinding'}"
+							macrodata:outParameter="{= ${this>outParameter}}"
+							macrodata:valuelistProperty="{= ${this>valuelistProperty}}"
+							macrodata:multipleSelectionAllowed="{= %{this>multipleSelectionAllowed}}"
+							macrodata:dimension="{= ${Dimension>$PropertyPath}}"
+							macrodata:dimensionText="{= ${Dimension>$PropertyPath@com.sap.vocabularies.Common.v1.Text} ? ${Dimension>$PropertyPath@com.sap.vocabularies.Common.v1.Text/$Path} : undefined}"
+							macrodata:measure="{= ${Measure>$PropertyPath}}"
+							macrodata:scalefactor="{= HELPER.getScaleFactor(${DataPoint>ValueFormat})}"
+							macrodata:uom="{parts:[{path:'chartAnnotation>'},{path:'contextPath>'},{value:'true'}, {path:'this>bCustomAggregate'}, {path:'this>aggregateProperties'}],formatter:'HELPER.getUoM'}"
+							macrodata:inParameters="{= COMMON.stringifyCustomData(${this>inParameters}) }"
+							macrodata:inParameterConditions="{= ${this>inParameters} !== undefined ? HELPER.getInParameterFiltersBinding(${this>inParameters}) : undefined}"
+							macrodata:dimensionType="{= ${Dimension>$PropertyPath/$Type}}"
+							macrodata:selectionVariantAnnotation="{= COMMON.stringifyCustomData(${this>selectionVariantAnnotation})}"
+							macrodata:required="{this>required}"
+							macrodata:showOverlayInitially="{this>showOverlayInitially}"
+							macrodata:requiredProperties="{this>requiredProperties}"
+							macrodata:infoPath="{= ID.generate([${metaPath>@@MACRO.getPath}]) }"
+						>
+							<segments>
+								<InteractiveDonutChartSegment
+									core:require="{VisualFilterRuntime: 'sap/fe/macros/visualfilters/VisualFilterRuntime'}"
+									label="{= FieldTemplating.getTextBinding(${Dimension>@@UI.getDataModelObjectPath})}"
+									value="{= ${Measure>$PropertyPath@@HELPER.getChartValue} }"
+									displayedValue="{parts:[ {path: 'Measure>$PropertyPath'}, {path: 'DataPoint>ValueFormat'}, {path: 'metaPath>@@MACRO.getPath'}], formatter: 'HELPER.getChartDisplayedValue'}"
+									color="{parts:[{path:'DataPoint>@@UI.getDataModelObjectPath'}, {path:'Dimension>'}], formatter: 'HELPER.getColorBinding'}"
+									selected="{path: '$field>/conditions', formatter: 'sap.fe.macros.visualfilters.VisualFilterRuntime.getAggregationSelected'}"
+								/>
+							</segments>
+						</InteractiveDonutChart>
+						<m:VBox
+							class="sapUiOverlay sapUiResponsiveMargin"
+							visible="{= '{internal>' + ID.generate([${metaPath>@@MACRO.getPath}]) + '/showOverLayForVF}'}"
+						>
+							<m:Text text="{= '{internal>' + ID.generate([${metaPath>@@MACRO.getPath}]) + '/VFOverLayMessage}'}" />
+						</m:VBox>
+					</template:with>
+				</template:with>
+			</template:with>
+		</template:then>
+	</template:if>
+</core:FragmentDefinition>

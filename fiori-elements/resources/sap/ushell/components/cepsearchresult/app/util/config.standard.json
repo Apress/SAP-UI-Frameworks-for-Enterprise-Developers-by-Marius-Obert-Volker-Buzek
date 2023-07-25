@@ -1,0 +1,73 @@
+{
+    "categories": [
+        {
+            "name": "all",
+            "title": "{i18n>CATEGORIES.All.Title}",
+            "shortTitle": "{i18n>CATEGORIES.All.ShortTitle}",
+            "icon": "sap-icon://search",
+            "card": {
+                "title": "{i18n>CATEGORIES.All.Card.Title}",
+                "subTitle": "{i18n>CATEGORIES.All.Card.SubTitle}"
+            },
+            "subCategories": [
+                {
+                    "name": "app",
+                    "pageSize": 15
+                }
+            ],
+            "noDataText": "{i18n>CATEGORIES.All.NoData}",
+            "loadingDataText": "{i18n>CATEGORIES.All.LoadingData}"
+        },
+        {
+            "name": "app",
+            "title": "{i18n>CATEGORIES.App.Title}",
+            "shortTitle": "{i18n>CATEGORIES.App.ShortTitle}",
+            "icon": "sap-icon://header",
+            "card": {
+                "title": "{i18n>CATEGORIES.App.Card.Title}",
+                "subTitle": "{i18n>CATEGORIES.App.Card.SubTitle}"
+            },
+            "extension": "module:sap/ushell/components/cepsearchresult/app/util/AppDataExtension",
+            "list": {
+                "paging": true,
+                "viewAll": true,
+                "views": ["List", "Tile"],
+                "defaultView": "Tile",
+                "noDataText": "{i18n>CATEGORIES.App.NoData}",
+                "loadingDataText": "{i18n>CATEGORIES.App.LoadingData}",
+                "item": {
+                    "template": {"List":"default","Tile": "appTile"},
+                    "icon": {
+                        "src": "sap-icon://header",
+                        "backgroundColor": "Accent9",
+                        "shape": "Square",
+                        "size": "S"
+                    }
+                },
+                "data": {
+                    "extension": {
+                        "method": "getData",
+                        "args": [
+                            "{parameters>/searchTerm/value}",
+                            "{paginator>/skip}",
+                            "{paginator>/top}"
+                        ]
+                    },
+                    "path": "/results",
+                    "count": "/totalCount",
+                    "mapping": {
+                        "title": "{= ${object/visualization/title} || ${title}}",
+                        "description": "{= ${object/visualization/subtitle} || ${description}}",
+                        "icon": "{= ${object/visualization/icon} || ${icon}}",
+                        "url": "{= ${object/visualization/targetURL} || ${url}}",
+                        "_viz": "{object/visualization}"
+                    }
+                },
+                "paginator": {
+                    "currentPage": 1,
+                    "pageSize": 20
+                }
+            }
+        }
+    ]
+}

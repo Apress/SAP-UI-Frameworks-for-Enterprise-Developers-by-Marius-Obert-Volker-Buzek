@@ -1,0 +1,11 @@
+<mvc:View
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	displayBlock="true"
+	height="100%"
+	controllerName="sap.fe.placeholder.controller.Placeholder"
+	xmlns="http://www.w3.org/1999/xhtml"
+>
+	<core:HTML id="PlaceholderContent" preferDOM="false" content="&lt;div&gt;&lt;/div&gt;" custom:placeholder="sap/fe/placeholder/view/PlaceholderALP.fragment.html"/>
+</mvc:View>

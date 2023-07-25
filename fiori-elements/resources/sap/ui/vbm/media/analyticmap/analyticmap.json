@@ -1,0 +1,113 @@
+{
+	"SAPVB": {
+		"Resources": {
+			"Set": {
+				"Resource": []
+			}
+		},
+		"Data": {
+			"Set":
+			[ 
+				{
+					"type": "N",
+					"name": "Regions",
+					"N": 	{
+								"name": "Regions",
+								"E": []
+							}
+				}
+			]
+		},
+		"DataTypes": {
+			"Set": {
+				"N": [
+					{
+						"name": "Regions",
+						"key": "Key",
+						"A": [
+							{
+								"name": "Key",
+								"alias": "K",
+								"type": "string"
+							},
+							{
+								"name": "PosList",
+								"alias": "P",
+								"type": "vectorarray"
+							},
+							{
+								"name": "ToolTip",
+								"alias": "T",
+								"type": "string"
+							},
+							{
+								"name": "Color",
+								"alias": "C",
+								"type": "color"
+							},
+							{
+								"name": "BorderColor",
+								"alias": "CB",
+								"type": "color"
+							},
+							{
+								"name": "Entity",
+								"alias": "G",
+								"type": "string"
+							}
+						]
+					}
+				]
+			}
+		},
+		"Windows": {
+			"Set": [
+   			{
+               "name": "Main",
+   				"Window": {
+   					"id": "Main",
+   					"caption": "MainWindow",
+   					"type": "geo",
+   					"refParent": "",
+   					"refScene": "MainScene",
+   					"modal": "true"
+   				}
+   			}
+			]
+		},
+		"Scenes": {
+			"Set": {
+				"SceneGeo": {
+					"id": "MainScene",
+					"VO": [
+						{
+							"id": "Region",
+							"type": "{00100000-2012-0004-B001-F311DE491C77}",
+							"entity.bind": "Regions.Entity",
+							"datasource": "Regions",
+							"posarray.bind": "Regions.PosList",
+							"color.bind": "Regions.Color",
+							"colorBorder.bind": "Regions.BorderColor",
+							"tooltip.bind": "Regions.ToolTip",
+							"hotDeltaColor" : "RGBA(240,171,0,128)"
+						}
+						]
+				}
+			}
+		},
+		"Actions": {
+			"Set": {
+				"Action": [
+					{
+						"id": "1",
+						"name": "RGN_CONTEXTMENU", "refScene": "MainScene", "refVO": "Region", "refEvent": "ContextMenu"
+					},
+					{
+						"id": "2",
+						"name": "RGN_CLICK", "refScene": "MainScene", "refVO": "Region", "refEvent": "Click"
+					}					
+				]
+			}
+		}
+	}
+}

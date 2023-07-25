@@ -1,0 +1,57 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns:unittest="http://schemas.sap.com/sapui5/preprocessorextension/sap.fe.unittesting/1"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	template:require="{
+		FIELD: 'sap/fe/macros/field/FieldHelper'
+	}"
+>
+	<template:if test="{= ${entitySet>$kind} === 'NavigationProperty'}">
+		<template:then>
+			<VBox>
+				<template:if test="{= ${this>hasSituationsIndicator}}">
+					<template:then>
+						<HBox alignItems="Center" justifyContent="SpaceBetween" width="100%">
+							<core:Fragment fragmentName="sap.fe.macros.internal.field.fragments.ObjectIdentifierContent" type="XML" />
+							<SituationsIndicator
+								xmlns="sap.fe.macros.internal.situations"
+								entitySet="{entitySet>}"
+								propertyPath="{property>$Path}"
+							/>
+						</HBox>
+					</template:then>
+					<template:else>
+						<core:Fragment fragmentName="sap.fe.macros.internal.field.fragments.ObjectIdentifierContent" type="XML" />
+					</template:else>
+				</template:if>
+				<template:if test="{= ${this>formatOptions/fieldGroupDraftIndicatorPropertyPath} === null }">
+					<ObjectStatus
+						id="{this>noWrapperId}"
+						visible="{this>showErrorObjectStatus}"
+						class="sapUiSmallMarginBottom"
+						text="{sap.fe.i18n>Contains_Errors}"
+						state="Error"
+					/>
+				</template:if>
+			</VBox>
+		</template:then>
+		<template:else>
+			<template:if test="{= ${this>hasSituationsIndicator}}">
+				<template:then>
+					<HBox alignItems="Center" justifyContent="SpaceBetween" width="100%">
+						<core:Fragment fragmentName="sap.fe.macros.internal.field.fragments.ObjectIdentifierContent" type="XML" />
+						<SituationsIndicator
+							xmlns="sap.fe.macros.internal.situations"
+							entitySet="{entitySet>}"
+							propertyPath="{property>$Path}"
+						/>
+					</HBox>
+				</template:then>
+				<template:else>
+					<core:Fragment fragmentName="sap.fe.macros.internal.field.fragments.ObjectIdentifierContent" type="XML" />
+				</template:else>
+			</template:if>
+		</template:else>
+	</template:if>
+</core:FragmentDefinition>

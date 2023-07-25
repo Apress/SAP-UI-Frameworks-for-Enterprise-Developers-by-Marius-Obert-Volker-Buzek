@@ -1,0 +1,7 @@
+/*!
+ * 
+		SAP UI development toolkit for HTML5 (SAPUI5)
+		(c) Copyright 2009-2015 SAP SE. All rights reserved
+	
+ */
+sap.ui.define(function(){"use strict";var t={};t.render=function(t,e){var r=e.getTooltip_AsString();t.write("<div");t.writeControlData(e);if(r&&typeof r==="string"){t.writeAttributeEscaped("title",r)}t.addClass("sapSuiteHdrCntr");t.addClass(e.getView());if(e.getShowDividers()){t.addClass("sapSuiteHrdrCntrDvdrs")}t.writeClasses();if(e.getView()==="Vertical"){t.addStyle("height","100%");t.writeStyles()}var i="";var d=e.getItems();for(var s=0;d&&s<d.length;s++){i+=d[s].getId()+" "}t.writeAttribute("aria-labelledby",i);t.write(">");t.write("<div");t.writeAttributeEscaped("id",e.getId()+"-scroll-area");t.addClass("sapSuiteHdrCntrCntr");t.addClass(e.getView());t.addClass("sapSuiteHdrCntrBG"+e.getBackgroundDesign());t.writeClasses();t.write(">");t.renderControl(e._oScrollCntr);t.write("<div");t.writeAttribute("id",e.getId()+"-after");t.writeAttribute("tabindex","0");t.write("></div>");t.write("</div>");if(e._oArrowPrev){t.write("<div");t.addClass("sapSuiteHdrCntrBtnCntr");t.addClass("sapSuiteHdrCntrLeft");t.addClass(e.getView());t.writeClasses();t.write(">");t.renderControl(e._oArrowPrev);t.write("</div>")}if(e._oArrowNext){t.write("<div");t.addClass("sapSuiteHdrCntrBtnCntr");t.addClass("sapSuiteHdrCntrRight");t.addClass(e.getView());t.writeClasses();t.write(">");t.renderControl(e._oArrowNext);t.write("</div>")}t.write("</div>")};return t},true);

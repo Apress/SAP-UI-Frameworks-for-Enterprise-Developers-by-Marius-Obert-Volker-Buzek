@@ -1,0 +1,43 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns="sap.m"
+	xmlns:mdc="sap.ui.mdc"
+	xmlns:mdcf="sap.ui.mdc.field"
+	xmlns:mdcv="sap.ui.mdc.valuehelp"
+	xmlns:mdcvc="sap.ui.mdc.valuehelp.content"
+	xmlns:core="sap.ui.core"
+	template:require="{
+							ID: 'sap/fe/core/helpers/StableIdHelper',
+							EDITSTATE: 'sap/fe/macros/filter/DraftEditState'
+						}"
+>
+	<mdc:FilterField
+		label="{sap.fe.i18n>FILTERBAR_EDITING_STATUS}"
+		maxConditions="1"
+		id="{= ID.generate([${this>id}, 'FilterField', 'DraftEditingStatus' ]) }"
+		operators="DRAFT_EDIT_STATE"
+		dataType="sap.ui.model.odata.type.String"
+		conditions="{$filters>/conditions/$editState}"
+		fieldHelp="{= ID.generate([${this>id}, 'FilterFieldValueHelp', 'DraftEditingStatus' ]) }"
+		display="Description"
+	>
+		<mdc:dependents>
+			<mdc:ValueHelp
+				core:require="{DraftEditState: 'sap/fe/macros/filter/DraftEditState'}"
+				id="{= ID.generate([${this>id}, 'FilterFieldValueHelp', 'DraftEditingStatus' ]) }"
+			>
+				<mdc:typeahead>
+					<mdcv:Popover>
+						<mdcvc:FixedList useFirstMatch="true">
+							<template:with path="this>" helper="EDITSTATE.getEditStatesContext" var="states">
+								<template:repeat list="{states>}" var="state">
+									<mdcf:ListFieldHelpItem key="{state>id}" text="{state>display}" />
+								</template:repeat>
+							</template:with>
+						</mdcvc:FixedList>
+					</mdcv:Popover>
+				</mdc:typeahead>
+			</mdc:ValueHelp>
+		</mdc:dependents>
+	</mdc:FilterField>
+</core:FragmentDefinition>

@@ -1,0 +1,65 @@
+{
+    "sap.app": {
+        "id": "sap.ushell.components.cepsearchresult.app",
+        "type": "application",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "i18n": {
+            "bundleUrl": "i18n/i18n.properties"
+        },
+        "title": "{{SEARCHRESULTAPP.App.Title}}",
+        "subTitle": "{{SEARCHRESULTAPP.App.SubTitle}}"
+    },
+    "sap.ui": {
+        "_version": "1.1.0",
+        "icons": {
+            "icon": "sap-icon://search"
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        },
+        "supportedThemes": []
+    },
+    "sap.ui5": {
+        "dependencies": {
+            "libs": {
+                "sap.ui.core": {},
+                "sap.m": {},
+                "sap.ui.integration": {}
+            }
+        },
+        "config": {
+          "fullWidth": true
+        },
+        "rootView": {
+            "viewName": "sap.ushell.components.cepsearchresult.app.Main",
+            "type": "XML",
+            "async": true
+        },
+        "models": {
+            "appI18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "./css/style.css"
+                }
+            ]
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    }
+}

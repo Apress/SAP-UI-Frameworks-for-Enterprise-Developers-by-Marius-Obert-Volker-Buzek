@@ -1,0 +1,26 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+    <MultiInput
+        id="multiInput"
+        ariaLabelledBy="ContentNodeLabel"
+        valueHelpRequest="._showValueHelp"
+        suggestionRows="{path: '_internal>/suggestions', templateShareable: false}"
+        tokenUpdate="._onTokenUpdate"
+        required="true">
+        <suggestionColumns>
+            <Column>
+                <Label text="{= ${_internal>/isSpaces} ? ${_i18n>contentNodeSelectorPage} : ${_i18n>contentNodeSelectorHomepageGroup}}"/>
+            </Column>
+            <Column visible="{_internal>/isSpaces}">
+                <Label text="{_i18n>contentNodeSelectorSpace}"/>
+            </Column>
+        </suggestionColumns>
+        <suggestionRows>
+            <ColumnListItem>
+                <cells>
+                    <Label text="{_internal>label}"/>
+                    <Label text="{= ${_internal>spaceTitles}.join(', ')}" visible="{_internal>/isSpaces}"/>
+                </cells>
+            </ColumnListItem>
+        </suggestionRows>
+    </MultiInput>
+</core:FragmentDefinition>

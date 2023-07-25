@@ -1,0 +1,11 @@
+<mvc:View
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    controllerName="sap.ushell.components.cards.Card">
+    <GenericTile
+        header="{/data/display_title_text}"
+        subheader="{/data/display_subtitle_text}"
+        press="onPress">
+        <TileContent footer="{i18n>cardTileCaption}" />
+    </GenericTile>
+</mvc:View>

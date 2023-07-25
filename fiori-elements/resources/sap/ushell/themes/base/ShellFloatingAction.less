@@ -1,0 +1,61 @@
+/* ============================================= */
+/* CSS for control sap.ushell/ui/Shell/ShellFloatingAction base theme*/
+/* ============================================= */
+
+.sapUshellShellFloatingActionTransition, .sapUshellShellFloatingActionTransition span {
+    -webkit-transition: transform .15s linear; /* For Safari 3.1 to 6.0 */
+    transition: transform .15s linear;
+}
+
+.sapUshellShellFloatingActionRotate span {
+  transform: rotate(45deg);
+}
+
+.sapUshellShellFloatingAction {
+  position: absolute;
+  height: 2.750rem;
+  bottom: 0;
+  right: 0;
+}
+
+.sapUshellShellFloatingAction div {
+    border-radius: 1.25rem;
+
+    .sapUiIcon {
+        border-radius: 1.25rem;
+        font-size: 1.25rem;
+    }
+}
+
+.sapUshellShellFloatingAction:focus>.sapMBtnInner.sapMFocusable{
+    outline: 0;
+}
+
+/* ============================Compact Mode=================================== */
+
+.sapUiSizeCompact {
+    .sapUshellShellFloatingAction {
+        width: 2.50rem;
+        right: 0rem;
+        padding-bottom: 0.25rem;
+        padding-left: 0rem;
+        padding-right: 0rem;
+        padding-top: 0.25rem;
+        height: 2.75rem;
+
+        .sapMBtnInner {
+            height: 2.5rem;
+            min-width: 2.50rem;
+            padding-left: 0px;
+            padding-right: 0px;
+
+            .sapMBtnIcon {
+                width: 2.38rem;
+                max-height: 2.38rem;
+                line-height: 2.38rem;
+                height: 2.38rem;
+                margin: 0;
+            }
+        }
+    }
+}

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<library xmlns="http://www.sap.com/sap.ui.library.xsd">
+
+	<name>sap.suite.ui.commons</name>
+	<vendor>SAP SE</vendor>
+	<copyright>
+		SAP UI development toolkit for HTML5 (SAPUI5)
+		(c) Copyright 2009-2015 SAP SE. All rights reserved
+	</copyright>
+	<version>1.113.0</version>
+
+	<documentation>SAP UI library: sap.suite.ui.commons</documentation>
+
+	<dependencies>
+		<!-- static dependencies -->
+		<dependency>
+			<libraryName>sap.ui.core</libraryName>
+		</dependency>
+		<dependency>
+			<libraryName>sap.m</libraryName>
+		</dependency>
+		<!-- lazy dependencies -->
+		<dependency>
+			<libraryName>sap.suite.ui.microchart</libraryName>
+			<lazy>true</lazy>
+		</dependency>
+		<dependency>
+			<libraryName>sap.ui.ux3</libraryName>
+			<lazy>true</lazy>
+		</dependency>
+		<dependency>
+			<libraryName>sap.ui.comp</libraryName>
+			<lazy>true</lazy>
+		</dependency>
+		<dependency>
+			<libraryName>sap.viz</libraryName>
+			<lazy>true</lazy>
+		</dependency>
+		<dependency>
+			<libraryName>sap.ui.commons</libraryName>
+			<lazy>true</lazy>
+		</dependency>
+	</dependencies>
+
+	<appData>
+		<!-- package name for selenium -->
+		<selenium xmlns="http://www.sap.com/ui5/buildext/selenium"
+			package="com.sap.suite" />
+		<!-- excludes for the JSDoc -->
+		<jsdoc xmlns="http://www.sap.com/ui5/buildext/jsdoc">
+			<exclude name="sap.suite.ui.commons.js." />
+		</jsdoc>
+		<!-- excludes for the JSCoverage -->
+		<jscoverage xmlns="http://www.sap.com/ui5/buildext/jscoverage">
+			<exclude name="sap.suite.ui.commons.js." />
+		</jscoverage>
+		<!-- demokit module app -->
+		<documentation xmlns="http://www.sap.com/ui5/buildext/documentation"
+			indexUrl="../../../../../test-resources/sap/suite/ui/commons/demokit/docuindex.json"
+			resolve="lib" />
+		<!-- Release notes files -->
+		<releasenotes xmlns="http://www.sap.com/ui5/buildext/releasenotes"
+			url="../../../../../test-resources/sap/suite/ui/commons/relnotes/changes-{major}.{minor}.json"
+			resolve="lib" />
+		<ownership xmlns="http://www.sap.com/ui5/buildext/ownership">
+			<!-- default component for library, embedded text as a shortcut for <name>text</name> -->
+			<component>CA-UI5-SC</component>
+		</ownership>
+		<packaging xmlns="http://www.sap.com/ui5/buildext/packaging" version="2.0">
+			<all-in-one>
+				<!-- excludes for the all-in-one file -->
+				<exclude name="sap/suite/ui/commons/BulletChart*" />
+				<exclude name="sap/suite/ui/commons/BusinessCard*" />
+				<exclude name="sap/suite/ui/commons/ChartTile*" />
+				<exclude name="sap/suite/ui/commons/Column*" />
+				<exclude name="sap/suite/ui/commons/Comparison*" />
+				<exclude name="sap/suite/ui/commons/Counting*" />
+				<exclude name="sap/suite/ui/commons/DateRange*" />
+				<exclude name="sap/suite/ui/commons/DeltaMicroChart*" />
+				<exclude name="sap/suite/ui/commons/DynamicContainer*" />
+				<exclude name="sap/suite/ui/commons/Facet*" />
+				<exclude name="sap/suite/ui/commons/Feed*" />
+				<exclude name="sap/suite/ui/commons/GenericTile*" />
+				<exclude name="sap/suite/ui/commons/HarveyBallMicroChart*" />
+				<exclude name="sap/suite/ui/commons/Header*" />
+				<exclude name="sap/suite/ui/commons/InfoTile*" />
+				<exclude name="sap/suite/ui/commons/JamContent*" />
+				<exclude name="sap/suite/ui/commons/KpiTile*" />
+				<exclude name="sap/suite/ui/commons/LaunchTile*" />
+				<exclude name="sap/suite/ui/commons/LinkActionSheet*" />
+				<exclude name="sap/suite/ui/commons/MicroAreaChart*" />
+				<exclude name="sap/suite/ui/commons/Monitoring*" />
+				<exclude name="sap/suite/ui/commons/MicroAreaChart*" />
+				<exclude name="sap/suite/ui/commons/NewsContent*" />
+				<exclude name="sap/suite/ui/commons/NoteTaker*" />
+				<exclude name="sap/suite/ui/commons/Numeric*" />
+				<exclude name="sap/suite/ui/commons/PictureZoomIn*" />
+				<exclude name="sap/suite/ui/commons/RepeaterView*" />
+				<exclude name="sap/suite/ui/commons/SplitButton*" />
+				<exclude name="sap/suite/ui/commons/TargetFilter*" />
+				<exclude name="sap/suite/ui/commons/ThingCollection*" />
+				<exclude name="sap/suite/ui/commons/ThreePanelThingInspector*" />
+				<exclude name="sap/suite/ui/commons/TileContent*" />
+				<exclude name="sap/suite/ui/commons/UnifiedThing*" />
+				<exclude name="sap/suite/ui/commons/VerticalNavigation*" />
+				<exclude name="sap/suite/ui/commons/ViewRepeater*" />
+				<exclude name="sap/suite/ui/commons/util/FeedAggregator*" />
+				<exclude name="sap/suite/ui/commons/util/FeedItemUtils*" />
+			</all-in-one>
+		</packaging>
+
+	</appData>
+
+</library>

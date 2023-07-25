@@ -1,0 +1,58 @@
+<core:FragmentDefinition
+	xmlns="sap.suite.ui.microchart"
+	xmlns:core="sap.ui.core"
+	xmlns:oDataV4MicroChart="sap.fe.macros.microchart"
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	template:require="{
+		MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+		MICROCHART: 'sap/fe/macros/microchart/MicroChartHelper',
+		CRIT: 'sap/fe/core/templating/CriticalityFormatters',
+		UI: 'sap/fe/core/templating/UIFormatters',
+		ID: 'sap/fe/core/helpers/StableIdHelper'
+	}"
+>
+	<!-- MODEL.value is used instead MODEL.format because, MODEL.format adds type as Unit when Currency/Unit annotations exist and the control property expects decimal as type -->
+	<template:if
+		test="{= MICROCHART.shouldMicroChartRender('Harvey', ${DataPoint>}, ${DataPoint>Value/$Path@}, '', ${DataPoint>MaximumValue/$Path@})}"
+	>
+		<template:then>
+			<template:with path="DataPoint>Value/$Path" helper="MODEL.resolve$Path" var="Measure">
+				<oDataV4MicroChart:MicroChartContainer
+					id="{= ${this>id} ? ID.generate([${this>id}, 'HarveyBallMicroChart']) : undefined }"
+					showOnlyChart="{this>showOnlyChart}"
+					chartTitle="{= ${this>title} || ${metaPath>Title}}"
+					chartDescription="{= ${this>description} || ${metaPath>Description}}"
+					uomPath="{= MICROCHART.getUOMPathForMicrochart(${this>showOnlyChart}, ${Measure>@}) }"
+					binding="{= MICROCHART.getBindingExpressionForMicrochart('Harvey', ${Measure>@}, ${this>}, ${contextPath>}, ${contextPath>@sapui.name}, ${DataPoint>}) }"
+					visible="{= MICROCHART.getHiddenPathExpression(${DataPoint>Value/$Path@com.sap.vocabularies.UI.v1.Hidden}, ${DataPoint>MaximumValue/$Path@com.sap.vocabularies.UI.v1.Hidden}) }"
+					onTitlePressed="{this>onTitlePressed}"
+					navigationType="{this>navigationType}"
+				>
+					<template:if test="{= !${this>showOnlyChart} || (${this>showOnlyChart} !== 'true' ? true : false)}">
+						<core:Fragment fragmentName="sap.fe.macros.microchart.fragments.MicroChartTitle" type="XML" />
+					</template:if>
+					<HarveyBallMicroChart
+						hideOnNoData="{this>hideOnNoData}"
+						formattedLabel="true"
+						totalLabel="{= MICROCHART.formatDecimal(${DataPoint>MaximumValue/$Path}, ${DataPoint>MaximumValue/$Path/$}, (${DataPoint>ValueFormat} &amp;&amp; ${DataPoint>ValueFormat/NumberOfFractionalDigits})) }"
+						total="{DataPoint>MaximumValue@@MODEL.value}"
+						colorPalette="{= MICROCHART.getColorPaletteForMicroChart(${DataPoint>}) }"
+						size="{this>size}"
+					>
+						<items>
+							<HarveyBallMicroChartItem
+								formattedLabel="true"
+								fractionLabel="{= MICROCHART.formatDecimal(${DataPoint>Value/$Path}, ${DataPoint>Value/$Path/$}, (${DataPoint>ValueFormat} &amp;&amp; ${DataPoint>ValueFormat/NumberOfFractionalDigits})) }"
+								fraction="{DataPoint>Value@@MODEL.value}"
+								color="{= CRIT.buildExpressionForCriticalityColorMicroChart(${DataPoint>@@UI.getDataModelObjectPath}) }"
+							/>
+						</items>
+					</HarveyBallMicroChart>
+				</oDataV4MicroChart:MicroChartContainer>
+			</template:with>
+		</template:then>
+		<template:elseif
+			test="{= MICROCHART.logWarning('HarveyBall', { DataPoint_Value : ${DataPoint>Value}, DataPoint_MaximumValue : ${DataPoint>MaximumValue} }) }"
+		/>
+	</template:if>
+</core:FragmentDefinition>

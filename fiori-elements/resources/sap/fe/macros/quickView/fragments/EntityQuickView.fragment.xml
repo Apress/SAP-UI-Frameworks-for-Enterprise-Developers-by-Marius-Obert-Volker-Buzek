@@ -1,0 +1,76 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns:unittest="http://schemas.sap.com/sapui5/preprocessorextension/sap.fe.unittesting/1"
+	xmlns:macrodata="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	xmlns:core="sap.ui.core"
+	xmlns:controls="sap.fe.macros.controls"
+	xmlns="sap.m"
+	template:require="{
+				MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+				FIELD: 'sap/fe/macros/field/FieldHelper'
+				}"
+>
+	<template:if test="{entityType>}">
+		<template:then>
+			<template:with path="entityType>./@com.sap.vocabularies.UI.v1.HeaderInfo" var="headerInfo">
+				<VBox class="sapFePaddingTop sapUiTinyMarginBottom">
+					<controls:ConditionalWrapper
+						core:require="{FieldRuntime: 'sap/fe/macros/field/FieldRuntime'}"
+						condition="{= FIELD.checkPrimaryActions(${semantic>}, false, ${viewData>/appComponent}) }"
+					>
+						<controls:contentTrue>
+							<template:if test="{= (${headerInfo>ImageUrl} !== undefined) || (${headerInfo>TypeImageUrl} !== undefined) }">
+								<template:then>
+									<controls:CustomQuickViewPage
+										unittest:id="CustomQuickViewPageEntity"
+										icon="{= ${headerInfo>ImageUrl} !== undefined ? ${headerInfo>ImageUrl@@MODEL.value} : ${headerInfo>TypeImageUrl@@MODEL.value} }"
+										fallbackIcon="{= ${headerInfo>TypeImageUrl} !== undefined ? ${headerInfo>TypeImageUrl} : (${entityType>./@com.sap.vocabularies.Common.v1.IsNaturalPerson} ? 'sap-icon://person-placeholder' : 'sap-icon://product')}"
+										title="{entityType>./@com.sap.vocabularies.UI.v1.HeaderInfo/Title/Value@@MODEL.format}"
+										macrodata:titleLink="{= FIELD.getPrimaryAction(${semantic>}) }"
+										description="{= (${headerInfo>Description} !== undefined) ? ${entityType>./@com.sap.vocabularies.UI.v1.HeaderInfo/Description/Value@@MODEL.format} : '{semantic>propertyPathLabel}' }"
+									>
+										<core:Fragment fragmentName="sap.fe.macros.quickView.fragments.QuickViewFacets" type="XML" />
+									</controls:CustomQuickViewPage>
+								</template:then>
+								<template:else>
+									<controls:CustomQuickViewPage
+										unittest:id="CustomQuickViewPageEntityNoIcon"
+										title="{entityType>./@com.sap.vocabularies.UI.v1.HeaderInfo/Title/Value@@MODEL.format}"
+										macrodata:titleLink="{= FIELD.getPrimaryAction(${semantic>}) }"
+										description="{= (${headerInfo>Description} !== undefined) ? ${entityType>./@com.sap.vocabularies.UI.v1.HeaderInfo/Description/Value@@MODEL.format} : '{semantic>propertyPathLabel}' }"
+									>
+										<core:Fragment fragmentName="sap.fe.macros.quickView.fragments.QuickViewFacets" type="XML" />
+									</controls:CustomQuickViewPage>
+								</template:else>
+							</template:if>
+						</controls:contentTrue>
+						<controls:contentFalse>
+							<template:if test="{= (${headerInfo>ImageUrl} !== undefined) || (${headerInfo>TypeImageUrl} !== undefined) }">
+								<template:then>
+									<controls:CustomQuickViewPage
+										unittest:id="CustomQuickViewPageEntityNoLinkTitle"
+										icon="{= ${headerInfo>ImageUrl} !== undefined ? ${headerInfo>ImageUrl@@MODEL.value} : ${headerInfo>TypeImageUrl@@MODEL.value} }"
+										fallbackIcon="{= ${headerInfo>TypeImageUrl} !== undefined ? ${headerInfo>TypeImageUrl} : (${entityType>./@com.sap.vocabularies.Common.v1.IsNaturalPerson} ? 'sap-icon://person-placeholder' : 'sap-icon://product')}"
+										title="{entityType>./@com.sap.vocabularies.UI.v1.HeaderInfo/Title/Value@@MODEL.format}"
+										description="{= (${headerInfo>Description} !== undefined) ? ${entityType>./@com.sap.vocabularies.UI.v1.HeaderInfo/Description/Value@@MODEL.format} : '{semantic>propertyPathLabel}' }"
+									>
+										<core:Fragment fragmentName="sap.fe.macros.quickView.fragments.QuickViewFacets" type="XML" />
+									</controls:CustomQuickViewPage>
+								</template:then>
+								<template:else>
+									<controls:CustomQuickViewPage
+										unittest:id="CustomQuickViewPageEntityNoLinkTitleNoIcon"
+										title="{entityType>./@com.sap.vocabularies.UI.v1.HeaderInfo/Title/Value@@MODEL.format}"
+										description="{= (${headerInfo>Description} !== undefined) ? ${entityType>./@com.sap.vocabularies.UI.v1.HeaderInfo/Description/Value@@MODEL.format} : '{semantic>propertyPathLabel}' }"
+									>
+										<core:Fragment fragmentName="sap.fe.macros.quickView.fragments.QuickViewFacets" type="XML" />
+									</controls:CustomQuickViewPage>
+								</template:else>
+							</template:if>
+						</controls:contentFalse>
+					</controls:ConditionalWrapper>
+				</VBox>
+			</template:with>
+		</template:then>
+	</template:if>
+</core:FragmentDefinition>

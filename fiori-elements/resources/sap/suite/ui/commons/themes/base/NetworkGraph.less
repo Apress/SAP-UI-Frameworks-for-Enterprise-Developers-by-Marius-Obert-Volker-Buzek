@@ -1,0 +1,430 @@
+/* ============================================= */
+/* CSS for control sap.suite.ui.commons/NetworkGraph */
+/* ============================================= */
+.sapMSelectList li[data-islast="true"],
+.sapMSelectList li[data-islast="true"] {
+	border-bottom: 1px solid @sapUiContentForegroundBorderColor;
+}
+
+.sapSuiteUiCommonsNetworkGraph {
+	display: flex;
+	min-width: 150px;
+	min-height: 150px;
+	flex-direction: column;
+}
+
+.sapSuiteUiCommonsNetworkGraphFullScreen {
+	width: 100% !important;
+}
+
+.sapSuiteUiCommonsNetworkGraph:focus {
+	outline: 1px dotted @sapUiContentFocusColor;
+	outline-offset: 0px;
+}
+
+.sapSuiteUiCommonsNetworkGraphPanning {
+	cursor: move;
+	cursor: grabbing;
+	cursor: -moz-grabbing;
+	cursor: -webkit-grabbing;
+}
+
+.sapSuiteUiCommonsNetworkGraphEventWrapper {
+	fill: none;
+	pointer-events: all;
+}
+
+.sapSuiteUiCommonsNetworkGraphContentWrapperAccessibility {
+	position:absolute;
+	left:-10000px;
+	top:auto;
+	width:1px;
+	height:1px;
+	overflow:hidden;
+}
+
+.sapSuiteUiCommonsNetworkGraphScroller {
+	overflow: auto;
+	width: 100%;
+	display: flex;
+	position: relative;
+	z-index: 0;
+}
+
+.sapSuiteUiCommonsNetworkGraphInnerScrollerCenter {
+	position: relative;
+	margin: auto;
+}
+
+.sapSuiteUiCommonsNetworkGraphSearchField {
+	max-width: 220px;
+}
+
+.sapSuiteUiCommonsNetworkGraphBackgroundWhite {
+	background-color: @sapUiGroupContentBackground;
+}
+
+.sapSuiteUiCommonsNetworkGraphBackgroundDefault {
+	background-color: @sapUiBaseBG;
+}
+
+.sapSuiteFlickerFreeRect {
+	fill: @sapUiBaseBG;
+	width: 1000px;
+	height: 1000px;
+}
+
+.sapSuiteUiCommonsNetworkGraphToolbar {
+	flex-shrink: 0;
+}
+
+/** Svg elements **/
+.sapSuiteUiCommonsNetworkGraphSvg {
+	vertical-align: bottom;
+	width: 100%;
+	height: 100%;
+	flex-shrink: 0;
+	overflow: hidden;
+	position: absolute;
+	//margin: auto;
+
+	transform-origin: top left;
+	pointer-events: none;
+}
+
+.sapSuiteUiCommonsNetworkGraphContainerOverlay {
+	background-color: @sapUiListBackground;
+	width: 100%;
+	height: 100%;
+}
+
+.sapSuiteUiCommonsNetworkGraphIcon {
+	dominant-baseline: central;
+	pointer-events: none;
+}
+
+.sapSuiteUiCommonsNetworkGraphSvg .sapSuiteUiCommonsNetworkGraphIcon,
+.sapSuiteUiCommonsNetworkGraphDivActionButton .sapSuiteUiCommonsNetworkGraphIcon,
+.sapSuiteUiCommonsNetworkTopGroup .sapSuiteUiCommonsNetworkGraphIcon,
+.sapSuiteUiCommonsNetworkGroupHeader .sapSuiteUiCommonsNetworkGraphIcon {
+	font-family: SAP-icons;
+}
+
+.sapSuiteUiCommonsNetworkGraphLegend {
+	width: 200px;
+	height: 100%;
+	flex-shrink: 0;
+	margin: 10px;
+}
+
+.sapSuiteUiCommonsNetworkGraphContentWrapper {
+	display: flex;
+	height: 100%;
+	overflow: hidden;
+	position: relative;
+}
+
+.sapSuiteUiCommonsNetworkGraphContentWrapper:focus {
+	outline: 1px dotted @sapUiContentFocusColor;
+	outline-offset: 1px;
+}
+
+.sapSuiteUiCommonsNetworkGraphContentFocusHidden:focus {
+	outline: none;
+}
+
+//** Legend **//
+.sapSuiteUiCommonsNetworkGraphLegendLine {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-bottom: 2px;
+
+	width: -webkit-fit-content;
+	width: -moz-fit-content;
+	width: fit-content;
+}
+
+.sapSuiteUiCommonsNetworkGraphLegendTitleLine {
+	padding-top: 10px;
+}
+
+.sapSuiteUiCommonsNetworkGraphLegendTitleNode,
+.sapSuiteUiCommonsNetworkGraphLegendTitleLine {
+	padding-bottom: 2px;
+}
+
+.sapSuiteUiCommonsNetworkGraphLegendLine:hover {
+	background-color: @sapUiButtonHoverBackground;
+}
+
+.sapSuiteUiCommonsNetworkGraphLegendColorLine {
+	width: 10px;
+	height: 10px;
+	margin: 6px;
+	background-color: @sapUiContentForegroundBorderColor;
+}
+
+.sapSuiteUiCommonsNetworkGraphLegendLineLabel {
+	margin-right: 5px;
+}
+
+//** Attributes **/
+.sapSuiteUiCommonsNetworkGraphSvg .sapSuiteUiCommonsNetworkGraphAttribute {
+	font-size: 12px;
+	fill: @sapUiBaseText;
+}
+
+.sapSuiteUiCommonsNetworkGraphSvg .sapSuiteUiCommonsNetworkGraphAttributeValue {
+	font-weight: bold;
+}
+
+.sapSuiteUiCommonsNetworkGraphAttributeValue {
+	font-weight: bold;
+}
+
+.sapSuiteUiCommonsNetworkGraphLegendColorLine.sapSuiteUiCommonsNetworkElementSuccess {
+	background-color: @sapUiSuccessBorder;
+}
+
+.sapSuiteUiCommonsNetworkGraphLegendColorLine.sapSuiteUiCommonsNetworkElementError {
+	background-color: @sapUiErrorBorder;
+}
+
+.sapSuiteUiCommonsNetworkGraphLegendColorLine.sapSuiteUiCommonsNetworkElementInformation {
+	background-color: @sapUiHighlight;
+}
+
+.sapSuiteUiCommonsNetworkGraphLegendColorLine.sapSuiteUiCommonsNetworkElementWarning {
+	background-color: @sapUiWarningBorder;
+}
+
+.sapSuiteUiCommonsNetworkAlertWrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: @sapUiBaseText;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity ease-in-out;
+
+	z-index: 500;
+}
+
+.sapSuiteUiCommonsNetworkAlertText {
+	font-size: 22px;
+	color: @sapUiTileBackground;
+	font-family: Roboto, Arial, sans-serif;
+	position: relative;
+	margin: 0;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+	text-align: center;
+}
+
+/* ============================================= */
+/* CSS for control sap.suite.ui.commons/GraphMap */
+/* ============================================= */
+.sapSuiteUiCommonsNetworkGraphMapDivNodes {
+	pointer-events: none;
+	transform-origin: top left;
+	position: absolute;
+}
+
+.sapSuiteUiCommonsNetworkGraphMapSvg {
+	vertical-align: bottom;
+	width: 100%;
+	height: 100%;
+	flex-shrink: 0;
+	overflow: hidden;
+}
+
+.sapSuiteUiCommonsNetworkGraphMapDivGroups {
+	pointer-events: none;
+	transform-origin: top left;
+	position: absolute;
+	width: 100%;
+}
+
+html[dir=rtl] .sapSuiteUiCommonsNetworkGraphMapDivGroups {
+	transform-origin: top right;
+}
+
+.sapSuiteUiCommonsNetworkGraphMapDivNodes .sapSuiteUiCommonsNetworkBox .sapSuiteUiCommonsNetworkGraphDivInner,
+.sapSuiteUiCommonsNetworkGraphMapDivNodes .sapSuiteUiCommonsNetworkNodeCircle .sapSuiteUiCommonsNetworkGraphDivInner {
+	pointer-events: none;
+}
+
+.sapSuiteUiCommonsNetworkGraphMapBoundary {
+	fill: none;
+	stroke: @sapUiContentForegroundBorderColor;
+	vector-effect: non-scaling-stroke;
+	stroke-width: 2px;
+	shape-rendering: crispEdges;
+}
+
+.sapSuiteUiCommonsNetworkGraphMapTitle {
+	height: 3rem;
+	display: flex;
+	align-items: center;
+	padding-left: 10px;
+	padding-right: 10px;
+	border-bottom: 1px solid @sapUiGroupTitleBorderColor;
+	flex-shrink: 0;
+	box-sizing: border-box;
+}
+
+.sapUiSizeCompact .sapSuiteUiCommonsNetworkGraphMapTitle {
+	height: 2rem;
+}
+
+.sapSuiteUiCommonsNetworkGraphMapNavigator {
+	stroke: @sapUiActive;
+	fill: none;
+	stroke-width: 2px;
+	vector-effect: non-scaling-stroke;
+}
+
+.sapSuiteUiCommonsNetworkGraphSvgNavigator {
+	position: absolute;
+	pointer-events: none;
+}
+
+.sapSuiteUiCommonsNetworkGraphMapContent {
+	margin: 12px;
+	display: flex;
+	position: relative;
+}
+
+.sapSuiteUiCommonsNetworkGraphMapTitleText {
+	font-size: @sapMFontLargeSize;
+	color: @sapTextColor;
+}
+
+.sapSuiteUiCommonsNetworkGraphMap {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.sapSuiteNetworkGraphErrorText {
+	margin: 5px;
+	color: @sapUiErrorBorder;
+}
+
+.sapSuiteUiCommonsNetworkGraph.sapSuiteUiCommonsNetworkGraphLayered.sapSuiteUiCommonsNetworkGraphCrispEdges .sapSuiteUiCommonsNetworkGraphSvg path,
+.sapSuiteUiCommonsNetworkGraph.sapSuiteUiCommonsNetworkGraphLayered.sapSuiteUiCommonsNetworkGraphCrispEdges .sapSuiteUiCommonsNetworkGraphSvg line,
+.sapSuiteUiCommonsNetworkGraph.sapSuiteUiCommonsNetworkGraphLayered.sapSuiteUiCommonsNetworkGraphCrispEdges .sapSuiteUiCommonsNetworkGraphSvg rect {
+	shape-rendering: crispedges;
+}
+
+.sapSuiteUiCommonsNetworkGraph.sapSuiteUiCommonsNetworkGraphLayered.sapSuiteUiCommonsNetworkGraphDefaultLineWidth .sapSuiteUiCommonsNetworkGraphSvg path,
+.sapSuiteUiCommonsNetworkGraph.sapSuiteUiCommonsNetworkGraphLayered.sapSuiteUiCommonsNetworkGraphDefaultLineWidth .sapSuiteUiCommonsNetworkGraphSvg rect {
+	vector-effect: non-scaling-stroke;
+}
+
+.sapSuiteUiCommonsNetworkGraph.sapSuiteUiCommonsNetworkGraphLayered .sapSuiteUiCommonsNetworkLineArrow {
+	vector-effect: none;
+	shape-rendering: auto;
+}
+
+.sapSuiteUiCommonsNetworkLaneBorder {
+	stroke-dasharray: 5, 5;
+}
+
+.sapSuiteUiCommonsNetworkGraphLaneIcon {
+	font-family: SAP-icons;
+	pointer-events: none;
+}
+
+.sapSuiteUiCommonsNetworkGraphLaneIconWrapper {
+	cursor: pointer;
+	fill: none;
+	pointer-events: fill;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivNodes {
+	position: absolute;
+	pointer-events: none;
+	transform-origin: top left;
+
+	width: 100%;
+	height: 100%;
+
+	z-index: 8;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivNodesCentered {
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivGroups {
+	//pointer-events: none;
+	transform-origin: top left;
+	position: absolute;
+	overflow: hidden;
+	
+	width: 100%;
+}
+
+.sapSuiteUiCommonsNetworkGraphSwimLane .sapSuiteUiCommonsNetworkGraphDivGroups {
+	z-index: 49;
+	pointer-events: none;
+}
+
+.sapSuiteUiCommonsNetworkGraphSwimLane .sapSuiteUiCommonsNetworkGraphSvg {
+	pointer-events: all;
+}
+
+.sapSuiteUiCommonsNetworkGroupCollapsed.sapSuiteUiCommonsNetworkGroupVerticalSwimLane .sapSuiteUiCommonsNetworkGroupHeader {
+	opacity: 0.8;
+}
+
+.sapSuiteUiCommonsNetworkGraphLineButtons {
+	position: absolute;
+	z-index: 9;
+	display: flex;
+}
+
+.sapSuiteUiCommonsNetworkGraphNoDataWrapper {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 40px;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.sapSuiteUiCommonsNetworkGraphNoDataWrapper:focus {
+	outline: 1px dotted @sapUiContentFocusColor;
+	outline-offset: -1px;
+}
+
+.sapSuiteUiCommonsNetworkGraphNoDataIcon {
+	font-size: 4rem;
+}
+
+.sapSuiteUiCommonsNetworkGraphNoDataLabel{
+	font-size: 1.5rem;
+}
+
+.sapSuiteNetworkGraphSvgMargin {
+	margin: auto;
+}
+
+.sapSuiteNetworkGraphSvgPosition {
+	position: relative;
+}
+
+.sapSuiteUiCommonsNetworkGraphMapDivGroupsLeft {
+	left: 0;
+}

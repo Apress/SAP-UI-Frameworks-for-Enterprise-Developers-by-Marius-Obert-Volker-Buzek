@@ -1,0 +1,68 @@
+/* ======================== */
+/* CSS for Dashboard (base) */
+/* ======================== */
+
+.sapUshellDashboardView {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y; /* Fix for Windows 8.1 IE11 touch devices */
+  -ms-touch-action: pan-y; /* Fix for Windows 8 IE10 touch devices */
+
+  a img {
+    border: none;
+  }
+}
+
+.sapUshellSectionNoTop {
+  top: 0rem !important;
+}
+
+/* move dashboard section down a bit, to make room for Anchor Navigation */
+#sapUshellDashboardPage-cont {
+  padding-top: 1rem;
+  position: absolute;
+  top: 3rem;
+}
+
+.sapUiMedia-Std-Phone .sapUshellDashboardView{
+  min-width: 2 * @_sap_ushell_Tile_WidthPhone + 3 * @_sap_ushell_Tile_Spacing;
+}
+
+.sapUiMedia-Std-Tablet .sapUshellDashboardView,
+.sapUiMedia-Std-Desktop .sapUshellDashboardView {
+  min-width: 2 * @_sap_ushell_Tile_WidthDesktop + 3 * @_sap_ushell_Tile_Spacing;
+}
+
+.sapUiMedia-StdExt-Phone .sapUshellDashboardGroupsContainer { padding: 0 0.45rem; }
+.sapUiMedia-StdExt-Tablet .sapUshellDashboardGroupsContainer,
+.sapUiMedia-StdExt-Desktop .sapUshellDashboardGroupsContainer { padding: 0 2rem; }
+.sapUiMedia-StdExt-LargeDesktop .sapUshellDashboardGroupsContainer { padding: 0 3rem; }
+
+html[dir="rtl"] .sapUshellDashboardGroupsContainer {
+  text-align: right;
+}
+
+.sap-desktop #sapUshellDashboardFooter {
+  margin: 0 1rem 1rem 1rem;
+  width: auto;
+  z-index: 4;
+}
+
+.sapUshellTabBarHoverOn {
+  background-color: @sapUiDragAndDropActiveBackground;
+  font-weight: bold;
+}
+
+.sapUshellTileDragOpacity {
+  opacity: 0.42;
+}
+
+.sapUshellInDragMode {
+  .sapUshellInner { position: relative; }
+  .sapUshellLineModeContainer { position: relative; }
+  .sapUshellLinksInnerContainer { position: relative; }
+  .sapUshellTile { position: relative; }
+  .sapUshellLinkTile { position: relative; }
+}

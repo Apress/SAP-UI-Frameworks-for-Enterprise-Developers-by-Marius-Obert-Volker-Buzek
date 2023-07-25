@@ -1,0 +1,433 @@
+/* ================================================================ */
+/* CSS for sap.suite.ui.commons/ProcessFlowNode.control             */
+/* High Contrast White theme                                        */
+/* ================================================================ */
+
+@_sap_suite_ui_commons_ProcessFlowNode_BorderColorRegular: @sapUiContentForegroundBorderColor;
+@_sap_suite_ui_commons_ProcessFlowNode_BackgroundRegular: @sapUiGroupContentBackground;
+@_sap_suite_ui_commons_ProcessFlowNode_BorderColorRegularPlanned: lighten(@sapUiContentForegroundBorderColor, 8);
+@_sap_suite_ui_commons_ProcessFlowNode_TextColorPlanned: @sapUiGroupTitleTextColor;
+@_sap_suite_ui_commons_ProcessFlowNode_BackgroundHighlighted: @sapUiGroupContentBackground;
+@_sap_suite_ui_commons_ProcessFlowNode_BackgroundDimmed: @sapUiGroupContentBackground;
+@_sap_suite_ui_commons_ProcessFlowNode_BorderColorDimmed: lighten(@sapUiContentForegroundBorderColor, 15);
+@_sap_suite_ui_commons_ProcessFlowNode_TextColorDimmed: lighten(@sapUiGroupTitleTextColor, 20);
+@_sap_suite_ui_commons_ProcessFlowNode_BackgroundHover: darken(@sapUiGroupContentBackground, 5);
+@_sap_suite_ui_commons_ProcessFlowNode_BackgroundFocused: @sapUiGroupContentBackground;
+@_sap_suite_ui_commons_ProcessFlowNode_BorderColorFocused: @sapUiAccent6;
+@_sap_suite_ui_commons_ProcessFlowNode_BorderColorFocusedDimmed: lighten(@sapUiAccent6, 35);
+
+
+/* border styles */
+.sapSuiteUiCommonsProcessFlowNodeBorderStandard {
+	border-width: 0.0625rem;
+	border-style: solid;
+	/* border color needs to be separated, otherwise border style for planned node is overwritten in belize_plus when color variable is loaded */
+	border-color: @_sap_suite_ui_commons_ProcessFlowNode_BorderColorRegular;
+}
+
+/* ----- */
+/* node0 */
+/* ----- */
+/* shadow for highlighted*/
+.sapSuiteUiCommonsShadowedDivBorderTop,
+.sapSuiteUiCommonsShadowedDivFoldedCornerBorderTop {
+	top: 0rem;
+	height: 0rem;
+	min-height: 0rem;
+	max-height: 0rem;
+	line-height: 0rem;
+	box-shadow: 0 0 0.125rem 1px fade(@sapUiContentShadowColor, 30);
+}
+.sapSuiteUiCommonsShadowedDivBorderRight {
+	right: 0rem;
+	top: 0rem;
+	width: 0rem;
+	min-width: 0rem;
+	max-width: 0rem;
+	height: 100%;
+	min-height: 100%;
+	max-height: 100%;
+	line-height: 100%;
+	box-shadow: 0 0 0.125rem 1px fade(@sapUiContentShadowColor, 30);
+}
+.sapSuiteUiCommonsShadowedDivBorderBottom {
+	left: 0rem;
+	bottom: 0rem;
+	width: 100%;
+	min-width: 100%;
+	max-width: 100%;
+	height: 0rem;
+	min-height: 0rem;
+	max-height: 0rem;
+	line-height: 0rem;
+	box-shadow: 0 0 0.125rem 1px fade(@sapUiContentShadowColor, 30);
+}
+.sapSuiteUiCommonsShadowedDivBorderLeft,
+.sapSuiteUiCommonsShadowedDivFoldedCornerBorderLeft {
+	left: 0rem;
+	width: 0rem;
+	min-width: 0rem;
+	max-width: 0rem;
+	box-shadow: 0 0 0.125rem 1px fade(@sapUiContentShadowColor, 30);
+}
+.sapSuiteUiCommonsShadowedDivFoldedCorner,
+.sapSuiteUiCommonsShadowedDivFoldedCornerSafari {
+	position: absolute;
+	border: none;
+	height: 0rem;
+	min-height: 0rem;
+	max-height: 0rem;
+	line-height: 0rem;
+	transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	-webkit-transform: rotate(-45deg);
+}
+
+.sapSuiteUiCommonsShadowedDivCommon {
+	position: absolute;
+	border: none;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+.sapSuiteUiCommonsProcessFlowNode0ZoomLevel1 > .sapSuiteUiCommonsShadowedDivBorderTop  {
+	left: 0rem;
+	width: 11rem;
+	min-width: 11rem;
+	max-width: 11rem;
+}
+.sapSuiteUiCommonsProcessFlowNode0ZoomLevel1 > .sapSuiteUiCommonsShadowedDivFoldedCornerBorderTop  {
+	left: 1rem;
+	width: 10rem;
+	min-width: 10rem;
+	max-width: 10rem;
+}
+.sapSuiteUiCommonsProcessFlowNode0ZoomLevel1 > .sapSuiteUiCommonsShadowedDivBorderLeft  {
+	top: 0rem;
+	height: 13.8125rem;
+	min-height: 13.8125rem;
+	max-height: 13.8125rem;
+	line-height: 13.8125rem;
+}
+.sapSuiteUiCommonsProcessFlowNode0ZoomLevel1 > .sapSuiteUiCommonsShadowedDivFoldedCornerBorderLeft  {
+	top: 1rem;
+	height: 12.8125rem;
+	min-height: 12.8125rem;
+	max-height: 12.8125rem;
+	line-height: 12.8125rem;
+}
+.sapSuiteUiCommonsProcessFlowNode0ZoomLevel1 > .sapSuiteUiCommonsShadowedDivFoldedCorner  {
+	left: -0.18125rem;
+	top: 0.45rem;
+	width: 1.2375rem;
+	min-width: 1.2375rem;
+	max-width: 1.2375rem;
+	box-shadow: 0 0 0.125rem 1px fade(@sapUiContentShadowColor, 30);
+}
+.sapSuiteUiCommonsProcessFlowNode0ZoomLevel1 > .sapSuiteUiCommonsShadowedDivFoldedCornerSafari  {
+	left: -0.18125rem;
+	top: 0.5rem;
+	width: 1.25rem;
+	min-width: 1.25rem;
+	max-width: 1.25rem;
+	box-shadow: 0 0 0.125rem 1px fade(@sapUiContentShadowColor, 30);
+}
+.sapSuiteUiCommonsProcessFlowNode0ZoomLevel2 > .sapSuiteUiCommonsShadowedDivBorderTop  {
+	left: 0rem;
+	width: 9rem;
+	min-width: 9rem;
+	max-width: 9rem;
+}
+.sapSuiteUiCommonsProcessFlowNode0ZoomLevel2 > .sapSuiteUiCommonsShadowedDivFoldedCornerBorderTop  {
+	left: 1rem;
+	width: 8rem;
+	min-width: 8rem;
+	max-width: 8rem;
+}
+.sapSuiteUiCommonsProcessFlowNode0ZoomLevel2 > .sapSuiteUiCommonsShadowedDivBorderLeft  {
+	top: 0rem;
+	height: 12.1875rem;
+	min-height: 12.1875rem;
+	max-height: 12.1875rem;
+	line-height: 12.1875rem;
+}
+.sapSuiteUiCommonsProcessFlowNode0ZoomLevel2 > .sapSuiteUiCommonsShadowedDivFoldedCornerBorderLeft  {
+	top: 1rem;
+	height: 11.1875rem;
+	min-height: 11.1875rem;
+	max-height: 11.1875rem;
+	line-height: 11.1875rem;
+}
+.sapSuiteUiCommonsProcessFlowNode0ZoomLevel2 > .sapSuiteUiCommonsShadowedDivFoldedCorner  {
+	left: -0.18125rem;
+	top: 0.45rem;
+	width: 1.2375rem;
+	min-width: 1.2375rem;
+	max-width: 1.2375rem;
+	box-shadow: 0 0 0.125rem 1px fade(@sapUiContentShadowColor, 30);
+}
+.sapSuiteUiCommonsProcessFlowNode0ZoomLevel2 > .sapSuiteUiCommonsShadowedDivFoldedCornerSafari  {
+	left: -0.18125rem;
+	top: 0.5rem;
+	width: 1.25rem;
+	min-width: 1.25rem;
+	max-width: 1.25rem;
+	box-shadow: 0 0 0.125rem 1px fade(@sapUiContentShadowColor, 30);
+}
+.sapSuiteUiCommonsProcessFlowNode0ZoomLevel3 > .sapSuiteUiCommonsShadowedDivBorderTop  {
+	left: 0rem;
+	width: 6.5rem;
+	min-width: 6.5rem;
+	max-width: 6.5rem;
+}
+.sapSuiteUiCommonsProcessFlowNode0ZoomLevel3 > .sapSuiteUiCommonsShadowedDivFoldedCornerBorderTop  {
+	left: 0.75rem;
+	width: 5.75rem;
+	min-width: 5.75rem;
+	max-width: 5.75rem;
+}
+.sapSuiteUiCommonsProcessFlowNode0ZoomLevel3 > .sapSuiteUiCommonsShadowedDivBorderLeft  {
+	top: 0rem;
+	height: 8rem;
+	min-height: 8rem;
+	max-height: 8rem;
+	line-height: 8rem;
+}
+.sapSuiteUiCommonsProcessFlowNode0ZoomLevel3 > .sapSuiteUiCommonsShadowedDivFoldedCornerBorderLeft  {
+	top: 0.75rem;
+	height: 7.25rem;
+	min-height: 7.25rem;
+	max-height: 7.25rem;
+	line-height: 7.25rem;
+}
+.sapSuiteUiCommonsProcessFlowNode0ZoomLevel3 > .sapSuiteUiCommonsShadowedDivFoldedCorner {
+	left: -0.13125rem;
+	top: 0.325rem;
+	width: 0.89375rem;
+	min-width: 0.89375rem;
+	max-width: 0.89375rem;
+	box-shadow: 0 0 0.125rem 1px fade(@sapUiContentShadowColor, 30);
+}
+.sapSuiteUiCommonsProcessFlowNode0ZoomLevel3 > .sapSuiteUiCommonsShadowedDivFoldedCornerSafari  {
+	left: -0.125rem;
+	top: 0.375rem;
+	width: 0.9375rem;
+	min-width: 0.9375rem;
+	max-width: 0.9375rem;
+	box-shadow: 0 0 0.125rem 1px fade(@sapUiContentShadowColor, 30);
+}
+.sapSuiteUiCommonsProcessFlowNode0ZoomLevel4 > .sapSuiteUiCommonsShadowedDivBorderTop  {
+	left: 0rem;
+	width: 3rem;
+	min-width: 3rem;
+	max-width: 3rem;
+}
+.sapSuiteUiCommonsProcessFlowNode0ZoomLevel4 > .sapSuiteUiCommonsShadowedDivFoldedCornerBorderTop  {
+	left: 0.75rem;
+	width: 2.25rem;
+	min-width: 2.25rem;
+	max-width: 2.25rem;
+}
+.sapSuiteUiCommonsProcessFlowNode0ZoomLevel4 > .sapSuiteUiCommonsShadowedDivBorderLeft  {
+	top: 0rem;
+	height: 3.75rem;
+	min-height: 3.75rem;
+	max-height: 3.75rem;
+	line-height: 3.75rem;
+}
+.sapSuiteUiCommonsProcessFlowNode0ZoomLevel4 > .sapSuiteUiCommonsShadowedDivFoldedCornerBorderLeft  {
+	top: 0.75rem;
+	height: 3rem;
+	min-height: 3rem;
+	max-height: 3rem;
+	line-height: 3rem;
+}
+.sapSuiteUiCommonsProcessFlowNode0ZoomLevel4 > .sapSuiteUiCommonsShadowedDivFoldedCorner {
+	left: -0.13125rem;
+	top: 0.325rem;
+	width: 0.89375rem;
+	min-width: 0.89375rem;
+	max-width: 0.89375rem;
+	box-shadow: 0 0 0.125rem 1px fade(@sapUiContentShadowColor, 30);
+}
+.sapSuiteUiCommonsProcessFlowNode0ZoomLevel4 > .sapSuiteUiCommonsShadowedDivFoldedCornerSafari {
+	left: -0.125rem;
+	top: 0.375rem;
+	width: 0.9375rem;
+	min-width: 0.9375rem;
+	max-width: 0.9375rem;
+	box-shadow: 0 0 0.125rem 1px fade(@sapUiContentShadowColor, 30);
+}
+
+/* Title */
+.sapSuiteUiCommonsProcessFlowNode3Title > .sapSuiteUiCommonsProcessFlowNodeActive,
+.sapSuiteUiCommonsProcessFlowNode3Title > .sapMText.sapSuiteUiCommonsProcessFlowNodeActive,
+.sapSuiteUiCommonsProcessFlowNode3Title > .sapMTextMaxLine.sapSuiteUiCommonsProcessFlowNodeActive,
+.sapSuiteUiCommonsProcessFlowNode3Title > .sapMTextMaxWidth.sapSuiteUiCommonsProcessFlowNodeActive {
+	color: @sapUiContentContrastTextColor;
+}
+
+.sapSuiteUiCommonsProcessFlowNodeDisplayStateDimmed > .sapSuiteUiCommonsProcessFlowNode3Title > .sapSuiteUiCommonsProcessFlowNode3Title > .sapMText,
+.sapSuiteUiCommonsProcessFlowNodeDisplayStateDimmed > .sapSuiteUiCommonsProcessFlowNode3Title > .sapSuiteUiCommonsProcessFlowNode3Title > .sapMTextMaxLine,
+.sapSuiteUiCommonsProcessFlowNodeDisplayStateDimmed > .sapSuiteUiCommonsProcessFlowNode3Title > .sapSuiteUiCommonsProcessFlowNode3Title > .sapMTextMaxWidth {
+	color: @_sap_suite_ui_commons_ProcessFlowNode_TextColorDimmed;
+}
+
+.sapSuiteUiCommonsProcessFlowNode3Title > .sapSuiteUiCommonsProcessFlowNodeStatePlanned > .sapMText,
+.sapSuiteUiCommonsProcessFlowNode3Title > .sapSuiteUiCommonsProcessFlowNodeStatePlanned > .sapMTextMaxLine,
+.sapSuiteUiCommonsProcessFlowNode3Title > .sapSuiteUiCommonsProcessFlowNodeStatePlanned > .sapMTextMaxWidth {
+	color: @_sap_suite_ui_commons_ProcessFlowNode_TextColorPlanned;
+}
+
+/* node content states */
+.sapSuiteUiCommonsProcessFlowFoldedCornerIndication {
+	background-color: transparent !important;
+}
+
+/* node display states */
+.sapSuiteUiCommonsProcessFlowNodeDisplayStateRegular {
+	background-color: @_sap_suite_ui_commons_ProcessFlowNode_BackgroundRegular;
+	border-color: @_sap_suite_ui_commons_ProcessFlowNode_BorderColorRegular;
+}
+.sapSuiteUiCommonsProcessFlowNodeDisplayStateRegular.sapSuiteUiCommonsProcessFlowNodeStatePlanned:not(.sapSuiteUiCommonsProcessFlowNodeDisplayStateFocused) {
+	border-color: @_sap_suite_ui_commons_ProcessFlowNode_BorderColorRegularPlanned;
+}
+.sapSuiteUiCommonsProcessFlowNodeDisplayStateHighlighted:not(.sapSuiteUiCommonsProcessFlowNodeDisplayStateFocused) {
+	background-color: @_sap_suite_ui_commons_ProcessFlowNode_BackgroundHighlighted;
+	border-color: @sapUiHighlight;
+}
+.sapSuiteUiCommonsProcessFlowNodeDisplayStateDimmed:not(.sapSuiteUiCommonsProcessFlowNodeDisplayStateFocused) {
+	background-color: @_sap_suite_ui_commons_ProcessFlowNode_BackgroundDimmed;
+	border-color: @_sap_suite_ui_commons_ProcessFlowNode_BorderColorDimmed;
+}
+.sapSuiteUiCommonsProcessFlowNodeDisplayStateDimmed.sapSuiteUiCommonsProcessFlowNodeStatePlanned:not(.sapSuiteUiCommonsProcessFlowNodeDisplayStateFocused) {
+	border-color: @_sap_suite_ui_commons_ProcessFlowNode_BorderColorDimmed;
+}
+/* The focus div is an overlay of button which should not have background color*/
+.sapSuiteUiCommonsProcessFlowNodeHover:not(.sapMBtnFocusDiv) {
+	background-color: @_sap_suite_ui_commons_ProcessFlowNode_BackgroundHover !important;
+}
+.sapSuiteUiCommonsProcessFlowNodeDisplayStateDimmed.sapSuiteUiCommonsProcessFlowNodeStatePlanned.sapSuiteUiCommonsProcessFlowNodeHover {
+	border-color: @_sap_suite_ui_commons_ProcessFlowNode_BorderColorRegularPlanned;
+}
+.sapSuiteUiCommonsProcessFlowNodeDisplayStateDimmed.sapSuiteUiCommonsProcessFlowNodeHover {
+	border-color: @_sap_suite_ui_commons_ProcessFlowNode_BorderColorRegular;
+}
+/* The focus div is an overlay of button which should not have background color*/
+.sapSuiteUiCommonsProcessFlowNodeActive:not(.sapMBtnFocusDiv) {
+	border-color: @sapUiHighlight !important;
+	background-color: @sapUiHighlight !important;
+	color: @sapUiContentContrastTextColor !important;
+}
+.sapSuiteUiCommonsProcessFlowNodeDisplayStateFocused {
+	background-color: @_sap_suite_ui_commons_ProcessFlowNode_BackgroundFocused;
+	border-color: @_sap_suite_ui_commons_ProcessFlowNode_BorderColorFocused;
+}
+.sapSuiteUiCommonsProcessFlowNodeDisplayStateDimmed.sapSuiteUiCommonsProcessFlowNodeDisplayStateFocused {
+	border-color: @_sap_suite_ui_commons_ProcessFlowNode_BorderColorFocusedDimmed;
+}
+
+.sapSuiteUiCommonsProcessFlowNode3StateIcon.sapSuiteUiCommonsProcessFlowNodeStatePlanned,
+.sapSuiteUiCommonsProcessFlowNode3StateText.sapSuiteUiCommonsProcessFlowNodeStatePlanned {
+	background-color: transparent !important;
+}
+
+/* node corner states  - dog ear*/
+.sapSuiteUiCommonsProcessFlowFoldedCornerDisplayStateRegular {
+	color: @_sap_suite_ui_commons_ProcessFlowNode_BorderColorRegular;
+}
+.sapSuiteUiCommonsProcessFlowFoldedCornerDisplayStateRegular.sapSuiteUiCommonsProcessFlowFoldedCornerPlanned {
+	color: @_sap_suite_ui_commons_ProcessFlowNode_BorderColorRegularPlanned;
+}
+.sapSuiteUiCommonsProcessFlowFoldedCornerDisplayStateHighlighted {
+	color: @sapUiHighlight;
+}
+.sapSuiteUiCommonsProcessFlowFoldedCornerDisplayStateDimmed {
+	color: @_sap_suite_ui_commons_ProcessFlowNode_BorderColorDimmed;
+}
+.sapSuiteUiCommonsProcessFlowFoldedCornerDisplayStateDimmed.sapSuiteUiCommonsProcessFlowFoldedCornerPlanned {
+	color: @_sap_suite_ui_commons_ProcessFlowNode_BorderColorDimmed;
+}
+.sapSuiteUiCommonsProcessFlowFoldedCornerNodeActive {
+	color: @sapUiContentContrastIconColor;
+	border-color: @sapUiContentContrastIconColor;
+}
+.sapSuiteUiCommonsProcessFlowFoldedCornerDisplayStateFocused,
+.sapSuiteUiCommonsProcessFlowFoldedCornerDisplayStateFocused.sapSuiteUiCommonsProcessFlowFoldedCornerDisplayStateRegular {
+	color: @_sap_suite_ui_commons_ProcessFlowNode_BorderColorFocused;
+}
+.sapSuiteUiCommonsProcessFlowFoldedCornerDisplayStateFocused.sapSuiteUiCommonsProcessFlowFoldedCornerDisplayStateDimmed {
+	color: @_sap_suite_ui_commons_ProcessFlowNode_BorderColorFocusedDimmed;
+}
+
+/* Focus */
+html.sap-desktop .sapSuiteUiCommonsProcessFlowNode0.sapSuiteUiCommonsProcessFlowFoldedCornerDisplayStateNavigation {
+	outline-style: dotted !important;
+	outline-width: 0.0625rem !important;
+	outline-offset: 0.0625rem !important;
+	color: @sapUiContentFocusColor !important;
+}
+
+.sapSuiteUiCommonsProcessFlowNodeStatePlannedDashedBorder {
+	border-width: 1px;
+	border-style: dashed;
+}
+
+/* Aggregated Node */
+.sapSuiteUiCommonsProcessFlowNodeAggregated {
+	box-shadow: 0.25rem 0rem 0rem -0.125rem @_sap_suite_ui_commons_ProcessFlowNode_BackgroundRegular, 0.375rem 0rem 0rem -0.1875rem @_sap_suite_ui_commons_ProcessFlowNode_BorderColorRegular, 0.625rem 0rem 0rem -0.3125rem @_sap_suite_ui_commons_ProcessFlowNode_BackgroundRegular, 0.75rem 0rem 0rem -0.375rem @_sap_suite_ui_commons_ProcessFlowNode_BorderColorRegular;
+}
+.sapSuiteUiCommonsProcessFlowNodeAggregatedZoomLevel4 {
+	box-shadow: 0.125rem 0rem 0rem -0.0625rem @_sap_suite_ui_commons_ProcessFlowNode_BackgroundRegular, 0.1875rem 0rem 0rem -0.0625rem @_sap_suite_ui_commons_ProcessFlowNode_BorderColorRegular, 0.3125rem 0rem 0rem -0.125rem @_sap_suite_ui_commons_ProcessFlowNode_BackgroundRegular, 0.375rem 0rem 0rem -0.125rem @_sap_suite_ui_commons_ProcessFlowNode_BorderColorRegular;
+}
+.sapSuiteUiCommonsProcessFlowNodeAggregated.sapSuiteUiCommonsProcessFlowNodeDisplayStateHighlighted {
+	box-shadow: 0.25rem 0rem 0rem -0.125rem @_sap_suite_ui_commons_ProcessFlowNode_BackgroundDimmed, 0.375rem 0rem 0rem -0.1875rem @sapUiHighlight, 0.625rem 0rem 0rem -0.3125rem @_sap_suite_ui_commons_ProcessFlowNode_BackgroundDimmed, 0.75rem 0rem 0rem -0.375rem @sapUiHighlight;
+}
+.sapSuiteUiCommonsProcessFlowNodeAggregatedZoomLevel4.sapSuiteUiCommonsProcessFlowNodeDisplayStateHighlighted {
+	box-shadow: 0.125rem 0rem 0rem -0.0625rem @_sap_suite_ui_commons_ProcessFlowNode_BackgroundDimmed, 0.1875rem 0rem 0rem -0.0625rem @sapUiHighlight, 0.3125rem 0rem 0rem -0.125rem @_sap_suite_ui_commons_ProcessFlowNode_BackgroundDimmed, 0.375rem 0rem 0rem -0.125rem @sapUiHighlight;
+}
+.sapSuiteUiCommonsProcessFlowNodeAggregated.sapSuiteUiCommonsProcessFlowNodeStatePlanned {
+	box-shadow: 0.25rem 0rem 0rem -0.125rem @_sap_suite_ui_commons_ProcessFlowNode_BackgroundRegular, 0.375rem 0rem 0rem -0.1875rem @_sap_suite_ui_commons_ProcessFlowNode_BorderColorRegularPlanned, 0.625rem 0rem 0rem -0.3125rem @_sap_suite_ui_commons_ProcessFlowNode_BackgroundRegular, 0.75rem 0rem 0rem -0.375rem @_sap_suite_ui_commons_ProcessFlowNode_BorderColorRegularPlanned;
+}
+.sapSuiteUiCommonsProcessFlowNodeAggregatedZoomLevel4.sapSuiteUiCommonsProcessFlowNodeStatePlanned {
+	box-shadow: 0.125rem 0rem 0rem -0.0625rem @_sap_suite_ui_commons_ProcessFlowNode_BackgroundRegular, 0.1875rem 0rem 0rem -0.0625rem @_sap_suite_ui_commons_ProcessFlowNode_BorderColorRegularPlanned, 0.3125rem 0rem 0rem -0.125rem @_sap_suite_ui_commons_ProcessFlowNode_BackgroundRegular, 0.375rem 0rem 0rem -0.125rem @_sap_suite_ui_commons_ProcessFlowNode_BorderColorRegularPlanned;
+}
+.sapSuiteUiCommonsProcessFlowNodeAggregatedFocused {
+	box-shadow: 0.25rem 0rem 0rem -0.125rem @_sap_suite_ui_commons_ProcessFlowNode_BackgroundFocused, 0.375rem 0rem 0rem -0.1875rem @_sap_suite_ui_commons_ProcessFlowNode_BorderColorFocused, 0.625rem 0rem 0rem -0.3125rem @_sap_suite_ui_commons_ProcessFlowNode_BackgroundFocused, 0.75rem 0rem 0rem -0.375rem @_sap_suite_ui_commons_ProcessFlowNode_BorderColorFocused;
+}
+.sapSuiteUiCommonsProcessFlowNodeAggregatedFocusedZoomLevel4 {
+	box-shadow: 0.125rem 0rem 0rem -0.0625rem @_sap_suite_ui_commons_ProcessFlowNode_BackgroundFocused, 0.1875rem 0rem 0rem -0.0625rem @_sap_suite_ui_commons_ProcessFlowNode_BorderColorFocused, 0.3125rem 0rem 0rem -0.125rem @_sap_suite_ui_commons_ProcessFlowNode_BackgroundFocused, 0.375rem 0rem 0rem -0.125rem @_sap_suite_ui_commons_ProcessFlowNode_BorderColorFocused;
+}
+.sapSuiteUiCommonsProcessFlowNodeAggregatedFocused.sapSuiteUiCommonsProcessFlowNodeStateDimmed {
+	box-shadow: 0.25rem 0rem 0rem -0.125rem @_sap_suite_ui_commons_ProcessFlowNode_BackgroundDimmed, 0.375rem 0rem 0rem -0.1875rem @_sap_suite_ui_commons_ProcessFlowNode_BorderColorFocusedDimmed, 0.625rem 0rem 0rem -0.3125rem @_sap_suite_ui_commons_ProcessFlowNode_BackgroundDimmed, 0.75rem 0rem 0rem -0.375rem @_sap_suite_ui_commons_ProcessFlowNode_BorderColorFocusedDimmed;
+}
+.sapSuiteUiCommonsProcessFlowNodeAggregatedFocusedZoomLevel4.sapSuiteUiCommonsProcessFlowNodeStateDimmed {
+	box-shadow: 0.125rem 0rem 0rem -0.0625rem @_sap_suite_ui_commons_ProcessFlowNode_BackgroundDimmed, 0.1875rem 0rem 0rem -0.0625rem @_sap_suite_ui_commons_ProcessFlowNode_BorderColorFocusedDimmed, 0.3125rem 0rem 0rem -0.125rem @_sap_suite_ui_commons_ProcessFlowNode_BackgroundDimmed, 0.375rem 0rem 0rem -0.125rem @_sap_suite_ui_commons_ProcessFlowNode_BorderColorFocusedDimmed;
+}
+.sapSuiteUiCommonsProcessFlowNodeAggregatedDimmed {
+	box-shadow: 0.25rem 0rem 0rem -0.125rem @_sap_suite_ui_commons_ProcessFlowNode_BackgroundDimmed, 0.375rem 0rem 0rem -0.1875rem @_sap_suite_ui_commons_ProcessFlowNode_BorderColorDimmed, 0.625rem 0rem 0rem -0.3125rem @_sap_suite_ui_commons_ProcessFlowNode_BackgroundDimmed, 0.75rem 0rem 0rem -0.375rem @_sap_suite_ui_commons_ProcessFlowNode_BorderColorDimmed;
+}
+.sapSuiteUiCommonsProcessFlowNodeAggregatedDimmedZoomLevel4 {
+	box-shadow: 0.125rem 0rem 0rem -0.0625rem @_sap_suite_ui_commons_ProcessFlowNode_BackgroundDimmed, 0.1875rem 0rem 0rem -0.0625rem @_sap_suite_ui_commons_ProcessFlowNode_BorderColorDimmed, 0.3125rem 0rem 0rem -0.125rem @_sap_suite_ui_commons_ProcessFlowNode_BackgroundDimmed, 0.375rem 0rem 0rem -0.125rem @_sap_suite_ui_commons_ProcessFlowNode_BorderColorDimmed;
+}
+.sapSuiteUiCommonsProcessFlowNodeAggregatedPressed,
+.sapSuiteUiCommonsProcessFlowNodeAggregatedDimmedPressed {
+	box-shadow: 0.25rem 0rem 0rem -0.125rem @_sap_suite_ui_commons_ProcessFlowNode_BackgroundDimmed, 0.375rem 0rem 0rem -0.1875rem @sapUiHighlight, 0.625rem 0rem 0rem -0.3125rem @_sap_suite_ui_commons_ProcessFlowNode_BackgroundDimmed, 0.75rem 0rem 0rem -0.375rem @sapUiHighlight;
+}
+.sapSuiteUiCommonsProcessFlowNodeAggregatedPressedZoomLevel4,
+.sapSuiteUiCommonsProcessFlowNodeAggregatedDimmedPressedZoomLevel4 {
+	box-shadow: 0.125rem 0rem 0rem -0.0625rem @_sap_suite_ui_commons_ProcessFlowNode_BackgroundDimmed, 0.1875rem 0rem 0rem -0.0625rem @sapUiHighlight, 0.3125rem 0rem 0rem -0.125rem @_sap_suite_ui_commons_ProcessFlowNode_BackgroundDimmed, 0.375rem 0rem 0rem -0.125rem @sapUiHighlight;
+}
+.sapSuiteUiCommonsProcessFlowNodeAggregatedDimmedHovered {
+	box-shadow: 0.25rem 0rem 0rem -0.125rem @_sap_suite_ui_commons_ProcessFlowNode_BackgroundHover, 0.375rem 0rem 0rem -0.1875rem @_sap_suite_ui_commons_ProcessFlowNode_BorderColorRegular, 0.625rem 0rem 0rem -0.3125rem @_sap_suite_ui_commons_ProcessFlowNode_BackgroundHover, 0.75rem 0rem 0rem -0.375rem @_sap_suite_ui_commons_ProcessFlowNode_BorderColorRegular;
+}
+.sapSuiteUiCommonsProcessFlowNodeAggregatedDimmedHoveredZoomLevel4 {
+	box-shadow: 0.125rem 0rem 0rem -0.0625rem @_sap_suite_ui_commons_ProcessFlowNode_BackgroundHover, 0.1875rem 0rem 0rem -0.0625rem @_sap_suite_ui_commons_ProcessFlowNode_BorderColorRegular, 0.3125rem 0rem 0rem -0.125rem @_sap_suite_ui_commons_ProcessFlowNode_BackgroundHover, 0.375rem 0rem 0rem -0.125rem @_sap_suite_ui_commons_ProcessFlowNode_BorderColorRegular;
+}
+.sapSuiteUiCommonsProcessFlowNodeAggregatedDimmedHovered.sapSuiteUiCommonsProcessFlowNodeStatePlanned {
+	box-shadow: 0.25rem 0rem 0rem -0.125rem @_sap_suite_ui_commons_ProcessFlowNode_BackgroundHover, 0.375rem 0rem 0rem -0.1875rem @_sap_suite_ui_commons_ProcessFlowNode_BorderColorRegularPlanned, 0.625rem 0rem 0rem -0.3125rem @_sap_suite_ui_commons_ProcessFlowNode_BackgroundHover, 0.75rem 0rem 0rem -0.375rem @_sap_suite_ui_commons_ProcessFlowNode_BorderColorRegularPlanned;
+}
+.sapSuiteUiCommonsProcessFlowNodeAggregatedDimmedHoveredZoomLevel4.sapSuiteUiCommonsProcessFlowNodeStatePlanned {
+	box-shadow: 0.125rem 0rem 0rem -0.0625rem @_sap_suite_ui_commons_ProcessFlowNode_BackgroundHover, 0.1875rem 0rem 0rem -0.0625rem @_sap_suite_ui_commons_ProcessFlowNode_BorderColorRegularPlanned, 0.3125rem 0rem 0rem -0.125rem @_sap_suite_ui_commons_ProcessFlowNode_BackgroundHover, 0.375rem 0rem 0rem -0.125rem @_sap_suite_ui_commons_ProcessFlowNode_BorderColorRegularPlanned;
+}

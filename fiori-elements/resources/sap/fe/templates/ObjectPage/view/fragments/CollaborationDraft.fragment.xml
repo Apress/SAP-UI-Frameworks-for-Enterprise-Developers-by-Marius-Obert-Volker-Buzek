@@ -1,0 +1,37 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	template:require="{
+		FE_MODEL: 'sap/fe/core/helpers/ModelHelper'
+	}"
+>
+	<template:if test="{entitySet>@@FE_MODEL.isCollaborationDraftSupported}">
+		<!-- issues with rendering therefore using HBox for now
+		<AvatarGroup avatarDisplaySize="XS" groupType="Individual" visible="{ui>/isEditable}" items="{ui>/collaboration/activeUsers}">
+			<AvatarGroupItem initials="{ui>initials}" />
+		</AvatarGroup>
+	-->
+		<HBox
+			class="sapUiTinyMarginBegin"
+			items="{internal>/collaboration/activeUsers}"
+			visible="{= ${ui>/isEditable} &amp;&amp; ${internal>/collaboration/connected} }"
+			alignItems="Center"
+			justifyContent="Start"
+		>
+			<Avatar
+				initials="{internal>initials}"
+				backgroundColor="Accent{internal>color}"
+				displaySize="XS"
+				press="._showCollaborationUserDetails"
+			/>
+		</HBox>
+		<template:if test="{entitySet>@com.sap.vocabularies.Common.v1.DraftRoot/ShareAction}">
+			<!-- For now the invite action is only shown on the root. we might provide it on all levels later as well -->
+			<!-- Button class="sapUiTinyMarginBegin" visible="{ui>/isEditable}" text="Invite" press="._manageCollaboration" / -->
+			<HBox visible="{ui>/isEditable}" alignItems="Center" justifyContent="Start">
+				<Avatar backgroundColor="TileIcon" src="sap-icon://add-employee" displaySize="XS" press="._manageCollaboration" />
+			</HBox>
+		</template:if>
+	</template:if>
+</core:FragmentDefinition>

@@ -1,0 +1,26 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns:unittest="http://schemas.sap.com/sapui5/preprocessorextension/sap.fe.unittesting/1"
+	xmlns:core="sap.ui.core"
+	xmlns:controls="sap.fe.macros.controls"
+	xmlns="sap.m"
+	template:require="{
+				MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+				CONTACT: 'sap/fe/macros/contact/ContactHelper'
+				}"
+>
+	<template:if test="{contact>}">
+		<VBox class="sapFePaddingTop sapUiTinyMarginBottom">
+			<controls:CustomQuickViewPage
+				unittest:id="CustomQuickViewPageContact"
+				icon="{= ${contact>photo@@MODEL.format} ? ${contact>photo@@MODEL.format} : 'sap-icon://person-placeholder' }"
+				fallbackIcon="sap-icon://person-placeholder"
+				title="{contact>fn@@MODEL.format}"
+				description="{contact>role@@MODEL.format}"
+				crossAppNavCallback=""
+			>
+				<core:Fragment fragmentName="sap.fe.macros.contact.ContactQuickViewGroup" type="XML" />
+			</controls:CustomQuickViewPage>
+		</VBox>
+	</template:if>
+</core:FragmentDefinition>

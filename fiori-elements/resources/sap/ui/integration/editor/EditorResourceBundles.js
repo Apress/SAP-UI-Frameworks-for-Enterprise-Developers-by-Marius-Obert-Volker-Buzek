@@ -1,0 +1,6 @@
+/*!
+ * OpenUI5
+ * (c) Copyright 2009-2023 SAP SE or an SAP affiliate company.
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ */
+sap.ui.define(["sap/ui/base/ManagedObject","sap/base/util/LoaderExtensions","sap/base/i18n/ResourceBundle"],function(e,s,r){"use strict";var a=e.extend("sap.ui.integration.editor.EditorResourceBundles",{metadata:{library:"sap.ui.integration",properties:{url:{type:"string",defaultValue:""},languages:{type:"object"},supportedLocales:{type:"array"}}}});a.prototype.loadResourceBundles=function(){var e=this.getUrl();var s=this.getSupportedLocales();var a=this.getLanguages();this._aEditorResourceBundles=[];for(var t in a){var u;if(e){var i=[t];if(t.indexOf("-")>-1){i.push(t.substring(0,t.indexOf("-")))}if(!i.includes("en")){i.push("en")}u=r.create({url:e,async:false,locale:t,supportedLocales:i})}var o={language:a[t],resourceBundle:u,isSupportedLocale:true};if(Array.isArray(s)&&!s.includes(t)&&!s.includes(t.replace("-","_"))){o.isSupportedLocale=false}this._aEditorResourceBundles[t]=o}};a.prototype.getResourceBundles=function(){if(!this._aEditorResourceBundles){this.loadResourceBundles()}return this._aEditorResourceBundles};return a});

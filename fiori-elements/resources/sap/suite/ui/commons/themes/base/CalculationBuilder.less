@@ -1,0 +1,63 @@
+.sapCalculationBuilderInner {
+	display: flex;
+	align-items: center;
+  	&:focus {
+	  outline: none;
+	}
+}
+
+.sapCalculationBuilderWrapItems .sapCalculationBuilderInner {
+ 	flex-wrap: wrap;
+}
+
+.sapCalculationBuilderInsideWrapper {
+  	overflow: auto;
+  	padding-bottom: 0.5rem;
+}
+
+.sapUiSizeCozy .sapCalculationBuilderInsideWrapper {
+	padding-bottom: 1rem;
+}
+
+.sapUiSizeCozy .sapCalculationBuilderToolbar {
+	margin-bottom: 1rem;
+}
+
+.sapCalculationBuilderToolbar {
+ 	margin-bottom: 0.5rem;
+  	height: 3rem;
+  	.sapMBtn {
+		padding: 0;
+  	}
+  	.sapMBtnInner {
+		height: 2rem;
+		.sapMBtnIcon {
+	  		line-height: 30px;
+	 		max-height: 2rem;
+		}
+  	}
+}
+
+.sapUiSizeCompact .sapCalculationBuilderToolbar {
+  	height: 3rem;
+}
+
+.sapCalculationBuilderOverlay {
+	width: 100%;
+  	min-height: 100%;
+	background-color: @sapUiListBackground;
+}
+
+.sapCalculationBuilderDelimiterLine {
+	height: 1px;
+	background-color: @sapUiGroupTitleBorderColor;
+}
+.sapMListUl>.sapMLIB.sapMGHLI.sapCalculationBuilderSuggestionListHeader {
+	 height: auto;
+	 padding-top: 0;
+ }
+
+ .sapCalculationBuilderDisplayNone {
+	 display: none;
+ }
+

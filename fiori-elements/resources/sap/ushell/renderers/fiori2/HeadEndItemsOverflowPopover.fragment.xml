@@ -1,0 +1,26 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <Popover
+        id="headEndItemsOverflow"
+        placement="Bottom"
+        showHeader="false"
+        showArrow="true"
+        class="sapUshellPopupContainer sapContrastPlus"
+        afterClose=".destroyHeadEndItemsOverflow">
+        <content>
+            <List
+                id="headEndItemsOverflowList"
+                class="sapUshellPopoverList"
+                showSeparators="None"
+                items="{
+                    path: '/headEndItems',
+                    filters: {
+                        path: '',
+                        test: '.isHeadEndItemInOverflow'
+                    },
+                    factory: '.headEndItemsOverflowItemFactory'
+                }" />
+        </content>
+    </Popover>
+</core:FragmentDefinition>

@@ -1,0 +1,132 @@
+{
+  "_version": "1.21.0",
+  "sap.app": {
+    "id": "sap.ui.richtexteditor",
+    "type": "library",
+    "embeds": [],
+    "applicationVersion": {
+      "version": "1.113.0"
+    },
+    "title": "A rich text editor (RTE) control.",
+    "description": "A rich text editor (RTE) control. Requires installation of an additional rich text editor library.",
+    "ach": "CA-UI5-CTR-RIL",
+    "resources": "resources.json",
+    "offline": true,
+    "openSourceComponents": [
+      {
+        "name": "TinyMCE-4",
+        "packagedWithMySelf": true,
+        "version": "4.9.10-80"
+      },
+      {
+        "name": "TinyMCE-5",
+        "packagedWithMySelf": true,
+        "version": "5.10.2-126"
+      },
+      {
+        "name": "TinyMCE-6",
+        "packagedWithMySelf": true,
+        "version": "6.3.1-12"
+      }
+    ]
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "supportedThemes": [
+      "base",
+      "sap_belize",
+      "sap_belize_hcb",
+      "sap_belize_hcw",
+      "sap_belize_plus",
+      "sap_bluecrystal",
+      "sap_fiori_3",
+      "sap_fiori_3_dark",
+      "sap_fiori_3_hcb",
+      "sap_fiori_3_hcw",
+      "sap_horizon",
+      "sap_horizon_dark",
+      "sap_horizon_hcb",
+      "sap_horizon_hcw"
+    ]
+  },
+  "sap.ui5": {
+    "dependencies": {
+      "minUI5Version": "1.113",
+      "libs": {
+        "sap.ui.core": {
+          "minVersion": "1.113.0"
+        }
+      }
+    },
+    "library": {
+      "i18n": {
+        "bundleUrl": "messagebundle.properties",
+        "supportedLocales": [
+          "",
+          "ar",
+          "bg",
+          "ca",
+          "cs",
+          "cy",
+          "da",
+          "de",
+          "el",
+          "en",
+          "en-GB",
+          "en-US-sappsd",
+          "en-US-saprigi",
+          "en-US-saptrc",
+          "es",
+          "es-MX",
+          "et",
+          "fi",
+          "fr",
+          "fr-CA",
+          "hi",
+          "hr",
+          "hu",
+          "id",
+          "it",
+          "iw",
+          "ja",
+          "kk",
+          "ko",
+          "lt",
+          "lv",
+          "ms",
+          "nl",
+          "no",
+          "pl",
+          "pt",
+          "pt-PT",
+          "ro",
+          "ru",
+          "sh",
+          "sk",
+          "sl",
+          "sv",
+          "th",
+          "tr",
+          "uk",
+          "vi",
+          "zh-CN",
+          "zh-TW"
+        ]
+      },
+      "content": {
+        "controls": [
+          "sap.ui.richtexteditor.RichTextEditor",
+          "sap.ui.richtexteditor.ToolbarWrapper",
+          "sap.ui.richtexteditor.RTESplitButton"
+        ],
+        "elements": [],
+        "types": [
+          "sap.ui.richtexteditor.EditorType"
+        ],
+        "interfaces": [
+          "sap.ui.richtexteditor.IToolbar"
+        ]
+      }
+    }
+  }
+}

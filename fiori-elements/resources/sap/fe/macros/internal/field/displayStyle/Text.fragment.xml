@@ -1,0 +1,45 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:controls="sap.fe.macros.controls"
+>
+	<template:if test="{= ${this>formatOptions/isAnalytics} &amp;&amp; ${this>hasUnitOrCurrency} }">
+		<template:then>
+			<controls:ConditionalWrapper visible="{this>displayVisible}" condition="{this>hasValidAnalyticalCurrencyOrUnit}">
+				<controls:contentTrue>
+					<Text
+						id="{this>noWrapperId}"
+						text="{this>text}"
+						emptyIndicatorMode="{this>emptyIndicatorMode}"
+						renderWhitespace="true"
+						wrapping="{this>wrap}"
+					/>
+				</controls:contentTrue>
+				<controls:contentFalse>
+					<Text id="{this>noWrapperId}" text="*" />
+				</controls:contentFalse>
+			</controls:ConditionalWrapper>
+		</template:then>
+		<template:elseif test="{this>formatOptions/retrieveTextFromValueList}">
+			<Text
+				id="{this>noWrapperId}"
+				visible="{this>displayVisible}"
+				text="{this>textFromValueList}"
+				core:require="{FieldRuntime: 'sap/fe/macros/field/FieldRuntime'}"
+				emptyIndicatorMode="{this>emptyIndicatorMode}"
+				renderWhitespace="true"
+			/>
+		</template:elseif>
+		<template:else>
+			<Text
+				id="{this>noWrapperId}"
+				visible="{this>displayVisible}"
+				text="{this>text}"
+				wrapping="{this>wrap}"
+				emptyIndicatorMode="{this>emptyIndicatorMode}"
+				renderWhitespace="true"
+			/>
+		</template:else>
+	</template:if>
+</core:FragmentDefinition>

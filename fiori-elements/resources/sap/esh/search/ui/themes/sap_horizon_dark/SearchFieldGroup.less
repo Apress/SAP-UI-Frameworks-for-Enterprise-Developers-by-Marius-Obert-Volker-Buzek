@@ -1,0 +1,151 @@
+/* =========================================== */
+/* CSS for sap.esh.search.ui/SearchFieldGroup  */
+/* Evening Horizon theme                       */
+/* =========================================== */
+
+#searchFieldInShell {
+    height: 2.25rem;
+    margin-top: 0.25rem;
+    .sapMFlexBox {
+        & > div:nth-child(1) {
+            margin-right: 0.25rem;
+        }
+        & > div:nth-child(3) {
+            margin-left: 0.25rem;
+        }
+        & > div:nth-child(4) {
+            /*margin-left: 0.25rem;*/
+            margin-left: 0.25rem;
+            margin-right: 0.25rem;
+        }
+        background-color: @sapShell_InteractiveBackground;
+        border-radius: 1.125rem;
+        padding-right: 0.5rem;
+        padding-left: 0.5rem;
+    }
+    #searchFieldInShell-select {
+        border-radius: 1.125rem;
+        border-color: @sapUiShellInteractiveBorderColor;
+        background: transparent;
+        .sapMSltLabel {
+            color: @sapUiShellTextColor;
+        }
+        .sapMSltArrow,
+        .sapMSltIcon {
+            border-radius: 1.125rem;
+            color: @sapUiShellInteractiveTextColor;
+        }
+        &:hover {
+            background: @sapShell_Hover_Background;
+            box-shadow: @sapContent_Interaction_Shadow;
+            .sapMSltArrow,
+            .sapMSltIcon {
+                background: @sapUiShellHoverBackground;
+                &::before {
+                    color: @sapUiShellTextColor;
+                }
+            }
+        }
+        &.sapMSltPressed {
+            .sapMSltArrow,
+            .sapMSltIcon {
+                background: @sapUiShellActiveBackground;
+                &::before {
+                    color: @sapUiShellActiveTextColor;
+                }
+            }
+        }
+        &:focus {
+            /*outline-color: contrast(@sapUiShellColor, @sapUiContentFocusColor, @sapUiContentContrastFocusColor, @sapContent_ContrastTextThreshold);*/
+            outline-color: contrast(
+                @sapShellColor,
+                @sapUiContentFocusColor,
+                @sapUiContentContrastFocusColor,
+                @sapContent_ContrastTextThreshold
+            );
+        }
+    }
+    #searchFieldInShell-input {
+        .sapMInputBaseContentWrapper {
+            background: transparent;
+            border-color: @sapUiShellInteractiveBorderColor;
+            border-radius: 1.125rem;
+        }
+        .sapMInputBaseContentWrapper:hover {
+            background: @sapUiShellHoverBackground;
+        }
+        .sapMInputBaseInner {
+            color: @sapUiShellTextColor;
+        }
+        .sapMInputBaseInner::placeholder {
+            color: @sapUiShellInteractiveTextColor;
+        }
+        &.sapMFocus .sapMInputBaseContentWrapper {
+            /*border-color: contrast(@sapUiShellColor, @sapUiContentFocusColor, @sapUiContentContrastFocusColor, @sapContent_ContrastTextThreshold);*/
+            outline-color: contrast(
+                @sapShellColor,
+                @sapUiContentFocusColor,
+                @sapUiContentContrastFocusColor,
+                @sapContent_ContrastTextThreshold
+            );
+        }
+    }
+    /* magnifier and cancel button */
+    .sapMBtn {
+        .sapMBtnInner.sapMBtnDefault {
+            border-radius: 1.125rem;
+            background-color: transparent;
+            border-color: transparent;
+            color: @sapUiShellTextColor;
+            .sapMBtnIcon {
+                color: @sapUiShellInteractiveTextColor;
+            }
+        }
+        &:not(.sapMBtnDisabled) {
+            &:hover {
+                .sapMBtnInner.sapMBtnDefault {
+                    background-color: @sapUiShellHoverBackground;
+                    border-color: @sapUiShellHoverBackground;
+                    color: @sapUiShellTextColor;
+                    .sapMBtnIcon {
+                        color: @sapUiShellInteractiveTextColor;
+                    }
+                }
+            }
+            .sapMBtnInner.sapMBtnDefault {
+                &.sapMBtnActive {
+                    background-color: @sapUiShellActiveBackground;
+                    border-color: @sapUiShellActiveBackground;
+                    color: @sapUiShellActiveTextColor;
+                    .sapMBtnIcon {
+                        color: @sapUiShellActiveTextColor;
+                    }
+                }
+            }
+        }
+        &:focus {
+            .sapMBtnDefault.sapMFocusable {
+                outline-color: contrast(
+                    @sapUiShellColor,
+                    @sapUiContentFocusColor,
+                    @sapUiContentContrastFocusColor,
+                    @sapContent_ContrastTextThreshold
+                );
+                outline-style: solid;
+                outline-width: 0.125rem;
+            }
+        }
+    }
+}
+
+span#searchFieldInShell-button-inner {
+    border-radius: 1.125rem;
+}
+
+.searchInput.sapMFocus.sapMInputBase .sapMInputBaseContentWrapper:not(.sapMInputBaseDisabledWrapper)::before {
+    border-radius: 1.125rem;
+}
+
+#searchFieldInShell-button.sapMBtn:focus > .sapMFocusable:not(.sapMBadgeIndicator):before {
+    border: none;
+}

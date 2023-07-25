@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="http://www.sap.com/sap.ui.library.xsd">
+    <name>sap.ushell</name>
+    <vendor>SAP SE</vendor>
+    <version>1.113.0</version>
+    <copyright>Copyright (c) 2009-2023 SAP SE, All Rights Reserved</copyright>
+    <documentation>SAP library: sap.ushell</documentation>
+
+    <dependencies>
+        <dependency>
+            <libraryName>sap.f</libraryName>
+            <lazy>true</lazy>
+        </dependency>
+        <dependency>
+            <libraryName>sap.m</libraryName>
+        </dependency>
+        <dependency>
+            <libraryName>sap.ui.core</libraryName>
+        </dependency>
+        <dependency>
+            <libraryName>sap.ui.layout</libraryName>
+            <lazy>true</lazy>
+        </dependency>
+        <dependency>
+            <libraryName>sap.suite.ui.commons</libraryName>
+            <lazy>true</lazy>
+        </dependency>
+        <dependency>
+            <libraryName>sap.suite.ui.microchart</libraryName>
+            <lazy>true</lazy>
+        </dependency>
+        <dependency>
+            <libraryName>sap.ui.comp</libraryName>
+            <lazy>true</lazy>
+        </dependency>
+        <dependency>
+            <libraryName>sap.ui.export</libraryName>
+            <lazy>true</lazy>
+        </dependency>
+        <dependency>
+            <libraryName>sap.collaboration</libraryName>
+            <lazy>true</lazy>
+        </dependency>
+        <dependency>
+            <libraryName>sap.ui.table</libraryName>
+            <lazy>true</lazy>
+        </dependency>
+        <dependency>
+            <libraryName>sap.ui.integration</libraryName>
+            <lazy>true</lazy>
+        </dependency>
+        <dependency>
+            <libraryName>sap.ui.generic.app</libraryName>
+            <lazy>true</lazy>
+        </dependency>
+        <dependency>
+            <libraryName>sap.esh.search.ui</libraryName>
+            <lazy>true</lazy>
+        </dependency>
+    </dependencies>
+
+    <appData>
+        <packaging xmlns="http://www.sap.com/ui5/buildext/packaging" version="2.0">
+            <module-infos>
+                <raw-module name="sap/ushell/bootstrap/ui5loader-config.js" depends="ui5loader.js" />
+                <raw-module name="sap/ushell/renderers/fiori2/search/sinaNext/sina/sinaFactory.js"
+                    requiresTopLevelScope="false" />
+                <raw-module name="sap/ushell/appRuntime/ui5/AppRuntime.js"
+                    requiresTopLevelScope="false" />
+            </module-infos>
+            <all-in-one>
+                <exclude name="sap/ushell/bootstrap/cdm.js" />
+            </all-in-one>
+        </packaging>
+        <jsdoc xmlns="http://www.sap.com/ui5/buildext/jsdoc">
+            <!-- excludes for JSDoc -->
+            <exclude name="sap.ushell.bootstrap.appruntime-min*" />
+            <exclude name="sap.ushell.bootstrap.core-min*" />
+            <exclude name="sap.ushell.bootstrap.cdm*" />
+        </jsdoc>
+        <documentation
+            xmlns="http://www.sap.com/ui5/buildext/documentation"
+            indexUrl="../../../test-resources/sap/ushell/demokit/docuindex.json"
+            resolve="lib" />
+        <selenium xmlns="http://www.sap.com/ui5/buildext/selenium" package="com.sap.ushell.selenium" />
+        <releasenotes xmlns="http://www.sap.com/ui5/buildext/releasenotes"
+            url="../../../test-resources/sap/ushell/relnotes/changes-{major}.{minor}.json"
+            resolve="lib" />
+        <ownership xmlns="http://www.sap.com/ui5/buildext/ownership">
+            <!-- default component for this library -->
+            <component>CA-FLP-FE-UI</component>
+
+            <!-- Factsheet -->
+            <component>
+                <name>CA-UI2-AR-BE</name>
+                <modules>
+                    <module>sap/ushell/components/factsheet/*</module>
+                </modules>
+            </component>
+
+            <!-- Application Integration -->
+            <component>
+                <name>CA-FLP-FE-AI</name>
+                <modules>
+                    <module>sap/ushell/_ApplicationType/*</module>
+                    <module>sap/ushell/ApplicationType</module>
+
+                    <module>sap/ushell/_URLTemplateProcessor/*</module>
+                    <module>sap/ushell/URLTemplateProcessor</module>
+
+                    <module>sap/ushell/components/applicationIntegration/*</module>
+
+                    <module>sap/ushell/ui5service/_AppIsolationService/*</module>
+                    <module>sap/ushell/ui5service/AppIsolationService</module>
+
+                    <module>sap/ushell/ui5service/_ShellUIService/*</module>
+                    <module>sap/ushell/ui5service/ShellUIService</module>
+                </modules>
+            </component>
+
+            <!-- HANA Search -->
+            <component>
+                <name>HAN-AS-INA-UI</name>
+                <modules>
+                    <module>sap/ushell/renderers/fiori2/search/*</module>
+                    <module>tools/sinaNext/*</module> <!-- that path might be wrong -->
+                </modules>
+            </component>
+
+            <!-- Smart Business / KPI Tiles -->
+            <component>
+                <name>CA-GTF-SB</name>
+                <modules>
+                    <module>sap/ushell/components/tiles/generic</module>
+                    <module>sap/ushell/components/tiles/indicator*</module>
+                    <module>sap/ushell/components/tiles/sbtilecontent</module>
+                </modules>
+            </component>
+        </ownership>
+    </appData>
+</library>

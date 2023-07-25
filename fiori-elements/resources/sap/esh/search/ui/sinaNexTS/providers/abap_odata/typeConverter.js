@@ -1,0 +1,14 @@
+/*! 
+ * SAPUI5
+
+		(c) Copyright 2009-2021 SAP SE. All rights reserved
+	 
+ */
+(function(){sap.ui.define(["../../sina/AttributeType","../../sina/util","../../core/errors"],function(e,t,r){
+/*!
+   * SAPUI5
+
+		(c) Copyright 2009-2021 SAP SE. All rights reserved
+	
+   */
+var a=e["AttributeType"];var n=r["NotImplementedError"];var i=r["UnknownAttributeTypeError"];function s(e,t){var r=arguments.length>2&&arguments[2]!==undefined?arguments[2]:{};switch(e){case a.Double:return t.toString();case a.Integer:return t.toString();case a.String:return this.sina2OdataString(t,r);case a.ImageUrl:return t;case a.ImageBlob:throw new n;case a.GeoJson:return t;case a.Date:return this.sina2OdataDate(t);case a.Time:return this.sina2OdataTime(t);case a.Timestamp:return this.sina2OdataTimestamp(t);default:throw new i("unknown attribute type "+e)}}function o(e,t){switch(e){case a.Double:return parseFloat(t);case a.Integer:return parseInt(t,10);case a.String:return t;case a.ImageUrl:return t;case a.ImageBlob:throw new n;case a.GeoJson:return t;case a.Date:return this.odata2SinaDate(t);case a.Time:return this.odata2SinaTime(t);case a.Timestamp:return this.odata2SinaTimestamp(t);default:throw new i("unknown attribute type "+e)}}function u(){var e=arguments.length>0&&arguments[0]!==undefined?arguments[0]:"";if(e.length===0){return""}e=e.trim();var t=parseInt(e.slice(0,4),10);var r=parseInt(e.slice(5,7),10);var a=parseInt(e.slice(8,10),10);var n=parseInt(e.slice(11,13),10);var i=parseInt(e.slice(14,16),10);var s=parseInt(e.slice(17,19),10);var o=parseInt(e.slice(20,20+6),10);return new Date(Date.UTC(t,r-1,a,n,i,s,o/1e3))}function d(e){if(typeof e==="string"){if(e.length===0){return""}if(e==="$$now$$"){e=new Date}}var t=e.getUTCFullYear();var r=e.getUTCMonth()+1;var a=e.getUTCDate();var n=e.getUTCHours();var i=e.getUTCMinutes();var s=e.getUTCSeconds();var o=e.getUTCMilliseconds()*1e3;var u=this.addLeadingZeros(t.toString(),4)+"-"+this.addLeadingZeros(r.toString(),2)+"-"+this.addLeadingZeros(a.toString(),2)+"T"+this.addLeadingZeros(n.toString(),2)+":"+this.addLeadingZeros(i.toString(),2)+":"+this.addLeadingZeros(s.toString(),2)+"."+this.addLeadingZeros(o.toString(),7)+"Z";return u}function c(e){if(e.length===0){return""}e=e.trim();return e}function g(e){if(e.length===0){return""}return e}function l(e){if(e.length===0){return""}e=e.trim();return e.slice(0,4)+"/"+e.slice(5,7)+"/"+e.slice(8,10)}function h(e){if(e.length===0){return""}return e.slice(0,4)+"-"+e.slice(5,7)+"-"+e.slice(8,10)}function m(e,r){return t.convertOperator2Wildcards(e,r.operator)}function f(e,t){return"00000000000000".slice(0,t-e.length)+e}var p={__esModule:true};p.sina2Odata=s;p.odata2Sina=o;p.odata2SinaTimestamp=u;p.sina2OdataTimestamp=d;p.odata2SinaTime=c;p.sina2OdataTime=g;p.odata2SinaDate=l;p.sina2OdataDate=h;p.sina2OdataString=m;p.addLeadingZeros=f;return p})})();

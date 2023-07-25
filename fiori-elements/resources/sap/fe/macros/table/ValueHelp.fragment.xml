@@ -1,0 +1,42 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns:core="sap.ui.core"
+	xmlns:macro="sap.fe.macros"
+	template:require="{
+		ID: 'sap/fe/core/helpers/StableIdHelper'
+	}"
+>
+	<template:if
+		test="{= (${dataField>$Type}.indexOf('DataFieldForAnnotation') !== -1) &amp;&amp; (${dataField>Target/$AnnotationPath}.indexOf('@com.sap.vocabularies.UI.v1.Chart') !== -1)}"
+	>
+		<template:then>
+			<!-- no value help -->
+		</template:then>
+		<template:elseif
+			test="{= (${dataField>$Type}.indexOf('DataFieldForAnnotation') !== -1) &amp;&amp; (${dataField>Target/$AnnotationPath}.indexOf('FieldGroup') !== -1)}"
+		>
+			<template:with path="dataField>Target/$AnnotationPath/Data" var="dataFields">
+				<template:repeat list="{dataFields>}" var="dataField">
+					<core:Fragment fragmentName="sap.fe.macros.table.ValueHelp" type="XML" />
+				</template:repeat>
+			</template:with>
+		</template:elseif>
+		<!-- check whether we are in LineItem/DataField scenario or entityType/property -->
+		<template:elseif test="{= ${dataField>Value} }">
+			<template:with path="dataField>Value" var="item">
+				<macro:ValueHelp
+					idPrefix="{= ID.generate([${this>id}, 'TableValueHelp']) }"
+					property="{item>}"
+					contextPath="{contextPath>}"
+				/>
+			</template:with>
+		</template:elseif>
+		<template:else>
+			<macro:ValueHelp
+				idPrefix="{= ID.generate([${this>id}, 'TableValueHelp']) }"
+				property="{dataField>}"
+				contextPath="{contextPath>}"
+			/>
+		</template:else>
+	</template:if>
+</core:FragmentDefinition>

@@ -1,0 +1,109 @@
+{
+  "_version": "1.21.0",
+  "sap.app": {
+    "id": "sap.fe.templates",
+    "type": "library",
+    "embeds": [
+      "AnalyticalListPage",
+      "ListReport",
+      "ObjectPage"
+    ],
+    "applicationVersion": {
+      "version": "1.113.0"
+    },
+    "title": "UI5 library: sap.fe.templates",
+    "description": "UI5 library: sap.fe.templates",
+    "ach": "CA-UI5-FE",
+    "resources": "resources.json",
+    "offline": true
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "supportedThemes": []
+  },
+  "sap.ui5": {
+    "dependencies": {
+      "libs": {
+        "sap.f": {},
+        "sap.fe.core": {},
+        "sap.m": {},
+        "sap.fe.macros": {},
+        "sap.suite.ui.microchart": {
+          "lazy": true
+        },
+        "sap.ui.core": {},
+        "sap.ui.layout": {
+          "lazy": true
+        },
+        "sap.ui.mdc": {},
+        "sap.uxap": {
+          "lazy": true
+        },
+        "sap.ui.fl": {},
+        "sap.collaboration": {}
+      }
+    },
+    "library": {
+      "i18n": {
+        "bundleUrl": "messagebundle.properties",
+        "supportedLocales": [
+          "",
+          "ar",
+          "bg",
+          "ca",
+          "cs",
+          "cy",
+          "da",
+          "de",
+          "el",
+          "en",
+          "en-GB",
+          "en-US-sappsd",
+          "en-US-saprigi",
+          "en-US-saptrc",
+          "es",
+          "es-MX",
+          "et",
+          "fi",
+          "fr",
+          "fr-CA",
+          "hi",
+          "hr",
+          "hu",
+          "id",
+          "it",
+          "iw",
+          "ja",
+          "kk",
+          "ko",
+          "lt",
+          "lv",
+          "ms",
+          "nl",
+          "no",
+          "pl",
+          "pt",
+          "pt-PT",
+          "ro",
+          "ru",
+          "sh",
+          "sk",
+          "sl",
+          "sv",
+          "th",
+          "tr",
+          "uk",
+          "vi",
+          "zh-CN",
+          "zh-TW"
+        ]
+      },
+      "content": {
+        "controls": [],
+        "elements": [],
+        "types": [],
+        "interfaces": []
+      }
+    }
+  }
+}

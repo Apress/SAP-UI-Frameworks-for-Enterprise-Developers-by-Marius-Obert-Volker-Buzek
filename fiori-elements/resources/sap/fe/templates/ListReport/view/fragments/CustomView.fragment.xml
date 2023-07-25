@@ -1,0 +1,7 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns:core="sap.ui.core"
+	xmlns:fpm="sap.fe.macros.fpm"
+>
+	<fpm:CustomFragment id="{view>customTabId}" fragmentName="{view>fragment}" />
+</core:FragmentDefinition>

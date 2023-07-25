@@ -1,0 +1,1 @@
+{"version":3,"file":"StashableVBox.flexibility.js","names":["sap","ui","define","StashableVBoxFlexibility","stashControl","unstashControl","moveControls"],"sources":["StashableVBox.flexibility-dbg.js"],"mappings":";;;;AAIAA,IAAIC,GAAGC,OAAO,GAAI,WAChB,aAEA,MAAMC,EAA2B,CAC/BC,aAAc,UACdC,eAAgB,UAChBC,aAAc,WAEhB,OAAOH,CACT,EAAG"}

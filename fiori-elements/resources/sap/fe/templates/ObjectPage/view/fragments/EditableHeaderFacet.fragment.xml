@@ -1,0 +1,171 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:unittest="http://schemas.sap.com/sapui5/preprocessorextension/sap.fe.unittesting/1"
+	xmlns:macro="sap.fe.macros"
+	xmlns:internalMacro="sap.fe.macros.internal"
+	xmlns:core="sap.ui.core"
+	xmlns:dt="sap.ui.dt"
+	xmlns:fl="sap.ui.fl"
+	xmlns:fpm="sap.fe.macros.fpm"
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns:formdata="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	template:require="{
+		OP: 'sap/fe/templates/ObjectPage/ObjectPageTemplating',
+		MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+		FIELD: 'sap/fe/macros/field/FieldHelper',
+		ID: 'sap/fe/core/helpers/StableIdHelper',
+		COMMON: 'sap/fe/macros/CommonHelper',
+		FORM: 'sap/fe/macros/form/FormHelper',
+		UI: 'sap/fe/core/templating/UIFormatters'
+	}"
+>
+	<f:Form
+		fl:delegate='{
+			"name": "sap/fe/macros/form/FormDelegate",
+			"delegateType": "complete"
+		}'
+		id="fe::EditableHeaderForm"
+		editable="true"
+		class="sapUxAPObjectPageSubSectionAlignContent"
+		formdata:navigationPath="{= COMMON.getNavigationPath(${entitySet>}, true) }"
+		formdata:entitySet="{entitySet>@sapui.name}"
+	>
+		<f:layout>
+			<f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4" labelCellsLarge="12" />
+		</f:layout>
+		<f:formContainers>
+			<f:FormContainer
+				unittest:id="HeaderInfoFormContainerTest"
+				id="fe::EditableHeaderForm::EditableHeaderInfo"
+				visible="{= OP.getVisiblityOfHeaderInfo(${entityType>@com.sap.vocabularies.UI.v1.HeaderInfo/Title/Value/$Path@},${entityType>@com.sap.vocabularies.UI.v1.HeaderInfo/Description/Value/$Path@},${entityType>@com.sap.vocabularies.UI.v1.HeaderInfo/Title/Value/$Path@@FIELD.fieldControl},${entityType>@com.sap.vocabularies.UI.v1.HeaderInfo/Description/Value/$Path@@FIELD.fieldControl}) }"
+			>
+				<f:title>
+					<core:Title level="H4" text="{sap.fe.i18n>T_COMMON_OBJECT_PAGE_OBJECT_INFO}" />
+				</f:title>
+				<f:dependents>
+					<macro:ValueHelp
+						idPrefix="fe::EditableHeaderForm::EditableHeaderTitle::FieldValueHelp"
+						property="{entityType>@com.sap.vocabularies.UI.v1.HeaderInfo/Title/Value}"
+					/>
+					<macro:ValueHelp
+						idPrefix="fe::EditableHeaderForm::EditableHeaderDescription::FieldValueHelp"
+						property="{entityType>@com.sap.vocabularies.UI.v1.HeaderInfo/Description/Value}"
+					/>
+				</f:dependents>
+				<f:formElements>
+					<f:FormElement id="fe::EditableHeaderForm::EditableHeaderTitle">
+						<f:label>
+							<Label text="{entityType>@com.sap.vocabularies.UI.v1.HeaderInfo/Title/@@MODEL.label}">
+								<layoutData>
+									<f:ColumnElementData cellsLarge="12" />
+								</layoutData>
+							</Label>
+						</f:label>
+						<f:fields>
+							<internalMacro:Field
+								idPrefix="fe::EditableHeaderForm::EditableHeaderTitle"
+								vhIdPrefix="fe::EditableHeaderForm::EditableHeaderTitle::FieldValueHelp"
+								entitySet="{entitySet>}"
+								dataField="{entityType>@com.sap.vocabularies.UI.v1.HeaderInfo/Title}"
+							>
+								<internalMacro:formatOptions textAlignMode="Form" showEmptyIndicator="true" />
+							</internalMacro:Field>
+						</f:fields>
+					</f:FormElement>
+					<template:if test="{entityType>@com.sap.vocabularies.UI.v1.HeaderInfo/Description}">
+						<f:FormElement id="fe::EditableHeaderForm::EditableHeaderDescription">
+							<f:label>
+								<Label text="{entityType>@com.sap.vocabularies.UI.v1.HeaderInfo/Description/@@MODEL.label}">
+									<layoutData>
+										<f:ColumnElementData cellsLarge="12" />
+									</layoutData>
+								</Label>
+							</f:label>
+							<f:fields>
+								<internalMacro:Field
+									idPrefix="fe::EditableHeaderForm::EditableHeaderDescription"
+									vhIdPrefix="fe::EditableHeaderForm::EditableHeaderDescription::FieldValueHelp"
+									entitySet="{entitySet>}"
+									dataField="{entityType>@com.sap.vocabularies.UI.v1.HeaderInfo/Description}"
+								>
+									<internalMacro:formatOptions textAlignMode="Form" showEmptyIndicator="true" />
+								</internalMacro:Field>
+							</f:fields>
+						</f:FormElement>
+					</template:if>
+				</f:formElements>
+			</f:FormContainer>
+			<template:if test="{headerSection>subSections}">
+				<template:repeat
+					list="{path: 'headerSection>subSections', filters: [{path: 'type', operator: 'EQ', value1: 'Form'}, {path: 'type', operator: 'EQ', value1: 'XMLFragment'}]}"
+					var="subSection"
+				>
+					<template:if test="{= !${subSection>stashed} }">
+						<template:then>
+							<template:if test="{= !${subSection>template} }">
+								<template:then>
+									<template:with path="subSection>annotationPath" var="facet">
+										<template:repeat list="{path: 'subSection>formDefinition/formContainers'}" var="formContainer">
+											<template:if test="{= MODEL.getNavigationPath(${facet>Target/$AnnotationPath}) }">
+												<template:then>
+													<template:with path="formContainer>entitySet" var="targetEntitySet">
+														<macro:FormContainer
+															id="{= ${formContainer>id} ? ID.generate(['fe', 'HeaderFacet', 'FormContainer', ${formContainer>id} ]) : undefined }"
+															designtimeSettings="{= ${subSection>flexSettings/designtime} === 'Default' ? 'sap/fe/macros/form/FormContainer.designtime' : ${subSection>flexSettings/designtime}}"
+															title="{facet>@@MODEL.label}"
+															titleLevel="H4"
+															displayMode="Edit"
+															contextPath="{targetEntitySet>}"
+															metaPath="{formContainer>annotationPath}"
+															navigationPath="{= MODEL.getNavigationPath(${facet>Target/$AnnotationPath}) ? MODEL.getNavigationPath(${facet>Target/$AnnotationPath}) : ''}"
+															dataFieldCollection="{formContainer>formElements}"
+															visible="{subSection>visible}"
+														/>
+													</template:with>
+												</template:then>
+												<template:else>
+													<macro:FormContainer
+														id="{= ${formContainer>id} ? ID.generate(['fe', 'HeaderFacet', 'FormContainer', ${formContainer>id} ]) : undefined }"
+														designtimeSettings="{= ${subSection>flexSettings/designtime} === 'Default' ? 'sap/fe/macros/form/FormContainer.designtime' : ${subSection>flexSettings/designtime}}"
+														title="{facet>@@MODEL.label}"
+														titleLevel="H4"
+														displayMode="Edit"
+														contextPath="{entitySet>}"
+														metaPath="{formContainer>annotationPath}"
+														dataFieldCollection="{formContainer>formElements}"
+														visible="{subSection>visible}"
+													/>
+												</template:else>
+											</template:if>
+										</template:repeat>
+									</template:with>
+								</template:then>
+								<template:else>
+									<f:FormContainer
+										id="{= ${subSection>id} ? ID.generate([${subSection>id}, 'CustomFormContainer', ${subSection>@@UI.getDataModelObjectPath}]) : undefined }"
+										visible="{subSection>visible}"
+										dt:designtime="{= ${subSection>flexSettings/designtime} === 'Default' ? 'sap/ui/layout/designtime/form/FormContainer.designtime' : ${subSection>flexSettings/designtime}}"
+									>
+										<template:if test="{subSection>title}">
+											<f:title>
+												<core:Title level="H4" text="{subSection>title}" />
+											</f:title>
+										</template:if>
+										<f:formElements>
+											<fpm:CustomFragment
+												id="{= ${subSection>id} ? ID.generate([${subSection>id}, 'CustomFragment', ${subSection>@@UI.getDataModelObjectPath}]) : undefined }"
+												fragmentName="{subSection>template}"
+												contextPath="{entitySet>}"
+											/>
+										</f:formElements>
+									</f:FormContainer>
+								</template:else>
+							</template:if>
+						</template:then>
+					</template:if>
+				</template:repeat>
+			</template:if>
+		</f:formContainers>
+	</f:Form>
+</core:FragmentDefinition>

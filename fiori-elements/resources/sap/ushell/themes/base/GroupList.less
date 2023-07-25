@@ -1,0 +1,68 @@
+/* ============================================= */
+/* CSS for the group list (sidebar / sidepanel) */
+/* ============================================= */
+
+/*
+The footer of the Panel allows only height of one row(button)
+In group list we want to add at least two buttons to the actions area,
+therefore we reset the height to the initial value.
+
+ Which problem was solved:
+ When group list has many items and vertical scroll appears, the bottom part of the content area
+ overlaps upper action button.
+
+ Refer to: "#GroupListFooter" and "#GroupListFooter .sapMBarMiddle"
+*/
+
+.sap-tablet, .sapUiMedia-Std-Phone {
+  .sapUshellGroupList {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+}
+
+.sapUshellGroupList {
+  height: 100%;
+
+  #groupListFooter .sapMBarMiddle {
+    height: initial;
+
+    & > .sapMBarPH {
+      padding-left: 0;
+      padding-right: 0;
+      }
+
+    .sapMALIText {
+      margin: 0;
+      }
+    }
+
+  #groupListPage.sapUshellPersonalizationOn >section{
+    bottom: 3em;
+    }
+
+  #groupListFooter.sapUshellPersonalizationOn{
+    height: 3em;
+    }
+
+  .sapUshellGroupLI-placeholder {
+    height: 3rem;
+    }
+
+  #groupListItems {
+    touch-action: pan-y; /* Fix for Windows 8.1 IE11 touch devices */
+    -ms-touch-action: pan-y; /* Fix for Windows 8 IE10 touch devices */
+    }
+}
+
+/* ============================Compact Mode=================================== */
+
+.sapUiSizeCompact {
+  #groupListFooter .sapMBarMiddle > .sapMBarPH {
+    padding: 0;
+  }
+
+  #groupListFooter.sapUshellPersonalizationOn{
+    height: 2em;
+  }
+}

@@ -1,0 +1,82 @@
+<!--
+    /**
+     * This fragment renders a DataField
+     * @param entitySet context to the EntitySet
+     * @param dataField context to the DataField
+     * @param property context to the Property Path
+	 * @param wrap wrapping allowed for a field or not
+	 * wrap Boolean: true, false
+	 * Incoming from Field.fragment.xml
+ 	 * 	 @param idPrefix default 'F' Prefix for the id
+ 	 * 	 @param vhIdPrefix default 'FieldValueHelp' Prefix for the value help id
+     * @returns
+     */
+-->
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns:unittest="http://schemas.sap.com/sapui5/preprocessorextension/sap.fe.unittesting/1"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:controls="sap.fe.macros.controls"
+	xmlns:mdc="sap.ui.mdc"
+	xmlns:log="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	xmlns:macro="sap.fe.macros"
+	template:require="{
+							MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+							COMMON: 'sap/fe/macros/CommonHelper',
+							FIELD: 'sap/fe/macros/field/FieldHelper',
+							ID: 'sap/fe/core/helpers/StableIdHelper',
+							UI: 'sap/fe/core/templating/UIFormatters',
+							ValueHelpTemplating: 'sap/fe/macros/internal/valuehelp/ValueHelpTemplating',
+							Property: 'sap/fe/core/templating/PropertyFormatters',
+							FE_MODEL: 'sap/fe/core/helpers/ModelHelper',
+							FieldTemplating: 'sap/fe/macros/field/FieldTemplating'
+	}"
+>
+	<mdc:Field
+		unittest:id="MacroDataField"
+		core:require="{FieldRuntime: 'sap/fe/macros/field/FieldRuntime'}"
+		delegate="{= FIELD.computeFieldBaseDelegate('sap/fe/macros/field/FieldBaseDelegate', ${this>formatOptions/retrieveTextFromValueList})}"
+		id="{= ${this>idPrefix} ? ID.generate([${this>idPrefix}, 'Field-edit']) : undefined }"
+		log:sourcePath="{this>dataSourcePath}"
+		value="{this>valueBindingExpression}"
+		placeholder="{property>$Path@com.sap.vocabularies.UI.v1.Placeholder@@MODEL.value}"
+		editMode="{this>editMode}"
+		width="100%"
+		required="{this>requiredExpression}"
+		additionalValue="{this>textBindingExpression}"
+		display="{= UI.getFieldDisplay(${property>@@UI.getConverterContext}, ${this>formatOptions/displayMode}, ${this>editModeAsObject})}"
+		multipleLines="{= FieldTemplating.getMultipleLinesForDataField(${this>}, ${property>$Path/$Type}, ${property>$Path@com.sap.vocabularies.UI.v1.MultiLineText}) }"
+		fieldHelp="{= ${valueHelpProperty>@@Property.hasValueHelp} ? ValueHelpTemplating.generateID(${this>_vhFlexId},${this>vhIdPrefix},${property>@@Property.getRelativePropertyPath},${valueHelpProperty>@@Property.getRelativePropertyPath}) : undefined}"
+		fieldGroupIds="{this>fieldGroupIds}"
+		change="FieldRuntime.handleChange($controller, $event)"
+		liveChange="{= ${this>collaborationEnabled} ? 'FieldRuntime.handleLiveChange' : undefined}"
+		textAlign="{parts: [{path:'dataField>'}, {path:'this>formatOptions'}, {path:'property>@@FIELD.getPropertyCollection'}, {path:'this>editModeAsObject'}, {path:'property>@@UI.getConverterContext'}], formatter:'FIELD.getTypeAlignment'}"
+		validateFieldGroup="FieldRuntime.onValidateFieldGroup($controller, $event)"
+		ariaLabelledBy="{this>ariaLabelledBy}"
+		label="{dataField>@@FIELD.computeLabelText}"
+	>
+		<template:if
+			test="{= (${property>$Path/$Type} === 'Edm.String') &amp;&amp;	${property>$Path@com.sap.vocabularies.UI.v1.MultiLineText} }"
+		>
+			<!-- MultiLineText on Object Page -->
+			<mdc:contentEdit>
+				<TextArea
+					value="{this>valueBindingExpression}"
+					required="{this>requiredExpression}"
+					rows="{this>formatOptions/textLinesEdit}"
+					growing="{= ${this>formatOptions/textMaxLines} > 0 ? true : undefined}"
+					growingMaxLines="{this>formatOptions/textMaxLines}"
+					width="100%"
+					change="FieldRuntime.handleChange($controller, $event)"
+					fieldGroupIds="{this>fieldGroupIds}"
+				/>
+			</mdc:contentEdit>
+		</template:if>
+		<template:if test="{this>collaborationEnabled}">
+			<mdc:layoutData>
+				<FlexItemData growFactor="9" />
+			</mdc:layoutData>
+		</template:if>
+	</mdc:Field>
+</core:FragmentDefinition>

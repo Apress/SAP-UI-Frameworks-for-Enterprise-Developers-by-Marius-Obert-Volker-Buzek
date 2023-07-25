@@ -1,0 +1,267 @@
+/* ======================================= */
+/* CSS for control sap.ushell/SearchCEP*/
+/* Base theme                           */
+/* ======================================= */
+#PlaceHolderSearchField>.sapMSFF {
+  height: 1.8rem !important;
+}
+
+#CEPSearchField>.sapMSFF {
+  height: 1.8rem !important;
+}
+
+.sapUshellCEPSearchCenter {
+  margin: auto;
+}
+
+.sapUshellCEPListDivider:after {
+  content : "";
+  position: absolute;
+  bottom: 0.3rem;
+  left: 0.6rem;
+  height  : 1px;
+  width   : 96%;
+  border-bottom: 1px solid @sapUiListBorderColor;
+}
+
+.sapUshellCEPListCenter {
+  top: 0.1rem !important;
+  margin: auto;
+  padding: .3rem 0rem 0rem 0rem !important;
+  margin-bottom: 0.75rem;
+}
+.sapUshellCEPSearchFieldPopover {
+  top: 0.1rem !important;
+  //padding-left: .625rem !important;
+  box-shadow: 0 0 0 0.0625rem @sapContent_Shadow1 !important;
+}
+
+.sapUshellCEPSearchFieldMargin {
+  margin-top: 0.15rem;
+  margin-right: 0.425rem !important;
+  margin-left: 0.46rem !important;
+}
+/*
+ */
+#SearchHistoryList-trigger:focus {
+  outline: @sapUiContentFocusWidth @sapUiContentFocusStyle @sapUiContentFocusColor;
+  outline-offset: calc(-0.125rem - 0.0625rem);
+}
+
+#SearchHistoryList-trigger {
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+#FrequentlyUsedAppsList-trigger {
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+#ProductsList-trigger {
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+#SearchResultList-trigger {
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+#ExternalSearchAppsList-trigger {
+  margin-right: 0.5rem !important;
+  margin-left: 0.5rem !important;
+}
+
+#SearchHistoryList-trigger-content>.sapMGrowingListTrigger {
+  border-color: transparent;
+}
+
+#FrequentlyUsedAppsList-trigger:focus {
+  outline: @sapUiContentFocusWidth @sapUiContentFocusStyle @sapUiContentFocusColor;
+  outline-offset: calc(-0.125rem - 0.0625rem);
+}
+
+
+#FrequentlyUsedAppsList-trigger-content>.sapMGrowingListTrigger {
+  border-color: transparent;
+}
+
+#SearchResultList-trigger:focus {
+  outline: @sapUiContentFocusWidth @sapUiContentFocusStyle @sapUiContentFocusColor;
+  outline-offset: calc(-0.125rem - 0.0625rem);
+}
+
+
+#SearchResultList-trigger-content>.sapMGrowingListTrigger {
+  border-color: transparent;
+}
+
+#ProductsList-trigger:focus {
+  outline: @sapUiContentFocusWidth @sapUiContentFocusStyle @sapUiContentFocusColor;
+  outline-offset: calc(-0.125rem - 0.0625rem);
+}
+
+
+#ProductsList-trigger-content>.sapMGrowingListTrigger {
+  border-color: transparent;
+}
+
+#ExternalSearchAppsList-trigger:focus {
+  outline: @sapUiContentFocusWidth @sapUiContentFocusStyle @sapUiContentFocusColor;
+  outline-offset: calc(-0.125rem - 0.0625rem);
+}
+
+#ExternalSearchAppsList-trigger-content>.sapMGrowingListTrigger {
+  border-color: transparent;
+}
+
+#SearchHistoryList>.sapMGrowingList {
+  border-bottom: none;
+}
+
+#FrequentlyUsedAppsList>.sapMGrowingList {
+  border-bottom: none;
+}
+
+#SearchResultList>.sapMGrowingList {
+  border-bottom: none;
+}
+
+#ProductsList>.sapMGrowingList {
+  border-bottom: none;
+}
+
+#ExternalSearchAppsList>.sapMGrowingList {
+  border-bottom: none;
+}
+
+/*
+ */
+#SearchHistoryList-triggerText {
+  font-weight: normal;
+  text-align: left;
+  font-size: .9rem;
+  color: @sapLinkColor;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+#FrequentlyUsedAppsList-triggerText {
+  font-weight: normal;
+  text-align: left;
+  font-size: .9rem;
+  color: @sapLinkColor;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+#SearchResultList-triggerText {
+  font-weight: normal;
+  text-align: left;
+  font-size: .9rem;
+  color: @sapLinkColor;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+#ProductsList-triggerText {
+  font-weight: normal;
+  text-align: left;
+  font-size: .9rem;
+  color: @sapLinkColor;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+#ExternalSearchAppsList-triggerText {
+  font-weight: normal;
+  text-align: left;
+  font-size: .9rem;
+  color: @sapLinkColor;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+/*
+ */
+#SearchHistoryList-trigger-content>.sapMGrowingListTrigger>.sapMGrowingListDescription {
+  display: none !important;
+}
+
+#FrequentlyUsedAppsList-trigger-content>.sapMGrowingListTrigger>.sapMGrowingListDescription {
+  display: none !important;
+}
+
+#SearchResultList-trigger-content>.sapMGrowingListTrigger>.sapMGrowingListDescription {
+  display: none !important;
+}
+
+#ProductsList-trigger-content>.sapMGrowingListTrigger>.sapMGrowingListDescription {
+  display: none !important;
+}
+
+#ExternalSearchAppsList-trigger-content>.sapMGrowingListTrigger>.sapMGrowingListDescription {
+  display: none !important;
+}
+/*
+ */
+#FrequentlyUsedAppsList>.sapMListHdrText {
+  font-size: 0.75rem;
+  text-overflow: ellipsis;
+  padding-bottom: .4rem;
+  height: 1rem;
+  line-height: .6rem;
+  padding: 0 1rem;
+  border-color: transparent;
+  color: @sapContent_LabelColor;
+}
+
+#ProductsList>.sapMListHdrText {
+  font-size: 0.75rem;
+  text-overflow: ellipsis;
+  padding-bottom: .4rem;
+  height: 1rem;
+  line-height: .6rem;
+  padding: 0 1rem;
+  border-color: transparent;
+  color: @sapContent_LabelColor;
+}
+
+#ExternalSearchAppsList>.sapMListHdrText {
+  font-size: 0.75rem;
+  text-overflow: ellipsis;
+  padding-bottom: .4rem;
+  height: 1rem;
+  line-height: .6rem;
+  padding: 0 1rem;
+  border-color: transparent;
+  color: @sapContent_LabelColor;
+}
+
+#CEPSearchField-search {
+  //height: 1.75rem;
+  //width: 1.75rem;
+  //margin-top: auto;
+  //margin-bottom: auto;
+  //margin-right: 6px;
+  line-height: 1.8;
+}
+
+#PlaceHolderSearchField-search {
+  //height: 1.75rem;
+  //width: 1.75rem;
+  //margin-top: auto;
+  //margin-bottom: auto;
+  //margin-right: 6px;
+  line-height: 1.8;
+}

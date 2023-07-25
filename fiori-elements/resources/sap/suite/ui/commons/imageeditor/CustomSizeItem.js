@@ -1,0 +1,1 @@
+sap.ui.define(["sap/ui/core/Element"],function(e){"use strict";var t=e.extend("sap.suite.ui.commons.imageeditor.CustomSizeItem",{metadata:{properties:{width:{type:"float",defaultValue:0},height:{type:"float",defaultValue:0},label:{type:"string",defaultValue:""},icon:{type:"sap.ui.core.URI",defaultValue:""},relative:{type:"boolean",defaultValue:false}}}});return t});

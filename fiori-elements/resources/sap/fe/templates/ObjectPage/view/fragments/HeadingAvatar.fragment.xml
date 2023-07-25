@@ -1,0 +1,17 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:unittest="http://schemas.sap.com/sapui5/preprocessorextension/sap.fe.unittesting/1"
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+>
+	<template:if test="{avatar>}">
+		<Avatar
+			class="sapUiSmallMarginEnd"
+			src="{avatar>src}"
+			initials="{avatar>initials}"
+			fallbackIcon="{avatar>fallbackIcon}"
+			displayShape="{avatar>displayShape}"
+			displaySize="S"
+		/>
+	</template:if>
+</core:FragmentDefinition>

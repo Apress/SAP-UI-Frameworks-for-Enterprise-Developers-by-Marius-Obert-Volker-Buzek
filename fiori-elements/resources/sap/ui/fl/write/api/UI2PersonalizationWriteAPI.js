@@ -1,0 +1,6 @@
+/*!
+ * OpenUI5
+ * (c) Copyright 2009-2023 SAP SE or an SAP affiliate company.
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ */
+sap.ui.define(["sap/ui/fl/apply/_internal/flexState/UI2Personalization/UI2PersonalizationState","sap/ui/fl/apply/_internal/flexState/FlexState","sap/ui/fl/apply/_internal/ChangesController","sap/base/util/restricted/_omit"],function(e,t,r,n){"use strict";var o={create:function(o){var a=r.getFlexControllerInstance(o.selector);o.reference=a.getComponentName();if(!o.reference||!o.containerKey||!o.itemName||!o.content||!o.category||!o.containerCategory){return Promise.reject(new Error("not all mandatory properties were provided for the storage of the personalization"))}return t.initialize({componentId:o.selector.getId()}).then(function(){return e.setPersonalization(n(o,["selector"]))})},deletePersonalization:function(n){var o=r.getFlexControllerInstance(n.selector);n.reference=o.getComponentName();if(!n.reference||!n.containerKey||!n.itemName){return Promise.reject(new Error("not all mandatory properties were provided for the deletion of the personalization"))}return t.initialize({componentId:n.selector.getId()}).then(function(){return e.deletePersonalization(n.reference,n.containerKey,n.itemName)})}};return o});

@@ -1,0 +1,31 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:uxap="sap.uxap"
+	xmlns:unittest="http://schemas.sap.com/sapui5/preprocessorextension/sap.fe.unittesting/1"
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	template:require="{
+		OP: 'sap/fe/templates/ObjectPage/ObjectPageTemplating',
+		DATAFIELDHELPER : 'sap/fe/core/converters/helpers/DataFieldHelper'
+	}"
+>
+	<FlexBox>
+		<template:if test="{entityType>@com.sap.vocabularies.UI.v1.HeaderInfo/Description}">
+			<template:if test="{= !DATAFIELDHELPER.isHeaderStaticallyHidden(${headerInfo>Description@@UI.getDataModelObjectPath})}">
+				<Label
+					text="{= OP.getExpressionForDescription(${headerInfo>@@UI.getConverterContext}, ${fullContextPath>@@UI.getDataModelObjectPath})}"
+					wrapping="true"
+				/>
+			</template:if>
+		</template:if>
+	</FlexBox>
+	<MessageStrip
+		visible="{= ${internal>OPMessageStripVisibility} || false }"
+		text="{internal>OPMessageStripText}"
+		type="{internal>OPMessageStripType}"
+		showIcon="true"
+		showCloseButton="true"
+		class="sapUiSmallMarginTop"
+		close=".handlers.closeOPMessageStrip"
+	/>
+</core:FragmentDefinition>

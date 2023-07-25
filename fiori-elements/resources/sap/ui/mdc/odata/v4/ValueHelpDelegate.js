@@ -1,0 +1,6 @@
+/*!
+ * OpenUI5
+ * (c) Copyright 2009-2023 SAP SE or an SAP affiliate company.
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ */
+sap.ui.define(["../../ValueHelpDelegate","sap/ui/mdc/odata/v4/TypeUtil","sap/base/Log","sap/ui/model/FilterType","sap/base/util/deepEqual"],function(e,t,i,n,r){"use strict";var a=Object.assign({},e);a.isSearchSupported=function(e,t,i){return!!i.changeParameters};a.updateBindingInfo=function(t,i,n){e.updateBindingInfo(t,i,n);if(i.getFilterFields()==="$search"){var r=i._getPriorityFilterBar();var a=i.isTypeahead()?i._getPriorityFilterValue():r&&r.getSearch();if(this.adjustSearch){a=this.adjustSearch(t,i.isTypeahead(),a)}n.parameters.$search=a||undefined}};a.updateBinding=function(e,t,i){var r=t.getRootBinding()||t;if(!r.isSuspended()){r.suspend()}t.changeParameters(i.parameters);t.filter(i.filters,n.Application);if(r.isSuspended()){r.resume()}};a.executeFilter=function(e,t,i){t.getContexts(0,i);return Promise.resolve(this.checkListBindingPending(e,t,i)).then(function(){return t})};a.checkListBindingPending=function(e,t,i){if(!t||t.isSuspended()){return false}return t.requestContexts(0,i).then(function(e){return e.length===0})};a.getTypeUtil=function(e){return t};return a});

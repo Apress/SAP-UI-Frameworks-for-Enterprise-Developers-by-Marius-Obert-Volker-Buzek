@@ -1,0 +1,261 @@
+/* =================================================== */
+/* CSS for sap.ui.unfied.ShellAppTitle.control (base)  */
+/* =================================================== */
+
+/*************** AllMyApps View ***************/
+
+#allMyAppsView--sapUshellAllMyAppsDetailsPage {
+  overflow-x : hidden;
+}
+
+.sapUshellAllMyAppsBusyIndicator {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  height: auto;
+}
+
+.sapUshellAllMyAppsEmptyDetailsPageText {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  height: auto;
+}
+
+/*************** AllMyApps Details Grid ***************/
+
+/* AllMyApp width of the details area on phone*/
+.sap-phone {
+  .sapUshellAllMyAppsDetailsGrid {
+    width: 20rem;
+  }
+}
+
+#allMyAppsView--sapUshellDetailsPageHeaderBar {
+  text-align : left;
+  height: 2rem;
+  background: @sapUiGlobalBackgroundColor;
+}
+
+.sapUiSizeCozy #allMyAppsView--sapUshellDetailsPageHeaderBar {
+  height: 3rem;
+}
+
+#allMyAppsView--sapUshellAllMyAppsDetailsHeaderLabel {
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  max-width: ~'calc(100% - 1.5rem)';
+  display: block;
+}
+
+/* AllMyApp app item for desktop and tablet*/
+.sap-desktop {
+  .sapUshellAllMyAppsListItem {
+    width: 17.5rem;
+    display: inline-flex;
+  }
+}
+
+/* AllMyApp app item for tablet orientation: landscape*/
+.sap-tablet {
+  .sapUshellAllMyAppsListItem {
+    @media (orientation: landscape) {
+      width: 17.5rem;
+      display: inline-flex;
+    }
+  }
+}
+
+/* AllMyApp app item for tablet orientation: portrait*/
+.sap-tablet {
+  .sapUshellAllMyAppsListItem {
+    @media (orientation: portrait) {
+      width: 15.55rem;
+      display: inline-flex;
+    }
+  }
+}
+
+.sap-phone {
+  .sapUshellAllMyAppsListItem {
+    width: 100%;
+  }
+}
+
+/* AllMyApp: For avoiding the 0.5rem padding left and right for grid element (by UI5) */
+#allMyAppsView--sapUshellAllMyAppsMasterDetail {
+  .sapUiRespGrid.sapUiRespGridHSpace1 {
+    padding: 0;
+  }
+}
+
+.sapUshellAllMyAppsItemSubTitle {
+  margin-top : 0;
+}
+
+/* AllMyApp: app item*/
+#allMyAppsView--sapUshellAllMyAppsMasterDetail {
+  .sapUshellAllMyAppsListItem {
+    height: 3.25rem;
+  /* text vertically aligned in the middle */
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.4rem;
+    align-items: baseline;
+  }
+}
+
+.sapUshellAllMyAppsDetailHeaderBar {
+  padding-left: 0.75rem;
+}
+
+.sapUshellAllMyAppsCustomPanel {
+  margin-top: 0.5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+/** --------------------------------------- **/
+/** Styles for Shell Title's Navigation Menu**/
+/** --------------------------------------- **/
+
+/** Hierarchy Items - (List Items) Icon Styles **/
+.sapUshellNavigationMenuListItems,
+.sapUshellNavigationMenuTitleItem {
+  position: relative;
+  border-bottom: none;
+  height: 3rem;
+}
+
+// show longer line for the higher items with description
+.sapUshellNavigationMenuListItems.sapMSLIWithDescription:not(:last-child) .sapMLIBContent:after {
+  content: "";
+  position: absolute;
+  left: 1.563rem; // 25px
+  bottom: 0;
+  width: 1px;
+  height: 1.75rem;
+}
+
+.sapUshellNavigationMenuListItems:not(:first-child) .sapMLIBContent:before {
+  content: "";
+  position: absolute;
+  left: 1.563rem; // 25px
+  top: 0;
+  width: 1px;
+  height: 0.75rem;
+}
+
+.sapUshellNavigationMenuListItems .sapMSLIImgIcon,
+.sapUshellNavigationMenuTitleItem .sapMSLIImgIcon {
+  font-size: 1rem;
+}
+
+/** Hierarchy Items - (List Items) - Text **/
+.sapUshellNavigationMenuListItems .sapMSLITitleOnly,
+.sapUshellNavigationMenuTitleItem .sapMSLITitleOnly {
+  font-size: 0.875rem;
+}
+
+.sapUshellNavigationMenuListItems .sapMSLITitle {
+  font-size: 0.875rem;
+}
+.sapUshellNavigationMenuListItems .sapMSLIDescription {
+  font-size: 0.75rem;
+}
+
+/** Shell Application Title control **/
+.sapUshellAppTitle {
+  height: 100%;
+  max-width: 100%; /* required for ellipses */
+  box-sizing: border-box;
+  padding: 0 0.625rem; // 10px left/right
+  line-height: 2.25rem;
+  border-radius: 0.25rem;
+
+  display: flex;
+  flex-shrink: 1;
+}
+
+.sapUshellAppTitleMenuIcon {
+  line-height: inherit;
+}
+
+.sapUshellAppTitleClickable,
+.sapUshellAppTitleClickable .sapUiIcon {
+  cursor: pointer;
+}
+
+#shellAppTitle:focus-within {
+  border: none;
+  outline-style: dotted;
+  outline-width: 1px;
+  outline-offset: 0;
+}
+
+.sapUshellAppTitle:focus {
+  outline: none;
+}
+
+/** Shell Navigation Menu - Popover**/
+.sapUshellAppTitleNavigationMenuPopover {
+  border-radius: 0.125rem;
+}
+
+/** Shell Navigation Menu - Popover Header override **/
+.sapUshellAppTitleNavigationMenuPopover .sapMPopoverHeader {
+  width: 100%;
+  height: 0.5rem;
+  box-shadow: none;
+  border-bottom: none;
+}
+
+.sapUshellAppTitleNavigationMenuPopover .sapMPopoverScroll {
+  // prevent a horizontal scroll bar in IE
+  max-width: 100%;
+}
+
+#sapUshellNavRelatedAppsFlexBox {
+  flex-wrap: wrap;
+}
+
+/** Shell Navigation Menu - Mini Tiles (of relatedApps)**/
+.sapUshellNavMiniTile {
+  border-radius: 0.125rem;
+  height: 5rem;
+  width: 5rem;
+  padding: 0.5rem;
+  position: relative;
+  margin-left: 0.375rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+}
+
+/** Shell Navigation Menu - Mini Tiles - Title **/
+.sapUshellNavMiniTileTitle {
+  font-size: 0.875rem;
+}
+
+/** Shell Navigation Menu - Mini Tiles - Subtitle **/
+.sapUshellNavMiniTileSubtitle {
+  font-size: 0.75rem;
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0.5rem;
+}
+
+/** Shell Navigation Menu - Mini Tiles - Icon **/
+.sapUshellNavMiniTileIcon {
+  bottom: 0.5rem;
+  right: 0.5rem;
+  position: absolute;
+}
+
+#sapUshellRelatedAppsItems label {
+  padding: 0.75rem 0.625rem 0.5rem;
+  font-size: 1rem;
+}
+
+.sapUiSizeCompact .sapUshellNavigationMenuListItems {
+  height: 3rem;
+}

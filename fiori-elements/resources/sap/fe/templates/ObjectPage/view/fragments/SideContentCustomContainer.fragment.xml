@@ -1,0 +1,18 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:fpm="sap.fe.macros.fpm"
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	template:require="{
+		ID: 'sap/fe/core/helpers/StableIdHelper',
+		COMMON: 'sap/fe/macros/CommonHelper'
+	}"
+>
+	<template:with path="subSection>sideContent" var="sideContent">
+		<template:if test="{= ${subSection>sideContent} !== undefined }">
+			<HBox class="sapUiSmallMarginBegin">
+				<fpm:CustomFragment id="{sideContent>id}" fragmentName="{sideContent>template}" />
+			</HBox>
+		</template:if>
+	</template:with>
+</core:FragmentDefinition>

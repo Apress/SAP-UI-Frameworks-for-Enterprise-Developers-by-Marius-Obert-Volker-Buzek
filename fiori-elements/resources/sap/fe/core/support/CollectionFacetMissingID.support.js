@@ -1,0 +1,5 @@
+/*!
+ * SAP UI development toolkit for HTML5 (SAPUI5)
+ *      (c) Copyright 2009-2023 SAP SE. All rights reserved
+ */
+sap.ui.define(["sap/fe/core/converters/helpers/IssueManager","sap/fe/core/support/CommonHelper"],function(e,t){"use strict";var i={};var o=t.getIssueByCategory;var s=t.Categories;var a=t.Audiences;var n=e.IssueCategory;const c={id:"collectionFacetMissingId",title:"CollectionFacet: Missing IDs",minversion:"1.85",audiences:[a.Application],categories:[s.Usage],description:"A collection facet requires an ID in the annotation file to derive a control ID from it.",resolution:"Always provide a unique ID to a collection facet.",resolutionurls:[{text:"CollectionFacets",href:"https://ui5.sap.com/#/topic/facfea09018d4376acaceddb7e3f03b6"}],check:function(e,t){o(e,t,n.Facets,"MissingID")}};function r(){return[c]}i.getRules=r;return i},false);

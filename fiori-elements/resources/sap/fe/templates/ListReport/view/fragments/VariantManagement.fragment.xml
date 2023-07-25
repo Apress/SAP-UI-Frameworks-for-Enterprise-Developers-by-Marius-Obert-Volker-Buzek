@@ -1,0 +1,31 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:v="sap.ui.fl.variants"
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns:unittest="http://schemas.sap.com/sapui5/preprocessorextension/sap.fe.unittesting/1"
+	template:require="{
+		ID: 'sap/fe/core/helpers/StableIdHelper'
+	}"
+>
+	<template:if
+		test="{= ${viewData>/variantManagement} === 'Page' || (${viewData>/variantManagement} === 'Control' &amp;&amp; !${converterContext>hideFilterBar})}"
+	>
+		<template:then>
+			<v:VariantManagement
+				id="{= ${viewData>/variantManagement} === 'Control' ? ID.generate([ ${converterContext>filterBarId}, 'VariantManagement']) : 'fe::PageVariantManagement'}"
+				unittest:id="{= ${viewData>/variantManagement} === 'Control' ? 'listReportVMControlTest' : 'listReportVMPageTest'}"
+				for="{converterContext>variantManagement/targetControlIds}"
+				showSetAsDefault="true"
+				select=".handlers.onVariantSelected"
+				save=".handlers.onVariantSaved"
+				headerLevel="H2"
+				displayTextForExecuteOnSelectionForStandardVariant="{= ${viewData>/initialLoad} === 'Auto' ? ${sap.fe.i18n>T_LR_VARIANT_APPLY_AUTOMATICALLY_WHEN_FILTER_SET} : undefined }"
+				executeOnSelectionForStandardDefault="{= ${viewData>/initialLoad} === 'Enabled' || ${viewData>/initialLoad} === 'Auto'}"
+			/>
+		</template:then>
+		<template:else>
+			<Title unittest:id="listReportTitleTest" text="{= ${manifest>/sap.app/subTitle} || ${manifest>/sap.app/title} }" level="H2" />
+		</template:else>
+	</template:if>
+</core:FragmentDefinition>

@@ -1,0 +1,1 @@
+module.exports={ObjectPage:{appId:"com.apress.beershop",componentId:"BeersObjectPage",entitySet:"Beers"}};

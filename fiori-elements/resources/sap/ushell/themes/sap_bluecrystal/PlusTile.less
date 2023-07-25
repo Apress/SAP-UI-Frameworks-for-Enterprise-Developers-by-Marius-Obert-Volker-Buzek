@@ -1,0 +1,24 @@
+/* ============================================= */
+/* CSS for control sap.ushell/PlusTile.control sap_bluecrystal theme*/
+/* ============================================= */
+
+/* General Plus Tile */
+
+.sapUshellTile.sapUshellPlusTile {
+
+    background-color:   fade(@sapUiTextInverted,40);
+    border: 1px solid fade(@sapUiTextInverted,40);
+
+    &:hover {
+        background-color: fade(@sapUiTextInverted,60);
+    }
+    
+    &:hover .sapUiIcon {
+        color: @sapUiTextInverted;
+    }
+    
+    .sapUiIcon {
+        color:                @sapUiTextInverted;
+        font-size:            1.8em;
+    }
+}

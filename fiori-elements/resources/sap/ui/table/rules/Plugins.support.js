@@ -1,0 +1,6 @@
+/*!
+ * OpenUI5
+ * (c) Copyright 2009-2023 SAP SE or an SAP affiliate company.
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ */
+sap.ui.define(["./TableHelper.support","sap/ui/support/library"],function(e,i){"use strict";var t=i.Categories;var l=i.Severity;var n=e.normalizeRule({id:"Plugins",minversion:"1.64",categories:[t.Usage],title:"Plugins validation",description:"Checks the number and type of plugins which are applied to the table. Only one MultiSelectionPlugin can be applied. "+"No other plugins are allowed.",resolution:"Check if multiple MultiSelectionPlugins are applied, or a plugin of another type is applied to the table.",check:function(i,t,n){var a=e.find(n,true,"sap.ui.table.Table");for(var r=0;r<a.length;r++){var u=a[r];var o=u.getPlugins();if(o.length>1){e.reportIssue(i,"Only one plugin can be applied to the table",l.High,u.getId())}else if(o.length==1){var p=o[0];if(!p.isA("sap.ui.table.plugins.MultiSelectionPlugin")){e.reportIssue(i,"Only one MultiSelectionPlugin can be applied to the table",l.High,u.getId())}}}}});return[n]},true);

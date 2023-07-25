@@ -1,0 +1,23 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m"
+	template:require="{
+		FIELD: 'sap/fe/macros/field/FieldHelper'
+	}"
+>
+	<template:with path="property>" var="originalProperty">
+		<template:if test="{this>filterFieldValueHelp}">
+			<template:then>
+				<template:with path="property>" helper="FIELD.valueHelpPropertyForFilterField" var="property">
+					<core:Fragment fragmentName="sap.fe.macros.internal.valuehelp.ValueHelpContent" type="XML" />
+				</template:with>
+			</template:then>
+			<template:else>
+				<template:with path="property>" helper="FIELD.valueHelpProperty" var="property">
+					<core:Fragment fragmentName="sap.fe.macros.internal.valuehelp.ValueHelpContent" type="XML" />
+				</template:with>
+			</template:else>
+		</template:if>
+	</template:with>
+</core:FragmentDefinition>

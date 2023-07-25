@@ -1,0 +1,6 @@
+<mvc:View width="100%" controllerName="sap.ushell.components.shell.Settings.search.Search"
+  xmlns="sap.m"
+  xmlns:mvc="sap.ui.core.mvc">
+
+  <VBox id="searchContent" class="sapUshellUserSettingDetailContent" />
+</mvc:View>

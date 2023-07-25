@@ -1,0 +1,59 @@
+<mvc:View
+    controllerName="sap.ushell.components.shell.Notifications.Notifications"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    class="sapUshellNotificationsView">
+    <IconTabBar
+        id="notificationIconTabBar"
+        backgroundDesign="Transparent"
+        headerBackgroundDesign="Transparent"
+        expandable="false"
+        selectedKey="sapUshellNotificationIconTabByDate"
+        select="onTabSelected"
+        class="sapUshellNotificationTabBar">
+        <items>
+            <IconTabFilter
+                id="sapUshellNotificationIconTabByDate"
+                key="sapUshellNotificationIconTabByDate"
+                text="{i18n>notificationsSortByDate}">
+                <NotificationList
+                    id="sapUshellNotificationsListDate"
+                    class="sapUshellNotificationsList sapContrastPlus"
+                    showSeparators="Inner"
+                    mode="None"
+                    noDataText="{i18n>noNotificationsMsg}"
+                    growing="true"
+                    growingThreshold="10"
+                    growingScrollToLoad="true"
+                    updateStarted=".onListUpdateStarted"
+                    items="{path: '/notificationsByDateDescending/aNotifications', templateShareable: true}">
+                    <core:Fragment fragmentName="sap.ushell.components.shell.Notifications.NotificationsListItem" type="XML"/>
+                </NotificationList>
+            </IconTabFilter>
+            <IconTabFilter
+                id="sapUshellNotificationIconTabByType"
+                key="sapUshellNotificationIconTabByType"
+                text="{i18n>notificationsSortByType}">
+                <core:Fragment fragmentName="sap.ushell.components.shell.Notifications.NotificationsGroupListItem" type="XML"/>
+            </IconTabFilter>
+            <IconTabFilter
+                id="sapUshellNotificationIconTabByPrio"
+                key="sapUshellNotificationIconTabByPrio"
+                text="{i18n>notificationsSortByPriority}">
+                <NotificationList
+                    id="sapUshellNotificationsListPriority"
+                    class="sapUshellNotificationsList sapContrastPlus"
+                    mode="None"
+                    noDataText="{i18n>noNotificationsMsg}"
+                    growing="true"
+                    growingThreshold="10"
+                    growingScrollToLoad="true"
+                    updateStarted=".onListUpdateStarted"
+                    items="{path: '/notificationsByPriorityDescending/aNotifications', templateShareable: true}">
+                    <core:Fragment fragmentName="sap.ushell.components.shell.Notifications.NotificationsListItem" type="XML"/>
+                </NotificationList>
+            </IconTabFilter>
+        </items>
+    </IconTabBar>
+</mvc:View>

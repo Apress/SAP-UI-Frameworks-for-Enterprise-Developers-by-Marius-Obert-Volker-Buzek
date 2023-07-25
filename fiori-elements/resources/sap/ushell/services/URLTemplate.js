@@ -1,0 +1,2 @@
+// Copyright (c) 2009-2023 SAP SE, All Rights Reserved
+sap.ui.define(["sap/ushell/utils","sap/base/Log"],function(e,t){"use strict";function s(){this._init.apply(this,arguments)}s.prototype._init=function(e){this.oAdapter=e};s.prototype.handlePostTemplateProcessing=function(e,t,s){if(this.oAdapter&&this.oAdapter.handlePostTemplateProcessing){return this.oAdapter.handlePostTemplateProcessing(e,t,s)}else{return Promise.resolve(e)}};s.hasNoAdapter=false;s.useConfiguredAdapterOnly=true;return s});

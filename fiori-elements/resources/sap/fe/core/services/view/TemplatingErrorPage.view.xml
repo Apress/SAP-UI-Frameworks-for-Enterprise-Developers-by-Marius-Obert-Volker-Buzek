@@ -1,0 +1,8 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="sap.fe.core.services.view.TemplatingErrorPage">
+	<MessagePage
+		showHeader="false"
+		icon="sap-icon://message-error"
+		text="{sap.fe.i18n>T_TEMPLATING_ERROR_PAGE_SAPFE_APPSTART_TEMPLATING_FAILED}"
+		description="{= ${error>/message} ? ${error>/message} : ''}"
+	/>
+</mvc:View>

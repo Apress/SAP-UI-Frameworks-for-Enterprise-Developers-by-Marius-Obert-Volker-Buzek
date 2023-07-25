@@ -1,0 +1,2 @@
+// Copyright (c) 2009-2023 SAP SE, All Rights Reserved
+sap.ui.define(["sap/m/ListItemBaseRenderer","sap/ui/core/Renderer"],function(e,s){"use strict";var t=s.extend(e);t.apiVersion=2;t.renderLIAttributes=function(e){e.class("sapUshellGroupLI");e.class("sapUshellGroupListItem")};t.renderLIContent=function(e,s){e.openStart("div",s);e.class("sapMSLIDiv");e.class("sapMSLITitleDiv");if(!s.getVisible()){e.style("display","none")}e.openEnd();e.openStart("div",s);e.class("sapMSLITitleOnly");e.openEnd();e.text(s.getTitle());e.close("div");e.close("div")};return t},true);

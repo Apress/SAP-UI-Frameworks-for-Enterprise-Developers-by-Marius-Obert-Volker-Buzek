@@ -1,0 +1,43 @@
+/* ============================================================ */
+/* CSS for control sap.suite.ui.microchart/ComparisonMicroChart */
+/* Fiori 3 High Contrast White Theme                            */
+/* ============================================================ */
+
+.sapSuiteCpMCChartItemTitle {
+	color: @sapUiHcStandardForeground;
+}
+
+.sapSuiteCpMCChartBar > div {
+	height: 0.25rem;
+}
+
+.sapSuiteCpMCChartBar.sapSuiteCpMCViewTypeNormal.sapSuiteCpMCSizeS > div,
+.sapSuiteCpMCChartBar.sapSuiteCpMCViewTypeNormal.sapSuiteCpMCSizeXS > div,
+.sapSuiteCpMCChartBar.sapSuiteCpMCViewTypeNormal.sapSuiteCpMCResponsive > div {
+	height: 0.25rem;
+}
+
+.sapSuiteCpMCNegPosNoValue {
+	border-left: none;
+}
+
+.sapSuiteCpMCNotLastBarPart {
+	border-right: 2px solid @sapUiFieldBackground;
+}
+
+.sapSuiteCpMCNotFirstBarPart {
+	border-left: 2px solid @sapUiFieldBackground;
+}
+
+html.sap-desktop .sapSuiteCpMCChartContent[tabindex]:focus {
+	outline: 2px dotted @sapUiContentFocusColor;
+}
+
+.sapSuiteCpMCChartBarNegNoValue,
+.sapSuiteCpMCChartBarNoValue {
+	border: 1px solid @sapUiChartDataPointBGBorderColor;
+}
+
+.sapSuiteCpMCChartBarValue {
+	border: 1px solid @sapUiChartDataPointBGBorderColor;
+}

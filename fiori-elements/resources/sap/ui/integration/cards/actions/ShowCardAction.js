@@ -1,0 +1,6 @@
+/*!
+ * OpenUI5
+ * (c) Copyright 2009-2023 SAP SE or an SAP affiliate company.
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ */
+sap.ui.define(["./BaseAction","sap/m/Dialog","sap/ui/core/Core","sap/ui/dom/jquery/Focusable"],function(e,t,a){"use strict";var o=e.extend("sap.ui.integration.cards.actions.ShowCardAction",{metadata:{library:"sap.ui.integration"}});o.prototype.execute=function(){var e=this.getParameters()||{},t=this.getCardInstance(),o=t.getHostInstance(),i;if(e._cardId){i=a.byId(e._cardId)}else{i=t._createChildCard(e)}if(o&&o.onShowCard){o.onShowCard(i,e);return}this._openDialog(i,t)};o.prototype._openDialog=function(e,a){var o=new t({content:[e],showHeader:false,ariaLabelledBy:e.getId(),escapeHandler:function(t){e.hide();t.resolve()}});o.addStyleClass("sapUiIntCardDialog");a.addDependent(o);e.startManifestProcessing();e.attachManifestApplied(function(){o.open()});e.attachEvent("_ready",function(){setTimeout(function(){this._setFocus(e,o)}.bind(this),0)}.bind(this));o.attachAfterClose(function(){o.destroy()})};o.prototype._setFocus=function(e,t){var a=e.getAggregation("_filter"),o=e.getAggregation("_content"),i=e.getAggregation("_footer"),n;n=a&&a.$().firstFocusableDomRef()||o&&o.$().firstFocusableDomRef()||i&&i.$().firstFocusableDomRef();if(n){t.setInitialFocus(n.id);n.focus()}};return o});

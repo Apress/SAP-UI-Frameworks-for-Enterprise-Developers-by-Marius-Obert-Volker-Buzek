@@ -1,0 +1,114 @@
+/* ============================================= */
+/* CSS for control sap.ushell/DynamicTile.control */
+/* ============================================= */
+
+/* LESS Variables */
+/* ============================================= */
+/* Dynamic Tile*/
+@_sap_ushell_DynamicTile_NumberFontSizeDesktop:        3rem;
+@_sap_ushell_DynamicTile_NumberFontSizePhone:          2rem;
+
+@_sap_ushell_DynamicTile_NumberMarginDesktop:          0.5rem;
+@_sap_ushell_DynamicTile_NumberMarginPhone:            0.19rem;
+
+@_sap_ushell_DynamicTile_NumberFactorFontSizeDesktop:  0.88rem;
+@_sap_ushell_DynamicTile_NumberFactorFontSizePhone:    0.88rem;
+
+@_sap_ushell_DynamicTile_BottomDesktop:    1.875rem;
+@_sap_ushell_DynamicTile_BottomPhone:      1.750rem;
+
+
+.sapUshellDynamicTileIndication {
+  height: inherit;
+  float: right;
+  text-align: center;
+}
+
+/* if available, a state arrow in front of the number */
+.sapUshellDynamicTileStateArrow {
+  /* standard: don't display */
+  display: none;
+}
+
+.sapUiMedia-Std-Desktop, .sapUiMedia-Std-Tablet {
+  .sapUshellDynamicTile{
+    .sapUshellDynamicTileData{
+      position:absolute;
+      bottom: @_sap_ushell_DynamicTile_BottomDesktop;
+      right: @_sap_ushell_TileBase_PaddingDesktopHorizontal;
+      width: @_sap_ushell_Tile_WidthDesktop - @_sap_ushell_TileBase_PaddingDesktopVertical;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    /* the number */
+    .sapUshellDynamicTileNumber {
+      float: right;
+      margin-left: @_sap_ushell_DynamicTile_NumberMarginDesktop;
+    }
+    /* the scaling factor for the number */
+    .sapUshellDynamicTileNumberFactor {
+      display: inline-block;
+    }
+  }
+
+  .sapUshellDynamicTileIndication{
+    line-height: 1.65rem;
+  }
+
+  .sapUshellDynamicTileStateArrow {
+    /* Desktop */
+    &.sapUshellDynamicTileDataUp, &.sapUshellDynamicTileDataDown {
+      display:   inline-block;
+      margin:    0.69rem 1px 0 2px;
+      border-left: 0.6rem solid transparent;
+      border-right: 0.6rem solid transparent;
+    }
+
+    &.sapUshellDynamicTileDataUp {
+      border-bottom: 0.65rem solid;
+    }
+
+    &.sapUshellDynamicTileDataDown {
+      border-top: 0.65rem solid;
+    }
+  }
+}
+
+.sapUiMedia-Std-Phone {
+  .sapUshellDynamicTile {
+    /* Phone */
+    .sapUshellDynamicTileData{
+      position:absolute;
+      bottom: @_sap_ushell_DynamicTile_BottomPhone;
+      right: @_sap_ushell_TileBase_PaddingPhoneHorizontal;
+      width: @_sap_ushell_Tile_WidthPhone - @_sap_ushell_TileBase_PaddingPhoneVertical;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    /* the number */
+    .sapUshellDynamicTileNumber {
+      float: right;
+      margin-left: @_sap_ushell_DynamicTile_NumberMarginPhone;
+    }
+    /* the scaling factor for the number */
+    .sapUshellDynamicTileNumberFactor {
+      display: inline-block;
+    }
+  }
+
+  .sapUshellDynamicTileIndication {
+    line-height: @_sap_ushell_DynamicTile_NumberFontSizeDesktop/2;
+
+  }
+
+  .sapUshellDynamicTileStateArrow {
+    /* Phone */
+    &.sapUshellDynamicTileDataUp, &.sapUshellDynamicTileDataDown {
+      display:       inline-block;
+      margin-top:    0.4rem;
+      border-left:   0.375rem solid transparent;
+      border-right:  0.375rem solid transparent;
+      border-bottom: 0.4375rem solid;
+    }
+  }
+}

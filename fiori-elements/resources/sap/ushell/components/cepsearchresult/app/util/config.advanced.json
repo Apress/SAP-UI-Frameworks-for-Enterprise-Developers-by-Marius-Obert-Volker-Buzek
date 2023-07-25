@@ -1,0 +1,136 @@
+{
+    "categories": [
+        {
+            "name": "all",
+            "title": "{i18n>CATEGORIES.All.Title}",
+            "shortTitle": "{i18n>CATEGORIES.All.ShortTitle}",
+            "icon": "sap-icon://search",
+            "card": {
+                "title": "{i18n>CATEGORIES.All.Card.Title}",
+                "subTitle": "{i18n>CATEGORIES.All.Card.SubTitle}"
+            },
+            "subCategories": [
+                {
+                    "name": "app",
+                    "pageSize": 10
+                },
+                {
+                    "name": "people",
+                    "pageSize": 3
+                }
+            ],
+            "noDataText": "{i18n>CATEGORIES.All.NoData}",
+            "loadingDataText": "{i18n>CATEGORIES.All.LoadingData}"
+        },
+        {
+            "name": "app",
+            "title": "{i18n>CATEGORIES.App.Title}",
+            "shortTitle": "{i18n>CATEGORIES.App.ShortTitle}",
+            "icon": "sap-icon://header",
+            "card": {
+                "title": "{i18n>CATEGORIES.App.Card.Title}",
+                "subTitle": "{i18n>CATEGORIES.App.Card.SubTitle}"
+            },
+            "extension": "module:sap/ushell/components/cepsearchresult/app/util/AppDataExtension",
+            "list": {
+                "paging": true,
+                "viewAll": true,
+                "views": ["List", "Tile"],
+                "defaultView": "Tile",
+                "noDataText": "{i18n>CATEGORIES.App.NoData}",
+                "loadingDataText": "{i18n>CATEGORIES.App.LoadingData}",
+                "item": {
+                    "template": { "Tile": "appTile", "List": "default" },
+                    "icon": {
+                        "src": "sap-icon://header",
+                        "backgroundColor": "Accent9",
+                        "shape": "Square",
+                        "size": "S"
+                    }
+                },
+                "data": {
+                    "extension": {
+                        "method": "getData",
+                        "args": [
+                            "{parameters>/searchTerm/value}",
+                            "{paginator>/skip}",
+                            "{paginator>/top}"
+                        ]
+                    },
+                    "path": "/results",
+                    "count": "/totalCount",
+                    "mapping": {
+                        "title": "{= ${object/visualization/title} || ${title}}",
+                        "description": "{= ${object/visualization/subtitle} || ${description}}",
+                        "icon": "{= ${object/visualization/icon} || ${icon}}",
+                        "url": "{= ${object/visualization/targetURL} || ${url}}",
+                        "_viz": "{object/visualization}"
+                    }
+                },
+                "paginator": {
+                    "currentPage": 1,
+                    "pageSize": 20
+                }
+            }
+        },
+        {
+            "name": "people",
+            "title": "{i18n>CATEGORIES.People.Title}",
+            "shortTitle": "{i18n>CATEGORIES.People.ShortTitle}",
+            "icon": "sap-icon://person-placeholder",
+            "card": {
+                "title": "{i18n>CATEGORIES.People.Card.Title}",
+                "subTitle": "{i18n>CATEGORIES.People.Card.SubTitle}"
+            },
+            "list": {
+                "paging": true,
+                "viewAll": true,
+                "views": ["List", "Card"],
+                "defaultView": "Card",
+                "noDataText": "{i18n>CATEGORIES.People.NoData}",
+                "loadingDataText": "{i18n>CATEGORIES.People.LoadingData}",
+                "item": {
+                    "template": { "List": "peopleList", "Card": "peopleCard" },
+                    "icon": {
+                        "src": "sap-icon://person",
+                        "backgroundColor": "Accent8",
+                        "shape": "Circle",
+                        "size": "S"
+                    }
+                },
+                "data": {
+                    "destinations": {
+                        "jam": {
+                            "name": "JAM"
+                        }
+                    },
+                    "request": {
+                        "url": "{{destinations.jam}}/api/v1/OData/Search?Query='{parameters>/searchTerm/value}'&Category='people'&SortBy='Relevance'&$expand=ObjectReference&$format=json",
+                        "withCredentials": true
+                    },
+                    "path": "/d/results",
+                    "count": "/count",
+                    "clientSplice": true,
+                    "mapping": {
+                        "title": "{ObjectReference/Title}",
+                        "description": "{description}",
+                        "initials": "{= ${ObjectReference/Title}.substring(0,1).toUpperCase() + ${ObjectReference/Title}.split(' ').pop().substring(0,1).toUpperCase()}",
+                        "iconBackgroundColor": "{= 'Accent' + (Math.floor(Math.random(${ObjectReference/Title}) * 10) + 1)}",
+                        "icon": "{image}",
+                        "mail": "{mail}",
+                        "mobile": "{mobile}",
+                        "work": "{work}",
+                        "location": "{location}",
+                        "manager": "{manager}",
+                        "status": "{=${status} || ''}"
+                    }
+                },
+                "paginator": {
+                    "currentPage": 3,
+                    "totalCount": "{/count}",
+                    "pageSize": 100
+                }
+            }
+        }
+    ]
+}

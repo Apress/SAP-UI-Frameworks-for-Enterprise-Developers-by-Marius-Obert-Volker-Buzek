@@ -1,0 +1,360 @@
+.sapCalculationBuilderItem {
+	background-color: @sapUiButtonBackground;
+	border: 1px solid @sapUiNeutralBorder;
+	color: @sapUiNeutralText;
+	display: inline-block;
+	font-size: @sapMFontMediumSize;
+	border-radius: 3px;
+	font-weight: bold;
+	position: relative;
+	user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Safari */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /*Edge */
+
+	&:focus {
+		outline: none;
+	}
+}
+
+.sapUiSizeCozy .sapCalculationBuilderItem {
+	font-size: @sapMFontLargeSize;
+}
+
+.sapCalculationBuilderItemContentWrapper {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+}
+
+.sapCalculationBuilderItemContent {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	height: 1.625rem;
+	width: 100%;
+	position: relative;
+}
+
+.sapUiSizeCozy .sapCalculationBuilderItemContent {
+	height: 2.5rem;
+}
+
+.sapCalculationBuilderItemLabel {
+	padding: 0 0.75rem;
+	pointer-events: none;
+	white-space: nowrap;
+}
+
+.sapCalculationBuilderReadOnly .sapCalculationBuilderItemLabel {
+	color: @sapUiButtonBorderColor;
+}
+.sapCalculationBuilderReadOnly .sapCalculationBuilderItem{
+	background-color: transparent;
+}
+
+.sapCalculationBuilderItemVariable .sapCalculationBuilderItemContent,
+.sapCalculationBuilderItemLiteral .sapCalculationBuilderItemContent,
+.sapCalculationBuilderUnknownItem .sapCalculationBuilderItemContent,
+.sapCalculationBuilderItemExpandButton {
+	&:hover {
+		border-color: @sapUiButtonHoverBorderColor;
+		background-color: @sapUiButtonHoverBackground;
+	}
+	&:active {
+		border-color: @sapUiButtonActiveBorderColor;
+		background-color: @sapActiveColor;
+		color: @sapUiButtonActiveTextColor;
+	}
+}
+
+.sapCalculationBuilderItemVariable,
+.sapCalculationBuilderItemLiteral,
+.sapCalculationBuilderUnknownItem {
+	border-color: @sapUiButtonBorderColor;
+	background-color: @sapUiButtonBackground;
+	color: @sapUiButtonTextColor;
+	display: flex;
+}
+
+.sapCalculationBuilderItemFunction,
+.sapCalculationBuilderItemBracket,
+.sapCalculationBuilderItemOperator {
+	background-color: @sapUiButtonLiteBackground;
+	border-color: @sapUiButtonLiteBorderColor;
+	color: @sapUiCalendarColorToday;
+
+	&:hover {
+		border-color: @sapUiButtonLiteHoverBorderColor;
+		background-color: @sapUiButtonLiteHoverBackground;
+	}
+	&:active {
+		border-color: @sapUiButtonLiteActiveBackground;
+		background-color: @sapUiButtonLiteActiveBorderColor;
+		color: @sapUiButtonActiveTextColor;
+	}
+}
+
+.sapCalculationBuilderItemCustomOperator.sapCalculationBuilderItemOperator {
+	width: auto !important;
+}
+
+.sapCalculationBuilderItemOperator {
+	width: 1.625rem;
+}
+
+.sapUiSizeCozy .sapCalculationBuilderItemOperator,
+.sapUiSizeCozy .sapCalculationBuilderItemBracket {
+	width: 2.25rem;
+}
+
+.sapCalculationBuilderBracket {
+	border-color: @sapUiButtonLiteHoverBorderColor;
+	background-color: @sapUiButtonLiteHoverBackground;
+}
+
+.sapCalculationBuilderItemOperator {
+	color: @sapUiButtonTextColor;
+}
+
+.sapCalculationBuilderItemFunctionLabel {
+	padding-right: 0;
+}
+
+.sapCalculationBuilderItemFunctionBracket {
+	padding-left: 0;
+
+	background-color: @sapUiButtonLiteBackground;
+	border-color: @sapUiButtonLiteBorderColor;
+}
+
+.sapCalculationBuilderItemOperatorLength-1 .sapCalculationBuilderItemLabel {
+	padding: 0;
+}
+
+.sapCalculationBuilderItemOperatorLength-2,
+.sapCalculationBuilderItemOperatorLength-3 {
+	width: auto;
+}
+
+.sapCalculationBuilderNewItem,
+.sapCalculationBuilderEmptyItem {
+	border-radius: 3px;
+	outline: none;
+	width: 1.625rem;
+	border: 1px solid @sapUiButtonTextColor;
+	background-color: @sapUiButtonLiteBackground;
+	color: @sapUiButtonTextColor;
+}
+
+.sapUiSizeCozy .sapCalculationBuilderNewItem,
+.sapUiSizeCozy .sapCalculationBuilderEmptyItem {
+	width: 2rem;
+}
+
+.sapCalculationBuilderNewItemIcon {
+	line-height: 2rem;
+	cursor: pointer;
+}
+
+.sapCalculationBuilderEmptyItemIcon {
+	cursor: pointer;
+}
+
+.sapCalculationBuilderItemPopupOperatorsAndInputWrapper {
+  margin: 1rem 1rem 0 1rem;
+}
+
+.sapCalculationBuilderItemPopupOptionItem {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid @sapUiListBorderColor;
+}
+
+.sapCalculationBuilderItemPopupOperators {
+	.sapMBtn {
+		padding: 0;
+	}
+	.sapMBtnInner {
+		height: 2rem;
+	}
+	.sapMBtnContent {
+		line-height: 30px;
+		font-size: 1.125rem;
+		font-weight: bold
+	}
+	.sapMBtnIcon {
+		line-height: 30px;
+	}
+}
+
+.sapCalculationBuilderItemPopupLiteralLabelAndInput {
+  padding-top: 1rem;
+}
+
+.sapCalculationBuilderSelected .sapCalculationBuilderItem {
+	z-index: 30;
+}
+
+.sapCalculationBuilderItem.ui-selecting,
+.sapCalculationBuilderItem.ui-selected {
+	border: 1px dashed @sapUiButtonBorderColor;
+}
+
+.sapCalculationBuilderItem.ui-state-disabled {
+	opacity: 1;
+}
+
+.sapCalculationBuilderItemExpandButton {
+	width: 1.625rem;
+	height: 100%;
+	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	vertical-align: middle;
+	justify-content: center;
+	font-size: 12px;
+	border-left: 1px solid @sapUiButtonBorderColor;
+
+	&:focus {
+		outline: none;
+	}
+	.sapUiIcon {
+		cursor: pointer;
+	}
+}
+
+.sapUiSizeCozy .sapCalculationBuilderItemExpandButton {
+	width: 2.25rem;
+}
+
+.sapCalculationBuilderItemExpandButtonFocus {
+	position: absolute;
+	height: 22px;
+	width: 22px;
+	left: 3px;
+	box-sizing: border-box;
+}
+
+.sapCalculationBuilderItemExpandButton:focus .sapCalculationBuilderItemExpandButtonFocus,
+.sapCalculationBuilderItemExpandButton:active .sapCalculationBuilderItemExpandButtonFocus {
+	border: 1px dotted @sapUiContentFocusColor;
+}
+
+.sapCalculationBuilderItemFocusWrapper {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	box-sizing: border-box;
+	padding: 2px;
+	pointer-events: none;
+	display: none;
+	top: 0;
+	left: 0;
+}
+
+.sapCalculationBuilderItemFocus {
+	position: relative;
+	box-sizing: border-box;
+	height: 100%;
+	border: 1px dotted @sapUiContentFocusColor;
+	pointer-events: none;
+}
+
+.sapCalculationBuilderItem:focus .sapCalculationBuilderItemFocusWrapper,
+.sapCalculationBuilderNewItem:focus .sapCalculationBuilderItemFocusWrapper {
+	display: block;
+}
+
+.sapCalculationBuilderItemExpandButtonWrapper {
+	position: relative;
+	&:focus {
+		outline: none;
+	}
+}
+
+.sapCalculationBuilderItemErrorSyntax,
+.sapCalculationBuilderItemErrorSyntax .sapCalculationBuilderItemContent,
+.sapCalculationBuilderItemErrorSyntax .sapCalculationBuilderItemExpandButton {
+	background-color: @sapUiButtonRejectBackground;
+	border-color: @sapUiButtonRejectBorderColor;
+	color: @sapUiButtonRejectTextColor;
+	&:hover {
+		background-color: @sapUiButtonRejectHoverBackground;
+		border-color: @sapUiButtonRejectHoverBorderColor;
+	}
+	&:active {
+		background-color: @sapUiButtonRejectActiveBackground;
+		border-color: @sapUiButtonRejectActiveBorderColor;
+		color: @sapUiButtonActiveTextColor;
+	}
+
+}
+
+.sapCalculationBuilderItemErrorSyntax .sapCalculationBuilderItemExpandButton {
+	border-left-color: @sapUiButtonRejectBorderColor;
+}
+
+.sapCalculationBuilderItemTextError {
+	background: url(img/error.gif) bottom repeat-x;
+	padding-bottom: 1px;
+	cursor: help;
+}
+
+.sapCalculationBuilderItemTextEmpty {
+	background-color: fade(@sapUiFieldTextColor, 15);
+	padding: 0px 5px 1px 1px;
+	border-radius: 3px
+}
+
+// *** DRAGGING *** //
+.sapCalculationBuilderDragging.sapCalculationBuilderItem,
+.sapCalculationBuilderDragging .sapCalculationBuilderItemExpandButton,
+.sapCalculationBuilderDraggingSelectedClone .sapCalculationBuilderItemExpandButton,
+.sapCalculationBuilderSelected.sapCalculationBuilderDragging .sapCalculationBuilderItem,
+.sapCalculationBuilderDraggingSelectedClone .sapCalculationBuilderItem {
+	z-index: 30;
+	opacity: 0.7;
+	color: @sapUiContentDisabledTextColor !important;
+	background-color: @sapUiButtonBackground !important;
+	border-color: @sapUiButtonBackground !important;
+
+}
+
+.sapCalculationBuilderDroppableLine,
+.sapCalculationBuilderDroppableCircle {
+	display: none;
+}
+
+.sapCalculationBuilderDroppableActive .sapCalculationBuilderDroppableLine,
+.sapCalculationBuilderDroppableActive .sapCalculationBuilderDroppableCircle {
+	display: block;
+}
+
+.sapCalculationBuilderDroppableLine:after {
+	content: "";
+	position: absolute;
+	top: 10px;
+	bottom: 10px;
+	left: 50%;
+	width: 2px;
+	background-color: @sapUiSelected;
+	transform: translate(-50%);
+}
+
+.sapCalculationBuilderDroppableCircle:after {
+	border: 2px solid @sapUiSelected;
+	content: "";
+	position: absolute;
+	border-radius: 50%;
+	top: 0;
+	width: 8px;
+	height: 8px;
+	background-color: transparent;
+	left: -2px;
+}
+
+.sapCalculationBuilderExpressionSAPFont {
+	font-family: 'SAP-icons';
+}

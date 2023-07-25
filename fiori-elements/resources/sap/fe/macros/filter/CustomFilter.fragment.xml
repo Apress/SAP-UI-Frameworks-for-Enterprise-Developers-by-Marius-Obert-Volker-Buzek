@@ -1,0 +1,51 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns="sap.m"
+	xmlns:mdc="sap.ui.mdc"
+	xmlns:core="sap.ui.core"
+	xmlns:controls="sap.fe.macros.controls"
+	xmlns:fpm="sap.fe.macros.fpm"
+	xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	template:require="{
+			ID: 'sap/fe/core/helpers/StableIdHelper',
+			FIELD: 'sap/fe/macros/field/FieldHelper',
+			FILTERFIELD: 'sap/fe/macros/filter/FilterFieldHelper',
+			FILTER: 'sap/fe/macros/filter/FilterUtils',
+			MACRO: 'sap/fe/macros/MacroTemplating'
+		}"
+>
+	<template:with path="item>annotationPath" var="property">
+		<mdc:FilterField
+			id="{= ID.generate([${this>id}, 'CustomFilterField', ${item>key}]) }"
+			delegate="{name: 'sap/ui/mdc/odata/v4/FieldBaseDelegate'}"
+			label="{item>label}"
+			dataType="{= ${property>$Type} || 'Edm.String'}"
+			maxConditions="{= ${property>@@FILTERFIELD.maxConditions} || -1 }"
+			conditions="{= '{$filters>/conditions/' + ${item>conditionPath} + '}'}"
+			operators="{parts : [{path: 'property>'}, {path: 'item>useSemanticDateRange'}, {path: 'item>settings'}, {path: 'contextPath>@@MACRO.getPath'}], formatter: 'FIELD.operators'}"
+			dataTypeConstraints="{item>constraints}"
+			dataTypeFormatOptions="{item>formatOptions}"
+			fieldHelp="undefined"
+			required="{item>required}"
+			customData:isSlot="{= ${item>type} === 'Slot'}"
+		>
+			<controls:CustomFilterFieldContentWrapper
+				core:require="{handler: 'sap/fe/macros/filter/FilterUtils'}"
+				id="{= ID.generate([${this>id}, 'FilterFieldContentWrapper', ${item>key}]) }"
+				binding="{= '{filterValues>/' + FILTER.conditionToModelPath(${item>conditionPath}) + '}' }"
+				conditions="{path: '$field>/conditions'}"
+			>
+				<template:if test="{= !!${item>template}}">
+					<fpm:CustomFragment
+						fragmentName="{item>template}"
+						id="{= ID.generate([${this>id}, 'CustomFilterField', ${item>key}]) }"
+						contextPath="{contextPath>}"
+					/>
+				</template:if>
+				<template:if test="{= ${item>type} === 'Slot'}">
+					<slot name="{item>slotName}" />
+				</template:if>
+			</controls:CustomFilterFieldContentWrapper>
+		</mdc:FilterField>
+	</template:with>
+</core:FragmentDefinition>

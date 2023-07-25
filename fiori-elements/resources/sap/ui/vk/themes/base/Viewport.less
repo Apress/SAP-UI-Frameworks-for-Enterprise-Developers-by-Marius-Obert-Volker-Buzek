@@ -1,0 +1,38 @@
+.sapVizKitViewport {
+	position: relative;
+	padding: 0;
+	margin: 0;
+	min-width: 100px;
+	touch-action: none;
+	-ms-touch-action: none;
+	overflow: hidden;
+
+	// disable SVG text selection
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+	canvas {
+		display: block;
+		padding: 0;
+		margin: 0;
+	}
+}
+
+.sapVizKitViewport:focus {
+	outline-color:  @sapUiContentFocusColor;
+	outline-style: dotted;
+	outline-offset: -1px;
+
+	canvas {
+		outline-color:  @sapUiContentFocusColor;
+		outline-style: dotted;
+		outline-offset: -1px;
+		outline-width: 1px;
+	}
+
+	.sapUiVizKitSceneOrientationGizmo > canvas {
+		outline: none;
+	}
+}

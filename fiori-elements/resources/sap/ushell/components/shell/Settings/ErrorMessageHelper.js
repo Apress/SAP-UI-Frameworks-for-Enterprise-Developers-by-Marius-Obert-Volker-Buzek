@@ -1,0 +1,2 @@
+// Copyright (c) 2009-2023 SAP SE, All Rights Reserved
+sap.ui.define([],function(){"use strict";var e="sapUshellSettingsDialog/";var t=sap.ui.getCore().getMessageManager();return{addMessage:s,filterMessagesToDisplay:a,removeErrorMessages:g};function s(s){s.setTargets([e]);t.addMessages(s)}function a(){return t.getMessageModel().getData().filter(function(t){return t.getTarget()&&t.getTarget().indexOf(e)===0})}function g(){t.getMessageModel().getData().forEach(function(s){if(s.getTarget()&&s.getTarget().indexOf(e)===0){t.removeMessages(s)}})}});

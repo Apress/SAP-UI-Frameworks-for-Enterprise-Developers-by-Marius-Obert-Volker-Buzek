@@ -1,0 +1,24 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:uxap="sap.uxap"
+	xmlns:unittest="http://schemas.sap.com/sapui5/preprocessorextension/sap.fe.unittesting/1"
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	template:require="{
+		OP: 'sap/fe/templates/ObjectPage/ObjectPageTemplating',
+		UI: 'sap/fe/core/templating/UIFormatters',
+		DATAFIELDHELPER : 'sap/fe/core/converters/helpers/DataFieldHelper'
+	}"
+>
+	<template:with path="entityType>@com.sap.vocabularies.UI.v1.HeaderInfo" var="headerInfo">
+		<template:if test="{entityType>@com.sap.vocabularies.UI.v1.HeaderInfo/Title}">
+			<template:if test="{= !DATAFIELDHELPER.isHeaderStaticallyHidden(${headerInfo>Title@@UI.getDataModelObjectPath})}">
+				<Title
+					text="{= OP.getExpressionForTitle(${headerInfo>@@UI.getConverterContext}, ${viewData>}, ${fullContextPath>@@UI.getDataModelObjectPath}, ${entitySet>@com.sap.vocabularies.Common.v1.DraftRoot})}"
+					wrapping="true"
+					level="H2"
+				/>
+			</template:if>
+		</template:if>
+	</template:with>
+</core:FragmentDefinition>

@@ -1,0 +1,83 @@
+.drawerToolbar {
+	position: absolute;
+	width: fit-content;
+	top: 8px;
+	left: 0;
+	right: 0;
+	margin: auto;
+	z-index: 11;
+}
+
+.drawerToolbarIconOrbit {
+	cursor: url('images/vk-orbit.svg') 2 2, auto;
+}
+
+.drawerToolbarIconTurntable {
+	cursor: url('images/vk-turntable.svg') 2 2, auto;
+}
+
+.drawerToolbarIconPan {
+	cursor: url('images/vk-pan.svg') 2 2, auto;
+}
+
+.drawerToolbarIconZoom {
+	cursor: url('images/vk-zoom.svg') 2 2, auto;
+}
+
+.drawerToolbar .sapMTB-Solid-CTX {
+	background: @sapUiButtonBackground !important;
+	opacity: 0.9;
+}
+
+.drawerToolbarCollapsed .sapMTB {
+	// margin-top: 3px;
+	height: 0px !important;
+	border-bottom: none;
+	box-shadow: none;
+}
+
+.drawerToolbarExpanded .sapMTB {
+	border: 1px solid rgba(204, 204, 204, 0.5);
+}
+
+.drawerToolbar .sapMTB {
+	-webkit-transition: height 0.20s ease;
+	-moz-transition: height 0.20s ease;
+	-o-transition: height 0.20s ease;
+	transition: height 0.20s ease;
+	// box-shadow: 0px 0px 1px black;
+}
+
+.drawerToolbar .drawerToolbarIcon.sapUiIcon:before {
+	-webkit-transition: transform 0.20s ease;
+	-moz-transition: transform 0.20s ease;
+	-o-transition: transform 0.20s ease;
+	transition: transform 0.20s ease;
+}
+
+.drawerToolbar .drawerToolbarIcon.sapUiIcon {
+	color: black;
+	font-size: 1rem;
+	font-weight: normal;
+	padding-top: 2px;
+	height: 2rem;
+	width: 3rem;
+}
+
+.drawerToolbar .drawerToolbarIcon.sapUiIcon:before {
+	display: block;
+	transform: rotate(0deg);
+}
+
+.drawerToolbarCollapsed .drawerToolbarIcon.sapUiIcon:before {
+	display: block;
+	transform: rotate(180deg);
+}
+
+.drawerToolbar .sapMTB-Transparent-CTX.sapMTB {
+	padding-left: 0px;
+}
+
+.vboxCollapsed {
+	height: 0px;
+}

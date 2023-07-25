@@ -1,0 +1,82 @@
+/* =================================================================== */
+/* CSS for control "sap.ushell.ui.shell.RightFloatingContainer" (base) */
+/* =================================================================== */
+
+.sapUshellRightFloatingContainer {
+  position: absolute;
+  z-index: 3;
+  margin-top: 0;
+  overflow: visible;
+  transition: transform 500ms ease;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+
+  .sapUshellNotificationsListItem {
+    transition: transform 500ms cubic-bezier(.78, -0.35, .46, .95);
+    margin-bottom: 0.5rem;
+    border-radius: @sapUiPopoverBorderCornerRadius;
+    box-shadow: @sapUiContentShadow2;
+  }
+
+  &.sapUshellRightFloatingContainerTextHidden {
+    width: 3.0625rem;
+
+    .sapUshellRightFloatingContainerItemText {
+      display: none;
+    }
+  }
+
+  &.sapUshellRightFloatingContainerAnimate {
+    right: 300px;
+  }
+
+  .sapUshellRightFloatingContainerItemIcon {
+    font-size: 1.25rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 1.25rem;
+  }
+}
+
+.sapUshellRightFloatingContainerItemHidden {
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  max-height: 0;
+  width: 22rem;
+  right: -25rem;
+  position: relative;
+  transition: max-height 500ms ease, right 500ms ease, padding 300ms ease, margin-bottom 300ms ease;
+
+  &:not(.sapUshellRightFloatingContainerItmHeightVisible) {
+    padding: 0rem;
+    margin-bottom: 0;
+  }
+
+  &.sapUshellRightFloatingContainerItmHeightVisible {
+    max-height: 31.2rem;
+  }
+
+  &.sapUshellRightFloatingContainerItemBackToViewport,
+  &.sapUshellRightFloatingContainerItemBounceIn {
+    transform: translateX(-27.5rem) translateZ(0);
+  }
+
+  &.sapUshellRightFloatingContainerItemBounceOut {
+    transform: translateX(0rem) translateZ(0);
+  }
+}
+
+html[dir=rtl] .sapUshellRightFloatingContainerItemHidden.sapUshellRightFloatingContainerItemBackToViewport,
+html[dir=rtl] .sapUshellRightFloatingContainerItemBounceIn {
+  transform: translateX(27.5rem) translateZ(0);
+}
+
+html[dir=rtl] .sapUshellRightFloatingContainerItemBounceOut {
+  transform: translateX(0rem) translateZ(0);
+}
+
+.sapUshellNotificationListContainer {
+  margin: 0;
+}

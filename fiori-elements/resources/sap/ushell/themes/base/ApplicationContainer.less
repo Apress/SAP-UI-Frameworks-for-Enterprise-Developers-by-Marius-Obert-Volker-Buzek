@@ -1,0 +1,37 @@
+/* ============================================= */
+/* CSS for control sap.ushell/ApplicationContainer.control theme base */
+/* ============================================= */
+@media (min-width: 80rem) {
+  .sapUiMedia-Std-Desktop .sapUShellApplicationContainer.sapUShellApplicationContainerLimitedWidth {
+    width: 80rem !important;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 106.4rem) {
+  .sapUiMedia-Std-Desktop .sapUShellApplicationContainer.sapUShellDockingContainer {
+    width: 80rem !important;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 100%;
+  }
+}
+
+.sapUShellApplicationContainer {
+  border: none;
+  display: block;
+  white-space: normal;
+}
+
+.sapUShellApplicationContainerShiftedIframe {
+}
+
+.sapUShellApplicationContainerIframeHidden {
+  position: absolute;
+  top: -99999px;
+  left: -99999px;
+  visibility: hidden;
+  pointer-events: none;
+}

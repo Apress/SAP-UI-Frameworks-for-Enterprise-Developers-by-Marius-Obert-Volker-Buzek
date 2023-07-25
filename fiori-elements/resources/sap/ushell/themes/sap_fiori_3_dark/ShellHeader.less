@@ -1,0 +1,150 @@
+.sapUshellShellHeader {
+  background-color: @sapUiShellColor;
+}
+
+.sapUshellShellIco:focus,
+.sapUshellShellHeadItm:focus,
+#shellAppTitle:focus-within {
+  outline-color: contrast(@sapShellColor, @sapUiContentFocusColor, @sapUiContentContrastFocusColor, @sapUiContentContrastTextThreshold);
+}
+
+.sapUshellShellHeadBegin .sapUshellShellIco:hover {
+  background-color: @sapUiShellHoverBackground;
+}
+
+.sapUshellAllMyAppsView {
+  box-shadow: @sapUiShadowLevel2;
+}
+
+.sapUshellAllMyAppsItemTitle {
+  font-family: @sapUiFontFamily;
+  font-size: @sapMFontMediumSize;
+  font-weight: normal;
+  color: @sapUiLink;
+}
+
+#allMyAppsView--sapUshellAllMyAppsDetailsPage {
+  background: @sapUiListBackground;
+  border-left: 1px solid @sapUiListBorderColor;
+}
+
+#allMyAppsView--sapUshellAllMyAppsDetailsPage .sapMLIB {
+  border-bottom : 0;
+}
+
+.sapUshellAllMyAppsItemSubTitle {
+  font-family: @sapUiFontFamily;
+  font-size: @sapMFontMediumSize;
+  font-weight: normal;
+  color: @sapUiContentLabelColor;
+}
+
+.sapUshellShellHeadItm {
+  color: @sapUiShellInteractiveTextColor;
+}
+
+.sapUshellShellHeadItmSel ,
+.sapUshellShellHeadItm:active {
+  background-color: @sapUiHighlight;
+}
+
+.sapUshellShellHeadAction {
+  color: @sapUiShellInteractiveTextColor;
+}
+
+.sapUshellShellHeadItm.sapUshellShellHeadItmSel {
+  background-color: @sapUiShellActiveBackground;
+  color: @sapUiShellActiveTextColor;
+}
+
+.sapUshellShellHeader .sapUshellShellHeadItm:hover {
+  background-color: @sapUiShellHoverBackground;
+}
+
+.sapUshellShellHeader .sapUshellShellHeadItm:active {
+  background-color: @sapUiShellActiveBackground;
+  color: @sapUiShellActiveTextColor;
+}
+
+.sapUshellHeadTitle{
+  color: @sapUiShellTextColor;
+}
+
+/** --------------------------------------- **/
+/** Styles for Shell Title's Navigation Menu**/
+/** --------------------------------------- **/
+
+.sapUshellAppTitle {
+  color: @sapUiShellTextColor;
+}
+
+.sapUshellAppTitleClickable:hover {
+  background-color: @sapUiShellHoverBackground;
+}
+.sapUshellAppTitleClickable:active {
+  background-color: @sapUiShellActiveBackground;
+}
+
+.sapUshellAppTitleClickable:active .sapUshellShellHeadAction {
+  color: @sapUiShellActiveTextColor;
+}
+
+
+/** Hierarchy Items - (List Items) Icon Styles **/
+.sapUshellNavigationMenuListItems {
+  color: @sapUiListBackground;
+}
+
+.sapUshellNavigationMenuListItems:not(:last-child) .sapMLIBContent:after {
+  background: @sapUiContentNonInteractiveIconColor;
+}
+
+.sapUshellNavigationMenuListItems:not(:first-child) .sapMLIBContent:before {
+  background: @sapUiContentNonInteractiveIconColor;
+}
+
+/** Shell Application Title control **/
+
+/** Shell Navigation Menu - ResponsivePopover**/
+#sapUshellAppTitlePopover {
+  background-color: @sapUiListBackground;
+}
+
+/** Shell Navigation Menu - related Apps grid (within a flexbox) - override the text-tab-bar content area height **/
+#sapUshellRelatedAppsItems {
+  background-color: @sapUiGlobalBackgroundColor;
+  border-top: 1px solid @sapUiListBorderColor ;
+  border-bottom: 1px solid @sapUiListBorderColor;
+}
+
+#sapUshellRelatedAppsItems label {
+  font-size: 1rem;
+}
+
+/** Shell Navigation Menu - Mini Tiles (of relatedApps)**/
+.sapUshellNavMiniTile {
+  background-color: @sapUiTileBackground;
+  box-shadow: 0 0 1px 0 @sapUiTileBorderColor;
+}
+
+.sapUshellNavMiniTile:hover {
+  box-shadow: 0 0 0.125rem @sapUiTileBorderColor;
+}
+.sapUshellNavMiniTile:active {
+  box-shadow: 0 0 0.125rem @sapUiTileBorderColor;
+}
+
+/** Shell Navigation Menu - Mini Tiles - Title **/
+.sapUshellNavMiniTileTitle {
+  color: @sapUiListTextColor;
+}
+/** Shell Navigation Menu - Mini Tiles - Subtitle **/
+.sapUshellNavMiniTileSubtitle {
+  color: @sapUiListTextColor;
+}
+
+/** Shell Navigation Menu - Mini Tiles - Icon **/
+.sapUshellNavMiniTileIcon {
+  color: @sapUiBrand;
+}
+

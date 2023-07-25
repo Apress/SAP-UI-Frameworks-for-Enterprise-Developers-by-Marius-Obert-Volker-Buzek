@@ -1,0 +1,68 @@
+<core:FragmentDefinition
+	xmlns="sap.suite.ui.microchart"
+	xmlns:core="sap.ui.core"
+	xmlns:oDataV4MicroChart="sap.fe.macros.microchart"
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	template:require="{
+		MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+		MICROCHART: 'sap/fe/macros/microchart/MicroChartHelper',
+		ID: 'sap/fe/core/helpers/StableIdHelper',
+		COMMON: 'sap/fe/macros/CommonHelper'
+	}"
+>
+	<template:with path="DataPoint>Value/$Path" helper="MODEL.resolve$Path" var="Measure">
+		<template:with path="metaPath>Dimensions/0/" var="Dimension">
+			<oDataV4MicroChart:MicroChartContainer
+				core:require="{MICROCHARTR: 'sap/fe/macros/microchart/MicroChartHelper' }"
+				id="{= ${this>id} ? ID.generate([${this>id}, 'LineMicroChart']) : undefined }"
+				showOnlyChart="{this>showOnlyChart}"
+				chartTitle="{= ${this>title} || ${metaPath>Title}}"
+				chartDescription="{= ${this>description} || ${metaPath>Description}}"
+				uomPath="{= MICROCHART.getUOMPathForMicrochart(${this>showOnlyChart}, ${Measure>@}) }"
+				measures="{= MICROCHART.getMeasurePropertyPaths(${metaPath>}, ${contextPath>./@}, 'Line')}"
+				dimension="{= ${Dimension>$PropertyPath@com.sap.vocabularies.Common.v1.Text} ? ${Dimension>$PropertyPath@com.sap.vocabularies.Common.v1.Text/$Path} : ${Dimension>$PropertyPath} }"
+				measurePrecision="{= ${Measure>$Precision} ? ${Measure>$Precision} : undefined }"
+				measureScale="{= MICROCHART.getMeasureScaleForMicroChart(${DataPoint>}) }"
+				dimensionPrecision="{= ${Dimension>$PropertyPath/$Precision} ? ${Dimension>$PropertyPath/$Precision} : undefined }"
+				dataPointQualifiers="{= MICROCHART.getDataPointQualifiersForMeasures(${metaPath>}, ${contextPath>./@}, 'Line')}"
+				binding="{= ${this>batchGroupId} ? ('{path:\'\', parameters : { $$groupId: \'' + ${this>batchGroupId} + '\'} }') : undefined }"
+				onTitlePressed="{this>onTitlePressed}"
+				navigationType="{this>navigationType}"
+				calendarPattern="{= MICROCHART.getCalendarPattern(${Dimension>$PropertyPath/$Type}, ${Dimension>$PropertyPath@}) }"
+			>
+				<template:if test="{= !${this>showOnlyChart} || (${this>showOnlyChart} !== 'true' ? true : false)}">
+					<core:Fragment fragmentName="sap.fe.macros.microchart.fragments.MicroChartTitle" type="XML" />
+				</template:if>
+				<LineMicroChart showThresholdLine="false" hideOnNoData="{this>hideOnNoData}" size="{this>size}">
+					<lines>
+						<template:repeat list="{metaPath>Measures}" var="Measure">
+							<template:with path="Measure>" helper="COMMON.getMeasureAttributeForMeasure" var="DataPoint">
+								<template:if
+									test="{= ${DataPoint>Value} &amp;&amp; ${Dimension>$PropertyPath} &amp;&amp; MICROCHART.isNotAlwaysHidden('Line', ${DataPoint>Value}, undefined,${DataPoint>Value/$Path@com.sap.vocabularies.UI.v1.Hidden}) }"
+								>
+									<template:then>
+										<template:with path="DataPoint>Value/$Path" helper="MODEL.resolve$Path" var="DataPointMeasure">
+											<LineMicroChartLine
+												points="{= MICROCHART.getAggregationForMicrochart('LinePoints', ${contextPath>}, ${DataPoint>}, ${contextPath>@sapui.name}, ${Dimension>}, ${DataPointMeasure>@}) }"
+											>
+												<points>
+													<LineMicroChartPoint
+														x="{= (${Dimension>$PropertyPath/$Type} === 'Edm.Date' ||  (${Dimension>$PropertyPath/$Type} === 'Edm.String' &amp;&amp; MICROCHART.getCalendarPattern(${Dimension>$PropertyPath/$Type}, ${Dimension>$PropertyPath@}))) ? MICROCHART.getX(${Dimension>$PropertyPath}, ${Dimension>$PropertyPath/$Type}, ${Dimension>$PropertyPath@}) : ${Dimension>@@.MODEL.format} }"
+														y="{DataPoint>Value@@.MODEL.value}"
+													/>
+												</points>
+											</LineMicroChartLine>
+										</template:with>
+									</template:then>
+									<template:elseif
+										test="{= MICROCHART.logWarning('Line', { DataPoint_Value : ${DataPoint>Value}, Dimension : ${Dimension>$PropertyPath} }) }"
+									/>
+								</template:if>
+							</template:with>
+						</template:repeat>
+					</lines>
+				</LineMicroChart>
+			</oDataV4MicroChart:MicroChartContainer>
+		</template:with>
+	</template:with>
+</core:FragmentDefinition>

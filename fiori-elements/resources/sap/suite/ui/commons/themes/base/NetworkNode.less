@@ -1,0 +1,831 @@
+/* ============================================= */
+/* CSS for control sap.suite.ui.commons/NetworkNode */
+/* ============================================= */
+.sapSuiteUiCommonsNetworkNode {
+	pointer-events: fill
+}
+
+.sapSuiteUiCommonsNetworkInnerRect,
+.sapSuiteUiCommonsNetworkInnerCircle,
+.sapSuiteUiCommonsNetworkLane,
+.sapSuiteUiCommonsNetworkCircleNodeTitleWrapper {
+	stroke: @sapUiContentForegroundBorderColor;
+}
+
+.sapSuiteUiCommonsNetworkInnerRect,
+.sapSuiteUiCommonsNetworkInnerCircle {
+	fill: @sapUiListBackground;
+}
+
+.sapSuiteUiCommonsNetworkSvgText {
+	fill: @sapUiBaseText;
+}
+
+.sapSuiteUiCommonsNetworkNodeActionButton {
+	fill: @sapUiButtonBackground;
+	stroke: @sapUiButtonBorderColor;
+}
+
+.sapSuiteUiCommonsNetworkNodeActionIcon {
+	fill: @sapUiButtonTextColor;
+}
+
+.sapSuiteUiCommonsNetworkNodeTitle {
+	font-size: @sapMFontMediumSize;
+	dominant-baseline: hanging;
+	pointer-events: none;
+}
+
+.sapSuiteUiCommonsNetworkBox .sapSuiteUiCommonsNetworkNodeTitle {
+	dominant-baseline: central;
+}
+
+.sapSuiteUiCommonsNetworkNodes .sapSuiteUiCommonsNetworkElementHighlight .sapSuiteUiCommonsNetworkInnerRect,
+.sapSuiteUiCommonsNetworkNodes .sapSuiteUiCommonsNetworkElementHighlight .sapSuiteUiCommonsNetworkInnerCircle {
+	stroke: @sapUiButtonHoverBackground;
+	fill: @sapUiButtonHoverBackground;
+}
+
+.sapSuiteUiCommonsNetworkNodes .sapSuiteUiCommonsNetworkElementHighlight .sapSuiteUiCommonsNetworkNodeBoxStatus,
+.sapSuiteUiCommonsNetworkNodes .sapSuiteUiCommonsNetworkElementSelected.sapSuiteUiCommonsNetworkElementHighlight .sapSuiteUiCommonsNetworkNodeBoxStatus,
+.sapSuiteUiCommonsNetworkNodes .sapSuiteUiCommonsNetworkElementSelected .sapSuiteUiCommonsNetworkNodeBoxStatus {
+	fill: none;
+	stroke: none;
+}
+
+.sapSuiteUiCommonsNetworkNodes .sapSuiteUiCommonsNetworkElementSelected.sapSuiteUiCommonsNetworkElementHighlight .sapSuiteUiCommonsNetworkInnerRect,
+.sapSuiteUiCommonsNetworkNodes .sapSuiteUiCommonsNetworkElementSelected.sapSuiteUiCommonsNetworkElementHighlight .sapSuiteUiCommonsNetworkInnerCircle {
+	fill: @sapUiButtonEmphasizedHoverBackground;
+	stroke: @sapUiButtonEmphasizedHoverBackground;
+}
+
+.sapSuiteUiCommonsNetworkNodes .sapSuiteUiCommonsNetworkElementSelected.sapSuiteUiCommonsNetworkElementHighlight .sapSuiteUiCommonsNetworkInnerRect {
+	stroke: @sapUiButtonEmphasizedHoverBackground;
+}
+
+.sapSuiteUiCommonsNetworkNodes .sapSuiteUiCommonsNetworkElementSelected.sapSuiteUiCommonsNetworkElementHighlight.sapSuiteUiCommonsNetworkBox .sapSuiteUiCommonsNetworkNodeShape text:not(.sapSuiteUiCommonsNetworkNodeInfoIcon),
+.sapSuiteUiCommonsNetworkNodes .sapSuiteUiCommonsNetworkElementSelected.sapSuiteUiCommonsNetworkBox .sapSuiteUiCommonsNetworkNodeShape text:not(.sapSuiteUiCommonsNetworkNodeInfoIcon) {
+	fill: @sapUiContentContrastTextColor;
+}
+
+.sapSuiteUiCommonsNetworkNodes .sapSuiteUiCommonsNetworkElementHighlight .sapSuiteUiCommonsNetworkInnerCircleStatus,
+.sapSuiteUiCommonsNetworkNodes .sapSuiteUiCommonsNetworkElementSelected .sapSuiteUiCommonsNetworkInnerCircleStatus {
+	stroke: none;
+}
+
+.sapSuiteUiCommonsNetworkNodes .sapSuiteUiCommonsNetworkElementSelected .sapSuiteUiCommonsNetworkInnerCircle,
+.sapSuiteUiCommonsNetworkNodes .sapSuiteUiCommonsNetworkElementSelected .sapSuiteUiCommonsNetworkInnerRect {
+	stroke: @sapUiSelected;
+	fill: @sapUiSelected;
+}
+
+.sapSuiteUiCommonsNetworkBox .sapSuiteUiCommonsNetworkElementSelected .sapSuiteUiCommonsNetworkCircleNodeIcon {
+	fill: @sapUiContentContrastTextColor;
+}
+
+.sapSuiteUiCommonsNetworkElementSelected .sapSuiteUiCommonsNetworkCircleNodeIcon {
+	fill: @sapUiContentContrastTextColor;
+}
+
+.sapSuiteUiCommonsNetworkInnerCircleStatus {
+	fill: none;
+	stroke: none;
+	stroke-width: 5;
+}
+
+.sapSuiteUiCommonsNetworkNodeBoxStatus {
+	fill: none;
+	stroke: none;
+}
+
+.sapSuiteUiCommonsNetworkElementWarning .sapSuiteUiCommonsNetworkNodeBoxStatus {
+	fill: @sapWarningBackground;
+	stroke: @sapWarningBackground;
+}
+
+.sapSuiteUiCommonsNetworkElementError .sapSuiteUiCommonsNetworkNodeBoxStatus {
+	fill: @sapErrorBackground;
+	stroke: @sapErrorBackground;
+}
+
+.sapSuiteUiCommonsNetworkElementSuccess .sapSuiteUiCommonsNetworkNodeBoxStatus {
+	fill: @sapSuccessBackground;
+	stroke: @sapSuccessBackground;
+}
+
+.sapSuiteUiCommonsNetworkElementWarning .sapSuiteUiCommonsNetworkInnerCircleStatus,
+.sapSuiteUiCommonsNetworkElementWarning .sapSuiteUiCommonsNetworkInnerRect {
+	stroke: @sapWarningBackground;
+}
+
+.sapSuiteUiCommonsNetworkElementError .sapSuiteUiCommonsNetworkInnerCircleStatus,
+.sapSuiteUiCommonsNetworkElementError .sapSuiteUiCommonsNetworkInnerRect {
+	stroke: @sapErrorBackground;
+}
+
+.sapSuiteUiCommonsNetworkElementSuccess .sapSuiteUiCommonsNetworkInnerCircleStatus,
+.sapSuiteUiCommonsNetworkElementSuccess .sapSuiteUiCommonsNetworkInnerRect {
+	stroke: @sapSuccessBackground;
+}
+
+.sapSuiteUiCommonsNetworkBox.sapSuiteUiCommonsNetworkElementSuccess .sapSuiteUiCommonsNetworkNodeTitleIcon,
+.sapSuiteUiCommonsNetworkBox.sapSuiteUiCommonsNetworkElementSuccess .sapSuiteUiCommonsNetworkNodeTitle,
+.sapSuiteUiCommonsNetworkBox.sapSuiteUiCommonsNetworkElementWarning .sapSuiteUiCommonsNetworkNodeTitleIcon,
+.sapSuiteUiCommonsNetworkBox.sapSuiteUiCommonsNetworkElementWarning .sapSuiteUiCommonsNetworkNodeTitle,
+.sapSuiteUiCommonsNetworkBox.sapSuiteUiCommonsNetworkElementError .sapSuiteUiCommonsNetworkNodeTitleIcon,
+.sapSuiteUiCommonsNetworkBox.sapSuiteUiCommonsNetworkElementError .sapSuiteUiCommonsNetworkNodeTitle {
+	fill: @sapUiContentContrastTextColor;
+}
+
+.sapSuiteUiCommonsNetworkBox.sapSuiteUiCommonsNetworkElementHighlight .sapSuiteUiCommonsNetworkNodeTitleIcon,
+.sapSuiteUiCommonsNetworkBox.sapSuiteUiCommonsNetworkElementHighlight .sapSuiteUiCommonsNetworkNodeTitle {
+	fill: @sapUiContentForegroundTextColor;
+}
+
+.sapSuiteUiCommonsNetworkElementSelected .sapSuiteUiCommonsNetworkInnerCircleStatus {
+	stroke: @sapUiSelected;
+}
+
+.sapSuiteUiCommonsNetworkElementSelected .sapSuiteUiCommonsNetworkNodeBoxStatus {
+	fill: @sapUiSelected;
+}
+
+.sapSuiteUiCommonsNetworkElementSelected .sapSuiteUiCommonsNetworkInnerRect {
+	stroke: @sapUiSelected;
+}
+
+.sapSuiteUiCommonsNetworkCircleNodeIcon {
+	fill: @sapUiContentForegroundTextColor;
+	stroke: none;
+}
+
+.sapSuiteUiCommonsNetworkActionButtonFocusCircle,
+.sapSuiteUiCommonsNetworkBoxFocus {
+	display: none;
+	fill: none;
+	pointer-events: none;
+	stroke: @sapUiContentFocusColor;
+	stroke-dasharray: 0, 3;
+	stroke-linecap: round;
+}
+
+.sapSuiteUiCommonsNetworkGraph.sapSuiteUiCommonsNetworkGraphLayered.sapSuiteUiCommonsNetworkGraphCrispEdges .sapSuiteUiCommonsNetworkGraphSvg rect.sapSuiteUiCommonsNetworkActionButtonFocusCircle {
+	shape-rendering: geometricprecision;
+}
+
+.sapSuiteUiCommonsNetworkCircleFocus,
+.sapSuiteUiCommonsNetworkGroupButton {
+	display: none;
+	fill: none;
+	pointer-events: none;
+	stroke-dasharray: 1, 3;
+	stroke: @sapUiContentFocusColor;
+}
+
+.sapSuiteUiCommonsNetworkElementFocus .sapSuiteUiCommonsNetworkCircleFocus,
+.sapSuiteUiCommonsNetworkElementFocus .sapSuiteUiCommonsNetworkBoxFocus,
+.sapSuiteUiCommonsNetworkElementFocus > .sapSuiteUiCommonsNetworkActionButtonFocusCircle,
+.sapSuiteUiCommonsNetworkElementFocus > .sapSuiteUiCommonsNetworkGroupButton {
+	display: block;
+}
+
+.sapSuiteUiCommonsNetworkNodeCollapseIconWrapper {
+	cursor: pointer;
+}
+
+.sapSuiteUiCommonsNetworkNodeTitle {
+	font-size: @sapMFontMediumSize;
+	fill: @sapUiContentForegroundTextColor;
+}
+
+.sapSuiteUiCommonsNetworkNodeDescription {
+	font-size: @sapMFontSmallSize;
+	fill: @sapUiBaseText;
+	pointer-events: none;
+}
+
+.sapSuiteUiCommonsNetworkNodeTitleIcon {
+	pointer-events: none;
+	dominant-baseline: central;
+	font-size: 16px;
+	fill: @sapUiBaseText;
+}
+
+.sapSuiteUiCommonsNetworkBox .sapSuiteUiCommonsNetworkNodeMultipleLineTitle,
+.sapSuiteUiCommonsNetworkNodeMultipleLineTitle {
+	pointer-events: none;
+	dominant-baseline: no-change;
+	fill: @sapUiBaseText;
+}
+
+/** ACTION BUTTONS **/
+.sapSuiteUiCommonsNetworkNodeActionButtonDisabled {
+	fill-opacity: 0.5;
+	stroke-opacity: 0.5;
+	fill: @sapUiContentForegroundBorderColor;
+}
+
+.sapSuiteUiCommonsNetworkNodeActionButtonDisabled.sapSuiteUiCommonsNetworkNodeActionIcon {
+	fill: @sapUiContentContrastTextColor;
+}
+
+.sapSuiteUiCommonsNetworkNodeActionIcon.sapSuiteUiCommonsNetworkNodeActionIconDisabled {
+	fill-opacity: 0.5;
+}
+
+.sapSuiteUiCommonsNetworkNodeActionIcon.sapSuiteUiCommonsNetworkNodeActionButtonDisabled {
+	fill-opacity: 0.5;
+}
+
+.sapSuiteUiCommonsNetworkNodeActionButton:hover {
+	fill: @sapUiButtonHoverBackground;
+	stroke: @sapUiButtonBorderColor;
+}
+
+.sapSuiteUiCommonsNetworkNodeActionButton:active {
+	fill: @sapUiButtonActiveBackground;
+	stroke: @sapUiButtonBorderColor
+}
+
+.sapSuiteUiCommonsNetworkNodeActionButtonWrapper {
+	fill: none;
+	display: none;
+}
+
+.sapSuiteUiCommonsNetworkNodeActionButtonsVisible.sapSuiteUiCommonsNetworkGraphDivActionButtons,
+.sapSuiteUiCommonsNetworkNodeActionButtonsVisible.sapSuiteUiCommonsNetworkNodeActionButtonWrapper {
+	display: block;
+}
+
+.sapSuiteUiCommonsNetworkNodeActionButton {
+	font-size: 16px;
+	cursor: pointer;
+}
+
+.sapSuiteUiCommonsNetworkNodeActionIcon {
+	pointer-events: none;
+	text-anchor: middle;
+	font-size: 14px;
+}
+
+.sapSuiteUiCommonsNetworkNodeHeader {
+	fill: none;
+	stroke: none;
+}
+
+/** CIRCLE LAYOUT **/
+.sapSuiteUiCommonsNetworkCircleNodeIcon {
+	text-anchor: middle;
+	alignment-baseline: central;
+	pointer-events: none;
+	font-size: 24px;
+}
+
+.sapSuiteUiCommonsNetworkNodeCircle .sapSuiteUiCommonsNetworkNodeTitleIcon {
+	alignment-baseline: middle;
+	fill: @sapUiBaseText;
+}
+
+.sapSuiteUiCommonsNetworkNodeCircle .sapSuiteUiCommonsNetworkNodeTitle {
+	text-anchor: middle;
+	fill: @sapUiBaseText;
+}
+
+.sapSuiteUiCommonsNetworkNodeInfoBox {
+	fill: @sapUiListBackground;
+	stroke: @sapUiContentForegroundBorderColor;
+}
+
+.sapSuiteUiCommonsNetworkNodeInfoIcon {
+	font-size: 14px;
+	text-anchor: middle;
+	pointer-events: none;
+	fill: @sapUiBaseText;
+}
+
+.sapSuiteUiCommonsNetworkNodeInfoWrapper {
+	display: none;
+}
+
+.sapSuiteUiCommonsNetworkNodeInfoWrapperCustomIcon.sapSuiteUiCommonsNetworkNodeInfoWrapper {
+	display: block;
+}
+
+.sapSuiteUiCommonsNetworkNodeCollapsed .sapSuiteUiCommonsNetworkNodeInfoWrapper,
+.sapSuiteUiCommonsNetworkNodePartialCollapsed .sapSuiteUiCommonsNetworkNodeInfoWrapper {
+	display: block;
+}
+
+.sapSuiteUiCommonsNetworkNodeCustomStatus .sapSuiteUiCommonsNetworkNodeInfoBox {
+	fill: @sapUiTileBackground;
+}
+
+.sapSuiteUiCommonsNetworkNodeCustomStatus .sapSuiteUiCommonsNetworkNodeInfoIcon {
+	fill: @sapUiBaseText;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivInner {
+	border: 1px solid @sapUiNeutralElement;
+	background-color: @sapUiListBackground;
+	font-size: 12px;
+	position: relative;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivInnerWrapper {
+	position: relative;
+	margin: auto;
+}
+
+.sapSuiteUiCommonsNetworkBox .sapSuiteUiCommonsNetworkGraphDivInner {
+	overflow: hidden;
+}
+
+.sapSuiteUiCommonsNetworkBox .sapSuiteUiCommonsNetworkGraphDivInner {
+	border-radius: 5px;
+	pointer-events: all;
+}
+
+.sapSuiteUiCommonsNetworkNodeCircle .sapSuiteUiCommonsNetworkGraphDivInner {
+	border-radius: 50%;
+	margin: auto;
+	display: flex;
+	pointer-events: all;
+
+	height: 100%;
+	width: 100%;
+
+	box-sizing: border-box;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivInnerTop {
+	margin: auto;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivNodeText {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivNode.sapSuiteUiCommonsNetworkNodeCircle .sapSuiteUiCommonsNetworkGraphDivNodeTitle {
+	margin-top: 3px;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivNodeAttributes {
+	width: 100%;
+	display: table;
+	padding-top: 5px;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivNodeLabels {
+	padding-right: 10px;
+	width: 50%;
+	display: table-cell;
+
+	vertical-align: top;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivNodeValues {
+	font-weight: bold;
+	width: 50%;
+	text-align: right;
+
+	display: table-cell;
+	vertical-align: top;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivNodeDescription {
+	padding-top: 5px;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivNodeIcon {
+	font-family: SAP-icons;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivNodeIconTitle {
+	float: left;
+	padding-right: 5px;
+	font-size: 1rem;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivNode {
+	font-size: 12px;
+	position: absolute;
+	overflow: visible;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivNodeCircleIcon {
+	font-size: 24px;
+	display: flex;
+	align-items: center;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivNodeTitle {
+	font-size: @sapMFontMediumSize;
+}
+
+.sapSuiteUiCommonsNetworkNodeCircle .sapSuiteUiCommonsNetworkGraphDivNodeDescription,
+.sapSuiteUiCommonsNetworkNodeCircle .sapSuiteUiCommonsNetworkGraphDivNodeTitle {
+	text-align: center;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivNodeTitle {
+	font-size: @sapMFontMediumSize;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivNodeTitle:after {
+	content: " ";
+	clear: both;
+}
+
+.sapSuiteUiCommonsNetworkBox .sapSuiteUiCommonsNetworkDivFocus {
+	border: 1px dotted transparent;
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	bottom: 2px;
+	right: 2px;
+	border: none;
+}
+
+.sapSuiteUiCommonsNetworkNodeCircle .sapSuiteUiCommonsNetworkDivFocus {
+	margin: 2px;
+	width: 100%;
+	display: flex;
+	border-radius: 50%;
+	border: none;
+}
+
+// .sapSuiteUiCommonsNetworkElementFocus .sapSuiteUiCommonsNetworkDivFocus {
+// 	border: 1px dotted @sapInformationBorderColor;
+// }
+
+// .sapSuiteUiCommonsNetworkElementSelected.sapSuiteUiCommonsNetworkElementFocus .sapSuiteUiCommonsNetworkDivFocus {
+// 	border: 1px dotted @sapUiContentContrastTextColor;
+// }
+
+.sapSuiteUiCommonsNetworkGraphDivNode.sapSuiteUiCommonsNetworkBox.sapSuiteUiCommonsNetworkElementFocus {
+	outline: 2px solid @sapInformationBorderColor;
+	padding: 1px;
+	border-radius: 8px;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivNode.sapSuiteUiCommonsNetworkNodeCircle.sapSuiteUiCommonsNetworkElementFocus .sapSuiteUiCommonsNetworkGraphDivInnerWrapper {
+	outline: 2px solid @sapInformationBorderColor;
+	padding: 1px;
+	border-radius: 50%;
+}
+
+.sapSuiteUiCommonsNetworkBox.sapSuiteUiCommonsNetworkElementWarning .sapSuiteUiCommonsNetworkGraphDivInner {
+	border-color: @sapWarningBorderColor;
+	border-radius: 8px;
+}
+
+.sapSuiteUiCommonsNetworkBox.sapSuiteUiCommonsNetworkElementError .sapSuiteUiCommonsNetworkGraphDivInner {
+	border-radius: 8px;
+	border-color: @sapErrorBorderColor;
+}
+
+.sapSuiteUiCommonsNetworkBox.sapSuiteUiCommonsNetworkElementSuccess .sapSuiteUiCommonsNetworkGraphDivInner {
+	border-radius: 8px;
+	border-color: @sapSuccessBorderColor;
+}
+
+.sapSuiteUiCommonsNetworkBox.sapSuiteUiCommonsNetworkElementInformation .sapSuiteUiCommonsNetworkGraphDivInner {
+	border-radius: 8px;
+	border-color: @sapInformationBorderColor;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivNode.sapSuiteUiCommonsNetworkElementSelected,
+.sapSuiteUiCommonsNetworkGraphDivNode.sapSuiteUiCommonsNetworkElementHighlight {
+	z-index: 500;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivNode.sapSuiteUiCommonsNetworkElementSelected .sapSuiteUiCommonsNetworkGraphDivInner {
+	color: @sapTextColor;
+	border: 2px solid @sapInformationBorderColor;
+	background-color: @sapList_SelectionBackgroundColor;
+	border-radius: 8px;
+}
+
+.sapSuiteUiCommonsNetworkNodeCircle.sapSuiteUiCommonsNetworkGraphDivNode.sapSuiteUiCommonsNetworkElementSelected .sapSuiteUiCommonsNetworkGraphDivInner {
+	color: @sapTextColor;
+	border: 2px solid @sapInformationBorderColor;
+	background-color: @sapList_SelectionBackgroundColor;
+	border-radius: 50%;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivNode.sapSuiteUiCommonsNetworkElementHighlight.sapSuiteUiCommonsNetworkElementSelected .sapSuiteUiCommonsNetworkGraphDivInner {
+	color: @sapTextColor;
+	background-color: @sapList_Hover_SelectionBackground;
+	border: 2px solid @sapInformationBorderColor;
+	border-radius: 8px;
+}
+
+.sapSuiteUiCommonsNetworkNodeCircle.sapSuiteUiCommonsNetworkGraphDivNode.sapSuiteUiCommonsNetworkElementHighlight.sapSuiteUiCommonsNetworkElementSelected .sapSuiteUiCommonsNetworkGraphDivInner {
+	color: @sapTextColor;
+	background-color: @sapList_Hover_SelectionBackground;
+	border: 2px solid @sapInformationBorderColor;
+	border-radius: 50%;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivActionButtonBackground.sapSuiteUiCommonsNetworkElementFocus {
+	border-radius: 50%;
+    padding: 1px;
+    position: initial;
+    display: inline-flex;
+    border: 2px solid @sapInformationBorderColor;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivNode.sapSuiteUiCommonsNetworkElementHighlight .sapSuiteUiCommonsNetworkGraphDivInner {
+	background-color: @sapList_Hover_Background;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivNode.sapSuiteUiCommonsNetworkElementHighlight .sapSuiteUiCommonsNetworkGraphDivHeaderColor {
+	background-color: transparent;
+	color: @sapUiBaseText;
+}
+
+.sapSuiteUiCommonsNetworkNodeDivInfoWrapper {
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	left: -10px;
+	top: -10px;
+
+	background-color: @sapUiListBackground;
+	border-radius: 50%;
+	color: @sapUiBaseText;
+
+	border: 1px solid @sapUiContentForegroundBorderColor;
+
+	pointer-events: all;
+}
+
+.sapSuiteUiCommonsNetworkNodeDivInfoIcon {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
+.sapSuiteUiCommonsNetworkNodeCircle .sapSuiteUiCommonsNetworkNodeDivInfoWrapper {
+	left: -5px;
+	top: 0px;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivHeader.sapSuiteUiCommonsNetworkGraphDivHeaderColor {
+	border-bottom: 1px solid @sapNeutralBorderColor;
+	background-color: @sapUiNeutralElement;
+}
+.sapSuiteUiCommonsNetworkElementWarning .sapSuiteUiCommonsNetworkGraphDivHeaderColor {
+	background-color: @sapWarningBorderColor;
+	border-bottom: 1px solid @sapWarningBorderColor;
+}
+
+.sapSuiteUiCommonsNetworkElementError .sapSuiteUiCommonsNetworkGraphDivHeaderColor {
+	background-color: @sapErrorBackground;
+	border-bottom: 1px solid @sapErrorBorderColor;
+}
+
+.sapSuiteUiCommonsNetworkElementSuccess .sapSuiteUiCommonsNetworkGraphDivHeaderColor {
+	border-bottom: 1px solid @sapSuccessBorderColor;
+	background-color: @sapSuccessBackground;
+}
+
+.sapSuiteUiCommonsNetworkElementInformation .sapSuiteUiCommonsNetworkGraphDivHeaderColor {
+	border-bottom: 1px solid @sapInformationBorderColor;
+	background-color: @sapInformationBackground;
+}
+
+.sapSuiteUiCommonsNetworkElementSelected .sapSuiteUiCommonsNetworkGraphDivHeaderColor {
+	background-color: @sapList_SelectionBackgroundColor;
+	border-bottom: 2px solid @sapInformationBorderColor;
+}
+
+.sapSuiteUiCommonsNetworkDivCircleWrapper {
+	display: flex;
+	width: 100%;
+	position: relative;
+}
+
+.sapSuiteUiCommonsNetworkNodeCustomStatus .sapSuiteUiCommonsNetworkNodeDivInfoWrapper {
+	background-color: @sapUiTileBackground;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivHeader {
+	background-color: transparent;
+	display: flex;
+
+	padding-left: 7px;
+	padding-right: 7px;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivHeader > div {
+	margin-top: 7px;
+	margin-bottom: 7px;
+	padding-top: 2px;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivHeaderOnly {
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 3px;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivAdditionalContent {
+	padding: 0 4px 4px 4px;
+}
+
+.sapSuiteUiCommonsNetworkBox.sapSuiteUiCommonsNetworkElementError .sapSuiteUiCommonsNetworkGraphDivNodeIconTitle,
+.sapSuiteUiCommonsNetworkBox.sapSuiteUiCommonsNetworkElementError .sapSuiteUiCommonsNetworkGraphDivNodeTitle,
+.sapSuiteUiCommonsNetworkBox.sapSuiteUiCommonsNetworkElementWarning .sapSuiteUiCommonsNetworkGraphDivNodeIconTitle,
+.sapSuiteUiCommonsNetworkBox.sapSuiteUiCommonsNetworkElementWarning .sapSuiteUiCommonsNetworkGraphDivNodeTitle,
+.sapSuiteUiCommonsNetworkBox.sapSuiteUiCommonsNetworkElementSuccess .sapSuiteUiCommonsNetworkGraphDivNodeIconTitle,
+.sapSuiteUiCommonsNetworkBox.sapSuiteUiCommonsNetworkElementSuccess .sapSuiteUiCommonsNetworkGraphDivNodeTitle,
+.sapSuiteUiCommonsNetworkBox.sapSuiteUiCommonsNetworkElementInformation .sapSuiteUiCommonsNetworkGraphDivNodeIconTitle,
+.sapSuiteUiCommonsNetworkBox.sapSuiteUiCommonsNetworkElementInformation .sapSuiteUiCommonsNetworkGraphDivNodeTitle {
+	color: @sapTextColor;
+}
+
+.sapSuiteUiCommonsNetworkBox.sapSuiteUiCommonsNetworkGraphDivNode.sapSuiteUiCommonsNetworkElementHighlight .sapSuiteUiCommonsNetworkGraphDivNodeTitle,
+.sapSuiteUiCommonsNetworkBox.sapSuiteUiCommonsNetworkGraphDivNode.sapSuiteUiCommonsNetworkElementHighlight .sapSuiteUiCommonsNetworkGraphDivNodeIconTitle {
+	color: @sapUiBaseText;
+}
+
+.sapSuiteUiCommonsNetworkBox.sapSuiteUiCommonsNetworkGraphDivNode.sapSuiteUiCommonsNetworkElementHighlight.sapSuiteUiCommonsNetworkElementSelected .sapSuiteUiCommonsNetworkGraphDivNodeIconTitle,
+.sapSuiteUiCommonsNetworkBox.sapSuiteUiCommonsNetworkGraphDivNode.sapSuiteUiCommonsNetworkElementHighlight.sapSuiteUiCommonsNetworkElementSelected .sapSuiteUiCommonsNetworkGraphDivNodeTitle {
+	color: @sapTextColor;
+}
+
+.sapSuiteUiCommonsNetworkElementSelected .sapSuiteUiCommonsNetworkGraphDivInner .sapSuiteUiCommonsNetworkGraphDivNodeText,
+.sapSuiteUiCommonsNetworkElementSelected .sapSuiteUiCommonsNetworkGraphDivInner .sapSuiteUiCommonsNetworkGraphDivNodeCircleIcon {
+	color: @sapTextColor;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivHeader .sapSuiteUiCommonsNetworkGraphDivNodeIcon,
+.sapSuiteUiCommonsNetworkGraphDivHeader .sapSuiteUiCommonsNetworkGraphDivNodeText {
+	color: @sapTextColor;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivNodeText {
+	text-overflow: ellipsis;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivTextBreakAll {
+	word-break: break-word;
+}
+
+.sapSuiteUiCommonsNetworkDivCircleStatus {
+	border: 5px solid transparent;
+	margin: 1px;
+	border-radius: 50%;
+	width: 100%;
+	display: flex;
+
+	align-items: center;
+	justify-content: center;
+}
+
+.sapSuiteUiCommonsNetworkElementSuccess .sapSuiteUiCommonsNetworkDivCircleStatus {
+	border: 5px solid @sapSuccessBorderColor;
+}
+
+.sapSuiteUiCommonsNetworkElementError .sapSuiteUiCommonsNetworkDivCircleStatus {
+	border: 5px solid @sapErrorBorderColor;
+}
+
+.sapSuiteUiCommonsNetworkElementWarning .sapSuiteUiCommonsNetworkDivCircleStatus {
+	border: 5px solid @sapWarningBorderColor;
+}
+
+.sapSuiteUiCommonsNetworkElementInformation .sapSuiteUiCommonsNetworkDivCircleStatus {
+	border: 5px solid @sapInformationBorderColor;
+}
+
+.sapSuiteUiCommonsNetworkElementSelected .sapSuiteUiCommonsNetworkDivCircleStatus,
+.sapSuiteUiCommonsNetworkElementHighlight .sapSuiteUiCommonsNetworkDivCircleStatus {
+	border: none;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivNodeImage {
+	padding-top: 4px;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivActionButtons {
+	width: 26px;
+	position: absolute;
+
+	display: none;
+	user-select: none;
+
+	z-index: 500;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivActionButtonsRight {
+	top: 0;
+	right: -32px;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivActionButtonsLeft {
+	top: 0;
+	left: -32px;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivActionButton {
+	width: 26px;
+	height: 26px;
+	border-radius: 50%;
+
+	background-color: @sapUiButtonBackground;
+	border: 1px solid @sapUiButtonBorderColor;
+	color: @sapUiButtonTextColor;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	font-size: 14px;
+	pointer-events: all;
+
+	box-sizing: border-box;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivActionButton:hover:not(.sapSuiteUiCommonsNetworkGraphDivActionButtonDisabled) {
+	cursor: pointer;
+
+	background-color: @sapUiButtonHoverBackground;
+	border-color: @sapUiButtonBorderColor;
+
+}
+
+.sapSuiteUiCommonsNetworkGraphDivActionButtonBackground {
+	// background-color: @sapUiButtonBackground;
+	border-radius: 50%;
+	position: relative;
+	margin-bottom: 0.25rem;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivActionButtonDisabled {
+	opacity: 0.5;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivActionButtonDisabled:hover {
+	cursor: default;
+	background-color: @sapUiButtonBackground;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivActionButton:active:not(.sapSuiteUiCommonsNetworkGraphDivActionButtonDisabled) {
+	background-color: @sapUiButtonActiveBackground;
+	border-color: @sapUiButtonActiveBorderColor;
+	color: @sapUiButtonActiveTextColor;
+}
+
+// .sapSuiteUiCommonsNetworkGraphDivActionButtonBackground .sapSuiteUiCommonsNetworkActionButtonFocusCircle {
+// 	width: 20px;
+// 	height: 20px;
+// 	position: absolute;
+// 	margin: 0px;
+// 	border: 1px dotted @sapUiContentFocusColor;
+// 	border-radius: 50%;
+// 	margin: auto;
+// 	left: 0;
+// 	right: 0;
+// 	top: 0;
+// 	bottom: 0;
+// }
+
+.sapSuiteUiCommonsNetworkGraphDivActionButton:active + .sapSuiteUiCommonsNetworkActionButtonFocusCircle {
+	border-color: @sapUiContentContrastTextColor;
+	display: block;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivAttributeIcon {
+	font-family: SAP-icons;
+	margin-right: 5px;
+	font-size: 16px;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivNodeAttributesRow {
+	display: table-row;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivNodeAttributesRow * {
+	font-size: @sapMFontSmallSize;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivNodeAttributesIcons {
+	display: table-cell;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivHeader .sapSuiteUiCommonsNetworkGraphHeaderCheckboxInner {
+	margin: 0;
+}
+.sapSuiteUiCommonsNetworkGraphHeaderCheckboxInner {
+	pointer-events: all;
+}
+
+.sapSuiteUiCommonsNetworkGraphDivNodeTitleText {
+	pointer-events: none;
+	word-wrap: break-word;
+}

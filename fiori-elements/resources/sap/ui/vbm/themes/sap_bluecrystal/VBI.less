@@ -1,0 +1,83 @@
+
+/*...........................................................................*/
+/* LESS for control sap.ui.vbm/VBI.control...................................*/
+/*...........................................................................*/
+
+.vbi-detail > .vbi-detail-header
+{
+   /* font definition of the callout header..................................*/
+   font-size: @sapUiFontHeader4Size;
+   font-family: @sapUiFontHeaderFamily;
+   font-weight: @sapUiFontHeaderWeight;
+   color: @sapUiHeaderText; 
+}
+
+.vbi-detail-header-phone
+{
+   font-family: @sapUiFontHeaderFamily;
+   font-weight: @sapUiFontHeaderWeight;
+   color: @sapUiHeaderText; 
+}
+
+.vbi-2d-caption
+{
+	font-family: @sapUiFontHeaderFamily;
+	color: @sapUiHeaderText;
+}
+
+
+.vbi-legend {
+	box-shadow: fade(@sapUiDarkShadowTint, 15%) 0px 0px 1.875rem 0.125rem;
+	font-family: @sapUiFontFamily; /* Fallback for Step 1 */
+	background-color: fade(@sapUiLightestBG, 90%);
+	color: @sapUiStandardText;	
+	
+}
+
+.vbi-legend > .vbi-legend-header
+{
+   /* font definition of the callout header..................................*/
+   font-size: @sapMFontMediumSize;
+   
+   
+}
+
+.vbi-legend-button-col:hover
+{
+	background-color: @sapUiLightestBGHover;
+}
+.vbi-legend-button-col:active 
+{
+	background-color: darken(@sapUiLightestBG, 20%);
+}
+
+.vbi-legend-button-exp:hover
+{
+	background-color: @sapUiLightestBGHover;
+}
+.vbi-legend-button-exp:active 
+{
+	background-color: darken(@sapUiLightestBG, 20%);
+}
+
+.vbi-legend-table 
+{
+
+font-size: @sapMFontSmallSize;
+}
+
+.vbi-legend-table-click
+{   
+	tr:hover {
+    	background-color: @sapUiLightestBGHover
+    };
+	tr:active {      
+          background-color: darken(@sapUiLightestBG, 20%)
+    };
+}
+
+.vbi-legend-content-celldiv-square
+{
+	
+	border-color: @sapUiLightestBG;
+}

@@ -1,0 +1,93 @@
+<mvc:View
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:f="sap.f"
+    xmlns:l="sap.ui.layout"
+    controllerName="sap.ushell.components.contentFinder.controller.AppSearch"
+    id="sapContentFinderAppSearch"
+    height="100%"
+    class="sapUiSizeCompact">
+    <!-- The container needs any fixed height (e.g. minFlexSize="1px") to calculate the content heights. -->
+    <l:FixFlex minFlexSize="1px">
+        <l:fixContent>
+            <OverflowToolbar
+                id="appSearchOverflowToolbar"
+                asyncMode="false"
+                style="Clear"
+                class="sapCepContentFinderToolbar sapUiSmallMarginTop sapUiTinyMarginBottom sapCepContentFinderBeginEndPadding">
+                <Title id="appBoxContainerTitle" titleStyle="H5" text="{
+                    parts: [
+                        '/activeNavigationTarget',
+                        '/appSearch/searchTerm',
+                        '/appSearch/showSelectedPressed',
+                        '/appSearch/selectedAppCount',
+                        '/appSearch/visualizations/tiles',
+                        '/appSearch/visualizations/cards',
+                        '/appSearch/restrictedVisualizations',
+                        '/appSearch/filteredAppCount'
+                    ], formatter: '.formatter.formatAppSearchTitle' }">
+                    <layoutData>
+                        <OverflowToolbarLayoutData minWidth="6rem" shrinkable="true" priority="High"/>
+                    </layoutData>
+                </Title>
+                <ToolbarSpacer/>
+                <SearchField
+                    id="appSearchField"
+                    value="{/appSearch/searchTerm}"
+                    placeholder="{i18n>ContentFinder.AppSearch.SearchPlaceholder}"
+                    liveChange=".onAppSearch">
+                    <layoutData>
+                        <OverflowToolbarLayoutData minWidth= "6rem" maxWidth="13.75rem" shrinkable="true" priority="NeverOverflow"/>
+                    </layoutData>
+                </SearchField>
+                <ToggleButton
+                    id="showAllSelectedBtn"
+                    visible="{= ${/activeNavigationTarget} === ${/navigationTargets/appSearchTiles}}"
+                    pressed="{/appSearch/showSelectedPressed}"
+                    enabled="{= ${/appSearch/selectedAppCount} > 0 || ${/appSearch/showSelectedPressed} }"
+                    icon="sap-icon://multi-select"
+                    tooltip="{i18n>ContentFinder.AppSearch.Button.Tooltip.ShowSelected}"
+                    press=".onShowSelectedPressed">
+                    <layoutData>
+                        <OverflowToolbarLayoutData shrinkable="false" priority="Low"/>
+                    </layoutData>
+                </ToggleButton>
+            </OverflowToolbar>
+        </l:fixContent>
+        <l:flexContent>
+            <ScrollContainer
+                class="sapCepContentFinderScrollContainerPadding"
+                vertical="true"
+                horizontal="false">
+                <f:GridContainer
+                    id="tileGridContainer"
+                    items="{
+                        path: '/appSearch/visualizations/tiles',
+                        factory: '.tileFactory'
+                    }"
+                    visible="{= ${/activeNavigationTarget} === ${/navigationTargets/appSearchTiles}}">
+                    <f:layout>
+                        <f:GridContainerSettings
+                            columnSize="19.0625rem"
+                            rowSize="12.75rem"
+                            gap="1.5rem"/>
+                    </f:layout>
+                </f:GridContainer>
+                <f:GridContainer
+                    id="cardGridContainer"
+                    items="{
+                        path: '/appSearch/visualizations/cards',
+                        factory: '.cardFactory'
+                    }"
+                    visible="{= ${/activeNavigationTarget} === ${/navigationTargets/appSearchCards}}">
+                    <f:layout>
+                        <f:GridContainerSettings
+                            columnSize="19.0625rem"
+                            rowSize="12.75rem"
+                            gap="1.5rem"/>
+                    </f:layout>
+                </f:GridContainer>
+            </ScrollContainer>
+        </l:flexContent>
+    </l:FixFlex>
+</mvc:View>

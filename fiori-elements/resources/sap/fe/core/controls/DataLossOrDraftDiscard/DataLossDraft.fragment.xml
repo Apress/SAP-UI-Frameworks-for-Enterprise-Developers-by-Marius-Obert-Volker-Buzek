@@ -1,0 +1,59 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog title="{sap.fe.i18n>WARNING}" state="Warning" type="Message" contentWidth="22rem">
+		<content>
+			<Text
+				text="{= !%{HasActiveEntity} ? ${sap.fe.i18n>ST_DRAFT_DATALOSS_POPUP_MESSAGE_CREATE} : ${sap.fe.i18n>ST_DRAFT_DATALOSS_POPUP_MESSAGE_SAVE} }"
+				wrapping="true"
+			/>
+			<List
+				mode="SingleSelectLeft"
+				showSeparators="None"
+				includeItemInSelection="true"
+				backgroundDesign="Transparent"
+				class="sapUiNoContentPadding"
+			>
+				<customData>
+					<core:CustomData key="listIdentifier" value="draftDataLossOptionsList" />
+				</customData>
+				<items>
+					<CustomListItem>
+						<customData>
+							<core:CustomData key="itemKey" value="draftDataLossOptionSave" />
+						</customData>
+						<VBox class="sapUiTinyMargin">
+							<Label
+								text="{= !%{HasActiveEntity} ? ${sap.fe.i18n>ST_DRAFT_DATALOSS_CREATE_ENTITY_RBL} : ${sap.fe.i18n>ST_DRAFT_DATALOSS_SAVE_DRAFT_RBL} }"
+								design="Bold"
+							/>
+							<Text
+								text="{= !%{HasActiveEntity} ? ${sap.fe.i18n>ST_DRAFT_DATALOSS_CREATE_ENTITY_TOL} : ${sap.fe.i18n>ST_DRAFT_DATALOSS_SAVE_DRAFT_TOL} }"
+							/>
+						</VBox>
+					</CustomListItem>
+					<CustomListItem>
+						<customData>
+							<core:CustomData key="itemKey" value="draftDataLossOptionKeep" />
+						</customData>
+						<VBox class="sapUiTinyMargin">
+							<Label text="{sap.fe.i18n>ST_DRAFT_DATALOSS_KEEP_DRAFT_RBL}" design="Bold" />
+							<Text text="{sap.fe.i18n>ST_DRAFT_DATALOSS_KEEP_DRAFT_TOL}" />
+						</VBox>
+					</CustomListItem>
+					<CustomListItem>
+						<customData>
+							<core:CustomData key="itemKey" value="draftDataLossOptionDiscard" />
+						</customData>
+						<VBox class="sapUiTinyMargin">
+							<Label text="{sap.fe.i18n>ST_DRAFT_DATALOSS_DISCARD_DRAFT_RBL}" design="Bold" />
+							<Text text="{sap.fe.i18n>ST_DRAFT_DATALOSS_DISCARD_DRAFT_TOL}" />
+						</VBox>
+					</CustomListItem>
+				</items>
+			</List>
+		</content>
+		<buttons>
+			<Button text="{sap.fe.i18n>C_COMMON_DIALOG_OK}" type="Emphasized" press="onDataLossOk" />
+			<Button text="{sap.fe.i18n>C_COMMON_DIALOG_CANCEL}" press="onDataLossCancel" />
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

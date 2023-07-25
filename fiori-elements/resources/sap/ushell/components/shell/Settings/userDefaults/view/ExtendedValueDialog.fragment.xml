@@ -1,0 +1,19 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:valueHelp="sap.ui.comp.valuehelpdialog"
+    xmlns:core="sap.ui.core">
+    <valueHelp:ValueHelpDialog
+        id="extendedValueDialog"
+        basicSearchText="{/label}"
+        title="{/label}"
+        supportRanges="true"
+        supportRangesOnly="true"
+        key="{/key}"
+        displayFormat="UpperCase"
+        descriptionKey="{/label}"
+        filterMode="true"
+        stretch="{device>/system/phone}"
+        cancel=".closeValueHelp"
+        afterClose=".afterCloseValueHelp">
+    </valueHelp:ValueHelpDialog>
+</core:FragmentDefinition>

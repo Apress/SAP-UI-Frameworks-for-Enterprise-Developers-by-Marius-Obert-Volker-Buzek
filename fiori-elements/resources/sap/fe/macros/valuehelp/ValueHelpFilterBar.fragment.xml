@@ -1,0 +1,128 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns:core="sap.ui.core"
+	xmlns:mdc="sap.ui.mdc"
+	xmlns:mdcFbVh="sap.ui.mdc.filterbar.vh"
+	xmlns="sap.m"
+	xmlns:macro="sap.fe.macros"
+	xmlns:internalMacro="sap.fe.macros.internal"
+	xmlns:log="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	xmlns:macroData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	template:require="{
+		ID: 'sap/fe/core/helpers/StableIdHelper',
+		COMMON: 'sap/fe/macros/CommonHelper',
+		MACRO: 'sap/fe/macros/MacroTemplating'
+	}"
+>
+	<mdcFbVh:FilterBar
+		id="{this>id}"
+		liveMode="{this>liveMode}"
+		delegate="{= '{name:\'sap/fe/macros/filterBar/FilterBarDelegate\', payload: {entityTypePath: \'' + ${contextPath>@@MACRO.getPath} + '\'} }' }"
+		search="{this>search}"
+		filterChanged="{this>filterChanged}"
+		filterConditions="{this>filterConditions}"
+		suspendSelection="{this>suspendSelection}"
+		expandFilterFields="{this>expandFilterFields}"
+		macroData:hideBasicSearch="{this>hideBasicSearch}"
+		macroData:useSemanticDateRange="{this>useSemanticDateRange}"
+		macroData:selectionFields="{= COMMON.stringifyCustomData(${this>selectionFields}) }"
+		macroData:entityType="{contextPath>@@MACRO.getPath}"
+	>
+		<mdcFbVh:dependents>
+			<!-- Create the value help dialogs for the FilterBar as dependents of the FilterBar -->
+			<template:repeat list="{path:'selectionFields>'}" var="item">
+				<template:if test="{= ${item>availability} === 'Default' &amp;&amp; ${item>template} === undefined}">
+					<template:with path="item>annotationPath" var="property">
+						<macro:ValueHelp
+							idPrefix="{= ID.generate([${this>id}, 'FilterFieldValueHelp', COMMON.getNavigationPath(${item>annotationPath})]) }"
+							contextPath="{contextPath>}"
+							conditionModel="$filters"
+							property="{property>}"
+							filterFieldValueHelp="true"
+							useSemanticDateRange="{this>useSemanticDateRange}"
+						/>
+					</template:with>
+				</template:if>
+			</template:repeat>
+			<!-- TODO filter on properties here and in similar places -->
+			<template:if
+				test="{= !${path:'contextPath>@com.sap.vocabularies.UI.v1.SelectionFields'}  &amp;&amp; (${this>enableFallback} === true)}"
+			>
+				<template:repeat
+					list="{path:'contextPath>', filters: {path: '$kind', operator: 'EQ', value1:'Property'}}"
+					var="selectionField"
+				>
+					<template:with path="selectionField>" var="item">
+						<macro:ValueHelp
+							idPrefix="{= ID.generate([${this>id}, 'FilterFieldValueHelp']) }"
+							contextPath="{contextPath>}"
+							conditionModel="$filters"
+							property="{item>}"
+							filterFieldValueHelp="true"
+							useSemanticDateRange="{this>useSemanticDateRange}"
+						/>
+					</template:with>
+				</template:repeat>
+			</template:if>
+		</mdcFbVh:dependents>
+		<!--
+		The search field is enabled when
+		* it is not hidden using the property hideBasisSearch
+		* there is no SearchRestrictions
+		* the SearchRestrictions has Searchable === true
+		-->
+		<template:if test="{= !${this>hideBasicSearch} }">
+			<mdcFbVh:basicSearchField>
+				<mdc:FilterField
+					placeholder="{sap.fe.i18n>M_FILTERBAR_SEARCH}"
+					conditions="{$filters>/conditions/$search}"
+					dataType="Edm.String"
+					maxConditions="1"
+				/>
+			</mdcFbVh:basicSearchField>
+		</template:if>
+		<mdcFbVh:filterItems>
+			<template:repeat list="{path:'selectionFields>'}" var="item">
+				<template:if test="{= ${item>availability} === 'Default'}">
+					<template:if test="{= ${item>template} === undefined}">
+						<template:then>
+							<template:with path="item>annotationPath" var="property">
+								<internalMacro:FilterField
+									idPrefix="{= ID.generate([${this>id}, 'FilterField', COMMON.getNavigationPath(${item>annotationPath})]) }"
+									vhIdPrefix="{= ID.generate([${this>id}, 'FilterFieldValueHelp', COMMON.getNavigationPath(${item>annotationPath})]) }"
+									contextPath="{contextPath>}"
+									property="{property>}"
+									_valueList="{_valueList>}"
+									useSemanticDateRange="{this>useSemanticDateRange}"
+									settings="{= COMMON.stringifyCustomData(${item>settings}) }"
+								/>
+							</template:with>
+						</template:then>
+						<template:else>
+							<core:Fragment fragmentName="sap.fe.macros.filter.CustomFilter" type="XML" />
+						</template:else>
+					</template:if>
+				</template:if>
+			</template:repeat>
+			<template:if
+				test="{= !${contextPath>@com.sap.vocabularies.UI.v1.SelectionFields} &amp;&amp; (${this>enableFallback} === true) }"
+			>
+				<template:repeat
+					list="{path:'contextPath>', filters: {path: '$kind', operator: 'EQ', value1:'Property'}}"
+					var="selectionField"
+				>
+					<internalMacro:FilterField
+						contextPath="{contextPath>}"
+						property="{selectionField>}"
+						_valueList="{_valueList>}"
+						idPrefix="{= ID.generate([${this>id}, 'FilterField']) }"
+						vhIdPrefix="{= ID.generate([${this>id}, 'FilterFieldValueHelp']) }"
+						useSemanticDateRange="{this>useSemanticDateRange}"
+						log:comment="Taken from Properties"
+						settings="{= COMMON.stringifyCustomData(${selectionField>settings}) }"
+					/>
+				</template:repeat>
+			</template:if>
+		</mdcFbVh:filterItems>
+	</mdcFbVh:FilterBar>
+</core:FragmentDefinition>

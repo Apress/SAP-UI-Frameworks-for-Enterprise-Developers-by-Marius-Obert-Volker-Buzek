@@ -1,0 +1,78 @@
+<core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core"
+  xmlns:vkm="sap.ui.vk.measurements"
+>
+  <Dialog
+    id="measurementSettings"
+    title="{i18n>MEASUREMENTS_SETTINGS_DIALOG_TITLE}"
+    resizable="true"
+    draggable="true"
+    contentWidth="400px"
+    afterClose=".onAfterClose"
+    initialFocus="precision"
+  >
+    <VBox fitContainer="true" renderType="Bare" class="sapUiResponsiveMargin">
+      <Label text="{i18n>MEASUREMENTS_SETTINGS_PRECISIONS_LABEL}" showColon="true"/>
+      <Select id="precision" selectedKey='{ path: "settings>/precision", type: "sap.ui.model.type.Integer" }' change=".onChange">
+        <core:Item key="0" text="{value: 0, formatter: '.formatPrecision'}"/>
+        <core:Item key="1" text="{value: 1, formatter: '.formatPrecision'}"/>
+        <core:Item key="2" text="{value: 2, formatter: '.formatPrecision'}"/>
+        <core:Item key="3" text="{value: 3, formatter: '.formatPrecision'}"/>
+        <core:Item key="4" text="{value: 4, formatter: '.formatPrecision'}"/>
+        <core:Item key="5" text="{value: 5, formatter: '.formatPrecision'}"/>
+      </Select>
+
+      <Label text="{i18n>MEASUREMENTS_SETTINGS_UNITS_LABEL}" showColon="true" class="sapUiSmallMarginTop"/>
+      <Select id="units" selectedKey="{settings>/units}" change=".onChange">
+        <core:Item key="mm" text="{i18n>UNITS_MM}"/>
+        <core:Item key="cm" text="{i18n>UNITS_CM}"/>
+        <core:Item key="m" text="{i18n>UNITS_M}"/>
+        <core:Item key="in" text="{i18n>UNITS_IN}"/>
+        <core:Item key="ft" text="{i18n>UNITS_FT}"/>
+      </Select>
+
+      <Label text="{i18n>MEASUREMENTS_SETTINGS_LINE_COLOR_LABEL}" showColon="true" class="sapUiSmallMarginTop"/>
+      <RadioButtonGroup selectedIndex="{settings>/color}" select=".onChange" >
+        <vkm:ColorRadioButton color="#0A6ED1"/>
+        <vkm:ColorRadioButton color="#107E3E"/>
+        <vkm:ColorRadioButton color="#BB0000"/>
+        <vkm:ColorRadioButton color="#925ACE"/>
+        <vkm:ColorRadioButton color="#C0399F"/>
+      </RadioButtonGroup>
+
+      <Label text="{i18n>MEASUREMENTS_SETTINGS_REFERENCE_FEATURES_TITLE}" showColon="true" class="sapUiSmallMarginTop"/>
+      <HBox fitContainer="true" renderType="Bare" alignItems="Center" justifyContent="SpaceBetween">
+        <HBox alignItems="Center" fitContainer="true" renderType="Bare">
+          <core:Icon size="1.5rem" src="sap-icon://vk-icons/measurement-vertex"/>
+          <Label class="sapUiTinyMarginBegin" text="{i18n>MEASUREMENTS_SETTINGS_FEATURE_VERTEX}"/>
+        </HBox>
+        <Switch customTextOn="&#8203;" customTextOff="&#8203;" change=".onChange" state="{settings>/featureVertex}"/>
+      </HBox>
+      <HBox fitContainer="true" renderType="Bare" alignItems="Center" justifyContent="SpaceBetween">
+        <HBox alignItems="Center" fitContainer="true" renderType="Bare">
+          <core:Icon size="1.5rem" src="sap-icon://vk-icons/measurement-edge"/>
+          <Label class="sapUiTinyMarginBegin" text="{i18n>MEASUREMENTS_SETTINGS_FEATURE_EDGE}"/>
+        </HBox>
+        <Switch customTextOn="&#8203;" customTextOff="&#8203;" change=".onChange" state="{settings>/featureEdge}"/>
+      </HBox>
+      <HBox fitContainer="true" renderType="Bare" alignItems="Center" justifyContent="SpaceBetween">
+        <HBox alignItems="Center" fitContainer="true" renderType="Bare">
+          <core:Icon size="1.5rem" src="sap-icon://vk-icons/measurement-face"/>
+          <Label class="sapUiTinyMarginBegin" text="{i18n>MEASUREMENTS_SETTINGS_FEATURE_FACE}"/>
+        </HBox>
+        <Switch customTextOn="&#8203;" customTextOff="&#8203;" change=".onChange" state="{settings>/featureFace}"/>
+      </HBox>
+
+      <Text text="{i18n>MEASUREMENTS_SETTINGS_REFERENCE_FEATURES_FOOTNOTE}" class="sapUiSmallMarginTop"/>
+    </VBox>
+
+    <beginButton>
+      <Button
+        id="close"
+        text="{i18n>MEASUREMENTS_SETTINGS_CLOSE_BUTTON}"
+        press=".onClosePressed"
+      />
+    </beginButton>
+  </Dialog>
+</core:FragmentDefinition>

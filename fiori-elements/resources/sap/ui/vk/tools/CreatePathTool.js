@@ -1,0 +1,7 @@
+/*!
+ * SAP UI development toolkit for HTML5 (SAPUI5)
+
+        (c) Copyright 2009-2015 SAP SE. All rights reserved
+    
+ */
+sap.ui.define(["../library","./Tool","./CreatePathToolHandler","./CreatePathToolGizmo"],function(t,e,i,o){"use strict";var s=e.extend("sap.ui.vk.tools.CreatePathTool",{metadata:{library:"sap.ui.vk",properties:{parentNode:{type:"any",defaultValue:null},closePath:{type:"boolean",defaultValue:false}},events:{completed:{parameters:{node:{type:"any"},request:{type:"any"},closed:"boolean"}}}},constructor:function(t,o){if(s._instance){return s._instance}e.apply(this,arguments);this._viewport=null;this._handler=new i(this);s._instance=this}});s.prototype.init=function(){if(e.prototype.init){e.prototype.init.call(this)}this.setFootprint(["sap.ui.vk.svg.Viewport"]);this.setAggregation("gizmo",new o)};s.prototype.setActive=function(t,i,o){e.prototype.setActive.call(this,t,i,o);var s=this._viewport;if(s){if(t){this._gizmo=this.getGizmo();if(this._gizmo){this._gizmo.show(s,this)}this._addLocoHandler()}else{this._removeLocoHandler();if(this._gizmo){this._gizmo.hide();this._gizmo=null}}}return this};s.prototype.setMaterial=function(t,e,i){this._material=t;this._lineStyle=e;this._fillStyle=i};s.prototype.queueCommand=function(t){if(this._addLocoHandler()){if(this.isViewportType("sap.ui.vk.svg.Viewport")){t()}}return this};s.prototype.setParentNode=function(t){if(t===this.getParentNode()){return this}this.setProperty("parentNode",t,true);if(this._gizmo){this._gizmo.updateParentNode()}return this};return s});

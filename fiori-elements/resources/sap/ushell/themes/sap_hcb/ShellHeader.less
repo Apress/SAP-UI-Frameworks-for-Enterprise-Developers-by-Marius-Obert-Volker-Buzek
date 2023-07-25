@@ -1,0 +1,156 @@
+/* ================================================== */
+/* CSS for sap.ui.unfied.ShellHeader.control (hcb)    */
+/* ================================================== */
+
+//[Tags "Color"]
+//[Description "Color of title in header"]
+@_sap_ushell_ShellHeader_TitleColor: @sapUiShellBorderColor;
+
+.sapUiMedia-Std-Desktop .sapUshellShellHeadItm:hover > span {
+	background-color: @sapHCHighlightBG;
+}
+
+.sapUshellShellHeadItm {
+	margin-right: 0.25rem;
+  > span {
+    border: 1px solid @sapUiShellBorderColor;
+    border-radius: 0.25rem;
+    font-weight: normal;
+    font-size: @_sap_ushell_ShellHeader_BarHeight / 2;
+    color: @sapUiTileIconColor;
+    height: 2.25rem;
+    line-height: 2.125rem;
+    margin-right: 0.5rem;
+    margin-top: 0.125rem;
+    padding: 1px;
+    width: 2.25rem;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+.sapUshellShellHeadAction {
+  color: @sapUiBaseText;
+	border: 1px solid @sapHCStandardFG;
+	height: 2.25rem;
+	line-height: 2.125rem;
+	margin-top: 0;
+	padding-top: 1px;
+  font-weight: normal;
+  font-size: @_sap_ushell_ShellHeader_BarHeight / 2;
+}
+
+.sapUshellShellHeadItm:active > span,
+.sapUshellShellHeadItm:active:hover > span,
+.sapUiMedia-Std-Desktop .sapUshellShellHeadItm:active:hover > span,
+.sapUiMedia-Std-Desktop .sapUshellShellHeadItm:hover > span,
+.sapUiMedia-Std-Desktop .sapUshellShellHeadAction:hover > *,
+.sapUiMedia-Std-Desktop .sapUshellShellHeadAction:hover:active > *,
+.sapUshellShellHeadAction:active > *,
+.sapUshellShellHeadItm.sapUshellShellHeadItmSel > span,
+.sapUshellShellHeadItm.sapUshellShellHeadItmSel:active > span,
+.sapUshellShellHeadItm.sapUshellShellHeadItmSel:active:hover > span {
+  background-color: @sapUiButtonHoverBackground;
+  }
+
+.sapUshellShellHeadItm.sapUshellShellHeadItmSel:hover > span {
+  background-color: darken(@sapUiHighlight, 5%);
+  }
+
+.sapUiMedia-Std-Phone .sapUshellShellHeadAction:focus .sapUshellShellHeadAction {
+	border-right: 2px dotted @sapHCStandardFG;
+	padding-right: 0.5rem;
+}
+
+.sapUshellShellHeadItm:focus > span {
+	border: 2px dotted @sapHCStandardFG;
+	border-radius: 0;
+	padding: 0;
+}
+
+.sapUshellHeadTitle {
+  color: @_sap_ushell_ShellHeader_TitleColor;
+}
+
+
+/** --------------------------------------- **/
+/** Styles for Shell Title's Navigation Menu**/
+/** --------------------------------------- **/
+
+#sapUshellAppTitlePopover .sapMBar {
+  border-bottom: 0 !important;
+}
+
+.sapUshellAppTitle {
+  color: @sapUiShellTextColor;
+}
+.sapUshellAppTitleClickable:hover {
+  background-color: @sapUiButtonHoverBackground;
+  border-radius: 0.2rem;
+}
+.sapUshellAppTitleClickable:active {
+  background-color: @sapUiButtonActiveBackground;
+  color: @sapUiLinkActive !important;
+  text-shadow: 0 0 0 0 !important;
+  border-radius: 0.2rem;
+}
+#shellAppTitle:focus-within {
+  outline: 2px dotted @sapUiFieldFocusBorderColor;
+  margin-top: 1px;
+}
+
+/** Hierarchy Items - (List Items) Icon Styles **/
+.sapUshellNavigationMenuListItems {
+  color: @sapUiListBackground;
+}
+
+.sapUshellNavigationMenuListItems:not(:last-child) .sapMLIBContent:after {
+  background: @sapHCStandardFG;
+}
+
+.sapUshellNavigationMenuListItems:not(:first-child) .sapMLIBContent:before {
+  background: @sapHCStandardFG;
+}
+
+/** Shell Application Title control **/
+
+/** Shell Navigation Menu - ResponsivePopover**/
+#sapUshellAppTitlePopover {
+  background-color: @sapUiListBackground;
+}
+
+/** Shell Navigation Menu - Mini Tiles (of relatedApps)**/
+    .sapUshellNavMiniTile {
+  background-color: @sapUiListBackground;
+  box-shadow: 0 0 0 1px @sapHCStandardFG;
+}
+
+.sapUshellNavMiniTile:hover {
+  box-shadow: 0 0 0 2px @sapHCStandardFG;
+  background-color: @sapUiButtonHoverBackground;
+}
+.sapUshellNavMiniTile:active {
+  box-shadow: 0 0 0 2px @sapHCStandardFG;
+  background-color: @sapUiButtonHoverBackground;
+}
+.sapUshellNavMiniTile:focus {
+  box-shadow: 0 0 0 2px @sapHCStandardFG;
+  background-color: @sapUiButtonHoverBackground;
+}
+
+/** Shell Navigation Menu - Mini Tiles - Title **/
+.sapUshellNavMiniTileTitle{
+  color: @sapUiHighlightTextColor;
+}
+/** Shell Navigation Menu - Mini Tiles - Subtitle **/
+.sapUshellNavMiniTileSubtitle{
+  color: @sapUiHighlightTextColor;
+}
+
+/** Shell Navigation Menu - Mini Tiles - Icon **/
+.sapUshellNavMiniTileIcon{
+  color: @sapUiBrand;
+}
+
+.sapUshellShellHeadItmCounter:after{
+  border-color: @sapUiGroupContentBorderColor;
+}

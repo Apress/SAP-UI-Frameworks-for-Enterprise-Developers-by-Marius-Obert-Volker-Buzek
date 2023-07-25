@@ -1,0 +1,63 @@
+.sapCepDivider {
+  position: absolute;
+  transform: translateX(-50%);
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  left: 0;
+  padding: 4px;
+
+  &:hover {
+    cursor: col-resize;
+  }
+
+  .sapCepDividerInner {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    border-right: 2px dashed @sapUiNeutralBorder;
+    transform: translateX(-2px);
+  }
+}
+
+html[dir=rtl] .sapCepDivider {
+  transform: translateX(50%);
+
+  .sapCepDividerInner {
+    transform: translateX(2px);
+  }
+}
+
+.sapCepDividerButton {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  transform: translateX(-50%);
+
+  &.sapCepColumnButtonRight {
+    left: auto;
+    right: 0;
+    transform: translateX(calc(~"0.5rem + 6.5px"));
+  }
+
+  &.sapCepColumnButtonLeft {
+    transform: translateX(calc(~"-0.5rem - 6.5px"));
+  }
+}
+
+
+html[dir=rtl] .sapCepDividerButton {
+  &.sapCepColumnButtonRight {
+    left: auto;
+    right: 0;
+    transform: translateX(calc(~"-0.5rem - 6.5px"));
+  }
+
+  &.sapCepColumnButtonLeft {
+    transform: translateX(calc(~"0.5rem + 6.5px"));
+  }
+}

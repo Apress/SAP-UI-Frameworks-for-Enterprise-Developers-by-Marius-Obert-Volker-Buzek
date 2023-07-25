@@ -1,0 +1,23 @@
+
+/* ============================================= */
+/* CSS for control sap.ushell/ImageTile.control */
+/* ============================================= */
+
+img.sapUshellImageTile {
+	position: absolute;
+}
+
+.sapUiMedia-Std-Desktop img.sapUshellImageTile,
+.sapUiMedia-Std-Tablet img.sapUshellImageTile {
+    /* Desktop */
+        bottom: 2.13rem;
+        width: @_sap_ushell_Tile_WidthDesktop - (2 * @_sap_ushell_TileBase_PaddingDesktopVertical);
+        height: 4.63rem;
+}
+
+.sapUiMedia-Std-Phone img.sapUshellImageTile {
+    /* Phone */
+        bottom: 1.5rem;
+        width: @_sap_ushell_Tile_WidthPhone - (2 * @_sap_ushell_TileBase_PaddingPhoneVertical);
+        height: 3.13rem;
+}

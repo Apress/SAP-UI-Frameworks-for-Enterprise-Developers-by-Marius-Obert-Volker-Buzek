@@ -1,0 +1,120 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  margin-top: 0;
+}
+
+header {
+  position: relative;
+  background-color: #222;
+  color: #fad161;
+  padding: 20px;
+  text-align: center;
+  top: 0;
+  /* background-image: url('cover.jpg'); */
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: contain;
+  z-index: 99;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  background-color: #222;
+  padding: 20px;
+  text-align: center;
+  z-index: 99;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+nav ul li a {
+  color: #fad161;
+  text-decoration: none;
+}
+
+.parallax-section {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto;
+  height: 100vh;
+  position: relative;
+  background-size: contain;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.parallax-section img {
+  object-fit: contain;
+  height: auto;
+  max-height: 80vh;
+  width: 100%;
+}
+
+.parallax-section h2 a {
+  margin-bottom: 20px;
+  background-color: #222;
+  color: #fad161;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: lighter;
+  white-space: nowrap;
+}
+
+#fiorielements .parallax-section h1 a:hover {
+  cursor: not-allowed;
+}
+
+.ribbon {
+  position: fixed;
+  top: 4.6em;
+  left: -3.4em;
+  z-index: 9999;
+  width: 18em;
+  height: 2em;
+  overflow: hidden;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  line-height: 2em;
+  color: #fff;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1em;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  font-size: 16px;
+  background-color: #222;
+  top: auto;
+  bottom: 4.6em;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}

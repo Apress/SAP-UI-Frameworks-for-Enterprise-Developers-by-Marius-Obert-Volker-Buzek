@@ -1,0 +1,6 @@
+/*!
+ * OpenUI5
+ * (c) Copyright 2009-2023 SAP SE or an SAP affiliate company.
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ */
+sap.ui.define(["sap/ui/integration/designtime/baseEditor/propertyEditor/codeEditor/CodeEditor","sap/base/util/restricted/_isNil"],function(e,t){"use strict";var r=e.extend("sap.ui.integration.designtime.baseEditor.propertyEditor.objectArrayEditor.ObjectArrayEditor",{xmlFragment:"sap.ui.integration.designtime.baseEditor.propertyEditor.objectArrayEditor.ObjectArrayEditor",metadata:{library:"sap.ui.integration"},renderer:e.getMetadata().getRenderer().render});r.configMetadata=Object.assign({},e.configMetadata,{allowBindings:{defaultValue:true,mergeStrategy:"mostRestrictiveWins"},typeLabel:{defaultValue:"BASE_EDITOR.TYPES.OBJECTARRAY"}});r.prototype._onLiveChange=function(){var e=this.getContent();var t=e.getValue();if(!t||t===""){this.setValue(undefined)}else{try{var r=JSON.parse(t);if(!(r instanceof Array)){e.setValueState("Error");e.setValueStateText(this.getI18nProperty("BASE_EDITOR.VALIDATOR.NOT_AN_ARRAY_OF_JSONOBJECTS"));return}this.setValue(r)}catch(t){e.setValueState("Error");e.setValueStateText(this.getI18nProperty("BASE_EDITOR.VALIDATOR.NOT_A_JSONOBJECT"))}}};return r});

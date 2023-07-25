@@ -1,0 +1,71 @@
+<mvc:View
+    controllerName="sap.ushell.components.shell.Settings.notifications.NotificationsSetting"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc">
+    <VBox class="sapUiSmallMargin">
+        <CheckBox id="showHighPrioCheckbox" selected="{/flags/highPriorityBannerEnabled}" text="{i18n>Label.ShowAlertsForHighNotifications}"/>
+        <Table
+            class="sapUiForceWidthAuto"
+            id="table"
+            sticky="ColumnHeaders"
+            fixedLayout="false"
+            items="{
+                path: '/rows',
+                sorter: { path: 'NotificationTypeDesc' }
+            }">
+            <columns>
+                <Column id="columnNotificationType">
+                    <ObjectIdentifier text="{i18n>notificationType_column}" />
+                </Column>
+                <Column id="columnMobileNotification" visible="{/flags/mobileNotificationsEnabled}" minScreenWidth="Tablet" demandPopin="true">
+                    <Text id="columnMobileText" text="{i18n>iOSNotification_column}" />
+                </Column>
+                <Column id="columnEmail" visible="{/flags/emailNotificationsEnabled}" minScreenWidth="Tablet" demandPopin="true">
+                    <Text id="columnEmailText" text="{i18n>eMailFld}" />
+                </Column>
+                <Column id="columnHighPriority" minScreenWidth="Tablet" demandPopin="true">
+                    <Text id="columnHighPriorityText" text="{i18n>highNotificationsBanner_column}"/>
+                </Column>
+                <Column id="columnEnable" minScreenWidth="Tablet">
+                    <Text id="columnEnableText" text="{i18n>Notifications_Settings_Show_Type_column}"/>
+                </Column>
+            </columns>
+
+            <items>
+                <ColumnListItem id="columnListItemNotifications" type="Inactive">
+                    <cells>
+                        <ObjectIdentifier id="objectIdentifierTitle" title="{NotificationTypeDesc}"/>
+                    </cells>
+                    <cells>
+                        <CheckBox
+                            id="cellCheckboxMobile"
+                            selected="{= !${DoNotDeliverMob}}"
+                            select=".onSelectMobile"/>
+                    </cells>
+                    <cells>
+                        <CheckBox
+                            id="cellCheckboxEmail"
+                            visible="{= ${IsEmailEnabled} &amp;&amp; ${IsEmailIdMaintained} &amp;&amp; !${DoNotDeliver} }"
+                            selected="{= !${DoNotDeliverEmail}}"
+                            select=".onSelectEmail"/>
+                    </cells>
+                    <cells>
+                        <CheckBox
+                            id="cellCheckboxHighPrio"
+                            selected="{= ${PriorityDefault} === 'HIGH'}"
+                            select=".onSelectHighPriority"/>
+                    </cells>
+                    <cells>
+                        <Switch
+                                id="cellSwitchEnable"
+                                state="{= !${DoNotDeliver}}"
+                                change=".onEnableSwitchChange"
+                                customTextOn=" "
+                                customTextOff=" "/>
+                    </cells>
+                </ColumnListItem>
+            </items>
+
+        </Table>
+    </VBox>
+</mvc:View>

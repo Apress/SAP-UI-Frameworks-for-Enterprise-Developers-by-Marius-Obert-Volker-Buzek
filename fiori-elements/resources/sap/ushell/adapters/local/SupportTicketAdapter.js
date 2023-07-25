@@ -1,0 +1,2 @@
+// Copyright (c) 2009-2023 SAP SE, All Rights Reserved
+sap.ui.define(["sap/ui/thirdparty/jquery"],function(e){"use strict";var r=function(r,t,i){this.createTicket=function(r){var t=new e.Deferred,i="1234567";t.resolve(i);return t.promise()}};return r},false);

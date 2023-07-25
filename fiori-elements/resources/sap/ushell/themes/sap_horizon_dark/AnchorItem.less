@@ -1,0 +1,114 @@
+/* ====================================== */
+/* CSS for control sap.ushell/AnchorItem  */
+/* Horizon Dark Theme                     */
+/* ====================================== */
+
+/* =============================================== */
+/* Variables                                       */
+/* =============================================== */
+
+@_sapUshellAnchorItem_FirstItem_NoLeftMargin: 0;
+
+.sapUshellAnchorItem {
+  font-family: @sapFontFamily;
+  font-size: @sapMFontSmallSize;
+  font-weight: bold;
+  opacity: 1;
+  padding: 0 .25rem;
+  margin: 0 .75rem;
+  min-width: fit-content;
+  vertical-align: middle;
+  display: inline-block;
+  box-sizing: border-box;
+  height: inherit;
+  position: relative;
+  outline: none;
+
+  &:first-child {
+    margin-left: @_sapUshellAnchorItem_FirstItem_NoLeftMargin;
+  }
+
+  &:hover,
+  &:active {
+    color: @sapUiContentSelectedTextColor;
+  }
+}
+
+.sapUshellAnchorNavigationBarItemsScroll:first-child {
+  margin-left: @_sapUshellAnchorItem_FirstItem_NoLeftMargin;
+}
+
+// selected item itself
+.sapUshellAnchorItemSelected {
+  color: @sapUiContentSelectedTextColor;
+
+  &:first-child {
+    margin-left: @_sapUshellAnchorItem_FirstItem_NoLeftMargin;
+  }
+}
+
+// rounded bottom border that shows a selected AnchorItem
+.sapUshellAnchorItem::after {
+  content: "";
+  height: .1875rem;
+  border-radius: .125rem .125rem 0 0;
+  display: block;
+  position: absolute;
+  margin: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.sapUshellAnchorItem.sapUshellAnchorItemSelected::after {
+  background: @sapUiContentSelectedTextColor;
+}
+
+// The selected items inner element has no border.
+.sapUshellAnchorItemSelected .sapUshellAnchorItemInner:not(.sapUshellAnchorInnerMarker) {
+  border: none;
+
+}
+
+// AnchorItem itelf has no outline when focused but the inner element does.
+.sap-desktop .sapUshellAnchorItem:focus {
+  outline: none;
+
+  &:first-child {
+    margin-left: @_sapUshellAnchorItem_FirstItem_NoLeftMargin;
+  }
+}
+
+// the inner control of the item itself: li > div, vertically centered inside of the li
+.sapUshellAnchorItemInner {
+  font-size: @sapMFontMediumSize;
+  line-height: @sapMFontMediumSize;
+  position: relative;
+  height: 1rem;
+  padding: .188rem;
+  min-width: 2rem;
+  top: 50%;
+  bottom: 50%;
+  transform: translate(0, -50%);
+}
+
+// only on focus state a border around the text appears
+.sap-desktop .sapUshellAnchorItem:focus:not(:active) .sapUshellAnchorItemInner::after {
+  content: "";
+  height: auto;
+  background: @sapUiButtonLiteBorderColor;
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  border-radius: .375rem;
+  border: @sapUiContentFocusWidth @sapUiContentFocusStyle @sapUiContentFocusColor;
+}
+
+//active and foucus+active state do not have borders or outlines.
+.sap-desktop .sapUshellAnchorItem:active .sapUshellAnchorItemInner,
+.sap-desktop .sapUshellAnchorItem:focus:active .sapUshellAnchorItemInner {
+  color: @sapUiContentSelectedTextColor;
+}

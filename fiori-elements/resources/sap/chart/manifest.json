@@ -1,0 +1,52 @@
+{
+  "_version": "1.21.0",
+  "sap.app": {
+    "id": "sap.chart",
+    "type": "library",
+    "embeds": [],
+    "applicationVersion": {
+      "version": "1.113.0"
+    },
+    "title": "Smart viz control based on Vizframe",
+    "description": "Smart viz control based on Vizframe",
+    "ach": "BI-CVM",
+    "resources": "resources.json",
+    "offline": true
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "supportedThemes": []
+  },
+  "sap.ui5": {
+    "dependencies": {
+      "minUI5Version": "1.113",
+      "libs": {
+        "sap.ui.core": {
+          "minVersion": "1.113.0"
+        },
+        "sap.viz": {
+          "minVersion": "1.113.0"
+        }
+      }
+    },
+    "library": {
+      "i18n": false,
+      "css": false,
+      "content": {
+        "controls": [
+          "sap.chart.Chart"
+        ],
+        "elements": [
+          "sap.chart.data.Dimension",
+          "sap.chart.data.TimeDimension",
+          "sap.chart.data.HierarchyDimension",
+          "sap.chart.data.Measure"
+        ],
+        "types": [
+          "sap.chart.data.MeasureSemantics"
+        ],
+        "interfaces": []
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+<core:FragmentDefinition
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m"
+	xmlns:macro="sap.fe.macros"
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	template:require="{
+		ID: 'sap/fe/core/helpers/StableIdHelper'
+	}"
+>
+	<template:with path="subSection>presentation" var="presentationContext">
+		<template:with path="subSection>presentation" var="primaryVisualization">
+			<template:repeat list="{presentationContext>visualizations}" var="visualizationDefinition">
+				<core:Fragment fragmentName="sap.fe.templates.ObjectPage.view.fragments.{visualizationDefinition>type}" type="XML" />
+			</template:repeat>
+		</template:with>
+	</template:with>
+</core:FragmentDefinition>

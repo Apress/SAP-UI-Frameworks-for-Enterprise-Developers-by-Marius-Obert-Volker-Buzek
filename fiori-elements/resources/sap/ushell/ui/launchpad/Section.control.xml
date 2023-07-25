@@ -1,0 +1,243 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:dnd="sap.ui.core.dnd"
+    xmlns:f="sap.f"
+    xmlns:fdnd="sap.f.dnd"
+    xmlns:section="sap.ushell.ui.launchpad.section"
+    core:require="{
+        ushellLibrary: 'sap/ushell/library'
+    }">
+    <VBox id="content" class="sapUshellSection">
+        <items>
+            <Title
+                id="title"
+                class="sapUshellSectionTitle sapContrastPlus"
+                text="{$this>title}"
+                level="H3"
+                visible="{= !${$this>editable} &amp;&amp; ${$this>showSection}}" />
+            <OverflowToolbar id="header" class="sapUshellSectionHeader" visible="{$this>editable}">
+                <Text
+                    id="titleLabel"
+                    text="{$this>title}"
+                    visible="{= ${$this>editable} &amp;&amp; ${$this>default}}">
+                    <layoutData><OverflowToolbarLayoutData priority="NeverOverflow" /></layoutData>
+                </Text>
+                <Label
+                    id="label"
+                    text="{$this.i18n>Section.Label.Title}"
+                    labelFor="title-edit"
+                    visible="{= ${$this>editable} &amp;&amp; !${$this>default}}"
+                    showColon="true">
+                    <layoutData><OverflowToolbarLayoutData priority="NeverOverflow" /></layoutData>
+                </Label>
+                <Input
+                    id="title-edit"
+                    value="{$this>title}"
+                    editable="{= !${$this>default}}"
+                    visible="{= !${$this>default}}"
+                    placeholder="{$this.i18n>Section.TitlePlaceholder}"
+                    valueLiveUpdate="true"
+                    maxLength="100"
+                    change=".fireTitleChange">
+                    <layoutData><OverflowToolbarLayoutData priority="NeverOverflow" shrinkable="true" minWidth="10rem" maxWidth="40rem" /></layoutData>
+                </Input>
+                <ToolbarSpacer />
+                <Button
+                    id="addVisualization"
+                    text="{$this.i18n>Section.Button.AddVisualization}"
+                    type="Transparent"
+                    press=".fireAdd"
+                    visible="{= ${$this>enableAddButton} &amp;&amp; !${$this>default}}" />
+                <Button id="showHide"
+                    text="{= ${$this>showSection} ? ${$this.i18n>Section.Button.Hide} : ${$this.i18n>Section.Button.Show}}"
+                    type="Transparent"
+                    press="._showHidePressed(!${$this>showSection})"
+                    visible="{= ${$this>enableShowHideButton} &amp;&amp; !${$this>default}}" />
+                <Button id="reset"
+                    text="{$this.i18n>Section.Button.Reset}"
+                    type="Transparent"
+                    press=".fireReset"
+                    visible="{= ${$this>enableResetButton} &amp;&amp; !${$this>default}}" />
+                <Button
+                    id="delete"
+                    text="{$this.i18n>Section.Button.Delete}"
+                    type="Transparent"
+                    press=".fireDelete"
+                    visible="{= ${$this>enableDeleteButton} &amp;&amp; !${$this>default}}" />
+            </OverflowToolbar>
+            <Text id="noVisualizationsText"
+                class="sapUshellSectionNoVisualizationsText"
+                text="{$this>noVisualizationsText}"
+                textAlign="Center"
+                visible="{= ${$this>editable} &amp;&amp; ${$this>showNoVisualizationsText}}" />
+            <f:GridContainer
+                id="defaultArea"
+                class="sapUshellSectionGridContainer"
+                containerQuery="{$this>enableGridContainerQuery}"
+                minHeight="0"
+                visible="{= ${$this>editable} || ${$this>showSection} }">
+                <f:customData>
+                    <core:CustomData key="default" value="{$this>default}" />
+                    <core:CustomData key="area" value="{= ushellLibrary.DisplayFormat.Standard}" />
+                </f:customData>
+                <f:layout>
+                    <f:GridContainerSettings
+                        rowSize="{= ${$this>gridContainerRowSize}}"
+                        columnSize="{= ${$this>gridContainerRowSize}}"
+                        gap="{= ${$this>gridContainerGap}}" />
+                </f:layout>
+                <f:layoutXS>
+                    <f:GridContainerSettings
+                        columns="{= ${$this>enableGridBreakpoints} ? 4 : 0 }"
+                        rowSize="{= ${$this>gridContainerRowSizeXS}}"
+                        columnSize="{= ${$this>gridContainerRowSizeXS}}"
+                        gap="{= ${$this>gridContainerGapXS}}" />
+                </f:layoutXS>
+                <f:layoutS>
+                    <f:GridContainerSettings
+                        columns="{= ${$this>enableGridBreakpoints} ? 4 : 0 }"
+                        rowSize="{= ${$this>gridContainerRowSizeS}}"
+                        columnSize="{= ${$this>gridContainerRowSizeS}}"
+                        gap="{= ${$this>gridContainerGapS}}" />
+                </f:layoutS>
+                <f:layoutM>
+                    <f:GridContainerSettings
+                        columns="{= ${$this>enableGridBreakpoints} ? 6 : 0 }"
+                        rowSize="{= ${$this>gridContainerRowSizeM}}"
+                        columnSize="{= ${$this>gridContainerRowSizeM}}"
+                        gap="{= ${$this>gridContainerGapM}}" />
+                </f:layoutM>
+                <f:layoutL>
+                    <f:GridContainerSettings
+                        columns="{= ${$this>enableGridBreakpoints} ? ${$this>sizeBehavior} === 'Small' ? 12 : 10 : 0 }"
+                        rowSize="{= ${$this>gridContainerRowSizeL}}"
+                        columnSize="{= ${$this>gridContainerRowSizeL}}"
+                        gap="{= ${$this>gridContainerGapL}}" />
+                </f:layoutL>
+                <f:layoutXL>
+                    <f:GridContainerSettings
+                        columns="{= ${$this>enableGridBreakpoints} ? ${$this>sizeBehavior} === 'Small' ? 16 : 14 : 0 }"
+                        rowSize="{= ${$this>gridContainerRowSizeXL}}"
+                        columnSize="{= ${$this>gridContainerRowSizeXL}}"
+                        gap="{= ${$this>gridContainerGapXL}}" />
+                </f:layoutXL>
+                <f:dragDropConfig>
+                    <dnd:DragInfo enabled="{$this>enableVisualizationReordering}" groupName="Section" sourceAggregation="items" />
+                    <fdnd:GridDropInfo
+                        enabled="{$this>enableVisualizationReordering}"
+                        groupName="Section"
+                        dropLayout="Horizontal"
+                        dropPosition="Between"
+                        targetAggregation="items"
+                        dropIndicatorSize="._getDefaultDropIndicatorSize"
+                        dragEnter="._onDragEnter"
+                        drop="._reorderVisualizations" />
+                </f:dragDropConfig>
+            </f:GridContainer>
+            <f:GridContainer
+                id="flatArea"
+                class="sapUshellSectionGridContainer"
+                containerQuery="{$this>enableGridContainerQuery}"
+                minHeight="0"
+                visible="{= ${$this>editable} || ${$this>showSection} }">
+                <f:customData>
+                    <core:CustomData key="default" value="{$this>default}" />
+                    <core:CustomData key="area" value="{= ushellLibrary.DisplayFormat.Flat}" />
+                </f:customData>
+                <f:layout>
+                    <f:GridContainerSettings
+                        rowSize="{= ${$this>gridContainerRowSize}}"
+                        columnSize="{= ${$this>gridContainerRowSize}}"
+                        gap="{= ${$this>gridContainerGap}}" />
+                </f:layout>
+                <f:layoutXS>
+                    <f:GridContainerSettings
+                        columns="{= ${$this>enableGridBreakpoints} ? 4 : 0 }"
+                        rowSize="{= ${$this>gridContainerRowSizeXS}}"
+                        columnSize="{= ${$this>gridContainerRowSizeXS}}"
+                        gap="0.5rem" />
+                </f:layoutXS>
+                <f:layoutS>
+                    <f:GridContainerSettings
+                        columns="{= ${$this>enableGridBreakpoints} ? 4 : 0 }"
+                        rowSize="{= ${$this>gridContainerRowSizeS}}"
+                        columnSize="{= ${$this>gridContainerRowSizeS}}"
+                        gap="0.5rem" />
+                </f:layoutS>
+                <f:layoutM>
+                    <f:GridContainerSettings
+                        columns="{= ${$this>enableGridBreakpoints} ? 6 : 0 }"
+                        rowSize="{= ${$this>gridContainerRowSizeM}}"
+                        columnSize="{= ${$this>gridContainerRowSizeM}}"
+                        gap="{= ${$this>gridContainerGapM}}" />
+                </f:layoutM>
+                <f:layoutL>
+                    <f:GridContainerSettings
+                        columns="{= ${$this>enableGridBreakpoints} ? ${$this>sizeBehavior} === 'Small' ? 12 : 10 : 0 }"
+                        rowSize="{= ${$this>gridContainerRowSizeL}}"
+                        columnSize="{= ${$this>gridContainerRowSizeL}}"
+                        gap="{= ${$this>gridContainerGapL}}" />
+                </f:layoutL>
+                <f:layoutXL>
+                    <f:GridContainerSettings
+                        columns="{= ${$this>enableGridBreakpoints} ? ${$this>sizeBehavior} === 'Small' ? 16 : 14 : 0 }"
+                        rowSize="{= ${$this>gridContainerRowSizeXL}}"
+                        columnSize="{= ${$this>gridContainerRowSizeXL}}"
+                        gap="{= ${$this>gridContainerGapXL}}" />
+                </f:layoutXL>
+                <f:dragDropConfig>
+                    <dnd:DragInfo
+                        enabled="{$this>enableVisualizationReordering}"
+                        groupName="{= ${$this>_duringDrag} ? 'Section' : 'FlatArea'}"
+                        sourceAggregation="items" />
+                    <fdnd:GridDropInfo
+                        enabled="{$this>enableVisualizationReordering}"
+                        groupName="{= ${$this>_duringDrag} ? 'Section' : 'FlatArea'}"
+                        dropLayout="Horizontal"
+                        dropPosition="Between"
+                        targetAggregation="items"
+                        dropIndicatorSize="._getFlatDropIndicatorSize"
+                        dragEnter="._onDragEnter"
+                        drop="._reorderVisualizations" />
+                </f:dragDropConfig>
+            </f:GridContainer>
+            <section:CompactArea
+                id="compactArea"
+                class="sapUshellSectionGridContainer"
+                visible="{= ${$this>editable} || ${$this>showSection} }"
+                itemDrop="._reorderVisualizations"
+                enableLinkReordering="{$this>enableVisualizationReordering}">
+                <section:customData>
+                    <core:CustomData key="default" value="{$this>default}" />
+                    <core:CustomData key="area" value="{= ushellLibrary.DisplayFormat.Compact}" />
+                </section:customData>
+                <section:dragDropConfig>
+                    <dnd:DragInfo
+                        enabled="{$this>enableVisualizationReordering}"
+                        groupName="{= ${$this>_duringDrag} ? 'Section' : 'CompactArea'}"
+                        sourceAggregation="items" />
+                    <dnd:DropInfo
+                        enabled="{$this>enableVisualizationReordering}"
+                        groupName="{= ${$this>_duringDrag} ? 'Section' : 'CompactArea'}"
+                        dropLayout="Horizontal"
+                        dropPosition="Between"
+                        targetAggregation="items"
+                        dragEnter="._onDragEnter"
+                        drop="._reorderVisualizations" />
+                    <dnd:DropInfo
+                        enabled="{$this>enableVisualizationReordering}"
+                        groupName="{= ${$this>_duringDrag} ? 'Section' : 'CompactArea'}"
+                        dragEnter="._onDragEnter"
+                        drop="._reorderVisualizations" />
+                </section:dragDropConfig>
+            </section:CompactArea>
+        </items>
+        <customData>
+            <core:CustomData
+                key="help-id"
+                value="{= ${$this>default} ? 'recently-added-apps' : ${$this>dataHelpId}}"
+                writeToDom="{= ${$this>default} || !!${$this>dataHelpId}}" />
+        </customData>
+    </VBox>
+</core:FragmentDefinition>

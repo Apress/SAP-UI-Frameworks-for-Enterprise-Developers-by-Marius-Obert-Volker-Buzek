@@ -1,0 +1,2 @@
+// Copyright (c) 2009-2023 SAP SE, All Rights Reserved
+sap.ui.define(["sap/base/util/ObjectPath","sap/base/util/values"],function(a,e){"use strict";var t={};t.getVisualizationReferences=function(t){var i;var n=[];var r=a.get("payload.sections",t)||{};e(r).forEach(function(e){i=a.get("layout.vizOrder",e)||[];i.forEach(function(a){if(e.viz[a]){n.push(e.viz[a])}})});return n};return t});

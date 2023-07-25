@@ -1,0 +1,30 @@
+/*...........................................................................*/
+/* LESS for control sap.ui.vk/ListPanelStack.control...................................*/
+/*...........................................................................*/
+
+
+/* main ListPanelStack style..................................................*/
+.sapUiVkListPanelStack {
+	background-color: @sapList_Background;
+}
+
+
+.sapUiVkLPSTrans {
+	transition: width 0.4s;
+}
+
+.sapUiVkLPSCollapse .sapUiVkListPanel .sapMPanelExpandableIcon {
+	display: none;
+}
+
+html:not(.sap-phone) .sapUiVkLPSCollapse div.sapUiVkListPanel>header>button  { /* hide default panel expand button if collapsed */ 
+		display: none;
+}
+
+.sapUiVkLPSCollapse .sapMPanel .sapMPanelWrappingDivTb .sapUiVkLPTb.sapMIBar.sapMTB {
+	margin-right: 0px;
+}
+
+.sapUiVkListPanelStack .sapUiVkListPanel .sapMPanelContent { /* remove scrolling from panel content since whole stack should scroll */		
+	overflow: hidden;
+}

@@ -1,0 +1,13 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<VBox fitContainer="true" alignItems="Stretch" alignContent="Stretch" justifyContent="Start" renderType="Div">
+		<MessageStrip
+			text="{sap.fe.i18n>C_MULTIVIZ_CHART_IGNORED_FILTER_DRAFT_DATA}"
+			type="Information"
+			showIcon="true"
+			showCloseButton="true"
+			class="sapUiSmallMargin"
+			visible="{='{= ${internal>controls/showMessageStrip/' + (${visualizationDefinition>entityName}) + (${visualizationDefinition>type}) + '}  }' }"
+		/>
+		<core:Fragment fragmentName="sap.fe.templates.ObjectPage.view.fragments.MacroChart" type="XML" />
+	</VBox>
+</core:FragmentDefinition>

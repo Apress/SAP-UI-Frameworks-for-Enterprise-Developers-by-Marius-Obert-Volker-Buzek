@@ -1,0 +1,58 @@
+.sapUshellAnchorNavigationBar {
+  background: @sapUiShellNavigationBackground;
+  box-shadow: @sapShell_Shadow;
+}
+
+// more buttons: left / right and overflow button
+.sapUshellAnchorNavigationBar .sapMBtnIcon {
+  color: @sapUiShellNavigationSelectedColor;
+}
+
+// more buttons: left / right and overflow button / active state
+.sapUshellAnchorNavigationBar :not(.sapMBtnDisabled)>.sapMBtnInner.sapMBtnActive .sapMBtnIcon{
+  color: @sapUiShellNavigationActiveTextColor;
+}
+// hover button border
+.sap-desktop .sapMIBar-CTX.sapUshellAnchorNavigationBar .sapMBtn:not(.sapMBtnDisabled):hover>.sapMBtnInner:not(.sapMToggleBtnPressed):not(
+    .sapMBtnEmphasized):not(.sapMBtnAccept):not(.sapMBtnAttention):not(.sapMBtnReject):not(.sapMBtnActive):not(.sapMBtnGhost){
+    border-color: @sapUiShellNavigationHoverBackground;
+    background: @sapUiShellNavigationHoverBackground;
+}
+// hover icon
+.sapUshellAnchorNavigationBar .sapMBtn:hover:not(.sapMBtnDisabled)>.sapMBtnHoverable:not(.sapMBtnDisabled):not(.sapMBtnActive):not(
+    .sapMToggleBtnPressed):not(.sapMBtnTransparent).sapMBtnDefault .sapUiIcon {
+    color: @sapUiShellNavigationSelectedColor;
+    background: @sapUiShellNavigationHoverBackground;
+}
+// button active
+.sapUshellAnchorNavigationBar .sapMBtnInner.sapMBtnHoverable.sapMFocusable.sapMBtnIconFirst.sapMBtnDefault.sapMBtnActive {
+    color: @sapUiShellNavigationActiveTextColor;
+    background: @sapUiShellNavigationActiveBackground;
+    border-color: @sapUiShellNavigationActiveBackground;
+}
+
+// navigation bar lower border
+.sapUshellAnchorNavigationBarInner .sapMBtn .sapMBtnHoverable .sapMBtnDefault .sapUiIcon {
+    border-color: @sapUiShellNavigationSelectedColor;
+}
+
+// navigation bar
+.sapUshellAnchorNavigationBarInner {
+  color: @sapUiShellNavigationTextColor;
+}
+
+.sapUshellAnchorItemsPopover .sapUshellGroupLI {
+    background-color: @sapUiListBackground;
+  }
+  
+  .sapUshellAnchorItemsPopover .sapUshellGroupLI.sapUshellAnchorPopoverItemSelected {
+    background-color: @sapUiListSelectionBackgroundColor;
+  }
+  
+  .sapUshellAnchorItemsPopover .sapUshellGroupLI.sapUshellAnchorPopoverItemNonSelected {
+    background-color: @sapUiListBackground;
+  
+    &:hover {
+      background-color: @sapUiListHoverBackground;
+    }
+  }

@@ -1,0 +1,152 @@
+/* ======================================= */
+/* CSS for control sap.ushell/ShellHeader  */
+/* Horizon theme                           */
+/* ======================================= */
+
+// ShellHeader in general
+.sapUshellShellHeader {
+  background-color: @sapUiShellColor;
+  height: 3.25rem;
+  line-height: 2.75rem;
+}
+
+/** ShellHeadItems **/
+
+.sapUshellShellHeadItm {
+  color: @sapUiShellInteractiveTextColor;
+  border-color: @sapUiButtonLiteBorderColor;
+  line-height: 2.1875rem;
+  outline: none;
+  box-shadow: none;
+}
+
+.sapUshellShellHeadItm:focus {
+  outline: none;
+}
+
+// Content (Icon) inside a ShellHeadItem
+.sapUshellShellHeadItmCntnt {
+  margin: 0.25rem;
+  border-radius: .375rem;
+  border: 1px @sapDefault_BorderStyle @sapUiButtonLiteBorderColor;
+  outline-offset: -0.2375rem;
+  box-shadow: none;
+}
+
+.sapUshellShellHeadItm:hover>.sapUshellShellHeadItmCntnt {
+  box-shadow: @sapUiContentInteractionShadow;
+  background-color: @sapUiShellHoverBackground;
+}
+
+.sapUshellShellHeadItm:focus:not(:focus-visible)>.sapUshellShellHeadItmCntnt {
+  background-color: @sapUiShellHoverBackground;
+  border-color: @sapUiButtonLiteBorderColor;
+}
+
+.sapUshellShellHeadItm:focus-visible>.sapUshellShellHeadItmCntnt {
+  outline: @sapUiContentFocusWidth @sapUiContentFocusStyle @sapUiContentFocusColor;
+}
+
+.sapUshellShellHeadItm:active>.sapUshellShellHeadItmCntnt,
+.sapUshellShellHeadItm:focus:active>.sapUshellShellHeadItmCntnt,
+.sapUshellShellHeadItm:focus-visible:active>.sapUshellShellHeadItmCntnt {
+  color: @sapUiShellActiveTextColor;
+  background-color: @sapUiShellActiveBackground;
+  border-color: @sapUiButtonLiteActiveBorderColor;
+  box-shadow: none;
+  outline: none;
+}
+
+// If a ShellHeadItem is selected
+.sapUshellShellHeadItmSel {
+  background-color: @sapUiHighlight;
+}
+
+.sapUshellShellHeadItm.sapUshellShellHeadItmSel {
+  background-color: @sapUiShellActiveBackground;
+  color: @sapUiShellActiveTextColor;
+}
+
+/** Logo **/
+
+// Image of the Logo Control
+#shell-header-icon {
+  max-height: 2rem;
+  border: none;
+}
+
+// CSS class for the Logo control itself.
+.sapUshellShellIco {
+  height: inherit;
+}
+
+// hide the dotted outline if the Logo is focused
+.sapUshellShellIco:focus {
+  outline: @sapUiContentFocusWidth @sapUiContentFocusStyle @sapUiButtonLiteBorderColor;
+}
+
+// The logo control itself, places its content (logo image) vertically centered.
+#shell-header-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: .375rem;
+  border: 1px @sapDefault_BorderStyle @sapUiButtonLiteBorderColor;
+  margin: .25rem 0;
+  outline-offset: -0.2375rem;
+}
+
+#shell-header-logo:hover {
+  box-shadow: @sapUiContentInteractionShadow;
+  background-color: @sapUiShellHoverBackground;
+}
+
+#shell-header-logo:focus:not(:focus-visible) {
+  background-color: @sapUiShellHoverBackground;
+  border-color: @sapUiButtonLiteBorderColor;
+}
+
+#shell-header-logo:focus-visible {
+  outline: @sapUiContentFocusWidth @sapUiContentFocusStyle @sapUiContentFocusColor;
+}
+
+#shell-header-logo:active,
+#shell-header-logo:focus:active,
+#shell-header-logo:focus-visible:active {
+  color: @sapUiShellActiveTextColor;
+  background-color: @sapUiShellActiveBackground;
+  border-color: @sapUiButtonLiteActiveBorderColor;
+  box-shadow: none;
+  outline: none;
+}
+
+/** UserActionsMenu Button (Avatar) **/
+
+#userActionsMenuHeaderButton {
+  border: 1px @sapDefault_BorderStyle @sapUiButtonLiteBorderColor;
+  outline-offset: -0.1875rem;
+  box-shadow: none;
+}
+
+#userActionsMenuHeaderButton:hover {
+  box-shadow: @sapUiContentInteractionShadow;
+}
+
+
+#userActionsMenuHeaderButton:focus:not(:focus-visible) {
+  border-color: @sapUiButtonLiteBorderColor;
+  outline: none;
+}
+
+#userActionsMenuHeaderButton:focus-visible {
+  outline: @sapUiContentFocusWidth @sapUiContentFocusStyle @sapUiContentFocusColor;
+}
+
+#userActionsMenuHeaderButton:active,
+#userActionsMenuHeaderButton:focus:active,
+#userActionsMenuHeaderButton:focus-visible:active {
+  color: @sapUiShellActiveTextColor;
+  border-color: @sapUiButtonLiteActiveBorderColor;
+  box-shadow: none;
+  outline: none;
+}

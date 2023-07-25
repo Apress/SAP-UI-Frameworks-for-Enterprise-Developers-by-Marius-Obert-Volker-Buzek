@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<library xmlns="http://www.sap.com/sap.ui.library.xsd">
+
+	<name>sap.esh.search.ui</name>
+	<vendor>SAP SE</vendor>
+	<copyright>SAPUI5
+
+		(c) Copyright 2009-2021 SAP SE. All rights reserved
+	</copyright>
+	<version>1.113.0</version>
+
+	<documentation>UI5 library: sap.esh.search.ui</documentation>
+
+	<dependencies>
+		<dependency>
+			<libraryName>sap.ui.core</libraryName>
+		</dependency>
+		<dependency>
+			<libraryName>sap.m</libraryName>
+		</dependency>
+		<dependency>
+			<libraryName>sap.f</libraryName>
+		</dependency>
+		<dependency>
+			<libraryName>sap.ui.layout</libraryName>
+		</dependency>
+		<dependency>
+			<libraryName>sap.ui.export</libraryName>
+		</dependency>
+		<dependency>
+			<libraryName>sap.ui.vbm</libraryName>
+		</dependency>
+		<dependency>
+			<libraryName>sap.ui.vk</libraryName>
+		</dependency>
+		<dependency>
+			<libraryName>sap.suite.ui.microchart</libraryName>
+		</dependency>
+	</dependencies>
+
+	<appData>
+
+		<manifest xmlns="http://www.sap.com/ui5/buildext/manifest">
+			<sap.ui5>
+				<library>
+					<i18n>resources/resources.properties</i18n>
+				</library>
+			</sap.ui5>
+		</manifest>
+
+		<!-- excludes for the JSDoc -->
+		<jsdoc xmlns="http://www.sap.com/ui5/buildext/jsdoc">
+			<exclude name="sap.esh.search.ui.js."/>
+		</jsdoc>
+		<!-- excludes for the JSCoverage -->
+		<jscoverage xmlns="http://www.sap.com/ui5/buildext/jscoverage">
+			<exclude name="sap.esh.search.ui.js."/>
+		</jscoverage>
+	</appData>
+
+</library>

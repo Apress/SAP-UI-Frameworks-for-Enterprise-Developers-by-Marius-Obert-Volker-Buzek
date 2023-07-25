@@ -1,0 +1,67 @@
+<mvc:View
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:launchpad="sap.ushell.ui.launchpad"
+    xmlns:ushell="sap.ushell.ui"
+    controllerName="sap.ushell.ui.bookmark.SaveOnPage">
+    <Label id="previewLbl" text="{i18n>previewFld}" visible="{/showPreview}" labelFor="saveAsTileHBox" />
+    <FlexBox
+        id="saveAsTileHBox"
+        class="sapUshellShellBG sapUshellBookmarkFormPreviewBoxBottomMargin sapUshellSaveAsTileHBox"
+        alignItems="Center"
+        justifyContent="Center"
+        renderType="Bare"
+        visible="{/showPreview}">
+        <items>
+            <core:HTML
+                id="previewBackgroundElement"
+                content="&lt;div class=&quot;sapUshellShellBG sapContrastPlus sapUiStrongBackgroundColor&quot;&gt;&lt;/div&gt;" />
+            <launchpad:Tile
+                class="sapUshellBookmarkFormPreviewTileMargin"
+                long="false"
+                afterRendering=".removeFocusFromTile">
+                <launchpad:tileViews>
+                    <GenericTile header="{/title}" subheader="{/subtitle}" size="Auto">
+                        <TileContent size="Auto" footer="{/info}" unit="{= ${/serviceUrl} ? ${/numberUnit} : ''}">
+                            <NumericContent
+                                icon="{/icon}"
+                                value="{= ${/serviceUrl} ? ${/numberValue} : ' ' }"
+                                width="100%"
+                                truncateValueTo="5"
+                                withMargin="false" />
+                        </TileContent>
+                    </GenericTile>
+                </launchpad:tileViews>
+            </launchpad:Tile>
+        </items>
+    </FlexBox>
+    <Label id="titleLbl" text="{i18n>titleFld}" labelFor="bookmarkTitleInput" />
+    <Input
+        id="bookmarkTitleInput"
+        required="true"
+        class="sapUshellInputField"
+        ariaLabelledBy="titleLbl"
+        placeholder="{i18n>bookmarkDialogoTitle_tooltip}"
+        value="{/title}" />
+    <Label id="subtitleLbl" text="{i18n>subtitleFld}" labelFor="bookmarkSubTitleInput" />
+    <Input
+        id="bookmarkSubTitleInput"
+        class="sapUshellInputField"
+        ariaLabelledBy="subtitleLbl"
+        placeholder="{i18n>bookmarkDialogoSubTitle_tooltip}"
+        value="{/subtitle}" />
+    <Label id="infoLbl" text="{i18n>tileSettingsDialog_informationField}" labelFor="bookmarkInfoInput" />
+    <Input
+        id="bookmarkInfoInput"
+        class="sapUshellInputField"
+        ariaLabelledBy="infoLbl"
+        placeholder="{i18n>bookmarkDialogoDescription_tooltip}"
+        value="{/info}"
+        visible="{/showInfo}" />
+    <Label id="ContentNodeLabel" />
+    <ushell:ContentNodeSelector
+        id="SelectedNodesComboBox"
+        labelId="ContentNodeLabel"
+        valueHelpEndButtonPressed=".onValueHelpEndButtonPressed" />
+</mvc:View>

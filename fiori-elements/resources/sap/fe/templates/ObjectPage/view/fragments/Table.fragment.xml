@@ -1,0 +1,24 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:macro="sap.fe.macros.internal"
+	xmlns:core="sap.ui.core"
+	xmlns:unittest="http://schemas.sap.com/sapui5/preprocessorextension/sap.fe.unittesting/1"
+>
+	<macro:Table
+		unittest:id="TablePropertyExpressionTest"
+		metaPath="{presentationContext>annotationPath}"
+		tableDefinition="{visualizationDefinition>}"
+		contextPath="{fullContextPath>}"
+		filterBarId="{= ${converterContext>filterBarId} ? ${converterContext>filterBarId} : undefined}"
+		busy='{= "{ui>/busyLocal/"+${visualizationDefinition>annotation/id}+"}" }'
+		onContextChange=".handlers.onTableContextChange"
+		variantSelected=".handlers.onVariantSelected"
+		variantSaved=".handlers.onVariantSaved"
+		isAlp="{converterContext>hasMultiVisualizations}"
+		onSegmentedButtonPressed="{= ${converterContext>hasMultiVisualizations} ? '.handlers.onSegmentedButtonPressed' : undefined }"
+		visible="{= ${converterContext>hasMultiVisualizations} ? '{= ${pageInternal>alpContentView} !== \'Chart\'}' : 'true' }"
+		tabTitle="{view>title}"
+		headerLevel='{= ${section>subSections}.length > 1 ? (${subSection>level} === 2 &amp;&amp; ${subSection>titleVisible} ? "H6": "H5") : (${subSection>level} === 2 &amp;&amp; ${subSection>titleVisible} ? "H5": "H4")}'
+		stateChange=".handlers.onStateChange"
+	/>
+</core:FragmentDefinition>

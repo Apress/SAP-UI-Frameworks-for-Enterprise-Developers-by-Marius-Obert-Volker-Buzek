@@ -1,0 +1,64 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m"
+	xmlns:fl="sap.ui.fl.variants"
+	xmlns:unittest="http://schemas.sap.com/sapui5/preprocessorextension/sap.fe.unittesting/1"
+	xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	xmlns:mdc="sap.ui.mdc"
+	xmlns:mdcv="sap.ui.mdc.valuehelp"
+	xmlns:mdcvc="sap.ui.mdc.valuehelp.content"
+	template:require="{
+		ValueHelpTemplating: 'sap/fe/macros/internal/valuehelp/ValueHelpTemplating',
+		Property: 'sap/fe/core/templating/PropertyFormatters',
+		UI: 'sap/fe/core/templating/UIFormatters',
+		MODEL : 'sap/ui/model/odata/v4/AnnotationHelper'
+	}"
+>
+	<template:if test="{property>@@Property.hasValueHelp}">
+		<!-- Value Help -->
+		<template:then>
+			<mdc:ValueHelp
+				core:require="{CollaborationHelper: 'sap/fe/macros/internal/collaborationHelper'}"
+				unittest:id="ValueHelpMacroFragment"
+				delegate="{= ValueHelpTemplating.getDelegateConfiguration(${property>@@Property.getPropertyPath},${this>conditionModel}, ${originalProperty>@@Property.getPropertyPath}, ${this>requestGroupId}, ${this>useMultiValueField})}"
+				id="{= ValueHelpTemplating.generateID(${this>_flexId},${this>idPrefix},${originalProperty>@@Property.getRelativePropertyPath},${property>@@Property.getRelativePropertyPath})}"
+				validateInput="{= (${this>filterFieldValueHelp} || ${this>requiresValidation}) ? true : ValueHelpTemplating.requiresValidation(${property>@@Property.getProperty})}"
+				open="{= ${this>collaborationEnabled} ? 'CollaborationHelper.onValueHelpOpenDialog' : undefined }"
+				closed="{= ${this>collaborationEnabled} ? 'CollaborationHelper.onValueHelpCloseDialog' : undefined }"
+				customData:valuelistForValidation="{property>@com.sap.vocabularies.Common.v1.ValueListForValidation@@MODEL.value}"
+				customData:showConditionPanel="{= ${this>filterFieldValueHelp} ? ValueHelpTemplating.shouldShowConditionPanel(${property>@@Property.getPropertyObjectPath}, ${contextPath>@@UI.getDataModelObjectPath}) : false}"
+			>
+				<mdc:typeahead>
+					<mdcv:Popover>
+						<mdcvc:MTable
+							id="{= ValueHelpTemplating.generateID(${this>_flexId},${this>idPrefix},${originalProperty>@@Property.getRelativePropertyPath},${property>@@Property.getRelativePropertyPath})}::Popover::qualifier::"
+							caseSensitive="{= ValueHelpTemplating.useCaseSensitiveFilterRequests(${property>@@Property.getPropertyObjectPath}, ${property>/@Org.OData.Capabilities.V1.FilterFunctions})}"
+							useAsValueHelp="{= ${property>@com.sap.vocabularies.Common.v1.ValueListWithFixedValues} || false}"
+						/>
+					</mdcv:Popover>
+				</mdc:typeahead>
+				<template:if
+					test="{= ${property>@com.sap.vocabularies.Common.v1.ValueListWithFixedValues} ? (${property>@com.sap.vocabularies.Common.v1.ValueListWithFixedValues} === 'true') : true}"
+				>
+					<mdc:dialog>
+						<mdcv:Dialog />
+					</mdc:dialog>
+				</template:if>
+			</mdc:ValueHelp>
+		</template:then>
+		<template:elseif test="{= ${property>@@Property.hasDateType} || ${this>filterFieldValueHelp}}">
+			<mdc:ValueHelp
+				unittest:id="ValueHelpMacroFragmentWithDateTimeFilters"
+				id="{= ValueHelpTemplating.generateID(${this>_flexId},${this>idPrefix},${originalProperty>@@Property.getRelativePropertyPath},${property>@@Property.getRelativePropertyPath})}"
+				customData:requestGroupId="{this>requestGroupId}"
+			>
+				<mdc:dialog>
+					<mdcv:Dialog title="{= ${property>@@Property.getLabel} || ${property>@@Property.getName}}">
+						<mdcvc:Conditions label="{= ${property>@@Property.getLabel} || ${property>@@Property.getName}}" />
+					</mdcv:Dialog>
+				</mdc:dialog>
+			</mdc:ValueHelp>
+		</template:elseif>
+	</template:if>
+</core:FragmentDefinition>

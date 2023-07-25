@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="icon"
+      href="https://sap.github.io/ui5-webcomponents/assets/images/favicon.ico"
+      type="image/x-icon"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      SAP UI Frameworks for Enterprise Developers: A Practical Guide
+    </title>
+    <script type="module" crossorigin src="./assets/index-a92d8cd4.js"></script>
+    <link rel="stylesheet" href="./assets/index-b1805e5f.css">
+  </head>
+
+  <body>
+    <ui5-shellbar
+      id="shellbar"
+      primary-title="SAP UI Frameworks for Enterprise Developers: A Practical Guide"
+      secondary-title="UI5 Web Components"
+      notifications-count="60"
+      show-notifications
+      show-product-switch
+    >
+      <ui5-avatar slot="profile" initials="MV"></ui5-avatar>
+      <img
+        slot="logo"
+        src="https://sapui5.hana.ondemand.com/resources/sap/ui/documentation/sdk/images/logo_ui5.png"
+      />
+    </ui5-shellbar>
+    <div id="page">
+      <ui5-breadcrumbs>
+        <ui5-breadcrumbs-item>Drinks</ui5-breadcrumbs-item>
+        <ui5-breadcrumbs-item>Beer</ui5-breadcrumbs-item>
+      </ui5-breadcrumbs>
+      <ui5-panel
+        width="100%"
+        header-text="Add new beer"
+        class="full-width"
+        collapsed
+      >
+        <ui5-input
+          id="name"
+          required
+          placeholder="Name"
+          show-clear-icon
+        ></ui5-input>
+        <ui5-input
+          id="abv"
+          placeholder="ABV"
+          type="Number"
+          required
+        ></ui5-input>
+        <ui5-input
+          id="ibu"
+          placeholder="IBU"
+          type="Number"
+          required
+        ></ui5-input>
+        <ui5-button id="addBeer" design="Emphasized">Add Beer</ui5-button>
+      </ui5-panel>
+      <div id="app">
+        <ui5-list
+          id="myList"
+          class="full-width"
+          no-data-text="No Beers here :("
+        >
+        </ui5-list>
+      </div>
+    </div>
+    
+  </body>
+</html>

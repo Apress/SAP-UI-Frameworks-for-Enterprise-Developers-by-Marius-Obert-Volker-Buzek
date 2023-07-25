@@ -1,0 +1,103 @@
+/*****************/
+
+/*** Pie Chart ***/
+
+/*****************/
+
+.sapUshellSearchFacetPieChart {
+    height: 160px;
+    width: 278px;
+}
+
+g.sap-piechart {
+    shape-rendering: crispEdges;
+    color: #000000;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+g.sap-piechart text.label {
+    fill: white;
+    font-size: 100%;
+    /*not larger, otherwise the labels would be higher than the bars */
+    text-align: left;
+}
+
+g.sap-piechart text.labelshadow {
+    stroke: white;
+    stroke-width: 0;
+    stroke-linejoin: round;
+    font-size: 100%;
+    opacity: 0.1;
+    /* FIXME: does not work   filter: url("#feGaussianBlur2"); */
+}
+
+.sap-workareaitem-centered .sap-piechart {
+    /* bigger font for centralized chart*/
+    color: #000000;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+svg.sap-piechart path:hover {
+    cursor: pointer;
+    opacity: 1;
+    /*     stroke: #dadada;
+    stroke-width: 5; */
+}
+
+svg.sap-piechart path {
+    opacity: 0.5;
+    /*     stroke: white;
+    stroke-width: 1; */
+}
+
+.sap-workareaitem-centered .sap-piechart path {
+    opacity: 0.5;
+    /*     stroke: white;
+    stroke-width: 1; */
+}
+
+.sap-workareaitem-centered .sap-piechart path:hover {
+    opacity: 1;
+    /*     stroke: #dadada;
+    stroke-width: 12; */
+}
+
+div.sap-piechart-background {
+    display: inline-block;
+    overflow: hidden;
+}
+
+line.left {
+    stroke: red;
+}
+
+line.right {
+    stroke: green;
+}
+
+line.perimeterLeft {
+    stroke: red;
+    stroke-width: 2;
+    stroke-dasharray: 5, 3;
+}
+
+line.perimeterRight {
+    stroke: green;
+    stroke-width: 2;
+    stroke-dasharray: 5, 3;
+}
+
+line.helper {
+    stroke: #000000;
+}
+
+line.helper2 {
+    opacity: 0.3;
+}
+
+rect.labelPadding {
+    fill: blue;
+    opacity: 0.3;
+}

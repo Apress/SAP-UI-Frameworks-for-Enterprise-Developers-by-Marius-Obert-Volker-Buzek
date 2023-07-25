@@ -1,0 +1,5 @@
+/*!
+ * SAPUI5
+ * (c) Copyright 2009-2023 SAP SE. All rights reserved.
+ */
+sap.ui.define(["sap/ui/core/Element","sap/chart/utils/ChartUtils","sap/ui/thirdparty/jquery"],function(t,e,r){"use strict";var a={category:true,category2:true,series:true};var o=t.extend("sap.chart.data.Dimension",{metadata:{library:"sap.chart",properties:{name:{type:"string"},label:{type:"string"},textFormatter:{type:"function"},textProperty:{type:"string"},displayText:{type:"boolean",defaultValue:true},role:{type:"string",defaultValue:"category"}}}});o.prototype.setLabel=e.makeNotifyParentProperty("label");o.prototype.setTextFormatter=e.makeNotifyParentProperty("textFormatter");var p=e.makeNotifyParentProperty("textProperty");o.prototype.setTextProperty=function(t,e){return p.apply(this,arguments)};o.prototype.setDisplayText=e.makeNotifyParentProperty("displayText");var i=e.makeNotifyParentProperty("role");o.prototype.setRole=function(t,e){if(!a[t]){throw new TypeError("Invalide Dimension role: "+t)}return i.apply(this,arguments)};o.prototype._getFixedRole=function(){return this._sFixedRole||this.getRole()};return o});

@@ -1,0 +1,24 @@
+<core:FragmentDefinition
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m"
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	template:require="{
+		MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+		COMMON: 'sap/fe/macros/CommonHelper',
+		ID: 'sap/fe/core/helpers/StableIdHelper',
+		ValueHelpTemplating: 'sap/fe/macros/internal/valuehelp/ValueHelpTemplating',
+		Property: 'sap/fe/core/templating/PropertyFormatters',
+		FIELD: 'sap/fe/macros/field/FieldHelper',
+		UI: 'sap/fe/core/templating/UIFormatters'
+	}"
+>
+	<core:ComponentContainer
+		id="{= ID.generate(['component', ${subSection>componentName}]) }"
+		autoPrefixId="true"
+		name="{subSection>componentName}"
+		manifest="true"
+		async="true"
+		settings='{subSection>settings}'
+		propagateModel="true"
+	/>
+</core:FragmentDefinition>

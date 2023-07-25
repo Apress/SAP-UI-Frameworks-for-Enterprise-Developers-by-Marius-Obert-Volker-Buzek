@@ -1,0 +1,204 @@
+pre {
+    font-family: @sapUiFontFamily;
+    font-size: @sapMFontMediumSize;
+}
+
+.sapVizKitViewGalleryStepDescription.sapMFlexBoxBGTransparent{
+    background-color: transparent;
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    max-height: calc(100%/3);
+    z-index: 1;
+}
+
+.sapVizKitViewGalleryStepDescriptionVertical.sapMFlexBoxBGTransparent{
+    background-color: transparent;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    max-width: calc(100%/3);
+    margin: none;
+    height: 100%;
+    z-index: 1;
+}
+
+.sapVizKitViewGalleryStepDescriptionToolbar.sapMTB-Solid-CTX.sapMTB.sapMTBStandard{
+    background: transparent;
+    border: none;
+    height: 2rem;
+    width: 100%;
+}
+
+.sapVizKitViewGalleryStepDescriptionVerticalToolbar.sapMTB-Solid-CTX.sapMTB.sapMTBStandard{
+    background: transparent;
+    border: none;
+    height: 100%;
+    width: 2rem;
+}
+
+.sapVizKitViewGalleryStepDescriptionIcon{
+    position: absolute;
+    left: 50%;
+    width: 3rem;
+    color: black;
+    transition: transform 0.33s ease;
+}
+
+.sapVizKitViewGalleryStepDescriptionVerticalIcon{
+    position: absolute;
+    top: 50%;
+    width: 1rem;
+    color: black;
+    margin: none;
+    transition: transform 0.33s ease;
+}
+
+.sapVizKitViewGalleryStepDescriptionOrientationIcon{
+    width: 3rem;
+    color: black;
+    bottom: 0.25rem;
+    right: 0.25rem;
+}
+
+.sapVizKitViewGalleryStepDescriptionVerticalOrientationIcon{
+    position: absolute;
+    top: 1rem;
+    left: 0.25rem;
+    width: 1rem;
+    color: black;
+    margin: none;
+}
+
+.sapVizKitViewGalleryStepDescriptionIconTransform {
+    transform: rotate(180deg);
+}
+
+
+html:not([data-sap-ui-browser^="ie"]):not([data-sap-ui-browser^="ed"]) .sapVizKitViewGalleryStepDescription .sapVizKitViewGalleryStepDescriptionIcon.sapUiIcon:focus {
+    outline-color: transparent;
+}
+
+html:not([data-sap-ui-browser^="ie"]):not([data-sap-ui-browser^="ed"]) .sapVizKitViewGalleryStepDescriptionVertical .sapVizKitViewGalleryStepDescriptionVerticalIcon.sapUiIcon:focus {
+    outline-color: transparent;
+}
+
+html:not([data-sap-ui-browser^="ie"]):not([data-sap-ui-browser^="ed"]) .sapVizKitViewGalleryStepDescription .sapVizKitViewGalleryStepDescriptionOrientationIcon.sapUiIcon:focus {
+    outline-color: transparent;
+}
+
+html:not([data-sap-ui-browser^="ie"]):not([data-sap-ui-browser^="ed"]) .sapVizKitViewGalleryStepDescriptionVertical .sapVizKitViewGalleryStepDescriptionVerticalOrientationIcon.sapUiIcon:focus {
+    outline-color: transparent;
+}
+
+.sapVizKitViewGalleryStepDescription .sapVizKitViewGalleryStepDescriptionText {
+    color: black;
+    font-size: 1.5rem;
+}
+
+.sapVizKitViewGalleryStepDescriptionVertical .sapVizKitViewGalleryStepDescriptionVerticalText {
+    color: black;
+    font-size: 1.5rem;
+}
+
+pre.sapVizKitViewGalleryStepDescriptionPre {
+    white-space: pre-wrap;
+}
+
+.sapVizKitViewGalleryStepDescription .sapVizKitViewGalleryStepDescriptionText {
+    overflow: hidden;
+    white-space: normal;
+    width: calc(100%-2rem);
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.sapVizKitViewGalleryStepDescriptionVertical .sapVizKitViewGalleryStepDescriptionVerticalText {
+    overflow: hidden;
+    white-space: normal;
+    width: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.sapVizKitViewGalleryStepDescriptionVerticalScroll{
+    height: 100% !important;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.sapVizKitViewGalleryStepDescriptionScroll{
+    width: 100% !important;
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.sapVizKitViewGalleryStepNumberText{
+    position: absolute;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 2px;
+    height: 1.25rem;
+    width: 1.25rem;
+    line-height: 1.25rem;
+    font-size: 0.75rem;
+    text-align: center;
+    vertical-align: middle;
+    left: 0.3725rem;
+    bottom: 0.3725rem;
+    z-index: 1;
+}
+
+.sapVizKitViewGalleryStepNumberTextSelected{
+    background-color: @sapUiHighlight;
+}
+
+.sapVizKitViewGallery{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    z-index: 1;
+}
+
+.sapVizKitViewGalleryDisabled {
+    pointer-events: none;
+    filter: contrast(75%);
+}
+
+.sapVizKitViewGalleryToolbar.sapMTB-Solid-CTX.sapMTB{
+    background: transparent;
+}
+
+.sapVizKitViewGalleryCurrentGroupTitle.sapMTitle {
+	color: @sapUiButtonHeaderTextColor;
+	cursor: pointer;
+	max-width: 15%;
+}
+
+.sapVizKitViewGalleryCurrentStepTitle.sapMTitle {
+	max-width: 15%;
+}
+
+.sapVizKitViewGalleryThumbnail {
+    border: 0.12rem solid;
+    border-color: rgb(235, 235, 235);
+    border-radius: 0.2rem;
+    cursor: pointer;
+    margin: 0.25rem;
+    float: left;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.sapVizKitViewGalleryThumbnail.selected {
+	border-color: @sapUiHighlight;
+}
+
+.sapVizKitViewGalleryThumbnail:hover:not(.selected) {
+    background-color: #ebf5fe;
+    background-blend-mode: multiply;
+}

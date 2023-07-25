@@ -1,0 +1,89 @@
+{
+    "_version": "1.12.0",
+    "sap.app": {
+        "id": "sap.ushell.components.shell.Settings.userDefaults",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "i18n": {
+            "bundleUrl": "../../renderers/fiori2/resources/resources.properties",
+            "supportedLocales": [
+                "",
+                "ar",
+                "bg",
+                "ca",
+                "cs",
+                "da",
+                "de",
+                "el",
+                "en",
+                "en_US",
+                "en_US_sappsd",
+                "en_US_saptrc",
+                "es",
+                "et",
+                "fi",
+                "fr",
+                "hi",
+                "hr",
+                "hu",
+                "it",
+                "iw",
+                "ja",
+                "kk",
+                "ko",
+                "lt",
+                "lv",
+                "ms",
+                "nl",
+                "no",
+                "pl",
+                "pt",
+                "ro",
+                "ru",
+                "sh",
+                "sk",
+                "sl",
+                "sv",
+                "th",
+                "tr",
+                "uk",
+                "vi",
+                "zh_CN",
+                "zh_TW"
+            ],
+            "fallbackLocale": "en"
+        },
+        "ach": "CA-FLP-FE-COR",
+        "type": "application"
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+      "flexEnabled": true,
+      "rootView": {
+            "viewName": "sap.ushell.components.shell.Settings.userDefaults.view.UserDefaultsSetting",
+            "type": "XML",
+            "async": true,
+            "id": "defaultParametersSelectorView"
+        },
+        "dependencies": {
+            "minUI5Version": "1.82",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.comp": {},
+                "sap.ui.layout": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        }
+    }
+}

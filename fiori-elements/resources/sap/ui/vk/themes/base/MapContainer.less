@@ -1,0 +1,210 @@
+/*...........................................................................*/
+
+
+/* LESS for control sap.ui.vk/MapContainer.control...................................*/
+
+
+/*...........................................................................*/
+
+
+/* main map container style..................................................*/
+
+.sapUiVkMapContainer {}
+.sapUiVkMapContainerOverlay {
+	position: absolute;
+	top: 0.5rem;
+	left: 0.5rem;
+	right: 0.25rem;
+	bottom: 1rem;
+	/* necessary to let events through to the content below */
+	pointer-events: none;
+}
+html.sap-phone {
+	.sapUiVkMapContainerOverlay {
+		top: 0.25rem;
+		left: 0.25rem;
+		right: 0.25rem;
+	}
+	.sapUiVkContainerBaseWrapper {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		transition: transform 0.4s;
+	}
+}
+.sapUiVkMapContainer {
+	.sapUiVkContainerBaseContentArea {
+		padding-top: 0px;
+	}
+	.sapUiVkContainerBaseToolbarArea {
+		position: static;
+		/* since parent sapUiVkMapContainerOverlay declares pointer-events: none, which gets inherited,
+		 this is needed to make toolbar buttons functional */
+		pointer-events: auto;
+	}
+	.sapUiVkContainerBaseToolbarArea .sapMTB {
+		border: none;
+		/* This trick allows to let events pass transparent parts of the toolbar */
+		height: 1px !important;
+		overflow: visible;
+		margin-top: 1.5rem;
+	}
+	.sapUiVkMapContainerListPanelArea {
+		/* since parent sapUiVkMapContainerOverlay declares pointer-events: none, which gets inherited,
+		 this is needed to make ListPanelStack functional */
+		pointer-events: auto;
+	}
+}
+.sapUiSizeCompact .sapUiVkMapContainer .sapUiVkContainerBaseToolbarArea .sapMTB {
+	margin-top: 1rem;
+}
+.sapUiVkMapContainerNavbarArea {
+	position: absolute;
+	right: 0rem;
+	bottom: 0rem;
+	/* since parent sapUiVkMapContainerOverlay declares pointer-events: none, which gets inherited,
+		 this is needed to make navbar buttons functional */
+	pointer-events: auto;
+}
+.sapUiVkMapContainerNavbarArea {
+	.sapMTB {
+		border: none !important;
+		flex-direction: column;
+		height: auto !important;
+		width: 1px;
+		overflow: visible;
+		background: transparent;
+	}
+	.sapMIBar>.sapMBarChild:last-child {
+		margin-top: -0.5rem;
+	}
+}
+.sapUiVkMapContainerLPW {
+	top: 0px;
+	left: 0px;
+	background: white;
+	width: 100%;
+	height: 100%;
+	/* from back button */
+	padding-left: 0.25rem;
+	transform: translateX(-100%);
+	transition: transform 0.4s;
+	box-sizing: border-box;
+}
+html.sap-phone .sapUiVkMapContainerListPanelArea {
+	/* neutralize padding from sapUiVkMapContainerLPW */
+	margin-left: -0.25rem;
+}
+html:not(.sap-phone) .sapUiVkMapContainerListPanelArea {
+	float: left;
+}
+.sapUiVkMapContainerLPWIn {
+	transform: translateX(0%);
+}
+.sapUiVkMapContainerMapOut {
+	transform: translateX(100%);
+}
+html[dir=rtl] {
+	.sapUiVkMapContainerLPW {
+		transform: translateX(100%);
+	}
+	.sapUiVkMapContainerLPWIn {
+		transform: translateX(0%);
+	}
+	.sapUiVkMapContainerMapOut {
+		transform: translateX(-100%);
+	}
+}
+
+
+.mapContainerHboxPopover.sapMFlexBox.sapMFlexBoxAlignContentStretch.sapMFlexBoxAlignItemsStretch.sapMFlexBoxBGTransparent.sapMFlexBoxJustifyStart.sapMFlexBoxWrapNoWrap.sapMHBox {
+	height:5rem;
+	width: 100%;
+}
+
+
+
+.mapLayerPopoverItemText.sapMText.sapMTextBreakWord.sapMTextMaxWidth.sapUiSelectable{
+	bottom: 0.1rem;
+	right: 0.3rem;
+	position: absolute;
+	background:rgba(255,255,255,0.6);
+	margin-bottom: 0.15rem;
+}
+
+
+.layerType.sapMImg.sapMPointer{
+	border: 0.15rem solid white;
+	width: 4.7rem;
+	height: 4.7rem;
+}
+
+
+.sapUiVkMapContainerNavbarArea .mapLayerPopoverItem {
+	position: absolute;
+	border: 0.15rem solid white;
+	width: 4.7rem;
+	height: 4.7rem;
+	bottom: 0.25rem;
+	right: 3.25rem;
+	z-index: 1;
+}
+
+
+.sapUiVkMapContainerNavbarContainer {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
+
+.sapUiVkMapContainerNavbarContainer .sapMIBar.sapMTB .sapMBarChild:first-child { /* Fix alignment of home button */
+	margin-left: auto;
+}
+
+.mapLayerSelectedText.sapMText.sapMTextBreakWord.sapMTextMaxWidth.sapUiSelectable{
+	bottom: 0.6rem;
+	right: 3.6rem;
+	position: relative;
+	background:rgba(255,255,255,0.6);
+	white-space: nowrap;
+	z-index: 2;
+}
+
+.sapUiVkMapContainer {
+	.sapUiVkContainerBaseToolbarArea .sapMBtnTransparent:not(.sapMToggleBtnPressed),
+	.sapUiVkMapContainerNavbarArea .sapMBtnTransparent:not(.sapMToggleBtnPressed) {
+		/* make transparent button in toolbar look like segmented button */
+		background-color: @sapUiSegmentedButtonBackground;
+		border-radius: 0px;
+		border-color: @sapUiSegmentedButtonBorderColor;
+	}
+	html.sap-desktop & .sapMSegBBtnFocusable:not(.sapMSegBBtnSel):hover,
+	/* needed for segmented button on hover */
+	:not(.sapMBtnDisabled)>.sapMBtnInner.sapMBtnActive .sapMBtnIcon {
+		/* button active state */
+		color: @sapUiSegmentedButtonIconColor;
+	}
+}
+html:not(.sap-phone) .sapUiVkMapContainer {
+	.sapUiVkListPanelStack {
+		border: 1px solid @sapList_BorderColor;
+	}
+	.sapUiVkMapContainerListPanelArea {
+		padding: 0.0625rem 0.125rem;
+		/* needed for shadow bleeding from inner div */
+	}
+}
+
+@font-face {
+       font-family: 'map-container';
+       src:url('fonts/map-container.eot?#iefix') format('embedded-opentype'),
+               url('fonts/map-container.woff') format('woff'),
+               url('fonts/map-container.ttf') format('truetype');
+       font-weight: normal;
+       font-style: normal;
+}
+
+
+#__popover0-scroll {
+	margin-right: 0px !important;
+}

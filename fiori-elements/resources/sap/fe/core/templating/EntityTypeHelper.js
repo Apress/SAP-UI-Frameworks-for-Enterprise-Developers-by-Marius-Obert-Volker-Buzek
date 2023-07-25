@@ -1,0 +1,5 @@
+/*!
+ * SAP UI development toolkit for HTML5 (SAPUI5)
+ *      (c) Copyright 2009-2023 SAP SE. All rights reserved
+ */
+sap.ui.define(["sap/base/Log","sap/fe/core/helpers/BindingToolkit"],function(o,n){"use strict";var e={};var i=n.pathInModel;var a=n.getExpressionFromAnnotation;var t=n.concat;const l=n=>{var e,l,r,d,s,v,u,c;const p=(e=n.annotations)===null||e===void 0?void 0:(l=e.UI)===null||l===void 0?void 0:(r=l.HeaderInfo)===null||r===void 0?void 0:r.Title;if(p){switch(p.$Type){case"com.sap.vocabularies.UI.v1.DataField":return a(p.Value);case"com.sap.vocabularies.UI.v1.DataFieldForAnnotation":o.error("DataFieldForAnnotation with connected fields not supported for HeaderInfo.Title");return a((d=n.annotations)===null||d===void 0?void 0:(s=d.UI)===null||s===void 0?void 0:(v=s.HeaderInfo)===null||v===void 0?void 0:v.TypeName)}}const f=(u=n.annotations)===null||u===void 0?void 0:(c=u.Common)===null||c===void 0?void 0:c.SemanticKey;if(f){return t(...f.map(o=>i(o.value)))}};e.getTitleExpression=l;return e},false);

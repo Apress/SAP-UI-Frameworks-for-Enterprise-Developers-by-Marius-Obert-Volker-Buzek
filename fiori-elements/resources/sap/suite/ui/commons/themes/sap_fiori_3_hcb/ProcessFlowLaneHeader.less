@@ -1,0 +1,101 @@
+/* ================================================================== */
+/* CSS for sap.suite.ui.commons/ProcessFlowLaneHeader.control         */
+/* High Contrast Black theme                                          */
+/* ================================================================== */
+
+@_sap_suite_ui_commons_ProcessFlowLaneHeader_PositiveColor: lighten(@sapUiPositiveElement, 6);
+@_sap_suite_ui_commons_ProcessFlowLaneHeader_NegativeColor: lighten(@sapUiNegativeElement, 6);
+@_sap_suite_ui_commons_ProcessFlowLaneHeader_CriticalColor: lighten(@sapUiCriticalElement, 6);
+@_sap_suite_ui_commons_ProcessFlowLaneHeader_NeutralColor: lighten(@sapUiNeutralElement, 15);
+
+.suiteUiProcessFlowLaneHeaderDonutSvg {
+	-webkit-tap-highlight-color: transparent;
+	-webkit-transform: translate3d(0, 0, 0);
+}
+
+.suiteUiProcessFlowLaneHeaderIconContainer {
+	-webkit-tap-highlight-color: transparent;
+	-webkit-transform: translate3d(0, 0, 0);
+}
+
+.suiteUiProcessFlowLaneHeaderStartEndSymbolContainer {
+	border: none;
+	-webkit-tap-highlight-color: transparent;
+	-webkit-transform: translate3d(0, 0, 0);
+}
+
+.suiteUiProcessFlowLaneHeaderProcessSymbolContainer {
+	border: none;
+	-webkit-tap-highlight-color: transparent;
+	-webkit-transform: translate3d(0, 0, 0);
+}
+
+.suiteUiProcessFlowLaneHeaderProcessSymbol {
+	background-color: transparent;
+	text-shadow: @sapUiShadowText;
+	-webkit-text-shadow: @sapUiShadowText;
+	-webkit-tap-highlight-color: transparent;
+	-webkit-transform: translate3d(0, 0, 0);
+}
+
+.suiteUiProcessFlowLaneHeaderProcessSymbolIcon,
+.suiteUiProcessFlowLaneHeaderProcessSymbolIcon > .sapUiIcon,
+.suiteUiProcessFlowLaneHeaderProcessSymbolIcon > .sapUiIcon:before {
+	-webkit-tap-highlight-color: transparent;
+	-webkit-transform: translate3d(0, 0, 0);
+}
+
+.suiteUiProcessFlowLaneHeaderNoSelection {
+	-webkit-tap-highlight-color: transparent;
+	-webkit-transform: translate3d(0, 0, 0);
+}
+
+.suiteUiCommonsProcessFlowHeaderIconFill {
+	fill: @sapUiGroupContentBackground;
+	stroke: @sapUiContentForegroundBorderColor;
+}
+
+.suiteUiCommonsProcessFlowHeaderPositiveColor {
+	fill: @_sap_suite_ui_commons_ProcessFlowLaneHeader_PositiveColor;
+}
+
+.suiteUiCommonsProcessFlowHeaderNegativeColor {
+	fill: @_sap_suite_ui_commons_ProcessFlowLaneHeader_NegativeColor;
+}
+
+.suiteUiCommonsProcessFlowHeaderNeutralColor {
+	fill: @_sap_suite_ui_commons_ProcessFlowLaneHeader_NeutralColor;
+}
+
+.suiteUiCommonsProcessFlowHeaderPlannedColor {
+	fill: @sapUiGroupContentBackground;
+}
+
+.suiteUiCommonsProcessFlowHeaderCriticalColor {
+	fill: @_sap_suite_ui_commons_ProcessFlowLaneHeader_CriticalColor;
+}
+
+.suiteUiCommonsProcessFlowHeaderIconFill.suiteUiCommonsProcessFlowHeaderPositiveColor {
+	stroke: @_sap_suite_ui_commons_ProcessFlowLaneHeader_PositiveColor;
+	fill: @sapUiGroupContentBackground;
+}
+
+.suiteUiCommonsProcessFlowHeaderIconFill.suiteUiCommonsProcessFlowHeaderNegativeColor {
+	stroke: @_sap_suite_ui_commons_ProcessFlowLaneHeader_NegativeColor;
+	fill: @sapUiGroupContentBackground;
+}
+
+.suiteUiCommonsProcessFlowHeaderIconFill.suiteUiCommonsProcessFlowHeaderNeutralColor {
+	stroke: @_sap_suite_ui_commons_ProcessFlowLaneHeader_NeutralColor;
+	fill: @sapUiGroupContentBackground;
+}
+
+.suiteUiCommonsProcessFlowHeaderIconFill.suiteUiCommonsProcessFlowHeaderPlannedColor {
+	stroke: @sapUiGroupContentBackground;
+	fill: @sapUiGroupContentBackground;
+}
+
+.suiteUiCommonsProcessFlowHeaderIconFill.suiteUiCommonsProcessFlowHeaderCriticalColor {
+	stroke: @_sap_suite_ui_commons_ProcessFlowLaneHeader_CriticalColor;
+	fill: @sapUiGroupContentBackground;
+}

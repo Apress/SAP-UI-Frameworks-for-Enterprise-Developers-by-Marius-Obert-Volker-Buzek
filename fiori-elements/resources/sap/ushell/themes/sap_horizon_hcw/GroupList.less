@@ -1,0 +1,74 @@
+/* ========================================================================= */
+/* CSS for control "sap.ushell.ui.launchpad.GroupListItem"                   */
+/* ========================================================================= */
+
+@_sap_ushell_ListItem_HoverBackgroundColor: @sapUiHighlight;
+@_sap_ushell_ListItem_SelectedBackgroundColor: @sapUiHcHighlightAltBackground;
+@_sap_ushell_GroupListItem_BackgroundColor: @sapUiHcStandardBackground;
+
+@_sap_ushell_ListItem_BackgroundColor: @sapUiHcStandardBackground;
+@_sap_ushell_ListItem_BorderBottom: 1px solid @sapHC_ReducedAltForeground;
+
+@_sap_ushell_GroupList_BackgroundColor: @sapUiHcStandardBackground;
+@_sap_ushell_GroupList_FontFamily: @sapUiHcStandardForeground;
+
+@_sap_ushell_GroupList_FontSize: @sapMFontHeader6Size;
+@_sap_ushell_GroupList_FontWeight: @sapUiFontHeaderWeight;
+@_sap_ushell_GroupList_Color: @sapUiHcStandardForeground;
+
+.sapUshellGroupList {
+  background-color: @_sap_ushell_GroupList_BackgroundColor;
+}
+
+.sapUshellGroupItemList {
+  background-color: @sapUiExtraLightBG;
+}
+
+.sapUshellGroupListItem.sapMLIB {
+  background-color: @_sap_ushell_ListItem_BackgroundColor;
+  border-bottom: @_sap_ushell_ListItem_BorderBottom;
+}
+
+.sapUshellGroupListItem .sapMSLITitleOnly {
+  color: @_sap_ushell_GroupList_Color;
+  font-size: @_sap_ushell_GroupList_FontSize;
+  font-family: @_sap_ushell_GroupList_FontFamily;
+  font-weight: @_sap_ushell_GroupList_FontWeight;
+}
+
+.sapUshellDefaultGroupItem.sapMLIB {
+  background-color: @_sap_ushell_GroupListItem_BackgroundColor;
+}
+
+.sapUshellDefaultGroupItem .sapMSLITitleOnly {
+  color: @_sap_ushell_GroupList_Color;
+  font-size: @_sap_ushell_GroupList_FontSize;
+  font-family: @_sap_ushell_GroupList_FontFamily;
+  font-weight: @_sap_ushell_GroupList_FontWeight;
+}
+
+.sapUshellGroupListItem.sapUshellOver {
+  background-color: @_sap_ushell_ListItem_HoverBackgroundColor;
+}
+
+.sapUshellGroupListItem.sapUshellSelected {
+  background-color: @_sap_ushell_ListItem_SelectedBackgroundColor;
+}
+
+.sapUshellDefaultGroupItem.sapUshellOver {
+  background-color: @_sap_ushell_ListItem_HoverBackgroundColor;
+}
+
+.sapUshellDefaultGroupItem.sapUshellSelected {
+  background-color: @_sap_ushell_ListItem_SelectedBackgroundColor;
+}
+
+.sapUshellDefaultGroupItem:active,
+.sapUshellGroupListItem:active {
+  @media (min-width: 1024px) { background-color: @_sap_ushell_ListItem_HoverBackgroundColor; }
+}
+
+.sap-desktop .sapUshellDefaultGroupItem:hover,
+.sap-desktop .sapUshellGroupListItem:hover {
+  background-color: @_sap_ushell_ListItem_HoverBackgroundColor;
+}

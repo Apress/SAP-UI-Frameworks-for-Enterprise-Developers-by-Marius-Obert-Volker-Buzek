@@ -1,0 +1,78 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:macro="sap.fe.macros"
+	xmlns:internalMacro="sap.fe.macros.internal"
+	xmlns:dt="sap.ui.dt"
+	xmlns:fl="sap.ui.fl"
+	xmlns:fe="sap.fe.templates.ObjectPage.controls"
+	xmlns:unittest="http://schemas.sap.com/sapui5/preprocessorextension/sap.fe.unittesting/1"
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	template:require="{
+		MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+		COMMON: 'sap/fe/macros/CommonHelper',
+		OP: 'sap/fe/templates/ObjectPage/ObjectPageTemplating',
+		ID: 'sap/fe/core/helpers/StableIdHelper',
+		UI: 'sap/fe/core/templating/UIFormatters'
+	}"
+>
+	<fe:StashableHBox
+		id="{= ID.generate(['fe', 'HeaderFacetContainer', ${headerFacet>@@UI.getDataModelObjectPath} ])}"
+		dt:designtime="{= ${converterHeaderFacet>flexSettings/designtime} === 'Default' ? 'sap/fe/templates/ObjectPage/designtime/StashableHBox.designtime' : ${converterHeaderFacet>flexSettings/designtime}}"
+		fl:flexibility="sap/fe/templates/ObjectPage/flexibility/StashableHBox.flexibility"
+		unittest:id="headerFacetContent"
+		class="sapUiMediumMarginEnd sapUiSmallMarginBottom"
+		visible="{converterHeaderFacet>visible}"
+		fallbackTitle="{headerFacet>@@MODEL.label}"
+		binding="{= OP.getStashableHBoxBinding(${viewData>/controlConfiguration}, { Facet: ${converterHeaderFacet>} })}"
+		stashed="{converterHeaderFacet>stashed}"
+	>
+		<template:if test="{= ${converterHeaderFacet>targetAnnotationType} === 'DataPoint'}">
+			<template:then>
+				<template:with path="headerFacet>Target/$AnnotationPath/" var="dataPoint">
+					<core:Fragment fragmentName="sap.fe.templates.ObjectPage.view.fragments.HeaderDataPoint" type="XML" />
+				</template:with>
+			</template:then>
+			<template:elseif test="{= ${converterHeaderFacet>targetAnnotationType} === 'Chart'}">
+				<template:with path="headerFacet>Target/$AnnotationPath" var="collection" helper="MODEL.resolve$Path">
+					<template:with path="collection>" var="collection" helper="COMMON.getNavigationContext">
+						<internalMacro:MicroChart
+							unittest:id="macroMicroChart"
+							id="{= ID.generate(['fe', 'HeaderFacet', 'MicroChart', ${headerFacet>@@UI.getDataModelObjectPath} ]) }"
+							batchGroupId="{= OP.getGroupIdFromConfig(
+								${viewData>/controlConfiguration},
+								${headerFacet>Target/$AnnotationPath},
+								(((${headerFacet>Target/$AnnotationPath}.indexOf('/') > 0) &amp;&amp; ${collection>$isCollection}) ? '$auto.Decoration' : undefined) ) }"
+							contextPath="{collection>}"
+							metaPath="{headerFacet>Target/$AnnotationPath/}"
+							navigationType="{= OP.getMicroChartTitleAsLink(${viewData>controlConfiguration}[${headerFacet>Target/$AnnotationPath}]['navigation'])}"
+							onTitlePressed="{= OP.getExpressionForMicroChartTitlePress(${viewData>controlConfiguration}[${headerFacet>Target/$AnnotationPath}]['navigation'], ${manifest>/sap.app/crossNavigation/outbounds}, ${collection>@sapui.name})}"
+						/>
+					</template:with>
+				</template:with>
+			</template:elseif>
+			<template:elseif test="{= ${converterHeaderFacet>targetAnnotationType} === 'Identification'}">
+				<template:with path="headerFacet>Target" var="form">
+					<Text text="Identification in header facet" />
+				</template:with>
+			</template:elseif>
+			<template:elseif test="{= ${converterHeaderFacet>targetAnnotationType} === 'Contact'}">
+				<core:Fragment fragmentName="sap.fe.templates.ObjectPage.view.fragments.ObjectPageHeaderContact" type="XML" />
+			</template:elseif>
+			<template:elseif test="{= ${converterHeaderFacet>targetAnnotationType} === 'Address'}">
+				<core:Fragment fragmentName="sap.fe.templates.ObjectPage.view.fragments.ObjectPageHeaderAddress" type="XML" />
+			</template:elseif>
+			<template:elseif test="{= ${converterHeaderFacet>targetAnnotationType} === 'FieldGroup'}">
+				<template:with path="headerFacet>" var="headerForm">
+					<core:Fragment fragmentName="sap.fe.templates.ObjectPage.view.fragments.ObjectPageHeaderForm" type="XML" />
+				</template:with>
+			</template:elseif>
+			<template:else>
+				<!-- ERROR HANDLING: Unsupported Header Facet Type -->
+				<VBox width="150px" class="sapUiSmallMargin">
+					<Text text="Unsupported Facet Type: {converterHeaderFacet>targetAnnotationType}" visible="true" wrapping="true" />
+				</VBox>
+			</template:else>
+		</template:if>
+	</fe:StashableHBox>
+</core:FragmentDefinition>

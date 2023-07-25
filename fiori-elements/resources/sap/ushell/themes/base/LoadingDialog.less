@@ -1,0 +1,47 @@
+/* ============================================================== */
+/* CSS for control "sap.ushell.ui.launchpad.LoadingDialog" (base) */
+/* ============================================================== */
+
+/* "sapUshellLoadingDialog"       : block layer
+   "sapUshellLoadingDialogControl": popup */
+
+.sapUshellLoadingDialogControl {
+  outline: none;
+  width: 20rem;
+
+  .sapUshellAccessibilityHelper {
+    visibility: hidden;
+  }
+
+  &.sapUshellVisibilityHidden {
+    visibility: hidden;
+
+    .sapUshellAccessibilityHelper {
+      display: none;
+    }
+  }
+
+  .sapUshellLoadingDialogAppData {
+    position: absolute;
+    width: 20rem;
+    bottom: 1.57rem;
+  }
+
+  .sapUiIcon {
+    margin-bottom: 0.5em;
+    width: 100%;
+  }
+
+  .sapUshellLoadingDialogLabel {
+    position: relative;
+    width: 20rem;
+    bottom: 1em;
+    display: block;
+    white-space: normal;
+    text-align: center !important;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5em;
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+}

@@ -1,0 +1,96 @@
+<core:FragmentDefinition
+	xmlns:uxap="sap.uxap"
+	xmlns:core="sap.ui.core"
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns:macro="sap.fe.macros"
+	xmlns:dt="sap.ui.dt"
+	xmlns="sap.m"
+	xmlns:opcontrol="sap.fe.templates.ObjectPage.controls"
+	xmlns:internalMacro="sap.fe.macros.internal"
+	template:require="{
+		MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+		OP: 'sap/fe/templates/ObjectPage/ObjectPageTemplating',
+		COMMON: 'sap/fe/macros/CommonHelper',
+		ID: 'sap/fe/core/helpers/StableIdHelper'
+	}"
+>
+	<!--
+	For HeaderFacets, a section to the object page is added which is only visible in edit mode.
+	The object page has one section with one sub-section for all header facets, and a block for each facet.
+	-->
+	<template:with path="converterContext>header/section" var="headerSection">
+		<template:if test="{viewData>/editableHeaderContent}">
+			<uxap:ObjectPageSection
+				dt:designtime="not-adaptable-visibility"
+				id="{headerSection>id}"
+				title="{headerSection>title}"
+				titleLevel="H3"
+				visible="{headerSection>visible}"
+				titleUppercase="false"
+			>
+				<uxap:subSections>
+					<uxap:ObjectPageSubSection id="fe::EditableHeaderSubSection" title="{headerSection>title}" titleLevel="H4">
+						<core:Fragment fragmentName="sap.fe.templates.ObjectPage.view.fragments.EditableHeaderFacet" type="XML" />
+					</uxap:ObjectPageSubSection>
+				</uxap:subSections>
+			</uxap:ObjectPageSection>
+		</template:if>
+	</template:with>
+	<template:with path="converterContext>sections" var="sections">
+		<template:repeat list="{sections>}" var="section">
+			<uxap:ObjectPageSection
+				dt:designtime="not-adaptable-visibility"
+				id="{section>id}"
+				title="{section>title}"
+				titleLevel="H3"
+				showTitle="{section>showTitle}"
+				titleUppercase="false"
+				visible="{section>visible}"
+			>
+				<uxap:subSections>
+					<template:repeat list="{section>subSections}" var="subSection">
+						<uxap:ObjectPageSubSection
+							dt:designtime="not-adaptable-visibility"
+							id="{subSection>id}"
+							title="{subSection>title}"
+							titleLevel="H4"
+							showTitle="{subSection>showTitle}"
+							visible="{subSection>visible}"
+							class="{subSection>class}"
+						>
+							<uxap:dependents>
+								<template:repeat list="{subSection>commandActions}" var="action">
+									<internalMacro:ActionCommand
+										action="{action>}"
+										onExecuteAction="{action>press}"
+										onExecuteIBN="{action>press}"
+										onExecuteManifest="{= COMMON.buildActionWrapper(${action>})}"
+									/>
+								</template:repeat>
+							</uxap:dependents>
+							<!--uxap:customData>
+								<core:CustomData key="strategyForVisibilityChange" value="lazyLoading" />
+							</uxap:customData-->
+							<uxap:customData>
+								<core:CustomData key="isVisibilityDynamic" value="{subSection>isVisibilityDynamic}" />
+							</uxap:customData>
+							<template:if test="{= ${subSection>type} === 'Mixed'}">
+								<template:then>
+									<template:repeat list="{subSection>content}" var="subSection">
+										<core:Fragment
+											fragmentName="sap.fe.templates.ObjectPage.view.fragments.SectionContent"
+											type="XML"
+										/>
+									</template:repeat>
+								</template:then>
+								<template:else>
+									<core:Fragment fragmentName="sap.fe.templates.ObjectPage.view.fragments.SectionContent" type="XML" />
+								</template:else>
+							</template:if>
+						</uxap:ObjectPageSubSection>
+					</template:repeat>
+				</uxap:subSections>
+			</uxap:ObjectPageSection>
+		</template:repeat>
+	</template:with>
+</core:FragmentDefinition>

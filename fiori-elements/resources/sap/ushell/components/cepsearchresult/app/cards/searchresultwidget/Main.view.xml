@@ -1,0 +1,10 @@
+<mvc:View xmlns:core="sap.ui.core"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  width="100%"
+  controllerName="sap.ushell.components.cepsearchresult.app.cards.searchresultwidget.Main"
+  visible="false">
+  <!-- initially the view is not visible, the controller needs to load fragments first in initViewAsync-->
+  <VBox id="content">
+  </VBox>
+</mvc:View>

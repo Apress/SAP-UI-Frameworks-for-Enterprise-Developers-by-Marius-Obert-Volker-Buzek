@@ -1,0 +1,5 @@
+/*!
+ * SAPUI5
+ * (c) Copyright 2009-2023 SAP SE. All rights reserved.
+ */
+sap.ui.define(["sap/chart/coloring/ColoringUtils","sap/chart/coloring/criticality/DimensionValues","sap/chart/ChartLog","sap/ui/thirdparty/jquery"],function(e,i,r,n){"use strict";var t={};var s=function(i,t,s,a){var g=n.extend({},a);g.bHasOtherSeriesDim=s.aDim.some(function(e){return e._getFixedRole()==="series"&&e.getName()!==t[0]});g.type="Emphasis";g.subType="DimensionValues";e.checkColoringDimension(t,s,i,g);var h=i[t[0]],l=h.Values,o=h.Legend||{};if(l.length>1&&!o.Highlighted){throw new r("error","Colorings.Emphasis.DimensionValues","Legend.Highlighted is mandatory when Highlight has multiple values.")}};t.qualify=function(e,i,r,n){s(e,i,r,n);var t;if(i[0]){t={dim:i[0],setting:e}}return t};t.parse=function(e,i){var r={},n=e.dim,t=e.setting[n],s=t.Values;var a=Array.isArray(s)?s:[s];var g=function(e){return a.indexOf(e[n])>-1};if(t.Legend&&t.Legend.Highlighted!=null){r.Highlight=t.Legend.Highlighted}else{r.Highlight=a[0]}if(t.Legend&&t.Legend.Others){r.Others=t.Legend.Others}else{r.Others=i.getText("COLORING_TYPE_OTHER")}var h={Highlight:g};return{callbacks:h,legend:r}};return t});

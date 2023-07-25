@@ -1,0 +1,2 @@
+sap.ui.define(["com/apress/openui5/controller/BaseController","sap/ui/model/Filter","sap/ui/model/FilterType","sap/ui/model/FilterOperator"],function(e,n,t,i){"use strict";return e.extend("com.apress.openui5.controller.BeerList",{onSearch:function(e){const o=this.byId("beerList");const r=o.getBinding("items");const s=e.getSource().getValue();if(s&&s.length>0){r.filter(new n({filters:[new n("name",i.Contains,s),new n("brewery",i.Contains,s)],and:false}),t.Application)}else{r.filter(undefined,t.Application)}}})});
+//# sourceMappingURL=BeerList.controller.js.map

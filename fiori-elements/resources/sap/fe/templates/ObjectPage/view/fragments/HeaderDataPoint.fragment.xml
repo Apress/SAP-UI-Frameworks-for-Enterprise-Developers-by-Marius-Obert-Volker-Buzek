@@ -1,0 +1,25 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:internalMacro="sap.fe.macros.internal"
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns:unittest="http://schemas.sap.com/sapui5/preprocessorextension/sap.fe.unittesting/1"
+	template:require="{
+		ID: 'sap/fe/core/helpers/StableIdHelper',
+		OP: 'sap/fe/templates/ObjectPage/ObjectPageTemplating',
+		MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+		MESSAGE: 'sap/base/strings/formatMessage',
+		FIELD: 'sap/fe/macros/field/FieldHelper',
+		COMMON: 'sap/fe/macros/CommonHelper',
+		UI: 'sap/fe/core/templating/UIFormatters'
+	}"
+>
+	<VBox
+		id="{= ID.generate(['fe', 'HeaderFacet', ${converterHeaderFacet>headerDataPointData/type} !== 'Content' ? ${converterHeaderFacet>headerDataPointData/type} : 'KeyFigure', ${headerFacet>@@UI.getDataModelObjectPath} ]) }"
+	>
+		<core:Fragment fragmentName="sap.fe.templates.ObjectPage.view.fragments.HeaderDataPointTitle" type="XML" />
+		<internalMacro:DataPoint metaPath="{dataPoint>}" contextPath="{entitySet>}">
+			<internalMacro:formatOptions dataPointStyle="large" showLabels="true" iconSize="1.375rem" />
+		</internalMacro:DataPoint>
+	</VBox>
+</core:FragmentDefinition>

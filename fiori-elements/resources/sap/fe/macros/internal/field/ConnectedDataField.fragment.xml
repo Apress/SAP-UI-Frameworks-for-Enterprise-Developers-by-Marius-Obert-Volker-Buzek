@@ -1,0 +1,42 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:macro="sap.fe.macros"
+	xmlns:internalMacro="sap.fe.macros.internal"
+	template:require="{
+		ID: 'sap/fe/core/helpers/StableIdHelper',
+		COMMON: 'sap/fe/macros/CommonHelper',
+		UI: 'sap/fe/core/templating/UIFormatters'
+	}"
+>
+	<internalMacro:Field
+		idPrefix="{= ${this>id} ? ID.generate([${this>id}, 'SemanticFormElement', ${annotationDataField>@@UI.getDataModelObjectPath},${element>Value/$Path}]) : '' }"
+		vhIdPrefix="{= ${this>id} ? ID.generate([${this>id}, 'FieldValueHelp']) : '' }"
+		entitySet="{entitySet>}"
+		dataField="{element>}"
+		onChange="{this>onChange}"
+		ariaLabelledBy="{= ${this>id} ? ID.generate([${this>id}, 'SemanticFormElementLabel', ${annotationDataField>@@UI.getDataModelObjectPath}]) : '' }"
+	>
+		<internalMacro:formatOptions
+			textLinesEdit="{element>formatOptions/textLinesEdit}"
+			textMaxLines="{element>formatOptions/textMaxLines}"
+			textMaxCharactersDisplay="{dataField>formatOptions/textMaxCharactersDisplay}"
+			textExpandBehaviorDisplay="{dataField>formatOptions/textExpandBehaviorDisplay}"
+			textAlignMode="Form"
+			showEmptyIndicator="true"
+		/>
+		<internalMacro:layoutData>
+			<FlexItemData growFactor="1" />
+		</internalMacro:layoutData>
+	</internalMacro:Field>
+	<template:if test="{= COMMON.notLastIndex(${annotationDataField>Target/$AnnotationPath/}, ${element>})}">
+		<template:then>
+			<Text
+				text="{= COMMON.getDelimiter(${annotationDataField>Target/$AnnotationPath/Template})}"
+				class="sapUiSmallMarginBeginEnd"
+				width="100%"
+			/>
+		</template:then>
+	</template:if>
+</core:FragmentDefinition>

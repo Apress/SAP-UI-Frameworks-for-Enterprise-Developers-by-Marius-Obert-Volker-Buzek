@@ -1,0 +1,11 @@
+<core:FragmentDefinition
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m"
+	xmlns:fpm="sap.fe.macros.fpm"
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	template:require="{
+		ID: 'sap/fe/core/helpers/StableIdHelper'
+	}"
+>
+	<fpm:CustomFragment id="{subSection>id}" contextPath="{entitySet>}" fragmentName="{subSection>template}" />
+</core:FragmentDefinition>

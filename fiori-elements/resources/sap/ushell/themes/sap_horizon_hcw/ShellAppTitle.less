@@ -1,0 +1,140 @@
+/* ======================================== */
+/* CSS for control sap.ushell/ShellAppTitle */
+/* Horizon HCW theme                        */
+/* ======================================== */
+
+/** --------------------------------------- **/
+/** Styles for Shell Title's Navigation Menu**/
+/** --------------------------------------- **/
+
+#shellAppTitle {
+  color: @sapUiShellTextColor;
+  outline: none;
+}
+
+#shellAppTitle:focus-within {
+  outline: none;
+}
+
+.sapUshellAppTitle {
+  line-height: 2.25rem;
+  outline: none;
+  box-shadow: none;
+}
+
+#shellAppTitle-button {
+  margin: 0.25rem;
+  height: 2.25rem;
+  border-radius: .375rem;
+  outline-offset: -0.25rem;
+  box-shadow: none;
+  border: 1px @sapDefault_BorderStyle @sapUiShellBorderColor;
+}
+
+// On mobile Portrait Mode the arrow down button is only shown without text (only one child)
+#shellAppTitle-button>span:only-child {
+  min-width: 1rem;
+}
+
+#shellAppTitle.sapUshellAppTitleClickable:hover>#shellAppTitle-button,
+#shellAppTitle-button:hover {
+  background-color: @sapUiShellHoverBackground;
+  box-shadow: @sapUiContentInteractionShadow;
+  border-color: @sapUiButtonLiteBorderColor;
+}
+
+#shellAppTitle-button:focus:not(:focus-visible) {
+  outline-color: transparent;
+}
+
+#shellAppTitle-button:focus-visible {
+  outline: @sapUiContentFocusWidth @sapUiContentFocusStyle @sapUiContentFocusColor;
+}
+
+#shellAppTitle.sapUshellAppTitleClickable:active>#shellAppTitle-button,
+#shellAppTitle-button:active {
+  color: @sapUiShellActiveTextColor;
+  box-shadow: @sapContent_Selected_Shadow;
+  border-color: @sapUiButtonLiteBorderColor;
+  background-color: @sapUiShellActiveBackground;
+}
+
+// Arrow Down Button if the AllMyApps Feature is enabled
+.sapUshellShellHeadAction {
+  color: @sapUiShellInteractiveTextColor;
+}
+
+// The Title is clickable if the AllMyApps Feature is enabled.
+.sapUshellAppTitleClickable {
+  border-radius: .375rem;
+  outline: none;
+}
+
+.sapUshellAppTitleClickable:active .sapUshellShellHeadAction,
+.sapUshellAppTitleClickable:active .sapUshellAppTitleText {
+  color: @sapUiShellActiveTextColor;
+}
+
+/** Hierarchy Items - (List Items) Icon Styles **/
+.sapUshellNavigationMenuListItems {
+  color: @sapUiListBackground;
+}
+
+.sapUshellNavigationMenuListItems:not(:last-child) .sapMLIBContent:after {
+  background: @sapUiHcStandardForeground;
+}
+
+.sapUshellNavigationMenuListItems:not(:first-child) .sapMLIBContent:before {
+  background: @sapUiHcStandardForeground;
+}
+
+/** Shell Application Title control **/
+
+/** Shell Navigation Menu - ResponsivePopover**/
+#sapUshellAppTitlePopover {
+  background-color: @sapUiListBackground;
+}
+
+#sapUshellAppTitlePopover .sapMBar {
+  border-bottom: 0;
+}
+
+/** Shell Navigation Menu - Mini Tiles (of relatedApps)**/
+.sapUshellNavMiniTile {
+  background-color: @sapUiListBackground;
+  box-shadow: 0 0 0 1px @sapUiHcStandardForeground;
+}
+
+.sapUshellNavMiniTile:hover {
+  box-shadow: 0 0 0 2px @sapUiHcStandardForeground;
+  background-color: @sapUiButtonHoverBackground;
+}
+
+.sapUshellNavMiniTile:active {
+  box-shadow: 0 0 0 2px @sapUiHcStandardForeground;
+  background-color: @sapUiButtonHoverBackground;
+}
+
+.sapUshellNavMiniTile:focus {
+  box-shadow: 0 0 0 2px @sapUiHcStandardForeground;
+  background-color: @sapUiButtonHoverBackground;
+}
+
+/** Shell Navigation Menu - Mini Tiles - Title **/
+.sapUshellNavMiniTileTitle {
+  color: @sapUiHighlightTextColor;
+}
+
+/** Shell Navigation Menu - Mini Tiles - Subtitle **/
+.sapUshellNavMiniTileSubtitle {
+  color: @sapUiHighlightTextColor;
+}
+
+/** Shell Navigation Menu - Mini Tiles - Icon **/
+.sapUshellNavMiniTileIcon {
+  color: @sapUiBrand;
+}
+
+#allMyAppsView--sapUshellAllMyAppsMasterDetail-Master {
+  border-right: 1px @sapDefault_BorderStyle @sapUiHcStandardForeground;
+}

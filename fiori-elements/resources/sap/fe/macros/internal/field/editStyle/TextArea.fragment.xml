@@ -1,0 +1,44 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns:unittest="http://schemas.sap.com/sapui5/preprocessorextension/sap.fe.unittesting/1"
+	xmlns:log="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:field="sap.fe.macros.field"
+	template:require="{
+							MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+							COMMON: 'sap/fe/macros/CommonHelper',
+							FIELD: 'sap/fe/macros/field/FieldHelper',
+							ID: 'sap/fe/core/helpers/StableIdHelper',
+							UI: 'sap/fe/core/templating/UIFormatters'
+						 }"
+>
+	<field:TextAreaEx
+		core:require="{FieldRuntime: 'sap/fe/macros/field/FieldRuntime'}"
+		unittest:id="MacroInput"
+		log:sourcePath="{this>dataSourcePath}"
+		id="{= (${this>idPrefix} ? ID.generate([${this>idPrefix}, 'Field-edit']) : undefined) }"
+		value="{this>valueBindingExpression}"
+		placeholder="{this>textAreaPlaceholder}"
+		required="{this>requiredExpression}"
+		rows="{this>formatOptions/textLinesEdit}"
+		growing="{= ${this>formatOptions/textMaxLines} > 0}"
+		growingMaxLines="{this>formatOptions/textMaxLines}"
+		width="100%"
+		editable="{this>editableExpression}"
+		enabled="{this>enabledExpression}"
+		change="FieldRuntime.handleChange($controller, $event)"
+		fieldGroupIds="{this>fieldGroupIds}"
+		validateFieldGroup="FieldRuntime.onValidateFieldGroup($controller, $event)"
+		ariaLabelledBy="{this>ariaLabelledBy}"
+		liveChange="{= (${this>collaborationEnabled} || ${this>formatOptions/textMaxLength}) ? 'FieldRuntime.handleLiveChange' : undefined}"
+		maxLength="{this>formatOptions/textMaxLength}"
+		showExceededText="true"
+	>
+		<template:if test="{this>collaborationEnabled}">
+			<field:layoutData>
+				<FlexItemData growFactor="9" />
+			</field:layoutData>
+		</template:if>
+	</field:TextAreaEx>
+</core:FragmentDefinition>

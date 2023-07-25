@@ -1,0 +1,155 @@
+.sapCepWorkPageRow {
+  position: relative;
+  margin: 0 auto;
+  margin-top: -2px;
+  border: 2px solid transparent;
+  border-radius: 0.75rem;
+  padding-top: 1rem;
+  box-sizing: content-box;
+  background-clip: padding-box;
+
+  .sapCepRowOverflowToolbar {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    background-color: @sapUiShellBackgroundPatternColor;
+    border-bottom: none;
+  }
+
+  .sapCepRowSectionTitle{
+    font-weight: bold;
+    font-family: @sapUiFontFamily;
+    font-size: @sapMFontHeader4Size;
+    color: @sapUiShellGroupTitleTextColor;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+  .sapCepWorkPageRowLimiter {
+    box-sizing: border-box;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  &.sapCepWorkPageRowFullWidth {
+    max-width: 100%;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .sapCepWorkPageRowInner {
+    position: static;
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  .sapCepRowButton {
+    position: absolute;
+    z-index: 1;
+  }
+
+  .sapCepRowButtonBottom {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transform: translateY(~'calc(50% + 1px)');
+  }
+
+  .sapCepRowButtonTop {
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transform: translateY(~'calc(-50% - 1px)');
+  }
+
+  .sapCepRowButtonLeft {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateX(-50%);
+  }
+
+  .sapCepRowButtonRight {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: translateX(50%);
+  }
+
+  .sapCepWorkPageRowControlButtons {
+    /* use opacity here to focus the button when the control is shown by tabbing into the WorkPageRow via keyboard navigation */
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    transform: translateY(~'calc(-1rem - 50% - 2px)');
+    padding-right: 1.5rem;
+  }
+}
+
+.sapCepRowOverflowToolbar>.sapMLabel .sapMLabelColonAndRequired::before {
+  content: attr(data-colon);
+  white-space: pre;
+}
+
+
+@media (min-width: 600px) and (max-width: 1023px) {
+  .sapCepWorkPageRow,
+  .sapCepWorkPageRow.sapCepWorkPageRowFullWidth .sapCepWorkPageRowLimiter {
+    max-width: 550px;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .sapCepWorkPageRow,
+  .sapCepWorkPageRow.sapCepWorkPageRowFullWidth .sapCepWorkPageRowLimiter {
+    max-width: 950px;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1499px) {
+  .sapCepWorkPageRow,
+  .sapCepWorkPageRow.sapCepWorkPageRowFullWidth .sapCepWorkPageRowLimiter {
+    max-width: 1016px;
+  }
+}
+
+@media (min-width: 1500px) {
+  .sapCepWorkPageRow,
+  .sapCepWorkPageRow.sapCepWorkPageRowFullWidth .sapCepWorkPageRowLimiter {
+    max-width: 1360px;
+  }
+}
+
+
+/* EDIT MODE */
+.sapCepEditMode {
+  .sapCepWorkPageRow {
+    &:hover,
+    &.sapCepWorkPageRowFocused {
+      border-color: @sapUiNeutralBorder;
+
+      .sapCepWorkPageRowControlButtons {
+        opacity: 1;
+      }
+    }
+
+    .sapCepWorkPageRowInner {
+      user-select: none;
+    }
+
+    &:hover + .sapCepWorkPageRow {
+      border-top: none;
+      margin-top: 0;
+    }
+
+    &:last-of-type:hover {
+      border-bottom: 2px solid @sapUiNeutralBorder;
+    }
+  }
+}

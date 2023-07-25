@@ -1,0 +1,120 @@
+#searchFieldInShell {
+    .sapMFlexBox {
+        & > div:nth-child(1) {
+            margin-right: 0.25rem;
+        }
+        & > div:nth-child(3) {
+            margin-left: 0.25rem;
+        }
+        & > div:nth-child(4) {
+            /*margin-left: 0.25rem;*/
+            margin-left: 0.25rem;
+            margin-right: 0.25rem;
+        }
+    }
+    #searchFieldInShell-select {
+        border-color: @sapUiShellInteractiveBorderColor;
+        background: transparent;
+        .sapMSltLabel {
+            color: @sapUiShellTextColor;
+        }
+        .sapMSltArrow,
+        .sapMSltIcon {
+            color: @sapUiShellInteractiveTextColor;
+        }
+        &:hover {
+            .sapMSltArrow,
+            .sapMSltIcon {
+                background: @sapUiShellHoverBackground;
+                &::before {
+                    color: @sapUiShellTextColor;
+                }
+            }
+        }
+        &.sapMSltPressed {
+            .sapMSltArrow,
+            .sapMSltIcon {
+                background: @sapUiShellActiveBackground;
+                &::before {
+                    color: @sapUiShellActiveTextColor;
+                }
+            }
+        }
+        &:focus {
+            /*outline-color: contrast(@sapUiShellColor, @sapUiContentFocusColor, @sapUiContentContrastFocusColor, @sapContent_ContrastTextThreshold);*/
+            outline-color: contrast(
+                @sapShellColor,
+                @sapUiContentFocusColor,
+                @sapUiContentContrastFocusColor,
+                @sapContent_ContrastTextThreshold
+            );
+        }
+    }
+    #searchFieldInShell-input {
+        .sapMInputBaseContentWrapper {
+            background: transparent;
+            border-color: @sapUiShellInteractiveBorderColor;
+        }
+        .sapMInputBaseContentWrapper:hover {
+            background: @sapUiShellHoverBackground;
+        }
+        .sapMInputBaseInner {
+            color: @sapUiShellTextColor;
+        }
+        .sapMInputBaseInner::placeholder {
+            color: @sapUiShellInteractiveTextColor;
+        }
+        &.sapMFocus .sapMInputBaseContentWrapper {
+            /*border-color: contrast(@sapUiShellColor, @sapUiContentFocusColor, @sapUiContentContrastFocusColor, @sapContent_ContrastTextThreshold);*/
+            outline-color: contrast(
+                @sapShellColor,
+                @sapUiContentFocusColor,
+                @sapUiContentContrastFocusColor,
+                @sapContent_ContrastTextThreshold
+            );
+        }
+    }
+    /* magnifier and cancel button */
+    .sapMBtn {
+        .sapMBtnInner.sapMBtnDefault {
+            background-color: transparent;
+            border-color: transparent;
+            color: @sapUiShellTextColor;
+            .sapMBtnIcon {
+                color: @sapUiShellInteractiveTextColor;
+            }
+        }
+        &:not(.sapMBtnDisabled) {
+            &:hover {
+                .sapMBtnInner.sapMBtnDefault {
+                    background-color: @sapUiShellHoverBackground;
+                    border-color: @sapUiShellHoverBackground;
+                    color: @sapUiShellTextColor;
+                    .sapMBtnIcon {
+                        color: @sapUiShellInteractiveTextColor;
+                    }
+                }
+            }
+            .sapMBtnInner.sapMBtnDefault {
+                &.sapMBtnActive {
+                    background-color: @sapUiShellActiveBackground;
+                    border-color: @sapUiShellActiveBackground;
+                    color: @sapUiShellActiveTextColor;
+                    .sapMBtnIcon {
+                        color: @sapUiShellActiveTextColor;
+                    }
+                }
+            }
+        }
+        &:focus {
+            .sapMBtnDefault.sapMFocusable {
+                outline-color: contrast(
+                    @sapUiShellColor,
+                    @sapUiContentFocusColor,
+                    @sapUiContentContrastFocusColor,
+                    @sapContent_ContrastTextThreshold
+                );
+            }
+        }
+    }
+}

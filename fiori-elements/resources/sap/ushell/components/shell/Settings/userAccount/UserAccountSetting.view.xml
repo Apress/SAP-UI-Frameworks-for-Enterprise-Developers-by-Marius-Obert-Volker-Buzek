@@ -1,0 +1,13 @@
+<mvc:View
+        controllerName="sap.ushell.components.shell.Settings.userAccount.UserAccountSelector"
+        xmlns:core="sap.ui.core"
+        xmlns:mvc="sap.ui.core.mvc"
+        xmlns="sap.m">
+    <ObjectHeader
+        icon="{config>/icon}"
+        iconDensityAware="false"
+        title="{config>/name}"
+        backgroundDesign="Solid"
+        class="sapUshellUserSettingDetailHeader"/>
+    <core:Fragment fragmentName="sap.ushell.components.shell.Settings.userAccount.UserAccountSetting" type="XML"></core:Fragment>
+</mvc:View>

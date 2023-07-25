@@ -1,0 +1,42 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns="sap.m"
+	xmlns:u="sap.ui.unified"
+	xmlns:core="sap.ui.core"
+	xmlns:controls="sap.fe.macros.controls"
+	xmlns:coreControls="sap.fe.core.controls"
+>
+	<!-- if Analytical Table -->
+	<template:if test="{this>formatOptions/isAnalytics}">
+		<template:then>
+			<controls:ConditionalWrapper visible="{this>displayVisible}" condition="{this>hasValidAnalyticalCurrencyOrUnit}">
+				<controls:contentTrue>
+					<u:Currency
+						stringValue="{this>valueAsStringBindingExpression}"
+						currency="{this>unitBindingExpression}"
+						useSymbol="false"
+						maxPrecision="5"
+					/>
+				</controls:contentTrue>
+				<controls:contentFalse>
+					<u:Currency stringValue="" currency="*" useSymbol="false" />
+				</controls:contentFalse>
+			</controls:ConditionalWrapper>
+		</template:then>
+		<template:else>
+			<coreControls:FormElementWrapper
+				formDoNotAdjustWidth="true"
+				width="{= ${this>formatOptions/textAlignMode} === 'Table' ? '100%' : undefined}"
+			>
+				<!-- We use % to prevent ODataBinding automatically formatting the stringValue as a number-->
+				<u:Currency
+					visible="{this>displayVisible}"
+					stringValue="{this>valueAsStringBindingExpression}"
+					currency="{this>unitBindingExpression}"
+					useSymbol="false"
+					maxPrecision="5"
+				/>
+			</coreControls:FormElementWrapper>
+		</template:else>
+	</template:if>
+</core:FragmentDefinition>

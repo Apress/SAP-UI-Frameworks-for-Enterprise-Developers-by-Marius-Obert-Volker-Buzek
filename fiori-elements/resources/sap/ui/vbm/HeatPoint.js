@@ -1,0 +1,4 @@
+/*
+ * ! SAP UI development toolkit for HTML5 (SAPUI5) (c) Copyright 2009-2012 SAP AG. All rights reserved
+ */
+sap.ui.define(["./VoBase","./library"],function(t,e){"use strict";var i=t.extend("sap.ui.vbm.HeatPoint",{metadata:{library:"sap.ui.vbm",properties:{position:{type:"string",group:"Misc",defaultValue:null},value:{type:"string",group:"Misc",defaultValue:null},radius:{type:"string",group:"Misc",defaultValue:"5"}},events:{}}});i.prototype.openDetailWindow=function(t,e,i){this.oParent.openDetailWindow(this,{caption:t,offsetX:e,offsetY:i},true)};i.prototype.getDataElement=function(){var e=t.prototype.getDataElement.apply(this,arguments);var i=this.oParent.mBindInfo;if(i.P){e.P=this.getPosition()}if(i.V){e.V=this.getValue()}if(i.R){e.R=this.getRadius()}return e};i.prototype.handleChangedData=function(t){if(t.P){this.setPosition(t.P)}if(t.V){this.setScale(t.V)}if(t.R){this.setRadius(t.R)}};i.prototype.getUniqueId=function(){return this.getId()};return i});

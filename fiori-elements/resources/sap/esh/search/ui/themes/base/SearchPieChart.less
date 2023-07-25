@@ -1,0 +1,40 @@
+/*****************/
+
+/*** Pie Chart ***/
+
+/*****************/
+
+.sapUshellSearchFacetPieChart {
+    height: 10rem;
+    width: 17.375rem;
+}
+
+g.sap-piechart {
+    shape-rendering: crispEdges;
+    font-family: @sapUiFontFamily;
+    font-size: @sapMFontMediumSize;
+}
+
+g.sap-piechart text.label {
+    fill: @sapUiContentForegroundTextColor;
+}
+
+g.sap-piechart text.labelshadow {
+    stroke: contrast(
+        @sapUiContentForegroundTextColor,
+        @sapUiContentShadowColor,
+        @sapUiContentContrastShadowColor,
+        @sapUiContentContrastTextThreshold
+    );
+    stroke-width: 0.25rem;
+    stroke-linejoin: round;
+}
+
+g.sap-piechart path {
+    outline: none;
+}
+
+g.sap-piechart path:hover {
+    cursor: pointer;
+    opacity: 1 !important;
+}

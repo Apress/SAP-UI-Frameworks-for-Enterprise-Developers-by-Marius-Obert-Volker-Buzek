@@ -1,0 +1,6 @@
+/*!
+ * SAP UI development toolkit for HTML5 (SAPUI5)
+
+(c) Copyright 2009-2017 SAP SE. All rights reserved
+ */
+sap.ui.define(["sap/ui/core/Core","sap/ui/core/library","sap/suite/ui/commons/library"],function(e){"use strict";var o=sap.ui.getCore().initLibrary({name:"sap.collaboration",dependencies:["sap.ui.core","sap.suite.ui.commons"],types:["sap.collaboration.AppType","sap.collaboration.DisplayFeedType","sap.collaboration.FeedType"],interfaces:[],controls:["sap.collaboration.components.controls.FeedEntryEmbedded","sap.collaboration.components.controls.FilterPopover","sap.collaboration.components.controls.ReplyPopover","sap.collaboration.components.controls.SocialTextArea","sap.collaboration.components.controls.TimelineEntryEmbedded","sap.collaboration.components.socialtimeline.controls.TimelineItemEmbedded"],elements:[],version:"1.113.0"});o.AppType={split:"split",widget:"widget"};o.DisplayFeedType={BusinessRecordFeed:"BusinessRecordFeed",GroupFeedsWhereBusinessRecordIsLinked:"GroupFeedsWhereBusinessRecordIsLinked"};o.FeedType={follows:"follows",company:"company",group:"group",objectGroup:"objectGroup",object:"object",GroupIds:"GroupIds",BusinessObjectGroups:"BusinessObjectGroups",UserGroups:"UserGroups"};return o});

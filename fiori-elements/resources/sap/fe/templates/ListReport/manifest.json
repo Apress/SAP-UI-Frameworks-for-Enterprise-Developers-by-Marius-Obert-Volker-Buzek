@@ -1,0 +1,38 @@
+{
+	"_version": "1.14.0",
+	"sap.app": {
+		"id": "sap.fe.templates.ListReport",
+		"type": "component",
+		"applicationVersion": {
+			"version": "1.113.0"
+		},
+		"title": "List Report",
+		"tags": {
+			"keywords": ["List Report"]
+		},
+		"ach": "CA-UI5-FE",
+		"embeddedBy": "../",
+		"offline": false,
+		"resources": "resources.json"
+	},
+	"sap.ui5": {
+		"services": {
+			"templatedViewService": {
+				"settings": {
+					"converterType": "ListReport"
+				}
+			}
+		},
+		"handleValidation": true,
+		"dependencies": {
+			"minUI5Version": "${sap.ui5.core.version}",
+			"libs": {
+				"sap.fe.core": {},
+				"sap.ui.mdc": {},
+				"sap.fe.macros": {},
+				"sap.ui.fl": {},
+				"sap.fe.navigation": {}
+			}
+		}
+	}
+}

@@ -1,0 +1,44 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m"
+	xmlns:internalMacro="sap.fe.macros.internal"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:unittest="http://schemas.sap.com/sapui5/preprocessorextension/sap.fe.unittesting/1"
+	template:require="{
+        FIELD: 'sap/fe/macros/field/FieldHelper',
+        FORM: 'sap/fe/macros/form/FormHelper',
+        MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+        COMMON: 'sap/fe/macros/CommonHelper',
+        UI: 'sap/fe/core/templating/UIFormatters',
+		FieldTemplating: 'sap/fe/macros/field/FieldTemplating'
+    }"
+>
+	<template:if test="{dataField>@com.sap.vocabularies.UI.v1.DataFieldDefault}">
+		<template:then>
+			<template:with path="dataField>@com.sap.vocabularies.UI.v1.DataFieldDefault" var="dataField">
+				<!-- There is a default data field therefore we jump to it and run the same logic again -->
+				<core:Fragment fragmentName="sap.fe.macros.form.FormElementFlexibility" type="XML" />
+			</template:with>
+		</template:then>
+		<template:else>
+			<f:FormElement
+				unittest:id="FormElement"
+				id="{= ${this>_flexId} + '_FormElement'}"
+				label="{= ${dataField>@com.sap.vocabularies.Common.v1.Label} || ${dataField>@@MODEL.label} || '[LABEL_MISSING: ' + ${dataField>@@FIELD.propertyName} +']'}"
+				visible="{= FieldTemplating.getVisibleExpression(${dataField>@@UI.getDataModelObjectPath})}"
+				binding="{= FORM.generateBindingExpression(${this>navigationPath},${entitySet>./@com.sap.vocabularies.Common.v1.SemanticKey})}"
+			>
+				<internalMacro:Field
+					editMode="{= ${this>displayMode} === 'true' ? 'Display' : undefined}"
+					_flexId="{this>_flexId}"
+					entitySet="{entitySet>}"
+					dataField="{dataField>}"
+					onChange="{this>onChange}"
+				>
+					<internalMacro:formatOptions textAlignMode="Form" showEmptyIndicator="true" />
+				</internalMacro:Field>
+			</f:FormElement>
+		</template:else>
+	</template:if>
+</core:FragmentDefinition>

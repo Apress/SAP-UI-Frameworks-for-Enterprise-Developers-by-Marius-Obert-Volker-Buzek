@@ -1,0 +1,16 @@
+.alignMiddle {
+	vertical-align: middle;
+}
+.sapCollaborationEmbeddedText {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    unicode-bidi: embed;
+    direction: ltr;
+}
+.sapCollaborationAtMentionLink {
+	vertical-align: bottom;
+}
+.sapCollaborationEmbeddedTextSpace {
+	width: 10px;
+	display: inline-block;
+}

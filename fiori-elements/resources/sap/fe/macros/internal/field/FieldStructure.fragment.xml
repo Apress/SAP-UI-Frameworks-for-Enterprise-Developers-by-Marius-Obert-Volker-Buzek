@@ -1,0 +1,91 @@
+<!--
+    /**
+     * This fragment renders a DataField
+     * @param entitySet context to the EntitySet
+     * @param dataField context to the DataField
+     * @param property context to the Property Path
+	 * @param wrap wrapping allowed for a field or not
+	 * wrap Boolean: true, false
+	 * Incoming from Field.fragment.xml
+ 	 * 	 @param idPrefix default 'F' Prefix for the id
+ 	 * 	 @param vhIdPrefix default 'FieldValueHelp' Prefix for the value help id
+     * @returns
+     */
+-->
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:controls="sap.fe.macros.controls"
+	template:require="{
+							MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+							COMMON: 'sap/fe/macros/CommonHelper',
+							FIELD: 'sap/fe/macros/field/FieldHelper',
+							ID: 'sap/fe/core/helpers/StableIdHelper',
+							Property: 'sap/fe/core/templating/PropertyFormatters',
+							UI: 'sap/fe/core/templating/UIFormatters',
+							FieldTemplating: 'sap/fe/macros/field/FieldTemplating',
+							FE_MODEL: 'sap/fe/core/helpers/ModelHelper'
+						 }"
+>
+	<template:if
+		test="{= ${this>displayStyle}==='Avatar' || ${this>displayStyle}==='Contact' || ${this>displayStyle}==='Button' || ${this>displayStyle}==='File'}"
+	>
+		<template:then>
+			<template:if
+				test="{= (${this>displayStyle}==='File') &amp;&amp; (${this>collaborationEnabled}) &amp;&amp; (${this>editMode}!=='Display')}"
+			>
+				<template:then>
+					<HBox width="100%">
+						<VBox width="100%">
+							<core:Fragment fragmentName="sap.fe.macros.internal.field.displayStyle.{this>displayStyle}" type="XML" />
+						</VBox>
+						<core:Fragment fragmentName="sap.fe.macros.internal.CollaborationAvatar" type="XML" />
+					</HBox>
+				</template:then>
+				<template:else>
+					<core:Fragment fragmentName="sap.fe.macros.internal.field.displayStyle.{this>displayStyle}" type="XML" />
+				</template:else>
+			</template:if>
+		</template:then>
+		<template:else>
+			<template:if test="{= (${this>formatOptions/fieldMode} === 'nowrapper') &amp;&amp; (${this>editMode}==='Display') }">
+				<template:then>
+					<core:Fragment fragmentName="sap.fe.macros.internal.field.displayStyle.{this>displayStyle}" type="XML" />
+				</template:then>
+				<template:else>
+					<controls:FieldWrapper
+						id="{= ${this>_flexId} || (${this>idPrefix} ? ID.generate([${this>idPrefix}, 'Field-content']) : undefined) }"
+						editMode="{this>editMode}"
+						visible="{this>visible}"
+						width="100%"
+						textAlign="{this>textAlign}"
+						class="{this>class}"
+					>
+						<controls:contentDisplay>
+							<core:Fragment fragmentName="sap.fe.macros.internal.field.displayStyle.{this>displayStyle}" type="XML" />
+						</controls:contentDisplay>
+						<template:if test="{= ${this>editMode}!=='Display'  &amp;&amp; !!${this>editStyle}}">
+							<controls:contentEdit>
+								<template:if test="{this>collaborationEnabled}">
+									<template:then>
+										<HBox width="100%">
+											<core:Fragment
+												fragmentName="sap.fe.macros.internal.field.editStyle.{this>editStyle}"
+												type="XML"
+											/>
+											<core:Fragment fragmentName="sap.fe.macros.internal.CollaborationAvatar" type="XML" />
+										</HBox>
+									</template:then>
+									<template:else>
+										<core:Fragment fragmentName="sap.fe.macros.internal.field.editStyle.{this>editStyle}" type="XML" />
+									</template:else>
+								</template:if>
+							</controls:contentEdit>
+						</template:if>
+					</controls:FieldWrapper>
+				</template:else>
+			</template:if>
+		</template:else>
+	</template:if>
+</core:FragmentDefinition>

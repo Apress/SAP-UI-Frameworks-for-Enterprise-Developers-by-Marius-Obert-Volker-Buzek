@@ -1,0 +1,71 @@
+<mvc:View
+    id="contentFinderDialogView"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    height="100%"
+    controllerName="sap.ushell.components.contentFinder.controller.ContentFinderDialog"
+    core:require="{ formatMessage: 'sap/base/strings/formatMessage' }">
+    <Dialog
+        id="contentFinderDialog"
+        contentWidth="64.5rem"
+        contentHeight="80%"
+        resizable="true"
+        closeOnNavigation="true"
+        class="sapUiNoContentPadding sapUiSizeCompact"
+        horizontalScrolling="false"
+        verticalScrolling="false"
+        afterClose=".onClose">
+        <customHeader>
+            <OverflowToolbar>
+                <Button icon="sap-icon://nav-back"
+                        id="sapContentFinderBackButton"
+                        visible="{= ${/activeNavigationTarget} !== ${/navigationTargets/widgetGallery} &amp;&amp; !${/restrictedMode}}"
+                        press=".onBackButtonPressed"/>
+                <Title text="{
+                    parts: [
+                        '/activeNavigationTarget'
+                    ], formatter: '.formatter.formatDialogTitle' }" />
+                <ToolbarSpacer />
+            </OverflowToolbar>
+        </customHeader>
+
+        <content>
+            <NavContainer id="contentFinderNavContainer">
+                <Page
+                    id="contentFinderWidgetGalleryPage"
+                    enableScrolling="false"
+                    showHeader="false">
+                    <mvc:XMLView
+                        height="100%"
+                        viewName="sap.ushell.components.contentFinder.view.WidgetGallery" />
+                </Page>
+                <Page
+                    id="contentFinderAppSearchPage"
+                    enableScrolling="false"
+                    showHeader="false">
+                    <mvc:XMLView
+                        height="100%"
+                        viewName="sap.ushell.components.contentFinder.view.AppSearch" />
+                </Page>
+            </NavContainer>
+        </content>
+        <beginButton>
+            <Button id="sapContentFinderAddButton"
+                    type="Emphasized"
+                    visible="{
+                        parts: [
+                            '/activeNavigationTarget'
+                        ], formatter: '.formatter.addButtonIsVisibleInAppSearch' }"
+                    text="{parts: [{path: 'i18n>ContentFinder.Button.Add'}, {path: '/appSearch/selectedAppCount'}],
+                    formatter: 'formatMessage' }"
+                    enabled="{= ${/appSearch/selectedAppCount} > 0}"
+                    press=".onAddButtonPressed"/>
+        </beginButton>
+        <endButton>
+            <Button id="sapContentFinderCancelButton"
+                    text="{i18n>ContentFinder.Button.Cancel}"
+                    press=".onCancelButtonPressed"/>
+        </endButton>
+    </Dialog>
+</mvc:View>

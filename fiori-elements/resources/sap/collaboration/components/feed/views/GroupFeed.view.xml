@@ -1,0 +1,14 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:m="sap.m" xmlns:commons="sap.suite.ui.commons" xmlns:collaboration="sap.collaboration"
+		controllerName="sap.collaboration.components.feed.views.GroupFeed" xmlns:html="http://www.w3.org/1999/xhtml">
+	<commons:Timeline
+	   id="timeline"
+	   enableSocial="{/enableSocial}"
+	   axisOrientation="{/axisOrientation}"
+	   enableScroll="{/enableScroll}"
+	   forceGrowing="{/forceGrowing}"
+	   growingThreshold="{/growingThreshold}"
+	   sort="false"
+	   grow=".onGrow"
+	   >
+	</commons:Timeline>
+</mvc:View>

@@ -1,0 +1,220 @@
+<mvc:View
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:f="sap.f"
+	xmlns:macro="sap.fe.macros"
+	xmlns:macroInternal="sap.fe.macros.internal"
+	xmlns:control="sap.fe.core.controls"
+	xmlns:core="sap.ui.core"
+	xmlns:fragments="sap.fe.templates.ListReport.view.fragments"
+	xmlns:l="sap.ui.layout"
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns:unittest="http://schemas.sap.com/sapui5/preprocessorextension/sap.fe.unittesting/1"
+	xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	template:require="{
+		ID: 'sap/fe/core/helpers/StableIdHelper',
+		COMMON: 'sap/fe/macros/CommonHelper',
+		FILTER: 'sap/fe/core/templating/FilterHelper',
+		LR: 'sap/fe/templates/ListReport/ListReportTemplating'
+	}"
+	controllerName="sap.fe.templates.ListReport.ListReportController"
+>
+	<template:with path="converterContext>mainEntitySet" var="entitySet">
+		<template:with path="converterContext>mainEntityType" var="entityType">
+			<f:DynamicPage
+				id="fe::ListReport"
+				unittest:id="listReportFooterTest"
+				stickySubheaderProvider="{converterContext>stickySubheaderProvider}"
+				showFooter="false"
+				busy="{ui>/busy}"
+				busyIndicatorDelay="0"
+				class="{= !${converterContext>hasMultiVisualizations} &amp;&amp; ${converterContext>views}.length > 1 ? 'sapUiNoContentPadding' : 'sapUiResponsiveContentPadding'}"
+			>
+				<f:dependents>
+					<template:if test="{converterContext>headerActions}">
+						<template:repeat list="{converterContext>headerActions}" var="headerAction">
+							<template:if test="{headerAction>command}">
+								<control:CommandExecution
+									core:require="{FPM: 'sap/fe/core/helpers/FPMHelper'}"
+									execute="{= COMMON.buildActionWrapper(${headerAction>})}"
+									visible="{headerAction>visible}"
+									enabled="{headerAction>enabled}"
+									command="{headerAction>command}"
+								/>
+							</template:if>
+						</template:repeat>
+					</template:if>
+					<template:if test="{= !${converterContext>hideFilterBar} &amp;&amp; !${viewData>/liveMode} }">
+						<template:then>
+							<control:CommandExecution execute=".handlers.onFilterSearch" command="FE_FilterSearch" />
+						</template:then>
+					</template:if>
+				</f:dependents>
+				<f:title>
+					<f:DynamicPageTitle stateChange=".handlers.onDynamicPageTitleStateChanged">
+						<f:heading>
+							<template:with path="converterContext>kpiDefinitions" var="definitions">
+								<template:if test="{definitions>length}">
+									<template:then>
+										<l:HorizontalLayout class="sapUiNoContentPadding sapUiNoMarginTop sapUiNoMarginBottom">
+											<core:Fragment
+												fragmentName="sap.fe.templates.ListReport.view.fragments.VariantManagement"
+												type="XML"
+											/>
+											<template:repeat list="{converterContext>kpiDefinitions}" var="kpi">
+												<template:with path="kpi>datapoint" var="datapoint">
+													<macro:KPITag
+														id="{kpi>id}"
+														metaPath="{datapoint>annotationPath}"
+														kpiModelName="kpiModel"
+														hasUnit="{= ${datapoint>unit} !== undefined}"
+													/>
+												</template:with>
+											</template:repeat>
+										</l:HorizontalLayout>
+									</template:then>
+									<template:else>
+										<core:Fragment
+											fragmentName="sap.fe.templates.ListReport.view.fragments.VariantManagement"
+											type="XML"
+										/>
+									</template:else>
+								</template:if>
+							</template:with>
+						</f:heading>
+						<f:snappedContent>
+							<Text id="fe::appliedFiltersText" />
+						</f:snappedContent>
+						<f:actions>
+							<ToolbarSpacer />
+							<template:if test="{converterContext>headerActions}">
+								<template:repeat list="{converterContext>headerActions}" var="headerAction">
+									<Button
+										core:require="{FPM: 'sap/fe/core/helpers/FPMHelper'}"
+										id="{= ID.generate(['fe',${headerAction>id}])}"
+										text="{headerAction>text}"
+										press="{= ${headerAction>command} ? ('cmd:' + ${headerAction>command}) : COMMON.buildActionWrapper(${headerAction>})}"
+										type="Transparent"
+										visible="{headerAction>visible}"
+										enabled="{headerAction>enabled}"
+									/>
+								</template:repeat>
+							</template:if>
+							<template:if
+								test="{= ${converterContext>/filterLayout} === 'compactvisual' &amp;&amp; !${converterContext>hideFilterBar}}"
+							>
+								<SegmentedButton
+									id="{= ID.generate([ ${converterContext>filterBarId}, 'LayoutToggle']) }"
+									selectedKey="{converterContext>/filterInitialLayout}"
+								>
+									<items>
+										<SegmentedButtonItem
+											tooltip="{sap.fe.i18n>T_SEGMENTED_BUTTON_TOOLTIP_COMPACT}"
+											key="compact"
+											icon="sap-icon://filter-fields"
+										/>
+										<SegmentedButtonItem
+											tooltip="{sap.fe.i18n>T_SEGMENTED_BUTTON_TOOLTIP_VISUAL}"
+											key="visual"
+											icon="sap-icon://filter-analytics"
+										/>
+									</items>
+								</SegmentedButton>
+							</template:if>
+							<macro:Share id="fe::Share" visible="{= ${fclhelper>/} ? ${fclhelper>/showShareIcon} : true }" />
+						</f:actions>
+						<template:if test="{converterContext>useHiddenFilterBar}">
+							<template:then>
+								<f:dependents>
+									<template:with path="converterContext>filterBar" var="filterBarContext">
+										<macroInternal:FilterBar
+											unittest:id="listReportFilterBarTest"
+											id="{converterContext>filterBarId}"
+											_applyIdToContent="true"
+											metaPath="{entityType>}"
+											variantBackreference="{= LR.getVariantBackReference(${viewData>}, ${converterContext>} )}"
+											selectionFields="{filterBarContext>selectionFields}"
+											propertyInfo="{filterBarContext>propertyInfo}"
+											internalFilterChanged=".handlers.onFiltersChanged"
+											filterConditions="{parts:[{path:'converterContext>filterConditions'}, {path:'entitySet>'}], formatter: 'FILTER.getFilterConditions'}"
+											internalSearch=".handlers.onSearch"
+											hideBasicSearch="{filterBarContext>hideBasicSearch}"
+											liveMode="{viewData>/liveMode}"
+											showAdaptFiltersButton="true"
+											p13nMode="Item,Value"
+											useSemanticDateRange="{converterContext>useSemanticDateRange}"
+											suspendSelection="false"
+											toggleControlId="{= ${converterContext>/filterLayout} === 'compactvisual' ? ID.generate([ ${converterContext>filterBarId}, 'LayoutToggle']) : undefined }"
+											initialLayout="{= ${converterContext>/filterLayout} === 'compactvisual' ? ${converterContext>/filterInitialLayout} : undefined }"
+											stateChange=".handlers.onStateChange"
+										/>
+									</template:with>
+								</f:dependents>
+							</template:then>
+						</template:if>
+					</f:DynamicPageTitle>
+				</f:title>
+				<f:header>
+					<template:if test="{= !${converterContext>hideFilterBar} }">
+						<template:then>
+							<template:with path="converterContext>filterBar" var="filterBarContext">
+								<f:DynamicPageHeader pinnable="{converterContext>showPinnableToggle}">
+									<VBox>
+										<macroInternal:FilterBar
+											unittest:id="listReportFilterBarTest"
+											id="{converterContext>filterBarId}"
+											_applyIdToContent="true"
+											metaPath="{entityType>}"
+											variantBackreference="{= LR.getVariantBackReference(${viewData>}, ${converterContext>} )}"
+											selectionFields="{filterBarContext>selectionFields}"
+											propertyInfo="{filterBarContext>propertyInfo}"
+											internalFilterChanged=".handlers.onFiltersChanged"
+											filterConditions="{parts:[{path:'converterContext>filterConditions'}, {path:'entitySet>'}], formatter: 'FILTER.getFilterConditions'}"
+											internalSearch=".handlers.onSearch"
+											hideBasicSearch="{filterBarContext>hideBasicSearch}"
+											showClearButton="{filterBarContext>showClearButton}"
+											afterClear=".onAfterClear"
+											liveMode="{viewData>/liveMode}"
+											showAdaptFiltersButton="true"
+											p13nMode="Item,Value"
+											useSemanticDateRange="{converterContext>useSemanticDateRange}"
+											suspendSelection="false"
+											toggleControlId="{= ${converterContext>/filterLayout} === 'compactvisual' ? ID.generate([ ${converterContext>filterBarId}, 'LayoutToggle']) : undefined }"
+											initialLayout="{= ${converterContext>/filterLayout} === 'compactvisual' ? ${converterContext>/filterInitialLayout} : undefined }"
+											stateChange=".handlers.onStateChange"
+										/>
+									</VBox>
+								</f:DynamicPageHeader>
+							</template:with>
+						</template:then>
+					</template:if>
+				</f:header>
+				<f:content>
+					<template:if test="{= ${converterContext>views}.length > 0}">
+						<template:if test="{converterContext>multiViewsControl}">
+							<template:then>
+								<fragments:MultipleMode />
+							</template:then>
+							<template:elseif
+								test="{= ${converterContext>views}.length === 1 &amp;&amp; !${converterContext>hasMultiVisualizations} }"
+							>
+								<template:with path="converterContext>views/0/presentation" var="presentationContext">
+									<core:Fragment
+										fragmentName="sap.fe.templates.ListReport.view.fragments.CollectionVisualization"
+										type="XML"
+									/>
+								</template:with>
+							</template:elseif>
+							<template:else>
+								<core:Fragment
+									fragmentName="sap.fe.templates.ListReport.view.fragments.CollectionVisualization"
+									type="XML"
+								/>
+							</template:else>
+						</template:if>
+					</template:if>
+				</f:content>
+			</f:DynamicPage>
+		</template:with>
+	</template:with>
+</mvc:View>

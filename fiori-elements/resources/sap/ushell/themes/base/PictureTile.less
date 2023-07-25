@@ -1,0 +1,119 @@
+/* ============================================================================= */
+/* CSS for control "sap.ushell.components.factsheet.controls.PictureTile" (base) */
+/* ============================================================================= */
+
+.sapCaUiPictureTileContent {
+  text-align: center;
+  box-sizing: border-box;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.sapCaUiPTWrapper {
+  position: relative;
+  box-sizing: border-box;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.sapCaUiPictureTileContent .sapMImg {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+@media (orientation: portrait) {
+  .sap-phone .sapCaUiPictureTileContent .sapMImg,
+  .sap-tablet .sapCaUiPictureTileContent .sapMImg {
+    max-width: 100%;
+    max-height: none;
+  }
+}
+
+@media (orientation: landscape) {
+  .sap-phone .sapCaUiPictureTileContent .sapMImg,
+  .sap-tablet .sapCaUiPictureTileContent .sapMImg {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+
+.sapMTC .sapCaUiPictureTile {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.sapCaUiPictureTile {
+  display: inline-block;
+  box-sizing: border-box;
+  width: 13em;
+  height: 10em;
+  margin: 0;
+}
+
+.sapCaUiPictureTile .sapMBtn {
+  position: absolute;
+  z-index: 2;
+  top: 0.32rem;
+  left: 0.63rem;
+}
+
+.sap-desktop .sapCaUiPictureTile .sapCaUiPTDeleteButton {
+  opacity: 0;
+}
+
+.sap-desktop .sapCaUiPictureTile:hover .sapCaUiPTDeleteButton {
+  opacity: 0.1;
+}
+
+.sap-desktop .sapCaUiPictureTile:hover .sapCaUiPTDeleteButton:hover {
+  opacity: 1;
+}
+
+.sap-desktop[data-sap-ui-browser^="ff"] .sapCaUiPictureTile {
+  padding: 2rem;
+}
+
+.sap-phone .sapCaUiPictureTileContent,
+.sap-tablet .sapCaUiPictureTileContent,
+.sap-desktop:not([data-sap-ui-browser^="ff"]) .sapCaUiPictureTileContent {
+  padding: 2rem;
+}
+
+.sap-phone .sapCaUiPictureTile .sapCaUiPTDeleteButton.hide,
+.sap-tablet .sapCaUiPictureTile .sapCaUiPTDeleteButton.hide {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.sap-phone .sapCaUiPictureTile .sapCaUiPTDeleteButton,
+.sap-tablet .sapCaUiPictureTile .sapCaUiPTDeleteButton {
+  visibility: visible;
+  opacity: 1;
+}
+
+.sap-desktop[data-sap-ui-browser^="ie"] {
+  .sapCaUiPictureTile .sapCaUiPTDeleteButton.sapMFocusable:focus {
+    position: absolute;
+  }
+
+  .sapCaUiPTWrapper {
+    max-width: 100%;
+  }
+}
+
+.sapCaUiPTDeleteButton .sapUiIcon:before {
+  border-radius: 2rem;
+}
+
+.sapMBtn.sapCaUiPTDeleteButton.sapMBtnActive {
+  border: none;
+}
+
+.sapCaUiPTDeleteButton .sapUiIcon {
+  outline: none;
+}

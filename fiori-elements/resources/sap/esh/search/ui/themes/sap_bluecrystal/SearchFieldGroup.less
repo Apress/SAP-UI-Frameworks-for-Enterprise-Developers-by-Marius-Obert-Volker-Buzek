@@ -1,0 +1,45 @@
+/******** search button in head end area ********/
+
+#sf {
+    width: 2.5rem;
+}
+
+#sf:before {
+    border-right: @sapUshellOnePixel solid transparent;
+}
+
+#sf span {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+#searchFieldInShell {
+    #searchFieldInShell-select:not(.sapMSltPressed) {
+        background-color: fade(@sapUiFieldBackground, 80%);
+        &:not(:hover):not(:focus) {
+            border-color: fade(@sapUiFieldBorderColor, 60%);
+        }
+        span {
+            background-color: transparent;
+        }
+    }
+    #searchFieldInShell-input {
+        input:not(:hover):not(:focus) {
+            border-color: fade(@sapUiFieldBorderColor, 60%);
+        }
+    }
+    #searchFieldInShell-button-inner {
+        border-radius: 0;
+        &:not(:hover):not(:focus):not(:active) {
+            border-color: fade(@sapUiButtonBorderColor, 80%);
+        }
+    }
+}
+
+/******** suggestion ********/
+
+#searchFieldInShell-input-popup {
+    i {
+        color: @sapUiAccent7; //sapUiContentMarkerTextColor not known
+    }
+}

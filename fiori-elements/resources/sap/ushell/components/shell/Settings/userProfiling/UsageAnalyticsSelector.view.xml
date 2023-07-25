@@ -1,0 +1,13 @@
+<mvc:View
+      width="100%"
+      controllerName="sap.ushell.components.shell.Settings.userProfiling.UsageAnalyticsSelector"
+      xmlns="sap.m"
+      xmlns:mvc="sap.ui.core.mvc">
+
+    <VBox class="sapUiSmallMarginTop">
+        <CheckBox text="{i18n>allowTracking}" selected="{/isTrackingUsageAnalytics}"/>
+        <VBox class="sapUshellFlpSettingsDescriptionBorder">
+            <Text class="sapUshellFlpSettingsDescription" text="{/legalText}"/>
+        </VBox>
+    </VBox>
+</mvc:View>

@@ -1,0 +1,52 @@
+<mvc:View
+    controllerName="sap.ushell.components.shell.Settings.spaces.SpacesSetting"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc">
+    <VBox class="sapUiSmallMargin">
+        <CheckBox
+            text="{i18n>spacesModeLabel}"
+            visible="{/spaces/visible}"
+            selected="{/spaces/selected}">
+            <customData>
+                <core:CustomData key="help-id" value="SpacesEntry-spacesMode" writeToDom="true" />
+            </customData>
+        </CheckBox>
+        <VBox class="sapUshellFlpSettingsDescriptionBorder" visible="{/spaces/visible}">
+            <Text class="sapUshellFlpSettingsDescription sapUshellFlpSettingsWide" text="{i18n>spacesModeDescriptionText}"/>
+        </VBox>
+        <CheckBox
+            text="{i18n>hideEmptySpacesLabel}"
+            visible="{/hideEmptySpaces/visible}"
+            selected="{/hideEmptySpaces/selected}">
+            <customData>
+                <core:CustomData key="help-id" value="SpacesEntry-hideEmptySpaces" writeToDom="true" />
+            </customData>
+        </CheckBox>
+        <VBox class="sapUshellFlpSettingsDescriptionBorder" visible="{/hideEmptySpaces/visible}">
+            <Text class="sapUshellFlpSettingsDescription sapUshellFlpSettingsWide" text="{i18n>hideEmptySpacesDescriptionText}"/>
+        </VBox>
+        <CheckBox
+            text="{i18n>showMyHomeLabel}"
+            visible="{/showMyHome/visible}"
+            selected="{/showMyHome/selected}">
+            <customData>
+                <core:CustomData key="help-id" value="SpacesEntry-showMyHome" writeToDom="true" />
+            </customData>
+        </CheckBox>
+        <VBox class="sapUshellFlpSettingsDescriptionBorder" visible="{/showMyHome/visible}">
+            <Text class="sapUshellFlpSettingsDescription sapUshellFlpSettingsWide" text="{i18n>showMyHomeDescriptionText}"/>
+        </VBox>
+        <CheckBox
+            text="{i18n>showMyHomeImportLabel}"
+            visible="{/showMyHomeImport/visible}"
+            selected="{/showMyHomeImport/selected}">
+            <customData>
+                <core:CustomData key="help-id" value="SpacesEntry-showMyHomeImport" writeToDom="true" />
+            </customData>
+        </CheckBox>
+        <VBox class="sapUshellFlpSettingsDescriptionBorder" visible="{/showMyHomeImport/visible}">
+            <Text class="sapUshellFlpSettingsDescription sapUshellFlpSettingsWide" text="{i18n>showMyHomeImportDescription}"/>
+        </VBox>
+    </VBox>
+</mvc:View>

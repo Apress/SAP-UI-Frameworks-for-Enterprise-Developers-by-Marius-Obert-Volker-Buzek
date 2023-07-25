@@ -1,0 +1,66 @@
+{
+    "_version": "1.21.0",
+    "sap.app": {
+        "id": "sap.ushell.components.appfinder",
+        "applicationVersion": {
+            "version": "1.113.0"
+        },
+        "i18n": {
+            "bundleUrl": "../../renderers/fiori2/resources/resources.properties",
+            "fallbackLocale": "en"
+        },
+        "ach": "CA-FLP-FE-COR",
+        "type": "component",
+        "title": "{{Component.AppFinder.Title}}",
+        "resources": "resources.json"
+    },
+    "sap.ui": {
+        "fullWidth": true,
+        "hideLightBackground": true,
+        "technology": "UI5",
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "componentName": "sap.ushell.components.appfinder",
+        "rootView": {
+            "viewName": "module:sap/ushell/components/appfinder/AppFinderView",
+            "async": true
+        },
+        "dependencies": {
+            "minUI5Version": "1.30",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.m": {}
+            }
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "controlId": "catalogViewMasterDetail",
+                "controlAggregation": "detailPages",
+                "clearAggregation": false,
+                "async": true
+            },
+            "routes": [
+                {
+                    "name": "userMenu",
+                    "pattern": "userMenu/:filters:"
+                }, {
+                    "name": "sapMenu",
+                    "pattern": "sapMenu/:filters:"
+                }, {
+                    "name": "catalog",
+                    "pattern": ["catalog/:filters:", "", ":filters:"]
+                }
+            ]
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        }
+    }
+}

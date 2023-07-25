@@ -1,0 +1,132 @@
+{
+    "sap.app": {
+        "id": "sap.ushell.components.cepsearchresult.app.cards.searchresultwidget",
+        "type": "card",
+        "title": "{{CARD.Widget.Title}}",
+        "subTitle": "{{CARD.Widget.SubTitle}}",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "i18n": {
+            "bundleUrl": "i18n/i18n.properties",
+            "supportedLocales": [
+                "",
+                "ar",
+                "bg",
+                "ca",
+                "cs",
+                "da",
+                "de",
+                "el",
+                "en",
+                "en_US",
+                "en_US_sappsd",
+                "en_US_saptrc",
+                "es",
+                "et",
+                "fi",
+                "fr",
+                "hi",
+                "hr",
+                "hu",
+                "it",
+                "iw",
+                "ja",
+                "kk",
+                "ko",
+                "lt",
+                "lv",
+                "ms",
+                "nl",
+                "no",
+                "pl",
+                "pt",
+                "ro",
+                "ru",
+                "sh",
+                "sk",
+                "sl",
+                "sv",
+                "th",
+                "tr",
+                "uk",
+                "vi",
+                "zh_CN",
+                "zh_TW"
+            ],
+            "fallbackLocale": "en"
+        },
+        "shortTitle": "{{CARD.Widget.SubTitle}}",
+        "info": "{{CARD.Widget.SubTitle}}",
+        "description": "{{CARD.Widget.SubTitle}}",
+        "tags": {
+            "keywords": []
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "sap-icon://search"
+        }
+    },
+    "sap.ui5": {
+        "dependencies": {
+            "minUI5Version": "1.106",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.integration": {}
+            },
+            "components": {
+                "sap.ushell.components.cepsearchresult.app": {
+                    "minVersion": "1.100.0",
+                    "lazy": false
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "sap.ushell.components.cepsearchresult.app.cards.searchresultwidget.Main",
+            "type": "XML",
+            "async": true,
+            "id": "card"
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "./css/style.css"
+                }
+            ]
+        }
+    },
+    "sap.card": {
+        "type": "Component",
+        "configuration": {
+            "parameters": {
+                "categories": {
+                    "value": "all"
+                },
+                "searchTerm": {
+                    "value": ""
+                },
+                "edition": {
+                    "value": "standard"
+                },
+                "currentView": {
+                    "value": "default"
+                }
+            }
+        },
+        "header": {
+            "title": "",
+            "icon": {
+                "src": "sap-icon://search"
+            },
+            "visible": false
+        }
+    }
+}

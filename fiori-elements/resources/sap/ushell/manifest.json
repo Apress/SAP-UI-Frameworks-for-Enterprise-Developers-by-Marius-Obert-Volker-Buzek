@@ -1,0 +1,126 @@
+{
+  "_version": "1.21.0",
+  "sap.app": {
+    "id": "sap.ushell",
+    "type": "library",
+    "embeds": [
+      "appRuntime/ui5/plugins/rtaAgent",
+      "appRuntime/ui5/plugins/rtaShell",
+      "appRuntime/ui5/plugins/scriptAgent",
+      "components/appfinder",
+      "components/cepsearchresult/app",
+      "components/cepsearchresult/app/cards/searchresultwidget",
+      "components/contentFinder",
+      "components/homeApp/error",
+      "components/homepage",
+      "components/pages",
+      "components/runtimeSwitcher",
+      "components/shell/MenuBar",
+      "components/shell/Search",
+      "components/shell/Settings/userDefaults",
+      "components/tiles/cdm/applauncher",
+      "components/tiles/cdm/applauncherdynamic",
+      "components/workPageBuilder",
+      "components/workPageRuntime",
+      "plugins/appwarmup",
+      "plugins/ghostapp",
+      "plugins/rta",
+      "plugins/rta-personalize",
+      "renderers/fiori2/search/searchComponent"
+    ],
+    "applicationVersion": {
+      "version": "1.113.0"
+    },
+    "title": "SAP library: sap.ushell",
+    "description": "SAP library: sap.ushell",
+    "ach": "CA-FLP-FE-UI",
+    "resources": "resources.json",
+    "offline": true
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "supportedThemes": [
+      "base",
+      "sap_belize",
+      "sap_belize_hcb",
+      "sap_belize_hcw",
+      "sap_belize_plus",
+      "sap_bluecrystal",
+      "sap_fiori_3",
+      "sap_fiori_3_dark",
+      "sap_fiori_3_hcb",
+      "sap_fiori_3_hcw",
+      "sap_hcb",
+      "sap_horizon",
+      "sap_horizon_dark",
+      "sap_horizon_hcb",
+      "sap_horizon_hcw"
+    ]
+  },
+  "sap.ui5": {
+    "dependencies": {
+      "minUI5Version": "1.113",
+      "libs": {
+        "sap.f": {
+          "minVersion": "1.113.0",
+          "lazy": true
+        },
+        "sap.m": {
+          "minVersion": "1.113.0"
+        },
+        "sap.ui.core": {
+          "minVersion": "1.113.0"
+        },
+        "sap.ui.layout": {
+          "minVersion": "1.113.0",
+          "lazy": true
+        },
+        "sap.suite.ui.commons": {
+          "minVersion": "1.113.0",
+          "lazy": true
+        },
+        "sap.suite.ui.microchart": {
+          "minVersion": "1.113.0",
+          "lazy": true
+        },
+        "sap.ui.comp": {
+          "minVersion": "1.113.0",
+          "lazy": true
+        },
+        "sap.ui.export": {
+          "minVersion": "1.113.0",
+          "lazy": true
+        },
+        "sap.collaboration": {
+          "minVersion": "1.113.0",
+          "lazy": true
+        },
+        "sap.ui.table": {
+          "minVersion": "1.113.0",
+          "lazy": true
+        },
+        "sap.ui.integration": {
+          "minVersion": "1.113.0",
+          "lazy": true
+        },
+        "sap.ui.generic.app": {
+          "minVersion": "1.113.0",
+          "lazy": true
+        },
+        "sap.esh.search.ui": {
+          "minVersion": "1.113.0",
+          "lazy": true
+        }
+      }
+    },
+    "library": {
+      "i18n": false,
+      "content": {
+        "controls": [],
+        "elements": [],
+        "types": [],
+        "interfaces": []
+      }
+    }
+  }
+}

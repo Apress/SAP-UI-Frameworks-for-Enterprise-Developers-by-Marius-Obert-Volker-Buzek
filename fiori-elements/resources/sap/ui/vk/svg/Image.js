@@ -1,0 +1,7 @@
+/*!
+ * SAP UI development toolkit for HTML5 (SAPUI5)
+
+        (c) Copyright 2009-2015 SAP SE. All rights reserved
+    
+ */
+sap.ui.define(["./Element"],function(t){"use strict";var i=function(i){i=i||{};t.call(this,i);this.type="Image";this.x=i.x||0;this.y=i.y||0;this.width=i.width||0;this.height=i.height||0;this.data=i.data||null;this.setMaterial(i.material)};i.prototype=Object.assign(Object.create(t.prototype),{constructor:i});i.prototype.tagName=function(){return"image"};i.prototype.setMaterial=function(t,i){if(t&&this.materialId===t.materialId){var h=t.textureWidth;var e=t.textureHeight;if(h&&e){this.width=h;this.height=e}if(t.texture){this.data=t.texture}if(i){this.invalidate()}}};i.prototype._setSpecificAttributes=function(t,i){if(this.x){t("x",this.x)}if(this.y){t("y",this.y)}if(this.width>0&&this.height>0&&this.data){t("width",this.width);t("height",this.height);if(i){i.setAttribute("href",this.data)}else{t("href",this.data)}}};i.prototype._expandBoundingBox=function(t,i){var h=this.width*.5;var e=this.height*.5;this._expandBoundingBoxCE(t,i,this.x+h,this.y+e,h,e)};i.prototype._getParametricShape=function(i,h,e){var a=t.prototype._getParametricShape.call(this,i,h,e);a.type="rectangle";a.width=this.width;a.length=this.height;return a};i.prototype.copy=function(i,h){t.prototype.copy.call(this,i,h);this.x=i.x;this.y=i.y;this.width=i.width;this.height=i.height;this.data=i.data;return this};return i});

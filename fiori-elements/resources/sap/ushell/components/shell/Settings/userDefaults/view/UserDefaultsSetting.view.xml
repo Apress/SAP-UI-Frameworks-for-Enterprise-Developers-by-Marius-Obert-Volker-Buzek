@@ -1,0 +1,34 @@
+<mvc:View
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:smartvariants="sap.ui.comp.smartvariants"
+    xmlns:userDefaults="sap.ushell.components.shell.Settings.userDefaults"
+    controllerName="sap.ushell.components.shell.Settings.userDefaults.controller.UserDefaultsSetting">
+    <VBox visible="{= ${systemContexts>/systemContexts}.length > 1}" class="sapUshellSystemContextsSelection">
+        <HBox alignItems="Center">
+            <Label labelFor="systemContextSelect" text="{i18n>userDefaultsSystemTitle}" />
+            <Select
+                id="systemContextSelect"
+                selectedKey="{systemContexts>/selectedKey}"
+                items="{systemContexts>/systemContexts}"
+                change=".handleSystemContextChanged">
+                <core:ListItem text="{systemContexts>label}" key="{systemContexts>id}" />
+            </Select>
+        </HBox>
+        <Text class="sapUshellFlpSettingsWideDescription" text="{i18n>userDefaultsSystemContextInfo}" />
+    </VBox>
+    <VBox>
+        <smartvariants:SmartVariantManagement
+            id="defaultSettingsVariantManagement"
+            class="sapUshellSmartVariantManagement"
+            showSetAsDefault="false"
+            visible="false"
+            standardItemText="{i18n>userDefaultsStandardView}" />
+    </VBox>
+    <Text
+        text="{i18n>userDefaultsDiffState}"
+        visible="{ path: 'DirtyState>/selectedVariant', formatter: '.displayDiffText' }"
+        class="sapUshellDefaultValuesDirtyState sapUiTinyMarginTop" />
+    <userDefaults:UserDefaultsForm id="userDefaultsForm" persistencyKey="UserDefaultsFormPersKey" />
+</mvc:View>

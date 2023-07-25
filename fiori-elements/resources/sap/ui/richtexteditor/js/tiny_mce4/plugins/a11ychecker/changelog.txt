@@ -1,0 +1,33 @@
+Version 2.2.0 (2020-02-13)
+  [FEATURE] Added a rule to ensure that ID attributes on elements are unique in a document #FOAM-11
+  [FEATURE] Added image alt text support to allow users to specify if an image is decorative or informative #FOAM-10
+  [FEATURE] Changed image alt text rules to make the requirements for passing the image alt text checks stricter #FOAM-10
+  [BUG] Fixed incorrect language codes being used for translations #TINY-4203
+Version 2.1.0 (2019-08-19)
+  [FEATURE] Changed the layout of the dialog. #TINY-3305
+  [FEATURE] Added a `a11ychecker_level` setting to allow filtering of rules by WCAG level. #TINY-3731
+  [FEATURE] Added a `a11ychecker_html_version` setting to allow filtering of rules by HTML version. #TINY-3731
+Version 2.0.3 (2019-05-21)
+  [BUG] Fixed bug where an empty src attribute on an image would produce a js error. #TINY-3605
+Version 2.0.2 (2019-03-19)
+  [BUG] Fixed the getReport and toggleaudit apis not being exposed in v2 #TINY-3471
+Version 2.0.1 (2019-03-04)
+  [BUG] Fixed accessibility issues with the TinyMCE 5.0 dialog. #TINY-2694
+Version 1.2.1 (2018-03-01)
+  [FEATURE] Added a `a11ychecker_allow_decorative_images` setting to allow images with a `alt=""` and `role="presentation"`. #TINY-1457
+Version 1.2.0 (2018-02-01)
+  [FEATURE] Decreased plugin size by improving build steps.
+Version 1.1.0 (2017-12-11)
+  [FEATURE] Exposed API method getReport() - a way to run a11y check without triggering the repair wizard
+Version 1.0.6 (2017-05-23)
+  [BUG] Added language packs for a bunch of languages. #TINY-1379
+Version 1.0.5 (2017-05-23)
+  [BUG] Fixed bug where it wasn't possible to open specification details link using keyboard navigation. #TINY-1052
+Version 1.0.4 (2017-04-03)
+  [BUG] Fixed bug where clicking the "No accessibility issues detected" text opened an empty browser window. #TINY-956
+Version 1.0.3 (2017-02-01)
+  [BUG] Fixed bug where the a11y toolbar wasn't positioned correctly in inline mode on scroll. #TINY-763
+Version 1.0.2 (2016-10-27)
+  [FEATURE] Added version detection logic that check if this plugin is used with a compatible tinymce version. #TINY-639
+  [BUG] Fixed bug where contrast warning messages wasn't properly rendered. #TINY-648
+

@@ -1,0 +1,225 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns:unittest="http://schemas.sap.com/sapui5/preprocessorextension/sap.fe.unittesting/1"
+	xmlns:macrodata="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	xmlns:core="sap.ui.core"
+	xmlns:macroTable="sap.fe.macros.table"
+	xmlns:mdcat="sap.ui.mdc.actiontoolbar"
+	xmlns="sap.m"
+	template:require="{
+		ID: 'sap/fe/core/helpers/StableIdHelper',
+		MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+		COMMON: 'sap/fe/macros/CommonHelper',
+		DATAFIELDANNOTATIONS : 'sap/fe/core/converters/annotations/DataField',
+		FIELD: 'sap/fe/macros/field/FieldHelper',
+		TABLE: 'sap/fe/macros/table/TableHelper',
+		DEFAULTACTIONHANDLER: 'sap/fe/macros/internal/helpers/DefaultActionHandler',
+		UI: 'sap/fe/core/templating/UIFormatters'
+	}"
+>
+	<template:if test="{this>useBasicSearch}">
+		<mdcat:ActionToolbarAction>
+			<macroTable:BasicSearch id="{this>filterBarId}" />
+		</mdcat:ActionToolbarAction>
+	</template:if>
+	<template:if test="{tableDefinition>actions}">
+		<template:repeat list="{tableDefinition>actions}" var="action">
+			<template:if test="{= ${action>type} === 'Default'}">
+				<template:then>
+					<mdcat:ActionToolbarAction>
+						<Button
+							core:require="{FPM: 'sap/fe/core/helpers/FPMHelper'}"
+							id="{= ID.generate([${this>id},${action>id}])}"
+							text="{action>text}"
+							press="{= ${action>command} ? ('cmd:' + ${action>command}) : (${action>noWrap} ? ${action>press} : COMMON.buildActionWrapper(${action>}, ${this>}))}"
+							type="Transparent"
+							visible="{action>visible}"
+							enabled="{action>enabled}"
+						/>
+					</mdcat:ActionToolbarAction>
+				</template:then>
+				<template:elseif test="{= ${action>type} === 'Menu' }">
+					<mdcat:ActionToolbarAction>
+						<template:with path="action>defaultAction/annotationPath" var="dataFieldForDefaultAction">
+							<template:with
+								path="dataFieldForDefaultAction>Action"
+								helper="COMMON.getActionContext"
+								var="defaultActionContext"
+							>
+								<MenuButton
+									text="{action>text}"
+									type="Transparent"
+									menuPosition="BeginBottom"
+									id="{= ID.generate([${this>id},${action>id}])}"
+									visible="{action>visible}"
+									enabled="{action>enabled}"
+									useDefaultActionOnly="{= DEFAULTACTIONHANDLER.getUseDefaultActionOnly(${action>})}"
+									buttonMode="{= DEFAULTACTIONHANDLER.getButtonMode(${action>})}"
+									defaultAction="{= DEFAULTACTIONHANDLER.getDefaultActionHandler(${this>}, ${action>}, ${dataFieldForDefaultAction>}, ${defaultActionContext>})}"
+								>
+									<menu>
+										<Menu>
+											<template:repeat list="{action>menu}" var="menuItemAction">
+												<template:with path="menuItemAction>annotationPath" var="dataField">
+													<template:if test="{= ${menuItemAction>type} === 'ForAction'}">
+														<template:then>
+															<template:with
+																path="dataField>Action"
+																helper="COMMON.getActionContext"
+																var="actionContext"
+															>
+																<template:with
+																	path="dataField>Action"
+																	helper="COMMON.getPathToBoundActionOverload"
+																	var="isBound"
+																>
+																	<template:if
+																		test="{= ${isBound>$IsBound} !== true || ${actionContext>@Org.OData.Core.V1.OperationAvailable} !== false }"
+																	>
+																		<MenuItem
+																			text="{dataField>Label}"
+																			press="{= ${menuItemAction>command} ? ('cmd:' + ${menuItemAction>command}) : TABLE.pressEventDataFieldForActionButton(${this>}, ${dataField>}, ${collection>@sapui.name}, ${tableDefinition>operationAvailableMap}, ${actionContext>},${action>isNavigable}, ${menuItemAction>enableAutoScroll}, ${menuItemAction>defaultValuesExtensionFunction}) }"
+																			enabled="{= ${menuItemAction>enabled} !== undefined ? ${menuItemAction>enabled} : TABLE.isDataFieldForActionEnabled(${this>},${dataField>},${isBound>$IsBound}, ${actionContext>}, ${menuItemAction>enableOnSelect})}"
+																			visible="{menuItemAction>visible}"
+																		/>
+																	</template:if>
+																</template:with>
+															</template:with>
+														</template:then>
+														<template:elseif test="{= ${menuItemAction>type} === 'ForNavigation'}">
+															<MenuItem
+																text="{dataField>Label}"
+																press="{= ${menuItemAction>command} ? ('cmd:' + ${menuItemAction>command}) : COMMON.getPressHandlerForDataFieldForIBN(${dataField>}, '${internal>selectedContexts}', !${tableDefinition>enableAnalytics} )}"
+																enabled="{= ${menuItemAction>enabled} !== undefined ? ${menuItemAction>enabled} : TABLE.isDataFieldForIBNEnabled(${this>}, ${dataField>}, ${dataField>RequiresContext}, ${dataField>NavigationAvailable@@MODEL.value})}"
+																visible="{menuItemAction>visible}"
+																macrodata:IBNData="{= !${dataField>RequiresContext} ? '{semanticObject: \'' +  ${dataField>SemanticObject} + '\' , action : \'' + ${dataField>Action} + '\'}' : undefined}"
+															/>
+														</template:elseif>
+														<template:else>
+															<MenuItem
+																core:require="{FPM: 'sap/fe/core/helpers/FPMHelper'}"
+																text="{menuItemAction>text}"
+																press="{= ${menuItemAction>command} ? ('cmd:' + ${menuItemAction>command}) : (${menuItemAction>noWrap} ? ${menuItemAction>press} : COMMON.buildActionWrapper(${menuItemAction>}, ${this>}))}"
+																visible="{menuItemAction>visible}"
+																enabled="{menuItemAction>enabled}"
+															/>
+														</template:else>
+													</template:if>
+												</template:with>
+											</template:repeat>
+										</Menu>
+									</menu>
+								</MenuButton>
+							</template:with>
+						</template:with>
+					</mdcat:ActionToolbarAction>
+				</template:elseif>
+				<template:else>
+					<template:with path="action>annotationPath" var="dataField">
+						<template:if test="{= ${action>type} === 'ForAction'}">
+							<template:then>
+								<template:with path="dataField>Action" helper="COMMON.getActionContext" var="actionContext">
+									<template:with path="dataField>Action" helper="COMMON.getPathToBoundActionOverload" var="isBound">
+										<template:if
+											test="{= ${isBound>$IsBound} !== true || ${actionContext>@Org.OData.Core.V1.OperationAvailable} !== false }"
+										>
+											<mdcat:ActionToolbarAction>
+												<Button
+													unittest:id="DataFieldForActionButton"
+													id="{= ID.generate([${this>id}, ${dataField>@@UI.getDataModelObjectPath}])}"
+													text="{dataField>Label}"
+													ariaHasPopup="{= DATAFIELDANNOTATIONS.isDataModelObjectPathForActionWithDialog(${actionContext>@@UI.getDataModelObjectPath})}"
+													press="{= ${action>command} ? ('cmd:' + ${action>command}) : TABLE.pressEventDataFieldForActionButton(${this>}, ${dataField>}, ${collection>@sapui.name}, ${tableDefinition>operationAvailableMap}, ${actionContext>},${action>isNavigable}, ${action>enableAutoScroll}, ${action>defaultValuesExtensionFunction}) }"
+													type="Transparent"
+													enabled="{= ${action>enabled} !== undefined ? ${action>enabled} : TABLE.isDataFieldForActionEnabled(${this>},${dataField>},${isBound>$IsBound}, ${actionContext>}, ${action>enableOnSelect})}"
+													visible="{action>visible}"
+												/>
+											</mdcat:ActionToolbarAction>
+										</template:if>
+									</template:with>
+								</template:with>
+							</template:then>
+							<template:elseif test="{= ${action>type} === 'ForNavigation'}">
+								<mdcat:ActionToolbarAction>
+									<Button
+										unittest:id="DataFieldForIntentBasedNavigationButton"
+										id="{= ID.generate([${this>id}, ${dataField>@@UI.getDataModelObjectPath}])}"
+										text="{dataField>Label}"
+										press="{= ${action>command} ? ('cmd:' + ${action>command}) : COMMON.getPressHandlerForDataFieldForIBN(${dataField>}, '${internal>selectedContexts}', !${tableDefinition>enableAnalytics} )}"
+										type="Transparent"
+										enabled="{= ${action>enabled} !== undefined ? ${action>enabled} : TABLE.isDataFieldForIBNEnabled(${this>}, ${dataField>}, ${dataField>RequiresContext}, ${dataField>NavigationAvailable@@MODEL.value})}"
+										visible="{action>visible}"
+										macrodata:IBNData="{= !${dataField>RequiresContext} ? '{semanticObject: \'' +  ${dataField>SemanticObject} + '\' , action : \'' + ${dataField>Action} + '\'}' : undefined}"
+									/>
+								</mdcat:ActionToolbarAction>
+							</template:elseif>
+						</template:if>
+					</template:with>
+				</template:else>
+			</template:if>
+		</template:repeat>
+	</template:if>
+	<template:with path="tableDefinition>annotation/standardActions/actions" var="standardActions">
+		<template:if test="{tableDefinition>annotation/standardActions/isInsertUpdateTemplated}">
+			<template:if test="{standardActions>create/isTemplated}">
+				<mdcat:ActionToolbarAction>
+					<Button
+						unittest:id="CreateButtonTemplate"
+						id="{= ID.generate([${this>id}, 'StandardAction', 'Create'])}"
+						text="{sap.fe.i18n>M_COMMON_TABLE_CREATE}"
+						press="cmd:Create"
+						type="Transparent"
+						visible="{standardActions>create/visible}"
+						enabled="{standardActions>create/enabled}"
+						macrodata:IBNData="{= TABLE.getIBNData(${this>})}"
+					/>
+				</mdcat:ActionToolbarAction>
+			</template:if>
+		</template:if>
+		<template:repeat list="{ path: 'tableDefinition>actions', filters: { path: 'type', operator: 'EQ', value1: 'Copy' } }" var="action">
+			<template:with path="action>annotationPath" var="dataField">
+				<mdcat:ActionToolbarAction>
+					<Button
+						id="{= ID.generate([${this>id}, ${dataField>@@UI.getDataModelObjectPath}])}"
+						text="{action>text}"
+						press="{= TABLE.pressEventDataFieldForActionButton(${this>}, ${dataField>}, ${collection>@sapui.name}, ${tableDefinition>operationAvailableMap}, '${internal>selectedContexts}',${action>isNavigable}, ${action>enableAutoScroll}, ${action>defaultValuesExtensionFunction}) }"
+						type="Transparent"
+						enabled="{action>enabled}"
+						visible="{action>visible}"
+					/>
+				</mdcat:ActionToolbarAction>
+			</template:with>
+		</template:repeat>
+		<template:if test="{standardActions>delete/isTemplated}">
+			<mdcat:ActionToolbarAction>
+				<Button
+					unittest:id="DeleteButtonTemplate"
+					id="{= ID.generate([${this>id}, 'StandardAction', 'Delete'])}"
+					text="{sap.fe.i18n>M_COMMON_TABLE_DELETE}"
+					press="cmd:DeleteEntry"
+					type="Transparent"
+					visible="{standardActions>delete/visible}"
+					enabled="{standardActions>delete/enabled}"
+				/>
+			</mdcat:ActionToolbarAction>
+		</template:if>
+		<template:if test="{tableDefinition>annotation/standardActions/isInsertUpdateTemplated}">
+			<template:if test="{standardActions>massEdit/isTemplated}">
+				<mdcat:ActionToolbarAction>
+					<Button
+						id="{= ID.generate([${this>id}, 'StandardAction', 'MassEdit'])}"
+						text="{sap.fe.i18n>M_COMMON_TABLE_MASSEDIT}"
+						press="API.onMassEditButtonPressed($event, $controller)"
+						visible="{standardActions>massEdit/visible}"
+						enabled="{standardActions>massEdit/enabled}"
+					/>
+				</mdcat:ActionToolbarAction>
+			</template:if>
+		</template:if>
+	</template:with>
+	<template:if test="{this>enableFullScreen}">
+		<mdcat:ActionToolbarAction>
+			<macroTable:TableFullScreenDialog id="{= ID.generate([${this>id}, 'StandardAction', 'FullScreen'])}" />
+		</mdcat:ActionToolbarAction>
+	</template:if>
+</core:FragmentDefinition>

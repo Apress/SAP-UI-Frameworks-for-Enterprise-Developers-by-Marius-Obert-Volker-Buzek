@@ -1,0 +1,77 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:unittest="http://schemas.sap.com/sapui5/preprocessorextension/sap.fe.unittesting/1"
+	template:require="{
+		ID: 'sap/fe/core/helpers/StableIdHelper',
+		MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+		COMMON: 'sap/fe/macros/CommonHelper',
+		FIELD: 'sap/fe/macros/field/FieldHelper',
+		OP: 'sap/fe/templates/ObjectPage/ObjectPageTemplating'
+	}"
+>
+	<template:if
+		test="{= ${viewData>controlConfiguration}[${converterHeaderFacet>targetAnnotationValue}]['navigation']['targetOutbound']['outbound'] }"
+	>
+		<template:then>
+			<core:InvisibleText
+				text="{sap.fe.i18n>T_HEADER_DATAPOINT_TITLE_LINK_EXTERNAL_ARIA}"
+				id="{= ID.generate(['fe', ${converterHeaderFacet>targetAnnotationValue}, 'AriaText']) }"
+			/>
+			<Title
+				unittest:id="headerDataPointLinkTitleTest"
+				level="H3"
+				visible="{= COMMON.getHeaderDataPointLinkVisibility(ID.generate(['fe', 'HeaderDPLink', ${converterHeaderFacet>targetAnnotationValue}]), true, ${dataPoint>@@FIELD.isNotAlwaysHidden}) }"
+			>
+				<content>
+					<Link
+						unittest:id="headerDataPointLinkInsideTitleTest"
+						id="{= ID.generate(['fe', 'HeaderDPLink', ${converterHeaderFacet>targetAnnotationValue}]) }"
+						text="{dataPoint>Title@@MODEL.value}"
+						press="{= OP.getPressExpressionForLink(${viewData>controlConfiguration}[${converterHeaderFacet>targetAnnotationValue}]['navigation'], ${manifest>/sap.app/crossNavigation/outbounds})}"
+						ariaDescribedBy="{= ID.generate(['fe', ${converterHeaderFacet>targetAnnotationValue}, 'AriaText']) }"
+						class="sapUiTinyMarginBottom"
+					/>
+				</content>
+			</Title>
+
+			<Title
+				unittest:id="headerDataPointTitleTest"
+				id="{= ID.generate(['fe', 'HeaderDPTitle', ${headerFacet>Target/$AnnotationPath}]) }"
+				level="H3"
+				text="{dataPoint>Title@@MODEL.value}"
+				class="sapUiTinyMarginBottom"
+				visible="{= COMMON.getHeaderDataPointLinkVisibility(ID.generate(['fe', 'HeaderDPLink', ${converterHeaderFacet>targetAnnotationValue}]), false, ${dataPoint>@@FIELD.isNotAlwaysHidden}) }"
+			/>
+		</template:then>
+		<template:elseif
+			test="{= ${viewData>controlConfiguration}[${converterHeaderFacet>targetAnnotationValue}]['navigation']['targetSections'] }"
+		>
+			<core:InvisibleText
+				text="{sap.fe.i18n>T_COMMON_HEADERDP_TITLE_LINK_INPAGE_ARIA}"
+				id="{= ID.generate(['fe', ${converterHeaderFacet>targetAnnotationValue}, 'AriaText']) }"
+			/>
+			<Title level="H3" visible="{= !!${dataPoint>Title}}">
+				<content>
+					<Link
+						unittest:id="HeaderDataPointInternalLinkTest"
+						id="{= ID.generate(['fe', 'HeaderDPLink', ${headerFacet>Target/$AnnotationPath}]) }"
+						text="{dataPoint>Title@@MODEL.value}"
+						press="{= OP.getPressExpressionForLink(${viewData>controlConfiguration}[${converterHeaderFacet>targetAnnotationValue}]['navigation']) }"
+						ariaDescribedBy="{= ID.generate(['fe', ${converterHeaderFacet>targetAnnotationValue}, 'AriaText']) }"
+					/>
+				</content>
+			</Title>
+		</template:elseif>
+		<template:else>
+			<Title
+				id="{= ID.generate(['fe', 'HeaderDPTitle', ${headerFacet>Target/$AnnotationPath}]) }"
+				level="H3"
+				text="{dataPoint>Title@@MODEL.value}"
+				class="sapUiTinyMarginBottom"
+				visible="{dataPoint>@@FIELD.isNotAlwaysHidden}"
+			/>
+		</template:else>
+	</template:if>
+</core:FragmentDefinition>

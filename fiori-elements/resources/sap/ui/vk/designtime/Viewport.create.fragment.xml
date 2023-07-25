@@ -1,0 +1,5 @@
+<core:FragmentDefinition 
+	xmlns="sap.ui.vk"
+	xmlns:core="sap.ui.core">
+		<Viewport />
+</core:FragmentDefinition>

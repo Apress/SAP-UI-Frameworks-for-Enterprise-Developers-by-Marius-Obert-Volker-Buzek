@@ -1,0 +1,243 @@
+.sapSuiteUiCommonsMicroProcessFlow {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: center;
+	overflow: hidden;
+	position: relative;
+	margin: 2px;
+}
+
+.sapSuiteUiCommonsMicroProcessFlowContent {
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+}
+
+.sapSuiteUiCommonsMicroProcessFlowScrolling {
+	display: flex;
+	flex-direction: row;
+	margin: 2px;
+
+	width: 100%;
+}
+
+.sapSuiteUiCommonsMicroProcessFlowScrollingTransition {
+	transition: transform 300ms ease;
+}
+
+.sap-tablet .sapUiSizeCozy .sapSuiteUiCommonsMicroProcessFlowItemContent,
+.sap-phone .sapUiSizeCozy .sapSuiteUiCommonsMicroProcessFlowItemContent {
+	padding: 3px;
+}
+
+.sapSuiteUiCommonsMicroProcessFlowItem {
+	width: 18px;
+	height: 18px;
+	border-radius: 50%;
+	border: 1px solid @sapUiNeutralBorder;
+	color: @sapUiNeutralBorder;
+	background-color: @sapUiGroupContentBackground;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.sapUiSizeCozy .sapSuiteUiCommonsMicroProcessFlowItem {
+	width: 28px;
+	height: 28px;
+}
+
+.sapSuiteUiCommonsMicroProcessFlowItemContent:focus,
+.sapSuiteUiCommonsMicroProcessFlowItem:focus {
+	outline: 1px dotted @sapUiContentFocusColor;
+	outline-offset: 1px;
+}
+
+.sapSuiteUiCommonsMicroProcessFlow:focus {
+	outline: 1px dotted @sapUiContentFocusColor;
+	outline-offset: 1px;
+}
+
+
+.sapSuiteUiCommonsMicroProcessFlowItem .sapUiIcon:not(.sapMLIBImgNav):not(.sapMBtnIcon):not(.sapFAvatarTypeIcon) {
+	font-size: 0.75rem;
+}
+
+.sapSuiteUiCommonsMicroProcessFlowItemStandard {
+	color: @sapUiNeutralBorder;
+}
+
+.sapSuiteUiCommonsMicroProcessFlowItemSuccess {
+	border-color: @sapSuccessBorderColor;
+	background-color: @sapButton_Success_Background;
+}
+
+.sapSuiteUiCommonsMicroProcessFlowItemError {
+	border-color: @sapErrorBorderColor;
+	background-color: @sapButton_Negative_Background;
+}
+
+.sapSuiteUiCommonsMicroProcessFlowItemWarning {
+	border-color: @sapWarningBorderColor;
+	background-color: @sapButton_Critical_Background;
+}
+
+.sapSuiteUiCommonsMicroProcessFlowItemInformation {
+  	border-color: @sapInformationBorderColor;
+  	background-color: @sapButton_Information_Background;
+}
+
+.sapSuiteUiCommonsMicroProcessFlowItemNone {
+	border-color: @sapNeutralBorderColor;
+    background-color: @sapNeutralBackground;
+}
+
+.sapSuiteUiCommonsMicroProcessFlowItemError .sapSuiteUiCommonsMicroProcessFlowItemIcon{
+	color: @sapButton_Negative_TextColor
+}
+
+.sapSuiteUiCommonsMicroProcessFlowItemInformation .sapSuiteUiCommonsMicroProcessFlowItemIcon {
+	color: @sapButton_Information_TextColor
+}
+
+.sapSuiteUiCommonsMicroProcessFlowItemWarning .sapSuiteUiCommonsMicroProcessFlowItemIcon {
+	color: @sapButton_Critical_TextColor;
+}
+
+.sapSuiteUiCommonsMicroProcessFlowItemSuccess .sapSuiteUiCommonsMicroProcessFlowItemIcon {
+	color: @sapButton_Success_TextColor;
+}
+
+.sapSuiteUiCommonsMicroProcessFlowItemSuccess:hover {
+	background-color: lighten(@sapUiPositiveElement, 10);
+	border-color: lighten(@sapUiPositiveElement, 10);
+}
+
+.sapSuiteUiCommonsMicroProcessFlowItemWarning:hover {
+	background-color: lighten(@sapUiCriticalElement, 10);
+	border-color: lighten(@sapUiCriticalElement, 10);
+}
+
+.sapSuiteUiCommonsMicroProcessFlowItemError:hover {
+	background-color: lighten(@sapUiNegativeElement, 10);
+	border-color: lighten(@sapUiNegativeElement, 10);
+}
+
+.sapSuiteUiCommonsMicroProcessFlowItemInformation:hover {
+  background-color: lighten(@sapUiHighlight, 10);
+  border-color: lighten(@sapUiHighlight, 10);
+}
+
+.sapSuiteUiCommonsMicroProcessFlowItemWrapper {
+	display: flex;
+	align-items: center;
+	margin-top: 2px;
+	margin-bottom: 2px;
+	flex-shrink: 0;
+}
+
+.sapSuiteUiCommonsMicroProcessFlowItemSeparator {
+	height: 1px;
+	background-color: @sapUiContentForegroundBorderColor;
+	margin-left: 3px;
+	margin-right: 3px;
+	flex-grow: 1;
+}
+
+.sap-tablet .sapUiSizeCozy .sapSuiteUiCommonsMicroProcessFlowItemSeparator,
+.sap-phone .sapUiSizeCozy .sapSuiteUiCommonsMicroProcessFlowItemSeparator {
+	margin-left: 1px;
+	margin-right: 1px;
+}
+
+.sapSuiteUiCommonsMicroProcessFlowItemSeparator.MicroProcessFlowItemSeparatorBegin {
+	flex-basis: 6px;
+	flex-grow: 0;
+}
+
+.sapSuiteUiCommonsMicroProcessFlowItemSeparator.MicroProcessFlowItemSeparatorEnd {
+	flex-grow: 1;
+}
+
+.sapSuiteUiCommonsMicroProcessFlowItemSeparatorWrapper {
+	width: 1.5rem;
+	position: relative;
+}
+
+.sapSuiteUiCommonsMicroProcessFlowItemOnHoldElement {
+	width: 4px;
+	height: 20px;
+	background-color: @sapUiNegativeElement;
+}
+
+.sapSuiteUiCommonsMicroProcessFlowItemIntermediary {
+	position: absolute;
+	transform: translate(-50%, -50%);
+	left: 50%;
+}
+
+.sapSuiteUiCommonsMicroProcessFlowItemIcon {
+	cursor: inherit;
+}
+
+.sapSuiteUiCommonsMicroProcessFlowItemPressed:hover .sapSuiteUiCommonsMicroProcessFlowItemWarning.sapSuiteUiCommonsMicroProcessFlowItem,
+.sapSuiteUiCommonsMicroProcessFlowItemPressed:hover .sapSuiteUiCommonsMicroProcessFlowItemError.sapSuiteUiCommonsMicroProcessFlowItem,
+.sapSuiteUiCommonsMicroProcessFlowItemPressed:hover .sapSuiteUiCommonsMicroProcessFlowItemSuccess.sapSuiteUiCommonsMicroProcessFlowItem,
+.sapSuiteUiCommonsMicroProcessFlowItemPressed:hover .sapSuiteUiCommonsMicroProcessFlowItemInformation.sapSuiteUiCommonsMicroProcessFlowItem {
+	background-color: @sapUiHighlight;
+	border-color: @sapUiHighlight;
+}
+
+.sapSuiteUiCommonsMicroProcessFlowItemPressed:hover .sapSuiteUiCommonsMicroProcessFlowItem {
+	background-color: @sapUiHighlight;
+}
+
+.sapSuiteUiCommonsMicroProcessFlowItemHiddenSeparator {
+	display: none;
+}
+
+.sapSuiteUiCommonsMicroProcessFlowScroller {
+	flex-shrink: 0;
+	cursor: pointer;
+	min-width: 31px;
+	height: 28px;
+	display: flex;
+	align-items: center;
+}
+
+.sapSuiteUiCommonsMicroProcessFlowLeftScroller {
+	margin-left: 2px;
+	padding-right: 2px;
+}
+
+.sapSuiteUiCommonsMicroProcessFlowRightScroller {
+	padding-left: 2px;
+	padding-right: 3px;
+	justify-content: flex-end;
+}
+
+.sapSuiteUiCommonsMicroProcessFlowArrow {
+	cursor: pointer;
+	color: @sapUiContentIconColor;
+}
+
+.sapSuiteUiCommonsMicroProcessFlowArrow:hover {
+	color: @sapUiHighlight;
+}
+
+.sapSuiteUiCommonsMicroProcessFlowLeftLabel {
+	margin-left: -3px;
+	font-size: 14px;
+	padding-left: 5px;
+	user-select: none;
+}
+
+.sapSuiteUiCommonsMicroProcessFlowRightLabel {
+	padding-right: 4px;
+	user-select: none;
+}
+
+.sapSuiteUiCommonsMicroProcessFlowScroller:focus {
+	outline: none;
+}

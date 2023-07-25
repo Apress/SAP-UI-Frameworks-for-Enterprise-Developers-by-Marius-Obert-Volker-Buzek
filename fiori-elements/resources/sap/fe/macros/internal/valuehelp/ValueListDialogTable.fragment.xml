@@ -1,0 +1,62 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:internalMacro="sap.fe.macros.internal"
+	xmlns:mdc="sap.ui.mdc"
+	xmlns:macrodata="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	template:require="{
+		COMMON: 'sap/fe/macros/CommonHelper',
+		MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+		ID: 'sap/fe/core/helpers/StableIdHelper',
+		VLH: 'sap/fe/macros/internal/valuehelp/ValueListHelper',
+		ValueHelpTemplating: 'sap/fe/macros/internal/valuehelp/ValueHelpTemplating',
+		Property: 'sap/fe/core/templating/PropertyFormatters',
+		UI: 'sap/fe/core/templating/UIFormatters'
+	}"
+>
+	<template:with path="valueList>" helper="VLH.getValueListCollectionEntitySet" var="entitySet">
+		<mdc:Table
+			id="{source>id}::Table"
+			height="100%"
+			delegate="{parts: [{path:'valueList>'}], formatter:'VLH.getTableDelegate'}"
+			threshold="20"
+			p13nMode="Sort"
+			showRowCount="true"
+			sortConditions="{parts: [{path:'valueList>'},{path:'source>/bSuggestion'}], formatter:'VLH.getSortConditionsFromPresentationVariant'}"
+			macrodata:columns="{= COMMON.stringifyCustomData(${viewData>/columns})}"
+			autoBindOnInit="false"
+		>
+			<mdc:columns>
+				<template:repeat list="{valueList>Parameters}" var="parameter">
+					<template:if
+						test="{= ${parameter>$Type} !== 'com.sap.vocabularies.Common.v1.ValueListParameterIn'  &amp;&amp; ${parameter>$Type} !== 'com.sap.vocabularies.Common.v1.ValueListParameterConstant'}"
+					>
+						<template:with path="parameter>ValueListProperty" var="property" helper="VLH.getValueListProperty">
+							<template:if
+								test="{parts:[{path:'valueList>'}, {path:'parameter>'}, {path:'source>'}],formatter:'VLH.getColumnVisibility'}"
+							>
+								<mdc:table.Column
+									width="{= '{parts: [{value: \'getColumnWidthForValueHelpTable\'}, {path: \'internal>tablePropertiesAvailable\', targetType: \'any\'},{value: \'' + ${parameter>ValueListProperty}+ '\'} , {value: false}], formatter: \'sap.fe.core.formatters.TableFormatter\'}' }"
+									minWidth="{= '{parts: [{value: \'getColumnWidthForValueHelpTable\'}, {path: \'internal>tablePropertiesAvailable\', targetType: \'any\'},{value: \'' + ${parameter>ValueListProperty}+ '\'} , {value: true}], formatter: \'sap.fe.core.formatters.TableFormatter\'}' }"
+									header="{= ${property>@com.sap.vocabularies.Common.v1.Label} || ${property>@sapui.name@@MODEL.value}}"
+									hAlign="{= ValueHelpTemplating.getColumnHAlign(${property>@@UI.getDataModelObjectPath}) }"
+									dataProperty="{= ValueHelpTemplating.getColumnDataProperty(${parameter>ValueListProperty},${property>@@Property.getPropertyObjectPath})}"
+								>
+									<internalMacro:Field editMode="Display" entitySet="{entitySet>}" dataField="{property>}" wrap="false">
+										<internalMacro:formatOptions
+											displayMode="{= ValueHelpTemplating.getValueHelpTableDisplayMode(${property>@@Property.getPropertyObjectPath})}"
+										/>
+									</internalMacro:Field>
+								</mdc:table.Column>
+							</template:if>
+						</template:with>
+					</template:if>
+				</template:repeat>
+			</mdc:columns>
+			<mdc:type>
+				<mdc:table.GridTableType />
+			</mdc:type>
+		</mdc:Table>
+	</template:with>
+</core:FragmentDefinition>

@@ -1,0 +1,1325 @@
+{
+	"name": "com.apress.beershop",
+	"version": "0.0.1",
+	"buildTimestamp": "202307251557",
+	"scmRevision": "",
+	"libraries": [
+		{
+			"name": "sap.chart",
+			"version": "1.113.0",
+			"buildTimestamp": "202307251557",
+			"scmRevision": "",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.m": {
+							"lazy": true
+						},
+						"sap.ui.core": {},
+						"sap.ui.layout": {
+							"lazy": true
+						},
+						"sap.ui.unified": {
+							"lazy": true
+						},
+						"sap.viz": {}
+					}
+				}
+			}
+		},
+		{
+			"name": "sap.collaboration",
+			"version": "1.113.0",
+			"buildTimestamp": "202307251557",
+			"scmRevision": "",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.chart": {
+							"lazy": true
+						},
+						"sap.m": {},
+						"sap.suite.ui.commons": {},
+						"sap.suite.ui.microchart": {
+							"lazy": true
+						},
+						"sap.ui.commons": {
+							"lazy": true
+						},
+						"sap.ui.comp": {
+							"lazy": true
+						},
+						"sap.ui.core": {},
+						"sap.ui.fl": {
+							"lazy": true
+						},
+						"sap.ui.layout": {
+							"lazy": true
+						},
+						"sap.ui.mdc": {
+							"lazy": true
+						},
+						"sap.ui.table": {
+							"lazy": true
+						},
+						"sap.ui.unified": {
+							"lazy": true
+						},
+						"sap.ui.ux3": {
+							"lazy": true
+						},
+						"sap.viz": {
+							"lazy": true
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "sap.esh.search.ui",
+			"version": "1.113.0",
+			"buildTimestamp": "202307251557",
+			"scmRevision": "",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.f": {},
+						"sap.m": {},
+						"sap.suite.ui.microchart": {},
+						"sap.ui.commons": {
+							"lazy": true
+						},
+						"sap.ui.core": {},
+						"sap.ui.export": {},
+						"sap.ui.layout": {},
+						"sap.ui.richtexteditor": {
+							"lazy": true
+						},
+						"sap.ui.unified": {
+							"lazy": true
+						},
+						"sap.ui.vbm": {},
+						"sap.ui.vk": {}
+					}
+				}
+			}
+		},
+		{
+			"name": "sap.f",
+			"version": "1.113.0",
+			"buildTimestamp": "202307251557",
+			"scmRevision": "",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.m": {},
+						"sap.ui.core": {},
+						"sap.ui.layout": {},
+						"sap.ui.unified": {
+							"lazy": true
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "sap.fe.core",
+			"version": "1.113.0",
+			"buildTimestamp": "202307251557",
+			"scmRevision": "",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.f": {},
+						"sap.fe.navigation": {},
+						"sap.fe.placeholder": {},
+						"sap.m": {},
+						"sap.ui.core": {},
+						"sap.ui.fl": {},
+						"sap.ui.layout": {},
+						"sap.ui.mdc": {},
+						"sap.ui.unified": {
+							"lazy": true
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "sap.fe.macros",
+			"version": "1.113.0",
+			"buildTimestamp": "202307251557",
+			"scmRevision": "",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.f": {},
+						"sap.fe.core": {},
+						"sap.fe.navigation": {},
+						"sap.fe.placeholder": {},
+						"sap.m": {},
+						"sap.suite.ui.microchart": {},
+						"sap.ui.core": {},
+						"sap.ui.fl": {},
+						"sap.ui.layout": {},
+						"sap.ui.mdc": {},
+						"sap.ui.unified": {}
+					}
+				}
+			}
+		},
+		{
+			"name": "sap.fe.navigation",
+			"version": "1.113.0",
+			"buildTimestamp": "202307251557",
+			"scmRevision": "",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.ui.core": {}
+					}
+				}
+			}
+		},
+		{
+			"name": "sap.fe.placeholder",
+			"version": "1.113.0",
+			"buildTimestamp": "202307251557",
+			"scmRevision": "",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.ui.core": {}
+					}
+				}
+			}
+		},
+		{
+			"name": "sap.fe.templates",
+			"version": "1.113.0",
+			"buildTimestamp": "202307251557",
+			"scmRevision": "",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.chart": {
+							"lazy": true
+						},
+						"sap.collaboration": {},
+						"sap.f": {},
+						"sap.fe.core": {},
+						"sap.fe.macros": {},
+						"sap.fe.navigation": {},
+						"sap.fe.placeholder": {},
+						"sap.m": {},
+						"sap.suite.ui.commons": {},
+						"sap.suite.ui.microchart": {},
+						"sap.ui.commons": {
+							"lazy": true
+						},
+						"sap.ui.comp": {
+							"lazy": true
+						},
+						"sap.ui.core": {},
+						"sap.ui.fl": {},
+						"sap.ui.layout": {},
+						"sap.ui.mdc": {},
+						"sap.ui.table": {
+							"lazy": true
+						},
+						"sap.ui.unified": {},
+						"sap.ui.ux3": {
+							"lazy": true
+						},
+						"sap.uxap": {
+							"lazy": true
+						},
+						"sap.viz": {
+							"lazy": true
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "sap.m",
+			"version": "1.113.0",
+			"buildTimestamp": "202307251557",
+			"scmRevision": "",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.ui.core": {},
+						"sap.ui.layout": {
+							"lazy": true
+						},
+						"sap.ui.unified": {
+							"lazy": true
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "sap.suite.ui.commons",
+			"version": "1.113.0",
+			"buildTimestamp": "202307251557",
+			"scmRevision": "",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.chart": {
+							"lazy": true
+						},
+						"sap.m": {},
+						"sap.suite.ui.microchart": {
+							"lazy": true
+						},
+						"sap.ui.commons": {
+							"lazy": true
+						},
+						"sap.ui.comp": {
+							"lazy": true
+						},
+						"sap.ui.core": {},
+						"sap.ui.fl": {
+							"lazy": true
+						},
+						"sap.ui.layout": {
+							"lazy": true
+						},
+						"sap.ui.mdc": {
+							"lazy": true
+						},
+						"sap.ui.table": {
+							"lazy": true
+						},
+						"sap.ui.unified": {
+							"lazy": true
+						},
+						"sap.ui.ux3": {
+							"lazy": true
+						},
+						"sap.viz": {
+							"lazy": true
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "sap.suite.ui.microchart",
+			"version": "1.113.0",
+			"buildTimestamp": "202307251557",
+			"scmRevision": "",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.m": {},
+						"sap.ui.core": {},
+						"sap.ui.layout": {
+							"lazy": true
+						},
+						"sap.ui.unified": {
+							"lazy": true
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "sap.ui.commons",
+			"version": "1.113.0",
+			"buildTimestamp": "202307251557",
+			"scmRevision": "",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.ui.core": {},
+						"sap.ui.layout": {},
+						"sap.ui.unified": {}
+					}
+				}
+			}
+		},
+		{
+			"name": "sap.ui.comp",
+			"version": "1.113.0",
+			"buildTimestamp": "202307251557",
+			"scmRevision": "",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.chart": {
+							"lazy": true
+						},
+						"sap.m": {},
+						"sap.suite.ui.microchart": {
+							"lazy": true
+						},
+						"sap.ui.core": {},
+						"sap.ui.fl": {
+							"lazy": true
+						},
+						"sap.ui.layout": {
+							"lazy": true
+						},
+						"sap.ui.mdc": {
+							"lazy": true
+						},
+						"sap.ui.table": {
+							"lazy": true
+						},
+						"sap.ui.unified": {
+							"lazy": true
+						},
+						"sap.viz": {
+							"lazy": true
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "sap.ui.core",
+			"version": "1.113.0",
+			"buildTimestamp": "202307251557",
+			"scmRevision": ""
+		},
+		{
+			"name": "sap.ui.export",
+			"version": "1.113.0",
+			"buildTimestamp": "202307251557",
+			"scmRevision": "",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.ui.core": {}
+					}
+				}
+			}
+		},
+		{
+			"name": "sap.ui.fl",
+			"version": "1.113.0",
+			"buildTimestamp": "202307251557",
+			"scmRevision": "",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.m": {},
+						"sap.ui.core": {},
+						"sap.ui.layout": {
+							"lazy": true
+						},
+						"sap.ui.unified": {
+							"lazy": true
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "sap.ui.generic.app",
+			"version": "1.113.0",
+			"buildTimestamp": "202307251557",
+			"scmRevision": "",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.chart": {
+							"lazy": true
+						},
+						"sap.fe.navigation": {
+							"lazy": true
+						},
+						"sap.m": {},
+						"sap.suite.ui.microchart": {
+							"lazy": true
+						},
+						"sap.ui.comp": {
+							"lazy": true
+						},
+						"sap.ui.core": {},
+						"sap.ui.fl": {
+							"lazy": true
+						},
+						"sap.ui.layout": {
+							"lazy": true
+						},
+						"sap.ui.mdc": {
+							"lazy": true
+						},
+						"sap.ui.table": {
+							"lazy": true
+						},
+						"sap.ui.unified": {
+							"lazy": true
+						},
+						"sap.viz": {
+							"lazy": true
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "sap.ui.integration",
+			"version": "1.113.0",
+			"buildTimestamp": "202307251557",
+			"scmRevision": "",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.f": {},
+						"sap.m": {},
+						"sap.ui.core": {},
+						"sap.ui.layout": {},
+						"sap.ui.unified": {}
+					}
+				}
+			}
+		},
+		{
+			"name": "sap.ui.layout",
+			"version": "1.113.0",
+			"buildTimestamp": "202307251557",
+			"scmRevision": "",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.ui.core": {}
+					}
+				}
+			}
+		},
+		{
+			"name": "sap.ui.mdc",
+			"version": "1.113.0",
+			"buildTimestamp": "202307251557",
+			"scmRevision": "",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.m": {},
+						"sap.ui.core": {},
+						"sap.ui.layout": {
+							"lazy": true
+						},
+						"sap.ui.unified": {
+							"lazy": true
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "sap.ui.richtexteditor",
+			"version": "1.113.0",
+			"buildTimestamp": "202307251557",
+			"scmRevision": "",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.ui.core": {}
+					}
+				}
+			}
+		},
+		{
+			"name": "sap.ui.table",
+			"version": "1.113.0",
+			"buildTimestamp": "202307251557",
+			"scmRevision": "",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.ui.core": {},
+						"sap.ui.unified": {}
+					}
+				}
+			}
+		},
+		{
+			"name": "sap.ui.unified",
+			"version": "1.113.0",
+			"buildTimestamp": "202307251557",
+			"scmRevision": "",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.ui.core": {}
+					}
+				}
+			}
+		},
+		{
+			"name": "sap.ui.ux3",
+			"version": "1.113.0",
+			"buildTimestamp": "202307251557",
+			"scmRevision": "",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.ui.commons": {},
+						"sap.ui.core": {},
+						"sap.ui.layout": {},
+						"sap.ui.unified": {}
+					}
+				}
+			}
+		},
+		{
+			"name": "sap.ui.vbm",
+			"version": "1.113.0",
+			"buildTimestamp": "202307251557",
+			"scmRevision": "",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.ui.commons": {
+							"lazy": true
+						},
+						"sap.ui.core": {},
+						"sap.ui.layout": {
+							"lazy": true
+						},
+						"sap.ui.unified": {
+							"lazy": true
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "sap.ui.vk",
+			"version": "1.113.0",
+			"buildTimestamp": "202307251557",
+			"scmRevision": "",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.m": {
+							"lazy": true
+						},
+						"sap.ui.commons": {
+							"lazy": true
+						},
+						"sap.ui.core": {},
+						"sap.ui.layout": {
+							"lazy": true
+						},
+						"sap.ui.richtexteditor": {
+							"lazy": true
+						},
+						"sap.ui.unified": {
+							"lazy": true
+						},
+						"sap.ui.vbm": {
+							"lazy": true
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "sap.ushell",
+			"version": "1.113.0",
+			"buildTimestamp": "202307251557",
+			"scmRevision": "",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.chart": {
+							"lazy": true
+						},
+						"sap.collaboration": {
+							"lazy": true
+						},
+						"sap.esh.search.ui": {
+							"lazy": true
+						},
+						"sap.f": {
+							"lazy": true
+						},
+						"sap.fe.navigation": {
+							"lazy": true
+						},
+						"sap.m": {},
+						"sap.suite.ui.commons": {
+							"lazy": true
+						},
+						"sap.suite.ui.microchart": {
+							"lazy": true
+						},
+						"sap.ui.commons": {
+							"lazy": true
+						},
+						"sap.ui.comp": {
+							"lazy": true
+						},
+						"sap.ui.core": {},
+						"sap.ui.export": {
+							"lazy": true
+						},
+						"sap.ui.fl": {
+							"lazy": true
+						},
+						"sap.ui.generic.app": {
+							"lazy": true
+						},
+						"sap.ui.integration": {
+							"lazy": true
+						},
+						"sap.ui.layout": {
+							"lazy": true
+						},
+						"sap.ui.mdc": {
+							"lazy": true
+						},
+						"sap.ui.richtexteditor": {
+							"lazy": true
+						},
+						"sap.ui.table": {
+							"lazy": true
+						},
+						"sap.ui.unified": {
+							"lazy": true
+						},
+						"sap.ui.ux3": {
+							"lazy": true
+						},
+						"sap.ui.vbm": {
+							"lazy": true
+						},
+						"sap.ui.vk": {
+							"lazy": true
+						},
+						"sap.viz": {
+							"lazy": true
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "sap.uxap",
+			"version": "1.113.0",
+			"buildTimestamp": "202307251557",
+			"scmRevision": "",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.f": {
+							"lazy": true
+						},
+						"sap.m": {},
+						"sap.ui.core": {},
+						"sap.ui.layout": {},
+						"sap.ui.unified": {
+							"lazy": true
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "sap.viz",
+			"version": "1.113.0",
+			"buildTimestamp": "202307251557",
+			"scmRevision": "",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.m": {
+							"lazy": true
+						},
+						"sap.ui.core": {},
+						"sap.ui.layout": {
+							"lazy": true
+						},
+						"sap.ui.unified": {
+							"lazy": true
+						}
+					}
+				}
+			}
+		}
+	],
+	"components": {
+		"sap.fe.core.fpm": {
+			"hasOwnPreload": true,
+			"library": "sap.fe.core",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.f": {},
+						"sap.fe.core": {},
+						"sap.fe.macros": {},
+						"sap.fe.navigation": {},
+						"sap.fe.placeholder": {},
+						"sap.m": {},
+						"sap.suite.ui.microchart": {},
+						"sap.ui.core": {},
+						"sap.ui.fl": {},
+						"sap.ui.layout": {},
+						"sap.ui.mdc": {},
+						"sap.ui.unified": {}
+					}
+				}
+			}
+		},
+		"sap.fe.templates.AnalyticalListPage": {
+			"library": "sap.fe.templates",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.f": {},
+						"sap.fe.core": {},
+						"sap.fe.macros": {},
+						"sap.fe.navigation": {},
+						"sap.fe.placeholder": {},
+						"sap.m": {},
+						"sap.suite.ui.microchart": {},
+						"sap.ui.core": {},
+						"sap.ui.fl": {},
+						"sap.ui.layout": {},
+						"sap.ui.mdc": {},
+						"sap.ui.unified": {}
+					}
+				}
+			}
+		},
+		"sap.fe.templates.ListReport": {
+			"library": "sap.fe.templates",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.f": {},
+						"sap.fe.core": {},
+						"sap.fe.macros": {},
+						"sap.fe.navigation": {},
+						"sap.fe.placeholder": {},
+						"sap.m": {},
+						"sap.suite.ui.microchart": {},
+						"sap.ui.core": {},
+						"sap.ui.fl": {},
+						"sap.ui.layout": {},
+						"sap.ui.mdc": {},
+						"sap.ui.unified": {}
+					}
+				}
+			}
+		},
+		"sap.fe.templates.ObjectPage": {
+			"library": "sap.fe.templates",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.f": {},
+						"sap.fe.core": {
+							"lazy": true
+						},
+						"sap.fe.macros": {
+							"lazy": true
+						},
+						"sap.fe.navigation": {
+							"lazy": true
+						},
+						"sap.fe.placeholder": {
+							"lazy": true
+						},
+						"sap.m": {},
+						"sap.suite.ui.microchart": {
+							"lazy": true
+						},
+						"sap.ui.core": {},
+						"sap.ui.fl": {},
+						"sap.ui.layout": {},
+						"sap.ui.mdc": {},
+						"sap.ui.unified": {
+							"lazy": true
+						},
+						"sap.uxap": {}
+					}
+				}
+			}
+		},
+		"sap.ui.fl.support.apps.contentbrowser.app": {
+			"hasOwnPreload": true,
+			"library": "sap.ui.fl",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.m": {},
+						"sap.ui.core": {},
+						"sap.ui.layout": {},
+						"sap.ui.unified": {
+							"lazy": true
+						}
+					}
+				}
+			}
+		},
+		"sap.ui.fl.variants.context": {
+			"hasOwnPreload": true,
+			"library": "sap.ui.fl",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.m": {},
+						"sap.ui.core": {},
+						"sap.ui.layout": {
+							"lazy": true
+						},
+						"sap.ui.unified": {
+							"lazy": true
+						}
+					}
+				}
+			}
+		},
+		"sap.ushell.appRuntime.ui5.plugins.rtaAgent": {
+			"library": "sap.ushell",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.m": {},
+						"sap.ui.core": {},
+						"sap.ui.fl": {},
+						"sap.ui.layout": {
+							"lazy": true
+						},
+						"sap.ui.unified": {
+							"lazy": true
+						}
+					}
+				}
+			}
+		},
+		"sap.ushell.appRuntime.ui5.plugins.rtaShell": {
+			"library": "sap.ushell",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.m": {},
+						"sap.ui.core": {},
+						"sap.ui.fl": {},
+						"sap.ui.layout": {
+							"lazy": true
+						},
+						"sap.ui.unified": {
+							"lazy": true
+						}
+					}
+				}
+			}
+		},
+		"sap.ushell.appRuntime.ui5.plugins.waAgent.Component": {
+			"library": "sap.ushell",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.ui.core": {}
+					}
+				}
+			}
+		},
+		"sap.ushell.components.appfinder": {
+			"hasOwnPreload": true,
+			"library": "sap.ushell",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.m": {},
+						"sap.ui.core": {},
+						"sap.ui.layout": {
+							"lazy": true
+						},
+						"sap.ui.unified": {
+							"lazy": true
+						}
+					}
+				}
+			}
+		},
+		"sap.ushell.components.cepsearchresult.app": {
+			"hasOwnPreload": true,
+			"library": "sap.ushell",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.f": {},
+						"sap.m": {},
+						"sap.ui.core": {},
+						"sap.ui.integration": {},
+						"sap.ui.layout": {},
+						"sap.ui.unified": {}
+					}
+				}
+			}
+		},
+		"sap.ushell.components.cepsearchresult.app.cards.searchresultwidget": {
+			"hasOwnPreload": true,
+			"library": "sap.ushell",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.f": {},
+						"sap.m": {},
+						"sap.ui.core": {},
+						"sap.ui.integration": {},
+						"sap.ui.layout": {},
+						"sap.ui.unified": {}
+					}
+				}
+			}
+		},
+		"sap.ushell.components.contentFinder": {
+			"hasOwnPreload": true,
+			"library": "sap.ushell",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.f": {},
+						"sap.m": {},
+						"sap.ui.core": {},
+						"sap.ui.layout": {},
+						"sap.ui.unified": {
+							"lazy": true
+						}
+					}
+				}
+			}
+		},
+		"sap.ushell.components.homeApp.error": {
+			"hasOwnPreload": true,
+			"library": "sap.ushell",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.m": {},
+						"sap.ui.core": {},
+						"sap.ui.layout": {
+							"lazy": true
+						},
+						"sap.ui.unified": {
+							"lazy": true
+						}
+					}
+				}
+			}
+		},
+		"sap.ushell.components.homepage": {
+			"hasOwnPreload": true,
+			"library": "sap.ushell",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.m": {},
+						"sap.ui.core": {},
+						"sap.ui.layout": {
+							"lazy": true
+						},
+						"sap.ui.unified": {
+							"lazy": true
+						}
+					}
+				}
+			}
+		},
+		"sap.ushell.components.pages": {
+			"hasOwnPreload": true,
+			"library": "sap.ushell",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.m": {},
+						"sap.ui.core": {},
+						"sap.ui.layout": {
+							"lazy": true
+						},
+						"sap.ui.unified": {
+							"lazy": true
+						}
+					}
+				}
+			}
+		},
+		"sap.ushell.components.runtimeSwitcher": {
+			"hasOwnPreload": true,
+			"library": "sap.ushell"
+		},
+		"sap.ushell.components.shell.MenuBar": {
+			"hasOwnPreload": true,
+			"library": "sap.ushell",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.m": {},
+						"sap.ui.core": {},
+						"sap.ui.layout": {
+							"lazy": true
+						},
+						"sap.ui.unified": {
+							"lazy": true
+						}
+					}
+				}
+			}
+		},
+		"sap.ushell.components.shell.Search": {
+			"hasOwnPreload": true,
+			"library": "sap.ushell",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.m": {},
+						"sap.ui.core": {},
+						"sap.ui.layout": {},
+						"sap.ui.unified": {
+							"lazy": true
+						}
+					}
+				}
+			}
+		},
+		"sap.ushell.components.shell.Settings.userDefaults": {
+			"hasOwnPreload": true,
+			"library": "sap.ushell",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.chart": {
+							"lazy": true
+						},
+						"sap.m": {},
+						"sap.suite.ui.microchart": {
+							"lazy": true
+						},
+						"sap.ui.comp": {},
+						"sap.ui.core": {},
+						"sap.ui.fl": {
+							"lazy": true
+						},
+						"sap.ui.layout": {},
+						"sap.ui.mdc": {
+							"lazy": true
+						},
+						"sap.ui.table": {
+							"lazy": true
+						},
+						"sap.ui.unified": {
+							"lazy": true
+						},
+						"sap.viz": {
+							"lazy": true
+						}
+					}
+				}
+			}
+		},
+		"sap.ushell.components.tiles.cdm.applauncher": {
+			"hasOwnPreload": true,
+			"library": "sap.ushell",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.m": {},
+						"sap.ui.core": {},
+						"sap.ui.layout": {
+							"lazy": true
+						},
+						"sap.ui.unified": {
+							"lazy": true
+						}
+					}
+				}
+			}
+		},
+		"sap.ushell.components.tiles.cdm.applauncherdynamic": {
+			"hasOwnPreload": true,
+			"library": "sap.ushell",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.m": {},
+						"sap.ui.core": {},
+						"sap.ui.layout": {
+							"lazy": true
+						},
+						"sap.ui.unified": {
+							"lazy": true
+						}
+					}
+				}
+			}
+		},
+		"sap.ushell.components.workPageBuilder": {
+			"hasOwnPreload": true,
+			"library": "sap.ushell",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.f": {},
+						"sap.m": {},
+						"sap.ui.core": {},
+						"sap.ui.layout": {},
+						"sap.ui.unified": {
+							"lazy": true
+						}
+					}
+				}
+			}
+		},
+		"sap.ushell.components.workPageRuntime": {
+			"hasOwnPreload": true,
+			"library": "sap.ushell",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.m": {},
+						"sap.ui.core": {},
+						"sap.ui.layout": {
+							"lazy": true
+						},
+						"sap.ui.unified": {
+							"lazy": true
+						}
+					}
+				}
+			}
+		},
+		"sap.ushell.plugins.appwarmup": {
+			"hasOwnPreload": true,
+			"library": "sap.ushell",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.ui.core": {}
+					}
+				}
+			}
+		},
+		"sap.ushell.plugins.ghostapp": {
+			"hasOwnPreload": true,
+			"library": "sap.ushell",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.chart": {
+							"lazy": true
+						},
+						"sap.f": {
+							"lazy": true
+						},
+						"sap.fe.navigation": {
+							"lazy": true
+						},
+						"sap.m": {},
+						"sap.suite.ui.generic.template": {},
+						"sap.suite.ui.microchart": {
+							"lazy": true
+						},
+						"sap.ui.comp": {},
+						"sap.ui.core": {},
+						"sap.ui.fl": {
+							"lazy": true
+						},
+						"sap.ui.generic.app": {},
+						"sap.ui.layout": {},
+						"sap.ui.mdc": {
+							"lazy": true
+						},
+						"sap.ui.table": {
+							"lazy": true
+						},
+						"sap.ui.unified": {
+							"lazy": true
+						},
+						"sap.uxap": {},
+						"sap.viz": {
+							"lazy": true
+						}
+					}
+				}
+			}
+		},
+		"sap.ushell.plugins.rta": {
+			"hasOwnPreload": true,
+			"library": "sap.ushell",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.m": {},
+						"sap.ui.core": {},
+						"sap.ui.dt": {
+							"lazy": true
+						},
+						"sap.ui.layout": {
+							"lazy": true
+						},
+						"sap.ui.rta": {
+							"lazy": true
+						},
+						"sap.ui.unified": {
+							"lazy": true
+						}
+					}
+				}
+			}
+		},
+		"sap.ushell.plugins.rta-personalize": {
+			"hasOwnPreload": true,
+			"library": "sap.ushell",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.m": {},
+						"sap.ui.core": {},
+						"sap.ui.dt": {
+							"lazy": true
+						},
+						"sap.ui.layout": {
+							"lazy": true
+						},
+						"sap.ui.rta": {
+							"lazy": true
+						},
+						"sap.ui.unified": {
+							"lazy": true
+						}
+					}
+				}
+			}
+		},
+		"sap.ushell.renderers.fiori2.search.searchComponent": {
+			"hasOwnPreload": true,
+			"library": "sap.ushell",
+			"manifestHints": {
+				"dependencies": {
+					"libs": {
+						"sap.esh.search.ui": {},
+						"sap.f": {},
+						"sap.m": {},
+						"sap.suite.ui.microchart": {},
+						"sap.ui.commons": {
+							"lazy": true
+						},
+						"sap.ui.core": {},
+						"sap.ui.export": {},
+						"sap.ui.layout": {},
+						"sap.ui.richtexteditor": {
+							"lazy": true
+						},
+						"sap.ui.unified": {
+							"lazy": true
+						},
+						"sap.ui.vbm": {},
+						"sap.ui.vk": {}
+					}
+				}
+			}
+		}
+	}
+}

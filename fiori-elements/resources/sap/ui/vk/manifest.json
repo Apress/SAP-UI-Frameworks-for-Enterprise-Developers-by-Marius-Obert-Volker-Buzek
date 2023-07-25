@@ -1,0 +1,75 @@
+{
+  "_version": "1.21.0",
+  "sap.app": {
+    "id": "sap.ui.vk",
+    "type": "library",
+    "embeds": [],
+    "applicationVersion": {
+      "version": "1.113.0"
+    },
+    "title": "SAPUI5 Visualization Toolkit.",
+    "description": "SAPUI5 Visualization Toolkit.",
+    "ach": "CA-UI5-VTK",
+    "resources": "resources.json",
+    "offline": true
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "supportedThemes": [
+      "base",
+      "sap_belize",
+      "sap_belize_hcb",
+      "sap_belize_hcw",
+      "sap_belize_plus",
+      "sap_bluecrystal",
+      "sap_fiori_3",
+      "sap_fiori_3_dark",
+      "sap_fiori_3_hcb",
+      "sap_fiori_3_hcw",
+      "sap_hcb",
+      "sap_horizon",
+      "sap_horizon_dark",
+      "sap_horizon_hcb",
+      "sap_horizon_hcw"
+    ]
+  },
+  "sap.ui5": {
+    "dependencies": {
+      "minUI5Version": "1.113",
+      "libs": {
+        "sap.ui.core": {
+          "minVersion": "1.113.0"
+        },
+        "sap.ui.unified": {
+          "minVersion": "1.113.0",
+          "lazy": true
+        },
+        "sap.m": {
+          "minVersion": "1.113.0",
+          "lazy": true
+        },
+        "sap.ui.layout": {
+          "minVersion": "1.113.0",
+          "lazy": true
+        },
+        "sap.ui.vbm": {
+          "minVersion": "1.113.0",
+          "lazy": true
+        },
+        "sap.ui.richtexteditor": {
+          "minVersion": "1.113.0",
+          "lazy": true
+        }
+      }
+    },
+    "library": {
+      "i18n": false,
+      "content": {
+        "controls": [],
+        "elements": [],
+        "types": [],
+        "interfaces": []
+      }
+    }
+  }
+}

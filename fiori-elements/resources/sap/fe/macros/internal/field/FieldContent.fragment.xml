@@ -1,0 +1,54 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m"
+	template:require="{
+							MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+							FIELD: 'sap/fe/macros/field/FieldHelper'
+						 }"
+>
+	<template:if
+		test="{= ${dataField>$Type} === 'com.sap.vocabularies.UI.v1.DataField' ||
+		${dataField>$Type} === 'com.sap.vocabularies.UI.v1.DataFieldWithUrl' ||
+		${dataField>$Type} === 'com.sap.vocabularies.UI.v1.DataFieldWithNavigationPath' ||
+		${dataField>$Type} === 'com.sap.vocabularies.UI.v1.DataFieldWithIntentBasedNavigation' ||
+		${dataField>$Type} === 'com.sap.vocabularies.UI.v1.DataFieldWithAction' }"
+	>
+		<template:then>
+			<core:Fragment fragmentName="sap.fe.macros.internal.field.FieldStructure" type="XML" />
+		</template:then>
+
+		<template:elseif test="{= ${dataField>$Type} === 'com.sap.vocabularies.UI.v1.DataFieldForAnnotation'}">
+			<template:if test="{= ${this>displayStyle}==='DataPoint'}">
+				<template:then>
+					<core:Fragment fragmentName="sap.fe.macros.internal.field.FieldStructure" type="XML" />
+				</template:then>
+				<template:elseif test="{= ${this>displayStyle}==='Contact'}">
+					<template:with path="annotationPath>" var="contact">
+						<core:Fragment fragmentName="sap.fe.macros.internal.field.FieldStructure" type="XML" />
+					</template:with>
+				</template:elseif>
+				<template:elseif test="{= ${this>displayStyle}==='Text'}">
+					<core:Fragment fragmentName="sap.fe.macros.internal.field.FieldStructure" type="XML" />
+				</template:elseif>
+				<template:elseif test="{= ${this>semanticObject}}">
+					<core:Fragment fragmentName="sap.fe.macros.internal.field.FieldStructure" type="XML" />
+				</template:elseif>
+			</template:if>
+		</template:elseif>
+
+		<template:elseif test="{= ${this>displayStyle}==='Button'}">
+			<core:Fragment fragmentName="sap.fe.macros.internal.field.FieldStructure" type="XML" />
+		</template:elseif>
+
+		<template:elseif
+			test="{= ${dataField>./@sapui.name} &amp;&amp; ${dataField>./@sapui.name}.indexOf('com.sap.vocabularies.UI.v1.DataPoint') > -1}"
+		>
+			<core:Fragment fragmentName="sap.fe.macros.internal.field.FieldStructure" type="XML" />
+		</template:elseif>
+
+		<template:else>
+			<!-- Not supported -->
+		</template:else>
+	</template:if>
+</core:FragmentDefinition>

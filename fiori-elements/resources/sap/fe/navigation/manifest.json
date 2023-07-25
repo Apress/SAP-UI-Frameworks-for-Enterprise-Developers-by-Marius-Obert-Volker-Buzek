@@ -1,0 +1,36 @@
+{
+  "_version": "1.21.0",
+  "sap.app": {
+    "id": "sap.fe.navigation",
+    "type": "library",
+    "embeds": [],
+    "applicationVersion": {
+      "version": "1.113.0"
+    },
+    "title": "UI5 library: sap.fe.navigation",
+    "description": "UI5 library: sap.fe.navigation",
+    "ach": "CA-UI5-FE-NAV",
+    "resources": "resources.json",
+    "offline": true
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "supportedThemes": []
+  },
+  "sap.ui5": {
+    "dependencies": {
+      "libs": {
+        "sap.ui.core": {}
+      }
+    },
+    "library": {
+      "i18n": false,
+      "content": {
+        "controls": [],
+        "elements": [],
+        "types": [],
+        "interfaces": []
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+/*!
+ * OpenUI5
+ * (c) Copyright 2009-2023 SAP SE or an SAP affiliate company.
+ * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.
+ */
+sap.ui.define(["sap/ui/integration/designtime/baseEditor/propertyEditor/BasePropertyEditor"],function(e){"use strict";var t=e.extend("sap.ui.integration.designtime.baseEditor.propertyEditor.booleanEditor.BooleanEditor",{xmlFragment:"sap.ui.integration.designtime.baseEditor.propertyEditor.booleanEditor.BooleanEditor",metadata:{library:"sap.ui.integration"},renderer:e.getMetadata().getRenderer().render});t.prototype.getDefaultValidators=function(){var t=this.getConfig();return Object.assign({},e.prototype.getDefaultValidators.call(this),{isValidBinding:{type:"isValidBinding",isEnabled:t.allowBindings},notABinding:{type:"notABinding",isEnabled:!t.allowBindings},isBoolean:{type:"isBoolean"}})};t.prototype._onChange=function(){var e=this.getContent();var t=e.getSelectedKey()||e.getValue();if(t==="false"){t=false}else if(t==="true"){t=true}this.setValue(t)};t.configMetadata=Object.assign({},e.configMetadata,{allowBindings:{defaultValue:true,mergeStrategy:"mostRestrictiveWins"},typeLabel:{defaultValue:"BASE_EDITOR.TYPES.BOOLEAN"}});return t});

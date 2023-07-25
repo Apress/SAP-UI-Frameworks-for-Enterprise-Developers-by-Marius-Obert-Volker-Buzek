@@ -1,0 +1,28 @@
+<core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core"
+  xmlns:vkm="sap.ui.vk.measurements"
+>
+  <Dialog
+    id="measurementCalibration"
+    title="{i18n>MEASUREMENTS_CALIBRATION_DIALOG_TITLE}"
+    draggable="true"
+    afterClose=".onAfterClose"
+    initialFocus="distance"
+  >
+    <VBox fitContainer="true" renderType="Bare" class="sapUiResponsiveMargin">
+      <Label text="{/label}" showColon="true"/>
+      <HBox fitContainer="true" renderType="Bare">
+        <Input id="distance" type="Number" placeholder="{i18n>MEASUREMENTS_CALIBRATION_INPUT_PLACEHOLDER}" value='{ path: "/distance", type: "sap.ui.model.type.Float" }'/>
+        <Button id="reset" icon="sap-icon://reset" type="Transparent" class="sapUiTinyMarginBegin" tooltip="{i18n>MEASUREMENTS_CALIBRATION_RESET_BUTTON_TOOLTIP}" press=".onResetPressed"/>
+      </HBox>
+    </VBox>
+
+    <beginButton>
+      <Button id="ok" text="{i18n>MEASUREMENTS_CALIBRATION_OK_BUTTON}" press=".onOkPressed"/>
+    </beginButton>
+    <endButton>
+      <Button id="cancel" text="{i18n>MEASUREMENTS_CALIBRATION_CANCEL_BUTTON}" press=".onCancelPressed"/>
+    </endButton>
+  </Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,63 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m"
+	xmlns:mdc="sap.ui.mdc"
+	xmlns:mdcField="sap.ui.mdc.field"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:l="sap.ui.layout"
+	template:require="{
+		MED: 'sap/fe/core/helpers/MassEditHelper'
+	}"
+>
+	<f:Form visible="{= MED.helpers.hasEditableFieldsBinding(${dataFieldModel>}, true) }">
+		<f:layout>
+			<f:ResponsiveGridLayout
+				labelSpanXL="4"
+				labelSpanL="4"
+				labelSpanM="12"
+				labelSpanS="12"
+				adjustLabelSpan="false"
+				emptySpanXL="0"
+				emptySpanL="0"
+				emptySpanM="0"
+				emptySpanS="0"
+				columnsXL="2"
+				columnsL="2"
+				columnsM="1"
+				singleContainerFullSize="false"
+			/>
+		</f:layout>
+		<f:formContainers>
+			<f:FormContainer>
+				<f:formElements>
+					<template:repeat list="{dataFieldModel>}" var="dataField">
+						<f:FormElement
+							label="{dataField>label}"
+							visible="{= '{fieldsInfo>/values/' + ${dataField>dataProperty} + '/visible}' }"
+						>
+							<f:fields>
+								<template:with path="dataField>propertyInfo" var="property">
+									<!-- main property -->
+									<core:Fragment fragmentName="sap.fe.core.controls.massEdit.MassEditField" type="XML" />
+								</template:with>
+								<template:if test="{dataField>unitInfo}">
+									<!-- unit exists -->
+									<template:with path="dataField>unitInfo" var="property">
+										<core:Fragment fragmentName="sap.fe.core.controls.massEdit.MassEditField" type="XML" />
+									</template:with>
+								</template:if>
+							</f:fields>
+						</f:FormElement>
+					</template:repeat>
+				</f:formElements>
+			</f:FormContainer>
+		</f:formContainers>
+	</f:Form>
+	<Text
+		visible="{= MED.helpers.hasEditableFieldsBinding(${dataFieldModel>}, false) }"
+		text="{fieldsInfo>/noFields}"
+		class="sapUiSmallMargin"
+	/>
+	/>
+</core:FragmentDefinition>

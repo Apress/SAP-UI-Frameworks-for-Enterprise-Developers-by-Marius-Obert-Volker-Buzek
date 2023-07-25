@@ -1,0 +1,7 @@
+/*!
+ * SAP UI development toolkit for HTML5 (SAPUI5)
+
+        (c) Copyright 2009-2015 SAP SE. All rights reserved
+    
+ */
+sap.ui.define(function(){"use strict";var e={apiVersion:2};e.render=function(e,r){var t=r.getTooltip_AsString();var a=r.getTitle();var o=r.getAriaLabelledBy();var i=r.getAriaDescribedBy();e.openStart("div",r);e.attr("role",sap.ui.core.AccessibleRole.Group);if(a){e.attr("aria-label",a)}else if(t){e.attr("aria-label",t)}if(o&&o.length>0){e.attr("aria-labelledby",o.join(" "))}if(i&&i.length>0){e.attr("aria-describedby",i.join(" "))}e.class("sapUiVkContainerBase");e.openEnd();e.openStart("div");e.attr("id",r.getId()+"-wrapper");e.attr("role",sap.ui.core.AccessibleRole.Presentation);e.class("sapUiVkContainerBaseWrapper");e.openEnd();this.writeContentArea(e,r);this.writeToolbarArea(e,r);e.close("div");e.close("div")};e.writeContentArea=function(e,r){var t=r.getSelectedContent();e.openStart("div");e.class("sapUiVkContainerBaseContentArea");e.attr("role",sap.ui.core.AccessibleRole.Img);e.openEnd();if(t!==null){e.renderControl(t)}else if(r.getContent().length>0){t=r.getContent()[0];e.renderControl(t)}e.close("div")};e.writeToolbarArea=function(e,r){e.openStart("div");e.class("sapUiVkContainerBaseToolbarArea");e.attr("role",sap.ui.core.AccessibleRole.Group);e.openEnd();e.renderControl(r._oToolbar);e.close("div")};return e},true);

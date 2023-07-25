@@ -1,0 +1,92 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m"
+	xmlns:mdc="sap.ui.mdc"
+	xmlns:mdcField="sap.ui.mdc.field"
+	xmlns:control="sap.fe.core.controls"
+	xmlns:macro="sap.fe.macros"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:l="sap.ui.layout"
+	xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	template:require="{
+		Property: 'sap/fe/core/templating/PropertyFormatters',
+		ID: 'sap/fe/core/helpers/StableIdHelper',
+		ValueHelpTemplating: 'sap/fe/macros/internal/valuehelp/ValueHelpTemplating'
+	}"
+>
+	<template:if test="{property>hasVH}">
+		<template:then>
+			<template:with path="property>propertyPathForValueHelp" var="vhProperty">
+				<mdc:Field
+					delegate="{name: 'sap/ui/mdc/odata/v4/FieldBaseDelegate'}"
+					id="{= ID.generate(['MED_', ${dataField>entitySet}, ${property>relativePath}, '_MDCField']) }"
+					core:require="{MassEditHandlers: 'sap/fe/core/controls/massEdit/MassEditHandlers'}"
+					change="{= 'MassEditHandlers.handleMDCFieldChange($event, \'' + ${property>relativePath} + '\')' }"
+					label="{dataField>label}"
+					width="100%"
+					required="{dataField>isFieldRequired}"
+					fieldHelp="{= ID.generate(['MED_', ${dataField>entitySet}, 'VHD', ${vhProperty>@@Property.getRelativePropertyPath} ]) }"
+					display="{dataField>display}"
+					value="{= ${property>relativePath} ? '{path: \'' + ${property>relativePath} + '\', parameters: {$$noPatch: true} }' : undefined }"
+					additionalValue="{= ${dataField>descriptionPath} ? '{path: \'' + ${dataField>descriptionPath} + '\', parameters: {$$noPatch: true} }' : undefined }"
+				>
+					<mdc:layoutData>
+						<l:GridData
+							span="{= (!${dataField>unitProperty}) ? 'XL12 L12 M12 S12' : ((${property>relativePath} === ${dataField>unitProperty}) ? 'XL4 L4 M4 S4' : 'XL8 L8 M8 S8') }"
+						/>
+					</mdc:layoutData>
+					<control:MassEditSelect
+						core:require="{MassEditHandlers: 'sap/fe/core/controls/massEdit/MassEditHandlers'}"
+						id="{= ID.generate(['MED_', ${dataField>entitySet}, ${property>relativePath}]) }"
+						items="{= '{path : \'' + ${property>runtimePath} + ${property>relativePath} + '\'}' }"
+						change="MassEditHandlers.handleSelectionChange($event)"
+						selectedKey="{= '{' + ${property>runtimePath} + ${property>relativePath} + '/selectedKey}' }"
+						selectValue="{= (${dataField>inputType} !== 'CheckBox') &amp;&amp; ('{ parts : [{ path:\'' +  ${property>relativePath} + '\'}, {value: \'' + ${property>relativePath} + '\' }, {value: \'' + ID.generate(['MED_', ${dataField>entitySet}, ${property>relativePath}, '_MDCField']) + '\' }], formatter: \'MassEditHandlers.contextPropertyChange\' }') }"
+						width="100%"
+						customData:fieldPath="{property>relativePath}"
+						customData:propertyFullyQualifiedName="{property>propertyFullyQualifiedName}"
+					>
+						<control:items>
+							<core:Item key="{fieldsInfo>key}" text="{fieldsInfo>text}" />
+						</control:items>
+						<control:layoutData>
+							<l:GridData span="XL12 L12 M12 S12" />
+						</control:layoutData>
+					</control:MassEditSelect>
+					<template:if test="{= ${dataField>inputType} !== 'CheckBox' }">
+						<mdc:dependents>
+							<macro:ValueHelp
+								contextPath="{contextPath>}"
+								idPrefix="{= ID.generate(['MED_', ${dataField>entitySet}, 'VHD' ]) }"
+								property="{vhProperty>}"
+								useMultiValueField="true"
+							/>
+						</mdc:dependents>
+					</template:if>
+				</mdc:Field>
+			</template:with>
+		</template:then>
+		<template:else>
+			<ComboBox
+				id="{= ID.generate(['MED_', ${dataField>entitySet}, ${property>relativePath}]) }"
+				core:require="{MassEditHandlers: 'sap/fe/core/controls/massEdit/MassEditHandlers'}"
+				items="{= '{path : \'' + ${property>runtimePath} + ${property>relativePath} + '\'}' }"
+				change="MassEditHandlers.handleSelectionChange($event)"
+				selectedKey="{= '{' + ${property>runtimePath} + ${property>relativePath} + '/selectedKey}' }"
+				visible="{= '{' + ${property>runtimePath} + ${property>relativePath} + '/visible}' }"
+				customData:fieldPath="{property>relativePath}"
+				customData:propertyFullyQualifiedName="{property>propertyFullyQualifiedName}"
+			>
+				<items>
+					<core:Item key="{fieldsInfo>key}" text="{fieldsInfo>text}" />
+				</items>
+				<layoutData>
+					<l:GridData
+						span="{= (!${dataField>unitProperty}) ? 'XL12 L12 M12 S12' : ((${property>relativePath} === ${dataField>unitProperty}) ? 'XL4 L4 M4 S4' : 'XL8 L8 M8 S8') }"
+					/>
+				</layoutData>
+			</ComboBox>
+		</template:else>
+	</template:if>
+</core:FragmentDefinition>

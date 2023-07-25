@@ -1,0 +1,29 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    core:require="{Utils: 'sap/ushell/utils'}">
+    <NotificationListItem
+        class="sapUshellNotificationsListItem sapContrastPlus"
+        press="onNotificationItemPress"
+        close="onNotificationItemClose"
+        datetime="{path: 'CreatedAt', formatter: 'Utils.formatDate'}"
+        description="{SubTitle}"
+        title="{= ${SensitiveText} ? ${SensitiveText} : ${Text}}"
+        buttons="{
+            path: 'Actions',
+            sorter: {
+                path: 'Nature',
+                descending: true
+            },
+            templateShareable: true
+        }"
+        unread="{= !${IsRead}}"
+        busy="{= ${Busy} ? ${Busy} : false}"
+        priority="{ path: 'Priority', formatter: '.priorityFormatter'}">
+        <buttons>
+            <Button
+                text="{ActionText}"
+                press="onNotificationItemButtonPress"/>
+        </buttons>
+    </NotificationListItem>
+</core:FragmentDefinition>

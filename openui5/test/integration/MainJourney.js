@@ -1,0 +1,2 @@
+sap.ui.define(["sap/ui/test/opaQunit","./pages/Main"],function(e){"use strict";e("Should see the page",function(e,i,t){e.iStartMyApp();t.onTheMainPage.iShouldSeeTheTitle();t.iTeardownMyApp()})});
+//# sourceMappingURL=MainJourney.js.map

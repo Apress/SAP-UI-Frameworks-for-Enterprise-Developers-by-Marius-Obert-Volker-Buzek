@@ -1,0 +1,2 @@
+sap.ui.define(["sap/ui/base/ManagedObject","sap/ui/core/mvc/Controller","com/apress/openui5/controller/BeerAdd.controller","sap/ui/thirdparty/sinon","sap/ui/thirdparty/sinon-qunit"],function(e,t,o){QUnit.module("CustomerAdd Controller");QUnit.test("should make sure the view model is loaded upon Controller init",function(n){const i=new e({});const r=sinon.stub(t.prototype,"getView").returns(i);const s=new o;s.onInit();n.ok(typeof s.getView().getModel().getData()==="object");r.restore()})});
+//# sourceMappingURL=BeerAdd.controller.js.map

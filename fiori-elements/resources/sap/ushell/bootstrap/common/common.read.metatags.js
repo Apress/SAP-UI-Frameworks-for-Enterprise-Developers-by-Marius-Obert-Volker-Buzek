@@ -1,0 +1,2 @@
+// Copyright (c) 2009-2023 SAP SE, All Rights Reserved
+sap.ui.define(["sap/base/Log"],function(a){"use strict";function e(e,r){var t="meta[name^='"+e+"']:not([name=''])";var o=document.querySelectorAll(t);var n="sap/ushell/bootstrap/common/common.read.metatags";var s=[];r=r||JSON.parse;Array.prototype.forEach.call(o,function(e){try{s.push(r(e.content))}catch(e){a.error(e.message,e.stack,n)}});return s}return{readMetaTags:e}});

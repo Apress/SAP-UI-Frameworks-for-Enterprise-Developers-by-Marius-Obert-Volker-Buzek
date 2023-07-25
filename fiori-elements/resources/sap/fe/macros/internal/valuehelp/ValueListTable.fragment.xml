@@ -1,0 +1,70 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns:customdata="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:macro="sap.fe.macros"
+	xmlns:internalMacro="sap.fe.macros.internal"
+	template:require="{
+		MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+		VLH: 'sap/fe/macros/internal/valuehelp/ValueListHelper',
+		ValueHelpTemplating: 'sap/fe/macros/internal/valuehelp/ValueHelpTemplating',
+		Property: 'sap/fe/core/templating/PropertyFormatters',
+		UI: 'sap/fe/core/templating/UIFormatters'
+	}"
+>
+	<Table
+		id="{source>id}::SuggestTable"
+		items="{parts: [{path:'valueList>'}, {path:'source>/requestGroupId'}, {path:'source>/bSuggestion'}, {path:'source>/valueHelpWithFixedValues'}], formatter:'VLH.getTableItemsParameters'}"
+		sticky="ColumnHeaders"
+		growing="{source>/valueHelpWithFixedValues}"
+		growingScrollToLoad="{source>/valueHelpWithFixedValues}"
+	>
+		<columns>
+			<template:repeat list="{path: 'valueList>Parameters'}" var="parameter">
+				<template:if
+					test="{= ${parameter>$Type} !== 'com.sap.vocabularies.Common.v1.ValueListParameterIn'  &amp;&amp; ${parameter>$Type} !== 'com.sap.vocabularies.Common.v1.ValueListParameterConstant'}"
+				>
+					<template:with path="parameter>ValueListProperty" var="dataField" helper="VLH.getValueListProperty">
+						<template:if test="{= !(${dataField>@com.sap.vocabularies.UI.v1.Hidden} === true)}">
+							<Column
+								visible="{parts:[{path:'valueList>'}, {path:'parameter>'}, {path:'source>'}],formatter:'VLH.getColumnVisibility'}"
+								minScreenWidth="{path:'valueList>',formatter:'VLH.getMinScreenWidth'}"
+								demandPopin="true"
+								popinDisplay="Inline"
+								hAlign="{= ValueHelpTemplating.getColumnHAlign(${dataField>@@UI.getDataModelObjectPath}) }"
+								width="{=VLH.getColumnWidth(${dataField>@@UI.getDataModelObjectPath})}"
+							>
+								<template:if test="{= !(${source>valueHelpWithFixedValues} === true)}">
+									<core:Fragment fragmentName="sap.fe.macros.internal.valuehelp.ValueListTableColumnHeader" type="XML" />
+								</template:if>
+							</Column>
+						</template:if>
+					</template:with>
+				</template:if>
+			</template:repeat>
+		</columns>
+		<items>
+			<ColumnListItem type="Active" customdata:ensurePropertyLoaded="{= VLH.getOutParameterPaths(${valueList>Parameters}) }">
+				<cells>
+					<template:with path="valueList>" helper="VLH.getValueListCollectionEntitySet" var="entitySet">
+						<template:repeat list="{valueList>Parameters}" var="parameter">
+							<template:if test="{= ${parameter>$Type} !== 'com.sap.vocabularies.Common.v1.ValueListParameterIn'}">
+								<template:with path="parameter>ValueListProperty" var="property" helper="VLH.getValueListProperty">
+									<template:if test="{= !(${property>@com.sap.vocabularies.UI.v1.Hidden} === true)}">
+										<!-- For drop-down lists the standard behaviour for display format is considered. But in type-ahead mode of non drop-down lists, only explicit defined TextArrangement is considered. -->
+										<internalMacro:Field editMode="Display" entitySet="{entitySet>}" dataField="{property>}">
+											<internalMacro:formatOptions
+												displayMode="{= ValueHelpTemplating.getValueHelpTableDisplayMode(${property>@@Property.getPropertyObjectPath}, ${source>valueHelpWithFixedValues}) }"
+											/>
+										</internalMacro:Field>
+									</template:if>
+								</template:with>
+							</template:if>
+						</template:repeat>
+					</template:with>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</core:FragmentDefinition>

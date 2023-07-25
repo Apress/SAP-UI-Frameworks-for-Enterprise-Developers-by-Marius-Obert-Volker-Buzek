@@ -1,0 +1,532 @@
+/******** fiori search related css styles ********/
+
+@searchPhoneSize: ~"(max-width: 767px)";
+@searchTabletSize: ~"(min-width: 768px) and (max-width: 1150px)";
+@searchLargeTabletSize: ~"(min-width: 959px) and (max-width: 1150px)";
+@searchNotPhoneSize: ~"(min-width: 768px)";
+@searchDesktopSize: ~"(min-width: 1151px)"; // do not add 'and (max-width: 1500px) here, result item attributes become hidden for width > 1500'
+@searchLargeDesktopSize: ~"(min-width: 1501px)";
+
+.sapUshellSearchFacetFilter {
+    padding-bottom: 1rem;
+    min-height: 100%;
+    box-sizing: border-box;
+    background-color: @sapUiListBackground;
+}
+
+.sapUshellSearchFacetFilterShowAllFilterBtn {
+    display: block;
+    margin: 1rem auto 0 auto;
+}
+
+/* filter bar */
+.sapUshellSearchFilterContextualBar {
+    font-size: 0.875rem;
+    margin-top: 0;
+}
+.sapUshellSearchFilterContextualBar .sapUshellSearchFilterText {
+    font-style: italic;
+    width: ~"calc(100% - 3rem)";
+}
+.sapUshellSearchFilterContextualBar .sapUshellSearchFilterResetButton {
+    color: @sapUiContentContrastTextColor;
+}
+
+/* context bar - breadcrumb + count */
+.sapElisaSearchContextBarContainer {
+    width: 100%;
+}
+.sapElisaSearchContextBarContent {
+    width: 100%;
+}
+
+.sapElisaNoResultScreen {
+    padding-top: 5rem;
+}
+
+/* search user preferences */
+[id$="-searchPrefsView"] {
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+[id$="-searchPrefsView"] .sapMLabel {
+    padding-right: 0.5rem;
+    vertical-align: middle;
+}
+
+[id$="-searchPrefsView"] .sapMSwtCont {
+    vertical-align: middle;
+}
+
+[id$="-searchPrefsView"] .sapMText {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+[id$="-searchPrefsView"] .sapMBtn {
+    display: block;
+}
+
+/******** MAIN TOOLBAR ********/
+[id$="-dataSourceTabBar-containerContent"] {
+    border-width: 0px;
+    border-style: solid;
+}
+
+.sapUshellSearchBarValueHelp {
+    display: none; /* may be we need to move 'download button/feature' to actions menu for 'value help' mode */
+}
+
+.searchDataSourceTabStripBar {
+    border-bottom-width: 0px;
+    border-bottom-style: solid;
+}
+
+.sapElisaSearchGenericButtonsToolbar.sapMTB.sapMTBStandard {
+    border-bottom-width: 0px;
+    border-bottom-style: solid;
+}
+
+/* Temp. solution as long as there is "display:table-cell" on some stakeholder's css (i.e. Skyline overwrites repo explorer css by mistake) */
+[id$="-SearchCountBreadcrumbs"] .sapUshellSearchTotalCountBreadcrumbs {
+    display: block !important;
+    width: 100% !important;
+}
+
+.sapUshellSearchTotalCountBreadcrumbs {
+    .sapMBreadcrumbsItem .sapMBreadcrumbsCurrentLocation {
+        font-weight: bold;
+        padding-left: 0.25rem;
+    }
+    ol li:nth-last-child(2) .sapMBreadcrumbsSeparator {
+        display: none;
+    }
+}
+
+/******** tabstrips for switching between categories/connectors (sap.m.IconTabBar) ********/
+[id$="-dataSourceTabBar"].searchTabStripBar {
+    /* tab bar */
+    @media (max-width: 500px) {
+        /* hide tab bar when we have limited horizontal space */
+        display: none;
+        width: 1rem;
+    }
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    /* tab bar - top container */
+    .sapMITH {
+        padding: 0;
+        padding-right: 0.25rem;
+        border-bottom: 0;
+        box-shadow: none;
+        line-height: 1.25rem;
+        /* tab bar (does not include overflow/mode-dropdown-button) */
+        .sapMITBHead {
+            padding: 0;
+        }
+    }
+    /* tab bar - tab , inner container */
+    .sapMITBHead {
+        height: 1.9rem;
+    }
+    /* tab bar - tab , inner container */
+    /* .sapMITBItem {
+        padding-left: 0.025rem;
+        padding-right: 0.05rem;
+    } */
+    /* tab bar - tab , inner container */
+    .sapMITBFilterWrapper {
+        padding-top: 0.65rem;
+        padding-left: 0.2rem;
+        height: 0.8rem;
+        /* tab bar - line on the bottom of the tab */
+        .sapMITBContentArrow {
+            margin-top: 0.05rem !important;
+            height: 0.25rem !important;
+        }
+    }
+    /* tab bar - container of line on the bottom of the tab */
+    .sapMITBVertical.sapMITBFilter:not(.sapMITHUnselectable) .sapMITBText.sapMITBBadgeHolder {
+        padding: 0;
+        margin: 0;
+    }
+    /* tab text containers (not: more dropdown-button) */
+    .sapMITBInLine.sapMITBTextOnly .sapMITBHead .sapMITBVertical.sapMITBFilter:not(.sapMITHUnselectable) {
+        height: 1.9rem;
+    }
+    /* tab text containers (not: more dropdown-button) */
+    .sapMITBInLine.sapMITBTextOnly .sapMITBHead .sapMITBVertical.sapMITBFilter.sapMITHUnselectable {
+        height: 1.9rem;
+    }
+    /* tab bar - tab, 'more' */
+    .sapMITHEndOverflow {
+        margin-top: 0.2rem;
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: 0;
+        .sapMITBItem {
+            margin-top: 0.1rem;
+        }
+    }
+    .sapMITHEndOverflow .sapMITBFilterWrapper {
+        padding-top: 0.2rem;
+    }
+    .sapMITHEndOverflow .sapMITBText {
+        margin-top: 0.2rem;
+    }
+    /* adjust look&feel of text to how it shall look on toolbars ('more' dropdown) */
+    .sapMITHEndOverflow .sapMITHTextContent {
+        color: @sapUiGroupTitleTextColor;
+        text-shadow: @sapUiShadowText;
+    }
+    /* container of IconTabBar is not in use */
+    .sapMITBContainerContent .sapMITBContent {
+        display: none;
+    }
+    /* adjust look&feel of text to how it shall look on toolbars */
+    .sapMITHTextContent {
+        color: @sapUiGroupTitleTextColor;
+        text-shadow: @sapUiShadowText;
+    }
+}
+[id$="-dataSourceTabBar--header"].sapMITH {
+    background-color: transparent;
+}
+[id$="-dataSourceTabBar--header"] .sapMITHEndOverflow {
+    background-color: transparent;
+}
+[id$="-dataSourceTabBar--header-overflow"] {
+    background-color: transparent !important;
+}
+[id$="-dataSourceTabBar--header-overflow-expandButton"] {
+    color: @sapUiGroupTitleTextColor;
+    text-shadow: @sapUiShadowText;
+}
+[id$="-dataSourceTabBar"].searchTabStripBar {
+    /* tab bar */
+    @media @searchPhoneSize {
+        width: 15rem;
+    }
+    @media @searchTabletSize {
+        width: 20rem;
+    }
+    @media @searchLargeTabletSize {
+        width: 28rem;
+    }
+    @media @searchDesktopSize {
+        width: 38rem;
+    }
+    @media @searchLargeDesktopSize {
+        width: 48rem;
+    }
+}
+[id$="-dataSourceTabBar"].searchTabStripBar.sapUshellSearchBarHasNoCustomButtons {
+    /* tab bar */
+    @media @searchPhoneSize {
+        width: 10rem;
+    }
+    @media @searchTabletSize {
+        width: 30rem;
+    }
+    @media @searchLargeTabletSize {
+        width: 42rem;
+    }
+    @media @searchDesktopSize {
+        width: 50rem;
+    }
+    @media @searchLargeDesktopSize {
+        width: 60rem;
+    }
+}
+
+/***************** OVERALL LAYOUT **************/
+
+.sapUshellSearchContainer .sapUiFixFlexRow > .sapUiFixFlexFixed {
+    overflow-y: auto;
+    overflow-x: auto;
+    width: 0;
+    opacity: 0;
+    visibility: hidden;
+
+    &.sapUshellSearchFilterbar {
+        width: 18rem;
+        opacity: 1;
+        visibility: visible;
+        border-right: 1px solid @sapUiListBorderColor;
+        overflow-x: hidden;
+    }
+}
+
+.sapUshellSearchContainer .sapUiFixFlexRow > .sapUiFixFlexFixed.sapUshellSearchFacetAnimation {
+    transition: width 400ms, opacity 400ms, visibility 400ms;
+}
+
+.sapUshellSearchContainer {
+    width: 100%;
+    height: 100%;
+    background-color: @sapUiListHeaderBackground; /* @sapUiShellBackground */
+}
+
+.sapUshellSearchContainer .sapUiFixFlexFlexible {
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+.sapUshellSearchTotalCountBar {
+    padding-top: 0.5rem;
+    padding-bottom: 0.25rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    /* margin: 1rem 1rem 0.5rem 1rem; */
+    background-color: transparent !important;
+    label {
+        line-height: 2rem;
+        font-size: 0.875rem;
+    }
+}
+
+.sapUshellSubContainer > div {
+    width: 100%;
+}
+
+.sapUshellShellOvrlySearch > div {
+    height: 100%;
+}
+
+/* flp search */
+[id$="searchContainerApp"] {
+    height: 100%;
+}
+
+/* default -> desktop */
+/* 1: has no search bar */
+.sapUshellSearchLayoutHeightDefault {
+    height: ~"calc(100%) !important"; /* searchInput: 0 - part of shell, search bar: 2rem */
+}
+.sapUshellSearchLayoutHeightFilterbar {
+    height: ~"calc(100% - 2rem) !important"; /* searchInput: 0 - part of shell, search bar: 2rem + filter bar: 2rem */
+}
+.sapUshellSearchLayoutHeightDefaultHasSearchInputBar {
+    height: ~"calc(100% - 2.35rem) !important"; /* searchInput: 2.35rem, search bar: 2rem */
+}
+.sapUshellSearchLayoutHeightFilterbarHasSearchInputBar {
+    height: ~"calc(100% - 4.35rem) !important"; /* searchInput: 2.35rem, search bar: 2rem + filter bar: 2rem */
+}
+/* 2: has search bar */
+.sapUshellSearchLayoutHeightDefaultHasSearchBar {
+    height: ~"calc(100% - 2rem) !important"; /* searchInput: 0 - part of shell, search bar: 2rem */
+}
+.sapUshellSearchLayoutHeightFilterbarHasSearchBar {
+    height: ~"calc(100% - 4rem) !important"; /* searchInput: 0 - part of shell, search bar: 2rem + filter bar: 2rem */
+}
+.sapUshellSearchLayoutHeightDefaultHasSearchInputBarHasSearchBar {
+    height: ~"calc(100% - 4.35rem) !important"; /* searchInput: 2.35rem, search bar: 2rem */
+}
+.sapUshellSearchLayoutHeightFilterbarHasSearchInputBarHasSearchBar {
+    height: ~"calc(100% - 6.35rem) !important"; /* searchInput: 2.35rem, search bar: 2rem + filter bar: 2rem */
+}
+
+@media @searchTabletSize {
+    /* no special css needed, as toolbar heights are the same as for desktop */
+}
+
+@media @searchPhoneSize {
+    /* .sapUshellSearchLayout[max-width~="767px"] { */
+    /* 1: has no search bar */
+    .sapUshellSearchLayoutHeightDefault {
+        height: ~"calc(100%) !important"; /* searchInput: 0 - part of shell, search bar: 3rem */
+    }
+    .sapUshellSearchLayoutHeightFilterbar {
+        height: ~"calc(100% - 2rem) !important"; /* searchInput: 0 - part of shell, search bar: 3rem + filter bar: 2rem */
+    }
+    .sapUshellSearchLayoutHeightDefaultHasSearchInputBar {
+        height: ~"calc(100% - 3.5rem) !important"; /* searchInput: 3.5rem, search bar: 3rem */
+    }
+    .sapUshellSearchLayoutHeightFilterbarHasSearchInputBar {
+        height: ~"calc(100% - 5.5rem) !important"; /* searchInput: 3.5rem, search bar: 3rem + filter bar: 2rem */
+    }
+    /* 2: has search bar */
+    .sapUshellSearchLayoutHeightDefaultHasSearchBar {
+        height: ~"calc(100% - 3rem) !important"; /* searchInput: 0 - part of shell, search bar: 3rem */
+    }
+    .sapUshellSearchLayoutHeightFilterbarHasSearchBar {
+        height: ~"calc(100% - 5rem) !important"; /* searchInput: 0 - part of shell, search bar: 3rem + filter bar: 2rem */
+    }
+    .sapUshellSearchLayoutHeightDefaultHasSearchInputBarHasSearchBar {
+        height: ~"calc(100% - 6.5rem) !important"; /* searchInput: 3.5rem, search bar: 3rem */
+    }
+    .sapUshellSearchLayoutHeightFilterbarHasSearchInputBarHasSearchBar {
+        height: ~"calc(100% - 8.5rem) !important"; /* searchInput: 3.5rem, search bar: 3rem + filter bar: 2rem */
+    }
+}
+
+/* make non-resizable splitter bars 'invisible' and make sure responsive splitter does not take width/hight into account */
+.sapUiResponsiveSplitter.sapUshellSearchLayout [aria-orientation="horizontal"].sapUiLoSplitterNoResize {
+    width: 0 !important;
+    height: 0 !important;
+    display: none !important;
+}
+.sapUiResponsiveSplitter.sapUshellSearchLayout [aria-orientation="vertical"].sapUiLoSplitterNoResize {
+    width: 0.125rem !important;
+    background-color: @sapUiPageHeaderBorderColor !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.sapUshellSearchResultContainer {
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    display: block;
+    background-color: @sapUiListHeaderBackground;
+
+    .searchLayout-bucket {
+        margin: 1.7rem 1rem 0.5rem 1rem;
+    }
+
+    [id$="-ushell-search-result-table"] {
+        tr td {
+            max-width: 5rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        b {
+            font-weight: bold;
+            background-color: @sapUiContentSearchHighlightColor;
+        }
+    }
+}
+
+.sapUshellSearchFacetDialogValueHelp {
+    min-width: 50rem;
+}
+
+.sapUshellSearchResultContainerValueHelp {
+    background: transparent;
+}
+
+.sapUshellResultListMoreFooterContainer {
+    padding-top: 0;
+    @media @searchPhoneSize {
+        padding: 0;
+    }
+}
+
+.sapUshellResultListMoreFooter {
+    margin: auto;
+    width: auto;
+    display: block;
+    padding-top: 0;
+    text-align: center;
+}
+
+.sapUshellResultApps .sapUshellResultListMoreFooter {
+    padding-top: 0;
+}
+
+.sapUshellSearchResultListFooter {
+    background-color: transparent !important;
+    border: none !important;
+}
+
+.sapUshellSearchResultList-toggleMultiSelectionButton {
+    @media @searchPhoneSize {
+        display: none;
+    }
+}
+
+.sapUshellSearchResultList-multiSelectionActionBar {
+    display: inline-flex;
+    display: inline-block;
+}
+
+.sapUshellSearchResultListItem-DragAndDrop-NoHref.deactivateHover {
+    opacity: 1;
+    cursor: grab;
+}
+
+.sapUshellSearchResultListItem-TitleContainer
+    .sapUshellSearchResultListItem-DragAndDrop-NoHref.deactivateHover:link {
+    color: inherit;
+    text-decoration: none;
+}
+.sapUshellSearchResultListItem-TitleContainer
+    .sapUshellSearchResultListItem-DragAndDrop-NoHref.deactivateHover:active {
+    color: inherit;
+    text-decoration: none;
+}
+.sapUshellSearchResultListItem-TitleContainer
+    .sapUshellSearchResultListItem-DragAndDrop-NoHref.deactivateHover:hover {
+    color: inherit;
+    text-decoration: none;
+}
+.sapUshellSearchResultListItem-TitleContainer
+    .sapUshellSearchResultListItem-DragAndDrop-NoHref.deactivateHover:visited {
+    color: inherit;
+    text-decoration: none;
+}
+
+.sapUshellSearchResultListItem-TitleInfoIcon {
+    color: @sapUiLink;
+    opacity: 0.5; /* icon currently does not react on 'click', remove when enabling title icon for 'press' */
+}
+
+.sapUshellSearchResultListItem-TitleInfoIconValueHelp {
+    font-size: smaller;
+    margin-top: -0.5rem;
+    vertical-align: bottom;
+}
+
+.sapUshellSearchTableTitleInfoIcon {
+    margin-left: 0.25rem;
+    color: @sapUiLink;
+    opacity: 0.5; /* icon currently does not react on 'click', remove when enabling title icon for 'press' */
+}
+
+.sapUshellSearchTableTitleInfoIconDisabled {
+    opacity: 0.5;
+}
+
+.sapUshellSearchGrid b {
+    font-weight: bold;
+    background-color: @sapUiContentSearchHighlightColor;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.sapUshellSearchInputHelpPage {
+    height: ~"calc(100%)";
+}
+
+@media @searchPhoneSize {
+    // special css of 'sapUiLoSplitterNoResize' causes some empty space at the right of the search result view
+    .sapUshellSearchInputHelpPage .sapUiLoSplitterContent[style*="width"][id$="-content-1"] {
+        width: ~"calc(100%)" !important;
+    }
+    .sapUshellSearchInputHelpPage .sapUiLoSplitterBar.sapUiLoSplitterNoResize {
+        display: none !important;
+        width: 0 !important; // not sure why this is needed, responsive splitter control (UI5) seems to have special logic, even for the case of "display:none"
+    }
+    .sapUshellSearchInputHelpPage .sapUiLoSplitterV.sapUiLoSplitterBar.sapUiLoSplitterNoResize {
+        display: none !important;
+        width: 0 !important; // not sure why this is needed, responsive splitter control (UI5) seems to have special logic, even for the case of "display:none"
+    }
+}
+
+/* =========== separate toolbars ===================== */
+/* no bars */
+.sapElisaSearchContainerCountBreadcrumbsValueHelp {
+    margin-left: 0;
+}
+.sapElisaSearchSelectQuickSelectDataSourceValueHelp {
+    display: flex;
+    flex-direction: column;
+}

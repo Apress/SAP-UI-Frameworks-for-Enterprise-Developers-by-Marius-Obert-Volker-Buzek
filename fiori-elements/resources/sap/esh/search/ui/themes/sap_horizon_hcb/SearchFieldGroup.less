@@ -1,0 +1,40 @@
+#searchFieldInShell {
+    height: 2.25rem;
+    margin-top: 0.25rem;
+    #searchFieldInShell-select {
+        border-radius: 1.125rem;
+        .sapMSltArrow,
+        .sapMSltIcon {
+            border-radius: 1.125rem;
+        }
+    }
+    #searchFieldInShell-input {
+        .sapMInputBaseContentWrapper {
+            border-radius: 1.125rem;
+        }
+    }
+    /* magnifier and cancel button */
+    .sapMBtn {
+        .sapMBtnInner.sapMBtnDefault {
+            border-radius: 1.125rem;
+            background-color: transparent;
+            border-color: transparent;
+            color: @sapUiShellTextColor;
+            .sapMBtnIcon {
+                color: @sapUiShellInteractiveTextColor;
+            }
+        }
+    }
+}
+
+span#searchFieldInShell-button-inner {
+    border-radius: 1.125rem;
+}
+
+.searchInput.sapMFocus.sapMInputBase .sapMInputBaseContentWrapper:not(.sapMInputBaseDisabledWrapper)::before {
+    border-radius: 1.125rem;
+}
+
+#searchFieldInShell-button.sapMBtn:focus > .sapMFocusable:not(.sapMBadgeIndicator):before {
+    border: none;
+}

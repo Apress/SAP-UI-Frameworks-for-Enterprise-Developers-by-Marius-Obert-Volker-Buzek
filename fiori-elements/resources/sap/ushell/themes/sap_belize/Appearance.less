@@ -1,0 +1,18 @@
+#userPrefThemeSelector .sapUshellThemeListDisabled {
+  opacity: 0.5;
+
+  & > * {
+    .sapUshellThemeListItemSelected {
+      background: @sapUiListBackground;
+    }
+    .sapMLIBSelected {
+      background: @sapUiListBackground;
+    }
+    :hover {
+      background: @sapUiListBackground;
+    }
+    :focus {
+      outline: none;
+    }
+  }
+}

@@ -1,0 +1,61 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns:core="sap.ui.core"
+	xmlns:macro="sap.fe.macros"
+	xmlns:controls="sap.fe.macros.controls"
+	xmlns="sap.m"
+	template:require="{
+				MODEL: 'sap/ui/model/odata/v4/AnnotationHelper',
+				CONTACT: 'sap/fe/macros/contact/ContactHelper',
+				UI: 'sap/fe/core/templating/UIFormatters',
+				FieldTemplating: 'sap/fe/macros/field/FieldTemplating'
+				}"
+>
+	<template:repeat list="{entityType>./@com.sap.vocabularies.UI.v1.QuickViewFacets}" var="facet">
+		<template:if test="{= ${facet>Target/$AnnotationPath}.indexOf('com.sap.vocabularies.Communication.v1.Contact') > -1 }">
+			<template:then>
+				<template:with path="facet>Target/$AnnotationPath" var="contact">
+					<core:Fragment fragmentName="sap.fe.macros.contact.ContactQuickViewGroup" type="XML" />
+				</template:with>
+			</template:then>
+			<template:elseif test="{= (${facet>Target/$AnnotationPath}.indexOf('com.sap.vocabularies.UI.v1.FieldGroup') > -1)}">
+				<template:with path="facet>Target/$AnnotationPath" var="fieldGroup">
+					<QuickViewGroup heading="{facet>Label}">
+						<template:repeat list="{fieldGroup>Data}" var="dataField">
+							<QuickViewGroupElement
+								label="{dataField>@@MODEL.label}"
+								url="{= FieldTemplating.QVTextBinding(${dataField>@@UI.getDataModelObjectPath}, ${dataField>Value@@UI.getDataModelObjectPath}, '') }"
+								value="{= FieldTemplating.QVTextBinding(${dataField>@@UI.getDataModelObjectPath}, ${dataField>Value@@UI.getDataModelObjectPath}, '') }"
+								type="{= FieldTemplating.getQuickViewType(${dataField>Value@@UI.getDataModelObjectPath} ) }"
+							/>
+						</template:repeat>
+					</QuickViewGroup>
+				</template:with>
+			</template:elseif>
+			<template:elseif test="{= (${facet>Target/$AnnotationPath}.indexOf('com.sap.vocabularies.UI.v1.Identification') > -1) }">
+				<template:with path="facet>Target/$AnnotationPath" var="identification">
+					<QuickViewGroup heading="{facet>Label}">
+						<template:repeat list="{identification>}" var="dataField">
+							<QuickViewGroupElement
+								label="{dataField>@@MODEL.label}"
+								value="{dataField>Value@@MODEL.format}"
+								type="{= FieldTemplating.getQuickViewType(${dataField>Value@@UI.getDataModelObjectPath} ) }"
+							/>
+						</template:repeat>
+					</QuickViewGroup>
+				</template:with>
+			</template:elseif>
+			<template:elseif test="{= (${facet>Target/$AnnotationPath}.indexOf('com.sap.vocabularies.UI.v1.DataPoint') > -1) }">
+				<template:with path="facet>Target/$AnnotationPath" var="dataPoint">
+					<QuickViewGroup heading="{facet>Label}">
+						<QuickViewGroupElement
+							label="{dataPoint>Title}"
+							value="{= ${dataPoint>TargetValue@@MODEL.format} ? ${dataPoint>Value@@MODEL.format}+'/'+${dataPoint>TargetValue@@MODEL.format} : ${dataPoint>Value@@MODEL.format} }"
+							type="{= FieldTemplating.getQuickViewType(${dataField>Value@@UI.getDataModelObjectPath} ) }"
+						/>
+					</QuickViewGroup>
+				</template:with>
+			</template:elseif>
+		</template:if>
+	</template:repeat>
+</core:FragmentDefinition>

@@ -1,0 +1,2 @@
+// Copyright (c) 2009-2023 SAP SE, All Rights Reserved
+sap.ui.define(["jquery.sap.global","sap/m/TileContainerRenderer"],function(e,r){"use strict";var n={};n.render=function(n,i){e.sap.log.debug("PictureViewerRenderer :: begin rendering");r.render(n,i);e.sap.log.debug("PictureViewerRenderer :: end rendering")};return n},true);

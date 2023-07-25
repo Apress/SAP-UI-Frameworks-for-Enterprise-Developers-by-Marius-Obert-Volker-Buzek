@@ -1,0 +1,98 @@
+<core:FragmentDefinition
+	xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+>
+	<template:if test="{this>linkIsDataFieldWithNavigationPath}">
+		<template:then>
+			<Link
+				id="{this>noWrapperId}"
+				core:require="{FieldRuntime: 'sap/fe/macros/field/FieldRuntime'}"
+				visible="{this>displayVisible}"
+				text="{this>text}"
+				press="{this>linkPress}"
+				ariaLabelledBy="{this>ariaLabelledBy}"
+				emptyIndicatorMode="{this>emptyIndicatorMode}"
+				class="sapMTextRenderWhitespaceWrap"
+			/>
+		</template:then>
+		<template:elseif test="{this>linkIsDataFieldWithIntentBasedNavigation}">
+			<Link
+				id="{this>noWrapperId}"
+				core:require="{WSR: 'sap/base/strings/whitespaceReplacer'}"
+				visible="{this>displayVisible}"
+				text="{this>text}"
+				press="{this>linkPress}"
+				ariaLabelledBy="{this>ariaLabelledBy}"
+				emptyIndicatorMode="{this>emptyIndicatorMode}"
+				class="sapMTextRenderWhitespaceWrap"
+			/>
+		</template:elseif>
+		<template:elseif test="{this>linkIsDataFieldWithAction}">
+			<Link
+				id="{this>noWrapperId}"
+				visible="{this>displayVisible}"
+				text="{this>text}"
+				press="{this>linkPress}"
+				ariaLabelledBy="{this>ariaLabelledBy}"
+				emptyIndicatorMode="{this>emptyIndicatorMode}"
+				class="sapMTextRenderWhitespaceWrap"
+			/>
+		</template:elseif>
+		<template:elseif test="{this>linkIsEmailAddress}">
+			<Link
+				id="{this>noWrapperId}"
+				core:require="{WSR: 'sap/base/strings/whitespaceReplacer'}"
+				visible="{this>displayVisible}"
+				text="{this>text}"
+				href="{this>linkUrl}"
+				ariaLabelledBy="{this>ariaLabelledBy}"
+				emptyIndicatorMode="{this>emptyIndicatorMode}"
+				class="sapMTextRenderWhitespaceWrap"
+			/>
+		</template:elseif>
+		<template:elseif test="{this>linkIsPhoneNumber}">
+			<Link
+				id="{this>noWrapperId}"
+				core:require="{WSR: 'sap/base/strings/whitespaceReplacer'}"
+				visible="{this>displayVisible}"
+				text="{this>text}"
+				href="{this>linkUrl}"
+				ariaLabelledBy="{this>ariaLabelledBy}"
+				emptyIndicatorMode="{this>emptyIndicatorMode}"
+				class="sapMTextRenderWhitespaceWrap"
+			/>
+		</template:elseif>
+		<template:else>
+			<template:if test="{this>iconUrl}">
+				<template:then>
+					<ObjectStatus
+						core:require="{WSR: 'sap/base/strings/whitespaceReplacer', FieldRuntime: 'sap/fe/macros/field/FieldRuntime'}"
+						id="{this>noWrapperId}"
+						icon="{this>iconUrl}"
+						visible="{this>displayVisible}"
+						text="{this>text}"
+						press="FieldRuntime.openExternalLink"
+						active="true"
+						emptyIndicatorMode="{this>emptyIndicatorMode}"
+						customData:url="{this>linkUrl}"
+					/>
+				</template:then>
+				<template:else>
+					<Link
+						id="{this>noWrapperId}"
+						core:require="{WSR: 'sap/base/strings/whitespaceReplacer'}"
+						visible="{this>displayVisible}"
+						text="{this>text}"
+						href="{this>linkUrl}"
+						target="_top"
+						wrapping="{= ${this>wrap} === undefined ? true : ${this>wrap} }"
+						ariaLabelledBy="{this>ariaLabelledBy}"
+						emptyIndicatorMode="{this>emptyIndicatorMode}"
+					/>
+				</template:else>
+			</template:if>
+		</template:else>
+	</template:if>
+</core:FragmentDefinition>

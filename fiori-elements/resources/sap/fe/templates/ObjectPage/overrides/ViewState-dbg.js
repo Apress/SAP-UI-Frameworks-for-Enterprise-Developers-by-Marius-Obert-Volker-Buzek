@@ -1,0 +1,5 @@
+/*!
+ * SAP UI development toolkit for HTML5 (SAPUI5)
+ *      (c) Copyright 2009-2023 SAP SE. All rights reserved
+ */
+sap.ui.define(["sap/fe/core/helpers/KeepAliveHelper","sap/fe/core/library"],function(e,t){"use strict";const n=t.VariantManagement;const a={applyInitialStateOnly:function(){return false},adaptStateControls:function(e){const t=this.getView(),a=t.getController(),r=t.getViewData();let i=false;switch(r.variantManagement){case n.Control:i=true;break;case n.Page:case n.None:break;default:throw new Error(`unhandled variant setting: ${r.getVariantManagement()}`)}a._findTables().forEach(function(t){const n=t.getQuickFilter();if(n){e.push(n)}if(i){e.push(t.getVariant())}e.push(t)});a._findCharts().forEach(function(t){if(i){e.push(t.getVariant())}e.push(t)});e.push(t.byId("fe::ObjectPage"))},adaptBindingRefreshControls:function(t){const n=this.getView(),a=e.getViewRefreshInfo(n),r=n.getController();let i=[];if(a){const e=r._getObjectPageLayoutControl();i.push(e)}if(a!=="includingDependents"){const t=r._findTables();i=i.concat(e.getControlsForRefresh(n,t)||[])}return i.reduce(function(e,t){if(e.indexOf(t)===-1){e.push(t)}return e},t)}};return a},false);

@@ -1,0 +1,502 @@
+/* ============================================= */
+/* CSS for control sap.suite.ui.commons/TargetFilter.control */
+/* ============================================= */
+
+.sapSuiteUiTF {
+	height: auto;
+	display: table;
+	margin: 0 auto;
+}
+
+.sapSuiteUiTFOuterCont {
+	overflow: hidden;
+	position: relative;
+	float: left;
+	height: 27rem;
+	width: 42rem;
+}
+
+.sapUiMedia-Std-Phone .sapSuiteUiTFOuterCont {
+	width: 100%;
+	height: 100vw;
+}
+
+.sapSuiteUiTFOuterCircle {
+	border-radius: 50%;
+	position: absolute;
+	bottom: -100rem;
+	top: -100rem;
+	right: 0;
+	left: 0;
+	margin: auto;
+	height: 34rem;
+	width: 34rem;
+}
+
+.sapUiMedia-Std-Phone .sapSuiteUiTFOuterCircle {
+	border-radius: 0%;
+	border: none;
+	width: 100%;
+	height: 100%;
+	box-shadow: none;
+}
+
+.sapSuiteUiTFQuadrant {
+	position: absolute;
+	height: 50%;
+	width: 50%;
+}
+
+.sapSuiteUiTFQuadrant.Quad0,
+.sapSuiteUiTFQuadrant.Quad3 {
+	right: 0;
+}
+
+.sapSuiteUiTFQuadrant.Quad0,
+.sapSuiteUiTFQuadrant.Quad1 {
+	top: 0;
+}
+
+.sapSuiteUiTFQuadrant.Quad1,
+.sapSuiteUiTFQuadrant.Quad2 {
+	left: 0;
+}
+
+.sapSuiteUiTFQuadrant.Quad2,
+.sapSuiteUiTFQuadrant.Quad3 {
+	bottom: 0;
+}
+
+.sapSuiteUiTFCentralCircle {
+	border-radius: 50%;
+	position: absolute;
+	margin: auto;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	height: 8.625rem;
+	width: 8.625rem;
+}
+
+.sapUiMedia-Std-Phone .sapSuiteUiTFCentralCircle {
+	height: 6.5rem;
+	width: 6.5rem;
+}
+
+.sapSuiteUiTFCentralCircle>.sapSuiteUiTFCentralLabel {
+	text-align: center;
+	width: 100%;
+	font-size: 2rem;
+}
+
+.sapUiMedia-Std-Phone .sapSuiteUiTFCentralCircle .sapSuiteUiTFCentralLabel {
+	font-size: 2rem;
+	text-align: center;
+}
+
+.sapSuiteUiTFCentralCircle .sapSuiteUiTFCentralTopLabel {
+	margin-top: 3rem;
+	font-size: 0.875rem;
+	text-align: center;
+	width: 100%;
+}
+
+.sapUiMedia-Std-Phone .sapSuiteUiTFCentralCircle .sapSuiteUiTFCentralTopLabel {
+	margin-top: 2rem;
+	font-size: 0.875rem;
+	text-align: center;
+}
+
+.sapSuiteUiTFVerticalLine {
+	height: 100%;
+	width: .1875rem;
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+
+.sapSuiteUiTFHorizontalLineBg {
+	position: absolute;
+	margin: 0;
+	width: 39.5rem;
+	height: .28rem;
+	width: 21rem;
+	overflow: hidden;
+}
+
+.sapSuiteUiTFHorizontalLineBg.Quad0,
+.sapSuiteUiTFHorizontalLineBg.Quad1,
+.sapSuiteUiTFHorizontalLine.Quad0,
+.sapSuiteUiTFHorizontalLine.Quad1 {
+	bottom: 0;
+}
+
+.sapSuiteUiTFHorizontalLineBg.Quad2,
+.sapSuiteUiTFHorizontalLineBg.Quad3,
+.sapSuiteUiTFHorizontalLine.Quad2,
+.sapSuiteUiTFHorizontalLine.Quad3 {
+	top: 0;
+}
+
+.sapSuiteUiTFHorizontalLineBg.Quad0,
+.sapSuiteUiTFHorizontalLineBg.Quad3,
+.sapSuiteUiTFHorizontalLine.Quad0,
+.sapSuiteUiTFHorizontalLine.Quad3 {
+	left: 0;
+}
+
+.sapSuiteUiTFHorizontalLineBg.Quad1,
+.sapSuiteUiTFHorizontalLineBg.Quad2,
+.sapSuiteUiTFHorizontalLine.Quad1,
+.sapSuiteUiTFHorizontalLine.Quad2 {
+	right: 0;
+}
+
+.sapSuiteUiTFHorizontalLine {
+	position: absolute;
+	height: 0;
+	display: block;
+	width: 6rem;
+	border-style: solid;
+	-webkit-transform: rotate(360deg);
+	-moz-transform: rotate(360deg);
+	transform: rotate(360deg);
+}
+
+.sapSuiteUiTFHorizontalLine.Quad0 {
+	border-width: .09rem 0 .06rem 24rem;
+}
+
+.sapSuiteUiTFHorizontalLine.Quad1 {
+	border-width: .09rem 24rem .06rem 0;
+}
+
+.sapSuiteUiTFHorizontalLine.Quad2 {
+	border-width: .06rem 24rem .09rem 0;
+}
+
+.sapSuiteUiTFHorizontalLine.Quad3 {
+	border-width: .06rem 0 .09rem 24rem;
+}
+
+.sapSuiteUiTFBox {
+	position: absolute;
+	max-width: 35vw;
+	width: 11.5rem;
+	height: 2.8rem;
+}
+
+.sapSuiteUiTFBox.Quad0,
+.sapSuiteUiTFBox.Quad3 {
+	right: -2.94rem;
+}
+
+.sapSuiteUiTFBox.Quad0,
+.sapSuiteUiTFBox.Quad1 {
+	bottom: 0;
+}
+
+.sapSuiteUiTFBox.Quad1,
+.sapSuiteUiTFBox.Quad2 {
+	left: -2.94rem;
+}
+
+.sapSuiteUiTFBox.Quad2,
+.sapSuiteUiTFBox.Quad3 {
+	top: 0;
+}
+
+.sapUiMedia-Std-Phone .sapSuiteUiTFBox.Quad0,
+.sapUiMedia-Std-Phone .sapSuiteUiTFBox.Quad3 {
+	right: 0;
+}
+
+.sapUiMedia-Std-Phone .sapSuiteUiTFBox.Quad1,
+.sapUiMedia-Std-Phone .sapSuiteUiTFBox.Quad2 {
+	left: 0;
+}
+
+.sapSuiteUiTFParCont {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+}
+
+.sapSuiteUiTFParCont.Quad1,
+.sapSuiteUiTFParCont.Quad2 {
+	left: 0;
+	right: 2.55rem;
+}
+
+.sapSuiteUiTFParCont.Quad0,
+.sapSuiteUiTFParCont.Quad3 {
+	left: 2.55rem;
+	right: 0;
+}
+
+.sapSuiteUiTFParCont .sapMInputBaseInner {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	border-radius: .375rem .375rem 0 0;
+}
+
+.sapSuiteUiTFParCont.Quad2 .sapMInputBaseInner,
+.sapSuiteUiTFParCont.Quad3 .sapMInputBaseInner {
+	border-radius: 0 0 .375rem .375rem;
+}
+
+
+.sapSuiteUiTFParCont.Quad1 .sapMInputBaseInner,
+.sapSuiteUiTFParCont.Quad2 .sapMInputBaseInner {
+	text-align: right;
+}
+
+.sapSuiteUiTFParCont .sapMComboBoxBaseArrow {
+	border-radius: .375rem .375rem 0 0;
+}
+
+.sapSuiteUiTFParCont.Quad2 .sapMComboBoxBaseArrow,
+.sapSuiteUiTFParCont.Quad3 .sapMComboBoxBaseArrow {
+	border-radius: 0 0 .375rem .375rem;
+}
+
+
+.sapSuiteTFCBTop .sapMComboBoxBaseArrow::before,
+.sapSuiteTFCBTop .sapMComboBoxBaseArrow::before {
+	content: "\e1f0";
+}
+
+.sapSuiteTFCBArrowBeforeVal .sapMComboBoxBaseArrow {
+	left: 0.0625rem;
+}
+
+.sapSuiteTFCBArrowBeforeVal input.sapMComboBoxBaseInputInner:not(.sapMComboBoxBaseInputInnerReadonly) {
+	padding-right: 0;
+	padding-left: 3rem;
+}
+
+.sapSuiteUiTFValHel {
+	position: absolute;
+	display: inline-block;
+	top: 0;
+	bottom: 0;
+}
+
+.sapSuiteUiTFValHel.Quad0,
+.sapSuiteUiTFValHel.Quad3 {
+	left: 0;
+}
+
+.sapSuiteUiTFValHel.Quad1,
+.sapSuiteUiTFValHel.Quad2 {
+	right: 0;
+}
+
+.sapSuiteUiTFValHel .sapMBtnIcon,
+.sapSuiteUiTFValHel .sapMBtnInner {
+	border-radius: .375rem .375rem 0 0;
+}
+
+.sapSuiteUiTFValHel.Quad2 .sapMBtnIcon,
+.sapSuiteUiTFValHel.Quad2 .sapMBtnInner,
+.sapSuiteUiTFValHel.Quad3 .sapMBtnIcon,
+.sapSuiteUiTFValHel.Quad3 .sapMBtnInner {
+	border-radius: 0 0 .375rem .375rem;
+}
+
+.sapSuiteUiTFLine {
+	position: absolute;
+	white-space: nowrap;
+	vertical-align: middle;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	padding: 1rem .5rem;
+	height: 3rem;
+	text-align:center;
+}
+
+.sapUISizeCompact .sapSuiteUiTFLine {
+	height: 2rem;
+	padding: .5rem .5rem;
+}
+
+.sapUISizeCompact .sapSuiteUiTFLine.sapMLnkEmphasized {
+	padding: .5rem .25rem;
+}
+
+.sapSuiteUiTFOthersLine.Hidden,
+.sapSuiteUiTFLine.Hidden {
+	display: none;
+}
+
+.sapSuiteUiTFLine.Large {
+	font-size: 1.125rem;
+	height: 1.125rem;
+	padding: .8125rem .75rem;
+}
+
+.sapSuiteUiTFLine.Medium {
+	font-size: 1rem;
+	height: 1rem;
+}
+
+.sapSuiteUiTFLine.Small {
+	font-size: .875rem;
+	height: .875rem;
+}
+
+.sapSuiteUiTFLine.Smallest {
+	font-size: .75rem;
+	height: .75rem;
+}
+
+.sapSuiteUiTFLine.Large.sapMLnkEmphasized {
+	padding: .8125rem .75rem;
+}
+
+.sapUISizeCompact .sapSuiteUiTFLine.Large {
+	padding: .4625rem .75rem;
+}
+
+.sapUISizeCompact .sapSuiteUiTFLine.Large.sapMLnkEmphasized {
+	padding: .4625rem .375rem;
+}
+
+.sapSuiteUiTFLine.Medium,
+.sapSuiteUiTFLine.Small,
+.sapSuiteUiTFLine.Smallest {
+	padding: 1rem .5rem;
+}
+
+.sapSuiteUiTFLine.Medium.sapMLnkEmphasized,
+.sapSuiteUiTFLine.Small.sapMLnkEmphasized,
+.sapSuiteUiTFLine.Smallest.sapMLnkEmphasized  {
+	padding: 1rem .25rem;
+}
+
+.sapUISizeCompact .sapSuiteUiTFLine.Medium,
+.sapUISizeCompact .sapSuiteUiTFLine.Small,
+.sapUISizeCompact .sapSuiteUiTFLine.Smallest {
+	padding: .5rem .5rem;
+}
+
+.sapUISizeCompact .sapSuiteUiTFLine.Medium.sapMLnkEmphasized,
+.sapUISizeCompact .sapSuiteUiTFLine.Small.sapMLnkEmphasized,
+.sapUISizeCompact .sapSuiteUiTFLine.Smallest.sapMLnkEmphasized {
+	padding: .5rem .25rem;
+}
+
+.sapSuiteUiTFOthersLine {
+	position: absolute;
+	white-space: nowrap;
+	vertical-align: middle;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-size: .75rem;
+	height: .75rem;
+	padding: 1rem .5rem;
+}
+
+.sapSuiteUiTFOthersLine.Quad0,
+.sapSuiteUiTFOthersLine.Quad1 {
+	bottom: 0;
+}
+
+.sapSuiteUiTFOthersLine.Quad2,
+.sapSuiteUiTFOthersLine.Quad3 {
+	top: 0;
+}
+
+html[dir=rtl] .sapSuiteUiTFOthersLine.Quad1,
+html[dir=rtl] .sapSuiteUiTFOthersLine.Quad2,
+html:not([dir=rtl]) .sapSuiteUiTFOthersLine.Quad1,
+html:not([dir=rtl]) .sapSuiteUiTFOthersLine.Quad2 {
+	right: 4rem;
+}
+
+html[dir=rtl] .sapSuiteUiTFOthersLine.Quad0,
+html[dir=rtl] .sapSuiteUiTFOthersLine.Quad3,
+html:not([dir=rtl]) .sapSuiteUiTFOthersLine.Quad0,
+html:not([dir=rtl]) .sapSuiteUiTFOthersLine.Quad3 {
+	left: 4rem;
+}
+
+.sapSuiteUiTFRightPanel {
+	min-width: 20rem;
+	max-width: 100%;
+	position: relative;
+	top: 1.5rem;
+	height: 27rem;
+	display: inline-block;
+	margin: 0 1rem;
+}
+
+.sapUiMedia-Std-Desktop .sapSuiteUiTFRightPanel {
+	margin-left: 0;
+}
+.sapUiMedia-Std-Tablet .sapSuiteUiTFRightPanel {
+	display: block;
+	clear: both;
+}
+
+.sapSuiteUiTFRightPanel .sapMSLITitleOnly {
+	font-size: 0.85rem;
+}
+
+.sapSuiteUiTFRightPanel .sapMLIBSelectD>.sapUiIcon {
+	font-size: 0.85rem;
+}
+
+html[dir=rtl] .sapSuiteUiTFRightPanel .sapSuiteUiTFShowSelLbl {
+	text-align: left;
+}
+
+.sapSuiteUiTFRightPanel .sapSuiteUiTFShowSelLbl {
+	font-size: 0.85rem;
+	text-align: right;
+	display: table-cell;
+	line-height: 2.5rem;
+	height: 1.5rem;
+	width: 12.5rem;
+	padding: .25rem;
+}
+
+.sapSuiteUiTFSearchBtn .sapMBtnIcon {
+	font-size: 0.85rem;
+}
+
+.sapSuiteUiTFSearchBtn .sapMBtnInner {
+	background: transparent;
+	border: none;
+}
+
+.sapUiMedia-Std-Tablet .sapSuiteUiTFSearchFld {
+	float: left;
+	width: 18rem;
+	top: 1rem;
+}
+
+.sapSuiteUiTFSelLstLbl {
+	padding: 1rem 0rem;
+}
+
+.sapSuiteUiTFShowSelBox {
+	flex-direction: row-reverse;
+	-ms-flex-direction: row-reverse;
+	-webkit-flex-direction: row-reverse;
+}
+
+.sapSuiteUiTFPopover.sapMPopover {
+	min-width: 6.25rem;
+	max-width: 15rem;
+}
+
+.sapSuiteUiTFPopoverText {
+	margin: 1rem;
+}
+
+[data-sap-ui-browser^='ie'].sap-desktop .sapSuiteUiTFLinksCloud .sapMLnk:focus {
+	position: absolute;
+}

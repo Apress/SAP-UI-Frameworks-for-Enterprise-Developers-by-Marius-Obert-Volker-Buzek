@@ -1,0 +1,1 @@
+{"version":3,"file":"FlexBox.designtime.js","names":["sap","ui","define","FlexBoxDesignTime","actions","remove","aggregations","items","domRef","move"],"sources":["FlexBox-dbg.designtime.js"],"mappings":";;;;AAIAA,IAAIC,GAAGC,OAAO,GAAI,WAChB,aAEA,MAAMC,EAAoB,CACxBC,QAAS,CACPC,OAAQ,MAEVC,aAAc,CACZC,MAAO,CACLC,OAAQ,cACRJ,QAAS,CACPK,KAAM,mBAKd,OAAON,CACT,EAAG"}

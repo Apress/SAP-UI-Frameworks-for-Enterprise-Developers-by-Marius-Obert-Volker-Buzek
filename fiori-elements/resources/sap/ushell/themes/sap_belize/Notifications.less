@@ -1,0 +1,27 @@
+/* ============================================= */
+/* CSS for Notifications -- theme sap_belize     */
+/* ============================================= */
+
+.sapUshellNotificationsView {
+    #sapUshellNotificationIconTabByDate, #sapUshellNotificationIconTabByType, #sapUshellNotificationIconTabByPrio {
+        .sapMITBText {
+            font-size: 1rem;
+        }
+    }
+}
+
+.sapUshellNotificationsMoreCircle {
+    background: fade(lighten(lighten(desaturate(@sapUiShellBackground, 16), 7.8),10), 30);
+    color: @sapUiBaseText;
+    text-shadow: 0 1px 0 fade(@sapUiContentContrastShadowColor, 50);
+}
+
+.sapUshellNotificationsMoreCircleCount {
+    color: @sapUiGroupTitleTextColor;
+    text-shadow: 0 1px 0 fade(@sapUiContentContrastShadowColor, 50)
+}
+
+.sapUshellNotificationsMoreHelpingText {
+    color: @sapUiBaseText;
+    text-shadow: 0 1px 0 fade(@sapUiContentContrastShadowColor, 50)
+}

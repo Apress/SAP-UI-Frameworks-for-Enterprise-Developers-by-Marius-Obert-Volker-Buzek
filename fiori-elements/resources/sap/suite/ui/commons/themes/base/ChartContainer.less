@@ -1,0 +1,33 @@
+/* =================================================== */
+/* CSS for control sap.suite.ui.commons/ChartContainer */
+/* Base Theme                                          */
+/* =================================================== */
+
+.sapSuiteUiCommonsChartContainer {
+	height: 100%;
+}
+.sapSuiteUiCommonsChartContainer {
+  overflow: unset;
+}
+/* In Edge browser vizFrame chart is cut off when changing the view from full screen to normal*/
+html[data-sap-ui-browser^="ed"] .sapSuiteUiCommonsChartContainer {
+	overflow: hidden;
+}
+
+.sapMDialogScroll {
+    height: 100%;
+}
+
+.sapSuiteUiCommonsChartContainerOverlay {
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.sapSuiteUiCommonsChartContainerChartArea {
+	background-color: @sapUiGroupContentBackground;
+}
+
+/* mixin call for creating container content padding classes (arguments: rootContainer, contentSelector) */
+.sapUiContainerContentPadding(~".sapSuiteUiCommonsChartContainer", ~"> .sapSuiteUiCommonsChartContainerWrapper");

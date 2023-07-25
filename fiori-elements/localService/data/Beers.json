@@ -1,0 +1,93 @@
+[
+  {
+    "ID": "b8c3fc14-22e2-4f42-837a-e6134775a186",
+    "name": "Lagerbier Hell",
+    "abv": "5.2",
+    "ibu": "12",
+    "brewery_ID": "9c937100-d459-491f-a72d-81b2929af10f"
+  },
+  {
+    "ID": "08d5b3fb-549c-4be7-9ac8-e039d75823e7",
+    "name": "Edelstoff",
+    "abv": "5.7",
+    "ibu": "17",
+    "brewery_ID": "9c937100-d459-491f-a72d-81b2929af10f"
+  },
+  {
+    "ID": "9e1704e3-6fd0-4a5d-bfb1-13ac47f7976b",
+    "name": "Kloster Zwickel",
+    "abv": "5.4",
+    "ibu": "21",
+    "brewery_ID": "fa6b959e-3a01-40ef-872e-6030ee4de4e5"
+  },
+  {
+    "ID": "2a1704e3-6fd0-4a5d-bfb1-43ac47f7976b",
+    "name": "Pils",
+    "abv": "4.9",
+    "ibu": "28",
+    "brewery_ID": "fa6b959e-3a01-40ef-872e-6030ee4de4e5"
+  },
+  {
+    "ID": "9473beeb-1a74-4589-82b8-4fdcce1d66d5",
+    "name": "Blue Moon Belgian White",
+    "abv": "5.4",
+    "ibu": "9",
+    "brewery_ID": "6832ba00-c20e-48b4-a685-dca4aff2ca13"
+  },
+  {
+    "ID": "e4172f62-8ae3-4829-2cf1-b8f04e4c5dc3",
+    "name": "Sternhagel",
+    "abv": "8.5",
+    "ibu": "60",
+    "brewery_ID": "d265037f-4996-4195-a1fb-b0a8ab5c6f30"
+  },
+  {
+    "ID": "f5578f62-9ae1-4829-8cf1-b8f13e4c5dc3",
+    "name": "Erhellung",
+    "abv": "5.3",
+    "ibu": "18",
+    "brewery_ID": "d265037f-4996-4195-a1fb-b0a8ab5c6f30"
+  },
+  {
+    "ID": "8a67be38-be68-401f-a2ee-0accd920f7c2",
+    "name": "Tannenzäpfle",
+    "abv": "5.1",
+    "ibu": "32",
+    "brewery_ID": "4aeebbed-90c2-4bdd-aa70-d8eecb8eaebb"
+  },
+  {
+    "ID": "fe9479d4-6f60-47e5-b565-a215e6292935",
+    "name": "Weizenzäpfle",
+    "abv": "5.4",
+    "ibu": "13",
+    "brewery_ID": "4aeebbed-90c2-4bdd-aa70-d8eecb8eaebb"
+  },
+  {
+    "ID": "1efd2b35-6fd4-4ac5-a73e-64dfc3fb123b",
+    "name": "Diplom Pils",
+    "abv": "4.9",
+    "ibu": "30",
+    "brewery_ID": "7eaabbed-90c2-4bdd-aa70-d8eecb8eaebb"
+  },
+  {
+    "ID": "1bedbcc6-2333-46e6-9561-34b325a00f9c",
+    "name": "Helles",
+    "abv": "5.1",
+    "ibu": "16",
+    "brewery_ID": "cb0fb1f6-2853-4f93-8670-69697e3a595e"
+  },
+  {
+    "ID": "8f616952-1e4e-4595-9e9e-798d936f4d39",
+    "name": "Grünerla",
+    "abv": "4.9",
+    "ibu": "11",
+    "brewery_ID": "087f986c-4b4f-4b19-a971-4e9586e74909"
+  },
+  {
+    "ID": "66bd3170-fb54-4781-83e8-62fcd1a460bc",
+    "name": "Festmärzen",
+    "abv": "5.9",
+    "ibu": "13",
+    "brewery_ID": "087f986c-4b4f-4b19-a971-4e9586e74909"
+  }
+]

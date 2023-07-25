@@ -1,0 +1,88 @@
+{
+    "_version": "1.21.0",
+    "sap.app": {
+        "id": "sap.ushell.components.shell.MenuBar",
+
+        "applicationVersion": {
+            "version": "1.113.0"
+        },
+        "i18n": {
+            "bundleUrl": "../../../renderers/fiori2/resources/resources.properties",
+            "supportedLocales": [
+                "",
+                "ar",
+                "bg",
+                "ca",
+                "cs",
+                "da",
+                "de",
+                "el",
+                "en",
+                "en_US",
+                "en_US_sappsd",
+                "en_US_saptrc",
+                "es",
+                "et",
+                "fi",
+                "fr",
+                "hi",
+                "hr",
+                "hu",
+                "it",
+                "iw",
+                "ja",
+                "kk",
+                "ko",
+                "lt",
+                "lv",
+                "ms",
+                "nl",
+                "no",
+                "pl",
+                "pt",
+                "ro",
+                "ru",
+                "sh",
+                "sk",
+                "sl",
+                "sv",
+                "th",
+                "tr",
+                "uk",
+                "vi",
+                "zh_CN",
+                "zh_TW"
+            ],
+            "fallbackLocale": "en"
+        },
+        "type": "component",
+        "title": "",
+        "resources": "resources.json"
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "sap.ushell.components.shell.MenuBar.view.MenuBar",
+            "type": "XML",
+            "async": true
+        },
+        "dependencies": {
+            "minUI5Version": "1.72",
+            "libs": {
+                "sap.m": {}
+            }
+        },
+        "models": {},
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        }
+    }
+}

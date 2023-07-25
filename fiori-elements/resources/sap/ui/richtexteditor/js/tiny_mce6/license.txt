@@ -1,0 +1,5 @@
+Copyright (c) 2022 Ephox Corporation DBA Tiny Technologies, Inc.
+
+SOFTWARE TERMS & CONDITIONS OF USE
+
+Use of this software is covered by the Tiny Technologies, Inc Software Terms & Conditions of Use presented at https://about.tiny.cloud/legal/. By use of this Software you have agreed to the Tiny Technologies, Inc Software Terms & Conditions of Use.
